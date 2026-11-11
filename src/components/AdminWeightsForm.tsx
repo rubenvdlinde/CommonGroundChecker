@@ -146,6 +146,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
           "Runs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns, such as dynamic code execution, weak hashes, disabled TLS verification, or possible hardcoded secrets.",
       },
       {
+        id: "openssfscorecard",
+        label: "OpenSSF Scorecard",
+        explanation:
+          "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only, and rates it with the checker's own bands: 9+ is 5 stars, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail; a repository outside the Scorecard dataset is informative.",
+      },
+      {
         id: "semver",
         label: "Semantic versioning",
         explanation:

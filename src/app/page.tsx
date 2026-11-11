@@ -130,6 +130,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   contributing: "recommended",
   codeofconduct: "recommended",
   security: "recommended",
+  openssfscorecard: "recommended",
   semver: "recommended",
 };
 
@@ -156,6 +157,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "Contributing guide": "contributing",
   "Code of Conduct": "codeofconduct",
   "Security policy": "security",
+  "OpenSSF Scorecard": "openssfscorecard",
   "Semantic Versioning": "semver",
 };
 
@@ -353,6 +355,14 @@ const CRITERIA_OVERVIEW = [
     desc: "SECURITY.md present",
     tooltip:
       "Checks whether a SECURITY.md file exists, explaining how vulnerabilities should be reported privately and how security handling works.",
+  },
+  {
+    icon: "⭐",
+    label: "OpenSSF Scorecard",
+    category: "Security" as CriteriaCategory,
+    desc: "Scorecard rated 1 to 5 stars",
+    tooltip:
+      "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only. The checker's own bands turn it into stars: 9+ is 5, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
   },
   {
     icon: "🔢",
