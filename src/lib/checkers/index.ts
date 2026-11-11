@@ -261,7 +261,8 @@ export async function runChecks(
       const requirementLevel =
         scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
         "recommended";
-      if (requirementLevel !== "mandatory") {
+      // "info" means the criterion could not be measured, so it neither adds nor costs points.
+      if (requirementLevel !== "mandatory" || result.status === "info") {
         return acc;
       }
 

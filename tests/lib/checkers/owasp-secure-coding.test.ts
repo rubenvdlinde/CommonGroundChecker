@@ -24,4 +24,12 @@ describe("OWASP secure coding checker", () => {
     expect(result.status).toBe("warn");
     expect(result.evidence?.[0]).toContain("Weak hash algorithm");
   });
+
+  it("reports info, not warn, when no file contents could be read", async () => {
+    vi.spyOn(github, "getFileContent").mockResolvedValueOnce("");
+
+    const result = await checkOwaspSecureCoding("owner", "repo", ["src/main.ts"]);
+
+    expect(result.status).toBe("info");
+  });
 });

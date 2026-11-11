@@ -157,7 +157,7 @@ export async function checkComplexity(
       title: "Cyclomatic complexity (Lizard)",
       description:
         "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
-      status: "warn",
+      status: "info",
       message:
         "Lizard is not installed on the checker host. Install it (for example: py -m pip install lizard) to enable this criterion.",
       evidence: [],
@@ -189,7 +189,7 @@ export async function checkComplexity(
           title: "Cyclomatic complexity (Lizard)",
           description:
             "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
-          status: "warn",
+          status: "info",
           message:
             "Could not clone repository for complexity analysis. This may happen for very large repositories or temporary network errors.",
           evidence: clone.stderr
@@ -228,7 +228,7 @@ export async function checkComplexity(
         title: "Cyclomatic complexity (Lizard)",
         description:
           "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
-        status: "warn",
+        status: "info",
         message:
           "Lizard could not complete complexity analysis for this repository.",
         evidence: [
@@ -246,7 +246,7 @@ export async function checkComplexity(
         title: "Cyclomatic complexity (Lizard)",
         description:
           "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
-        status: "warn",
+        status: "info",
         message:
           "Lizard analysis ran, but average cyclomatic complexity could not be determined from output.",
         evidence: [
@@ -263,7 +263,7 @@ export async function checkComplexity(
         title: "Cyclomatic complexity (Lizard)",
         description:
           "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
-        status: "warn",
+        status: "info",
         message:
           "Lizard analysis ran, but no analyzable functions were found for complexity averaging.",
         evidence: [
