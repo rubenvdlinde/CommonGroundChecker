@@ -112,6 +112,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   fivelayer: "mandatory",
   license: "mandatory",
   eupllicense: "recommended",
+  licenceconsistency: "recommended",
   copyrightowner: "mandatory",
   publiccode: "mandatory",
   docker: "mandatory",
@@ -138,6 +139,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "5-Layer Architecture": "fivelayer",
   "OSI License": "license",
   "EUPL License": "eupllicense",
+  "Licence consistency": "licenceconsistency",
   "Copyright / IP owner": "copyrightowner",
   "publiccode.yml": "publiccode",
   "Docker support": "docker",
@@ -209,6 +211,14 @@ const CRITERIA_OVERVIEW = [
     desc: "Explicit EUPL preference check",
     tooltip:
       "Checks explicitly whether the repository uses the European Union Public Licence (EUPL), which is recommended for public-sector software reuse in Europe.",
+  },
+  {
+    icon: "🔗",
+    label: "Licence consistency",
+    category: "Governance" as CriteriaCategory,
+    desc: "Every declaration names one licence",
+    tooltip:
+      "Collects the licence declared in the LICENSE file, package.json, composer.json, publiccode.yml, pyproject.toml, Cargo.toml, setup.cfg and the Nextcloud appinfo/info.xml, normalises each to its SPDX identifier and checks that they all name the same licence. Differing only in -only versus -or-later, or finding a single declaration, gives a warning.",
   },
   {
     icon: "©",
