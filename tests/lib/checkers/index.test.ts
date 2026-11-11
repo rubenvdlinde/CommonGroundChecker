@@ -7,6 +7,7 @@ const ids = [
   "license",
   "eupllicense",
   "copyrightowner",
+  "spdxheaders",
   "publiccode",
   "docker",
   "dockerimage",
@@ -57,6 +58,7 @@ const mocks = vi.hoisted(() => ({
   checkOwaspSecureCoding: vi.fn(),
   checkEuplLicense: vi.fn(),
   checkAdrValidator: vi.fn(),
+  checkSpdxHeaders: vi.fn(),
   getActiveScoringConfig: vi.fn(),
 }));
 
@@ -122,6 +124,7 @@ vi.mock("@/lib/checkers/owaspSecureCoding", () => ({ checkOwaspSecureCoding: moc
 vi.mock("@/lib/checkers/eupl", () => ({
   checkEuplLicense: mocks.checkEuplLicense,
 }));
+vi.mock("@/lib/checkers/spdxHeaders", () => ({ checkSpdxHeaders: mocks.checkSpdxHeaders }));
 vi.mock("@/lib/checkers/adrValidator", () => ({ checkAdrValidator: mocks.checkAdrValidator }));
 vi.mock("@/lib/checkers/sourcecode", () => ({ checkSourceCode: mocks.checkSourceCode }));
 vi.mock("@/lib/checkers/semver", () => ({ checkSemver: mocks.checkSemver }));
@@ -241,6 +244,7 @@ describe("runChecks", () => {
     mocks.checkSemver.mockReturnValue(resultFor("semver", "pass"));
     mocks.checkFiveLayer.mockResolvedValue(resultFor("fivelayer", "pass"));
     mocks.checkHelmChart.mockResolvedValue(resultFor("helmchart", "pass"));
+    mocks.checkSpdxHeaders.mockResolvedValue(resultFor("spdxheaders", "pass"));
   });
 
   it("applies weighted scoring and non-register OpenAPI bypass", async () => {
@@ -269,7 +273,7 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(23);
+    expect(report.results).toHaveLength(24);
 
     const openApiResult = report.results.find((result) => result.id === "openapi");
     expect(openApiResult?.status).toBe("pass");
