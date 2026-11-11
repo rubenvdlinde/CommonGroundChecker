@@ -17,6 +17,7 @@ import { checkCodeOfConduct } from "./codeofconduct";
 import { checkSecurity } from "./security";
 import { checkTests } from "./tests";
 import { checkComplexity } from "./complexity";
+import { checkTestCodeRatio } from "./testCodeRatio";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -160,6 +161,7 @@ export async function runChecks(
     localRepoPath,
     cloneUrl
   );
+  const testCodeRatioPromise = checkTestCodeRatio(localRepoPath);
   const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
@@ -191,9 +193,10 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
+    testCodeRatioPromise,
     codeMetricsPromise,
     owaspSecureCodingPromise,
     adrValidatorPromise,
@@ -245,6 +248,7 @@ export async function runChecks(
     tests,
     coverage,
     complexity,
+    testcoderatio,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -334,6 +338,7 @@ export async function runChecks(
     tests,
     coverage,
     complexity,
+    testcoderatio,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,

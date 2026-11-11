@@ -133,6 +133,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
           "Clones the analyzed repository and runs Lizard locally. The criterion passes when average cyclomatic complexity (AvgCCN) stays within the configured threshold, and the maximum cyclomatic complexity stays within the configured threshold.",
       },
       {
+        id: "testcoderatio",
+        label: "Test code ratio",
+        explanation:
+          "Counts non-blank, non-comment lines in test files and in production files of the cloned repository and rates test code as a percentage of production code: 120% or more is 5 stars, 100% is 4, 75% is 3, 25% is 2, lower is 1. 4 or 5 stars passes, 3 warns, lower fails. A 100% ratio corresponds roughly to 80% coverage.",
+      },
+      {
         id: "codemetrics",
         label: "Code metrics",
         explanation:

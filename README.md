@@ -60,6 +60,7 @@ Criteria are grouped into five categories. Each criterion has a requirement leve
 | 22 | **Cyclomatic complexity (Lizard)** — average complexity (AvgCCN) is measured and compared against an admin-configurable threshold | Mandatory | [lizard](https://github.com/terryyin/lizard) |
 | 23 | **Code metrics** — repository metrics such as lines of code and function count are collected as informative context | Informative | [commonground.nl](https://www.commonground.nl) |
 | 24 | **Semantic versioning** — releases or tags following MAJOR.MINOR.PATCH | Recommended | [semver.org](https://semver.org/) |
+| 25 | **Test code ratio** — test code lines as a percentage of production code lines, rated from 1 to 5 stars (120/100/75/25% bands; 100% test code is roughly 80% coverage) | Recommended | [ISO 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) |
 
 **Note:** Mandatory criteria are included in the overall score. Recommended criteria still contribute when enabled, while informative criteria are only shown as contextual information and are not used in scoring.
 

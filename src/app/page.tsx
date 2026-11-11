@@ -123,6 +123,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   documentation: "mandatory",
   tests: "mandatory",
   complexity: "recommended",
+  testcoderatio: "recommended",
   codemetrics: "informative",
   changelog: "recommended",
   coverage: "mandatory",
@@ -151,6 +152,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "Test suite presence": "tests",
   "Code coverage": "coverage",
   "Cyclomatic complexity": "complexity",
+  "Test code ratio": "testcoderatio",
   "Code Metrics": "codemetrics",
   "OWASP Secure Coding": "owaspsecurecoding",
   "Contributing guide": "contributing",
@@ -321,6 +323,14 @@ const CRITERIA_OVERVIEW = [
     desc: "Lizard analysis on target repo",
     tooltip:
       "Clones the analyzed repository and runs Lizard locally to measure cyclomatic complexity across supported languages.",
+  },
+  {
+    icon: "⚖️",
+    label: "Test code ratio",
+    category: "Software Quality" as CriteriaCategory,
+    desc: "Test code vs production code, 1 to 5 stars",
+    tooltip:
+      "Counts code lines in test files and in production files of the cloned repository and rates the ratio: 120% or more is 5 stars, 100% is 4, 75% is 3, 25% is 2, lower is 1. A 100% test code ratio corresponds roughly to 80% coverage.",
   },
   {
     icon: "🛡️",
