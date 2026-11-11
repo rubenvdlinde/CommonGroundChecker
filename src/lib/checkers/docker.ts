@@ -6,12 +6,11 @@ const DOCKER_FILES = [
   "dockerfile.prod",
   "dockerfile.local",
 ];
-const COMPOSE_FILES = [
-  "docker-compose.yml",
-  "docker-compose.yaml",
-  "docker-compose.dev.yml",
-  "docker-compose.prod.yml",
-];
+// Compose file names: the specification's defaults compose.yaml/compose.yml,
+// the legacy docker-compose.yaml/.yml, and variants of either such as
+// compose.prod.yaml, docker-compose.dev.yml or <name>-compose.yaml.
+// https://docs.docker.com/compose/intro/compose-application-model/
+const COMPOSE_FILE_PATTERN = /^(?:[\w.-]*[-.])?compose(?:[.-][\w.-]+)?\.ya?ml$/;
 
 export function checkDocker(tree: string[]): CheckResult {
   const lowerTree = tree.map((p) => p.toLowerCase());
@@ -20,7 +19,7 @@ export function checkDocker(tree: string[]): CheckResult {
     DOCKER_FILES.includes(p.toLowerCase().split("/").pop()!)
   );
   const composeFiles = tree.filter((p) =>
-    COMPOSE_FILES.includes(p.toLowerCase().split("/").pop()!)
+    COMPOSE_FILE_PATTERN.test(p.toLowerCase().split("/").pop()!)
   );
   const hasPackageHelmChart = lowerTree.some(
     (p) => p === "chart.yaml" || p.includes("/chart.yaml")
