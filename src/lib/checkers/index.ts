@@ -25,6 +25,7 @@ import { checkSemver } from "./semver";
 import { checkCopyrightOwner } from "./copyrightOwner";
 import { checkOwaspSecureCoding } from "./owaspSecureCoding";
 import { checkEuplLicense } from "./eupl";
+import { checkSecretScanning } from "./secretScanning";
 import {
   getActiveScoringConfig,
 } from "./config";
@@ -162,6 +163,7 @@ export async function runChecks(
   );
   const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
+  const secretScanningPromise = checkSecretScanning(localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
     owner,
     repo,
@@ -191,11 +193,12 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, codemetrics, owaspsecurecoding, secretscanning, adrvalidator] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     codeMetricsPromise,
     owaspSecureCodingPromise,
+    secretScanningPromise,
     adrValidatorPromise,
   ]);
 
@@ -251,6 +254,7 @@ export async function runChecks(
     contributing,
     codeofconduct,
     security,
+    secretscanning,
     semver,
     fivelayer,
     helmchart,
@@ -340,6 +344,7 @@ export async function runChecks(
     contributing,
     codeofconduct,
     security,
+    secretscanning,
     semver,
     fivelayer,
     helmchart,
