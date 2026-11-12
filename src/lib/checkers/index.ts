@@ -81,6 +81,17 @@ function runCommand(command: string, args: string[], env?: Partial<NodeJS.Proces
 
 export type ProgressCallback = (step: string, pct: number) => void;
 
+/** Evidence lines kept per result, so a report stays small enough to store. */
+export const MAX_EVIDENCE_LINES = 50;
+
+function capEvidence(evidence?: string[]): string[] | undefined {
+  if (!evidence || evidence.length <= MAX_EVIDENCE_LINES) return evidence;
+  return [
+    ...evidence.slice(0, MAX_EVIDENCE_LINES),
+    `... and ${evidence.length - MAX_EVIDENCE_LINES} more`,
+  ];
+}
+
 interface RunChecksOptions {
   helmChartLocations?: string[];
   documentationLocations?: string[];
@@ -361,6 +372,7 @@ export async function runChecks(
       scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
       "recommended",
     starRating: result.starRating ?? statusToStars(result.status),
+    evidence: capEvidence(result.evidence),
   }));
   const { rating, categoryRatings, aspectRatings } = computeRatings(resultsWithRequirementLevels, scoringConfig);
   const endorsement = computeEndorsement(resultsWithRequirementLevels, rating, scoringConfig);
