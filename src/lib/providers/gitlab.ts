@@ -5,6 +5,7 @@ import type {
   RepositoryProvider,
   RepoVersionResult,
 } from "./types";
+import { encodePathSegments } from "./paths";
 
 const BASE = "https://gitlab.com/api/v4";
 const MANIFEST_CANDIDATES = ["package.json", "pyproject.toml", "Chart.yaml"];
@@ -221,6 +222,8 @@ export const GitLabRepositoryProvider: RepositoryProvider = {
   },
   getCloneUrl: (context: RepoContext) =>
     `https://gitlab.com/${context.projectPath}.git`,
+  getRawFileUrl: (context: RepoContext, branch: string, path: string) =>
+    `https://gitlab.com/${context.projectPath}/-/raw/${encodePathSegments(branch)}/${encodePathSegments(path)}`,
   parseRepoTreeUrl: (url: string): ParsedRepoTreeUrl | null => {
     try {
       const u = new URL(url.trim());

@@ -38,6 +38,12 @@ function normalizeRepoMeta(raw: RepoMetaType): CheckReport["repoMeta"] {
           ? raw.versionEvidence.detail
           : "No saved version evidence for this historical record",
     },
+    displayName: raw.displayName ?? null,
+    shortDescription: raw.shortDescription ?? null,
+    logoUrl: raw.logoUrl ?? null,
+    developmentStatus: raw.developmentStatus ?? null,
+    maintenanceType: raw.maintenanceType ?? null,
+    maintainers: Array.isArray(raw.maintainers) ? raw.maintainers : [],
   };
 }
 

@@ -99,6 +99,23 @@ export async function postAdminScoring(payload: {
   return client.default.postApiAdminScoring(payload);
 }
 
+/** The publiccode.yml details of a report, in the shape POST /api/repositories accepts. */
+export function toPubliccodeRepositoryMetadata(
+  repoMeta: CheckReport["repoMeta"]
+): Pick<
+  RepoMetadata,
+  "displayName" | "shortDescription" | "logoUrl" | "developmentStatus" | "maintenanceType" | "maintainers"
+> {
+  return {
+    displayName: repoMeta.displayName ?? undefined,
+    shortDescription: repoMeta.shortDescription ?? undefined,
+    logoUrl: repoMeta.logoUrl ?? undefined,
+    developmentStatus: repoMeta.developmentStatus ?? undefined,
+    maintenanceType: repoMeta.maintenanceType ?? undefined,
+    maintainers: repoMeta.maintainers,
+  };
+}
+
 export async function postRepository(metadata: RepoMetadata) {
   logApiRequest("remote", "POST", "/api/repositories", metadata);
   return remoteApiClient.default.postApiRepositories(metadata);

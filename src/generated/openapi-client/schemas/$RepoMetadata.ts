@@ -65,5 +65,31 @@ export const $RepoMetadata = {
                 type: 'string',
             },
         },
+        displayName: {
+            type: 'string',
+            description: `Software name from publiccode.yml (name)`,
+        },
+        shortDescription: {
+            type: 'string',
+            description: `Short description from publiccode.yml: the Dutch one if present, else English, else the first available language`,
+        },
+        logoUrl: {
+            type: 'string',
+            description: `Absolute http(s) URL of the logo from publiccode.yml (logo), resolved to the git host's raw URL when it is a repository path`,
+        },
+        developmentStatus: {
+            type: 'string',
+            description: `Development status from publiccode.yml (developmentStatus)`,
+        },
+        maintenanceType: {
+            type: 'string',
+            description: `Maintenance type from publiccode.yml (maintenance.type)`,
+        },
+        maintainers: {
+            type: 'array',
+            contains: {
+                type: 'string',
+            },
+        },
     },
 } as const;

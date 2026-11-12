@@ -32,6 +32,7 @@ function contextWithFiles(files: Record<string, string>): RepoContext {
       getFileContent: async (_context, path) => files[path] ?? null,
       getRepoVersion: async () => ({ version: null, evidence: { source: "none", detail: "" } }),
       getCloneUrl: () => "",
+      getRawFileUrl: () => "",
     },
   };
 }

@@ -5,6 +5,7 @@ import type { CheckResult as ApiCheckResult } from "@/generated/openapi-client/m
 import {
   postRepository,
   postRepositoryAnalysis,
+  toPubliccodeRepositoryMetadata,
   type RepoMetadata,
   type RepoAnalysisInput,
 } from "@/lib/apiClient";
@@ -134,6 +135,7 @@ export async function POST(request: Request) {
           dockerLocations,
           apiSpecificationLocations,
           documentationLocations,
+          ...toPubliccodeRepositoryMetadata(report.repoMeta),
         };
 
         try {
