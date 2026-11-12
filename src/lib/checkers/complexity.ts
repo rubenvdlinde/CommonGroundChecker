@@ -64,6 +64,17 @@ async function detectLizardCommand(): Promise<{ command: string; argsPrefix: str
   return null;
 }
 
+/** Dependency, build and generated output; the same directories the OWASP check skips, plus .git. */
+export const EXCLUDED_DIRECTORIES = ["node_modules", ".next", ".git", "dist", "build", "coverage", "vendor", "generated"];
+
+export function lizardExcludeArgs(): string[] {
+  return [
+    ...EXCLUDED_DIRECTORIES.flatMap((directory) => ["-x", `*/${directory}/*`]),
+    "-x",
+    "*.min.js",
+  ];
+}
+
 function extractThresholdBreaches(output: string): string[] {
   return output
     .split(/\r?\n/)
@@ -204,16 +215,7 @@ export async function checkComplexity(
 
     const averageThresholdText = String(Math.max(1, Math.round(averageThreshold)));
     const maxCcnThresholdText = String(Math.max(1, Math.round(maxCcnThreshold)));
-    const args = [
-      ...lizard.argsPrefix,
-      "-x",
-      "*/node_modules/*",
-      "-x",
-      "*/.next/*",
-      "-x",
-      "*/.git/*",
-      repoDir,
-    ];
+    const args = [...lizard.argsPrefix, ...lizardExcludeArgs(), repoDir];
 
     const analysis = await runCommand(lizard.command, args);
     const combinedOutput = `${analysis.stdout}\n${analysis.stderr}`;
