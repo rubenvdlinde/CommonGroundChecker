@@ -12,6 +12,10 @@ export type CheckResult = {
     evidence?: Array<string>;
     referenceUrl?: string;
     confidence?: CheckResult.confidence;
+    /**
+     * 1 to 5 stars; from the criterion's own scale, or derived from its status
+     */
+    starRating?: number;
 };
 export namespace CheckResult {
     export enum requirementLevel {

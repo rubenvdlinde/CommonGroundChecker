@@ -17,6 +17,8 @@ import { checkCodeOfConduct } from "./codeofconduct";
 import { checkSecurity } from "./security";
 import { checkTests } from "./tests";
 import { checkComplexity } from "./complexity";
+import { checkMaintainability } from "./maintainability";
+import { checkOpenSourceHealth } from "./openSourceHealth";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -29,6 +31,7 @@ import {
   getActiveScoringConfig,
   type ActiveScoringConfig,
 } from "./config";
+import { statusToStars } from "../stars";
 import { CATEGORY_WEIGHTS, RESULT_CATEGORY_BY_ID, type CriteriaCategory } from "../criteria";
 import { mkdtemp, rm } from "node:fs/promises";
 import os from "node:os";
@@ -176,6 +179,8 @@ export async function runChecksOnContext(
     localRepoPath,
     cloneUrl
   );
+  const maintainabilityPromise = checkMaintainability(localRepoPath);
+  const openSourceHealthPromise = checkOpenSourceHealth(localRepoPath);
   const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
@@ -207,9 +212,11 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, maintainability, opensourcehealth, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
+    maintainabilityPromise,
+    openSourceHealthPromise,
     codeMetricsPromise,
     owaspSecureCodingPromise,
     adrValidatorPromise,
@@ -261,6 +268,8 @@ export async function runChecksOnContext(
     tests,
     coverage,
     complexity,
+    maintainability,
+    opensourcehealth,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -350,6 +359,8 @@ export async function runChecksOnContext(
     tests,
     coverage,
     complexity,
+    maintainability,
+    opensourcehealth,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -364,6 +375,7 @@ export async function runChecksOnContext(
     requirementLevel:
       scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
       "recommended",
+    starRating: result.starRating ?? statusToStars(result.status),
   }));
 
   return {
