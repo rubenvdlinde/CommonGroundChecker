@@ -3,7 +3,18 @@ import type { CheckResult } from "../types";
 import type { RepoContext } from "../providers/types";
 
 const REQUIRED_FIELDS = ["publiccodeYmlVersion", "name", "url", "legal"];
-const RECOMMENDED_FIELDS = ["description", "maintenance", "categories", "nl"];
+// Dotted paths. A Dutch description stands in for the top-level `nl:` country section,
+// which the standard deprecates (it only defines `IT:`).
+const RECOMMENDED_FIELDS = ["description", "maintenance", "categories", "description.nl"];
+
+function hasField(parsed: Record<string, unknown>, field: string): boolean {
+  let node: unknown = parsed;
+  for (const key of field.split(".")) {
+    if (typeof node !== "object" || node === null || !(key in node)) return false;
+    node = (node as Record<string, unknown>)[key];
+  }
+  return true;
+}
 
 export async function checkPublicCode(
   context: RepoContext,
@@ -67,7 +78,7 @@ export async function checkPublicCode(
   }
 
   const missingRequired = REQUIRED_FIELDS.filter((f) => !(f in parsed));
-  const missingRecommended = RECOMMENDED_FIELDS.filter((f) => !(f in parsed));
+  const missingRecommended = RECOMMENDED_FIELDS.filter((f) => !hasField(parsed, f));
 
   if (missingRequired.length > 0) {
     return {
