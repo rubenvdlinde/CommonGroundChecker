@@ -8,9 +8,7 @@ import HistoryPageClient from "@/components/HistoryPageClient";
 import type { CheckReport } from "@/lib/types";
 import type { RepoSummary } from "@/generated/openapi-client";
 
-vi.mock("next/navigation", () => ({
-  useRouter: () => ({ replace: vi.fn(), push: vi.fn() }),
-}));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ replace: vi.fn(), push: vi.fn() }) }));
 
 const baseMeta: CheckReport["repoMeta"] = {
   description: "GitHub description",
@@ -45,11 +43,11 @@ const baseSummary: RepoSummary = {
   developmentStatus: null,
   maintenanceType: null,
   maintainers: [],
-  updatedAt: "2026-11-11T00:00:00Z",
   followed: false,
   checkIntervalHours: 168,
   lastCheckedAt: "2026-11-11T00:00:00Z",
   nextCheckAt: "2026-11-18T00:00:00Z",
+  updatedAt: "2026-11-11T00:00:00Z",
   analysisCount: 1,
   latestAnalysis: null,
 };

@@ -6,8 +6,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { RepoSummary } from "@/generated/openapi-client";
 import RatingBadge from "@/components/RatingBadge";
 import RepoLogo from "@/components/RepoLogo";
-import { isRating } from "@/lib/ratings";
+import RunStatus, { runStatus } from "@/components/RunStatus";
 import { buildHistoryHref, normalizeSearchQuery, SEARCH_DEBOUNCE_MS } from "@/lib/historySearch";
+import { isRating } from "@/lib/ratings";
 
 export type SortKey = "rating" | "date" | "score";
 export type SortDirection = "asc" | "desc";
@@ -194,6 +195,7 @@ export default function HistoryPageClient({
               const latest = repository.latestAnalysis as { checkedAt: string; score: number; rating?: unknown } | null;
               const fullName = `${repository.owner}/${repository.name}`;
               const displayName = repository.displayName ?? fullName;
+              const status = runStatus(latest);
 
               return (
                 <Link
@@ -205,13 +207,9 @@ export default function HistoryPageClient({
                     <div className="flex items-start gap-3">
                       <RepoLogo logoUrl={repository.logoUrl ?? null} name={displayName} size={40} />
                       <div>
-                        <p className="font-semibold text-gray-800">
-                          {displayName}
-                          {repository.followed && (
-                            <span className="inline-flex ml-2 align-middle text-xs font-semibold px-2 py-0.5 rounded-full border border-green-300 text-green-800 bg-green-50">
-                              Followed
-                            </span>
-                          )}
+                        <p className="flex flex-wrap items-baseline gap-x-2 font-semibold text-gray-800">
+                          <span>{displayName}</span>
+                          {latest && isRating(latest.rating) && <RatingBadge rating={latest.rating} />}
                         </p>
                         {repository.displayName && (
                           <p className="text-xs text-gray-600">{fullName}</p>
@@ -236,15 +234,19 @@ export default function HistoryPageClient({
                       )}
                     </div>
                   </div>
-                  {latest && (
+                  {(latest || repository.followed) && (
                     <div className="mt-2 flex flex-wrap items-center gap-2">
-                      {isRating(latest.rating) && <RatingBadge rating={latest.rating} />}
-                      <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-gray-300 text-gray-700 bg-white">
-                        Latest score: {latest.score}
-                      </span>
-                      <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
-                        Version: unknown
-                      </span>
+                      {status && <RunStatus status={status} />}
+                      {repository.followed && (
+                        <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-green-300 text-green-800 bg-green-50">
+                          Followed
+                        </span>
+                      )}
+                      {latest && (
+                        <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
+                          Version: unknown
+                        </span>
+                      )}
                     </div>
                   )}
                 </Link>

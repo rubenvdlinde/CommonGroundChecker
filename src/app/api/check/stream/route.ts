@@ -1,4 +1,5 @@
 ﻿import { runChecks } from "@/lib/checkers";
+import { countIssues } from "@/lib/issues";
 import { getSupportedProviders, resolveRepositoryContext } from "@/lib/providers";
 import type { CheckReport } from "@/lib/types";
 import type { CheckResult as ApiCheckResult } from "@/generated/openapi-client/models/CheckResult";
@@ -149,6 +150,7 @@ export async function POST(request: Request) {
             categoryRatings: report.categoryRatings,
             aspectRatings: report.aspectRatings,
             endorsement: report.endorsement,
+            issueCounts: countIssues(report.results, report.rating, report.endorsement),
             results: report.results.map(toApiCheckResult),
           };
 

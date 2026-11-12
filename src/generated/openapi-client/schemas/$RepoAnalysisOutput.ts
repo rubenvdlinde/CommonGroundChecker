@@ -41,6 +41,9 @@ export const $RepoAnalysisOutput = {
         endorsement: {
             type: 'Endorsement',
         },
+        issueCounts: {
+            type: 'IssueCounts',
+        },
         results: {
             type: 'array',
             contains: {

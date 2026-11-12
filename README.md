@@ -269,6 +269,8 @@ These local Next.js endpoints either run the checker or proxy storage and config
 
 A repository's history page has a collapsed **Follow this repository (admin)** section. An admin chooses whether to follow the repository and how often it is rescanned (daily, weekly or monthly), and confirms with the backend's admin token (the backend's `ADMIN_TOKEN` environment variable). The token is sent with that one request and is not stored. The History index marks followed repositories with a **Followed** badge and shows their next check.
 
+Each repository on the History index is a card: its name with the latest overall rating right behind it, the repository, description and URL, and on the right the number of analyses and the last and next check. Its footer shows whether the latest run **Passed** or **Failed**, the number of failures (the entries of the run's errors block, including an overall rating below 2.5) and of warnings, **Followed**, and the version. The check routes store those counts with each analysis as `issueCounts`. A run stored before endorsements existed shows no status; a run with an endorsement but without stored counts takes its failures from the endorsement's reasons.
+
 ### ADR Spectral ruleset source (Admin)
 
 On the **Admin** page, the field **"Spectral ruleset source"** controls which ruleset is used for the **NL API Design Rules** check.

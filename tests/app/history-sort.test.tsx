@@ -6,7 +6,7 @@ import type { RepoSummary } from "@/generated/openapi-client";
 
 const getRepositories = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/apiClient", () => ({ getRepositories }));
-vi.mock("next/navigation", () => ({ useRouter: () => ({ replace: vi.fn() }) }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ replace: vi.fn(), push: vi.fn() }) }));
 
 import HistoryHomePage from "@/app/history/page";
 import { sortRepositories } from "@/components/HistoryPageClient";
