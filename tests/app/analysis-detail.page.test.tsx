@@ -1,11 +1,12 @@
 /* @vitest-environment jsdom */
 
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
 
 const getRepoHistory = vi.hoisted(() => vi.fn());
 const getAdminScoring = vi.hoisted(() => vi.fn());
-vi.mock("@/lib/apiClient", () => ({ getRepoHistory, getAdminScoring }));
+const putRepositoryFollow = vi.hoisted(() => vi.fn());
+vi.mock("@/lib/apiClient", () => ({ getRepoHistory, getAdminScoring, putRepositoryFollow }));
 
 import AnalysisDetailPage from "@/app/history/[owner]/[repo]/[analysisId]/page";
 import { resolveCategory } from "@/lib/aspects";
@@ -18,6 +19,8 @@ function result(id: string, status: string, starRating?: number) {
 
 const GOVERNANCE = resolveCategory("Governance") as string;
 const MAINTAINABILITY = resolveCategory("Maintainability") as string;
+
+const summary = (name = "Latest run") => within(screen.getByRole("region", { name }));
 
 describe("AnalysisDetailPage", () => {
   afterEach(() => cleanup());
@@ -82,12 +85,12 @@ describe("AnalysisDetailPage", () => {
 
     render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
 
-    expect(screen.getByRole("img", { name: "Overall rating 3.4 of 5" })).toBeTruthy();
+    expect(summary().getByRole("img", { name: "Overall rating 3.4 of 5" })).toBeTruthy();
     expect(screen.getAllByRole("img", { name: `${GOVERNANCE} rating 4.6 of 5` }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("img", { name: `${MAINTAINABILITY} rating 2.1 of 5` }).length).toBeGreaterThan(0);
-    expect(screen.getByText("Compliance score")).toBeTruthy();
-    expect(screen.getByText("71")).toBeTruthy();
-    expect(screen.getByText("Passes")).toBeTruthy();
+    expect(summary().getByText("Compliance score")).toBeTruthy();
+    expect(summary().getByText("71")).toBeTruthy();
+    expect(summary().getByText("Passes")).toBeTruthy();
     expect(getAdminScoring).not.toHaveBeenCalled();
   });
 
@@ -112,9 +115,9 @@ describe("AnalysisDetailPage", () => {
     render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
 
     // Ownership: copyright owner passes (5), publiccode.yml fails (1)
-    expect(screen.getByRole("img", { name: "Overall rating 3.0 of 5" })).toBeTruthy();
+    expect(summary().getByRole("img", { name: "Overall rating 3.0 of 5" })).toBeTruthy();
     expect(screen.getAllByRole("img", { name: `${GOVERNANCE} rating 3.0 of 5` }).length).toBeGreaterThan(0);
-    expect(screen.getByText("Does not pass")).toBeTruthy();
+    expect(summary().getByText("Does not pass")).toBeTruthy();
     expect(screen.getByRole("list", { name: "Why it does not pass" }).textContent).toContain(
       "Mandatory criterion fails: publiccode"
     );
@@ -150,5 +153,65 @@ describe("AnalysisDetailPage", () => {
     expect(screen.getByRole("heading", { name: /^1 error: missing mandatory items$/ })).toBeTruthy();
     const ratingError = screen.getByRole("link", { name: "Overall rating 2.4 is below 2.5: go to the overall rating" });
     expect(document.getElementById(ratingError.getAttribute("href")!.slice(1))?.textContent).toContain("Overall rating");
+  });
+
+  describe("an older run", () => {
+    const repository = { id: "repo-id", owner: "org", name: "repo", metadata: { repoUrl: "https://github.com/org/repo", topics: [] } };
+    const analyses = [
+      {
+        id: "latest",
+        checkedAt: "2026-11-11T15:39:33Z",
+        score: 80,
+        rating: 4.1,
+        categoryRatings: {},
+        aspectRatings: {},
+        endorsement: { passed: true, reasons: [] },
+        results: [result("license", "pass")],
+      },
+      {
+        id: "older",
+        checkedAt: "2026-11-01T15:39:33Z",
+        score: 60,
+        rating: 2.2,
+        categoryRatings: {},
+        aspectRatings: {},
+        endorsement: { passed: false, reasons: ["Overall rating below 2.5"] },
+        results: [result("license", "warn")],
+      },
+    ];
+
+    it("shows the same page for that run with a link to the latest run", async () => {
+      getRepoHistory.mockResolvedValue({ repository, analyses });
+
+      render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "older" }) }));
+
+      expect(screen.getByText(/This is an older run/)).toBeTruthy();
+      expect(screen.getByRole("link", { name: "See the latest run" }).getAttribute("href")).toBe("/history/org/repo");
+      expect(summary("Older run").getByRole("img", { name: "Overall rating 2.2 of 5" })).toBeTruthy();
+      expect(summary("Older run").getByText("60")).toBeTruthy();
+
+      const runLinks = within(screen.getByRole("region", { name: "All runs" })).getAllByRole("link");
+      expect(runLinks.map((link) => link.getAttribute("aria-current"))).toEqual([null, "page"]);
+      const graph = screen.getByRole("region", { name: "Rating over time" });
+      expect(graph.querySelector("svg a[aria-current='page']")?.getAttribute("href")).toBe("/history/org/repo/older");
+    });
+
+    it("shows no older-run notice on the latest run's own page", async () => {
+      getRepoHistory.mockResolvedValue({ repository, analyses });
+
+      render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "latest" }) }));
+
+      expect(screen.queryByText(/This is an older run/)).toBeNull();
+      expect(summary().getByRole("img", { name: "Overall rating 4.1 of 5" })).toBeTruthy();
+    });
+
+    it("says so when the run does not exist", async () => {
+      getRepoHistory.mockResolvedValue({ repository, analyses });
+
+      render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "gone" }) }));
+
+      expect(screen.getByText("Analysis not found for org/repo.")).toBeTruthy();
+      expect(screen.getByRole("link", { name: "← See the latest run" }).getAttribute("href")).toBe("/history/org/repo");
+    });
   });
 });

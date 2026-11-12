@@ -172,8 +172,8 @@ The application is built as a single Next.js service with clear layers:
 
 1. **Presentation layer (React pages/components)**
 	- Main checker UI (`/`)
-	- History UI (`/history` and repository detail pages, with a graph of the overall score of every stored analysis over time)
-	- History UI (`/history` and repository detail pages)
+	- Admin scoring UI (`/admin`)
+	- History UI (`/history` and one page per repository: `/history/<owner>/<repo>` shows the latest run in full, `/history/<owner>/<repo>/<analysisId>` the same page for an older run; both graph the overall rating (0.5 to 5.5, pass line at 2.5) of every stored run and list every run with its rating, pass or fail, errors and warnings)
 
 2. **API layer (Next.js route handlers under `/api`)**
 	- Validates input, orchestrates checks, persists results, and serves history/config data.

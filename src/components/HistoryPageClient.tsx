@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { RepoSummary } from "@/generated/openapi-client";
 import RatingBadge from "@/components/RatingBadge";
-import { isRating } from "@/lib/ratings";
 import RepoLogo from "@/components/RepoLogo";
+import { isRating } from "@/lib/ratings";
 import { buildHistoryHref, normalizeSearchQuery, SEARCH_DEBOUNCE_MS } from "@/lib/historySearch";
 
 export type SortKey = "rating" | "date" | "score";
