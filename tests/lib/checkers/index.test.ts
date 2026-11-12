@@ -112,7 +112,11 @@ vi.mock("@/lib/checkers/license", () => ({ checkLicense: mocks.checkLicense }));
 vi.mock("@/lib/checkers/copyrightOwner", () => ({ checkCopyrightOwner: mocks.checkCopyrightOwner }));
 vi.mock("@/lib/checkers/publiccode", () => ({ checkPublicCode: mocks.checkPublicCode }));
 vi.mock("@/lib/checkers/docker", () => ({ checkDocker: mocks.checkDocker }));
-vi.mock("@/lib/checkers/dockerImage", () => ({ checkDockerImage: mocks.checkDockerImage }));
+vi.mock("@/lib/checkers/dockerImage", () => ({
+  checkDockerImage: mocks.checkDockerImage,
+  findDeclaredImages: () => [],
+  isImageDeclarationFile: () => false,
+}));
 vi.mock("@/lib/checkers/ciConfig", () => ({ checkCiConfig: mocks.checkCiConfig }));
 vi.mock("@/lib/checkers/sbom", () => ({ checkSbom: mocks.checkSbom }));
 vi.mock("@/lib/checkers/documentation", () => ({ checkDocumentation: mocks.checkDocumentation }));

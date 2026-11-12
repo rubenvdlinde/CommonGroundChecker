@@ -5,7 +5,7 @@ import { checkOpenApi } from "./openapi";
 import { checkLicense } from "./license";
 import { checkPublicCode } from "./publiccode";
 import { checkDocker } from "./docker";
-import { checkDockerImage } from "./dockerImage";
+import { checkDockerImage, findDeclaredImages, isImageDeclarationFile } from "./dockerImage";
 import { checkCiConfig } from "./ciConfig";
 import { checkFiveLayer } from "./fiveLayer";
 import { checkHelmChart } from "./helmchart";
@@ -194,7 +194,16 @@ export async function runChecks(
   onProgress?.("Running code structure checks...", 45);
   let sourcecode = checkSourceCode(tree);
   const docker = checkDocker(tree, repo);
-  const dockerimage = checkDockerImage(options?.dockerLocations ?? []);
+  const declarationFiles = await Promise.all(
+    tree.filter(isImageDeclarationFile).slice(0, 20).map(async (filePath) => ({
+      path: filePath,
+      content: (await provider.getFileContent(context, filePath)) ?? "",
+    }))
+  );
+  const dockerimage = checkDockerImage(
+    options?.dockerLocations ?? [],
+    findDeclaredImages(declarationFiles, owner, repo)
+  );
   const cicd = checkCiConfig(tree);
   const sbom = await checkSbom(context, tree);
   const documentation = checkDocumentation(tree, options?.documentationLocations ?? []);
