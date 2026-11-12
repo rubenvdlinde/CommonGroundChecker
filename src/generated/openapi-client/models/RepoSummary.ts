@@ -35,6 +35,10 @@ export type RepoSummary = {
      * Maintainers from publiccode.yml: the names in maintenance.contacts, else the organisation names (maintenance.contractors, organisation)
      */
     maintainers: Array<string>;
+    /**
+     * Version detected on the repository's most recent scan
+     */
+    version: string | null;
     updatedAt: string;
     /**
      * Whether the repository is rescanned on a schedule

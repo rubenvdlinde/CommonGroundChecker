@@ -54,6 +54,14 @@ export function sortRepositories(
   return sorted;
 }
 
+type LatestAnalysis = { checkedAt: string; score: number; version?: string | null } | null;
+
+/** Version shown on a card: the latest analysis's version, else the repository's. */
+function cardVersion(repository: RepoSummary): string | null {
+  const latest = repository.latestAnalysis as LatestAnalysis;
+  return latest?.version || repository.version || null;
+}
+
 const sortOptions: Array<{ label: string; sort: SortKey; direction: SortDirection }> = [
   { label: "Rating ↓", sort: "rating", direction: "desc" },
   { label: "Rating ↑", sort: "rating", direction: "asc" },
@@ -193,10 +201,11 @@ export default function HistoryPageClient({
         ) : (
           <div className="space-y-3">
             {sortedRepositories.map((repository) => {
-              const latest = repository.latestAnalysis as { checkedAt: string; score: number; rating?: unknown } | null;
+              const latest = repository.latestAnalysis as (LatestAnalysis & { rating?: unknown }) | null;
               const fullName = `${repository.owner}/${repository.name}`;
               const displayName = repository.displayName ?? fullName;
               const status = runStatus(latest);
+              const version = cardVersion(repository);
 
               return (
                 <Link
@@ -235,7 +244,7 @@ export default function HistoryPageClient({
                       )}
                     </div>
                   </div>
-                  {(latest || repository.followed) && (
+                  {(latest || repository.followed || version) && (
                     <div className="mt-2 flex flex-wrap items-center gap-2">
                       {status && <RunStatus status={status} />}
                       {repository.followed && (
@@ -243,9 +252,9 @@ export default function HistoryPageClient({
                           Followed
                         </span>
                       )}
-                      {latest && (
+                      {version && (
                         <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
-                          Version: unknown
+                          Version: {version}
                         </span>
                       )}
                     </div>

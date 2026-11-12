@@ -301,3 +301,47 @@ describe("HistoryPageClient", () => {
     expect(within(card).queryByText(/Passed|Failed|failure|warning/)).toBeNull();
   });
 });
+
+function summary(overrides: Partial<RepoSummary>): RepoSummary {
+  return {
+    ...repository,
+    version: null,
+    latestAnalysis: { checkedAt: "2026-05-06T00:00:00Z", score: 80, version: null },
+    ...overrides,
+  };
+}
+
+function renderCards(repositories: RepoSummary[]) {
+  render(<HistoryPageClient sort="date" direction="desc" repositories={repositories} />);
+}
+
+describe("HistoryPageClient version chip", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
+  it("shows the latest analysis's version before the repository's", () => {
+    renderCards([
+      summary({
+        version: "v1.30.0",
+        latestAnalysis: { checkedAt: "2026-05-06T00:00:00Z", score: 80, version: "v1.31.2" },
+      }),
+    ]);
+
+    expect(screen.getByText("Version: v1.31.2")).toBeTruthy();
+    expect(screen.queryByText("Version: v1.30.0")).toBeNull();
+  });
+
+  it("falls back to the repository's version", () => {
+    renderCards([summary({ version: "v2.1.0" })]);
+
+    expect(screen.getByText("Version: v2.1.0")).toBeTruthy();
+  });
+
+  it("shows no version chip when neither version is known", () => {
+    renderCards([summary({})]);
+
+    expect(screen.getByText("open-zaak/open-zaak")).toBeTruthy();
+    expect(screen.queryByText(/Version:/)).toBeNull();
+  });
+});
