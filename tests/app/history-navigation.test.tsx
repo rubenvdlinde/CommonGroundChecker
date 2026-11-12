@@ -21,7 +21,7 @@ describe("history pages", () => {
     getRepoHistory.mockResolvedValue(history);
     render(await RepoHistoryPage({ params: Promise.resolve({ owner: "org", repo: "repo" }) }));
 
-    expect(screen.getByRole("heading", { name: "Repository History" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Component rating" })).toBeTruthy();
     expect(screen.queryByRole("navigation")).toBeNull();
     expect(screen.queryByRole("link", { name: "Admin" })).toBeNull();
   });
@@ -30,7 +30,7 @@ describe("history pages", () => {
     getRepoHistory.mockResolvedValue(history);
     render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
 
-    expect(screen.getByRole("heading", { name: "Analysis Details" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Component rating" })).toBeTruthy();
     expect(screen.queryByRole("navigation")).toBeNull();
     expect(screen.queryByRole("link", { name: "Admin" })).toBeNull();
   });
