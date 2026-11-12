@@ -6,7 +6,20 @@ import { buildLegacyRepoContext } from "./compat";
 
 const SOURCE_FILE_PATTERN = /\.(ts|tsx|js|jsx|mjs|cjs|py|java|go|cs|php|rb|vue)$/i;
 const EXCLUDED_PATH_PATTERN = /(^|\/)(node_modules|dist|build|coverage|vendor|\.next|generated)(\/|$)/i;
+const TEST_PATH_PATTERN = /(^|\/)(tests?|__tests__|spec|fixtures)(\/|$)|\.(test|spec)\.[^/]+$/i;
 const MAX_FILES_TO_SCAN = 20;
+// The scan fails once findings exceed 10 per 1,000 scanned files, with at least 3
+// tolerated, so repositories under 400 scanned files still fail from 4 findings.
+const MIN_TOLERATED_FINDINGS = 3;
+const TOLERATED_FINDINGS_PER_1000_FILES = 10;
+
+export function getFailThreshold(scannedFileCount: number): number {
+  const tolerated = Math.max(
+    MIN_TOLERATED_FINDINGS,
+    Math.floor((scannedFileCount * TOLERATED_FINDINGS_PER_1000_FILES) / 1000)
+  );
+  return tolerated + 1;
+}
 
 const RISKY_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
   // Case-sensitive: the JavaScript Function constructor is capitalised, while `function (` is an ordinary closure.
@@ -22,7 +35,8 @@ const RISKY_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
 function getScannableFiles(tree: string[], scanAllFiles: boolean): string[] {
   const filtered = tree
     .filter((path) => SOURCE_FILE_PATTERN.test(path))
-    .filter((path) => !EXCLUDED_PATH_PATTERN.test(path));
+    .filter((path) => !EXCLUDED_PATH_PATTERN.test(path))
+    .filter((path) => !TEST_PATH_PATTERN.test(path));
 
   return scanAllFiles ? filtered : filtered.slice(0, MAX_FILES_TO_SCAN);
 }
@@ -126,7 +140,8 @@ export async function checkOwaspSecureCoding(
     };
   }
 
-  const status = findings.length >= 4 ? "fail" : "warn";
+  const failThreshold = getFailThreshold(scannedFileCount);
+  const status = findings.length >= failThreshold ? "fail" : "warn";
 
   return {
     id: "owaspsecurecoding",
@@ -135,9 +150,9 @@ export async function checkOwaspSecureCoding(
       "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     status,
     message:
-      findings.length >= 4
-        ? `Multiple risky coding patterns were detected (${findings.length} findings across ${scannedFileCount} scanned source files). Review them against OWASP secure coding guidance.`
-        : `Potential OWASP secure coding issues were detected (${findings.length} findings across ${scannedFileCount} scanned source files).`,
+      status === "fail"
+        ? `Multiple risky coding patterns were detected (${findings.length} findings across ${scannedFileCount} scanned source files, failing from ${failThreshold}). Review them against OWASP secure coding guidance.`
+        : `Potential OWASP secure coding issues were detected (${findings.length} findings across ${scannedFileCount} scanned source files, failing from ${failThreshold}).`,
     evidence: findings,
     referenceUrl:
       "https://cheatsheetseries.owasp.org/IndexTopTen.html",
