@@ -165,14 +165,19 @@ export async function getRepoTree(
   return (data.tree ?? []).map((n: any) => n.path as string);
 }
 
-/** Fetch raw file content as text (base64-decoded). Returns null if not found. */
+/**
+ * Fetch raw file content as text (base64-decoded). Returns null if not found.
+ * Reads from `ref` when given, otherwise from the default branch.
+ */
 export async function getFileContent(
   owner: string,
   repo: string,
-  path: string
+  path: string,
+  ref?: string
 ): Promise<string | null> {
   try {
-    const data = await ghFetch(`/repos/${owner}/${repo}/contents/${path}`);
+    const query = ref ? `?ref=${encodeURIComponent(ref)}` : "";
+    const data = await ghFetch(`/repos/${owner}/${repo}/contents/${path}${query}`);
     if (data.encoding === "base64") {
       return Buffer.from(data.content, "base64").toString("utf-8");
     }

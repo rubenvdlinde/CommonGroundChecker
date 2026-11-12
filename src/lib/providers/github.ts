@@ -30,7 +30,7 @@ export const GitHubRepositoryProvider: RepositoryProvider = {
   getRepoTree: async (context: RepoContext, branch: string) =>
     getGitHubRepoTree(context.owner, context.repo, branch),
   getFileContent: async (context: RepoContext, path: string) =>
-    getGitHubFileContent(context.owner, context.repo, path),
+    getGitHubFileContent(context.owner, context.repo, path, context.defaultBranch),
   getRepoVersion: async (context: RepoContext) =>
     getGitHubRepoVersion(context.owner, context.repo),
   getCloneUrl: (context: RepoContext) =>

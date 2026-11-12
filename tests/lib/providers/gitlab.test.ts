@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { GitLabRepositoryProvider } from "@/lib/providers/gitlab";
 import { getSupportedProviders, resolveRepositoryContext } from "@/lib/providers";
 
@@ -44,5 +44,39 @@ describe("provider registry", () => {
 
   it("includes gitlab in the supported provider list", () => {
     expect(getSupportedProviders()).toEqual(expect.arrayContaining(["gitlab.com"]));
+  });
+});
+
+describe("GitLabRepositoryProvider.getFileContent", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("reads file contents from the same ref as the tree", async () => {
+    const fetchMock = vi.fn(async () =>
+      new Response(
+        JSON.stringify({ encoding: "base64", content: Buffer.from("hello").toString("base64") }),
+        { status: 200 }
+      )
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const content = await GitLabRepositoryProvider.getFileContent(
+      {
+        owner: "group",
+        repo: "project",
+        projectPath: "group/project",
+        repoUrl: "https://gitlab.com/group/project",
+        defaultBranch: "feature/x",
+        provider: GitLabRepositoryProvider,
+      },
+      "README.md"
+    );
+
+    expect(content).toBe("hello");
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://gitlab.com/api/v4/projects/group%2Fproject/repository/files/README.md?ref=feature%2Fx",
+      expect.anything()
+    );
   });
 });
