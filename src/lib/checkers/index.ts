@@ -193,7 +193,7 @@ export async function runChecks(
   // Instant checks — synchronous pure functions on the tree array
   onProgress?.("Running code structure checks...", 45);
   let sourcecode = checkSourceCode(tree);
-  const docker = checkDocker(tree);
+  const docker = checkDocker(tree, repo);
   const dockerimage = checkDockerImage(options?.dockerLocations ?? []);
   const cicd = checkCiConfig(tree);
   const sbom = await checkSbom(context, tree);
