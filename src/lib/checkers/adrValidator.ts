@@ -119,6 +119,37 @@ function formatSeverityLabel(severity?: number): string {
   }
 }
 
+interface SeverityCounts {
+  errors: number;
+  warnings: number;
+  info: number;
+  hints: number;
+}
+
+// Counts findings by Spectral severity (0 = error, 1 = warning, 2 = info, 3 = hint).
+// A finding without a recognised severity counts as an error.
+function addSeverityCounts(counts: SeverityCounts, issues: SpectralResultItem[]): void {
+  for (const issue of issues) {
+    switch (issue.severity) {
+      case 1:
+        counts.warnings += 1;
+        break;
+      case 2:
+        counts.info += 1;
+        break;
+      case 3:
+        counts.hints += 1;
+        break;
+      default:
+        counts.errors += 1;
+    }
+  }
+}
+
+function formatSeverityCounts(counts: SeverityCounts): string {
+  return `${counts.errors} error(s), ${counts.warnings} warning(s), ${counts.info} info, ${counts.hints} hint(s)`;
+}
+
 export function formatSpectralIssue(issue: SpectralResultItem): string {
   const severity = formatSeverityLabel(issue.severity);
   const code = issue.code ? `[${issue.code}] ` : "";
@@ -374,7 +405,7 @@ export async function checkAdrValidator(
 
   const resolvedRulesetSource = resolveRulesetSource(spectralRulesetSource);
 
-  let totalIssues = 0;
+  const severityCounts: SeverityCounts = { errors: 0, warnings: 0, info: 0, hints: 0 };
   let hasWarn = false;
   const evidence: string[] = [];
 
@@ -442,7 +473,7 @@ export async function checkAdrValidator(
     }
 
     if (lintResults.length > 0) {
-      totalIssues += lintResults.length;
+      addSeverityCounts(severityCounts, lintResults);
       evidence.push(...targetEvidenceBase);
       evidence.push(...lintResults.map((issue) => formatSpectralIssue(issue)));
       continue;
@@ -452,14 +483,16 @@ export async function checkAdrValidator(
     evidence.push(`No API Design Rules violations found for ${targetUrl}.`);
   }
 
-  if (totalIssues > 0) {
+  const countsSummary = formatSeverityCounts(severityCounts);
+
+  if (severityCounts.errors > 0) {
     return {
       id: "adrvalidator",
       title: "API Design Rules",
       description:
         "The component should comply with the Common Ground API Design Rules (ADR).",
       status: "fail",
-      message: `API Design Rules violations found across ${resolvedTargets.length} specification(s): ${totalIssues} issue(s).`,
+      message: `API Design Rules violations found across ${resolvedTargets.length} specification(s): ${countsSummary}.`,
       evidence,
       referenceUrl: "https://commonground.nl/cms/view/54476259/api-designrules",
     };
@@ -479,6 +512,21 @@ export async function checkAdrValidator(
     };
   }
 
+  if (severityCounts.warnings > 0) {
+    return {
+      id: "adrvalidator",
+      title: "API Design Rules",
+      description:
+        "The component should comply with the Common Ground API Design Rules (ADR).",
+      status: "warn",
+      message: `API Design Rules warnings found across ${resolvedTargets.length} specification(s): ${countsSummary}.`,
+      evidence,
+      referenceUrl: "https://commonground.nl/cms/view/54476259/api-designrules",
+    };
+  }
+
+  const hasFindings = severityCounts.info + severityCounts.hints > 0;
+
   return {
     id: "adrvalidator",
     title: "API Design Rules",
@@ -487,11 +535,15 @@ export async function checkAdrValidator(
     status: "pass",
     message: `API specification(s) at ${resolvedTargets
       .map((target) => target.url)
-      .join(", ")} comply with Common Ground API Design Rules.`,
+      .join(", ")} comply with Common Ground API Design Rules${
+      hasFindings ? ` (${countsSummary})` : ""
+    }.`,
     evidence: [
       ...evidence,
       `Ruleset: ${ADR_RULESET_URL}`,
-      "No API Design Rules violations found by Spectral.",
+      hasFindings
+        ? "No API Design Rules errors or warnings found by Spectral."
+        : "No API Design Rules violations found by Spectral.",
     ],
     referenceUrl: "https://commonground.nl/cms/view/54476259/api-designrules",
   };
