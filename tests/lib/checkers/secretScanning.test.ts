@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   checkSecretScanning,
   findingsToEvidence,
+  isTestPath,
   parseGitleaksReport,
   secretScanResult,
 } from "@/lib/checkers/secretScanning";
@@ -110,6 +111,61 @@ describe("secretScanResult", () => {
     expect(result.status).toBe("warn");
     expect(result.message).toContain("Secret scanning could not run");
     expect(result.message).toContain("120 seconds");
+  });
+});
+
+describe("isTestPath", () => {
+  it.each([
+    "tests/config.ts",
+    "src/test/resources/app.properties",
+    "web/__tests__/api.ts",
+    "spec/models/user_spec.rb",
+    "src/fixtures/keys.json",
+    "app/__fixtures__/token.txt",
+    "pkg/testdata/cert.pem",
+    "src/api.test.ts",
+    "src/api.spec.js",
+    "pkg/client_test.go",
+    "src/zaken/test_api.py",
+  ])("treats %s as a test path", (filePath) => {
+    expect(isTestPath(filePath)).toBe(true);
+  });
+
+  it.each(["src/config.ts", "src/testing.ts", "docs/latest.md", "src/contest_api.py", "keys/id_rsa"])(
+    "treats %s as production code",
+    (filePath) => {
+      expect(isTestPath(filePath)).toBe(false);
+    }
+  );
+});
+
+describe("test path findings", () => {
+  const findings = [
+    { RuleID: "generic-api-key", File: "/tmp/repo/src/config.ts", StartLine: 3 },
+    { RuleID: "generic-api-key", File: "/tmp/repo/tests/fixtures/settings.json", StartLine: 7 },
+    { RuleID: "private-key", File: "/tmp/repo/src/zaken/test_api.py", StartLine: 1 },
+  ];
+
+  it("leaves findings in test paths out by default and says how many", () => {
+    const result = secretScanResult({ ran: true, findings }, "/tmp/repo");
+    expect(result.status).toBe("fail");
+    expect(result.message).toContain("1 potential secret in");
+    expect(result.message).toContain("2 findings in test paths");
+    expect(result.evidence).toEqual(["generic-api-key: src/config.ts:3"]);
+  });
+
+  it("passes when every finding is in a test path, and still reports the count", () => {
+    const result = secretScanResult({ ran: true, findings: findings.slice(1) }, "/tmp/repo");
+    expect(result.status).toBe("pass");
+    expect(result.message).toContain("2 findings in test paths (tests, fixtures and test files) were left out");
+  });
+
+  it("keeps findings in test paths when the repository has its own .gitleaks.toml", () => {
+    const result = secretScanResult({ ran: true, findings, projectConfig: true }, "/tmp/repo");
+    expect(result.status).toBe("fail");
+    expect(result.message).toContain("3 potential secrets");
+    expect(result.message).not.toContain("left out");
+    expect(result.evidence).toHaveLength(3);
   });
 });
 

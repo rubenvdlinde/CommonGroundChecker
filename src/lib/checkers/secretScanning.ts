@@ -7,10 +7,12 @@ import type { CheckResult, CheckStatus } from "../types";
 const CHECK_ID = "secretscanning";
 const TITLE = "No committed secrets";
 const DESCRIPTION =
-  "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. A project's own .gitleaks.toml and .gitleaksignore are honoured.";
+  "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.";
 const REFERENCE_URL = "https://github.com/gitleaks/gitleaks";
 const SCAN_TIMEOUT_MS = 120_000;
 const MAX_EVIDENCE_LINES = 10;
+const TEST_PATH_PATTERN =
+  /(^|\/)(tests?|__tests__|spec|fixtures|__fixtures__|testdata)(\/|$)|\.(test|spec)\.[^/]+$|_test\.[^/]+$|(^|\/)test_[^/]*\.py$/i;
 
 interface CommandResult {
   code: number;
@@ -31,6 +33,8 @@ export interface SecretScanOutcome {
   ran: boolean;
   timedOut?: boolean;
   findings?: GitleaksFinding[];
+  /** The repository has its own .gitleaks.toml, so no default test path exclusion applies. */
+  projectConfig?: boolean;
   /** Diagnostic output shown when the scan could not run. */
   stderr?: string;
 }
@@ -105,6 +109,16 @@ export function parseGitleaksReport(content: string): GitleaksFinding[] | null {
   }
 }
 
+function findingPath(finding: GitleaksFinding, repoPath?: string): string {
+  const file = finding.File || "unknown-file";
+  return repoPath && path.isAbsolute(file) ? path.relative(repoPath, file) : file;
+}
+
+/** True for paths of tests and test data: test directories, fixtures and test file names. */
+export function isTestPath(filePath: string): boolean {
+  return TEST_PATH_PATTERN.test(filePath.replace(/\\/g, "/"));
+}
+
 /**
  * Turns findings into `rule-id: path:line` lines. Only the rule, file and line
  * are read, so secret values in the report never reach the evidence.
@@ -112,10 +126,7 @@ export function parseGitleaksReport(content: string): GitleaksFinding[] | null {
 export function findingsToEvidence(findings: GitleaksFinding[], repoPath?: string): string[] {
   return findings.map((finding) => {
     const rule = finding.RuleID || "unknown-rule";
-    let file = finding.File || "unknown-file";
-    if (repoPath && path.isAbsolute(file)) {
-      file = path.relative(repoPath, file);
-    }
+    const file = findingPath(finding, repoPath);
     const line = typeof finding.StartLine === "number" ? `:${finding.StartLine}` : "";
     return `${rule}: ${file}${line}`;
   });
@@ -155,12 +166,21 @@ export function secretScanResult(outcome: SecretScanOutcome, repoPath?: string):
     return result("warn", "Secret scanning could not run.", firstLines(outcome.stderr ?? "", 5));
   }
 
-  const count = outcome.findings.length;
+  const findings = outcome.projectConfig
+    ? outcome.findings
+    : outcome.findings.filter((finding) => !isTestPath(findingPath(finding, repoPath)));
+  const excluded = outcome.findings.length - findings.length;
+  const excludedNote =
+    excluded > 0
+      ? ` ${excluded} finding${excluded === 1 ? "" : "s"} in test paths (tests, fixtures and test files) ${excluded === 1 ? "was" : "were"} left out; add a .gitleaks.toml to the repository to decide this yourself.`
+      : "";
+
+  const count = findings.length;
   if (count === 0) {
-    return result("pass", "Gitleaks found no committed secrets in the working tree.", []);
+    return result("pass", `Gitleaks found no committed secrets in the working tree.${excludedNote}`, []);
   }
 
-  const evidence = findingsToEvidence(outcome.findings, repoPath);
+  const evidence = findingsToEvidence(findings, repoPath);
   const shown = evidence.slice(0, MAX_EVIDENCE_LINES);
   if (evidence.length > shown.length) {
     shown.push(`... and ${evidence.length - shown.length} more`);
@@ -168,7 +188,7 @@ export function secretScanResult(outcome: SecretScanOutcome, repoPath?: string):
 
   return result(
     "fail",
-    `Gitleaks found ${count} potential secret${count === 1 ? "" : "s"} in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml.`,
+    `Gitleaks found ${count} potential secret${count === 1 ? "" : "s"} in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml.${excludedNote}`,
     shown
   );
 }
@@ -203,7 +223,8 @@ export async function checkSecretScanning(localRepoPath?: string): Promise<Check
     ];
 
     const projectConfig = path.join(localRepoPath, ".gitleaks.toml");
-    if (await fileExists(projectConfig)) {
+    const hasProjectConfig = await fileExists(projectConfig);
+    if (hasProjectConfig) {
       args.push("--config", projectConfig);
     }
 
@@ -218,7 +239,7 @@ export async function checkSecretScanning(localRepoPath?: string): Promise<Check
       return secretScanResult({ ran: false, stderr: scan.stderr || `gitleaks exited with code ${scan.code}` });
     }
 
-    return secretScanResult({ ran: true, findings: report }, localRepoPath);
+    return secretScanResult({ ran: true, findings: report, projectConfig: hasProjectConfig }, localRepoPath);
   } finally {
     await rm(tempRoot, { recursive: true, force: true });
   }
