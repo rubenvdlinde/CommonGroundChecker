@@ -36,6 +36,22 @@ export type RepoSummary = {
      */
     maintainers: Array<string>;
     updatedAt: string;
+    /**
+     * Whether the repository is rescanned on a schedule
+     */
+    followed: boolean;
+    /**
+     * Hours between scheduled checks: 24 (daily), 168 (weekly) or 720 (monthly)
+     */
+    checkIntervalHours: number;
+    /**
+     * When the latest analysis was stored
+     */
+    lastCheckedAt: string;
+    /**
+     * When the repository is next due for a scheduled check
+     */
+    nextCheckAt: string;
     analysisCount: number;
     latestAnalysis: any | null;
 };

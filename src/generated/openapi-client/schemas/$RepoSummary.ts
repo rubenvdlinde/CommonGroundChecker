@@ -90,6 +90,28 @@ export const $RepoSummary = {
             isRequired: true,
             format: 'date-time',
         },
+        followed: {
+            type: 'boolean',
+            description: `Whether the repository is rescanned on a schedule`,
+            isRequired: true,
+        },
+        checkIntervalHours: {
+            type: 'number',
+            description: `Hours between scheduled checks: 24 (daily), 168 (weekly) or 720 (monthly)`,
+            isRequired: true,
+        },
+        lastCheckedAt: {
+            type: 'string',
+            description: `When the latest analysis was stored`,
+            isRequired: true,
+            format: 'date-time',
+        },
+        nextCheckAt: {
+            type: 'string',
+            description: `When the repository is next due for a scheduled check`,
+            isRequired: true,
+            format: 'date-time',
+        },
         analysisCount: {
             type: 'number',
             isRequired: true,

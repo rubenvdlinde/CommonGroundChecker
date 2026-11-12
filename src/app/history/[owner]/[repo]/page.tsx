@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FollowControl from "@/components/FollowControl";
 import RepoMeta from "@/components/RepoMeta";
 import RatingBadge from "@/components/RatingBadge";
 import ScoreHistoryChart from "@/components/ScoreHistoryChart";
@@ -150,6 +151,13 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
       </div>
 
       <RepoMeta owner={repository.owner} repo={repository.name} repoMeta={repoMeta} />
+
+      <FollowControl
+        repoId={repository.id}
+        initialFollowed={repository.followed ?? false}
+        initialCheckIntervalHours={repository.checkIntervalHours ?? null}
+        initialNextCheckAt={repository.nextCheckAt ?? null}
+      />
 
       <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">Score over time</h3>

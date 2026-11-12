@@ -11,6 +11,22 @@ export type RepoHistoryResponse = {
         owner: string;
         name: string;
         metadata: RepoMeta;
+        /**
+         * Whether the repository is rescanned on a schedule
+         */
+        followed: boolean;
+        /**
+         * Hours between scheduled checks: 24 (daily), 168 (weekly) or 720 (monthly)
+         */
+        checkIntervalHours: number;
+        /**
+         * When the latest analysis was stored
+         */
+        lastCheckedAt: string;
+        /**
+         * When the repository is next due for a scheduled check
+         */
+        nextCheckAt: string;
         createdAt: string;
         updatedAt: string;
     };

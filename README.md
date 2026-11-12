@@ -257,12 +257,17 @@ These local Next.js endpoints either run the checker or proxy storage and config
 | `GET` | `/api/openapi` | Retrieve the machine-readable OpenAPI specification |
 | `POST` | `/api/repositories` | Create or update repository metadata via the remote API |
 | `POST` | `/api/repositories/{repoId}/analyses` | Persist a new analysis result for an existing repository via the remote API |
+| `PUT` | `/api/repositories/{repoId}/follow` | Follow or unfollow a repository for scheduled rescans via the remote API, forwarding the admin bearer token |
 | `POST` | `/api/check` | Run full analysis and persist result through the remote API |
 | `POST` | `/api/check/stream` | Stream progress/events during analysis |
 | `GET` | `/api/admin/scoring` | Retrieve current scoring configuration from the remote API |
 | `POST` | `/api/admin/scoring` | Save new scoring configuration snapshot to the remote API |
 | `GET` | `/api/repositories` | List known repositories with latest summary via the remote API; `q` searches owner, name, description, URL and topics |
 | `GET` | `/api/repo-history` | Return analysis runs/history for repositories via the remote API |
+
+### Following a repository (Admin)
+
+A repository's history page has a collapsed **Follow this repository (admin)** section. An admin chooses whether to follow the repository and how often it is rescanned (daily, weekly or monthly), and confirms with the backend's admin token (the backend's `ADMIN_TOKEN` environment variable). The token is sent with that one request and is not stored. The History index marks followed repositories with a **Followed** badge and shows their next check.
 
 ### ADR Spectral ruleset source (Admin)
 

@@ -4,6 +4,8 @@ import type { ApiRequestOptions } from "@/generated/openapi-client/core/ApiReque
 import { getHeaders } from "@/generated/openapi-client/core/request";
 import type {
   CheckRequest,
+  FollowSettings,
+  FollowSettingsInput,
   RepoAnalysisInput,
   RepoAnalysisOutput,
   RepoHistoryResponse,
@@ -27,6 +29,8 @@ function logApiRequest(clientName: "local" | "remote", method: string, path: str
 
 export type {
   CheckRequest,
+  FollowSettings,
+  FollowSettingsInput,
   RepoSummary,
   RepoMetadata,
   RepoAnalysisInput,
@@ -125,6 +129,16 @@ export async function postRepository(metadata: RepoMetadata) {
 export async function postRepositoryAnalysis(repoId: string, input: RepoAnalysisInput) {
   logApiRequest("remote", "POST", `/api/repositories/${encodeURIComponent(repoId)}/analyses`, input);
   return remoteApiClient.default.postApiRepositoriesAnalyses(repoId, input);
+}
+
+export async function putRepositoryFollow(
+  repoId: string,
+  settings: FollowSettingsInput,
+  adminToken: string
+): Promise<FollowSettings> {
+  logApiRequest("local", "PUT", `/api/repositories/${encodeURIComponent(repoId)}/follow`, settings);
+  const client = new ApiClient({ BASE: "", TOKEN: adminToken });
+  return client.default.putApiRepositoriesFollow(repoId, settings);
 }
 
 export async function postCheck(request: CheckRequest) {

@@ -202,7 +202,14 @@ export default function HistoryPageClient({
                     <div className="flex items-start gap-3">
                       <RepoLogo logoUrl={repository.logoUrl ?? null} name={displayName} size={40} />
                       <div>
-                        <p className="font-semibold text-gray-800">{displayName}</p>
+                        <p className="font-semibold text-gray-800">
+                          {displayName}
+                          {repository.followed && (
+                            <span className="inline-flex ml-2 align-middle text-xs font-semibold px-2 py-0.5 rounded-full border border-green-300 text-green-800 bg-green-50">
+                              Followed
+                            </span>
+                          )}
+                        </p>
                         {repository.displayName && (
                           <p className="text-xs text-gray-600">{fullName}</p>
                         )}
@@ -217,6 +224,11 @@ export default function HistoryPageClient({
                       {latest && (
                         <p>
                           Last: {new Date(latest.checkedAt).toLocaleString("nl-NL")}
+                        </p>
+                      )}
+                      {repository.followed && repository.nextCheckAt && (
+                        <p>
+                          Next check: {new Date(repository.nextCheckAt).toLocaleString("nl-NL")}
                         </p>
                       )}
                     </div>
