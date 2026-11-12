@@ -76,7 +76,7 @@ function isOsiApproved(
   return false;
 }
 
-function detectLicenseFromText(content: string): string | null {
+export function detectLicenseFromText(content: string): string | null {
   const lower = content.toLowerCase();
 
   for (const signal of LICENSE_TEXT_SIGNALS) {

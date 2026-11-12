@@ -20,6 +20,7 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 |---|-----------|-------|----------|
 | 1 | **OSI-approved open-source license** — LICENSE file with an OSI-approved identifier | Mandatory | [opensource.org/licenses](https://opensource.org/licenses) |
 | 2 | **EUPL license preference** — explicit check whether the repository uses the European Union Public Licence | Mandatory | [EU EUPL](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12) |
+| 28 | **Licence consistency** — LICENSE file, package manifests, publiccode.yml and appinfo/info.xml all name the same SPDX licence | Recommended | [SPDX licence list](https://spdx.org/licenses/) |
 | 3 | **Copyright / IP owner disclosure** — probable owner inferred from legal files and metadata | Mandatory | [opensource.guide/legal](https://opensource.guide/legal/) |
 | 4 | **publiccode.yml** — government metadata file in the repository root | Mandatory | [Standard for Public Code](https://standard.publiccode.net) |
 | 5 | **Contributing guide** — CONTRIBUTING file explaining how to contribute | Mandatory | [GitHub docs](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) |
