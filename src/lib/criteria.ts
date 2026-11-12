@@ -2,14 +2,14 @@ export type CriteriaCategory =
   | "Governance"
   | "Security"
   | "Architecture"
-  | "Software Quality"
+  | "Maintainability"
   | "Deployment & Operations";
 
 export const CATEGORY_ORDER: CriteriaCategory[] = [
   "Governance",
   "Security",
   "Architecture",
-  "Software Quality",
+  "Maintainability",
   "Deployment & Operations",
 ];
 
@@ -20,8 +20,34 @@ export const CATEGORY_WEIGHTS: CategoryWeights = {
   Architecture: 0.2,
   Security: 0.25,
   "Deployment & Operations": 0.2,
-  "Software Quality": 0.15,
+  Maintainability: 0.15,
 };
+
+/** Category names used by earlier versions, mapped to the category that replaced them. */
+export const LEGACY_CATEGORY_NAMES: Record<string, CriteriaCategory> = {
+  "Software Quality": "Maintainability",
+};
+
+/**
+ * Renames legacy category keys in stored category weights. A legacy weight is
+ * only used when the replacing category has no weight of its own.
+ */
+export function migrateLegacyCategoryWeights<T>(
+  weights: Record<string, T>
+): Record<string, T> {
+  const migrated: Record<string, T> = {};
+  for (const [category, weight] of Object.entries(weights)) {
+    if (!(category in LEGACY_CATEGORY_NAMES)) {
+      migrated[category] = weight;
+    }
+  }
+  for (const [legacy, current] of Object.entries(LEGACY_CATEGORY_NAMES)) {
+    if (legacy in weights && !(current in weights)) {
+      migrated[current] = weights[legacy];
+    }
+  }
+  return migrated;
+}
 
 export const RESULT_ORDER_BY_ID: string[] = [
   "sourcecode",
@@ -58,7 +84,7 @@ export const RESULT_ORDER_BY_ID: string[] = [
 ];
 
 export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
-  sourcecode: "Software Quality",
+  sourcecode: "Maintainability",
   openapi: "Architecture",
   adrvalidator: "Architecture",
   license: "Governance",
@@ -71,23 +97,23 @@ export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
   dockerimage: "Deployment & Operations",
   cicd: "Deployment & Operations",
   helmchart: "Deployment & Operations",
-  sbom: "Software Quality",
-  documentation: "Software Quality",
-  changelog: "Software Quality",
-  tests: "Software Quality",
-  coverage: "Software Quality",
-  complexity: "Software Quality",
-  maintainability: "Software Quality",
+  sbom: "Security",
+  documentation: "Governance",
+  changelog: "Governance",
+  tests: "Maintainability",
+  coverage: "Maintainability",
+  complexity: "Maintainability",
+  maintainability: "Maintainability",
   opensourcehealth: "Security",
-  testcoderatio: "Software Quality",
-  codemetrics: "Software Quality",
+  testcoderatio: "Maintainability",
+  codemetrics: "Maintainability",
   owaspsecurecoding: "Security",
   contributing: "Governance",
   codeofconduct: "Governance",
   security: "Security",
   secretscanning: "Security",
   openssfscorecard: "Security",
-  semver: "Software Quality",
+  semver: "Deployment & Operations",
   fivelayer: "Architecture",
 };
 

@@ -49,7 +49,7 @@ describe("AdminWeightsForm", () => {
     Architecture: 0.2,
     Security: 0.25,
     "Deployment & Operations": 0.2,
-    "Software Quality": 0.15,
+    Maintainability: 0.15,
   };
   const defaultCategoryWeights = { ...initialCategoryWeights };
   const initialComplexityThreshold = 15;
@@ -73,7 +73,7 @@ describe("AdminWeightsForm", () => {
       Architecture: 0.2,
       Security: 0.25,
       "Deployment & Operations": 0.2,
-      "Software Quality": 0.15,
+      Maintainability: 0.15,
     };
 
     (postAdminScoring as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
@@ -136,7 +136,7 @@ describe("AdminWeightsForm", () => {
       Architecture: 0.2,
       Security: 0.25,
       "Deployment & Operations": 0.2,
-      "Software Quality": 0.15,
+      Maintainability: 0.15,
     };
 
     (postAdminScoring as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce({

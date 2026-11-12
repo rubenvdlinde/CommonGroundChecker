@@ -69,10 +69,57 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
           "Checks whether a Code of Conduct file exists, documenting expected behavior and incident reporting for contributors.",
       },
       {
+        id: "documentation",
+        label: "Documentation",
+        explanation:
+          "Documentation should be available for users and integrators. This checker looks for common docs files in the repository and optionally accepts a separate documentation site URL.",
+      },
+      {
+        id: "changelog",
+        label: "Changelog presence",
+        explanation:
+          "Checks whether a changelog or release notes file exists, so users and integrators can track changes between releases.",
+      },
+    ],
+  },
+  {
+    category: "Security",
+    criteria: [
+      {
+        id: "owaspsecurecoding",
+        label: "OWASP Secure Coding",
+        explanation:
+          "Runs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns, such as dynamic code execution, weak hashes, disabled TLS verification, or possible hardcoded secrets.",
+      },
+      {
         id: "security",
         label: "Security policy",
         explanation:
           "Checks whether a SECURITY.md file exists, explaining how vulnerabilities should be reported privately and how security handling works.",
+      },
+      {
+        id: "sbom",
+        label: "SBOM",
+        explanation:
+          "A Software Bill of Materials (SBOM) lists every dependency and its version. Common formats are SPDX (.spdx.json) and CycloneDX (.cdx.json / bom.xml). Currently a recommended — not mandatory — check.",
+      },
+      {
+        id: "opensourcehealth",
+        label: "Open Source Health",
+        explanation:
+          "Reads the lockfiles and rates the production dependencies from 1 to 5 stars on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management. The criterion passes at 4 stars or more and warns at 3 stars.",
+      },
+      {
+        id: "secretscanning",
+        label: "No committed secrets",
+        explanation:
+          "Scans the cloned repository's working tree with gitleaks for committed secrets such as API keys, tokens and private keys, honouring the project's .gitleaks.toml. Passes when nothing is found, fails with the rule and location of each finding.",
+      },
+      {
+        id: "openssfscorecard",
+        label: "OpenSSF Scorecard",
+        explanation:
+          "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only, and rates it with the checker's own bands: 9+ is 5 stars, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail; a repository outside the Scorecard dataset is informative.",
       },
     ],
   },
@@ -100,31 +147,13 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
     ],
   },
   {
-    category: "Software Quality",
+    category: "Maintainability",
     criteria: [
       {
         id: "sourcecode",
         label: "Source code",
         explanation:
           "The repository must contain real source code (Python, JavaScript, Java, Go, etc.), not just documentation or configuration files. This verifies the repository is a real software project.",
-      },
-      {
-        id: "sbom",
-        label: "SBOM",
-        explanation:
-          "A Software Bill of Materials (SBOM) lists every dependency and its version. Common formats are SPDX (.spdx.json) and CycloneDX (.cdx.json / bom.xml). Currently a recommended — not mandatory — check.",
-      },
-      {
-        id: "documentation",
-        label: "Documentation",
-        explanation:
-          "Documentation should be available for users and integrators. This checker looks for common docs files in the repository and optionally accepts a separate documentation site URL.",
-      },
-      {
-        id: "changelog",
-        label: "Changelog presence",
-        explanation:
-          "Checks whether a changelog or release notes file exists, so users and integrators can track changes between releases.",
       },
       {
         id: "tests",
@@ -145,12 +174,6 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
           "Clones the analyzed repository and runs Lizard locally. The criterion passes when average cyclomatic complexity (AvgCCN) stays within the configured threshold, and the maximum cyclomatic complexity stays within the configured threshold.",
       },
       {
-        id: "opensourcehealth",
-        label: "Open Source Health",
-        explanation:
-          "Reads the lockfiles and rates the production dependencies from 1 to 5 stars on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management. The criterion passes at 4 stars or more and warns at 3 stars.",
-      },
-      {
         id: "maintainability",
         label: "Maintainability (ISO 25010)",
         explanation:
@@ -168,30 +191,6 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         explanation:
           "Shows supplementary repository metrics as supporting information: total lines of code (NLOC) and function count. This criterion is informative and does not contribute to the overall score by default.",
         requirementLevel: "informative",
-      },
-      {
-        id: "owaspsecurecoding",
-        label: "OWASP Secure Coding",
-        explanation:
-          "Runs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns, such as dynamic code execution, weak hashes, disabled TLS verification, or possible hardcoded secrets.",
-      },
-      {
-        id: "secretscanning",
-        label: "No committed secrets",
-        explanation:
-          "Scans the cloned repository's working tree with gitleaks for committed secrets such as API keys, tokens and private keys, honouring the project's .gitleaks.toml. Passes when nothing is found, fails with the rule and location of each finding.",
-      },
-      {
-        id: "openssfscorecard",
-        label: "OpenSSF Scorecard",
-        explanation:
-          "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only, and rates it with the checker's own bands: 9+ is 5 stars, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail; a repository outside the Scorecard dataset is informative.",
-      },
-      {
-        id: "semver",
-        label: "Semantic versioning",
-        explanation:
-          "Checks whether the detected repository version follows semantic versioning (MAJOR.MINOR.PATCH), optionally with prerelease/build metadata.",
       },
     ],
   },
@@ -222,9 +221,15 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         explanation:
           "Haven is the Dutch government standard for Kubernetes deployments. Charts must include resource limits, liveness/readiness probes, a security context, and NetworkPolicy manifests.",
       },
+      {
+        id: "semver",
+        label: "Semantic versioning",
+        explanation:
+          "Checks whether the detected repository version follows semantic versioning (MAJOR.MINOR.PATCH), optionally with prerelease/build metadata.",
+      },
     ],
   },
-] ;
+];
 
 const ALL_CRITERION_FIELDS = CRITERION_CATEGORIES.flatMap((group) =>
   group.criteria

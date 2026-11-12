@@ -10,7 +10,9 @@ An online automatic compliance checker for [Common Ground](https://commonground.
 
 ## What it checks
 
-Criteria are grouped into five categories. Each criterion has a requirement level (mandatory / recommended / informative) and a configurable weight that influences the overall score.
+Criteria are grouped into five quality aspects, in line with the quality characteristics of ISO/IEC 25010: governance, security, architecture, maintainability, and deployment & operations. Maintainability covers the source code itself (its size, complexity and tests). Criteria about the project around the code sit with the aspect they serve: documentation and changelog under governance, the SBOM under security, and semantic versioning under deployment & operations. Each criterion has a requirement level (mandatory / recommended / informative) and a configurable weight that influences the overall score.
+
+Earlier versions grouped several of these criteria under "Software Quality". A stored category weight for "Software Quality" is applied to Maintainability when no Maintainability weight is set.
 
 The rating guide at `/docs` ("Rating guide" in the site navigation) explains per category and aspect what the 1 to 5 star ratings mean, how the checker measures them and which sources they are based on. The content lives in `src/lib/ratingDocs.ts`; every aspect has a stable anchor, `/docs/<category-slug>#<aspect-id>`.
 
@@ -22,59 +24,59 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 | 2 | **EUPL license preference** — explicit check whether the repository uses the European Union Public Licence | Mandatory | [EU EUPL](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12) |
 | 28 | **Licence consistency** — LICENSE file, package manifests, publiccode.yml and appinfo/info.xml all name the same SPDX licence | Recommended | [SPDX licence list](https://spdx.org/licenses/) |
 | 3 | **Copyright / IP owner disclosure** — probable owner inferred from legal files and metadata | Mandatory | [opensource.guide/legal](https://opensource.guide/legal/) |
+| 29 | **SPDX licence headers** — share of source files with an SPDX-License-Identifier header or REUSE coverage, rated in stars (our own bands; REUSE asks for every file) | Recommended | [REUSE specification](https://reuse.software/spec/) |
 | 4 | **publiccode.yml** — government metadata file in the repository root | Mandatory | [Standard for Public Code](https://standard.publiccode.net) |
 | 5 | **Contributing guide** — CONTRIBUTING file explaining how to contribute | Mandatory | [GitHub docs](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) |
 | 6 | **Code of Conduct** — CODE_OF_CONDUCT file present | Mandatory | [opensource.guide](https://opensource.guide/code-of-conduct/) |
-| 29 | **SPDX licence headers** — share of source files with an SPDX-License-Identifier header or REUSE coverage, rated in stars (our own bands; REUSE asks for every file) | Recommended | [REUSE specification](https://reuse.software/spec/) |
-
-### Architecture
-
-| # | Criterion | Level | Standard |
-|---|-----------|-------|----------|
-| 7 | **API-first / OpenAPI spec** — machine-readable OpenAPI or Swagger spec present | Mandatory | [API Design Rules](https://commonground.nl/cms/view/54476259/api-designrules) |
-| 8 | **NL API Design Rules (ADR) validation** — OpenAPI / API design is validated against the configured Spectral ruleset | Mandatory | [API Design Rules](https://commonground.nl/cms/view/54476259/api-designrules) |
-| 9 | **5-Layer Architecture** — component belongs to a recognised Common Ground layer | Mandatory | [5-lagen model](https://commonground.nl/cms/view/54476261/5-lagen-model) |
+| 7 | **Documentation** — README, docs folder, or external docs URL | Mandatory | [irealisatie.nl](https://www.irealisatie.nl/kennis/common-ground) |
+| 8 | **Changelog presence** — changelog or release notes file found in the repository | Recommended | [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) |
 
 ### Security
 
 | # | Criterion | Level | Standard |
 |---|-----------|-------|----------|
-| 10 | **Security policy** — SECURITY file with responsible disclosure info | Mandatory | [GitHub docs](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository) |
-| 11 | **OWASP Secure Coding** — heuristic static analysis checks for common insecure patterns | Mandatory | [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices/) |
+| 9 | **Security policy** — SECURITY file with responsible disclosure info | Mandatory | [GitHub docs](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository) |
+| 10 | **OWASP Secure Coding** — heuristic static analysis checks for common insecure patterns | Mandatory | [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices/) |
+| 11 | **SBOM** — Software Bill of Materials (SPDX or CycloneDX) published | Mandatory | [CISA SBOM](https://www.cisa.gov/sbom) |
 | 26 | **Open Source Health** — production dependencies from the lockfiles rated from 1 to 5 stars on known vulnerabilities ([OSV.dev](https://osv.dev)), freshness, activity, licence risk and dependency management | Recommended | [Open Source Health model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md) |
 | 30 | **No committed secrets** — gitleaks scans the working tree for API keys, tokens and private keys, honouring the project's `.gitleaks.toml` | Recommended | [gitleaks](https://github.com/gitleaks/gitleaks) |
 | 31 | **OpenSSF Scorecard** — the public OpenSSF Scorecard (0 to 10) rated 1 to 5 stars with this checker's own bands; GitHub repositories only | Recommended | [OpenSSF Scorecard](https://scorecard.dev) |
+
+### Architecture
+
+| # | Criterion | Level | Standard |
+|---|-----------|-------|----------|
+| 12 | **API-first / OpenAPI spec** — machine-readable OpenAPI or Swagger spec present | Mandatory | [API Design Rules](https://commonground.nl/cms/view/54476259/api-designrules) |
+| 13 | **NL API Design Rules (ADR) validation** — OpenAPI / API design is validated against the configured Spectral ruleset | Mandatory | [API Design Rules](https://commonground.nl/cms/view/54476259/api-designrules) |
+| 14 | **5-Layer Architecture** — component belongs to a recognised Common Ground layer | Mandatory | [5-lagen model](https://commonground.nl/cms/view/54476261/5-lagen-model) |
+
+### Maintainability
+
+| # | Criterion | Level | Standard |
+|---|-----------|-------|----------|
+| 15 | **Actual source code** — repository contains real source files, not just documentation or configuration | Mandatory | [commonground.nl](https://www.commonground.nl) |
+| 16 | **Test suite** — automated tests or test configuration present | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) |
+| 17 | **Code coverage** — coverage report or badge with at least 80% line coverage | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) |
+| 18 | **Cyclomatic complexity (Lizard)** — average complexity (AvgCCN) is measured and compared against an admin-configurable threshold | Mandatory | [lizard](https://github.com/terryyin/lizard) |
+| 19 | **Code metrics** — repository metrics such as lines of code and function count are collected as informative context | Informative | [commonground.nl](https://www.commonground.nl) |
+| 25 | **Maintainability (ISO 25010)** — unit size, unit complexity, unit interfacing, duplication, module coupling and component structure, each rated from 1 to 5 stars, with an estimated overall maintainability rating | Recommended | [Maintainability model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md) |
+| 27 | **Test code ratio** — test code lines as a percentage of production code lines, rated from 1 to 5 stars (120/100/75/25% bands; 100% test code is roughly 80% coverage) | Recommended | [ISO 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) |
 
 ### Deployment & Operations
 
 | # | Criterion | Level | Standard |
 |---|-----------|-------|----------|
-| 12 | **Docker support** — Dockerfile (and optionally docker-compose) present | Mandatory | [Haven](https://haven.commonground.nl) |
-| 13 | **🐳 Available Docker image** — published registry image URL provided | Mandatory | [Haven](https://haven.commonground.nl) |
-| 14 | **CI/CD configuration** — workflow or pipeline config present for automated builds/deployments | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions) |
-| 15 | **Helm chart (Kubernetes)** — Chart.yaml or K8s manifests present | Mandatory | [Haven](https://haven.commonground.nl) |
-
-### Software Quality
-
-| # | Criterion | Level | Standard |
-|---|-----------|-------|----------|
-| 16 | **Actual source code** — repository contains real source files, not just documentation or configuration | Mandatory | [commonground.nl](https://www.commonground.nl) |
-| 17 | **SBOM** — Software Bill of Materials (SPDX or CycloneDX) published | Mandatory | [CISA SBOM](https://www.cisa.gov/sbom) |
-| 18 | **Documentation** — README, docs folder, or external docs URL | Mandatory | [irealisatie.nl](https://www.irealisatie.nl/kennis/common-ground) |
-| 19 | **Changelog presence** — changelog or release notes file found in the repository | Recommended | [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) |
-| 20 | **Test suite** — automated tests or test configuration present | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) |
-| 21 | **Code coverage** — coverage report or badge with at least 80% line coverage | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) |
-| 22 | **Cyclomatic complexity (Lizard)** — average complexity (AvgCCN) is measured and compared against an admin-configurable threshold | Mandatory | [lizard](https://github.com/terryyin/lizard) |
-| 23 | **Code metrics** — repository metrics such as lines of code and function count are collected as informative context | Informative | [commonground.nl](https://www.commonground.nl) |
+| 20 | **Docker support** — Dockerfile (and optionally docker-compose) present | Mandatory | [Haven](https://haven.commonground.nl) |
+| 21 | **🐳 Available Docker image** — published registry image URL provided | Mandatory | [Haven](https://haven.commonground.nl) |
+| 22 | **CI/CD configuration** — workflow or pipeline config present for automated builds/deployments | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions) |
+| 23 | **Helm chart (Kubernetes)** — Chart.yaml or K8s manifests present | Mandatory | [Haven](https://haven.commonground.nl) |
 | 24 | **Semantic versioning** — releases or tags following MAJOR.MINOR.PATCH | Mandatory | [semver.org](https://semver.org/) |
-| 25 | **Maintainability (ISO 25010)** — unit size, unit complexity, unit interfacing, duplication, module coupling and component structure, each rated from 1 to 5 stars, with an estimated overall maintainability rating | Recommended | [Maintainability model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md) |
-| 27 | **Test code ratio** — test code lines as a percentage of production code lines, rated from 1 to 5 stars (120/100/75/25% bands; 100% test code is roughly 80% coverage) | Recommended | [ISO 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) |
 
 **Stars:** every criterion also shows 1 to 5 stars. Maintainability has its own scale (4 stars or more passes, 3 stars warns). The other criteria map pass, warn and fail to 5, 3 and 1 stars. The component as a whole and each category also get a rating; see [Ratings](#ratings).
 
 The maintainability analysis runs `scripts/maintainability/check_maintainability.py`, which needs `python3`, lizard 1.24.3 and jscpd 4.0.5. The Docker image installs them. `MAINTAINABILITY_TIMEOUT_SECONDS` (default 600) caps how long one analysis may run. `node scripts/sync-vendored.mjs <maintainability|open-source-health> [commit]` refreshes a vendored script from its upstream; `UPSTREAM` in its directory records the commit. The Open Source Health analysis (`scripts/open-source-health/`) needs only `python3` and network access to OSV.dev, Packagist, the npm registry and PyPI; `OPEN_SOURCE_HEALTH_TIMEOUT_SECONDS` (default 300) caps it.
 
-**Note:** Only mandatory criteria are included in the overall score. Recommended and informative criteria are shown in the report but do not contribute to the score. Each category is scored as the weighted average of its mandatory criteria (pass = 1, warn or info = 0.5, fail = 0), and the overall score is the weighted average of those category scores, using the default category weights Governance 20%, Architecture 20%, Security 25%, Deployment & Operations 20% and Software Quality 15%.
+**Note:** Only mandatory criteria are included in the overall score. Recommended and informative criteria are shown in the report but do not contribute to the score. Each category is scored as the weighted average of its mandatory criteria (pass = 1, warn or info = 0.5, fail = 0), and the overall score is the weighted average of those category scores, using the default category weights Governance 20%, Security 25%, Architecture 20%, Maintainability 15% and Deployment & Operations 20%.
 
 The levels above are the defaults in `src/lib/checkers/config.ts`; the category weights are in `src/lib/criteria.ts`. When the scoring API answers, its active configuration is used instead, and an administrator can change levels and weights there. The backend's built-in criterion levels are the same as above, but its default category weights (`DEFAULT_CATEGORY_WEIGHTS` in `src/lib/scoring.ts` of CommonGroundCheckerBackend) set Security to 0, so unless the stored configuration sets a Security weight, the Security category does not count towards the score when the backend answers.
 

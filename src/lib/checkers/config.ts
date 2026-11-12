@@ -1,7 +1,7 @@
 import type { CheckStatus, RequirementLevel } from "../types";
 import { getAdminScoring } from "@/lib/apiClient";
 import type { ScoringConfigResponse } from "@/generated/openapi-client";
-import { CATEGORY_WEIGHTS } from "../criteria";
+import { CATEGORY_WEIGHTS, migrateLegacyCategoryWeights } from "../criteria";
 import type { CriteriaCategory, CategoryWeights } from "../criteria";
 
 export interface CriterionConfig {
@@ -134,9 +134,10 @@ function buildScoringConfig(overrides?: ScoringConfigOverrides): ScoringConfig {
     criterionConfigByCheckId,
     categoryWeights: ((): CategoryWeights => {
       if (!overrides?.categoryWeights) return CATEGORY_WEIGHTS;
+      const overrideCategoryWeights = migrateLegacyCategoryWeights(overrides.categoryWeights);
       return Object.fromEntries(
         Object.entries(CATEGORY_WEIGHTS).map(([category, defaultValue]) => {
-          const overrideValue = overrides.categoryWeights?.[category];
+          const overrideValue = overrideCategoryWeights[category];
           return [
             category,
             typeof overrideValue === "number"

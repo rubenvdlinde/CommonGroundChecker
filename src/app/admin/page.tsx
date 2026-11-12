@@ -6,7 +6,7 @@ import {
   DEFAULT_CRITERION_CONFIG_BY_CHECK_ID,
   DEFAULT_SPECTRAL_RULESET_SOURCE,
 } from "@/lib/checkers/config";
-import { CATEGORY_WEIGHTS } from "@/lib/criteria";
+import { CATEGORY_WEIGHTS, migrateLegacyCategoryWeights } from "@/lib/criteria";
 
 function buildDefaultConfig() {
   return {
@@ -49,8 +49,9 @@ export default async function AdminPage() {
   const initialWeights = successData?.criterionWeights ?? defaults.defaultCriterionWeights;
   const initialRequirementLevels =
     successData?.criterionRequirementLevels ?? defaults.defaultCriterionRequirementLevels;
-  const initialCategoryWeights =
-    successData?.categoryWeights ?? defaults.defaultCategoryWeights;
+  const initialCategoryWeights = successData?.categoryWeights
+    ? migrateLegacyCategoryWeights(successData.categoryWeights)
+    : defaults.defaultCategoryWeights;
 
   console.log("Admin initial category weights:", {
     source: successData?.categoryWeights ? "successData.categoryWeights" : "defaults.defaultCategoryWeights",
@@ -78,7 +79,7 @@ export default async function AdminPage() {
         </p>
         <p>
           Second, the category scores are aggregated using fixed category weights:
-          Governance 20%, Architecture 20%, Security 25%, Deployment &amp; Operations 20%, and Software Quality 15%.
+          Governance 20%, Architecture 20%, Security 25%, Deployment &amp; Operations 20%, and Maintainability 15%.
         </p>
         <p>
           <strong>Recommended</strong> and <strong>informative</strong> criteria are shown in reports, but they do <strong>not</strong> contribute to the numeric score.

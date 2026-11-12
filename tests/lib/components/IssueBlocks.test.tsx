@@ -67,7 +67,7 @@ describe("splitIssues", () => {
     expect(errors.map((entry) => [entry.result.id, entry.category])).toEqual([
       ["license", "Governance"],
       ["security", "Security"],
-      ["semver", "Software Quality"],
+      ["semver", "Deployment & Operations"],
     ]);
     expect(warnings.map((entry) => entry.result.id)).toEqual(["publiccode"]);
   });
