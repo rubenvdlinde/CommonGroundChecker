@@ -2,7 +2,7 @@ export const SEARCH_DEBOUNCE_MS = 300;
 
 interface HistoryHrefOptions {
   q?: string;
-  sort: "date" | "score";
+  sort: "date" | "score" | "rating";
   direction: "asc" | "desc";
 }
 

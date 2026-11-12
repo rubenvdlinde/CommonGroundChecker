@@ -1,9 +1,6 @@
-import HistoryPageClient from "@/components/HistoryPageClient";
+import HistoryPageClient, { type SortDirection, type SortKey } from "@/components/HistoryPageClient";
 import { getRepositories, type RepoSummary } from "@/lib/apiClient";
 import { normalizeSearchQuery } from "@/lib/historySearch";
-
-type SortKey = "date" | "score";
-type SortDirection = "asc" | "desc";
 
 interface HistoryHomePageProps {
   searchParams: Promise<{
@@ -18,8 +15,9 @@ function firstValue(value: string | string[] | undefined): string | undefined {
   return value;
 }
 
+/** Without a sort in the URL, the highest-rated components come first. */
 function normalizeSortKey(value: string | undefined): SortKey {
-  return value === "score" ? "score" : "date";
+  return value === "score" || value === "date" ? value : "rating";
 }
 
 function normalizeSortDirection(value: string | undefined): SortDirection {
