@@ -51,6 +51,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   eupllicense: { weight: 1, requirementLevel: "mandatory" },
   licenceconsistency: { weight: 1, requirementLevel: "recommended" },
   copyrightowner: { weight: 1, requirementLevel: "mandatory" },
+  spdxheaders: { weight: 1, requirementLevel: "recommended" },
   publiccode: { weight: 1, requirementLevel: "mandatory" },
   docker: { weight: 1, requirementLevel: "mandatory" },
   dockerimage: { weight: 1, requirementLevel: "mandatory" },

@@ -8,6 +8,7 @@ const ids = [
   "eupllicense",
   "licenceconsistency",
   "copyrightowner",
+  "spdxheaders",
   "publiccode",
   "docker",
   "dockerimage",
@@ -65,6 +66,7 @@ const mocks = vi.hoisted(() => ({
   checkEuplLicense: vi.fn(),
   checkAdrValidator: vi.fn(),
   checkLicenceConsistency: vi.fn(),
+  checkSpdxHeaders: vi.fn(),
   getActiveScoringConfig: vi.fn(),
 }));
 
@@ -138,6 +140,7 @@ vi.mock("@/lib/checkers/eupl", () => ({
   checkEuplLicense: mocks.checkEuplLicense,
 }));
 vi.mock("@/lib/checkers/licenceConsistency", () => ({ checkLicenceConsistency: mocks.checkLicenceConsistency }));
+vi.mock("@/lib/checkers/spdxHeaders", () => ({ checkSpdxHeaders: mocks.checkSpdxHeaders }));
 vi.mock("@/lib/checkers/adrValidator", () => ({ checkAdrValidator: mocks.checkAdrValidator }));
 vi.mock("@/lib/checkers/sourcecode", () => ({ checkSourceCode: mocks.checkSourceCode }));
 vi.mock("@/lib/checkers/semver", () => ({ checkSemver: mocks.checkSemver }));
@@ -263,6 +266,7 @@ describe("runChecks", () => {
     mocks.checkFiveLayer.mockResolvedValue(resultFor("fivelayer", "pass"));
     mocks.checkHelmChart.mockResolvedValue(resultFor("helmchart", "pass"));
     mocks.checkLicenceConsistency.mockResolvedValue(resultFor("licenceconsistency", "pass"));
+    mocks.checkSpdxHeaders.mockResolvedValue({ ...resultFor("spdxheaders", "pass"), starRating: 4 });
   });
 
   it("applies weighted scoring and non-register OpenAPI bypass", async () => {
@@ -291,9 +295,10 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(27);
+    expect(report.results).toHaveLength(28);
     expect(report.results.find((result) => result.id === "opensourcehealth")?.starRating).toBe(4);
     expect(report.results.find((result) => result.id === "licenceconsistency")?.starRating).toBe(5);
+    expect(report.results.find((result) => result.id === "spdxheaders")?.starRating).toBe(4);
     expect(report.results.find((result) => result.id === "maintainability")?.starRating).toBe(3);
     expect(report.results.find((result) => result.id === "semver")?.starRating).toBe(1);
     expect(report.results.find((result) => result.id === "tests")?.starRating).toBe(3);

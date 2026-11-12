@@ -25,6 +25,7 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 | 4 | **publiccode.yml** — government metadata file in the repository root | Mandatory | [Standard for Public Code](https://standard.publiccode.net) |
 | 5 | **Contributing guide** — CONTRIBUTING file explaining how to contribute | Mandatory | [GitHub docs](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) |
 | 6 | **Code of Conduct** — CODE_OF_CONDUCT file present | Mandatory | [opensource.guide](https://opensource.guide/code-of-conduct/) |
+| 29 | **SPDX licence headers** — share of source files with an SPDX-License-Identifier header or REUSE coverage, rated in stars (our own bands; REUSE asks for every file) | Recommended | [REUSE specification](https://reuse.software/spec/) |
 
 ### Architecture
 
