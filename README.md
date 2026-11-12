@@ -57,7 +57,7 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 | 15 | **Actual source code** — repository contains real source files, not just documentation or configuration | Mandatory | [commonground.nl](https://www.commonground.nl) |
 | 16 | **Test suite** — automated tests or test configuration present | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) |
 | 17 | **Code coverage** — coverage report or badge with at least 80% line coverage | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) |
-| 18 | **Cyclomatic complexity (Lizard)** — average complexity (AvgCCN) is measured and compared against an admin-configurable threshold | Mandatory | [lizard](https://github.com/terryyin/lizard) |
+| 18 | **Cyclomatic complexity (Lizard)** — average complexity (AvgCCN) is measured and compared against an admin-configurable threshold | Informative | [lizard](https://github.com/terryyin/lizard) |
 | 19 | **Code metrics** — repository metrics such as lines of code and function count are collected as informative context | Informative | [commonground.nl](https://www.commonground.nl) |
 | 25 | **Maintainability (ISO 25010)** — unit size, unit complexity, unit interfacing, duplication, module coupling and component structure, each rated from 1 to 5 stars, with an estimated overall maintainability rating | Recommended | [Maintainability model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md) |
 | 27 | **Test code ratio** — test code lines as a percentage of production code lines, rated from 1 to 5 stars (120/100/75/25% bands; 100% test code is roughly 80% coverage) | Recommended | [ISO 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) |
@@ -300,7 +300,9 @@ Each check has a configurable **weight** (0–1) set via the Admin page. Weights
 
 For the Lizard complexity criterion, the Admin page also stores a configurable
 **average cyclomatic complexity threshold** (AvgCCN). The check passes when a
-repository’s measured AvgCCN is at or below this threshold.
+repository’s measured AvgCCN is at or below this threshold. The criterion is
+informative: its figures are shown with every analysis but do not count in the
+score, so a single complex function no longer fails a whole repository.
 
 Score formula:
 ```

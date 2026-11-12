@@ -177,4 +177,27 @@ describe("AdminWeightsForm", () => {
     expect(screen.getByText(/0.10/)).toBeTruthy();
     expect(saveButton.disabled).toBe(true);
   });
+
+  it("shows cyclomatic complexity as informative, without a weight, and keeps its thresholds", () => {
+    const { container } = render(
+      <AdminWeightsForm
+        initialWeights={initialWeights}
+        defaultWeights={defaultWeights}
+        initialRequirementLevels={initialRequirementLevels}
+        defaultRequirementLevels={defaultRequirementLevels}
+        initialCategoryWeights={initialCategoryWeights}
+        defaultCategoryWeights={defaultCategoryWeights}
+        initialComplexityThreshold={initialComplexityThreshold}
+        defaultComplexityThreshold={defaultComplexityThreshold}
+        initialComplexityMaxCcnThreshold={initialComplexityMaxCcnThreshold}
+        defaultComplexityMaxCcnThreshold={defaultComplexityMaxCcnThreshold}
+        initialSpectralRulesetSource={initialSpectralRulesetSource}
+        defaultSpectralRulesetSource={defaultSpectralRulesetSource}
+      />
+    );
+
+    expect(container.querySelector("#weight-complexity")).toBeNull();
+    expect(container.querySelector("#complexity-threshold")).toBeTruthy();
+    expect(container.querySelector("#complexity-max-ccn-threshold")).toBeTruthy();
+  });
 });

@@ -171,7 +171,8 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         id: "complexity",
         label: "Cyclomatic complexity",
         explanation:
-          "Clones the analyzed repository and runs Lizard locally. The criterion passes when average cyclomatic complexity (AvgCCN) stays within the configured threshold, and the maximum cyclomatic complexity stays within the configured threshold.",
+          "Clones the analyzed repository and runs Lizard locally. The criterion passes when average cyclomatic complexity (AvgCCN) stays within the configured threshold, and the maximum cyclomatic complexity stays within the configured threshold. This criterion is informative: the figures stay visible but do not count in the score.",
+        requirementLevel: "informative",
       },
       {
         id: "maintainability",

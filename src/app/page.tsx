@@ -170,7 +170,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   sbom: "recommended",
   documentation: "mandatory",
   tests: "mandatory",
-  complexity: "recommended",
+  complexity: "informative",
   maintainability: "recommended",
   opensourcehealth: "recommended",
   testcoderatio: "recommended",

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   getAdminScoring: vi.fn(),
@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
 
 vi.mock("@/lib/apiClient", () => ({ getAdminScoring: mocks.getAdminScoring }));
 
-import { getActiveScoringConfig } from "@/lib/checkers/config";
+import { DEFAULT_CRITERION_CONFIG_BY_CHECK_ID, getActiveScoringConfig, getScoringConfig } from "@/lib/checkers/config";
 import { CATEGORY_WEIGHTS } from "@/lib/criteria";
 
 describe("getActiveScoringConfig category weights", () => {
@@ -56,5 +56,43 @@ describe("getActiveScoringConfig category weights", () => {
 
     expect(active.id).toBeNull();
     expect(active.config.categoryWeights.Maintainability).toBe(0.15);
+  });
+});
+
+describe("complexity requirement level", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+    mocks.getAdminScoring.mockReset();
+  });
+
+  it("defaults to informative with no weight", () => {
+    expect(DEFAULT_CRITERION_CONFIG_BY_CHECK_ID.complexity).toEqual({
+      weight: 0,
+      requirementLevel: "informative",
+    });
+  });
+
+  it("stays informative when the stored config still marks it mandatory", async () => {
+    mocks.getAdminScoring.mockResolvedValue({
+      scoringConfigId: "cfg-1",
+      criterionWeights: { complexity: 1 },
+      criterionRequirementLevels: { complexity: "mandatory" },
+    });
+
+    const config = await getScoringConfig();
+
+    expect(config.criterionConfigByCheckId.complexity).toEqual({
+      weight: 0,
+      requirementLevel: "informative",
+    });
+  });
+
+  it("is informative when the scoring config cannot be loaded", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    mocks.getAdminScoring.mockRejectedValue(new Error("offline"));
+
+    const config = await getScoringConfig();
+
+    expect(config.criterionConfigByCheckId.complexity.requirementLevel).toBe("informative");
   });
 });
