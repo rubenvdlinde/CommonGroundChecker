@@ -6,6 +6,7 @@ import type { RepoSummary } from "@/generated/openapi-client";
 
 const getRepositories = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/apiClient", () => ({ getRepositories }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ replace: vi.fn() }) }));
 
 import HistoryHomePage from "@/app/history/page";
 import { sortRepositories } from "@/components/HistoryPageClient";
@@ -54,5 +55,14 @@ describe("history sorting", () => {
     expect(names).toEqual(["org/high", "org/low", "org/unrated"]);
     expect(screen.getByRole("link", { name: "Rating ↓" }).getAttribute("aria-current")).toBe("true");
     expect(screen.getByRole("link", { name: "Date ↓" }).getAttribute("aria-current")).toBeNull();
+  });
+
+  it("keeps the search term in the rating sort links", async () => {
+    getRepositories.mockResolvedValue(repositories);
+
+    render(await HistoryHomePage({ searchParams: Promise.resolve({ q: "zaak" }) }));
+
+    expect(screen.getByRole("link", { name: "Rating ↑" }).getAttribute("href")).toBe("/history?sort=rating&direction=asc&q=zaak");
+    expect(screen.getByRole("searchbox")).toBeTruthy();
   });
 });
