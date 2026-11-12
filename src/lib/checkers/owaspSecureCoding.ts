@@ -9,7 +9,8 @@ const EXCLUDED_PATH_PATTERN = /(^|\/)(node_modules|dist|build|coverage|vendor|\.
 const MAX_FILES_TO_SCAN = 20;
 
 const RISKY_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
-  { label: "Dynamic code execution", pattern: /\beval\s*\(|\bFunction\s*\(|setTimeout\s*\(\s*["'`]|setInterval\s*\(\s*["'`]/i },
+  // Case-sensitive: the JavaScript Function constructor is capitalised, while `function (` is an ordinary closure.
+  { label: "Dynamic code execution", pattern: /\beval\s*\(|(?<![\w$.])Function\s*\(|setTimeout\s*\(\s*["'`]|setInterval\s*\(\s*["'`]/ },
   { label: "Unsafe HTML injection", pattern: /innerHTML\s*=|dangerouslySetInnerHTML/i },
   { label: "Shell command execution", pattern: /subprocess\.(run|call|Popen)\([^\n]*shell\s*=\s*True|os\.system\s*\(|child_process\.(exec|execSync)\s*\(/i },
   { label: "Insecure deserialization", pattern: /pickle\.loads\s*\(|yaml\.load\s*\(/i },
