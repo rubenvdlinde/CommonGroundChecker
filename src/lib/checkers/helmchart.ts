@@ -1,6 +1,6 @@
 import type { CheckResult } from "../types";
 import type { RepoContext, ParsedRepoTreeUrl } from "../providers/types";
-import { buildLegacyRepoContext } from "./compat";
+import { resolveRepositoryContext } from "../providers";
 
 export async function checkHelmChart(
   context: RepoContext,
@@ -24,10 +24,6 @@ export async function checkHelmChart(
   arg3: string[] | string,
   arg4: string[] = []
 ): Promise<CheckResult> {
-  const context =
-    typeof contextOrOwner === "string"
-      ? buildLegacyRepoContext(contextOrOwner, arg2 as string)
-      : contextOrOwner;
   const tree =
     typeof contextOrOwner === "string"
       ? (arg3 as string[])
@@ -43,14 +39,22 @@ export async function checkHelmChart(
   );
 
   const externalHints = helmChartLocations
-    .map((hint) => ({ hint, parsed: context.provider.parseRepoTreeUrl?.(hint) }))
+    .map((hint) => {
+      const hintContext = resolveRepositoryContext(hint);
+      return {
+        hint,
+        hintContext,
+        parsed: hintContext?.provider.parseRepoTreeUrl?.(hint),
+      };
+    })
     .filter(
       (
         item
       ): item is {
         hint: string;
+        hintContext: RepoContext;
         parsed: ParsedRepoTreeUrl;
-      } => !!item.parsed
+      } => !!item.hintContext && !!item.parsed
     );
 
   const externalChartEvidence: string[] = [];
@@ -58,8 +62,8 @@ export async function checkHelmChart(
 
   for (const item of externalHints) {
     try {
-      const externalTree = await context.provider.getRepoTree(
-        context,
+      const externalTree = await item.hintContext.provider.getRepoTree(
+        item.hintContext,
         item.parsed.branch
       );
       const externalLower = externalTree.map((p) => p.toLowerCase());
