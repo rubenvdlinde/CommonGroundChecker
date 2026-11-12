@@ -230,6 +230,9 @@ function buildRawRepoUrl(
   if (providerId === "gitlab") {
     return buildRawGitLabUrl(projectPath, branch, filePath);
   }
+  if (providerId === "local") {
+    return path.join(projectPath, filePath);
+  }
   return buildRawGitHubUrl(owner, repo, branch, filePath);
 }
 
