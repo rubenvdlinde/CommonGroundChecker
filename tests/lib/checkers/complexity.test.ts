@@ -36,10 +36,14 @@ describe("lizardExcludeArgs", () => {
     expect(args).toContain("*.min.js");
   });
 
+  it("skips test stubs", () => {
+    expect(lizardExcludeArgs()).toContain("*/tests/stubs/*");
+  });
+
   it("passes every pattern as its own -x option", () => {
     const args = lizardExcludeArgs();
 
-    expect(args).toHaveLength((EXCLUDED_DIRECTORIES.length + 1) * 2);
+    expect(args).toHaveLength((EXCLUDED_DIRECTORIES.length + 2) * 2);
     expect(args.filter((_, index) => index % 2 === 0).every((arg) => arg === "-x")).toBe(true);
   });
 });

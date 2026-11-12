@@ -67,11 +67,18 @@ async function detectLizardCommand(): Promise<{ command: string; argsPrefix: str
 /** Dependency, build and generated output; the same directories the OWASP check skips, plus .git. */
 export const EXCLUDED_DIRECTORIES = ["node_modules", ".next", ".git", "dist", "build", "coverage", "vendor", "generated"];
 
+/**
+ * Lizard options for the paths it skips. Besides dependencies and build output,
+ * `tests/stubs/` holds stand-in copies of another project's classes for the
+ * test suite, not code of the repository under review.
+ */
 export function lizardExcludeArgs(): string[] {
   return [
     ...EXCLUDED_DIRECTORIES.flatMap((directory) => ["-x", `*/${directory}/*`]),
     "-x",
     "*.min.js",
+    "-x",
+    "*/tests/stubs/*",
   ];
 }
 
