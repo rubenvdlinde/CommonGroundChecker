@@ -42,6 +42,7 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 | 10 | **Security policy** — SECURITY file with responsible disclosure info | Mandatory | [GitHub docs](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository) |
 | 11 | **OWASP Secure Coding** — heuristic static analysis checks for common insecure patterns | Mandatory | [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices/) |
 | 26 | **Open Source Health** — production dependencies from the lockfiles rated from 1 to 5 stars on known vulnerabilities ([OSV.dev](https://osv.dev)), freshness, activity, licence risk and dependency management | Recommended | [Open Source Health model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md) |
+| 30 | **No committed secrets** — gitleaks scans the working tree for API keys, tokens and private keys, honouring the project's `.gitleaks.toml` | Recommended | [gitleaks](https://github.com/gitleaks/gitleaks) |
 
 ### Deployment & Operations
 

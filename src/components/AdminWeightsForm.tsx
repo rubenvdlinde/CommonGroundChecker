@@ -176,6 +176,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
           "Runs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns, such as dynamic code execution, weak hashes, disabled TLS verification, or possible hardcoded secrets.",
       },
       {
+        id: "secretscanning",
+        label: "No committed secrets",
+        explanation:
+          "Scans the cloned repository's working tree with gitleaks for committed secrets such as API keys, tokens and private keys, honouring the project's .gitleaks.toml. Passes when nothing is found, fails with the rule and location of each finding.",
+      },
+      {
         id: "semver",
         label: "Semantic versioning",
         explanation:
