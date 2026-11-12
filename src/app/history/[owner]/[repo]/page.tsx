@@ -1,6 +1,7 @@
 import Link from "next/link";
 import RepoMeta from "@/components/RepoMeta";
 import RatingBadge from "@/components/RatingBadge";
+import ScoreHistoryChart from "@/components/ScoreHistoryChart";
 import { getRepoHistory } from "@/lib/apiClient";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import type { CheckReport } from "@/lib/types";
@@ -116,6 +117,8 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
   const repoMeta = normalizeRepoMeta(repository.metadata);
   const analyses = repositoryResponse?.analyses ?? [];
   const ratings = await loadStoredRatings(analyses);
+  const analysisHref = (analysisId: string) =>
+    `/history/${encodeURIComponent(repository.owner)}/${encodeURIComponent(repository.name)}/${encodeURIComponent(analysisId)}`;
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
@@ -147,6 +150,11 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
       </div>
 
       <RepoMeta owner={repository.owner} repo={repository.name} repoMeta={repoMeta} />
+
+      <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
+        <h3 className="text-lg font-semibold text-gray-800">Score over time</h3>
+        <ScoreHistoryChart analyses={analyses} analysisHref={analysisHref} />
+      </section>
 
       <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
         <div className="flex items-center justify-between gap-3 flex-wrap">
@@ -190,7 +198,7 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
                       Score {analysis.score}
                     </span>
                     <Link
-                      href={`/history/${encodeURIComponent(repository.owner)}/${encodeURIComponent(repository.name)}/${encodeURIComponent(analysis.id)}`}
+                      href={analysisHref(analysis.id)}
                       className="text-sm text-cg-lightblue hover:underline"
                     >
                       View details
