@@ -27,6 +27,7 @@ import { checkOwaspSecureCoding } from "./owaspSecureCoding";
 import { checkEuplLicense } from "./eupl";
 import {
   getActiveScoringConfig,
+  type ActiveScoringConfig,
 } from "./config";
 import { CATEGORY_WEIGHTS, RESULT_CATEGORY_BY_ID, type CriteriaCategory } from "../criteria";
 import { mkdtemp, rm } from "node:fs/promises";
@@ -77,12 +78,16 @@ function runCommand(command: string, args: string[], env?: Partial<NodeJS.Proces
 
 export type ProgressCallback = (step: string, pct: number) => void;
 
-interface RunChecksOptions {
+export interface RunChecksOptions {
   helmChartLocations?: string[];
   documentationLocations?: string[];
   dockerLocations?: string[];
   apiSpecificationLocations?: string[];
   isRegister?: boolean;
+  /** Scan this checkout in place instead of cloning the repository */
+  localRepoPath?: string;
+  /** Use this scoring configuration instead of the one served by the API */
+  scoringConfig?: ActiveScoringConfig;
 }
 
 export async function runChecks(
@@ -92,7 +97,14 @@ export async function runChecks(
 ): Promise<CheckReport> {
   const context = resolveRepositoryContext(repoUrl);
   if (!context) throw new Error("Invalid repository URL.");
+  return runChecksOnContext(context, options, onProgress);
+}
 
+export async function runChecksOnContext(
+  context: RepoContext,
+  options?: RunChecksOptions,
+  onProgress?: ProgressCallback,
+): Promise<CheckReport> {
   const { provider, owner, repo } = context;
 
   // Fetch repo metadata first (needed to know default branch)
@@ -108,7 +120,7 @@ export async function runChecks(
   ]);
 
   const version = versionInfo.version;
-  const activeScoringConfig = await getActiveScoringConfig();
+  const activeScoringConfig = options?.scoringConfig ?? await getActiveScoringConfig();
   const scoringConfig = activeScoringConfig.config;
   const isRegister = options?.isRegister === true;
 
@@ -116,17 +128,21 @@ export async function runChecks(
   let localRepoPath: string | undefined;
 
   try {
-    tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-repo-"));
-    localRepoPath = path.join(tempRoot, "repo");
     const cloneUrl = provider.getCloneUrl(context);
-    const clone = await runCommand(
-      "git",
-      ["clone", "--depth", "1", cloneUrl, localRepoPath],
-      { GIT_LFS_SKIP_SMUDGE: "1" }
-    );
+    if (options?.localRepoPath) {
+      localRepoPath = options.localRepoPath;
+    } else {
+      tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-repo-"));
+      localRepoPath = path.join(tempRoot, "repo");
+      const clone = await runCommand(
+        "git",
+        ["clone", "--depth", "1", cloneUrl, localRepoPath],
+        { GIT_LFS_SKIP_SMUDGE: "1" }
+      );
 
-    if (clone.code !== 0) {
-      localRepoPath = undefined;
+      if (clone.code !== 0) {
+        localRepoPath = undefined;
+      }
     }
 
     const openApiCheckPromise: Promise<CheckResult> = isRegister
@@ -351,7 +367,7 @@ export async function runChecks(
   }));
 
   return {
-    repoUrl,
+    repoUrl: context.repoUrl,
     owner,
     repo,
     checkedAt: new Date().toISOString(),

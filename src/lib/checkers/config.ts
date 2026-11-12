@@ -233,6 +233,18 @@ function parseScoringConfigResponse(response: ScoringConfigResponse) {
   });
 }
 
+/**
+ * A scoring configuration from a payload shaped like the admin scoring response,
+ * such as a saved copy of it; unknown or invalid fields fall back to the defaults.
+ */
+export function scoringConfigFromPayload(payload: unknown): ActiveScoringConfig {
+  const id =
+    payload && typeof payload === "object" && typeof (payload as Record<string, unknown>).scoringConfigId === "string"
+      ? ((payload as Record<string, unknown>).scoringConfigId as string)
+      : null;
+  return { id, config: buildScoringConfig(parseOverridesFromDbPayload(payload)) };
+}
+
 export async function getScoringConfig(): Promise<ScoringConfig> {
   const active = await getActiveScoringConfig();
   return active.config;
