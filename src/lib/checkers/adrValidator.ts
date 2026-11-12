@@ -1,4 +1,6 @@
 import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import type { CheckResult } from "../types";
 
 interface CommandResult {
@@ -55,12 +57,31 @@ function runCommand(command: string, args: string[]): Promise<CommandResult> {
   });
 }
 
-function runSpectralCommand(args: string[]): Promise<CommandResult> {
-  if (process.platform === "win32") {
-    return runCommand("cmd", ["/c", "npx", ...args]);
+/**
+ * The pinned Spectral binary from node_modules, or npx as a fallback. Concurrent
+ * `npx --yes` runs share one cache and can delete each other's install.
+ */
+export function spectralCommand(
+  args: string[],
+  platform: NodeJS.Platform = process.platform,
+  binaryExists: (binaryPath: string) => boolean = existsSync
+): { command: string; args: string[] } {
+  const binary = path.join(process.cwd(), "node_modules", ".bin", platform === "win32" ? "spectral.cmd" : "spectral");
+  if (binaryExists(binary)) {
+    return platform === "win32"
+      ? { command: "cmd", args: ["/c", binary, ...args] }
+      : { command: binary, args };
   }
 
-  return runCommand("npx", args);
+  const npxArgs = ["--yes", "@stoplight/spectral-cli", ...args];
+  return platform === "win32"
+    ? { command: "cmd", args: ["/c", "npx", ...npxArgs] }
+    : { command: "npx", args: npxArgs };
+}
+
+function runSpectralCommand(args: string[]): Promise<CommandResult> {
+  const { command, args: commandArgs } = spectralCommand(args);
+  return runCommand(command, commandArgs);
 }
 
 function parseSpectralJson(output: string): SpectralResultItem[] | null {
@@ -372,8 +393,6 @@ export async function checkAdrValidator(
           ];
 
     const spectralArgs = [
-      "--yes",
-      "@stoplight/spectral-cli",
       "lint",
       targetUrl,
       "--ruleset",
