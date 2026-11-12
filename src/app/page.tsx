@@ -15,6 +15,7 @@ import type { CheckReport } from "@/lib/types";
 import type { CriteriaCategory } from "@/lib/criteria";
 import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "@/lib/criteria";
 import { getAdminScoring, streamCheck } from "@/lib/apiClient";
+import { formatDateTime } from "@/lib/dates";
 import { AlertCircle, ClipboardList } from "lucide-react";
 
 function sanitizePdfFileName(value: string): string {
@@ -70,7 +71,7 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
   doc.setFont("helvetica", "normal");
   addBlock(`Repository: ${report.owner}/${report.repo}`, { size: 11, gapAfter: 4 });
   addBlock(`URL: ${report.repoUrl}`, { size: 10, gapAfter: 4 });
-  addBlock(`Checked at: ${new Date(report.checkedAt).toLocaleString("nl-NL")}`, {
+  addBlock(`Checked at: ${formatDateTime(report.checkedAt)}`, {
     size: 10,
     gapAfter: 4,
   });
@@ -763,7 +764,7 @@ export default function HomePage() {
                   </div>
                   <p className="text-xs text-gray-400">
                     Checked at{" "}
-                    {new Date(report.checkedAt).toLocaleString("nl-NL")} —
+                    {formatDateTime(report.checkedAt)} —
                     Branch: {report.repoMeta.defaultBranch}
                   </p>
                   <div className="flex items-center gap-4 text-xs">

@@ -81,11 +81,11 @@ export default function RepoMeta({ owner, repo, repoMeta, followed = false }: Re
         )}
         <span className="flex items-center gap-1">
           <Star className="w-4 h-4 text-yellow-400" />
-          {repoMeta.stars.toLocaleString()} stars
+          {repoMeta.stars.toLocaleString("nl-NL")} stars
         </span>
         <span className="flex items-center gap-1">
           <GitFork className="w-4 h-4" />
-          {repoMeta.forks.toLocaleString()} forks
+          {repoMeta.forks.toLocaleString("nl-NL")} forks
         </span>
       </div>
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { RepoSummary } from "@/generated/openapi-client";
+import { formatDateTime } from "@/lib/dates";
 import RatingBadge from "@/components/RatingBadge";
 import RepoLogo from "@/components/RepoLogo";
 import RunStatus, { runStatus } from "@/components/RunStatus";
@@ -224,7 +225,7 @@ export default function HistoryPageClient({
                       <p>{repository.analysisCount} analyses</p>
                       {latest && (
                         <p>
-                          Last: {new Date(latest.checkedAt).toLocaleString("nl-NL")}
+                          Last: {formatDateTime(latest.checkedAt)}
                         </p>
                       )}
                       {repository.followed && repository.nextCheckAt && (
