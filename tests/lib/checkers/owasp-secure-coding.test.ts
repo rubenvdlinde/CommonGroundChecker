@@ -85,6 +85,12 @@ describe("OWASP secure coding checker", () => {
         "src/fixtures/user.ts": "const token = 'abcdefghijkl';",
         "src/login.test.ts": RISKY,
         "src/login.spec.js": RISKY,
+        "internal/rotate/rotate_test.go": RISKY,
+        "tools/test_cli.py": RISKY,
+        "browser-extension/e2e/seed.ts": RISKY,
+        "browser-extension/test-site/totp.js": RISKY,
+        "android/app/src/androidTest/java/FormActivity.java": RISKY,
+        "src/testdata/case.go": RISKY,
       });
 
       expect(result.status).toBe("pass");
@@ -92,9 +98,14 @@ describe("OWASP secure coding checker", () => {
     });
 
     it("still scans files whose names only contain test words", async () => {
-      const result = await scan({ "src/testing/attestation.ts": RISKY });
+      const result = await scan({
+        "src/testing/attestation.ts": RISKY,
+        "src/contest.go": RISKY,
+        "src/latest_test_results.php": RISKY,
+      });
 
       expect(result.status).toBe("warn");
+      expect(result.message).toContain("3 findings across 3 scanned source files");
     });
   });
 

@@ -6,7 +6,10 @@ import { buildLegacyRepoContext } from "./compat";
 
 const SOURCE_FILE_PATTERN = /\.(ts|tsx|js|jsx|mjs|cjs|py|java|go|cs|php|rb|vue)$/i;
 const EXCLUDED_PATH_PATTERN = /(^|\/)(node_modules|dist|build|coverage|vendor|\.next|generated)(\/|$)/i;
-const TEST_PATH_PATTERN = /(^|\/)(tests?|__tests__|spec|fixtures)(\/|$)|\.(test|spec)\.[^/]+$/i;
+// Test code by directory (including end-to-end suites, Android instrumentation tests and
+// `test-*` support folders) or by file name (`*.test.ts`, Go's `*_test.go`, pytest's `test_*.py`).
+const TEST_PATH_PATTERN =
+  /(^|\/)(tests?|__tests__|spec|fixtures|__fixtures__|testdata|e2e|androidTest|tests?[-_][^/]+)(\/|$)|\.(test|spec)\.[^/]+$|_test\.[^/.]+$|(^|\/)test_[^/]*\.py$/i;
 const MAX_FILES_TO_SCAN = 20;
 // The scan fails once findings exceed 10 per 1,000 scanned files, with at least 3
 // tolerated, so repositories under 400 scanned files still fail from 4 findings.
