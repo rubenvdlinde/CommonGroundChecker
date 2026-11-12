@@ -133,4 +133,12 @@ describe("OWASP secure coding checker", () => {
   ])("fails %i scanned files from %i findings", (scannedFileCount, threshold) => {
     expect(getFailThreshold(scannedFileCount)).toBe(threshold);
   });
+
+  it("reports info, not warn, when no file contents could be read", async () => {
+    vi.spyOn(github, "getFileContent").mockResolvedValueOnce("");
+
+    const result = await checkOwaspSecureCoding("owner", "repo", ["src/main.ts"]);
+
+    expect(result.status).toBe("info");
+  });
 });

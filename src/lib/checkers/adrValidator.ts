@@ -442,7 +442,7 @@ export async function checkAdrValidator(
         title: "API Design Rules",
         description:
           "The component should comply with the Common Ground API Design Rules (ADR).",
-        status: "warn",
+        status: "info",
         message:
           "Spectral CLI is not available. Ensure Node.js and npx are installed.",
         evidence: [
@@ -504,7 +504,7 @@ export async function checkAdrValidator(
       title: "API Design Rules",
       description:
         "The component should comply with the Common Ground API Design Rules (ADR).",
-      status: "warn",
+      status: "info",
       message:
         "One or more API specifications could not be fully validated due to Spectral output parsing issues.",
       evidence,

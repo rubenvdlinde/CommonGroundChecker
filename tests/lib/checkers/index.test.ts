@@ -407,6 +407,80 @@ describe("runChecks", () => {
     expect(report.score).toBe(71);
   });
 
+  it("leaves criteria that could not be measured out of the category score", async () => {
+    const configById = criterionConfig(0, "recommended");
+    configById.tests = { weight: 1, requirementLevel: "mandatory" };
+    configById.complexity = { weight: 1, requirementLevel: "mandatory" };
+
+    mocks.checkTests.mockReturnValue(resultFor("tests", "pass"));
+    mocks.checkComplexity.mockResolvedValue(resultFor("complexity", "info"));
+
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-unmeasured",
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    expect(report.score).toBe(100);
+    expect(report.results.find((result) => result.id === "complexity")?.status).toBe("info");
+    expect(report.notMeasured).toEqual(["complexity"]);
+  });
+
+  it("does not flag an informative or measured criterion as not measured", async () => {
+    const configById = criterionConfig(0, "recommended");
+    configById.tests = { weight: 1, requirementLevel: "mandatory" };
+    configById.codemetrics = { weight: 0, requirementLevel: "informative" };
+
+    mocks.checkTests.mockReturnValue(resultFor("tests", "fail"));
+
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-measured",
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    expect(report.notMeasured).toEqual([]);
+  });
+
+  it("drops a category whose criteria could not be measured at all", async () => {
+    const configById = criterionConfig(0, "recommended");
+    configById.sourcecode = { weight: 1, requirementLevel: "mandatory" };
+    configById.adrvalidator = { weight: 1, requirementLevel: "mandatory" };
+
+    mocks.checkSourceCode.mockReturnValue(resultFor("sourcecode", "pass"));
+    mocks.checkAdrValidator.mockResolvedValue(resultFor("adrvalidator", "info"));
+
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-unmeasured-category",
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    // Only Software Quality (sourcecode pass) is scored; Architecture has nothing measured.
+    expect(report.score).toBe(100);
+  });
+
   it("uses persisted category weights from scoring config", async () => {
     const configById = criterionConfig(0, "recommended");
     configById.sourcecode = { weight: 1, requirementLevel: "mandatory" };

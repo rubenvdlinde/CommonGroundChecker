@@ -94,6 +94,8 @@ export interface CheckReport {
   /** Rating per aspect id */
   aspectRatings: Record<string, AspectRating>;
   endorsement: Endorsement;
+  /** Titles of mandatory criteria that could not be measured and were left out of the score */
+  notMeasured: string[];
   results: CheckResult[];
   repoMeta: {
     description: string | null;
