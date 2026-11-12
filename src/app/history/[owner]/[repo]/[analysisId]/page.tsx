@@ -4,7 +4,7 @@ import IssueBlocks from "@/components/IssueBlocks";
 import ResultCard from "@/components/ResultCard";
 import RatingBadge from "@/components/RatingBadge";
 import RatingSummary from "@/components/RatingSummary";
-import { statusToStars } from "@/lib/stars";
+import { derivedStarRating } from "@/lib/stars";
 import { getRepoHistory } from "@/lib/apiClient";
 import { parseMeasurements } from "@/lib/measurements";
 import { isRating } from "@/lib/ratings";
@@ -249,7 +249,7 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
                         message={result.message}
                         evidence={result.evidence}
                         referenceUrl={result.referenceUrl}
-                        starRating={result.starRating ?? statusToStars(result.status)}
+                        starRating={derivedStarRating(result)}
                       />
                     ))}
                   </div>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatStars, ratingToStars, scoreToStars, statusToStars } from "@/lib/stars";
+import { derivedStarRating, formatStars, ratingToStars, scoreToStars, statusToStars } from "@/lib/stars";
 
 describe("stars", () => {
   it.each([
@@ -29,6 +29,14 @@ describe("stars", () => {
     expect(statusToStars("warn")).toBe(3);
     expect(statusToStars("info")).toBe(3);
     expect(statusToStars("fail")).toBe(1);
+  });
+
+  it("derives no stars for a result that was not measured", () => {
+    expect(derivedStarRating({ status: "info" })).toBeUndefined();
+    expect(derivedStarRating({ status: "info", starRating: 2 })).toBe(2);
+    expect(derivedStarRating({ status: "pass" })).toBe(5);
+    expect(derivedStarRating({ status: "warn" })).toBe(3);
+    expect(derivedStarRating({ status: "fail", starRating: 4 })).toBe(4);
   });
 
   it("formats filled and empty stars", () => {

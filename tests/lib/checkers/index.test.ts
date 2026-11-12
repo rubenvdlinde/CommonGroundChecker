@@ -287,6 +287,26 @@ describe("runChecks", () => {
     mocks.checkSpdxHeaders.mockResolvedValue({ ...resultFor("spdxheaders", "pass"), starRating: 4 });
   });
 
+  it("gives a result that was not measured no stars unless the check rated it", async () => {
+    mocks.checkSecurity.mockReturnValue(resultFor("security", "info"));
+    mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "info"), starRating: 2 });
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-1",
+      config: {
+        criterionConfigByCheckId: criterionConfig(1),
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    expect(report.results.find((result) => result.id === "security")?.starRating).toBeUndefined();
+    expect(report.results.find((result) => result.id === "maintainability")?.starRating).toBe(2);
+  });
+
   it("applies weighted scoring and non-register OpenAPI bypass", async () => {
     const configById = criterionConfig(0);
     configById.tests = { weight: 1, requirementLevel: "mandatory" };

@@ -35,7 +35,7 @@ import { checkOpenSsfScorecard } from "./openssfScorecard";
 import {
   getActiveScoringConfig,
 } from "./config";
-import { statusToStars } from "../stars";
+import { derivedStarRating } from "../stars";
 import { computeEndorsement, computeRatings } from "../ratings";
 import { CATEGORY_WEIGHTS, RESULT_CATEGORY_BY_ID, type CriteriaCategory } from "../criteria";
 import { mkdtemp, rm } from "node:fs/promises";
@@ -412,7 +412,7 @@ export async function runChecks(
     requirementLevel:
       scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
       "recommended",
-    starRating: result.starRating ?? statusToStars(result.status),
+    starRating: derivedStarRating(result),
     evidence: capEvidence(result.evidence),
   }));
   const { rating, categoryRatings, aspectRatings } = computeRatings(resultsWithRequirementLevels, scoringConfig);
