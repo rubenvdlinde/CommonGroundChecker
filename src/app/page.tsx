@@ -171,6 +171,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   complexity: "recommended",
   maintainability: "recommended",
   opensourcehealth: "recommended",
+  testcoderatio: "recommended",
   codemetrics: "informative",
   changelog: "recommended",
   coverage: "mandatory",
@@ -201,6 +202,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "Cyclomatic complexity": "complexity",
   "Maintainability (ISO 25010)": "maintainability",
   "Open Source Health": "opensourcehealth",
+  "Test code ratio": "testcoderatio",
   "Code Metrics": "codemetrics",
   "OWASP Secure Coding": "owaspsecurecoding",
   "Contributing guide": "contributing",
@@ -387,6 +389,14 @@ const CRITERIA_OVERVIEW = [
     desc: "1 to 5 star rating of the dependencies",
     tooltip:
       "Rates the production dependencies from the lockfiles on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management, each from 1 to 5 stars. 4 stars or more passes.",
+    },
+    {
+    icon: "⚖️",
+    label: "Test code ratio",
+    category: "Software Quality" as CriteriaCategory,
+    desc: "Test code vs production code, 1 to 5 stars",
+    tooltip:
+      "Counts code lines in test files and in production files of the cloned repository and rates the ratio: 120% or more is 5 stars, 100% is 4, 75% is 3, 25% is 2, lower is 1. A 100% test code ratio corresponds roughly to 80% coverage.",
   },
   {
     icon: "🛡️",

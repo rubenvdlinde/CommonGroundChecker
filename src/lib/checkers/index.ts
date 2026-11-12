@@ -19,6 +19,7 @@ import { checkTests } from "./tests";
 import { checkComplexity } from "./complexity";
 import { checkMaintainability } from "./maintainability";
 import { checkOpenSourceHealth } from "./openSourceHealth";
+import { checkTestCodeRatio } from "./testCodeRatio";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -177,6 +178,7 @@ export async function runChecks(
   );
   const maintainabilityPromise = checkMaintainability(localRepoPath);
   const openSourceHealthPromise = checkOpenSourceHealth(localRepoPath);
+  const testCodeRatioPromise = checkTestCodeRatio(localRepoPath);
   const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
@@ -217,11 +219,12 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, maintainability, opensourcehealth, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, maintainability, opensourcehealth, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
     openSourceHealthPromise,
+    testCodeRatioPromise,
     codeMetricsPromise,
     owaspSecureCodingPromise,
     adrValidatorPromise,
@@ -275,6 +278,7 @@ export async function runChecks(
     complexity,
     maintainability,
     opensourcehealth,
+    testcoderatio,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -374,6 +378,7 @@ export async function runChecks(
     complexity,
     maintainability,
     opensourcehealth,
+    testcoderatio,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,

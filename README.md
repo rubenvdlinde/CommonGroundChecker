@@ -64,6 +64,7 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 | 23 | **Code metrics** — repository metrics such as lines of code and function count are collected as informative context | Informative | [commonground.nl](https://www.commonground.nl) |
 | 24 | **Semantic versioning** — releases or tags following MAJOR.MINOR.PATCH | Mandatory | [semver.org](https://semver.org/) |
 | 25 | **Maintainability (ISO 25010)** — unit size, unit complexity, unit interfacing, duplication, module coupling and component structure, each rated from 1 to 5 stars, with an estimated overall maintainability rating | Recommended | [Maintainability model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md) |
+| 27 | **Test code ratio** — test code lines as a percentage of production code lines, rated from 1 to 5 stars (120/100/75/25% bands; 100% test code is roughly 80% coverage) | Recommended | [ISO 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) |
 
 **Stars:** every criterion also shows 1 to 5 stars. Maintainability has its own scale (4 stars or more passes, 3 stars warns). The other criteria map pass, warn and fail to 5, 3 and 1 stars. The component as a whole and each category also get a rating; see [Ratings](#ratings).
 
