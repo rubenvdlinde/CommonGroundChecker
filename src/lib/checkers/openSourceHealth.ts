@@ -1,4 +1,5 @@
 import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { load as loadYaml } from "js-yaml";
 import os from "node:os";
 import path from "node:path";
 import { runPythonScript, TIMED_OUT } from "./pythonScript";
@@ -51,7 +52,10 @@ function detailText(key: string, property: HealthProperty): string {
     return `${detail.critical ?? 0} critical, ${detail.high ?? 0} high, ${detail.moderate ?? 0} moderate`;
   }
   if (key === "licence") {
-    return `${detail.critical ?? 0} critical, ${detail.high ?? 0} high, ${detail.medium ?? 0} medium, ${detail.low ?? 0} low risk`;
+    const excluded = typeof detail.excluded === "number" && detail.excluded > 0
+      ? ` (${detail.excluded} excluded by sigrid.yaml)`
+      : "";
+    return `${detail.critical ?? 0} critical, ${detail.high ?? 0} high, ${detail.medium ?? 0} medium, ${detail.low ?? 0} low risk${excluded}`;
   }
   if (key === "management") {
     return String(detail.note ?? "");
@@ -99,6 +103,32 @@ export function mapOpenSourceHealthReport(report: OpenSourceHealthReport): Check
   };
 }
 
+/**
+ * The `license` regexes under `dependencychecker.exclude` in the repository's
+ * sigrid.yaml. Sigrid matches them against library names and leaves a match out
+ * of the licence risk only. A missing or unreadable file gives none.
+ */
+export async function licenceExcludes(repoPath: string): Promise<string[]> {
+  let config: unknown;
+  try {
+    config = loadYaml(await readFile(path.join(repoPath, "sigrid.yaml"), "utf8"));
+  } catch {
+    return [];
+  }
+  const exclude = (config as { dependencychecker?: { exclude?: unknown } } | null)?.dependencychecker?.exclude;
+  if (!Array.isArray(exclude)) return [];
+  return exclude.flatMap((entry) => {
+    const licence = (entry as { license?: unknown } | null)?.license;
+    return typeof licence === "string" && licence !== "" ? [licence] : [];
+  });
+}
+
+/** The script arguments for one repository, with its sigrid.yaml licence excludes. */
+export async function openSourceHealthArgs(repoPath: string, jsonPath: string): Promise<string[]> {
+  const excludes = await licenceExcludes(repoPath);
+  return ["report", repoPath, "--json", jsonPath, ...excludes.flatMap((regex) => ["--exclude-licence", regex])];
+}
+
 export async function checkOpenSourceHealth(localRepoPath?: string): Promise<CheckResult> {
   if (!localRepoPath) {
     return warn("The repository could not be cloned, so Open Source Health was not measured.");
@@ -107,7 +137,7 @@ export async function checkOpenSourceHealth(localRepoPath?: string): Promise<Che
   const tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-osh-"));
   try {
     const jsonPath = path.join(tempRoot, "report.json");
-    const run = await runPythonScript(SCRIPT_PATH, ["report", localRepoPath, "--json", jsonPath], TIMEOUT_MS);
+    const run = await runPythonScript(SCRIPT_PATH, await openSourceHealthArgs(localRepoPath, jsonPath), TIMEOUT_MS);
     if (run.code === TIMED_OUT) {
       return warn(`Open Source Health analysis did not finish within ${TIMEOUT_MS / 1000} seconds.`);
     }
