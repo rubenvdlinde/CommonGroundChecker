@@ -58,11 +58,12 @@ function clientForRemoteCalls() {
   return isServer ? remoteApiClient : localApiClient;
 }
 
-export async function getRepositories(limit = 12) {
+export async function getRepositories(limit = 12, q?: string) {
   const client = clientForRemoteCalls();
   const clientName = isServer ? "remote" : "local";
-  logApiRequest(clientName, "GET", `/api/repositories?limit=${limit}`);
-  const response = await client.default.getApiRepositories(limit);
+  const search = q ? `&q=${encodeURIComponent(q)}` : "";
+  logApiRequest(clientName, "GET", `/api/repositories?limit=${limit}${search}`);
+  const response = await client.default.getApiRepositories(limit, q || undefined);
   return response.repositories ?? [];
 }
 

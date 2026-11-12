@@ -28,11 +28,13 @@ export class DefaultService {
     /**
      * List known repositories with latest summary
      * @param limit Maximum number of repositories to return
+     * @param q Case-insensitive search term matched against owner, name, description and repository URL, and exactly (lowercased) against topics. Omit or leave blank to list all repositories.
      * @returns any Repository summary list
      * @throws ApiError
      */
     public getApiRepositories(
         limit: number = 12,
+        q?: string,
     ): CancelablePromise<{
         repositories?: Array<RepoSummary>;
     }> {
@@ -41,6 +43,7 @@ export class DefaultService {
             url: '/api/repositories',
             query: {
                 'limit': limit,
+                'q': q,
             },
         });
     }

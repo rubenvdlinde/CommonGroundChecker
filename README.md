@@ -261,7 +261,7 @@ These local Next.js endpoints either run the checker or proxy storage and config
 | `POST` | `/api/check/stream` | Stream progress/events during analysis |
 | `GET` | `/api/admin/scoring` | Retrieve current scoring configuration from the remote API |
 | `POST` | `/api/admin/scoring` | Save new scoring configuration snapshot to the remote API |
-| `GET` | `/api/repositories` | List known repositories with latest summary via the remote API |
+| `GET` | `/api/repositories` | List known repositories with latest summary via the remote API; `q` searches owner, name, description, URL and topics |
 | `GET` | `/api/repo-history` | Return analysis runs/history for repositories via the remote API |
 
 ### ADR Spectral ruleset source (Admin)

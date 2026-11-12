@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { RepoSummary } from "@/generated/openapi-client";
 import RatingBadge from "@/components/RatingBadge";
 import { isRating } from "@/lib/ratings";
 import RepoLogo from "@/components/RepoLogo";
+import { buildHistoryHref, normalizeSearchQuery, SEARCH_DEBOUNCE_MS } from "@/lib/historySearch";
 
 type SortKey = "date" | "score";
 type SortDirection = "asc" | "desc";
@@ -13,6 +15,7 @@ type SortDirection = "asc" | "desc";
 interface HistoryPageClientProps {
   sort: SortKey;
   direction: SortDirection;
+  query: string;
   repositories: RepoSummary[];
   error?: string;
 }
@@ -59,13 +62,44 @@ const sortOptions: Array<{ label: string; sort: SortKey; direction: SortDirectio
 export default function HistoryPageClient({
   sort,
   direction,
+  query,
   repositories,
   error,
 }: HistoryPageClientProps) {
+  const router = useRouter();
+  const [searchValue, setSearchValue] = useState(query);
+  const requestedQuery = useRef(query);
+
   const sortedRepositories = useMemo(
     () => sortRepositories(repositories, sort, direction),
     [repositories, sort, direction]
   );
+
+  // A query that this component did not request came from navigation, so the input follows it.
+  useEffect(() => {
+    if (query !== requestedQuery.current) {
+      requestedQuery.current = query;
+      setSearchValue(query);
+    }
+  }, [query]);
+
+  useEffect(() => {
+    const term = normalizeSearchQuery(searchValue);
+    if (term === requestedQuery.current) return;
+
+    const timer = setTimeout(() => {
+      requestedQuery.current = term;
+      router.replace(buildHistoryHref({ q: term, sort, direction }), { scroll: false });
+    }, SEARCH_DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+  }, [searchValue, sort, direction, router]);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const term = normalizeSearchQuery(searchValue);
+    requestedQuery.current = term;
+    router.replace(buildHistoryHref({ q: term, sort, direction }), { scroll: false });
+  }
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
@@ -74,6 +108,36 @@ export default function HistoryPageClient({
         <p className="text-gray-600">
           Select a repository to view metadata and historical analyses over time.
         </p>
+        <form
+          role="search"
+          method="get"
+          action="/history"
+          onSubmit={handleSubmit}
+          className="flex flex-wrap items-end gap-2 pt-2"
+        >
+          <div className="flex flex-col gap-1">
+            <label htmlFor="history-search" className="text-xs font-semibold text-gray-700">
+              Search repositories
+            </label>
+            <input
+              id="history-search"
+              type="search"
+              name="q"
+              value={searchValue}
+              onChange={(event) => setSearchValue(event.target.value)}
+              placeholder="Owner, name, description or topic"
+              className="w-72 max-w-full rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-800 focus:border-cg-lightblue focus:outline-none focus:ring-2 focus:ring-cg-lightblue/40"
+            />
+          </div>
+          <input type="hidden" name="sort" value={sort} />
+          <input type="hidden" name="direction" value={direction} />
+          <button
+            type="submit"
+            className="rounded-lg border border-cg-lightblue bg-cg-lightblue/10 px-3 py-1.5 text-sm font-semibold text-cg-blue hover:bg-cg-lightblue/20"
+          >
+            Search
+          </button>
+        </form>
         <div className="flex flex-wrap items-center gap-2 pt-1">
           <span className="text-xs text-gray-500">Sort by:</span>
           {sortOptions.map((option) => {
@@ -81,7 +145,7 @@ export default function HistoryPageClient({
             return (
               <Link
                 key={`${option.sort}-${option.direction}`}
-                href={`/history?sort=${option.sort}&direction=${option.direction}`}
+                href={buildHistoryHref({ q: query, sort: option.sort, direction: option.direction })}
                 className={`inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border transition-colors ${
                   isActive
                     ? "border-cg-lightblue text-cg-blue bg-cg-lightblue/10"
@@ -106,11 +170,21 @@ export default function HistoryPageClient({
         </p>
       </section>
 
-      <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+      <section
+        aria-label="Repositories"
+        className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
+      >
+        {query && !error && sortedRepositories.length > 0 && (
+          <p role="status" className="text-xs text-gray-500 mb-3">
+            {sortedRepositories.length} {sortedRepositories.length === 1 ? "repository matches" : "repositories match"} “{query}”.
+          </p>
+        )}
         {error ? (
           <p className="text-sm text-red-500">{error}</p>
         ) : sortedRepositories.length === 0 ? (
-          <p className="text-sm text-gray-500">No repositories analyzed yet.</p>
+          <p role="status" className="text-sm text-gray-500">
+            {query ? `No repositories match “${query}”.` : "No repositories analyzed yet."}
+          </p>
         ) : (
           <div className="space-y-3">
             {sortedRepositories.map((repository) => {
