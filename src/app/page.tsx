@@ -182,6 +182,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   codeofconduct: "recommended",
   security: "recommended",
   secretscanning: "recommended",
+  openssfscorecard: "recommended",
   semver: "recommended",
 };
 
@@ -214,6 +215,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "Code of Conduct": "codeofconduct",
   "Security policy": "security",
   "No committed secrets": "secretscanning",
+  "OpenSSF Scorecard": "openssfscorecard",
   "Semantic Versioning": "semver",
 };
 
@@ -459,6 +461,14 @@ const CRITERIA_OVERVIEW = [
     desc: "Gitleaks scan of the working tree",
     tooltip:
       "Scans the cloned repository with gitleaks for committed secrets such as API keys, tokens and private keys. The project's own .gitleaks.toml allowlist is honoured. Findings show the rule and location only, never the secret.",
+    },
+    {
+    icon: "⭐",
+    label: "OpenSSF Scorecard",
+    category: "Security" as CriteriaCategory,
+    desc: "Scorecard rated 1 to 5 stars",
+    tooltip:
+      "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only. The checker's own bands turn it into stars: 9+ is 5, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
   },
   {
     icon: "🔢",

@@ -43,6 +43,7 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 | 11 | **OWASP Secure Coding** — heuristic static analysis checks for common insecure patterns | Mandatory | [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices/) |
 | 26 | **Open Source Health** — production dependencies from the lockfiles rated from 1 to 5 stars on known vulnerabilities ([OSV.dev](https://osv.dev)), freshness, activity, licence risk and dependency management | Recommended | [Open Source Health model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md) |
 | 30 | **No committed secrets** — gitleaks scans the working tree for API keys, tokens and private keys, honouring the project's `.gitleaks.toml` | Recommended | [gitleaks](https://github.com/gitleaks/gitleaks) |
+| 31 | **OpenSSF Scorecard** — the public OpenSSF Scorecard (0 to 10) rated 1 to 5 stars with this checker's own bands; GitHub repositories only | Recommended | [OpenSSF Scorecard](https://scorecard.dev) |
 
 ### Deployment & Operations
 

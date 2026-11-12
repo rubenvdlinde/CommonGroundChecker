@@ -120,7 +120,7 @@ describe("aspectComposition", () => {
       type: "criteria",
       criteria: [
         { id: "license", title: "license title", status: "pass", rating: 5, hasCard: true },
-        { id: "spdxheaders", title: "spdxheaders title", status: "info", rating: null, hasCard: false },
+        { id: "spdxheaders", title: "spdxheaders title", status: "info", rating: null, hasCard: true },
       ],
     });
   });

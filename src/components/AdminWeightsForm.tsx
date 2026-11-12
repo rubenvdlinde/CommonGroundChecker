@@ -182,6 +182,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
           "Scans the cloned repository's working tree with gitleaks for committed secrets such as API keys, tokens and private keys, honouring the project's .gitleaks.toml. Passes when nothing is found, fails with the rule and location of each finding.",
       },
       {
+        id: "openssfscorecard",
+        label: "OpenSSF Scorecard",
+        explanation:
+          "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only, and rates it with the checker's own bands: 9+ is 5 stars, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail; a repository outside the Scorecard dataset is informative.",
+      },
+      {
         id: "semver",
         label: "Semantic versioning",
         explanation:

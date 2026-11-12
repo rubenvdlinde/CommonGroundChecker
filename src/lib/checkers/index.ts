@@ -31,6 +31,7 @@ import { checkEuplLicense } from "./eupl";
 import { checkLicenceConsistency } from "./licenceConsistency";
 import { checkSpdxHeaders } from "./spdxHeaders";
 import { checkSecretScanning } from "./secretScanning";
+import { checkOpenSsfScorecard } from "./openssfScorecard";
 import {
   getActiveScoringConfig,
 } from "./config";
@@ -171,6 +172,7 @@ export async function runChecks(
     checkFiveLayer(context, tree, meta),
     checkHelmChart(context, tree, options?.helmChartLocations ?? []),
     checkLicenceConsistency(context, tree),
+    checkOpenSsfScorecard(context),
   ]);
   const complexityPromise = checkComplexity(
     owner,
@@ -225,7 +227,7 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart, licenceconsistency], complexity, maintainability, opensourcehealth, testcoderatio, codemetrics, owaspsecurecoding, secretscanning, adrvalidator, spdxheaders] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart, licenceconsistency, openssfscorecard], complexity, maintainability, opensourcehealth, testcoderatio, codemetrics, owaspsecurecoding, secretscanning, adrvalidator, spdxheaders] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -296,6 +298,7 @@ export async function runChecks(
     codeofconduct,
     security,
     secretscanning,
+    openssfscorecard,
     semver,
     fivelayer,
     helmchart,
@@ -399,6 +402,7 @@ export async function runChecks(
     codeofconduct,
     security,
     secretscanning,
+    openssfscorecard,
     semver,
     fivelayer,
     helmchart,
