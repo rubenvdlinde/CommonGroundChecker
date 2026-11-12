@@ -5,6 +5,7 @@ import Link from "next/link";
 import CheckerForm from "@/components/CheckerForm";
 import ResultCard from "@/components/ResultCard";
 import ScoreBadge from "@/components/ScoreBadge";
+import { scoreToStars } from "@/lib/stars";
 import RepoMeta from "@/components/RepoMeta";
 import type { CheckReport } from "@/lib/types";
 import type { CriteriaCategory } from "@/lib/criteria";
@@ -62,7 +63,7 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
     size: 10,
     gapAfter: 4,
   });
-  addBlock(`Score: ${report.score}/100`, { size: 11, gapAfter: 10 });
+  addBlock(`Score: ${report.score}/100 (${scoreToStars(report.score)} of 5 stars)`, { size: 11, gapAfter: 10 });
 
   const passCount = report.results.filter((r) => r.status === "pass").length;
   const warnCount = report.results.filter((r) => r.status === "warn").length;
@@ -123,6 +124,8 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   documentation: "mandatory",
   tests: "mandatory",
   complexity: "recommended",
+  maintainability: "recommended",
+  opensourcehealth: "recommended",
   codemetrics: "informative",
   changelog: "recommended",
   coverage: "mandatory",
@@ -151,6 +154,8 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "Test suite presence": "tests",
   "Code coverage": "coverage",
   "Cyclomatic complexity": "complexity",
+  "Maintainability (ISO 25010)": "maintainability",
+  "Open Source Health": "opensourcehealth",
   "Code Metrics": "codemetrics",
   "OWASP Secure Coding": "owaspsecurecoding",
   "Contributing guide": "contributing",
@@ -321,6 +326,22 @@ const CRITERIA_OVERVIEW = [
     desc: "Lizard analysis on target repo",
     tooltip:
       "Clones the analyzed repository and runs Lizard locally to measure cyclomatic complexity across supported languages.",
+  },
+  {
+    icon: "⭐",
+    label: "Maintainability (ISO 25010)",
+    category: "Software Quality" as CriteriaCategory,
+    desc: "1 to 5 star maintainability rating",
+    tooltip:
+      "Rates unit size, unit complexity, unit interfacing, duplication, module coupling and component structure from 1 to 5 stars, and estimates an overall maintainability rating. 4 stars or more passes.",
+  },
+  {
+    icon: "📦",
+    label: "Open Source Health",
+    category: "Security" as CriteriaCategory,
+    desc: "1 to 5 star rating of the dependencies",
+    tooltip:
+      "Rates the production dependencies from the lockfiles on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management, each from 1 to 5 stars. 4 stars or more passes.",
   },
   {
     icon: "🛡️",

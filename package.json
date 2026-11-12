@@ -11,6 +11,7 @@
     "generate:openapi": "openapi-typescript-codegen --input public/openapi.json --output src/generated/openapi-client --client fetch",
     "build": "next build",
     "start": "next start",
+    "scan:local": "tsx scripts/scan-local.ts",
     "lint": "eslint . --ignore-pattern src/generated/** --ignore-pattern .next/** --ignore-pattern coverage/** --ignore-pattern badges/**",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
@@ -46,6 +47,7 @@
     "openapi-typescript-codegen": "^0.30.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
+    "tsx": "^4.21.0",
     "typescript": "^5.4.5",
     "vitest": "^4.1.4"
   }

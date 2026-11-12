@@ -17,6 +17,8 @@ import { checkCodeOfConduct } from "./codeofconduct";
 import { checkSecurity } from "./security";
 import { checkTests } from "./tests";
 import { checkComplexity } from "./complexity";
+import { checkMaintainability } from "./maintainability";
+import { checkOpenSourceHealth } from "./openSourceHealth";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -27,7 +29,9 @@ import { checkOwaspSecureCoding } from "./owaspSecureCoding";
 import { checkEuplLicense } from "./eupl";
 import {
   getActiveScoringConfig,
+  type ActiveScoringConfig,
 } from "./config";
+import { statusToStars } from "../stars";
 import { CATEGORY_WEIGHTS, RESULT_CATEGORY_BY_ID, type CriteriaCategory } from "../criteria";
 import { mkdtemp, rm } from "node:fs/promises";
 import os from "node:os";
@@ -77,12 +81,16 @@ function runCommand(command: string, args: string[], env?: Partial<NodeJS.Proces
 
 export type ProgressCallback = (step: string, pct: number) => void;
 
-interface RunChecksOptions {
+export interface RunChecksOptions {
   helmChartLocations?: string[];
   documentationLocations?: string[];
   dockerLocations?: string[];
   apiSpecificationLocations?: string[];
   isRegister?: boolean;
+  /** Scan this checkout in place instead of cloning the repository */
+  localRepoPath?: string;
+  /** Use this scoring configuration instead of the one served by the API */
+  scoringConfig?: ActiveScoringConfig;
 }
 
 export async function runChecks(
@@ -92,7 +100,14 @@ export async function runChecks(
 ): Promise<CheckReport> {
   const context = resolveRepositoryContext(repoUrl);
   if (!context) throw new Error("Invalid repository URL.");
+  return runChecksOnContext(context, options, onProgress);
+}
 
+export async function runChecksOnContext(
+  context: RepoContext,
+  options?: RunChecksOptions,
+  onProgress?: ProgressCallback,
+): Promise<CheckReport> {
   const { provider, owner, repo } = context;
 
   // Fetch repo metadata first (needed to know default branch)
@@ -108,7 +123,7 @@ export async function runChecks(
   ]);
 
   const version = versionInfo.version;
-  const activeScoringConfig = await getActiveScoringConfig();
+  const activeScoringConfig = options?.scoringConfig ?? await getActiveScoringConfig();
   const scoringConfig = activeScoringConfig.config;
   const isRegister = options?.isRegister === true;
 
@@ -116,17 +131,21 @@ export async function runChecks(
   let localRepoPath: string | undefined;
 
   try {
-    tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-repo-"));
-    localRepoPath = path.join(tempRoot, "repo");
     const cloneUrl = provider.getCloneUrl(context);
-    const clone = await runCommand(
-      "git",
-      ["clone", "--depth", "1", cloneUrl, localRepoPath],
-      { GIT_LFS_SKIP_SMUDGE: "1" }
-    );
+    if (options?.localRepoPath) {
+      localRepoPath = options.localRepoPath;
+    } else {
+      tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-repo-"));
+      localRepoPath = path.join(tempRoot, "repo");
+      const clone = await runCommand(
+        "git",
+        ["clone", "--depth", "1", cloneUrl, localRepoPath],
+        { GIT_LFS_SKIP_SMUDGE: "1" }
+      );
 
-    if (clone.code !== 0) {
-      localRepoPath = undefined;
+      if (clone.code !== 0) {
+        localRepoPath = undefined;
+      }
     }
 
     const openApiCheckPromise: Promise<CheckResult> = isRegister
@@ -160,6 +179,8 @@ export async function runChecks(
     localRepoPath,
     cloneUrl
   );
+  const maintainabilityPromise = checkMaintainability(localRepoPath);
+  const openSourceHealthPromise = checkOpenSourceHealth(localRepoPath);
   const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
@@ -191,9 +212,11 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart], complexity, maintainability, opensourcehealth, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
+    maintainabilityPromise,
+    openSourceHealthPromise,
     codeMetricsPromise,
     owaspSecureCodingPromise,
     adrValidatorPromise,
@@ -245,6 +268,8 @@ export async function runChecks(
     tests,
     coverage,
     complexity,
+    maintainability,
+    opensourcehealth,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -334,6 +359,8 @@ export async function runChecks(
     tests,
     coverage,
     complexity,
+    maintainability,
+    opensourcehealth,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -348,10 +375,11 @@ export async function runChecks(
     requirementLevel:
       scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
       "recommended",
+    starRating: result.starRating ?? statusToStars(result.status),
   }));
 
   return {
-    repoUrl,
+    repoUrl: context.repoUrl,
     owner,
     repo,
     checkedAt: new Date().toISOString(),

@@ -59,6 +59,8 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   tests: { weight: 1, requirementLevel: "mandatory" },
   cicd: { weight: 1, requirementLevel: "mandatory" },
   complexity: { weight: 1, requirementLevel: "mandatory" },
+  maintainability: { weight: 1, requirementLevel: "recommended" },
+  opensourcehealth: { weight: 1, requirementLevel: "recommended" },
   codemetrics: { weight: 0, requirementLevel: "informative" },
   owaspsecurecoding: { weight: 1, requirementLevel: "mandatory" },
   adrvalidator: { weight: 1, requirementLevel: "mandatory" },
@@ -231,6 +233,18 @@ function parseScoringConfigResponse(response: ScoringConfigResponse) {
     complexityMaxCcnThreshold: response.complexityMaxCcnThreshold,
     spectralRulesetSource: response.spectralRulesetSource,
   });
+}
+
+/**
+ * A scoring configuration from a payload shaped like the admin scoring response,
+ * such as a saved copy of it; unknown or invalid fields fall back to the defaults.
+ */
+export function scoringConfigFromPayload(payload: unknown): ActiveScoringConfig {
+  const id =
+    payload && typeof payload === "object" && typeof (payload as Record<string, unknown>).scoringConfigId === "string"
+      ? ((payload as Record<string, unknown>).scoringConfigId as string)
+      : null;
+  return { id, config: buildScoringConfig(parseOverridesFromDbPayload(payload)) };
 }
 
 export async function getScoringConfig(): Promise<ScoringConfig> {

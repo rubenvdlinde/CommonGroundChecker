@@ -45,6 +45,13 @@ function runCommand(command: string, args: string[], env?: Partial<NodeJS.Proces
   });
 }
 
+/**
+ * Paths Lizard skips. Besides dependencies and build caches, `tests/stubs/`
+ * holds stand-in copies of another project's classes for the test suite, not
+ * code of the repository under review.
+ */
+export const LIZARD_EXCLUDES = ["*/node_modules/*", "*/.next/*", "*/.git/*", "*/tests/stubs/*"];
+
 async function detectLizardCommand(): Promise<{ command: string; argsPrefix: string[] } | null> {
   const direct = await runCommand("lizard", ["--version"]);
   if (direct.code === 0) {
@@ -206,12 +213,7 @@ export async function checkComplexity(
     const maxCcnThresholdText = String(Math.max(1, Math.round(maxCcnThreshold)));
     const args = [
       ...lizard.argsPrefix,
-      "-x",
-      "*/node_modules/*",
-      "-x",
-      "*/.next/*",
-      "-x",
-      "*/.git/*",
+      ...LIZARD_EXCLUDES.flatMap((pattern) => ["-x", pattern]),
       repoDir,
     ];
 

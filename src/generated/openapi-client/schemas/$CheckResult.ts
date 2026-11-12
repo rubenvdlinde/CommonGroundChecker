@@ -39,5 +39,11 @@ export const $CheckResult = {
         confidence: {
             type: 'Enum',
         },
+        starRating: {
+            type: 'number',
+            description: `1 to 5 stars; from the criterion's own scale, or derived from its status`,
+            maximum: 5,
+            minimum: 1,
+        },
     },
 } as const;
