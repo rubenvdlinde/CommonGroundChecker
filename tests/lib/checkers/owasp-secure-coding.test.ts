@@ -72,6 +72,19 @@ describe("OWASP secure coding checker", () => {
     ["a regular expression with an escaped quote", "private const TOKEN = '/(?<![\\p{L}._@\\'-])@(?:\"([^\"]{1,64})\")/u';"],
     ["a map from format to input type", "const types = { password: 'password' };"],
     ["a bound Vue attribute", '<TokenDisplay :token="createdToken" />'],
+    ["a template placeholder", "private const REGISTER_TOKEN = '{registerSlug}';"],
+    ["a mustache placeholder", "{ id: 'userId', token: '{{user.id}}' },"],
+    ["a JSON body template", "apiKey: '{\\n\\t\"apiKey\": \"\"\\n}',"],
+    ["a config key name", "public const CONFIG_KEY_PROVIDER_API_KEY = 'weather_provider_api_key';"],
+    ["a CSS custom property", "private const MAIN_BACKGROUND_TOKEN = '--color-main-background';"],
+    ["a marker value", "public const BROKER_MANAGED_SECRET = '__managed_by_credential_broker__';"],
+    ["a camelCase identifier", "confirmPassword: 'restartMismatchDebounce',"],
+    ["a Vue model binding", '<Form v-model:newPassword="newPassword" />'],
+    ["a union of reason codes", "export type InvalidPassword = 'length_too_short' | 'no_kind'"],
+    ["a regular expression body", "private const AMOUNT_TOKEN = '(?:EUR)?\\s?[0-9]{1,3}[.,][0-9]{2}';"],
+    ["a query string around a call", "$url = $base . '?token=' . rawurlencode($this->sign(action: 'cancel'));"],
+    ["a selector around a variable", "el.querySelector('.swatch[data-token=\"' + name + '\"]')"],
+    ["a reason text", "public const REASON_AS_SECRET = 'copy was created as a secret of its own';"],
   ])("does not flag %s as a hardcoded secret", async (_label, code) => {
     vi.spyOn(github, "getFileContent").mockResolvedValueOnce(code);
 
@@ -85,6 +98,9 @@ describe("OWASP secure coding checker", () => {
     ["a word with digits", "$password = 'password123';"],
     ["a prefixed random secret", "API_KEY = 'secret_9fQxT2bLm8Zr'"],
     ["an object credential", 'const config = { apiKey: "AbCdEf123456GhIj" };'],
+    ["a capitalised password", "$password = 'CorrectHorseBattery';"],
+    ["a short passphrase", "$password = 'correct horse battery staple';"],
+    ["a key with a trailing pad", "const token = 'dGhpc2lzYXRva2Vu==';"],
   ])("flags %s as a hardcoded secret", async (_label, code) => {
     vi.spyOn(github, "getFileContent").mockResolvedValueOnce(code);
 
@@ -103,5 +119,8 @@ describe("OWASP secure coding checker", () => {
     expect(isSecretLookAlike("<your-api-key>")).toBe(true);
     expect(isSecretLookAlike("mysecretpassword")).toBe(false);
     expect(isSecretLookAlike("token_8aF3kQ")).toBe(false);
+    expect(isSecretLookAlike("{{unsubscribe_link}}")).toBe(true);
+    expect(isSecretLookAlike("hunter2hunter")).toBe(false);
+    expect(isSecretLookAlike("Summer-Holiday")).toBe(false);
   });
 });

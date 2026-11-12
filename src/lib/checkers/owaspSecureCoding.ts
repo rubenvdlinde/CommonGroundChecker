@@ -23,16 +23,44 @@ const SECRET_KEYWORDS = new Set(["apikey", "secret", "password", "passwd", "toke
  * that spells out its key word as one of its parts (`portal_assertion_secret`).
  * A name is made of plain lower-case words, so a random or mixed-case value
  * (`secret_9fQx...`) and a word glued to its key word (`password123`) still count.
+ * See isNonSecretValue for the other shapes a credential never takes.
  */
 export function isSecretLookAlike(value: string): boolean {
   if (/^\[[^\]]*\]$|^<[^>]*>$/.test(value)) return true;
   if (/^\/.+\/[a-z]*$/i.test(value)) return true;
+  if (isNonSecretValue(value)) return true;
   const parts = value.replace(/^api[_-]key/, "apikey").split(/[_\-:.]+/).filter(Boolean);
   return (
     parts.length > 0 &&
     parts.every((part) => /^[a-z]{1,24}\d{0,3}$/.test(part)) &&
     parts.some((part) => SECRET_KEYWORDS.has(part))
   );
+}
+
+/**
+ * Shapes of a literal that a credential never takes, whatever the name it is assigned to:
+ * - a template or structured literal wrapped in braces (`{registerSlug}`, `{{user.id}}`, a JSON body);
+ * - an identifier of two or more letter-only words in snake, kebab, dotted or lowerCamel case
+ *   (`weather_provider_api_key`, `--color-main-background`, `restartMismatchDebounce`);
+ *   a value with digits, symbols or a leading capital (`CorrectHorse`) still counts;
+ * - a regular expression body (`(?:EUR)?\s?[0-9]{2}`);
+ * - code between two literals, where the match runs from one string's closing quote to the next
+ *   string's opening quote (`'?token=' . rawurlencode($x) . '&a='`);
+ * - prose of six or more words, such as an error message or a reason text.
+ */
+export function isNonSecretValue(value: string): boolean {
+  if (/^\{[\s\S]*\}$/.test(value)) return true;
+  if (isIdentifier(value)) return true;
+  if (/\(\?[:=!<]|\\[dswbDSWB]/.test(value)) return true;
+  if (/\s/.test(value) && (/^\s*[.+]\s/.test(value) || /\s[.+]\s*$/.test(value) || /["'`]/.test(value))) return true;
+  return value.trim().split(/\s+/).length >= 6;
+}
+
+function isIdentifier(value: string): boolean {
+  const trimmed = value.replace(/^[_\-.:=/]+|[_\-.:=/]+$/g, "");
+  if (!/^[a-z]/.test(trimmed)) return false;
+  const words = trimmed.split(/[_\-.:=/]+/).flatMap((part) => part.split(/(?<=[a-z])(?=[A-Z])/));
+  return words.length >= 2 && words.every((word) => /^[A-Za-z][a-z]{0,23}$/.test(word));
 }
 
 const COMMENT_LINE = /^\s*(?:\/\/|\/\*|\*|#(?![[!]))/;
