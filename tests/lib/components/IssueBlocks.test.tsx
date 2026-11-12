@@ -3,10 +3,12 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { act, cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 
-import IssueBlocks, { splitIssues } from "@/components/IssueBlocks";
+import IssueBlocks from "@/components/IssueBlocks";
+import { countIssues, ratingIssue, splitIssues } from "@/lib/issues";
+import { computeEndorsement } from "@/lib/ratings";
 import { criterionAnchorId } from "@/lib/criteria";
 import ResultCard from "@/components/ResultCard";
-import type { CheckResult, CheckStatus, RequirementLevel } from "@/lib/types";
+import type { CheckResult, CheckStatus, Endorsement, RequirementLevel } from "@/lib/types";
 
 function result(
   id: string,
@@ -73,6 +75,52 @@ describe("splitIssues", () => {
   });
 });
 
+const FAILED: Endorsement = { passed: false, reasons: ["Overall rating below 2.5"] };
+const PASSED: Endorsement = { passed: true, reasons: [] };
+
+describe("ratingIssue", () => {
+  it("names a rating below 2.5 when the endorsement fails", () => {
+    expect(ratingIssue(2.1, FAILED)).toBe("Overall rating 2.1 is below 2.5");
+  });
+
+  it("names a missing rating when the endorsement fails", () => {
+    expect(ratingIssue(null, FAILED)).toBe("No overall rating");
+  });
+
+  it("is null for a rating of 2.5 or more, a passing endorsement or no endorsement", () => {
+    expect(ratingIssue(2.5, { passed: false, reasons: ["Mandatory criterion fails: License"] })).toBeNull();
+    expect(ratingIssue(2.1, PASSED)).toBeNull();
+    expect(ratingIssue(2.1, null)).toBeNull();
+    expect(ratingIssue(2.1, undefined)).toBeNull();
+  });
+});
+
+describe("countIssues", () => {
+  const results = [
+    result("license", "mandatory", "fail", { title: "License" }),
+    result("security", "mandatory", "fail", { title: "Security" }),
+    result("publiccode", "mandatory", "warn"),
+    result("changelog", "recommended", "fail"),
+  ];
+  const config = {
+    criterionConfigByCheckId: Object.fromEntries(
+      results.map((r) => [r.id, { weight: 1, requirementLevel: r.requirementLevel ?? "recommended" }])
+    ),
+  };
+
+  it("counts the rating below 2.5 as an error, so errors equal the endorsement's reasons", () => {
+    const endorsement = computeEndorsement(results, 2.1, config);
+    expect(countIssues(results, 2.1, endorsement)).toEqual({ errors: 3, warnings: 2 });
+    expect(endorsement.reasons).toHaveLength(3);
+  });
+
+  it("counts only the failing mandatory criteria when the rating is high enough", () => {
+    const endorsement = computeEndorsement(results, 3.4, config);
+    expect(countIssues(results, 3.4, endorsement)).toEqual({ errors: 2, warnings: 2 });
+    expect(endorsement.reasons).toHaveLength(2);
+  });
+});
+
 describe("IssueBlocks", () => {
   afterEach(() => {
     cleanup();
@@ -121,6 +169,36 @@ describe("IssueBlocks", () => {
     expect(within(errors).getByText("No missing mandatory items")).toBeTruthy();
     expect(within(warnings).getByText("No missing or incomplete items")).toBeTruthy();
     expect(screen.queryAllByRole("listitem")).toHaveLength(0);
+  });
+
+  it("lists a rating below 2.5 first, links it to the rating summary and counts it", () => {
+    render(
+      <IssueBlocks
+        results={[result("license", "mandatory", "fail", { title: "License file" })]}
+        rating={2.1}
+        endorsement={FAILED}
+      />
+    );
+
+    const errors = screen.getByRole("region", { name: /^2 errors: missing mandatory items$/i });
+    const items = within(errors).getAllByRole("listitem");
+    expect(items).toHaveLength(2);
+    const ratingLink = within(items[0]).getByRole("link", {
+      name: "Overall rating 2.1 is below 2.5: go to the overall rating",
+    });
+    expect(ratingLink.getAttribute("href")).toBe("#rating-summary");
+  });
+
+  it("counts a rating error alone in the singular and drops the empty line", () => {
+    render(<IssueBlocks results={[]} rating={1.8} endorsement={FAILED} />);
+
+    const errors = screen.getByRole("region", { name: /^1 error: missing mandatory items$/i });
+    expect(within(errors).queryByText("No missing mandatory items")).toBeNull();
+  });
+
+  it("adds no rating error when the rating is 2.5 or more", () => {
+    render(<IssueBlocks results={[]} rating={3.4} endorsement={{ passed: true, reasons: [] }} />);
+    expect(screen.getByRole("region", { name: /^0 errors/i })).toBeTruthy();
   });
 
   it("uses the singular for a count of one", () => {

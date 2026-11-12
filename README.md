@@ -321,7 +321,9 @@ Status scores: **Pass** = 1.0 · **Warn / Info** = 0.5 · **Fail** = 0.
 Above the detailed results, the live report and the stored analysis page list
 what is missing in two blocks:
 
-- **Errors**: mandatory criteria with status Fail.
+- **Errors**: mandatory criteria with status Fail, and an overall rating below
+  2.5 (it links to the overall rating), so the count matches the reasons the
+  component does not pass.
 - **Warnings**: recommended criteria with status Fail or Warn, and mandatory
   criteria with status Warn (present but incomplete).
 

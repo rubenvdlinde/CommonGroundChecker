@@ -147,6 +147,8 @@ describe("AnalysisDetailPage", () => {
     expect(table.textContent).toContain("Python, complexity above 10");
     expect(table.textContent).toContain("≤ 7.5%");
     expect(screen.getByRole("list", { name: "Why it does not pass" }).textContent).toBe("Overall rating below 2.5");
-    expect(screen.getByRole("heading", { name: /missing mandatory items/ })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: /^1 error: missing mandatory items$/ })).toBeTruthy();
+    const ratingError = screen.getByRole("link", { name: "Overall rating 2.4 is below 2.5: go to the overall rating" });
+    expect(document.getElementById(ratingError.getAttribute("href")!.slice(1))?.textContent).toContain("Overall rating");
   });
 });

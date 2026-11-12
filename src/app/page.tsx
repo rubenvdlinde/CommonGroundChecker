@@ -796,7 +796,11 @@ export default function HomePage() {
               </div>
             </div>
 
-            <IssueBlocks results={report.results} />
+            <IssueBlocks
+              results={report.results}
+              rating={report.rating ?? null}
+              endorsement={report.endorsement}
+            />
 
             <CategoryRatings
               results={report.results}

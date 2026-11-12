@@ -170,7 +170,7 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
         </div>
       </section>
 
-      {results.length > 0 && <IssueBlocks results={results} />}
+      {results.length > 0 && <IssueBlocks results={results} rating={rating} endorsement={endorsement} />}
 
       {results.length > 0 && (
         <CategoryRatings results={results} categoryRatings={categoryRatings} aspectRatings={aspectRatings} />
