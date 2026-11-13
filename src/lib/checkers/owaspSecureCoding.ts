@@ -75,8 +75,20 @@ export function isNonSecretValue(value: string): boolean {
 function isIdentifier(value: string): boolean {
   const trimmed = value.replace(/^[_\-.:=/]+|[_\-.:=/]+$/g, "");
   if (!/^[a-z]/.test(trimmed)) return false;
-  const words = trimmed.split(/[_\-.:=/]+/).flatMap((part) => part.split(/(?<=[a-z])(?=[A-Z])/));
-  return words.length >= 2 && words.every((word) => /^[A-Za-z][a-z]{0,23}$/.test(word));
+  const parts = trimmed.split(/[_\-.:=/]+/);
+  const words = parts.flatMap((part) => part.split(/(?<=[a-z])(?=[A-Z])/));
+  // A camelCase part of one-letter words (`aBcDeFgH`) is a random mixed-case string, not a name.
+  const camelOk = parts.every((part) => !/[a-z][A-Z]/.test(part) || isPascalCaseName(part));
+  return words.length >= 2 && camelOk && words.every((word) => /^[A-Za-z][a-z]{0,23}$/.test(word));
+}
+
+/**
+ * A PascalCase or camelCase name of two or more letter-only words (`CodeTags`, `UserIcon`, `chartBar`),
+ * such as a component or icon name. Only a password may be such a passphrase (`CorrectHorseBattery`);
+ * a key or token is never made of dictionary words, so the rule skips these names for those keys.
+ */
+export function isPascalCaseName(value: string): boolean {
+  return /^[A-Za-z][a-z]{1,23}(?:[A-Z][a-z]{1,23})+$/.test(value);
 }
 
 const COMMENT_LINE = /^\s*(?:\/\/|\/\*|\*|#(?![[!]))/;
@@ -113,8 +125,9 @@ const RISKY_PATTERNS: RiskyPattern[] = [
   // A bound attribute such as Vue's `:token="createdToken"` holds an expression, not a literal.
   {
     label: "Possible hardcoded secret",
-    pattern: /(?<![:@])(?:api[_-]?key|secret|password|token)\s*[:=]\s*(["'])((?:(?!\1)[^\\\n]|\\.){8,})\1/i,
-    accept: (match) => !isSecretLookAlike(match[2]),
+    // Key and value must share a line, so a key at the end of one line never pairs with a string on the next.
+    pattern: /(?<![:@])(api[_-]?key|secret|password|token)[ \t]*[:=][ \t]*(["'])((?:(?!\2)[^\\\n]|\\.){8,})\2/i,
+    accept: (match) => !isSecretLookAlike(match[3]) && !(isPascalCaseName(match[3]) && !/^password$/i.test(match[1])),
   },
 ];
 
