@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import * as github from "@/lib/github";
-import { checkOwaspSecureCoding, getFailThreshold, isSecretLookAlike, stripCommentLines } from "@/lib/checkers/owaspSecureCoding";
+import { checkOwaspSecureCoding, getFailThreshold, isPascalCaseName, isSecretLookAlike, stripCommentLines } from "@/lib/checkers/owaspSecureCoding";
 
 const RISKY = "const hash = crypto.createHash('md5');";
 const SAFE = "export const add = (a, b) => a + b;";
@@ -188,6 +188,10 @@ describe("OWASP secure coding checker", () => {
     ["a query string around a call", "$url = $base . '?token=' . rawurlencode($this->sign(action: 'cancel'));"],
     ["a selector around a variable", "el.querySelector('.swatch[data-token=\"' + name + '\"]')"],
     ["a reason text", "public const REASON_AS_SECRET = 'copy was created as a secret of its own';"],
+    ["an icon component name", "const icons = { api_key: 'CodeTags', user: 'UserIcon' };"],
+    ["a PascalCase token name", "const token = 'UserIconOutline';"],
+    ["a key whose value is on the next line", "const icons = {\n  api_key:\n    'CodeTagsAndMore12',\n};"],
+    ["a key whose value is after a blank line", "$secret =\n\n'f3Kq9ZpL0aWx7Rt2';"],
   ])("does not flag %s as a hardcoded secret", async (_label, code) => {
     vi.spyOn(github, "getFileContent").mockResolvedValueOnce(code);
 
@@ -204,6 +208,11 @@ describe("OWASP secure coding checker", () => {
     ["a capitalised password", "$password = 'CorrectHorseBattery';"],
     ["a short passphrase", "$password = 'correct horse battery staple';"],
     ["a key with a trailing pad", "const token = 'dGhpc2lzYXRva2Vu==';"],
+    ["a PascalCase name with digits", "const token = 'CodeTags2024';"],
+    ["a mixed-case random key", "const apiKey = 'aBcDeFgHiJkLmN';"],
+    ["a long hex key", "api_key = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08'"],
+    ["a long base64 key", "const secret = 'c2VjcmV0LWtleS1mb3ItdGVzdGluZy1vbmx5';"],
+    ["a same-line key with tab spacing", "const token =\t'f3Kq9ZpL0aWx7Rt2';"],
   ])("flags %s as a hardcoded secret", async (_label, code) => {
     vi.spyOn(github, "getFileContent").mockResolvedValueOnce(code);
 
@@ -225,5 +234,16 @@ describe("OWASP secure coding checker", () => {
     expect(isSecretLookAlike("{{unsubscribe_link}}")).toBe(true);
     expect(isSecretLookAlike("hunter2hunter")).toBe(false);
     expect(isSecretLookAlike("Summer-Holiday")).toBe(false);
+  });
+
+  it("tells PascalCase and camelCase names from random values", () => {
+    expect(isPascalCaseName("CodeTags")).toBe(true);
+    expect(isPascalCaseName("UserIcon")).toBe(true);
+    expect(isPascalCaseName("chartBar")).toBe(true);
+    expect(isPascalCaseName("Codetags")).toBe(false);
+    expect(isPascalCaseName("CodeTags2")).toBe(false);
+    expect(isPascalCaseName("Code_Tags")).toBe(false);
+    expect(isPascalCaseName("aBcDeFgHiJkLmN")).toBe(false);
+    expect(isPascalCaseName("ABCDEFGH")).toBe(false);
   });
 });
