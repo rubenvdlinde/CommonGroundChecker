@@ -199,26 +199,100 @@ function detectLayerSignalsFromText(
   return detections;
 }
 
-async function extractPublicCodeText(context: RepoContext, tree: string[]): Promise<string> {
+async function readPublicCode(
+  context: RepoContext,
+  tree: string[]
+): Promise<{ text: string; parsed: unknown }> {
   const publiccodePath = tree.find((path) =>
     PUBLICCODE_FILENAMES.includes(path.toLowerCase())
   );
 
   if (!publiccodePath) {
-    return "";
+    return { text: "", parsed: null };
   }
 
   const raw = await context.provider.getFileContent(context, publiccodePath);
   if (!raw) {
-    return "";
+    return { text: "", parsed: null };
   }
 
   try {
     const parsed = loadYaml(raw);
-    return flattenStrings(parsed).join(" ");
+    return { text: flattenStrings(parsed).join(" "), parsed };
   } catch {
-    return raw;
+    return { text: raw, parsed: null };
   }
+}
+
+// The nl.vng profile: a component declares its layer in publiccode.yml, either in the `NL:`
+// country section (`NL.vng.commonground.layer` or `.layers`) or, because country sections are
+// deprecated in publiccode.yml 1.0, as a `supports` entry whose id is LAYER_URI#<layer>.
+export const LAYER_URI = "https://commonground.nl/cms/view/54476261/5-lagen-model";
+
+const LAYER_ALIASES: Record<string, LayerKey> = {
+  interaction: "interaction",
+  interactie: "interaction",
+  process: "process",
+  proces: "process",
+  integration: "integration",
+  integratie: "integration",
+  service: "service",
+  services: "service",
+  dienst: "service",
+  diensten: "service",
+  data: "data",
+};
+
+interface DeclaredLayers {
+  layers: LayerKey[];
+  unknown: string[];
+  source: string;
+}
+
+function record(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : null;
+}
+
+export function readDeclaredLayers(parsed: unknown): DeclaredLayers | null {
+  const root = record(parsed);
+  if (!root) return null;
+
+  const values: string[] = [];
+  let source = "";
+
+  const country = record(root.NL) ?? record(root.nl);
+  const commonground = record(record(record(country)?.vng)?.commonground);
+  if (commonground) {
+    const declared = commonground.layers ?? commonground.layer;
+    for (const value of Array.isArray(declared) ? declared : [declared]) {
+      if (typeof value === "string") values.push(value);
+    }
+    if (values.length > 0) source = "publiccode.yml NL.vng.commonground";
+  }
+
+  if (values.length === 0 && Array.isArray(root.supports)) {
+    for (const item of root.supports) {
+      const id = typeof item === "string" ? item : record(item)?.id;
+      if (typeof id === "string" && id.startsWith(`${LAYER_URI}#`)) {
+        values.push(id.slice(LAYER_URI.length + 1));
+      }
+    }
+    if (values.length > 0) source = "publiccode.yml supports";
+  }
+
+  if (values.length === 0) return null;
+
+  const layers: LayerKey[] = [];
+  const unknown: string[] = [];
+  for (const value of values) {
+    const layer = LAYER_ALIASES[value.trim().toLowerCase()];
+    if (!layer) unknown.push(value);
+    else if (!layers.includes(layer)) layers.push(layer);
+  }
+
+  return { layers, unknown, source };
 }
 
 function formatLayerLabels(layers: LayerKey[]): string[] {
@@ -276,7 +350,47 @@ export async function checkFiveLayer(
     README_FILENAMES.includes(path.toLowerCase())
   );
   const readme = readmePath ? await context.provider.getFileContent(context, readmePath) : "";
-  const publiccodeText = await extractPublicCodeText(context, tree);
+  const publiccode = await readPublicCode(context, tree);
+  const publiccodeText = publiccode.text;
+
+  const declared = readDeclaredLayers(publiccode.parsed);
+  if (declared) {
+    const base = {
+      id: "fivelayer",
+      title: "Common Ground 5-Layer Architecture",
+      description:
+        "The component should clearly belong to one of the five Common Ground architectural layers.",
+      referenceUrl: "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    };
+    const evidence = [
+      ...declared.layers.map((layer) => `Declared "${layer}" in ${declared.source}`),
+      ...declared.unknown.map((value) => `Unknown layer "${value}" in ${declared.source}`),
+    ];
+
+    if (declared.unknown.length > 0) {
+      return {
+        ...base,
+        status: "warn",
+        message:
+          `${declared.source} declares an unknown layer: ${declared.unknown.join(", ")}. ` +
+          "Use one of interaction, process, integration, service or data.",
+        evidence,
+        confidence: "high",
+      };
+    }
+
+    const labels = formatLayerLabels(declared.layers);
+    return {
+      ...base,
+      status: declared.layers.length === 1 ? "pass" : "warn",
+      message:
+        declared.layers.length === 1
+          ? `Declared layer: ${labels[0]}.`
+          : `Declared layers: ${labels.join("; ")}. A component should belong to one Common Ground layer.`,
+      evidence,
+      confidence: "high",
+    };
+  }
 
   const allDetections: LayerDetection[] = [];
 
