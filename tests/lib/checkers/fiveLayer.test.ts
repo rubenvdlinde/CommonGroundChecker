@@ -8,7 +8,7 @@ vi.mock("@/lib/github", () => ({
   getFileContent: mocks.getFileContent,
 }));
 
-import { checkFiveLayer } from "@/lib/checkers/fiveLayer";
+import { checkFiveLayer, LAYER_URI } from "@/lib/checkers/fiveLayer";
 
 describe("checkFiveLayer", () => {
   beforeEach(() => {
@@ -114,5 +114,78 @@ describe("checkFiveLayer", () => {
       "Found \"service\" in repository metadata and docs",
     ]);
     expect(result.message).toContain("Service layer");
+  });
+
+  describe("declared layer (nl.vng profile)", () => {
+    const tree = ["README.md", "publiccode.yml", "src/ui/index.js", "lib/Service/Api.php"];
+    const readme = "A Nextcloud app with a frontend and a backend API service.";
+
+    it("passes on a single layer declared in NL.vng.commonground, ignoring path heuristics", async () => {
+      mocks.getFileContent
+        .mockResolvedValueOnce(readme)
+        .mockResolvedValueOnce("name: App\nNL:\n  vng:\n    commonground:\n      layer: process\n");
+
+      const result = await checkFiveLayer("org", "repo", tree, { topics: [], description: "" });
+
+      expect(result.status).toBe("pass");
+      expect(result.confidence).toBe("high");
+      expect(result.message).toBe("Declared layer: Process layer (orchestration / BFF).");
+      expect(result.evidence).toEqual(['Declared "process" in publiccode.yml NL.vng.commonground']);
+    });
+
+    it("accepts the Dutch layer name and a lowercase country key", async () => {
+      mocks.getFileContent
+        .mockResolvedValueOnce(readme)
+        .mockResolvedValueOnce("nl:\n  vng:\n    commonground:\n      layer: Integratie\n");
+
+      const result = await checkFiveLayer("org", "repo", tree, { topics: [], description: "" });
+
+      expect(result.status).toBe("pass");
+      expect(result.message).toContain("Integration layer");
+    });
+
+    it("reads the layer from a supports entry when there is no NL section", async () => {
+      mocks.getFileContent
+        .mockResolvedValueOnce(readme)
+        .mockResolvedValueOnce(`supports:\n  - id: ${LAYER_URI}#data\n  - id: alias:other\n`);
+
+      const result = await checkFiveLayer("org", "repo", tree, { topics: [], description: "" });
+
+      expect(result.status).toBe("pass");
+      expect(result.evidence).toEqual(['Declared "data" in publiccode.yml supports']);
+    });
+
+    it("warns when more than one layer is declared", async () => {
+      mocks.getFileContent
+        .mockResolvedValueOnce(readme)
+        .mockResolvedValueOnce("NL:\n  vng:\n    commonground:\n      layers: [interaction, process]\n");
+
+      const result = await checkFiveLayer("org", "repo", tree, { topics: [], description: "" });
+
+      expect(result.status).toBe("warn");
+      expect(result.message).toContain("should belong to one Common Ground layer");
+    });
+
+    it("warns on an unknown layer value", async () => {
+      mocks.getFileContent
+        .mockResolvedValueOnce(readme)
+        .mockResolvedValueOnce("NL:\n  vng:\n    commonground:\n      layer: frontend\n");
+
+      const result = await checkFiveLayer("org", "repo", tree, { topics: [], description: "" });
+
+      expect(result.status).toBe("warn");
+      expect(result.message).toContain('unknown layer: frontend');
+    });
+
+    it("falls back to the heuristics when nothing is declared", async () => {
+      mocks.getFileContent
+        .mockResolvedValueOnce(readme)
+        .mockResolvedValueOnce("name: App\n");
+
+      const result = await checkFiveLayer("org", "repo", tree, { topics: [], description: "" });
+
+      expect(result.status).toBe("warn");
+      expect(result.message).toContain("appears to span multiple Common Ground layers");
+    });
   });
 });

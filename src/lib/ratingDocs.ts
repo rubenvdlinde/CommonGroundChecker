@@ -605,9 +605,10 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         title: "Layering",
         meaning:
           "Which layer of the Common Ground five-layer model the component belongs to: interaction, process, integration, service or data.",
-        criteria: [{ checkId: "fivelayer", name: "5-layer architecture", tool: "signals in paths, file names and the README" }],
+        criteria: [{ checkId: "fivelayer", name: "5-layer architecture", tool: "the layer declared in publiccode.yml, else signals in paths, file names and the README" }],
         rating: [
-          "The check reports the layer or layers it recognises. The result is shown, but it does not count in the Architecture rating, because belonging to one layer or another is not better or worse.",
+          "A component declares its layer in publiccode.yml with the nl.vng profile: `NL: { vng: { commonground: { layer: process } } }`, or, because country sections are deprecated in publiccode.yml 1.0, a `supports` entry with id `https://commonground.nl/cms/view/54476261/5-lagen-model#process`. Dutch names (interactie, proces, integratie, dienst, data) are accepted. One declared layer passes; more than one, or an unknown name, warns.",
+          "Without a declaration the check reports the layer or layers it recognises. The result is shown, but it does not count in the Architecture rating, because belonging to one layer or another is not better or worse.",
         ],
         counted: false,
         sources: [SOURCES.fiveLayerModel],
