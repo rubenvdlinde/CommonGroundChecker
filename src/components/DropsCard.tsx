@@ -56,7 +56,7 @@ export default function DropsCard({ drops }: { drops: MaintenanceDrop[] }) {
               </div>
               <div className="flex items-center gap-2 text-xs">
                 <span className="text-gray-700">
-                  Fix by {formatDate(drop.fixBy)} ({drop.fixTermDays} days)
+                  Open drop, fix by {formatDate(drop.fixBy)} ({drop.fixTermDays} days)
                 </span>
                 {drop.overdue && (
                   <span className="inline-flex font-semibold px-2 py-0.5 rounded-full border border-red-300 text-red-800 bg-red-50">

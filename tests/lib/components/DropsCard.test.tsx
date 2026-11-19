@@ -47,7 +47,7 @@ describe("DropsCard", () => {
     const items = within(section).getAllByRole("listitem").slice(0, 2);
     expect(items[0].textContent).toContain("License");
     expect(items[0].textContent).toContain("Overdue");
-    expect(items[0].textContent).toContain("Fix by 31-10-2026 (30 days)");
+    expect(items[0].textContent).toContain("Open drop, fix by 31-10-2026 (30 days)");
     expect(items[1].textContent).toContain("4 to 3 stars");
     expect(within(section).getByText(/fix terms are proposals/)).toBeTruthy();
     expect(within(section).getByText("Recently recovered (1)")).toBeTruthy();

@@ -149,7 +149,7 @@ describe("RepoHistoryPage", () => {
 
     const drops = screen.getByRole("region", { name: "Drops to fix" });
     expect(within(drops).getByText("Suitable for Common Ground")).toBeTruthy();
-    expect(within(drops).getByText("Fix by 11-12-2026 (30 days)")).toBeTruthy();
+    expect(within(drops).getByText("Open drop, fix by 11-12-2026 (30 days)")).toBeTruthy();
 
     cleanup();
     getRepoHistory.mockResolvedValue({ repository, analyses: [latest] });
