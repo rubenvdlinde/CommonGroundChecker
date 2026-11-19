@@ -106,3 +106,14 @@ describe("createLocalContext", () => {
     expect(await context.provider.getRepoVersion(context)).toMatchObject({ version: "v1.10.0", evidence: { source: "tag" } });
   });
 });
+
+describe("local provider raw file URLs", () => {
+  it("points at raw.githubusercontent.com for a GitHub checkout and at the file otherwise", () => {
+    const github = createLocalContext({ dir: "/src/oz", owner: "open-zaak", repo: "open-zaak", host: "github" });
+    expect(github.provider.getRawFileUrl(github, "main", "logo.svg")).toBe(
+      "https://raw.githubusercontent.com/open-zaak/open-zaak/main/logo.svg"
+    );
+    const local = createLocalContext({ dir: "/src/x", owner: "local", repo: "x", host: null });
+    expect(local.provider.getRawFileUrl(local, "main", "docs/logo.png")).toBe("file:///src/x/docs/logo.png");
+  });
+});

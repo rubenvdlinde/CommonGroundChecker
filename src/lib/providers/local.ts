@@ -180,6 +180,10 @@ export function createLocalProvider(checkout: LocalCheckout): RepositoryProvider
     getFileContent: async (_context: RepoContext, filePath: string) => readCheckoutFile(checkout.dir, filePath),
     getRepoVersion: async () => localVersion(checkout.dir),
     getCloneUrl: () => checkout.dir,
+    getRawFileUrl: (_context: RepoContext, branch: string, filePath: string) =>
+      checkout.host === "github"
+        ? `https://raw.githubusercontent.com/${checkout.owner}/${checkout.repo}/${branch}/${filePath}`
+        : `file://${path.join(checkout.dir, filePath)}`,
   };
 }
 
