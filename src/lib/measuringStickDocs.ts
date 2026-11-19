@@ -3,6 +3,12 @@ import type { PathStatus } from "./pathDocs";
 /** The page of the basisset, with the version of each component next to the version the checker measured. */
 export const BASISSET_PAGE_HREF = "/basisset";
 
+/** Which components provide each functionality, with the overlap and the gaps. */
+export const FUNCTIONALITIES_PAGE_HREF = "/functionalities";
+
+/** Two components side by side. */
+export const COMPARE_PAGE_HREF = "/compare";
+
 export interface MeasuringStickItem {
   text: string;
   status?: PathStatus;
@@ -18,8 +24,6 @@ export interface MeasuringStickPart {
   closing?: string[];
   links?: { href: string; text: string }[];
 }
-
-const IN_DEVELOPMENT: PathStatus = { kind: "in-development" };
 
 export const MEASURING_STICK_INTRO =
   "The checker is one part of a measuring stick for Common Ground components. This section explains which problem the measuring stick solves, what the checker adds, and where its answer ends.";
@@ -58,18 +62,21 @@ export const MEASURING_STICK_PARTS: MeasuringStickPart[] = [
       {
         text: "Standards: read from supports in publiccode.yml and checked against the OpenAPI files in the repository.",
       },
-      { text: "Functionality: read from features in publiccode.yml and mapped across the landscape.", status: IN_DEVELOPMENT },
-      { text: "Filters on standards and functionality on the Components list.", status: IN_DEVELOPMENT },
+      {
+        text: "Functionality: each component on the component list names the GEMMA application services it provides. The functionality map shows which components provide each one, where they overlap and where nothing does.",
+      },
+      { text: "Filters on standards and functionality on the Components list." },
     ],
+    links: [{ href: FUNCTIONALITIES_PAGE_HREF, text: "The functionality map" }],
   },
   {
     id: "comparing",
     title: "Comparing components",
-    status: IN_DEVELOPMENT,
     paragraphs: [
       "Where a choice is made, a comparison page puts components side by side. Per criterion it shows which one scores better, so the choice rests on the same measurements.",
       "The page also shows how far the components overlap. In practice they often overlap only in part. The part that does not overlap can give each component its own right to exist.",
     ],
+    links: [{ href: COMPARE_PAGE_HREF, text: "Compare two components" }],
   },
   {
     id: "maintenance",

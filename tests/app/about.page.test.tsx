@@ -30,7 +30,13 @@ import {
   stateName,
 } from "@/lib/aboutDocs";
 import { PATH_DOC_HREF, PATH_SECTIONS, RESPONSE_AND_FIX_TIMES, SLA_TERMS } from "@/lib/pathDocs";
-import { BASISSET_PAGE_HREF, MEASURING_STICK_INTRO, MEASURING_STICK_PARTS } from "@/lib/measuringStickDocs";
+import {
+  BASISSET_PAGE_HREF,
+  COMPARE_PAGE_HREF,
+  FUNCTIONALITIES_PAGE_HREF,
+  MEASURING_STICK_INTRO,
+  MEASURING_STICK_PARTS,
+} from "@/lib/measuringStickDocs";
 
 function allText(): string[] {
   return [
@@ -499,11 +505,13 @@ describe("measuring stick docs data", () => {
     expect(text).toMatch(/It does not decide\. VNG, as regievoerder, decides/);
   });
 
-  it("marks the comparison page and the functionality map and filters as in development, standards not", () => {
+  it("shows the comparison page and the functionality map and filters as live, with links to them", () => {
     const part = (id: string) => MEASURING_STICK_PARTS.find((candidate) => candidate.id === id)!;
-    expect(part("comparing").status).toEqual({ kind: "in-development" });
+    expect(part("comparing").status).toBeUndefined();
     expect(part("comparing").paragraphs.join(" ")).toMatch(/right to exist/);
-    expect(part("mapping").items!.map((item) => item.status?.kind ?? null)).toEqual([null, "in-development", "in-development"]);
+    expect(part("comparing").links!.map((link) => link.href)).toEqual([COMPARE_PAGE_HREF]);
+    expect(part("mapping").items!.map((item) => item.status?.kind ?? null)).toEqual([null, null, null]);
+    expect(part("mapping").links!.map((link) => link.href)).toEqual([FUNCTIONALITIES_PAGE_HREF]);
   });
 
   it("links maintenance and further development to the setup and the basisset instead of repeating them", () => {
@@ -533,7 +541,7 @@ describe("measuring stick docs data", () => {
 describe("AboutPage measuring stick", () => {
   afterEach(() => cleanup());
 
-  it("shows the six parts, with badges for what is in development", () => {
+  it("shows the six parts, with a badge for what is proposed and links to the compare and functionality pages", () => {
     render(<AboutPage />);
 
     const section = document.getElementById("measuring-stick")!;
@@ -543,11 +551,13 @@ describe("AboutPage measuring stick", () => {
       "The problem: choices without grounds",
       "What the checker adds: grounds for a decision",
       "Mapping standards and functionality",
-      "Comparing components In development",
+      "Comparing components",
       "What maintenance means Proposed",
       "Further development: a partial answer",
     ]);
-    expect(within(document.getElementById("measuring-stick-mapping")!).getAllByText("In development")).toHaveLength(2);
+    expect(within(document.getElementById("measuring-stick-mapping")!).queryAllByText("In development")).toHaveLength(0);
+    expect(within(section).getByRole("link", { name: "Compare two components" }).getAttribute("href")).toBe(COMPARE_PAGE_HREF);
+    expect(within(section).getByRole("link", { name: "The functionality map" }).getAttribute("href")).toBe(FUNCTIONALITIES_PAGE_HREF);
     expect(within(section).getByRole("link", { name: "The basisset, next to what the checker measured" }).getAttribute("href")).toBe(
       BASISSET_PAGE_HREF,
     );
