@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { criterionAnchorId, isInTransition, transitionNotice } from "@/lib/criteria";
+import { PUBLICCODE_GUIDE_CHECK_IDS, PUBLICCODE_PROFILE_PATH } from "@/lib/publiccodeProfile";
 
 interface ResultCardProps {
   id: string;
@@ -190,6 +191,12 @@ export default function ResultCard({
                 ))}
               </ul>
             </div>
+          )}
+
+          {PUBLICCODE_GUIDE_CHECK_IDS.includes(id) && (
+            <a href={PUBLICCODE_PROFILE_PATH} className="block text-xs text-cg-lightblue hover:underline">
+              How to fill publiccode.yml for this criterion
+            </a>
           )}
 
           {referenceUrl && (

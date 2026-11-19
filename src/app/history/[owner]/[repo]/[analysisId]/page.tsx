@@ -1,10 +1,12 @@
 import Link from "next/link";
 import CategoryRatings from "@/components/CategoryRatings";
 import IssueBlocks from "@/components/IssueBlocks";
+import PublicCodeSection from "@/components/PublicCodeSection";
 import ResultCard from "@/components/ResultCard";
 import RatingBadge from "@/components/RatingBadge";
 import RatingSummary from "@/components/RatingSummary";
 import { statusToStars } from "@/lib/stars";
+import { readPublicCodeData } from "@/lib/checkers/publiccode";
 import { getRepoHistory } from "@/lib/apiClient";
 import { parseMeasurements } from "@/lib/measurements";
 import { isRating } from "@/lib/ratings";
@@ -72,6 +74,7 @@ function normalizeResults(raw: unknown): CheckResult[] {
         rating: isRating(item.rating) ? item.rating : undefined,
         measurements: parseMeasurements(item.measurements),
         mandatoryFrom: isMandatoryFromDate(item.mandatoryFrom) ? item.mandatoryFrom : undefined,
+        publiccode: (item.id === "publiccode" && readPublicCodeData(item.publiccode)) || undefined,
       } satisfies CheckResult;
     });
 }
@@ -147,6 +150,7 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
   const results = normalizeResults(analysis.results);
   const repoMeta = normalizeRepoMeta(repository.metadata);
   const [{ rating, categoryRatings, aspectRatings, endorsement }] = await loadStoredRatings([analysis]);
+  const publiccode = results.find((result) => result.id === "publiccode")?.publiccode;
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
@@ -192,6 +196,8 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
           </span>
         </div>
       </section>
+
+      {publiccode && <PublicCodeSection data={publiccode} />}
 
       {results.length > 0 && <IssueBlocks results={results} rating={rating} endorsement={endorsement} />}
 
@@ -257,7 +263,10 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
                         message={result.message}
                         evidence={result.evidence}
                         referenceUrl={result.referenceUrl}
-                        starRating={result.starRating ?? statusToStars(result.status)}
+                        starRating={
+                          result.starRating ??
+                          (result.requirementLevel === "informative" ? undefined : statusToStars(result.status))
+                        }
                         mandatoryFrom={result.mandatoryFrom}
                       />
                     ))}

@@ -63,6 +63,7 @@ const mocks = vi.hoisted(() => ({
   checkOwaspSecureCoding: vi.fn(),
   checkEuplLicense: vi.fn(),
   checkAdrValidator: vi.fn(),
+  checkStandards: vi.fn(),
   getActiveScoringConfig: vi.fn(),
 }));
 
@@ -136,6 +137,7 @@ vi.mock("@/lib/checkers/semver", () => ({ checkSemver: mocks.checkSemver }));
 vi.mock("@/lib/checkers/fiveLayer", () => ({ checkFiveLayer: mocks.checkFiveLayer }));
 vi.mock("@/lib/checkers/helmchart", () => ({ checkHelmChart: mocks.checkHelmChart }));
 vi.mock("@/lib/checkers/artifactHub", () => ({ checkArtifactHub: mocks.checkArtifactHub }));
+vi.mock("@/lib/checkers/standards", () => ({ checkStandards: mocks.checkStandards }));
 vi.mock("@/lib/checkers/config", () => ({ getActiveScoringConfig: mocks.getActiveScoringConfig }));
 
 import { runChecks } from "@/lib/checkers/index";
@@ -231,6 +233,7 @@ describe("runChecks", () => {
     });
 
     mocks.checkSourceCode.mockReturnValue(resultFor("sourcecode", "pass"));
+    mocks.checkStandards.mockResolvedValue(resultFor("standards", "info"));
     mocks.checkOpenApi.mockResolvedValue(resultFor("openapi", "pass"));
     mocks.checkLicense.mockResolvedValue(resultFor("license", "pass"));
     mocks.checkEuplLicense.mockReturnValue(resultFor("eupllicense", "warn"));
@@ -265,6 +268,29 @@ describe("runChecks", () => {
     mocks.checkFiveLayer.mockResolvedValue(resultFor("fivelayer", "pass"));
     mocks.checkHelmChart.mockResolvedValue(resultFor("helmchart", "pass"));
     mocks.checkArtifactHub.mockResolvedValue(resultFor("artifacthub", "pass"));
+  });
+
+  it("adds the informative standards result without stars and leaves it out of the verdict", async () => {
+    const configById = criterionConfig(1, "mandatory");
+    configById.standards = { weight: 0, requirementLevel: "informative" };
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: null,
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { apiSpecificationLocations: ["api/openapi.yaml"] });
+
+    const standards = report.results.find((result) => result.id === "standards");
+    expect(standards).toMatchObject({ status: "info", requirementLevel: "informative" });
+    expect(standards?.starRating).toBeUndefined();
+    expect(mocks.checkStandards).toHaveBeenCalledWith(expect.anything(), ["src/main.ts", "README.md"], ["api/openapi.yaml"]);
+    expect(report.endorsement.reasons.join(" ")).not.toContain("standards");
   });
 
   it("applies weighted scoring and non-register OpenAPI bypass", async () => {

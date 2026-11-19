@@ -1,6 +1,14 @@
 import yaml from "js-yaml";
-import type { CheckResult, PublicCodeDetails } from "../types";
+import type {
+  CheckResult,
+  PublicCodeData,
+  PublicCodeDependency,
+  PublicCodeDescription,
+  PublicCodeDetails,
+  PublicCodeParty,
+} from "../types";
 import type { RepoContext } from "../providers/types";
+import { readSupportsIds } from "../standards";
 
 const REQUIRED_FIELDS = ["publiccodeYmlVersion", "name", "url", "legal"];
 const RECOMMENDED_FIELDS = ["description", "maintenance", "categories", "nl"];
@@ -60,19 +68,158 @@ export function resolveLogoUrl(logo: unknown, context: RepoContext, branch: stri
   const value = optionalString(logo);
   if (!value || value.startsWith("//") || value.includes("\\")) return null;
 
-  if (/^[a-z][a-z0-9+.-]*:/i.test(value)) {
-    try {
-      const protocol = new URL(value).protocol;
-      return protocol === "https:" || protocol === "http:" ? value : null;
-    } catch {
-      return null;
-    }
-  }
+  if (/^[a-z][a-z0-9+.-]*:/i.test(value)) return absoluteUrl(value);
 
   const path = value.replace(/^(\.\/)+/, "").replace(/^\/+/, "");
   const segments = path.split("/");
   if (!path || segments.some((segment) => segment === ".." || segment === ".")) return null;
   return context.provider.getRawFileUrl(context, branch, path);
+}
+
+/** A scalar as text: YAML dates (which js-yaml turns into a Date) as YYYY-MM-DD, numbers as written. */
+function text(value: unknown): string | null {
+  if (value instanceof Date) return Number.isNaN(value.getTime()) ? null : value.toISOString().slice(0, 10);
+  if (typeof value === "number" && Number.isFinite(value)) return String(value);
+  return optionalString(value);
+}
+
+function texts(value: unknown): string[] {
+  const items = Array.isArray(value) ? value : value === undefined ? [] : [value];
+  return items.map(text).filter((item): item is string => item !== null);
+}
+
+function flag(value: unknown): boolean | null {
+  return typeof value === "boolean" ? value : null;
+}
+
+function records(value: unknown): Record<string, unknown>[] {
+  return Array.isArray(value) ? value.filter(isRecord) : [];
+}
+
+function party(value: Record<string, unknown>): PublicCodeParty {
+  return { name: text(value.name), uri: text(value.uri) };
+}
+
+function dependencies(value: unknown): PublicCodeDependency[] {
+  return records(value).map((dependency) => ({
+    name: text(dependency.name),
+    versionMin: text(dependency.versionMin),
+    versionMax: text(dependency.versionMax),
+    version: text(dependency.version),
+    optional: flag(dependency.optional),
+  }));
+}
+
+/**
+ * Reads every field of publiccode.yml into a normalised shape. `resolveUrl` turns the
+ * logo and screenshot paths into absolute URLs; without it only http(s) URLs are kept.
+ * Also reads a shape stored earlier, so a stored scan is shown the same way.
+ */
+export function readPublicCodeData(
+  parsed: unknown,
+  resolveUrl: (value: unknown) => string | null = absoluteUrl
+): PublicCodeData | null {
+  if (!isRecord(parsed)) return null;
+
+  const record = (value: unknown) => (isRecord(value) ? value : {});
+  const audience = record(parsed.intendedAudience);
+  const legal = record(parsed.legal);
+  const maintenance = record(parsed.maintenance);
+  const localisation = record(parsed.localisation);
+  const dependsOn = record(parsed.dependsOn);
+  const urls = (value: unknown) =>
+    (Array.isArray(value) ? value : []).map(resolveUrl).filter((url): url is string => url !== null);
+
+  const descriptionEntries: [string, Record<string, unknown>][] = Array.isArray(parsed.descriptions)
+    ? records(parsed.descriptions).map((entry) => [text(entry.language) ?? "", entry])
+    : Object.entries(record(parsed.description)).filter(
+        (entry): entry is [string, Record<string, unknown>] => isRecord(entry[1])
+      );
+  const descriptions: PublicCodeDescription[] = descriptionEntries.map(([language, entry]) => ({
+    language,
+    localisedName: text(entry.localisedName),
+    genericName: text(entry.genericName),
+    shortDescription: text(entry.shortDescription),
+    longDescription: text(entry.longDescription),
+    documentation: text(entry.documentation),
+    apiDocumentation: text(entry.apiDocumentation),
+    features: texts(entry.features),
+    screenshots: urls(entry.screenshots),
+    videos: texts(entry.videos),
+    awards: texts(entry.awards),
+  }));
+
+  return {
+    publiccodeYmlVersion: text(parsed.publiccodeYmlVersion),
+    name: text(parsed.name),
+    applicationSuite: text(parsed.applicationSuite),
+    url: text(parsed.url),
+    landingURL: text(parsed.landingURL),
+    isBasedOn: texts(parsed.isBasedOn),
+    softwareVersion: text(parsed.softwareVersion),
+    releaseDate: text(parsed.releaseDate),
+    logo: resolveUrl(parsed.logo),
+    platforms: texts(parsed.platforms),
+    categories: texts(parsed.categories),
+    usedBy: texts(parsed.usedBy),
+    roadmap: text(parsed.roadmap),
+    developmentStatus: text(parsed.developmentStatus),
+    softwareType: text(parsed.softwareType),
+    // A stored shape keeps the ids as strings.
+    supports: (Array.isArray(parsed.supports) ? parsed.supports : []).every((item) => typeof item === "string")
+      ? texts(parsed.supports)
+      : readSupportsIds(parsed),
+    intendedAudience: {
+      countries: texts(audience.countries),
+      unsupportedCountries: texts(audience.unsupportedCountries),
+      scope: texts(audience.scope),
+    },
+    descriptions,
+    legal: {
+      license: text(legal.license),
+      mainCopyrightOwner: text(legal.mainCopyrightOwner),
+      repoOwner: text(legal.repoOwner),
+      authorsFile: text(legal.authorsFile),
+    },
+    maintenance: {
+      type: text(maintenance.type),
+      contractors: records(maintenance.contractors).map((contractor) => ({
+        name: text(contractor.name),
+        until: text(contractor.until),
+        email: text(contractor.email),
+        website: text(contractor.website),
+      })),
+      contacts: records(maintenance.contacts).map((contact) => ({
+        name: text(contact.name),
+        email: text(contact.email),
+        phone: text(contact.phone),
+        affiliation: text(contact.affiliation),
+      })),
+    },
+    localisation: {
+      localisationReady: flag(localisation.localisationReady),
+      availableLanguages: texts(localisation.availableLanguages),
+    },
+    dependsOn: {
+      open: dependencies(dependsOn.open),
+      proprietary: dependencies(dependsOn.proprietary),
+      hardware: dependencies(dependsOn.hardware),
+    },
+    organisation: isRecord(parsed.organisation) ? party(parsed.organisation) : null,
+    fundedBy: records(parsed.fundedBy).map(party),
+  };
+}
+
+/** An absolute http(s) URL as is; anything else is dropped. */
+function absoluteUrl(value: unknown): string | null {
+  const url = optionalString(value);
+  if (!url) return null;
+  try {
+    const protocol = new URL(url).protocol;
+    return protocol === "https:" || protocol === "http:" ? url : null;
+  } catch {
+    return null;
+  }
 }
 
 export function extractPublicCodeDetails(
@@ -175,7 +322,9 @@ export async function analysePublicCode(
     };
   }
 
-  const details = extractPublicCodeDetails(parsed, context, context.defaultBranch ?? "main");
+  const branch = context.defaultBranch ?? "main";
+  const details = extractPublicCodeDetails(parsed, context, branch);
+  const publiccode = readPublicCodeData(parsed, (value) => resolveLogoUrl(value, context, branch)) ?? undefined;
   const missingRequired = REQUIRED_FIELDS.filter((f) => !(f in parsed));
   const missingRecommended = RECOMMENDED_FIELDS.filter((f) => !(f in parsed));
 
@@ -190,6 +339,7 @@ export async function analysePublicCode(
         message: `publiccode.yml found but is missing required fields: ${missingRequired.join(", ")}.`,
         evidence: [file],
         referenceUrl: "https://standard.publiccode.net/criteria/",
+        publiccode,
       },
       details,
     };
@@ -210,6 +360,7 @@ export async function analysePublicCode(
       message: msg,
       evidence: [file],
       referenceUrl: "https://standard.publiccode.net/criteria/",
+      publiccode,
     },
     details,
   };

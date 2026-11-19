@@ -11,6 +11,7 @@ import CategoryRatings from "@/components/CategoryRatings";
 import { aspectsOfCategory, documentCountText } from "@/lib/componentRating";
 import { ratingToStars } from "@/lib/stars";
 import RepoMeta from "@/components/RepoMeta";
+import PublicCodeSection from "@/components/PublicCodeSection";
 import type { CheckReport } from "@/lib/types";
 import type { CriteriaCategory } from "@/lib/criteria";
 import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID, checklistVersionLabel } from "@/lib/criteria";
@@ -555,6 +556,7 @@ export default function HomePage() {
     report?.results.filter((r) => r.status === "warn").length ?? 0;
   const failCount =
     report?.results.filter((r) => r.status === "fail").length ?? 0;
+  const publiccodeData = report?.results.find((r) => r.id === "publiccode")?.publiccode;
 
   return (
     <main className="min-h-screen bg-gray-50 pb-20">
@@ -745,6 +747,8 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+
+            {publiccodeData && <PublicCodeSection data={publiccodeData} />}
 
             <IssueBlocks
               results={report.results}

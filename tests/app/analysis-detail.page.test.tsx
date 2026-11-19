@@ -22,6 +22,44 @@ const MAINTAINABILITY = resolveCategory("Maintainability") as string;
 describe("AnalysisDetailPage", () => {
   afterEach(() => cleanup());
 
+  it("shows the publiccode.yml fields stored with the scan", async () => {
+    getRepoHistory.mockResolvedValue({
+      repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },
+      analyses: [
+        {
+          id: "analysis-1",
+          checkedAt: "2026-11-11T15:39:33Z",
+          score: 71,
+          version: "1.0.0",
+          results: [
+            {
+              ...result("publiccode", "pass"),
+              publiccode: { name: "OpenRegister", landingURL: "https://openregister.app", platforms: ["web"] },
+            },
+          ],
+        },
+      ],
+    });
+
+    render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
+
+    expect(screen.getByRole("region", { name: "From publiccode.yml" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "https://openregister.app" })).toBeTruthy();
+  });
+
+  it("shows no publiccode.yml section for a scan stored without its fields", async () => {
+    getRepoHistory.mockResolvedValue({
+      repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },
+      analyses: [
+        { id: "analysis-1", checkedAt: "2026-11-11T15:39:33Z", score: 71, results: [result("publiccode", "pass")] },
+      ],
+    });
+
+    render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
+
+    expect(screen.queryByRole("region", { name: "From publiccode.yml" })).toBeNull();
+  });
+
   it("shows each criterion's stars", async () => {
     getRepoHistory.mockResolvedValue({
       repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },

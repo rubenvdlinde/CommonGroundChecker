@@ -41,6 +41,103 @@ export interface CheckResult {
   mandatoryFrom?: string;
   /** True when the criterion does not apply to this component; it then counts in no score, rating or verdict */
   notApplicable?: boolean;
+  /** For the publiccode criterion: every field the repository's publiccode.yml declares */
+  publiccode?: PublicCodeData;
+}
+
+/** A named party in publiccode.yml, such as `organisation` or an entry of `fundedBy` */
+export interface PublicCodeParty {
+  name: string | null;
+  uri: string | null;
+}
+
+export interface PublicCodeContractor {
+  name: string | null;
+  until: string | null;
+  email: string | null;
+  website: string | null;
+}
+
+export interface PublicCodeContact {
+  name: string | null;
+  email: string | null;
+  phone: string | null;
+  affiliation: string | null;
+}
+
+export interface PublicCodeDependency {
+  name: string | null;
+  versionMin: string | null;
+  versionMax: string | null;
+  version: string | null;
+  optional: boolean | null;
+}
+
+/** The `description` of publiccode.yml in one language */
+export interface PublicCodeDescription {
+  /** Language code, for example "nl" or "en" */
+  language: string;
+  localisedName: string | null;
+  genericName: string | null;
+  shortDescription: string | null;
+  longDescription: string | null;
+  documentation: string | null;
+  apiDocumentation: string | null;
+  features: string[];
+  /** Absolute http(s) URLs */
+  screenshots: string[];
+  videos: string[];
+  awards: string[];
+}
+
+/** The fields of publiccode.yml, normalised; a field the file leaves out is null or empty */
+export interface PublicCodeData {
+  publiccodeYmlVersion: string | null;
+  name: string | null;
+  applicationSuite: string | null;
+  url: string | null;
+  landingURL: string | null;
+  isBasedOn: string[];
+  softwareVersion: string | null;
+  releaseDate: string | null;
+  /** Absolute http(s) URL */
+  logo: string | null;
+  platforms: string[];
+  categories: string[];
+  usedBy: string[];
+  roadmap: string | null;
+  developmentStatus: string | null;
+  softwareType: string | null;
+  /** The `id` of every `supports` entry: standards, regulations and the Common Ground layer */
+  supports: string[];
+  intendedAudience: {
+    countries: string[];
+    unsupportedCountries: string[];
+    scope: string[];
+  };
+  descriptions: PublicCodeDescription[];
+  legal: {
+    license: string | null;
+    mainCopyrightOwner: string | null;
+    repoOwner: string | null;
+    authorsFile: string | null;
+  };
+  maintenance: {
+    type: string | null;
+    contractors: PublicCodeContractor[];
+    contacts: PublicCodeContact[];
+  };
+  localisation: {
+    localisationReady: boolean | null;
+    availableLanguages: string[];
+  };
+  dependsOn: {
+    open: PublicCodeDependency[];
+    proprietary: PublicCodeDependency[];
+    hardware: PublicCodeDependency[];
+  };
+  organisation: PublicCodeParty | null;
+  fundedBy: PublicCodeParty[];
 }
 
 /** A star level that has a threshold of its own; below 2 stars is 1 star. */
