@@ -45,6 +45,13 @@ describe("UsageHistoryChart", () => {
     expect(screen.getAllByRole("row")).toHaveLength(3);
   });
 
+  it("keeps the hidden table and its caption out of the layout", () => {
+    render(<UsageHistoryChart analyses={analyses} minUsers={2} />);
+    const table = screen.getByRole("table");
+    expect(table.parentElement?.className).toContain("sr-only");
+    expect(table.querySelector("caption")?.className).toContain("whitespace-normal");
+  });
+
   it("gives the count as text when only one scan counted it", () => {
     render(<UsageHistoryChart analyses={[analyses[0]]} minUsers={2} />);
     expect(screen.getByText(/One scan counted 8 users declared in publiccode.yml/)).toBeTruthy();

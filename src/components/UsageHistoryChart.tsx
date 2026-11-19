@@ -148,23 +148,26 @@ export default function UsageHistoryChart({ analyses, minUsers }: UsageHistoryCh
           ))}
         </g>
       </svg>
-      <table className="sr-only">
-        <caption>Users declared in publiccode.yml per scan, oldest first</caption>
-        <thead>
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Declared users</th>
-          </tr>
-        </thead>
-        <tbody>
-          {points.map((point) => (
-            <tr key={point.id}>
-              <td>{formatDay(point.checkedAt)}</td>
-              <td>{point.declared}</td>
+      {/* Tables do not clip their caption, so the wrapper keeps it out of the layout. */}
+      <div className="sr-only">
+        <table className="sr-only">
+          <caption className="whitespace-normal">Users declared in publiccode.yml per scan, oldest first</caption>
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Declared users</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {points.map((point) => (
+              <tr key={point.id}>
+                <td>{formatDay(point.checkedAt)}</td>
+                <td>{point.declared}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

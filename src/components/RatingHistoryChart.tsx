@@ -287,25 +287,28 @@ export default function RatingHistoryChart({ runs, selectedId = null, analysisHr
         )}
       </p>
 
-      <table className="sr-only">
-        <caption>Overall rating per run, oldest first</caption>
-        <thead>
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Rating</th>
-            <th scope="col">Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          {points.map((point) => (
-            <tr key={point.id} aria-current={point.id === selected?.id ? "true" : undefined}>
-              <td>{formatDate(point.checkedAt)}</td>
-              <td>{point.rating.toFixed(1)}</td>
-              <td>{passText(point.passed)}</td>
+      {/* Tables do not clip their caption, so the wrapper keeps it out of the layout. */}
+      <div className="sr-only">
+        <table className="sr-only">
+          <caption className="whitespace-normal">Overall rating per run, oldest first</caption>
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Result</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {points.map((point) => (
+              <tr key={point.id} aria-current={point.id === selected?.id ? "true" : undefined}>
+                <td>{formatDate(point.checkedAt)}</td>
+                <td>{point.rating.toFixed(1)}</td>
+                <td>{passText(point.passed)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
