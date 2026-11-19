@@ -1,4 +1,4 @@
-import { ghGet, ghGraphql } from "./github";
+import { ghGet, ghGraphql, releases as finalReleases } from "./github";
 import { DAY_MS, errorReason, isBotName } from "./types";
 import type { SlaAdvisory, SlaInput, SlaIssue } from "../sla";
 
@@ -15,7 +15,7 @@ const ISSUES_QUERY = `query($owner: String!, $name: String!, $after: String, $st
     issues(first: ${PAGE_SIZE}, after: $after, states: $states, filterBy: { since: $since }, orderBy: { field: UPDATED_AT, direction: DESC }) {
       pageInfo { hasNextPage endCursor }
       nodes {
-        title url createdAt closedAt stateReason
+        title url createdAt closedAt stateReason authorAssociation
         author { login }
         issueType { name }
         labels(first: 20) { nodes { name } }
@@ -32,14 +32,6 @@ const ISSUES_QUERY = `query($owner: String!, $name: String!, $after: String, $st
   }
 }`;
 
-const RELEASES_QUERY = `query($owner: String!, $name: String!) {
-  repository(owner: $owner, name: $name) {
-    releases(first: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
-      nodes { isDraft isPrerelease publishedAt }
-    }
-  }
-}`;
-
 type Actor = { __typename?: string; login?: string } | null;
 
 export interface IssueNode {
@@ -48,6 +40,7 @@ export interface IssueNode {
   createdAt: string;
   closedAt: string | null;
   stateReason: string | null;
+  authorAssociation: string;
   author: Actor;
   issueType: { name: string } | null;
   labels: { nodes: Array<{ name: string }> };
@@ -97,6 +90,7 @@ export function toSlaIssue(node: IssueNode): SlaIssue {
     title: node.title,
     url: node.url,
     createdAt: node.createdAt,
+    reportedByMaintainer: MAINTAINER_ASSOCIATIONS.has(node.authorAssociation),
     closedAt: node.closedAt,
     stateReason: node.closedAt ? node.stateReason : null,
     labels: node.labels.nodes.map((label) => label.name.toLowerCase()),
@@ -129,16 +123,6 @@ async function issuePages(
   return { nodes, complete: false };
 }
 
-async function stableReleases(owner: string, name: string): Promise<string[]> {
-  const response = await ghGraphql<{
-    repository: { releases: { nodes: Array<{ isDraft: boolean; isPrerelease: boolean; publishedAt: string | null }> } } | null;
-  }>(RELEASES_QUERY, { owner, name });
-  if (response.errors?.length) throw new Error(response.errors[0].message ?? "GraphQL error");
-  return (response.data?.repository?.releases.nodes ?? []).flatMap((release) =>
-    !release.isDraft && !release.isPrerelease && release.publishedAt ? [release.publishedAt] : []
-  );
-}
-
 async function publishedAdvisories(fullName: string, since: number): Promise<SlaAdvisory[] | { notMeasured: string }> {
   try {
     const { data } = await ghGet(`/repos/${fullName}/security-advisories?state=published&per_page=100`);
@@ -163,8 +147,9 @@ async function publishedAdvisories(fullName: string, since: number): Promise<Sla
 
 /**
  * Reads what the SLA measurement needs from GitHub: the open issues, the
- * issues closed in the last 90 days, the stable releases and the published
- * security advisories. Needs a GITHUB_TOKEN, because GraphQL does.
+ * issues closed in the last 90 days, the final releases of the last 12
+ * months (as release frequency counts them) and the published security
+ * advisories. Needs a GITHUB_TOKEN, because GraphQL does.
  */
 export async function fetchGitHubSlaInput(fullName: string, now: Date): Promise<SlaInput | { notMeasured: string }> {
   if (!process.env.GITHUB_TOKEN) return { notMeasured: "needs a GITHUB_TOKEN, because the issues are read through GraphQL" };
@@ -174,13 +159,16 @@ export async function fetchGitHubSlaInput(fullName: string, now: Date): Promise<
     const [open, closed, releases, advisories] = await Promise.all([
       issuePages(owner, name, ["OPEN"], null),
       issuePages(owner, name, ["CLOSED"], new Date(since).toISOString()),
-      stableReleases(owner, name),
+      finalReleases(fullName, new Date(now.getTime() - 365 * DAY_MS)),
       publishedAdvisories(fullName, since),
     ]);
     const closedInWindow = closed.nodes.filter((node) => node.closedAt !== null && Date.parse(node.closedAt) >= since);
     const notes = [
       `Measured over the open issues and the issues closed in the last ${WINDOW_DAYS} days, in working days (Monday to Friday, Europe/Amsterdam; public holidays count as working days).`,
     ];
+    if (!releases.measured) {
+      notes.push(`Stable releases could not be read (${releases.reason}), so no fix is dated by a release.`);
+    }
     if (!open.complete || !closed.complete) {
       notes.push(`Only the ${MAX_PAGES * PAGE_SIZE} most recently updated issues of each kind were read.`);
     }
@@ -188,7 +176,7 @@ export async function fetchGitHubSlaInput(fullName: string, now: Date): Promise<
       from: new Date(since).toISOString().slice(0, 10),
       to: now.toISOString().slice(0, 10),
       issues: [...open.nodes, ...closedInWindow].map(toSlaIssue),
-      releases,
+      releases: releases.measured ? releases.value.dates : [],
       advisories,
       notes,
     };

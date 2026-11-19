@@ -34,6 +34,7 @@ const sla: SlaSummary = {
   openBreaches: [
     { title: "Login fails", url: "https://github.com/org/repo/issues/3", category: "bug", kind: "response", due: "2026-11-09T09:00:00.000Z" },
   ],
+  openBreachCount: 1,
   fixesByRelease: 1,
   fixesByClose: 1,
   notes: ["No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."],
@@ -56,6 +57,11 @@ describe("SlaTable", () => {
     expect(screen.getByText(/response was due 2026-11-09/)).toBeTruthy();
     expect(screen.getByText(/The terms are proposals/)).toBeTruthy();
     expect(screen.getByText(/every bug counts as an other bug/)).toBeTruthy();
+  });
+
+  it("says when only the longest overdue breaches are listed", () => {
+    render(<SlaTable sla={{ ...sla, openBreachCount: 30 }} />);
+    expect(screen.getByText("Open issues past their due date (30), the 1 longest overdue")).toBeTruthy();
   });
 
   it("says why nothing was measured", () => {

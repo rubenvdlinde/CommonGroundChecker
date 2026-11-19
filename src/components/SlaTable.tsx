@@ -98,7 +98,10 @@ export default function SlaTable({ sla }: { sla: SlaSummary }) {
       </div>
       {sla.openBreaches.length > 0 && (
         <div>
-          <p className="text-xs font-semibold text-gray-700">Open issues past their due date ({sla.openBreaches.length})</p>
+          <p className="text-xs font-semibold text-gray-700">
+            Open issues past their due date ({sla.openBreachCount})
+            {sla.openBreachCount > sla.openBreaches.length && `, the ${sla.openBreaches.length} longest overdue`}
+          </p>
           <ul className="text-xs text-gray-700 space-y-0.5">
             {sla.openBreaches.map((breach) => (
               <li key={`${breach.url}-${breach.kind}`}>

@@ -328,7 +328,7 @@ async function releaseTags(owner: string, name: string): Promise<string[]> {
   });
 }
 
-async function releases(fullName: string, since: Date): Promise<Measured<Releases>> {
+export async function releases(fullName: string, since: Date): Promise<Measured<Releases>> {
   const published = await publishedReleases(fullName, since);
   if (published.dates.length > 0 || published.prereleases.length > 0) return { measured: true, value: published };
   if (!process.env.GITHUB_TOKEN) {

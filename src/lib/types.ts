@@ -103,7 +103,10 @@ export interface SlaSummary {
   from: string;
   to: string;
   categories: SlaCategorySummary[];
+  /** The open breaches, longest overdue first; at most 20 */
   openBreaches: SlaBreach[];
+  /** All open breaches, also those not listed */
+  openBreachCount: number;
   /** How fixes were dated: by the stable release after the closing change, or by closing as completed */
   fixesByRelease: number;
   fixesByClose: number;

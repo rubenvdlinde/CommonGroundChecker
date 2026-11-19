@@ -10,6 +10,7 @@ function node(overrides: Partial<Node> = {}): Node {
     createdAt: "2026-11-02T09:00:00Z",
     closedAt: null,
     stateReason: null,
+    authorAssociation: "NONE",
     author: { login: "reporter" },
     issueType: { name: "Bug" },
     labels: { nodes: [{ name: "Bug" }, { name: "Priority: Critical" }] },
@@ -21,7 +22,11 @@ function node(overrides: Partial<Node> = {}): Node {
 
 describe("toSlaIssue", () => {
   it("keeps lower case labels and the issue type", () => {
-    expect(toSlaIssue(node())).toMatchObject({ labels: ["bug", "priority: critical"], issueType: "Bug" });
+    expect(toSlaIssue(node())).toMatchObject({ labels: ["bug", "priority: critical"], issueType: "Bug", reportedByMaintainer: false });
+  });
+
+  it("knows an issue opened by a maintainer", () => {
+    expect(toSlaIssue(node({ authorAssociation: "MEMBER" })).reportedByMaintainer).toBe(true);
   });
 
   it("takes the first comment or label by a maintainer, not by the author, a bot or an outsider", () => {

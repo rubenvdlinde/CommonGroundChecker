@@ -13,6 +13,9 @@ export const SLA_TIME_ZONE = "Europe/Amsterdam";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
+/** How many open breaches a summary lists, longest overdue first. */
+export const OPEN_BREACHES_SHOWN = 20;
+
 function zoneOffsetMs(time: number, timeZone: string): number {
   const parts = new Intl.DateTimeFormat("en-GB", {
     timeZone,
@@ -92,6 +95,8 @@ export interface SlaIssue {
   issueType: string | null;
   /** The first comment or label by a maintainer, not the author and not a bot */
   firstResponseAt: string | null;
+  /** Opened by an owner, member or collaborator: it needs no response */
+  reportedByMaintainer: boolean;
   /** When the pull request or commit that closed the issue was merged or made */
   closingChangeAt: string | null;
 }
@@ -203,6 +208,7 @@ export function summarizeSla(
   const fixes = new Map<SlaCategory, TimesCounter>();
   const openBreaches: SlaBreach[] = [];
   let fixesByRelease = 0;
+  let reportedByMaintainers = 0;
   let fixesByClose = 0;
   const counter = (map: Map<SlaCategory, TimesCounter>, category: SlaCategory) => {
     const existing = map.get(category);
@@ -219,9 +225,10 @@ export function summarizeSla(
     const created = new Date(issue.createdAt);
     const isOpen = issue.closedAt === null;
 
-    if (term.respondDays !== null) {
+    if (issue.reportedByMaintainer) reportedByMaintainers += 1;
+    const responseTimes = term.respondDays !== null ? counter(responses, category) : null;
+    if (responseTimes && term.respondDays !== null && !issue.reportedByMaintainer) {
       const due = addWorkingDays(created, term.respondDays);
-      const responseTimes = counter(responses, category);
       if (issue.firstResponseAt) {
         const answered = new Date(issue.firstResponseAt);
         responseTimes.measured(workingDaysBetween(created, answered), answered.getTime() > due.getTime());
@@ -288,6 +295,11 @@ export function summarizeSla(
   } else {
     notes.push(`Vulnerabilities are not measured: ${input.advisories.notMeasured}.`);
   }
+  if (reportedByMaintainers > 0) {
+    notes.push(
+      `${reportedByMaintainers} of ${input.issues.length} issues were opened by the maintainers themselves; they have a fix term but no response term.`
+    );
+  }
   if ((counts.get("blocking-bug") ?? 0) === 0 && (counts.get("bug") ?? 0) > 0) {
     notes.push("No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug.");
   }
@@ -315,7 +327,8 @@ export function summarizeSla(
     from: input.from,
     to: input.to,
     categories,
-    openBreaches: openBreaches.sort((a, b) => a.due.localeCompare(b.due)),
+    openBreachCount: openBreaches.length,
+    openBreaches: openBreaches.sort((a, b) => a.due.localeCompare(b.due)).slice(0, OPEN_BREACHES_SHOWN),
     fixesByRelease,
     fixesByClose,
     notes,
@@ -331,6 +344,7 @@ export function slaNotMeasured(reason: string, now: Date): SlaSummary {
     to,
     categories: [],
     openBreaches: [],
+    openBreachCount: 0,
     fixesByRelease: 0,
     fixesByClose: 0,
     notes: [],
@@ -356,7 +370,7 @@ function parseTimes(raw: unknown): SlaTimes | null {
 /** The SLA summary of a stored check result; undefined when it is missing or malformed. */
 export function parseSla(raw: unknown): SlaSummary | undefined {
   if (!isRecord(raw)) return undefined;
-  const { notMeasured, from, to, categories, openBreaches, fixesByRelease, fixesByClose, notes } = raw;
+  const { notMeasured, from, to, categories, openBreaches, openBreachCount, fixesByRelease, fixesByClose, notes } = raw;
   if (notMeasured !== null && typeof notMeasured !== "string") return undefined;
   if (typeof from !== "string" || typeof to !== "string") return undefined;
   if (!Array.isArray(categories) || !Array.isArray(openBreaches) || !Array.isArray(notes)) return undefined;
@@ -390,6 +404,7 @@ export function parseSla(raw: unknown): SlaSummary | undefined {
         ? [{ title: item.title, url: item.url, category: item.category, kind: item.kind, due: item.due }]
         : []
     ),
+    openBreachCount: typeof openBreachCount === "number" ? openBreachCount : openBreaches.length,
     fixesByRelease: typeof fixesByRelease === "number" ? fixesByRelease : 0,
     fixesByClose: typeof fixesByClose === "number" ? fixesByClose : 0,
     notes: notes.filter((note): note is string => typeof note === "string"),

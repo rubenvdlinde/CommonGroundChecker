@@ -67,6 +67,7 @@ function issue(overrides: Partial<SlaIssue>): SlaIssue {
     labels: [],
     issueType: null,
     firstResponseAt: null,
+    reportedByMaintainer: false,
     closingChangeAt: null,
     ...overrides,
   };
@@ -174,6 +175,31 @@ describe("summarizeSla", () => {
     expect(summary.categories.find((row) => row.category === "feature-request")?.fix).toBeNull();
     expect(summary.categories.find((row) => row.category === "bug")?.fix).toBeNull();
     expect(summary.openBreaches).toEqual([]);
+  });
+
+  it("gives an issue opened by a maintainer no response term, and says how many there are", () => {
+    const summary = summarizeSla(
+      input([issue({ labels: ["question"], reportedByMaintainer: true }), issue({ labels: ["question"] })]),
+      DEFAULT_SLA_TERMS,
+      labels,
+      NOW
+    );
+    expect(summary.categories[0]).toMatchObject({ count: 2, response: { waiting: 1, breaches: 1 } });
+    expect(summary.notes).toContain(
+      "1 of 2 issues were opened by the maintainers themselves; they have a fix term but no response term."
+    );
+    const onlyMaintainers = summarizeSla(input([issue({ labels: ["question"], reportedByMaintainer: true })]), DEFAULT_SLA_TERMS, labels, NOW);
+    expect(onlyMaintainers.categories[0].response).toEqual({ measured: 0, median: null, worst: null, breaches: 0, waiting: 0 });
+  });
+
+  it("lists at most 20 open breaches, longest overdue first, and counts them all", () => {
+    const issues = Array.from({ length: 25 }, (_, index) =>
+      issue({ title: `Issue ${index}`, labels: ["question"], createdAt: `2026-10-${String(index + 1).padStart(2, "0")}T09:00:00Z` })
+    );
+    const summary = summarizeSla(input(issues), DEFAULT_SLA_TERMS, labels, NOW);
+    expect(summary.openBreachCount).toBe(25);
+    expect(summary.openBreaches).toHaveLength(20);
+    expect(summary.openBreaches[0].title).toBe("Issue 0");
   });
 
   it("says when no blocking label is used, so every bug counts as an other bug", () => {
