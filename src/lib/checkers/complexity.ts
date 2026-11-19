@@ -104,7 +104,7 @@ function extractSummary(output: string): {
   return null;
 }
 
-function extractAverageFromFunctionRows(output: string): {
+export function extractAverageFromFunctionRows(output: string): {
   averageCcn: number;
   maxCcn: number;
   functionCount: number;
@@ -133,7 +133,7 @@ function extractAverageFromFunctionRows(output: string): {
   }
 
   const total = ccnValues.reduce((sum, value) => sum + value, 0);
-  const maxCcn = Math.max(...ccnValues);
+  const maxCcn = ccnValues.reduce((max, value) => (value > max ? value : max), -Infinity);
   return {
     averageCcn: total / ccnValues.length,
     maxCcn,
