@@ -15,6 +15,7 @@ const REQUEST_TIMEOUT_MS = 20_000;
 const SEARCH_LIMIT = 60;
 const MAX_SEARCH_TERMS = 4;
 const MAX_CANDIDATES = 8;
+const MAX_LINKS_PER_FILE = 8;
 
 const SEVERITIES = ["critical", "high", "medium", "low", "unknown"] as const;
 type Severity = (typeof SEVERITIES)[number];
@@ -242,6 +243,14 @@ function matchPackage(
   return null;
 }
 
+/** True when one of the package's URLs belongs to the owner of one of the repositories. */
+function sharesOwner(pkg: ArtifactHubPackage, repositories: RepositoryRef[]): boolean {
+  return packageUrls(pkg).some(({ url }) => {
+    const target = repositoryOfUrl(url);
+    return !!target && repositories.some((ref) => ref.owner === target.owner);
+  });
+}
+
 /** Counts per severity in the Trivy report of one image. */
 export function countSeverities(imageReport: SecurityReport[string] | undefined): SeverityCounts {
   const counts: SeverityCounts = { critical: 0, high: 0, medium: 0, low: 0, unknown: 0 };
@@ -332,20 +341,6 @@ async function findPackage(
 ): Promise<{ match: Match | null; searched: string[]; evidence: string[] }> {
   const evidence: string[] = [];
 
-  const readmePath = tree.find((path) => README_FILES.includes(path.toLowerCase()));
-  const publiccodePath = findPubliccodeFile(tree);
-  for (const path of [readmePath, publiccodePath]) {
-    if (!path) continue;
-    const content = await context.provider.getFileContent(context, path);
-    for (const link of findArtifactHubLinks(content ?? "", baseUrl)) {
-      const pkg = await client.helmPackage(link.repository, link.name);
-      if (pkg) {
-        return { match: { pkg, strength: 4, how: `${path} links to it on Artifact Hub` }, searched: [], evidence };
-      }
-      evidence.push(`${path} links to ${link.repository}/${link.name}, which Artifact Hub does not know`);
-    }
-  }
-
   const repoFile = await readFirst(context, tree, (path) => {
     const name = filename(path);
     return name === "artifacthub-repo.yml" || name === "artifacthub-repo.yaml";
@@ -370,6 +365,26 @@ async function findPackage(
     { owner: context.owner.toLowerCase(), repo: context.repo.toLowerCase() },
     ...repositoriesOfLocations(helmChartLocations),
   ];
+
+  // A README also links to the charts of dependencies, so a link there must belong to the repository too.
+  const readmePath = tree.find((path) => README_FILES.includes(path.toLowerCase()));
+  const publiccodePath = findPubliccodeFile(tree);
+  for (const path of [publiccodePath, readmePath]) {
+    if (!path) continue;
+    const content = await context.provider.getFileContent(context, path);
+    for (const link of findArtifactHubLinks(content ?? "", baseUrl).slice(0, MAX_LINKS_PER_FILE)) {
+      const pkg = await client.helmPackage(link.repository, link.name);
+      if (!pkg) {
+        evidence.push(`${path} links to ${link.repository}/${link.name}, which Artifact Hub does not know`);
+        continue;
+      }
+      const isPubliccode = path === publiccodePath;
+      if (isPubliccode || names.includes(pkg.name.toLowerCase()) || sharesOwner(pkg, repositories)) {
+        return { match: { pkg, strength: 4, how: `${path} links to it on Artifact Hub` }, searched: [], evidence };
+      }
+      evidence.push(`${path} links to ${link.repository}/${link.name}, which has another name and owner, so it is taken for a dependency`);
+    }
+  }
 
   const candidates = new Map<string, ArtifactHubPackageSummary>();
   for (const name of names) {
@@ -428,7 +443,7 @@ export async function checkArtifactHub(
     if (!found.match) {
       return result(
         "fail",
-        `No Helm package on Artifact Hub belongs to this repository. Searched for ${found.searched.join(", ")}. Register the Helm chart on Artifact Hub, and link the package from the README if its name differs.`,
+        `No Helm package on Artifact Hub belongs to this repository. Searched for ${found.searched.join(", ")}. Register the Helm chart on Artifact Hub, and link the package from publiccode.yml or the README if its name differs.`,
         evidence
       );
     }

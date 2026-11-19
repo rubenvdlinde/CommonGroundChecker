@@ -115,7 +115,7 @@ describe("checkArtifactHub", () => {
     const result = await checkArtifactHub(contextFor("someone", "podinfo"), ["Dockerfile"], { now: NOW });
     expect(result.status).toBe("fail");
     expect(result.message).toBe(
-      "No Helm package on Artifact Hub belongs to this repository. Searched for podinfo. Register the Helm chart on Artifact Hub, and link the package from the README if its name differs."
+      "No Helm package on Artifact Hub belongs to this repository. Searched for podinfo. Register the Helm chart on Artifact Hub, and link the package from publiccode.yml or the README if its name differs."
     );
   });
 
@@ -158,8 +158,8 @@ describe("checkArtifactHub", () => {
     );
   });
 
-  it("prefers an Artifact Hub link in the README over a search", async () => {
-    const context = contextFor("org", "component", {
+  it("prefers an Artifact Hub link in the README to a chart of the same owner over a search", async () => {
+    const context = contextFor("stefanprodan", "podinfo-app", {
       "README.md": "[![Artifact Hub](https://img.shields.io/badge)](https://artifacthub.io/packages/helm/podinfo/podinfo)",
     });
     const result = await checkArtifactHub(context, ["README.md", "Dockerfile"], { now: NOW });
@@ -167,6 +167,28 @@ describe("checkArtifactHub", () => {
     expect(result.status).toBe("pass");
     expect(result.evidence).toContain("Matched because README.md links to it on Artifact Hub");
     expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/packages/search"))).toBe(false);
+  });
+
+  it("takes a README link to another owner's chart for a dependency, and searches on", async () => {
+    const context = contextFor("someone", "component", {
+      "README.md": "Install the database first: https://artifacthub.io/packages/helm/podinfo/podinfo",
+    });
+    const result = await checkArtifactHub(context, ["README.md", "Dockerfile"], { now: NOW });
+
+    expect(result.status).toBe("fail");
+    expect(result.evidence).toContain(
+      "README.md links to podinfo/podinfo, which has another name and owner, so it is taken for a dependency"
+    );
+  });
+
+  it("trusts a link in publiccode.yml", async () => {
+    const context = contextFor("someone", "component", {
+      "publiccode.yml": "url: https://github.com/someone/component\n# https://artifacthub.io/packages/helm/podinfo/podinfo\n",
+    });
+    const result = await checkArtifactHub(context, ["publiccode.yml", "Dockerfile"], { now: NOW });
+
+    expect(result.status).toBe("pass");
+    expect(result.evidence).toContain("Matched because publiccode.yml links to it on Artifact Hub");
   });
 
   it("matches on the repositoryID in artifacthub-repo.yml", async () => {
