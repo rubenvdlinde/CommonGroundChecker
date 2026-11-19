@@ -26,7 +26,7 @@ const EXPECTED_MODEL: Record<string, string[]> = {
     "supply-chain",
   ],
   maintainability: ["analysability", "modifiability", "testability", "modularity", "reusability", "testing"],
-  governance: ["licensing", "ownership", "maintenance", "community-documents", "usage-and-ecosystem"],
+  governance: ["licensing", "ownership", "maintenance", "community-documents", "usage-and-ecosystem", "project-health"],
   "deployment-operations": ["containerisation", "release-management"],
   architecture: ["api", "layering"],
 };
@@ -69,9 +69,13 @@ describe("rating docs data", () => {
     }
   });
 
-  it("only leaves layering and usage out of the rating, and only usage is informative", () => {
+  it("only leaves layering, usage and project health out of the rating, and only usage is informative", () => {
     const aspects = RATING_DOCS.flatMap((category) => category.aspects);
-    expect(aspects.filter((a) => !a.counted).map((a) => a.id).sort()).toEqual(["layering", "usage-and-ecosystem"]);
+    expect(aspects.filter((a) => !a.counted).map((a) => a.id).sort()).toEqual([
+      "layering",
+      "project-health",
+      "usage-and-ecosystem",
+    ]);
     expect(aspects.filter((a) => a.informative).map((a) => a.id)).toEqual(["usage-and-ecosystem"]);
   });
 

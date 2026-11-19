@@ -1,5 +1,6 @@
 import AspectBar from "@/components/AspectBar";
 import MeasurementTable, { StarsText } from "@/components/MeasurementTable";
+import MetricTable from "@/components/MetricTable";
 import RatingBadge from "@/components/RatingBadge";
 import UsageTable from "@/components/UsageTable";
 import type { AspectDefinition } from "@/lib/aspects";
@@ -100,6 +101,10 @@ function AspectComposition({ aspect, results }: { aspect: AspectDefinition; resu
   if (composition.type === "usage") {
     return <UsageTable caption={caption} sources={composition.sources} />;
   }
+  if (composition.type === "metrics") {
+    if (composition.metrics.length === 0) return <p className="text-xs text-gray-600">It was not measured.</p>;
+    return <MetricTable caption={caption} metrics={composition.metrics} />;
+  }
   if (composition.criteria.length === 0) {
     return <p className="text-xs text-gray-600">None of its criteria were checked.</p>;
   }
@@ -110,6 +115,7 @@ function AspectComposition({ aspect, results }: { aspect: AspectDefinition; resu
 
 function AspectValue({ aspect, aspectRating }: { aspect: AspectDefinition; aspectRating?: AspectRating }) {
   const rating = aspectRating?.rating ?? null;
+  if (aspect.source.type === "informative") return null;
   if (rating === null) return <span className="text-xs text-gray-600">not measured</span>;
   const count = documentCountText(aspectRating);
   return (
@@ -142,7 +148,11 @@ function AspectRow({
           headingId={headingId}
           note={note}
         />
-        <AspectBar title={aspect.title} rating={aspectRating?.rating ?? null} />
+        {aspect.source.type === "informative" ? (
+          <p className="text-xs text-gray-600">Shown for information, without stars.</p>
+        ) : (
+          <AspectBar title={aspect.title} rating={aspectRating?.rating ?? null} />
+        )}
         <AspectValue aspect={aspect} aspectRating={aspectRating} />
       </div>
       <details className="mt-1">
@@ -232,9 +242,9 @@ function CategorySection({
         <RatingBadge rating={rating} label={`${category} rating`} />
       </div>
       {aspects.map((aspect) => {
-        if (aspect.source.type === "informative") {
-          const composition = aspectComposition(aspect, results);
-          const sources = composition.type === "usage" ? composition.sources : [];
+        const composition = aspect.source.type === "informative" ? aspectComposition(aspect, results) : null;
+        if (composition?.type === "usage") {
+          const sources = composition.sources;
           return sources.length > 0 ? (
             <InformativeAspectRow key={aspect.id} aspect={aspect} sources={sources} docSlug={docSlug} />
           ) : null;

@@ -68,6 +68,13 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         explanation:
           "Checks whether a SECURITY.md file exists, explaining how vulnerabilities should be reported privately and how security handling works.",
       },
+      {
+        id: "projecthealth",
+        label: "Project health (CHAOSS)",
+        explanation:
+          "Shows six CHAOSS metrics from the GitHub or GitLab API: contributor absence factor, organisational diversity, change request closure ratio, time to first response, issue response time and release frequency. This criterion is informative and does not contribute to the score.",
+        requirementLevel: "informative",
+      },
     ],
   },
   {

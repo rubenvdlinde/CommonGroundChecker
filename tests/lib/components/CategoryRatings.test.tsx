@@ -119,6 +119,44 @@ describe("CategoryRatings", () => {
     expect(within(row).getByRole("link").getAttribute("href")).toBe("#criterion-eupllicense");
   });
 
+  it("shows an informative aspect without a meter, with its metrics and their CHAOSS links", () => {
+    const health: CheckResult = {
+      ...result("projecthealth", "info"),
+      metrics: [
+        {
+          id: "contributor-absence-factor",
+          name: "Contributor Absence Factor",
+          referenceUrl: "https://chaoss.community/kb/metric-contributor-absence-factor/",
+          value: "1",
+          explanation: "One person made half of the commits.",
+        },
+        {
+          id: "issue-response-time",
+          name: "Issue Response Time",
+          referenceUrl: "https://chaoss.community/kb/metric-issue-response-time/",
+          value: null,
+          explanation: "Not measured: the repository has its issue tracker switched off.",
+        },
+      ],
+    };
+    render(<CategoryRatings results={[health]} categoryRatings={{}} aspectRatings={{ "project-health": { rating: null } }} />);
+
+    const group = screen.getByRole("group", { name: /^Project health/ });
+    expect(within(group).queryByRole("meter")).toBeNull();
+    expect(within(group).getByRole("heading", { name: /^Project health\s*\(informative, not rated\)$/ })).toBeTruthy();
+    expect(within(group).getAllByText(/informative, not rated/)).toHaveLength(1);
+    const table = within(group).getByRole("table", { name: "What Project health is made of" });
+    const absence = within(table).getByRole("row", { name: /Contributor Absence Factor/ });
+    expect(within(absence).getAllByRole("cell").map((cell) => cell.textContent)).toEqual([
+      "1",
+      "One person made half of the commits.",
+    ]);
+    expect(within(absence).getByRole("link").getAttribute("href")).toBe(
+      "https://chaoss.community/kb/metric-contributor-absence-factor/"
+    );
+    expect(within(within(table).getByRole("row", { name: /Issue Response Time/ })).getByText("not measured")).toBeTruthy();
+  });
+
   it("keeps each aspect's table collapsed under its bar, with a labelled summary", () => {
     renderRatings();
 

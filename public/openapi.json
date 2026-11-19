@@ -920,6 +920,14 @@
                 "$ref": "#/components/schemas/Endorsement"
               }
             }
+          },
+          "openDropCount": {
+            "type": "integer",
+            "description": "Drops not yet recovered"
+          },
+          "overdueDropCount": {
+            "type": "integer",
+            "description": "Open drops past their fix-by date"
           }
         },
         "required": [
@@ -1073,6 +1081,16 @@
           },
           "isRegister": {
             "type": "boolean"
+          },
+          "slaLabels": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "The repository's own labels for the SLA times, on top of GitHub's default labels: label name to blocking-bug, bug, question, documentation, feature-request, no-fix-term or ignore",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -1382,6 +1400,13 @@
             "items": {
               "$ref": "#/components/schemas/RepoAnalysisOutput"
             }
+          },
+          "drops": {
+            "type": "array",
+            "description": "The drops of the repository, newest first",
+            "items": {
+              "$ref": "#/components/schemas/MaintenanceDrop"
+            }
           }
         },
         "required": [
@@ -1457,6 +1482,32 @@
           },
           "defaultSpectralRulesetSource": {
             "type": "string"
+          },
+          "fixTerms": {
+            "type": "object",
+            "description": "Days to recover a drop; proposals"
+          },
+          "kpiTargets": {
+            "type": "object",
+            "description": "Proposed target values per CHAOSS metric id: at least min, at most max",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "min": {
+                  "type": "number"
+                },
+                "max": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "slaTerms": {
+            "type": "object",
+            "description": "Proposed SLA response and fix terms per issue category, in working days",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         },
         "required": [
@@ -2035,6 +2086,97 @@
         "required": [
           "organisation",
           "components"
+        ]
+      },
+      "MaintenanceDrop": {
+        "type": "object",
+        "description": "A criterion, rating or verdict that got worse since the previous analysis of the same scanned ref kind",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "repoId": {
+            "type": "string"
+          },
+          "analysisId": {
+            "type": "string"
+          },
+          "previousAnalysisId": {
+            "type": "string"
+          },
+          "scannedRefKind": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "criterion",
+              "rating",
+              "verdict"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "description": "The criterion id, overall or a category name, or suitable"
+          },
+          "label": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "detectedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fixTermDays": {
+            "type": "integer"
+          },
+          "fixBy": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "resolvedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "resolvedAnalysisId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "overdue": {
+            "type": "boolean",
+            "description": "Open past its fix-by date"
+          }
+        },
+        "required": [
+          "id",
+          "repoId",
+          "analysisId",
+          "previousAnalysisId",
+          "scannedRefKind",
+          "kind",
+          "subject",
+          "label",
+          "from",
+          "to",
+          "detectedAt",
+          "fixTermDays",
+          "fixBy",
+          "resolvedAt",
+          "resolvedAnalysisId",
+          "overdue"
         ]
       }
     }

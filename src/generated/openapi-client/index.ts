@@ -30,6 +30,7 @@ export type { OrganisationSummary } from './models/OrganisationSummary';
 export type { Rating } from './models/Rating';
 export type { RepoAnalysisInput } from './models/RepoAnalysisInput';
 export type { RepoAnalysisOutput } from './models/RepoAnalysisOutput';
+export type { MaintenanceDrop } from './models/MaintenanceDrop';
 export type { RepoHistoryResponse } from './models/RepoHistoryResponse';
 export { RepoMeta } from './models/RepoMeta';
 export type { RepoMetadata } from './models/RepoMetadata';

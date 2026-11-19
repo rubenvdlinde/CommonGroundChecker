@@ -222,6 +222,12 @@ export default function HistoryPageClient({
                     </div>
                     <div className="text-right text-xs text-gray-500">
                       <p>{repository.analysisCount} analyses</p>
+                      {(repository.openDropCount ?? 0) > 0 && (
+                        <p className={(repository.overdueDropCount ?? 0) > 0 ? "font-semibold text-red-700" : "text-amber-800"}>
+                          {repository.openDropCount} open {repository.openDropCount === 1 ? "drop" : "drops"}
+                          {(repository.overdueDropCount ?? 0) > 0 && `, ${repository.overdueDropCount} overdue`}
+                        </p>
+                      )}
                       {latest && (
                         <p>
                           Last: {new Date(latest.checkedAt).toLocaleString("nl-NL")}

@@ -61,6 +61,25 @@ export interface RatingCategoryDoc {
 }
 
 const SOURCES = {
+  chaossMetrics: { title: "CHAOSS metrics and metrics models", url: "https://chaoss.community/kb-metrics-and-metrics-models/" },
+  chaossAbsenceFactor: {
+    title: "CHAOSS: Contributor Absence Factor",
+    url: "https://chaoss.community/kb/metric-contributor-absence-factor/",
+  },
+  chaossOrganizationalDiversity: {
+    title: "CHAOSS: Organizational Diversity",
+    url: "https://chaoss.community/kb/metric-organizational-diversity/",
+  },
+  chaossClosureRatio: {
+    title: "CHAOSS: Change Request Closure Ratio",
+    url: "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+  },
+  chaossFirstResponse: {
+    title: "CHAOSS: Time to First Response",
+    url: "https://chaoss.community/kb/metric-time-to-first-response/",
+  },
+  chaossIssueResponse: { title: "CHAOSS: Issue Response Time", url: "https://chaoss.community/kb/metric-issue-response-time/" },
+  chaossReleaseFrequency: { title: "CHAOSS: Release Frequency", url: "https://chaoss.community/kb/metric-release-frequency/" },
   iso25010: { title: "ISO/IEC 25010 product quality model", url: "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010" },
   qualityModels: {
     title: "SIG quality models",
@@ -646,6 +665,39 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
           SOURCES.depsDevApi,
           SOURCES.githubContributors,
           SOURCES.ossRegister,
+        ],
+      },
+      {
+        id: "project-health",
+        title: "Project health",
+        meaning:
+          "Whether the project is alive and carried by more than one person or organisation: who makes the changes, how quickly contributions and questions get an answer, and how often a release comes out. A component that a municipality depends on should not stop when one person leaves.",
+        criteria: [
+          {
+            checkId: "projecthealth",
+            name: "Project health (CHAOSS)",
+            tool: "the GitHub or GitLab REST API the checker already uses, read with the GITHUB_TOKEN or GITLAB_TOKEN when one is set",
+          },
+        ],
+        rating: [
+          "This aspect is informative. It shows six metrics from the CHAOSS project, each with its value and what it means, but it gives no stars and does not count in the Governance rating. Activity says something about risk, not about quality, and the values depend on how a project works: a project that merges through one maintainer is not worse by definition.",
+          "Contributor Absence Factor (bus factor): the fewest people who together made half of the commits of the last 12 months on the default branch. Bots are left out. Read 1 as a warning that the project depends on one person; 3 or more is a project that survives a departure.",
+          "Organizational Diversity: the share of recent commits (up to the latest 300 on GitHub and 500 on GitLab) per organisation, after the repository's .mailmap. The organisation is the email domain; for a personal, hidden or noreply address, such as gmail.com or GitHub's noreply addresses, it is the company on the author's public GitHub profile, looked up while counting (at most 200 profiles per scan, set with CGC_PROFILE_LOOKUP_LIMIT; GitLab does not say which account made a commit, so there these stay unknown). A company that names the owner counts as the owner's domain. Authors whose organisation stays unknown are counted apart, and when that is more than half of them the metric says not measured. Read one organisation with nearly all commits as a single-supplier project.",
+          "Change Request Closure Ratio: the pull or merge requests closed (merged or not) in the last 90 days divided by those opened, bots included. Around 1 the backlog is stable; well below 1 it grows.",
+          "Time to First Response and Issue Response Time: the median time to the first comment (on a pull or merge request also a review) by someone other than the author, over the 15 latest pull or merge requests and the 15 latest issues opened by people between 90 and 7 days ago. The week's margin gives every item time to get an answer. Items without an answer are counted apart. A few days is normal for a volunteer project; no response at all means contributions or questions go unheard, or that one person works alone.",
+          "Release Frequency: the final releases published in the last 12 months, from GitHub or GitLab releases. Pre-releases and drafts are left out and counted apart. When a GitHub repository has no releases, its version tags (such as 1.2.3) are dated through one GraphQL call, which needs a GITHUB_TOKEN.",
+          "A metric the API gives no data for says \"not measured\" with the reason, for example a switched-off issue tracker, or a missing token for the calls per sampled item.",
+          "No personal data is stored. Logins, email addresses and profile companies are used only while counting; the result holds counts, dates and durations. A domain or company is named only when at least two authors share it, so it names an organisation and not a person.",
+        ],
+        counted: false,
+        sources: [
+          SOURCES.chaossMetrics,
+          SOURCES.chaossAbsenceFactor,
+          SOURCES.chaossOrganizationalDiversity,
+          SOURCES.chaossClosureRatio,
+          SOURCES.chaossFirstResponse,
+          SOURCES.chaossIssueResponse,
+          SOURCES.chaossReleaseFrequency,
         ],
       },
     ],

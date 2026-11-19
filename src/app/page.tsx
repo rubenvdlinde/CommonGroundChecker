@@ -167,6 +167,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   complexity: "recommended",
   maintainability: "recommended",
   codemetrics: "informative",
+  projecthealth: "informative",
   changelog: "recommended",
   coverage: "mandatory",
   owaspsecurecoding: "recommended",
@@ -200,6 +201,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "OWASP Secure Coding": "owaspsecurecoding",
   "Contributing guide": "contributing",
   "Code of Conduct": "codeofconduct",
+  "Project health": "projecthealth",
   "Security policy": "security",
   "Semantic Versioning": "semver",
 };
@@ -406,6 +408,14 @@ const CRITERIA_OVERVIEW = [
     desc: "CODE_OF_CONDUCT.md present",
     tooltip:
       "Checks whether a Code of Conduct file exists, documenting expected behavior and incident reporting for contributors.",
+  },
+  {
+    icon: "📈",
+    label: "Project health",
+    category: "Governance" as CriteriaCategory,
+    desc: "CHAOSS activity metrics, shown without stars",
+    tooltip:
+      "Shows six CHAOSS metrics from the GitHub or GitLab API: the bus factor, the spread over organisations, the change request closure ratio, the time to a first response on change requests and issues, and the release frequency. Informative: it does not count in any rating.",
   },
   {
     icon: "🔒",

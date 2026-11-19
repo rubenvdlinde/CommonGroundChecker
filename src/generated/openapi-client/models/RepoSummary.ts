@@ -53,6 +53,14 @@ export type RepoSummary = {
      */
     nextCheckAt: string;
     analysisCount: number;
+    /**
+     * Drops not yet recovered
+     */
+    openDropCount?: number;
+    /**
+     * Open drops past their fix-by date
+     */
+    overdueDropCount?: number;
     latestAnalysis: any | null;
 };
 

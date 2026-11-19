@@ -29,6 +29,7 @@ import { checkOwaspSecureCoding } from "./owaspSecureCoding";
 import { checkEuplLicense } from "./eupl";
 import { checkUsage } from "./usage";
 import { USAGE_CHECK_ID } from "../usage";
+import { checkProjectHealth } from "./projectHealth";
 import {
   getActiveScoringConfig,
 } from "./config";
@@ -89,6 +90,8 @@ interface RunChecksOptions {
   dockerLocations?: string[];
   apiSpecificationLocations?: string[];
   isRegister?: boolean;
+  /** The repository's own labels for the SLA times, on top of GitHub's default labels */
+  slaLabels?: Record<string, string> | null;
 }
 
 export async function runChecks(
@@ -158,6 +161,11 @@ export async function runChecks(
     checkMaintenance(context, tree),
     checkFiveLayer(context, tree, meta),
     checkHelmChart(context, tree, options?.helmChartLocations ?? []),
+    checkProjectHealth(context, meta, new Date(), {
+      kpiTargets: scoringConfig.kpiTargets,
+      slaTerms: scoringConfig.slaTerms,
+      slaLabels: options?.slaLabels,
+    }),
   ]);
   const usagePromise = networkChecksPromise.then(([, , , publiccodeAnalysis]) =>
     checkUsage(context, meta, tree, publiccodeAnalysis.result.publiccode, {
@@ -204,7 +212,7 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator, usage] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator, usage] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -272,6 +280,7 @@ export async function runChecks(
     semver,
     fivelayer,
     helmchart,
+    projecthealth,
   ];
 
   const categoryAggregates = results.reduce(
@@ -364,6 +373,7 @@ export async function runChecks(
     fivelayer,
     helmchart,
     usage,
+    projecthealth,
   ].map((result) => ({
     ...result,
     requirementLevel:
@@ -373,10 +383,12 @@ export async function runChecks(
   // Rated before the status stars are filled in, so a criterion without a scale is rated from its status.
   const { rating, categoryRatings, aspectRatings } = computeRatings(resultsWithRequirementLevels, scoringConfig);
   const endorsement = computeEndorsement(resultsWithRequirementLevels, rating, scoringConfig);
-  const resultsWithStars = resultsWithRequirementLevels.map((result) => ({
-    ...result,
-    starRating: result.id === USAGE_CHECK_ID ? undefined : (result.starRating ?? statusToStars(result.status)),
-  }));
+  // An informative criterion is shown without stars.
+  const resultsWithStars = resultsWithRequirementLevels.map((result) =>
+    result.requirementLevel === "informative" || result.id === USAGE_CHECK_ID
+      ? result
+      : { ...result, starRating: result.starRating ?? statusToStars(result.status) }
+  );
 
   return {
     repoUrl,

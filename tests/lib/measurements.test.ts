@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { measurementsForAspect, parseMeasurements } from "@/lib/measurements";
+import { measurementsForAspect, parseMeasurements, parseMetrics } from "@/lib/measurements";
 import { mapMaintainabilityReport, type MaintainabilityReport } from "@/lib/checkers/maintainability";
 import openZaakFixture from "../fixtures/maintainability-report-open-zaak.json";
 
@@ -47,5 +47,25 @@ describe("measurementsForAspect", () => {
 
     expect(measurementsForAspect(groups, "testability").map((group) => group.id)).toEqual(["a"]);
     expect(measurementsForAspect(undefined, "testability")).toEqual([]);
+  });
+});
+
+describe("parseMetrics", () => {
+  const metric = {
+    id: "release-frequency",
+    name: "Release Frequency",
+    referenceUrl: "https://chaoss.community/kb/metric-release-frequency/",
+    value: "4 in 12 months",
+    explanation: "Four releases.",
+  };
+
+  it("reads back stored metrics, a not measured one included", () => {
+    const notMeasured = { ...metric, id: "issue-response-time", value: null, explanation: "Not measured: no issues." };
+    expect(parseMetrics([metric, notMeasured])).toEqual([metric, notMeasured]);
+  });
+
+  it("leaves out malformed metrics and links that are not https", () => {
+    expect(parseMetrics([{ ...metric, value: 4 }, { ...metric, referenceUrl: "javascript:alert(1)" }, "x"])).toBeUndefined();
+    expect(parseMetrics(undefined)).toBeUndefined();
   });
 });

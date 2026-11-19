@@ -300,4 +300,23 @@ describe("HistoryPageClient", () => {
     expect(footerOf(card)).toEqual(["Version: unknown"]);
     expect(within(card).queryByText(/suitable|failure|warning/i)).toBeNull();
   });
+
+  it("shows the open and overdue drops on a repository's card", () => {
+    render(
+      <HistoryPageClient
+        sort="date"
+        direction="desc"
+        query=""
+        repositories={[
+          repositoryWith({ id: "late", name: "late", openDropCount: 2, overdueDropCount: 1 }),
+          repositoryWith({ id: "open", name: "open", openDropCount: 1, overdueDropCount: 0 }),
+          repositoryWith({ id: "fine", name: "fine", openDropCount: 0, overdueDropCount: 0 }),
+        ]}
+      />
+    );
+
+    expect(screen.getByText("2 open drops, 1 overdue")).toBeTruthy();
+    expect(screen.getByText("1 open drop")).toBeTruthy();
+    expect(screen.queryAllByText(/open drop/)).toHaveLength(2);
+  });
 });
