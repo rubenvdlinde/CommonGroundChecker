@@ -614,7 +614,7 @@ export default function HomePage() {
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                 <ScoreBadge score={report.score} />
-                <div className="flex-1 min-w-0 w-full space-y-3">
+                <div className="flex-1 w-full space-y-3">
                   <RepoMeta
                     owner={report.owner}
                     repo={report.repo}
