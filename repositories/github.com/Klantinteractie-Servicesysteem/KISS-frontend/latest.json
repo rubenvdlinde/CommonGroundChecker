@@ -28,33 +28,35 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:13:05.382Z",
+  "lastCheckedAt": "2026-11-19T23:02:57.765Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:26.407Z",
-  "updatedAt": "2026-11-19T14:13:05.382Z",
+  "updatedAt": "2026-11-19T23:02:57.765Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-13-05-382Z",
+  "id": "2026-11-19T23-02-57-765Z",
   "repoId": "github.com/Klantinteractie-Servicesysteem/KISS-frontend",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:13:05.382Z",
-  "createdAt": "2026-11-19T14:13:05.382Z",
+  "checkedAt": "2026-11-19T23:02:57.765Z",
+  "createdAt": "2026-11-19T23:02:57.765Z",
   "version": "v3.2.2",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v3.2.2",
+  "scannedRefKind": "release",
+  "scannedCommit": "39cd6d9a0c292f549c235ce908a0945408526837",
   "score": 65,
-  "rating": 3.4,
+  "rating": 3.3,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 1.8,
+   "Security": 1.3,
    "Architecture": 4.3,
    "Software Quality": 4.1,
    "Deployment & Operations": 4.3
@@ -77,6 +79,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -92,6 +97,9 @@
    "dependency-management": {
     "rating": null
    },
+   "container-images": {
+    "rating": 0.5
+   },
    "secrets": {
     "rating": null
    },
@@ -106,6 +114,9 @@
    },
    "layering": {
     "rating": 3
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 3.7
@@ -146,7 +157,7 @@
   },
   "issueCounts": {
    "errors": 4,
-   "warnings": 7
+   "warnings": 8
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -157,7 +168,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 25,685 lines of code, 1,982 functions, 1,930 files analyzed.",
+    "message": "Code metrics: 25,804 lines of code, 2,017 functions, 1,965 files analyzed.",
     "evidence": [
      ".github/scripts/release-notes.cjs",
      "Kiss.Bff.EndToEndTest/AfhandelingForm/AfhandelingFormScenarios.cs",
@@ -170,9 +181,9 @@
      "Kiss.Bff.EndToEndTest/AnonymousContactmomentZaak/Helpers/Locators.cs",
      "Kiss.Bff.EndToEndTest/AnonymousContactverzoek/AnonymousContactverzoekPersonCompany.cs",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 25,685",
-     "Function count: 1,982",
-     "Files analyzed: 1,930"
+     "Total lines of code (NLOC): 25,804",
+     "Function count: 2,017",
+     "Files analyzed: 1,965"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -289,7 +300,7 @@
      ".github/workflows/generate-helm-docs.yml",
      ".github/workflows/generate.helm-schema.yml",
      ".github/workflows/linter.yml",
-     ".github/workflows/playwright-new-environment.yaml"
+     ".github/workflows/playwright.yaml"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
     "requirementLevel": "mandatory",
@@ -305,6 +316,20 @@
     "referenceUrl": "https://www.cisa.gov/sbom",
     "requirementLevel": "mandatory",
     "starRating": 3
+   },
+   {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "fail",
+    "message": "No Helm package on Artifact Hub belongs to this repository. Searched for kiss-elastic, kiss-chart, kiss-frontend. Register the Helm chart on Artifact Hub, and link the package from publiccode.yml or the README if its name differs.",
+    "evidence": [
+     "Container component: the repository has a Helm chart (docs/scripts/elastic/eck/Chart.yaml)"
+    ],
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 1
    },
    {
     "id": "documentation",
@@ -378,18 +403,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 2.06 (threshold: 15); Max CCN 41.00 (threshold: 30). Threshold exceeded: MaxCCN 41.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 2.04 (threshold: 15); Max CCN 41.00 (threshold: 30). Threshold exceeded: MaxCCN 41.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.06 (threshold: 15)",
+     "Average CCN: 2.04 (threshold: 15)",
      "Max CCN: 41.00 (threshold: 30)",
-     "8      1     56      0      13 PabcClientTests::GetApplicationRolesPerEntityTypeAsync_ReturnsNull_WhenPabcReturnsError@75-87@/tmp/cgchecker-repo-U1eCrr/repo/Kiss.Bff.Test/PabcClientTests.cs",
-     "8      1     60      0      13 PabcClientTests::GetKissApplicationRolesAsync_ReturnsEmptySet_WhenPabcReturnsError@125-137@/tmp/cgchecker-repo-U1eCrr/repo/Kiss.Bff.Test/PabcClientTests.cs",
-     "11      2     81      1      11 ZaaksysteemController::LogAndReturnConfigError@238-248@/tmp/cgchecker-repo-U1eCrr/repo/Kiss.Bff/Extern/ZaakGerichtWerken/Zaaksysteem/ZaaksysteemController.cs",
-     "3      1     11      1       3 onError@30-32@/tmp/cgchecker-repo-U1eCrr/repo/src/services/use-loader.ts",
-     "10      1     38      1      11 error@89-99@/tmp/cgchecker-repo-U1eCrr/repo/src/services/service-data.ts",
-     "1      1     10      1       1 validate@6-6@/tmp/cgchecker-repo-U1eCrr/repo/src/components/non-blocking-forms/NonBlockingErrors.vue"
+     "8      1     56      0      13 PabcClientTests::GetApplicationRolesPerEntityTypeAsync_ReturnsNull_WhenPabcReturnsError@75-87@/tmp/cgchecker-repo-ncpNa8/repo/Kiss.Bff.Test/PabcClientTests.cs",
+     "8      1     60      0      13 PabcClientTests::GetKissApplicationRolesAsync_ReturnsEmptySet_WhenPabcReturnsError@125-137@/tmp/cgchecker-repo-ncpNa8/repo/Kiss.Bff.Test/PabcClientTests.cs",
+     "11      2     81      1      11 ZaaksysteemController::LogAndReturnConfigError@238-248@/tmp/cgchecker-repo-ncpNa8/repo/Kiss.Bff/Extern/ZaakGerichtWerken/Zaaksysteem/ZaaksysteemController.cs",
+     "56      1    505      0      96 AfhandelingFormScenarios::TestErrorValidationOfAfhandelingForm@41-136@/tmp/cgchecker-repo-ncpNa8/repo/Kiss.Bff.EndToEndTest/AfhandelingForm/AfhandelingFormScenarios.cs",
+     "3      1     11      1       3 onError@30-32@/tmp/cgchecker-repo-ncpNa8/repo/src/services/use-loader.ts",
+     "10      1     38      1      11 error@89-99@/tmp/cgchecker-repo-ncpNa8/repo/src/services/service-data.ts"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -402,11 +427,11 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 4.055,
+    "rating": 4.045,
     "aspectRatings": {
-     "analysability": 3.68,
+     "analysability": 3.67,
      "modifiability": 3.62,
-     "testability": 3.53,
+     "testability": 3.52,
      "modularity": 5.5,
      "reusability": 4.2
     },
@@ -454,7 +479,7 @@
        },
        {
         "label": "Vue",
-        "value": "7.2%",
+        "value": "7.3%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -541,7 +566,7 @@
        },
        {
         "label": "TypeScript, more than 15 lines",
-        "value": "51.2%",
+        "value": "51.3%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -574,7 +599,7 @@
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "41.2%",
+        "value": "41.3%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -585,7 +610,7 @@
        },
        {
         "label": "Vue, more than 30 lines",
-        "value": "20.4%",
+        "value": "20.5%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -683,7 +708,7 @@
        },
        {
         "label": "TypeScript, complexity above 5",
-        "value": "21.9%",
+        "value": "22.0%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -716,7 +741,7 @@
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "19.1%",
+        "value": "19.2%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -971,10 +996,10 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.00 to 4.11 (4 of 5 stars) over 210 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 3.99 to 4.10 (4 of 5 stars) over 210 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★☆ 3.8 (javascript 5.5, python 5.5, typescript 4.7, vue 3.3)",
-     "Unit size: ★★★★☆ 3.6 (python 0.8, typescript 3.3, vue 4.0)",
+     "Duplication: ★★★★☆ 3.8 (javascript 5.5, python 5.5, typescript 4.7, vue 3.2)",
+     "Unit size: ★★★★☆ 3.5 (python 0.8, typescript 3.3, vue 4.0)",
      "Unit complexity: ★★☆☆☆ 1.6 (python 0.6, typescript 1.6, vue 1.5)",
      "Unit interfacing: ★★★★★ 4.8 (python 1.5, typescript 4.7, vue 5.2)",
      "Module coupling: ★★★★★ 5.5 (python 5.5)",
@@ -982,7 +1007,7 @@
      "Component entanglement: ★★★★★ 5.5 (python 5.5)",
      "Lever: unit complexity in typescript, about 45 lines to fix for half a star",
      "Lever: unit complexity in vue, about 153 lines to fix for half a star",
-     "Lever: duplication in vue, about 349 lines to fix for half a star"
+     "Lever: duplication in vue, about 355 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -991,7 +1016,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "fail",
-    "message": "Multiple risky coding patterns were detected (4 findings across 444 scanned source files). Review them against OWASP secure coding guidance.",
+    "message": "Multiple risky coding patterns were detected (4 findings across 443 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
      "Possible hardcoded secret: Kiss.Bff.Test/PostKlantContactenCustomProxyTests.cs",
      "Possible hardcoded secret: Kiss.Bff.Test/ZaakGerichtWerkenUnitTests.cs",
@@ -1067,63 +1092,8 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice); Interaction layer (frontend / portal); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
     "evidence": [
-     "Found path segment \"frontend\" in KISS-frontend.esproj",
-     "Found path segment \"frontend\" in KISS-frontend.sln",
-     "Found path segment \"ui\" in Kiss.Bff.EndToEndTest/Infrastructure/ApiClients/Dtos/UuidDto.cs",
-     "Found path segment \"ui\" in Kiss.Bff.Test/Hacks/InitializeRequiredEnvironmentVariables.cs",
-     "Found path segment \"ui\" in Kiss.Bff/Config/Permissions/RequirePermissionAttribute.cs",
-     "Found path segment \"ui\" in Kiss.Bff/Extern/Elasticsearch/QueryBuilder.cs",
-     "Found path segment \"ui\" in Kiss.Bff/Intern/Data/Migrations/20241217150541_VragensetsOrganisatorischeEenheidRequired.Designer.cs",
-     "Found path segment \"ui\" in Kiss.Bff/Intern/Data/Migrations/20241217150541_VragensetsOrganisatorischeEenheidRequired.cs",
-     "Found path segment \"ui\" in docs/architectuur/KISS Architectuur schets-e-Suite.drawio.png",
-     "Found path segment \"ui\" in docs/images/contactmoment/uitbreidingcontactmoment-01.png",
-     "Found path segment \"ui\" in docs/images/contactmoment/uitbreidingcontactmoment-02.png",
-     "Found path segment \"ui\" in docs/images/contactmoment/uitbreidingcontactmoment-03.png",
-     "Found path segment \"ui\" in docs/images/contactmoment/uitbreidingcontactmoment-04.png",
-     "Found path segment \"ui\" in docs/images/contactmoment/uitbreidingcontactmoment-05.png",
-     "Found path segment \"ui\" in docs/images/contactmoment/uitbreidingcontactmoment-06.png",
-     "Found path segment \"ui\" in docs/images/contactmoment/uitbreidingcontactmoment-07.png",
-     "Found path segment \"ui\" in docs/requirements.txt",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.18.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.19.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.20.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.21.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.22.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.23.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.24.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.25.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.26.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.27.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.28.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.29.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.30.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.31.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.32.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.33.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.34.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.35.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.36.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.37.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.38.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.39.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.40.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.41.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.42.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.43.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.44.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.45.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.46.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.47.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.48.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.49.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.50.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.0.51.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.1.0.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.1.1.tgz",
-     "Found path segment \"frontend\" in helm/kiss-frontend-1.1.2.tgz",
-     "Found \"frontend\" in repository metadata and docs",
      "Found path segment \"data\" in Kiss.Bff/Intern/ContactmomentDetails/Data/Entities",
      "Found path segment \"data\" in Kiss.Bff/Intern/ContactmomentDetails/Data/Entities/ContactmomentDetails.cs",
      "Found path segment \"data\" in Kiss.Bff/Intern/ContactmomentDetails/Data/Entities/ContactmomentDetailsBron.cs",
@@ -1225,19 +1195,9 @@
      "Found path segment \"services\" in src/services/service-data.ts",
      "Found path segment \"services\" in src/services/use-loader.ts",
      "Found path segment \"services\" in src/services/zgw.ts",
-     "Found path segment \"services\" in src/test/services/fetch-logged-in.test.ts",
-     "Found path segment \"services\" in src/test/services/openklant2.service.test.ts",
-     "Found path segment \"services\" in src/test/services/pagination",
-     "Found path segment \"services\" in src/test/services/pagination/pagination.test.ts",
-     "Found path segment \"services\" in src/test/services/pagination/parsePagination.test.ts",
-     "Found path segment \"services\" in src/test/services/service-data-enricher.test.ts",
-     "Found path segment \"services\" in src/test/services/service-data",
-     "Found path segment \"services\" in src/test/services/service-data/fromFetcher.test.ts",
-     "Found path segment \"services\" in src/test/services/service-data/fromPromise.test.ts",
-     "Found path segment \"services\" in src/test/services/service-data/fromSubmitter.test.ts",
      "Found \"service\" in repository metadata and docs",
-     "Found \"process\" in repository metadata and docs",
-     "Found \"zaak\" in repository metadata and docs"
+     "Found \"frontend\" in repository metadata and docs",
+     "Found \"process\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1322,9 +1282,309 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 12 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "3 organisations; largest 59%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (264 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is icatt.nl (5 authors), with 59% of the 157 commits whose organisation is known; 41% of the commits come from 8 of 17 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": true
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "1.02",
+      "explanation": "56 change requests were closed (merged or not) and 55 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 3.9 days",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 7 got a response; 8 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 11.2 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-21 and 2026-11-12. 1 got a response; 14 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "17 in 12 months",
+      "explanation": "17 final releases were published in the last 12 months, about one every 21 days, counted from the GitHub releases. The latest final release is from 2026-11-04. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 8,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 7,
+        "waiting": 8
+       },
+       "fix": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 7,
+        "waiting": 8
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 23,
+       "response": {
+        "measured": 3,
+        "median": 120.8,
+        "worst": 156.3,
+        "breaches": 19,
+        "waiting": 20
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 136,
+       "response": {
+        "measured": 9,
+        "median": 70.6,
+        "worst": 283.7,
+        "breaches": 133,
+        "waiting": 127
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 131,
+     "openBreaches": [
+      {
+       "title": "Security.txt beschikbaar",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/604",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2023-07-24T12:27:33.000Z"
+      },
+      {
+       "title": "Snel een contactverzoek maken o.b.v. een ouder contactverzoek",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/710",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2023-09-20T14:11:36.000Z"
+      },
+      {
+       "title": "Tonen van relatietype van betrokkene bij een zaak",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/784",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-06-26T08:33:52.000Z"
+      },
+      {
+       "title": "Actor-identificator van de KCM configureerbaar?",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/865",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-09-05T11:19:46.000Z"
+      },
+      {
+       "title": "Consistente weergave van vraag en specifieke vraag",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/897",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-10-10T12:13:56.000Z"
+      },
+      {
+       "title": "Can't build Kissbff image with Docker-compose",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/970",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-12-12T12:14:35.000Z"
+      },
+      {
+       "title": "Protocolissue bij data posten naar Maykin registers verhelpen",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/980",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-12-31T10:02:32.000Z"
+      },
+      {
+       "title": "Specify custom redirect uri for openid provider interaction",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/990",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-01-21T15:50:53.000Z"
+      },
+      {
+       "title": "CSP errors bij style attributen in VAC / Kennisartikel",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/993",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-01-23T07:08:33.000Z"
+      },
+      {
+       "title": "Get article (Kennisbank, VAC etc) from Objecten instead of elastic index",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1053",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-02-26T15:10:41.000Z"
+      },
+      {
+       "title": "Show contact requests (contactverzoeken) related to a case (zaak)",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1067",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-03-14T09:26:20.000Z"
+      },
+      {
+       "title": "Click through from a contact moment to a case",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1068",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-03-14T12:36:13.000Z"
+      },
+      {
+       "title": "incorrect pad naar zaken en klantinteracties (input Den Haag)",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1083",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-04-02T08:07:32.000Z"
+      },
+      {
+       "title": "Sanitize input phone numbers before posting to Open Klant",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1085",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-04-08T07:18:36.000Z"
+      },
+      {
+       "title": "Identifier NietNatuurlijkPersoon in Zaaksysteem configurabel maken",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1095",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-04-11T15:00:59.000Z"
+      },
+      {
+       "title": "Hoe omgaan met wijzigingen in rechten",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1097",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-04-11T22:00:00.000Z"
+      },
+      {
+       "title": "View all the 'Logboek' information belonging to a Contactverzoek (related to ITA)",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1104",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-04-24T16:27:23.000Z"
+      },
+      {
+       "title": "Consistenter maken veldlabels in de UI",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1106",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-04-25T06:43:55.000Z"
+      },
+      {
+       "title": "Actor-info aanpassen bij handmatig ingevoerd e-mailadres",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1111",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-05-01T13:54:28.000Z"
+      },
+      {
+       "title": "Supporting a different zgw api url structure",
+       "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/issues/1115",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-05-06T12:08:20.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 6.5
+  "durationSeconds": 10.9,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

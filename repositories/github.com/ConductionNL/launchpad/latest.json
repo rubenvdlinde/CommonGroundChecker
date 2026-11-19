@@ -19,7 +19,7 @@
     "source": "release",
     "detail": "latest release tag: v1.1.0"
    },
-   "displayName": "LaunchPad",
+   "displayName": "MyDash",
    "shortDescription": "Business intelligence-dashboard en datavisualisatie voor Nextcloud.",
    "logoUrl": null,
    "developmentStatus": "beta",
@@ -30,29 +30,31 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:09:07.111Z",
+  "lastCheckedAt": "2026-11-19T22:58:29.639Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:54:54.974Z",
-  "updatedAt": "2026-11-19T14:09:07.111Z",
+  "updatedAt": "2026-11-19T22:58:29.639Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-09-07-111Z",
+  "id": "2026-11-19T22-58-29-639Z",
   "repoId": "github.com/ConductionNL/launchpad",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:09:07.111Z",
-  "createdAt": "2026-11-19T14:09:07.111Z",
+  "checkedAt": "2026-11-19T22:58:29.639Z",
+  "createdAt": "2026-11-19T22:58:29.639Z",
   "version": "v1.1.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
-  "score": 62,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v1.0.5",
+  "scannedRefKind": "declared-version",
+  "scannedCommit": "aeabcbd66138adc8e6503e0127740119edf9f103",
+  "score": 60,
   "rating": 3.1,
   "categoryRatings": {
    "Governance": 3.9,
@@ -79,6 +81,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -92,6 +97,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -109,8 +117,11 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
-    "rating": 2.7
+    "rating": 2.6
    },
    "modifiability": {
     "rating": 2.9
@@ -119,10 +130,10 @@
     "rating": 1.3
    },
    "modularity": {
-    "rating": 3.2
+    "rating": 3.3
    },
    "reusability": {
-    "rating": 2.4
+    "rating": 2.5
    },
    "testing": {
     "rating": 4.3
@@ -141,14 +152,15 @@
    "reasons": [
     "Mandatory criterion fails: Docker support",
     "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
     "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
-    "Maintainability below 4 stars (2.36)"
+    "Maintainability below 4 stars (2.37)"
    ]
   },
   "issueCounts": {
-   "errors": 4,
+   "errors": 5,
    "warnings": 7
   },
   "declaredUsers": [],
@@ -160,22 +172,22 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 678 lines of code, 32 functions, 32 files analyzed.",
+    "message": "Code metrics: 78,379 lines of code, 6,432 functions, 6,402 files analyzed.",
     "evidence": [
-     ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
      "docs/docusaurus.config.js",
      "docs/sidebars.js",
      "docs/src/pages/index.js",
-     "eslint.config.mjs",
-     "l10n/be.js",
-     "l10n/bg.js",
-     "l10n/bs.js",
-     "l10n/ca.js",
+     "eslint.config.js",
+     "l10n/en.js",
+     "l10n/nl.js",
+     "lib/Activity/ActivityPublisher.php",
+     "lib/Activity/DebounceHelper.php",
+     "lib/Activity/Extension.php",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 678",
-     "Function count: 32",
-     "Files analyzed: 32"
+     "Total lines of code (NLOC): 78,379",
+     "Function count: 6,432",
+     "Files analyzed: 6,402"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -224,9 +236,9 @@
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
     "status": "pass",
     "confidence": "medium",
-    "message": "Probable copyright owner detected: LaunchPad Contributors (confidence: medium).",
+    "message": "Probable copyright owner detected: MyDash Contributors (confidence: medium).",
     "evidence": [
-     "composer.json: LaunchPad Contributors"
+     "composer.json: MyDash Contributors"
     ],
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
@@ -244,9 +256,9 @@
     "referenceUrl": "https://standard.publiccode.net/criteria/",
     "publiccode": {
      "publiccodeYmlVersion": "0.4",
-     "name": "LaunchPad",
+     "name": "MyDash",
      "applicationSuite": null,
-     "url": "https://github.com/ConductionNL/launchpad",
+     "url": "https://github.com/ConductionNL/mydash",
      "landingURL": null,
      "isBasedOn": [],
      "softwareVersion": "1.0.5",
@@ -263,6 +275,7 @@
      "roadmap": null,
      "developmentStatus": "beta",
      "softwareType": "standalone/other",
+     "supports": [],
      "intendedAudience": {
       "countries": [],
       "unsupportedCountries": [],
@@ -274,7 +287,7 @@
        "localisedName": null,
        "genericName": null,
        "shortDescription": "Business intelligence dashboard and data visualisation for Nextcloud.",
-       "longDescription": "LaunchPad is a business intelligence and dashboard application for Nextcloud. It enables organisations to create and manage customisable dashboards with charts, graphs, and KPI widgets. Data is sourced via GraphQL from Open Register and other connected data sources. LaunchPad is designed for operational reporting and monitoring in both government and commercial organisations.",
+       "longDescription": "MyDash is a business intelligence and dashboard application for Nextcloud. It enables organisations to create and manage customisable dashboards with charts, graphs, and KPI widgets. Data is sourced via GraphQL from Open Register and other connected data sources. MyDash is designed for operational reporting and monitoring in both government and commercial organisations.",
        "documentation": null,
        "apiDocumentation": null,
        "features": [
@@ -292,7 +305,7 @@
        "localisedName": null,
        "genericName": null,
        "shortDescription": "Business intelligence-dashboard en datavisualisatie voor Nextcloud.",
-       "longDescription": "LaunchPad is een business intelligence- en dashboardtoepassing voor Nextcloud. Het stelt organisaties in staat aanpasbare dashboards te maken en te beheren met grafieken, diagrammen en KPI-widgets. Gegevens worden via GraphQL opgehaald uit Open Register en andere gekoppelde databronnen. LaunchPad is ontworpen voor operationele rapportage en monitoring in zowel overheids- als commerciële organisaties.",
+       "longDescription": "MyDash is een business intelligence- en dashboardtoepassing voor Nextcloud. Het stelt organisaties in staat aanpasbare dashboards te maken en te beheren met grafieken, diagrammen en KPI-widgets. Gegevens worden via GraphQL opgehaald uit Open Register en andere gekoppelde databronnen. MyDash is ontworpen voor operationele rapportage en monitoring in zowel overheids- als commerciële organisaties.",
        "documentation": null,
        "apiDocumentation": null,
        "features": [
@@ -406,6 +419,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: this is a Nextcloud app (appinfo/info.xml), not a container component. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -414,12 +440,12 @@
     "evidence": [
      "README.md",
      "docs/GOVERNMENT-FEATURES.md",
-     "docs/Installation",
-     "docs/Installation/demo-environment.md",
      "docs/adr-audit.md",
      "docs/adr",
      "docs/adr/README.md",
-     "docs/architecture.md"
+     "docs/architecture.md",
+     "docs/development.md",
+     "docs/docusaurus.config.js"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
     "requirementLevel": "mandatory",
@@ -445,16 +471,16 @@
     "status": "pass",
     "message": "Test files or test configuration detected.",
     "evidence": [
+     "src/__tests__/AddWidgetModal.test.js",
      "src/__tests__/DashboardSwitcherSidebar.test.js",
+     "src/__tests__/IconPicker.test.js",
+     "src/__tests__/ImageWidget.test.js",
+     "src/__tests__/LabelWidget.test.js",
+     "src/__tests__/LinkButtonWidget.test.js",
+     "src/__tests__/NcDashboardWidget.test.js",
+     "src/__tests__/TextDisplayWidget.test.js",
      "src/__tests__/Views.test.js",
-     "src/__tests__/internalActions.test.js",
-     "src/__tests__/mergeManifestFragments.spec.js",
-     "src/__tests__/smoke.test.js",
-     "src/__tests__/widgetBridge.test.js",
-     "src/components/Widgets/Renderers/__tests__/ClockWidget.spec.js",
-     "src/components/Widgets/Renderers/__tests__/ClockWidgetForm.spec.js",
-     "src/components/Widgets/Renderers/__tests__/ContainerWidget.spec.js",
-     "src/components/Widgets/Renderers/__tests__/FilesWidget.spec.js"
+     "src/__tests__/WidgetContextMenu.test.js"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
     "requirementLevel": "mandatory",
@@ -475,20 +501,23 @@
     "id": "complexity",
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
-    "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 4.47 <= 15 and Max CCN 19.00 <= 30.",
+    "status": "fail",
+    "message": "Lizard analysis ran. Avg CCN 2.01 (threshold: 15); Max CCN 35.00 (threshold: 30). Threshold exceeded: MaxCCN 35.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 4.47 (threshold: 15)",
-     "Max CCN: 19.00 (threshold: 30)",
-     "Error: Fail to parse file '/tmp/cgchecker-repo-YjF23Z/repo/src/constants/__tests__/widgetRegistry.spec.js'",
-     "warning_count = printer(result, options, schema, AllResult)",
-     "IndexError: list index out of range"
+     "Average CCN: 2.01 (threshold: 15)",
+     "Max CCN: 35.00 (threshold: 30)",
+     "8      1     26      0       8 PersonalDashboardsDisabledExceptionTest::testStableErrorCodeIsPinned@40-47@/tmp/cgchecker-repo-rSPUcR/repo/tests/Unit/Exception/PersonalDashboardsDisabledExceptionTest.php",
+     "12      1    122      0      13 DashboardMetadataControllerTest::testSetMetadataValidationErrorReturns400@161-173@/tmp/cgchecker-repo-rSPUcR/repo/tests/Unit/Controller/DashboardMetadataControllerTest.php",
+     "22      1    125      0      27 DashboardApiControllerForkTest::testForkReturnsInternalErrorOnUnexpectedThrowable@284-310@/tmp/cgchecker-repo-rSPUcR/repo/tests/Unit/Controller/DashboardApiControllerForkTest.php",
+     "17      1     80      0      20 DashboardApiControllerGroupSharedTest::testDeleteGroupPropagatesLastInGroupError@535-554@/tmp/cgchecker-repo-rSPUcR/repo/tests/Unit/Controller/DashboardApiControllerGroupSharedTest.php",
+     "23      1    128      0      29 MigrateStorageToGroupFolderTest::testHandleExitsWithErrorOnPartialFailure@225-253@/tmp/cgchecker-repo-rSPUcR/repo/tests/Unit/Command/MigrateStorageToGroupFolderTest.php",
+     "14      1     79      0      14 LinkRewriterTest::testMissingPageProducesWarningAndKeepsHref@71-84@/tmp/cgchecker-repo-rSPUcR/repo/tests/Unit/Service/Confluence/LinkRewriterTest.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
-    "starRating": 5
+    "starRating": 1
    },
    {
     "id": "maintainability",
@@ -497,13 +526,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "fail",
     "starRating": 2,
-    "rating": 2.3600000000000003,
+    "rating": 2.37,
     "aspectRatings": {
-     "analysability": 2.68,
-     "modifiability": 2.86,
-     "testability": 1.29,
-     "modularity": 3.15,
-     "reusability": 2.42
+     "analysability": 2.61,
+     "modifiability": 2.88,
+     "testability": 1.27,
+     "modularity": 3.26,
+     "reusability": 2.46
     },
     "measurements": [
      {
@@ -516,18 +545,18 @@
       "rows": [
        {
         "label": "JavaScript",
-        "value": "3.9%",
+        "value": "0.8%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 4
+        "stars": 5
        },
        {
         "label": "PHP",
-        "value": "13.9%",
+        "value": "14.4%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -538,14 +567,14 @@
        },
        {
         "label": "Vue",
-        "value": "5.1%",
+        "value": "6.5%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 4
+        "stars": 3
        }
       ]
      },
@@ -559,7 +588,7 @@
       "rows": [
        {
         "label": "JavaScript, more than 15 lines",
-        "value": "46.7%",
+        "value": "41.6%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -570,18 +599,18 @@
        },
        {
         "label": "JavaScript, more than 30 lines",
-        "value": "20.8%",
+        "value": "10.9%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
          "4": "≤ 24.2%",
          "5": "≤ 17.0%"
         },
-        "stars": 4
+        "stars": 5
        },
        {
         "label": "JavaScript, more than 60 lines",
-        "value": "4.1%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
@@ -592,7 +621,7 @@
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "76.8%",
+        "value": "78.7%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -603,7 +632,7 @@
        },
        {
         "label": "PHP, more than 30 lines",
-        "value": "41.3%",
+        "value": "47.1%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -614,18 +643,18 @@
        },
        {
         "label": "PHP, more than 60 lines",
-        "value": "4.1%",
+        "value": "9.6%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
          "4": "≤ 9.1%",
          "5": "≤ 5.5%"
         },
-        "stars": 5
+        "stars": 3
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "35.9%",
+        "value": "29.8%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -636,7 +665,7 @@
        },
        {
         "label": "Vue, more than 30 lines",
-        "value": "11.1%",
+        "value": "10.6%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -647,14 +676,14 @@
        },
        {
         "label": "Vue, more than 60 lines",
-        "value": "3.1%",
+        "value": "6.7%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
          "4": "≤ 9.1%",
          "5": "≤ 5.5%"
         },
-        "stars": 5
+        "stars": 4
        }
       ]
      },
@@ -668,40 +697,40 @@
       "rows": [
        {
         "label": "JavaScript, complexity above 5",
-        "value": "34.2%",
+        "value": "25.7%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
          "4": "≤ 20.7%",
          "5": "≤ 15.8%"
         },
-        "stars": 2
+        "stars": 3
        },
        {
         "label": "JavaScript, complexity above 10",
-        "value": "17.8%",
+        "value": "7.8%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 1
+        "stars": 3
        },
        {
         "label": "JavaScript, complexity above 25",
-        "value": "2.1%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
          "4": "≤ 1.1%",
          "5": "≤ 0.5%"
         },
-        "stars": 2
+        "stars": 5
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "34.7%",
+        "value": "39.4%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -712,14 +741,14 @@
        },
        {
         "label": "PHP, complexity above 10",
-        "value": "3.9%",
+        "value": "13.2%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 5
+        "stars": 2
        },
        {
         "label": "PHP, complexity above 25",
@@ -734,7 +763,7 @@
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "21.9%",
+        "value": "23.4%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -745,25 +774,25 @@
        },
        {
         "label": "Vue, complexity above 10",
-        "value": "6.1%",
+        "value": "10.8%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 4
+        "stars": 2
        },
        {
         "label": "Vue, complexity above 25",
-        "value": "2.1%",
+        "value": "4.2%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
          "4": "≤ 1.1%",
          "5": "≤ 0.5%"
         },
-        "stars": 2
+        "stars": 1
        }
       ]
      },
@@ -776,7 +805,7 @@
       "rows": [
        {
         "label": "JavaScript, 3 or more parameters",
-        "value": "5.4%",
+        "value": "7.7%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -809,14 +838,14 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "27.3%",
+        "value": "25.9%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
          "4": "≤ 15.4%",
          "5": "≤ 12.5%"
         },
-        "stars": 1
+        "stars": 2
        },
        {
         "label": "PHP, 5 or more parameters",
@@ -831,7 +860,7 @@
        },
        {
         "label": "PHP, 7 or more parameters",
-        "value": "2.6%",
+        "value": "2.8%",
         "thresholds": {
          "2": "≤ 2.1%",
          "3": "≤ 1.4%",
@@ -842,7 +871,7 @@
        },
        {
         "label": "Vue, 3 or more parameters",
-        "value": "0.9%",
+        "value": "1.4%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -885,7 +914,7 @@
       "rows": [
        {
         "label": "PHP, fan-in above 10",
-        "value": "6.2%",
+        "value": "7.2%",
         "thresholds": {
          "2": "≤ 13.0%",
          "3": "≤ 10.7%",
@@ -896,7 +925,7 @@
        },
        {
         "label": "PHP, fan-in above 20",
-        "value": "4.2%",
+        "value": "3.8%",
         "thresholds": {
          "2": "≤ 8.0%",
          "3": "≤ 5.9%",
@@ -928,7 +957,7 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "38.3%",
+        "value": "40.5%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -947,28 +976,28 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "0.0415",
+        "value": "0.037",
         "thresholds": {
          "4": "≤ 0.075",
          "5": "≤ 0.0375"
         },
-        "stars": 4
+        "stars": 5
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.24 to 2.48 (2 of 5 stars) over 392 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.24 to 2.50 (2 of 5 stars) over 398 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★☆☆ 2.9 (javascript 4.3, php 2.3, vue 3.8)",
-     "Unit size: ★★☆☆☆ 2.4 (javascript 3.6, php 1.9, vue 4.5)",
-     "Unit complexity: ★★☆☆☆ 1.6 (javascript 1.4, php 1.5, vue 2.0)",
-     "Unit interfacing: ★★☆☆☆ 2.4 (javascript 5.1, php 1.5, vue 5.4)",
-     "Module coupling: ★★★★☆ 4.1 (php 4.1)",
+     "Duplication: ★★★☆☆ 2.9 (javascript 5.3, php 2.3, vue 3.4)",
+     "Unit size: ★★☆☆☆ 2.4 (javascript 4.0, php 1.6, vue 4.2)",
+     "Unit complexity: ★★☆☆☆ 1.5 (javascript 2.8, php 1.4, vue 1.5)",
+     "Unit interfacing: ★★★☆☆ 2.6 (javascript 4.9, php 1.5, vue 5.4)",
+     "Module coupling: ★★★★☆ 4.2 (php 4.2)",
      "Component independence: ★☆☆☆☆ 1.0 (php 1.0)",
-     "Component entanglement: ★★★★☆ 4.4 (php 4.4)",
-     "Lever: unit complexity in vue, about 1094 lines to fix for half a star",
-     "Lever: module coupling in php, about 389 lines to fix for half a star",
-     "Lever: unit complexity in php, about 1490 lines to fix for half a star"
+     "Component entanglement: ★★★★★ 4.5 (php 4.5)",
+     "Lever: unit complexity in vue, about 373 lines to fix for half a star",
+     "Lever: duplication in vue, about 927 lines to fix for half a star",
+     "Lever: module coupling in php, about 538 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -977,95 +1006,81 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "fail",
-    "message": "Multiple risky coding patterns were detected (87 findings across 786 scanned source files). Review them against OWASP secure coding guidance.",
+    "message": "Multiple risky coding patterns were detected (73 findings across 700 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
      "Dynamic code execution: lib/Activity/ActivityPublisher.php",
-     "Dynamic code execution: lib/AppInfo/Application.php",
      "Dynamic code execution: lib/Command/DashboardDebugShareCommand.php",
      "Dynamic code execution: lib/Command/DashboardListCommand.php",
      "Dynamic code execution: lib/Command/DashboardShowCommand.php",
      "Dynamic code execution: lib/Controller/AdminController.php",
      "Dynamic code execution: lib/Controller/AdminSettingsController.php",
      "Dynamic code execution: lib/Controller/DashboardApiController.php",
+     "Dynamic code execution: lib/Controller/DashboardRequestValidator.php",
      "Dynamic code execution: lib/Controller/PageController.php",
      "Dynamic code execution: lib/Controller/ResourceServeController.php",
      "Dynamic code execution: lib/Controller/WidgetApiController.php",
      "Dynamic code execution: lib/Service/AnalyticsService.php",
      "Dynamic code execution: lib/Service/CalendarWidgetService.php",
+     "Dynamic code execution: lib/Service/CommentService.php",
      "Dynamic code execution: lib/Service/Confluence/LinkRewriter.php",
      "Dynamic code execution: lib/Service/Confluence/MacroRenderer.php",
      "Dynamic code execution: lib/Service/ConfluenceImportService.php",
      "Dynamic code execution: lib/Service/ExportService.php",
+     "Dynamic code execution: lib/Service/FeedRefreshService.php",
+     "Dynamic code execution: lib/Service/FeedService.php",
      "Dynamic code execution: lib/Service/FilesWidgetService.php",
+     "Dynamic code execution: lib/Service/FooterService.php",
      "Dynamic code execution: lib/Service/ImageMimeValidator.php",
      "Dynamic code execution: lib/Service/NewsWidgetService.php",
      "Dynamic code execution: lib/Service/OrphanedDataCleanupService.php",
      "Dynamic code execution: lib/Service/PeopleWidgetService.php",
      "Possible hardcoded secret: lib/Service/PublicShareService.php",
-     "Dynamic code execution: lib/Service/TileAnalyticsService.php",
-     "Possible hardcoded secret: lib/Service/WeatherService.php",
      "Dynamic code execution: lib/Service/WidgetFormatter.php",
      "Dynamic code execution: lib/Service/WidgetService.php",
-     "Dynamic code execution: lib/Settings/LaunchPadAdmin.php",
-     "Unsafe HTML injection: src/components/Widgets/Renderers/__tests__/SearchWidget.spec.js",
-     "Unsafe HTML injection: src/composables/__tests__/useTileSearchHost.spec.js",
+     "Dynamic code execution: lib/Settings/MyDashAdmin.php",
      "Unsafe HTML injection: src/services/widgetBridge.js",
      "Dynamic code execution: tests/Unit/Activity/ExtensionTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/PurgeViewsJobTest.php",
      "Dynamic code execution: tests/Unit/Controller/AdminControllerGroupOrderTest.php",
-     "Dynamic code execution: tests/Unit/Controller/DashboardApiControllerByPathTest.php",
-     "Dynamic code execution: tests/Unit/Controller/DashboardApiControllerQuotaTest.php",
      "Dynamic code execution: tests/Unit/Controller/FileControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ManifestControllerGrantsTest.php",
      "Possible hardcoded secret: tests/Unit/Controller/PublicShareControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SetupControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/WidgetApiControllerDataEndpointsTest.php",
+     "Dynamic code execution: tests/Unit/Controller/TemplateControllerTest.php",
      "Dynamic code execution: tests/Unit/Controller/WidgetApiControllerRoleTest.php",
-     "Dynamic code execution: tests/Unit/Db/WidgetPlacementMapperCloneTest.php",
      "Dynamic code execution: tests/Unit/Job/FeedRefreshJobTest.php",
-     "Dynamic code execution: tests/Unit/Listener/CspListenerTest.php",
      "Dynamic code execution: tests/Unit/Listener/UserDeletedListenerTest.php",
-     "Dynamic code execution: tests/Unit/Repair/ApplyActionBaselineTest.php",
-     "Dynamic code execution: tests/Unit/Repair/SeedDefaultDashboardTest.php",
-     "Dynamic code execution: tests/Unit/Search/LaunchPadSearchProviderTest.php",
+     "Dynamic code execution: tests/Unit/Search/MyDashSearchProviderTest.php",
      "Dynamic code execution: tests/Unit/Service/AdminSettingsServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/AdminTemplateServiceGalleryTest.php",
      "Dynamic code execution: tests/Unit/Service/BulkOperationServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/CalendarWidgetServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/CommandServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/CommentServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/ConditionalServiceListAllRulesTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardCascadeEventDispatchTest.php",
+     "Dynamic code execution: tests/Unit/Service/DashboardContentStorage/GroupFolderContentStorageTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardServiceActiveResolutionTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardServiceAllowFlagTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardServiceCreateDefaultsTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardServiceForkTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardServiceGroupSharedTest.php",
-     "Dynamic code execution: tests/Unit/Service/DashboardServiceQuotaWiringTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardShareServiceFollowupsTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardTranslationServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/DashboardTreeServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/DashboardVersionServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/DemoShowcasesServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/FeedRefreshServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/FeedServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/FeedTokenServiceTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/FeedTokenServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/FileServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/FooterServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/HealthPingServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/IframeServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/InitialStateBuilderTest.php",
-     "Dynamic code execution: tests/Unit/Service/KioskServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/MetadataServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/OrgNavigationServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/PeopleWidgetServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/PlacementServiceQuotaWiringTest.php",
-     "Possible hardcoded secret: tests/Unit/Service/PublicShareContextTest.php",
      "Possible hardcoded secret: tests/Unit/Service/PublicShareServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/QuotaServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/ResourceServiceSvgIntegrationTest.php",
      "Dynamic code execution: tests/Unit/Service/ResourceServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/TemplateResyncServiceTest.php",
      "Dynamic code execution: tests/Unit/Service/UniqueViewerDedupTest.php",
-     "Dynamic code execution: tests/Unit/Service/VisibilityCheckerTest.php",
-     "Dynamic code execution: tests/Unit/Service/WeatherServiceTest.php",
-     "Possible hardcoded secret: tests/e2e/ci/public-share-lifecycle.spec.ts"
+     "Dynamic code execution: tests/Unit/Service/VisibilityCheckerTest.php"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
@@ -1139,98 +1154,165 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Integration layer (gateway / NLX); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice); Interaction layer (frontend / portal); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
     "evidence": [
-     "Found path segment \"ui\" in data/demo-showcases/gemeente-duin",
-     "Found path segment \"ui\" in data/demo-showcases/gemeente-duin/gemeente-duin.zip",
-     "Found path segment \"ui\" in docs/features/tile-quick-search.md",
-     "Found path segment \"ui\" in docs/screenshots/widgets/quicklinks-form.png",
-     "Found path segment \"ui\" in docs/screenshots/widgets/quicklinks-rendered.png",
-     "Found path segment \"ui\" in img/showcases/gemeente-duin.png",
-     "Found path segment \"ui\" in img/tile-openbuild.svg",
-     "Found path segment \"ui\" in lib/Exception/SharePasswordRequiredException.php",
-     "Found path segment \"ui\" in lib/Migration/DashboardLockTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/DashboardShareTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/DashboardTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/DashboardTranslationTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/DashboardVersionTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/DashboardViewsTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/FeedCacheTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/FeedTokenTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/MetadataTablesBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/MigrationTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/PlacementTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/RoleAssignmentTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/RoleFeaturePermissionTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/RoleLayoutDefaultTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/RulesTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/SettingsTableBuilder.php",
-     "Found path segment \"ui\" in lib/Migration/TileClicksTableBuilder.php",
-     "Found path segment \"ui\" in lib/Service/InitialStateBuilder.php",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-newman-integration-suite",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-newman-integration-suite/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-newman-integration-suite/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-newman-integration-suite/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-newman-integration-suite/specs/integration-tests",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-newman-integration-suite/specs/integration-tests/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-newman-integration-suite/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-quicklinks-widget",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-quicklinks-widget/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-quicklinks-widget/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-quicklinks-widget/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-quicklinks-widget/specs/quicklinks-widget",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-quicklinks-widget/specs/quicklinks-widget/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-03-quicklinks-widget/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-initial-state-contract/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-initial-state-contract/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-initial-state-contract/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-svg-sanitisation/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-svg-sanitisation/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-svg-sanitisation/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-tile-quick-search",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-tile-quick-search/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-tile-quick-search/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-tile-quick-search/specs/tile-quick-search",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-tile-quick-search/specs/tile-quick-search/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-tile-quick-search/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-08-20-tile-search-widget/specs/tile-quick-search",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-08-20-tile-search-widget/specs/tile-quick-search/spec.md",
-     "Found path segment \"ui\" in openspec/changes/dashboard-switcher/specs/dashboard-ui",
-     "Found path segment \"ui\" in openspec/changes/dashboard-switcher/specs/dashboard-ui/spec.md",
-     "Found path segment \"ui\" in openspec/specs/quicklinks-widget",
-     "Found path segment \"ui\" in openspec/specs/quicklinks-widget/spec.md",
-     "Found path segment \"ui\" in openspec/specs/tile-quick-search",
-     "Found path segment \"ui\" in openspec/specs/tile-quick-search/spec.md",
-     "Found path segment \"ui\" in test-guide.md",
-     "Found path segment \"ui\" in tests/Unit/Service/InitialStateBuilderTest.php",
-     "Found path segment \"ui\" in tests/e2e/tile-quick-search.spec.ts",
+     "Found path segment \"data\" in data/demo-showcases",
+     "Found path segment \"data\" in data/demo-showcases/de-bron",
+     "Found path segment \"data\" in data/demo-showcases/de-bron/de-bron.zip",
+     "Found path segment \"data\" in data/demo-showcases/de-linden",
+     "Found path segment \"data\" in data/demo-showcases/de-linden/de-linden.zip",
+     "Found path segment \"data\" in data/demo-showcases/gemeente-duin",
+     "Found path segment \"data\" in data/demo-showcases/gemeente-duin/gemeente-duin.zip",
+     "Found path segment \"data\" in data/demo-showcases/horizon-labs",
+     "Found path segment \"data\" in data/demo-showcases/horizon-labs/horizon-labs.zip",
+     "Found path segment \"data\" in data/demo-showcases/van-der-berg",
+     "Found path segment \"data\" in data/demo-showcases/van-der-berg/van-der-berg.zip",
+     "Found path segment \"db\" in lib/Db/AdminSetting.php",
+     "Found path segment \"db\" in lib/Db/AdminSettingKey.php",
+     "Found path segment \"db\" in lib/Db/AdminSettingMapper.php",
+     "Found path segment \"db\" in lib/Db/CleanupResult.php",
+     "Found path segment \"db\" in lib/Db/ColumnTypeRegistry.php",
+     "Found path segment \"db\" in lib/Db/ConditionalRule.php",
+     "Found path segment \"db\" in lib/Db/ConditionalRuleMapper.php",
+     "Found path segment \"db\" in lib/Db/Dashboard.php",
+     "Found path segment \"db\" in lib/Db/DashboardEntityInterface.php",
+     "Found path segment \"db\" in lib/Db/DashboardLock.php",
+     "Found path segment \"db\" in lib/Db/DashboardLockMapper.php",
+     "Found path segment \"db\" in lib/Db/DashboardMapper.php",
+     "Found path segment \"db\" in lib/Db/DashboardReaction.php",
+     "Found path segment \"db\" in lib/Db/DashboardReactionMapper.php",
+     "Found path segment \"db\" in lib/Db/DashboardShare.php",
+     "Found path segment \"db\" in lib/Db/DashboardShareMapper.php",
+     "Found path segment \"db\" in lib/Db/DashboardTranslation.php",
+     "Found path segment \"db\" in lib/Db/DashboardTranslationMapper.php",
+     "Found path segment \"db\" in lib/Db/DashboardVersion.php",
+     "Found path segment \"db\" in lib/Db/DashboardVersionMapper.php",
+     "Found path segment \"db\" in lib/Db/DashboardView.php",
+     "Found path segment \"db\" in lib/Db/DashboardViewMapper.php",
+     "Found path segment \"db\" in lib/Db/EntityMapperInterface.php",
+     "Found path segment \"db\" in lib/Db/EntitySerializer.php",
+     "Found path segment \"db\" in lib/Db/FeedCache.php",
+     "Found path segment \"db\" in lib/Db/FeedCacheMapper.php",
+     "Found path segment \"db\" in lib/Db/FeedToken.php",
+     "Found path segment \"db\" in lib/Db/FeedTokenMapper.php",
+     "Found path segment \"db\" in lib/Db/GridPositionInterface.php",
+     "Found path segment \"db\" in lib/Db/JsonConfigHelper.php",
+     "Found path segment \"db\" in lib/Db/MetadataField.php",
+     "Found path segment \"db\" in lib/Db/MetadataFieldMapper.php",
+     "Found path segment \"db\" in lib/Db/MetadataValue.php",
+     "Found path segment \"db\" in lib/Db/MetadataValueMapper.php",
+     "Found path segment \"db\" in lib/Db/OwnedEntityInterface.php",
+     "Found path segment \"db\" in lib/Db/PublicShare.php",
+     "Found path segment \"db\" in lib/Db/PublicShareMapper.php",
+     "Found path segment \"db\" in lib/Db/QueryHelper.php",
+     "Found path segment \"db\" in lib/Db/RoleAssignment.php",
+     "Found path segment \"db\" in lib/Db/RoleAssignmentMapper.php",
+     "Found path segment \"db\" in lib/Db/RoleFeaturePermission.php",
+     "Found path segment \"db\" in lib/Db/RoleFeaturePermissionMapper.php",
+     "Found path segment \"db\" in lib/Db/RoleLayoutDefault.php",
+     "Found path segment \"db\" in lib/Db/RoleLayoutDefaultMapper.php",
+     "Found path segment \"db\" in lib/Db/Tile.php",
+     "Found path segment \"db\" in lib/Db/TileMapper.php",
+     "Found path segment \"db\" in lib/Db/TimestampHelper.php",
+     "Found path segment \"db\" in lib/Db/TimestampedEntityInterface.php",
+     "Found path segment \"db\" in lib/Db/WidgetPlacement.php",
+     "Found path segment \"db\" in lib/Db/WidgetPlacementMapper.php",
+     "Found \"register\" in repository metadata and docs",
+     "Found path segment \"service\" in lib/Service/ActionAuthService.php",
+     "Found path segment \"service\" in lib/Service/AdminSettingsService.php",
+     "Found path segment \"service\" in lib/Service/AdminTemplateService.php",
+     "Found path segment \"service\" in lib/Service/AnalyticsService.php",
+     "Found path segment \"service\" in lib/Service/BulkOperationService.php",
+     "Found path segment \"service\" in lib/Service/CalendarWidgetService.php",
+     "Found path segment \"service\" in lib/Service/Cleanup",
+     "Found path segment \"service\" in lib/Service/Cleanup/CategoryRegistryService.php",
+     "Found path segment \"service\" in lib/Service/Cleanup/CleanupCategoryInterface.php",
+     "Found path segment \"service\" in lib/Service/Cleanup/ExpiredLocksCategory.php",
+     "Found path segment \"service\" in lib/Service/Cleanup/OrphanedConditionalRulesCategory.php",
+     "Found path segment \"service\" in lib/Service/Cleanup/OrphanedSharesCategory.php",
+     "Found path segment \"service\" in lib/Service/Cleanup/OrphanedWidgetPlacementsCategory.php",
+     "Found path segment \"service\" in lib/Service/CommandService.php",
+     "Found path segment \"service\" in lib/Service/CommentService.php",
+     "Found path segment \"service\" in lib/Service/ConditionalService.php",
+     "Found path segment \"service\" in lib/Service/Confluence",
+     "Found path segment \"service\" in lib/Service/Confluence/ArchiveParser.php",
+     "Found path segment \"service\" in lib/Service/Confluence/HtmlSanitizer.php",
+     "Found path segment \"service\" in lib/Service/Confluence/LinkRewriter.php",
+     "Found path segment \"service\" in lib/Service/Confluence/MacroRenderer.php",
+     "Found path segment \"service\" in lib/Service/Confluence/ParsedArchive.php",
+     "Found path segment \"service\" in lib/Service/Confluence/ParsedPage.php",
+     "Found path segment \"service\" in lib/Service/ConfluenceImportService.php",
+     "Found path segment \"service\" in lib/Service/DashboardContentStorage",
+     "Found path segment \"service\" in lib/Service/DashboardContentStorage/DashboardContentStorageException.php",
+     "Found path segment \"service\" in lib/Service/DashboardContentStorage/DashboardContentStorageInterface.php",
+     "Found path segment \"service\" in lib/Service/DashboardContentStorage/DashboardNotFoundException.php",
+     "Found path segment \"service\" in lib/Service/DashboardContentStorage/DbContentStorage.php",
+     "Found path segment \"service\" in lib/Service/DashboardContentStorage/GroupFolderContentStorage.php",
+     "Found path segment \"service\" in lib/Service/DashboardContentStorage/GroupFoldersNotInstalledException.php",
+     "Found path segment \"service\" in lib/Service/DashboardContentStorageFactory.php",
+     "Found path segment \"service\" in lib/Service/DashboardFactory.php",
+     "Found path segment \"service\" in lib/Service/DashboardLockService.php",
+     "Found path segment \"service\" in lib/Service/DashboardResolver.php",
+     "Found path segment \"service\" in lib/Service/DashboardService.php",
+     "Found path segment \"service\" in lib/Service/DashboardShareService.php",
+     "Found path segment \"service\" in lib/Service/DashboardTranslationService.php",
+     "Found path segment \"service\" in lib/Service/DashboardTreeService.php",
+     "Found path segment \"service\" in lib/Service/DashboardVersionService.php",
+     "Found path segment \"service\" in lib/Service/DemoShowcasesService.php",
+     "Found path segment \"service\" in lib/Service/ExportService.php",
+     "Found path segment \"service\" in lib/Service/FeedRefreshService.php",
+     "Found path segment \"service\" in lib/Service/FeedService.php",
+     "Found path segment \"service\" in lib/Service/FeedTokenService.php",
+     "Found path segment \"service\" in lib/Service/FileService.php",
+     "Found path segment \"service\" in lib/Service/FilesWidgetService.php",
+     "Found path segment \"service\" in lib/Service/FooterService.php",
+     "Found path segment \"service\" in lib/Service/ImageMimeValidator.php",
+     "Found path segment \"service\" in lib/Service/ImportService.php",
+     "Found path segment \"service\" in lib/Service/InitialState",
+     "Found path segment \"service\" in lib/Service/InitialState/Page.php",
+     "Found path segment \"service\" in lib/Service/InitialStateBuilder.php",
+     "Found path segment \"service\" in lib/Service/MenuService.php",
+     "Found path segment \"service\" in lib/Service/MetadataService.php",
+     "Found path segment \"service\" in lib/Service/MetadataValidationService.php",
+     "Found path segment \"service\" in lib/Service/MetricsCollector.php",
+     "Found path segment \"service\" in lib/Service/MetricsQueryService.php",
+     "Found path segment \"service\" in lib/Service/NewsWidgetService.php",
+     "Found path segment \"service\" in lib/Service/OrgNavigationService.php",
+     "Found path segment \"service\" in lib/Service/OrphanedDataCleanupService.php",
+     "Found path segment \"service\" in lib/Service/Page.php",
+     "Found path segment \"service\" in lib/Service/PeopleWidgetService.php",
+     "Found path segment \"service\" in lib/Service/PermissionDeniedException.php",
+     "Found path segment \"service\" in lib/Service/PermissionService.php",
+     "Found path segment \"service\" in lib/Service/PlacementService.php",
+     "Found path segment \"service\" in lib/Service/PlacementUpdater.php",
+     "Found path segment \"service\" in lib/Service/PublicShareService.php",
+     "Found path segment \"service\" in lib/Service/ReactionService.php",
+     "Found path segment \"service\" in lib/Service/ReactionsDisabledException.php",
+     "Found path segment \"service\" in lib/Service/ResourceServeService.php",
+     "Found path segment \"service\" in lib/Service/ResourceService.php",
+     "Found path segment \"service\" in lib/Service/RoleFeaturePermissionService.php",
+     "Found path segment \"service\" in lib/Service/RoleService.php",
+     "Found path segment \"service\" in lib/Service/RuleEvaluatorService.php",
+     "Found path segment \"service\" in lib/Service/SetupWizardService.php",
+     "Found path segment \"service\" in lib/Service/SlugGenerator.php",
+     "Found path segment \"service\" in lib/Service/SvgSanitiser.php",
+     "Found path segment \"service\" in lib/Service/TemplateService.php",
+     "Found path segment \"service\" in lib/Service/TileService.php",
+     "Found path segment \"service\" in lib/Service/TileUpdater.php",
+     "Found path segment \"service\" in lib/Service/UniqueViewerDedup.php",
+     "Found path segment \"service\" in lib/Service/UrlSafetyValidator.php",
+     "Found path segment \"service\" in lib/Service/UserAttributeResolver.php",
+     "Found path segment \"service\" in lib/Service/VisibilityChecker.php",
+     "Found path segment \"service\" in lib/Service/WidgetFormatter.php",
+     "Found path segment \"service\" in lib/Service/WidgetItemLoader.php",
+     "Found path segment \"service\" in lib/Service/WidgetPlacementService.php",
+     "Found path segment \"service\" in lib/Service/WidgetService.php",
+     "Found path segment \"services\" in src/services/__tests__",
+     "Found path segment \"services\" in src/services/api.js",
+     "Found path segment \"services\" in src/services/resourceService.js",
+     "Found path segment \"services\" in src/services/widgetBridge.js",
+     "Found \"service\" in repository metadata and docs",
      "Found \"frontend\" in repository metadata and docs",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/01-admin-settings.png",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/01-toggle.png",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/02-template-create.png",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/02-template-edit.png",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/02-templates-list.png",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/03-group-cog.png",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/04-role-create.png",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/04-roles-tab.png",
-     "Found path segment \"admin\" in docs/screenshots/tutorials/admin/05-bulk-panel.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-admin-settings.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-toggle.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-template-create.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-template-edit.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-templates-list.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-group-cog.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/04-role-create.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/04-roles-tab.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/05-bulk-panel.png",
-     "Found path segment \"admin\" in docs/tutorials/admin/01-toggle-personal-dashboards.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/02-admin-templates.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/03-group-defaults.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/04-restrict-widgets.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/05-bulk-operations.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/06-group-dashboards-tab.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/07-default-app-and-dashboard.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json",
      "Found path segment \"admin\" in src/components/admin/ActionAuthMatrix.vue",
      "Found path segment \"admin\" in src/components/admin/AdminAnalytics.vue",
      "Found path segment \"admin\" in src/components/admin/AdminDemoData.vue",
@@ -1249,277 +1331,18 @@
      "Found path segment \"admin\" in src/components/admin/PrometheusMetricsPanel.vue",
      "Found path segment \"admin\" in src/components/admin/RoleLayoutDefaultsSection.vue",
      "Found path segment \"admin\" in src/components/admin/RolePermissionsSection.vue",
+     "Found path segment \"admin\" in src/components/admin/SetupWizardModal.vue",
      "Found path segment \"admin\" in src/components/admin/__tests__",
-     "Found path segment \"admin\" in src/components/admin/__tests__/ActionAuthMatrix.spec.js",
-     "Found path segment \"admin\" in src/components/admin/__tests__/BeheerTabs.spec.js",
-     "Found path segment \"admin\" in src/components/admin/__tests__/GroupDashboardsTab.spec.js",
-     "Found path segment \"admin\" in src/components/admin/__tests__/GroupPriorityOrder.spec.js",
-     "Found path segment \"admin\" in src/components/admin/__tests__/OrgNavigationEditor.spec.js",
      "Found path segment \"admin\" in src/components/admin/tabs",
      "Found path segment \"admin\" in src/components/admin/tabs/DemoDataTab.vue",
-     "Found path segment \"admin\" in src/components/admin/tabs/GroupDashboardsTab.vue",
      "Found path segment \"admin\" in src/components/admin/tabs/OperationsTab.vue",
      "Found path segment \"admin\" in src/components/admin/tabs/OrgNavigationTab.vue",
      "Found path segment \"admin\" in src/components/admin/tabs/RolesPermissionsTab.vue",
      "Found path segment \"admin\" in src/components/admin/tabs/SharingTab.vue",
      "Found path segment \"admin\" in src/components/admin/tabs/TemplatesPage.vue",
      "Found path segment \"admin\" in src/components/admin/tabs/VersioningAuditTab.vue",
-     "Found path segment \"db\" in lib/Db/Acknowledgement.php",
-     "Found path segment \"db\" in lib/Db/AcknowledgementMapper.php",
-     "Found path segment \"db\" in lib/Db/AdminSetting.php",
-     "Found path segment \"db\" in lib/Db/AdminSettingKey.php",
-     "Found path segment \"db\" in lib/Db/AdminSettingMapper.php",
-     "Found path segment \"db\" in lib/Db/CleanupResult.php",
-     "Found path segment \"db\" in lib/Db/ConditionalRule.php",
-     "Found path segment \"db\" in lib/Db/ConditionalRuleMapper.php",
-     "Found path segment \"db\" in lib/Db/Dashboard.php",
-     "Found path segment \"db\" in lib/Db/DashboardLock.php",
-     "Found path segment \"db\" in lib/Db/DashboardLockMapper.php",
-     "Found path segment \"db\" in lib/Db/DashboardMapper.php",
-     "Found path segment \"db\" in lib/Db/DashboardReaction.php",
-     "Found path segment \"db\" in lib/Db/DashboardReactionMapper.php",
-     "Found path segment \"db\" in lib/Db/DashboardShare.php",
-     "Found path segment \"db\" in lib/Db/DashboardShareMapper.php",
-     "Found path segment \"db\" in lib/Db/DashboardTranslation.php",
-     "Found path segment \"db\" in lib/Db/DashboardTranslationMapper.php",
-     "Found path segment \"db\" in lib/Db/DashboardVersion.php",
-     "Found path segment \"db\" in lib/Db/DashboardVersionMapper.php",
-     "Found path segment \"db\" in lib/Db/DashboardView.php",
-     "Found path segment \"db\" in lib/Db/DashboardViewMapper.php",
-     "Found path segment \"db\" in lib/Db/FeedCache.php",
-     "Found path segment \"db\" in lib/Db/FeedCacheMapper.php",
-     "Found path segment \"db\" in lib/Db/KioskPlaylist.php",
-     "Found path segment \"db\" in lib/Db/KioskPlaylistMapper.php",
-     "Found path segment \"db\" in lib/Db/MetadataField.php",
-     "Found path segment \"db\" in lib/Db/MetadataFieldMapper.php",
-     "Found path segment \"db\" in lib/Db/MetadataValue.php",
-     "Found path segment \"db\" in lib/Db/MetadataValueMapper.php",
-     "Found path segment \"db\" in lib/Db/PublicShare.php",
-     "Found path segment \"db\" in lib/Db/PublicShareMapper.php",
-     "Found path segment \"db\" in lib/Db/RoleAssignment.php",
-     "Found path segment \"db\" in lib/Db/RoleAssignmentMapper.php",
-     "Found path segment \"db\" in lib/Db/RoleFeaturePermission.php",
-     "Found path segment \"db\" in lib/Db/RoleFeaturePermissionMapper.php",
-     "Found path segment \"db\" in lib/Db/RoleLayoutDefault.php",
-     "Found path segment \"db\" in lib/Db/RoleLayoutDefaultMapper.php",
-     "Found path segment \"db\" in lib/Db/Tile.php",
-     "Found path segment \"db\" in lib/Db/TileClick.php",
-     "Found path segment \"db\" in lib/Db/TileClickMapper.php",
-     "Found path segment \"db\" in lib/Db/TileMapper.php",
-     "Found path segment \"db\" in lib/Db/WidgetPlacement.php",
-     "Found path segment \"db\" in lib/Db/WidgetPlacementMapper.php",
-     "Found path segment \"db\" in tests/Unit/Db/AdminSettingKeyTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/AdminSettingTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/CleanupResultTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/ConditionalRuleTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/DashboardLockTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/DashboardMapperGroupSharedTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/DashboardReactionTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/DashboardTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/DashboardTranslationMapperNormaliseTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/DashboardTranslationTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/DashboardVersionTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/DashboardViewTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/FeedCacheTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/KioskPlaylistMapperTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/KioskPlaylistTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/PublicShareMapperTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/TileTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/WidgetPlacementMapperCloneTest.php",
-     "Found path segment \"db\" in tests/Unit/Db/WidgetPlacementTest.php",
-     "Found \"register\" in repository metadata and docs",
-     "Found path segment \"service\" in lib/Service/AcknowledgementService.php",
-     "Found path segment \"service\" in lib/Service/ActionAuthService.php",
-     "Found path segment \"service\" in lib/Service/AdminSettingsService.php",
-     "Found path segment \"service\" in lib/Service/AdminTemplateService.php",
-     "Found path segment \"service\" in lib/Service/AnalyticsService.php",
-     "Found path segment \"service\" in lib/Service/BulkOperationService.php",
-     "Found path segment \"service\" in lib/Service/CalendarWidgetService.php",
-     "Found path segment \"service\" in lib/Service/Cleanup",
-     "Found path segment \"service\" in lib/Service/Cleanup/CategoryRegistryService.php",
-     "Found path segment \"service\" in lib/Service/Cleanup/CleanupCategoryInterface.php",
-     "Found path segment \"service\" in lib/Service/Cleanup/ExpiredLocksCategory.php",
-     "Found path segment \"service\" in lib/Service/Cleanup/OrphanedConditionalRulesCategory.php",
-     "Found path segment \"service\" in lib/Service/Cleanup/OrphanedSharesCategory.php",
-     "Found path segment \"service\" in lib/Service/Cleanup/OrphanedWidgetPlacementsCategory.php",
-     "Found path segment \"service\" in lib/Service/CommandService.php",
-     "Found path segment \"service\" in lib/Service/ConditionalService.php",
-     "Found path segment \"service\" in lib/Service/Confluence",
-     "Found path segment \"service\" in lib/Service/Confluence/ArchiveParser.php",
-     "Found path segment \"service\" in lib/Service/Confluence/HtmlSanitizer.php",
-     "Found path segment \"service\" in lib/Service/Confluence/LinkRewriter.php",
-     "Found path segment \"service\" in lib/Service/Confluence/MacroRenderer.php",
-     "Found path segment \"service\" in lib/Service/Confluence/ParsedArchive.php",
-     "Found path segment \"service\" in lib/Service/Confluence/ParsedPage.php",
-     "Found path segment \"service\" in lib/Service/ConfluenceImportService.php",
-     "Found path segment \"service\" in lib/Service/DashboardFactory.php",
-     "Found path segment \"service\" in lib/Service/DashboardLockService.php",
-     "Found path segment \"service\" in lib/Service/DashboardResolver.php",
-     "Found path segment \"service\" in lib/Service/DashboardService.php",
-     "Found path segment \"service\" in lib/Service/DashboardShareService.php",
-     "Found path segment \"service\" in lib/Service/DashboardTranslationService.php",
-     "Found path segment \"service\" in lib/Service/DashboardTreeService.php",
-     "Found path segment \"service\" in lib/Service/DashboardVersionService.php",
-     "Found path segment \"service\" in lib/Service/DemoDataService.php",
-     "Found path segment \"service\" in lib/Service/DemoShowcasesService.php",
-     "Found path segment \"service\" in lib/Service/ExportService.php",
-     "Found path segment \"service\" in lib/Service/FeedRefreshService.php",
-     "Found path segment \"service\" in lib/Service/FileService.php",
-     "Found path segment \"service\" in lib/Service/FilesWidgetService.php",
-     "Found path segment \"service\" in lib/Service/FooterService.php",
-     "Found path segment \"service\" in lib/Service/HealthPingService.php",
-     "Found path segment \"service\" in lib/Service/IframeService.php",
-     "Found path segment \"service\" in lib/Service/ImageMimeValidator.php",
-     "Found path segment \"service\" in lib/Service/ImportService.php",
-     "Found path segment \"service\" in lib/Service/InitialState",
-     "Found path segment \"service\" in lib/Service/InitialState/Page.php",
-     "Found path segment \"service\" in lib/Service/InitialStateBuilder.php",
-     "Found path segment \"service\" in lib/Service/KioskService.php",
-     "Found path segment \"service\" in lib/Service/LiveTileService.php",
-     "Found path segment \"service\" in lib/Service/MenuService.php",
-     "Found path segment \"service\" in lib/Service/MetadataService.php",
-     "Found path segment \"service\" in lib/Service/MetadataValidationService.php",
-     "Found path segment \"service\" in lib/Service/NewsWidgetService.php",
-     "Found path segment \"service\" in lib/Service/OrgNavigationService.php",
-     "Found path segment \"service\" in lib/Service/OrphanedDataCleanupService.php",
-     "Found path segment \"service\" in lib/Service/PeopleWidgetService.php",
-     "Found path segment \"service\" in lib/Service/PermissionDeniedException.php",
-     "Found path segment \"service\" in lib/Service/PermissionService.php",
-     "Found path segment \"service\" in lib/Service/PlacementService.php",
-     "Found path segment \"service\" in lib/Service/PlacementUpdater.php",
-     "Found path segment \"service\" in lib/Service/PublicShareContext.php",
-     "Found path segment \"service\" in lib/Service/PublicShareService.php",
-     "Found path segment \"service\" in lib/Service/QuotaService.php",
-     "Found path segment \"service\" in lib/Service/ReactionService.php",
-     "Found path segment \"service\" in lib/Service/ReactionsDisabledException.php",
-     "Found path segment \"service\" in lib/Service/ResourceServeService.php",
-     "Found path segment \"service\" in lib/Service/ResourceService.php",
-     "Found path segment \"service\" in lib/Service/RoleFeaturePermissionService.php",
-     "Found path segment \"service\" in lib/Service/RoleService.php",
-     "Found path segment \"service\" in lib/Service/RuleEvaluatorService.php",
-     "Found path segment \"service\" in lib/Service/SetupWizardService.php",
-     "Found path segment \"service\" in lib/Service/SlugGenerator.php",
-     "Found path segment \"service\" in lib/Service/SvgSanitiser.php",
-     "Found path segment \"service\" in lib/Service/TemplateResyncService.php",
-     "Found path segment \"service\" in lib/Service/TemplateService.php",
-     "Found path segment \"service\" in lib/Service/TileAnalyticsService.php",
-     "Found path segment \"service\" in lib/Service/TileService.php",
-     "Found path segment \"service\" in lib/Service/TileUpdater.php",
-     "Found path segment \"service\" in lib/Service/UniqueViewerDedup.php",
-     "Found path segment \"service\" in lib/Service/UrlSafetyValidator.php",
-     "Found path segment \"service\" in lib/Service/UserAttributeResolver.php",
-     "Found path segment \"service\" in lib/Service/VisibilityChecker.php",
-     "Found path segment \"service\" in lib/Service/WeatherService.php",
-     "Found path segment \"service\" in lib/Service/WidgetFormatter.php",
-     "Found path segment \"service\" in lib/Service/WidgetItemLoader.php",
-     "Found path segment \"service\" in lib/Service/WidgetPlacementService.php",
-     "Found path segment \"service\" in lib/Service/WidgetService.php",
-     "Found path segment \"services\" in src/services/__tests__",
-     "Found path segment \"services\" in src/services/__tests__/graphqlClient.spec.js",
-     "Found path segment \"services\" in src/services/__tests__/iconCatalogue.spec.js",
-     "Found path segment \"services\" in src/services/__tests__/resourceService.spec.js",
-     "Found path segment \"services\" in src/services/__tests__/spendAnalytics.spec.js",
-     "Found path segment \"services\" in src/services/__tests__/widgetBridge.spec.js",
-     "Found path segment \"services\" in src/services/api.js",
-     "Found path segment \"services\" in src/services/graphqlClient.js",
-     "Found path segment \"services\" in src/services/healthPingClient.js",
-     "Found path segment \"services\" in src/services/iconCatalogue.js",
-     "Found path segment \"services\" in src/services/iframeClient.js",
-     "Found path segment \"services\" in src/services/liveTileClient.js",
-     "Found path segment \"services\" in src/services/resourceService.js",
-     "Found path segment \"services\" in src/services/spendAnalytics.js",
-     "Found path segment \"services\" in src/services/weatherClient.js",
-     "Found path segment \"services\" in src/services/widgetBridge.js",
-     "Found path segment \"services\" in src/services/widgetDataAdapters.js",
-     "Found path segment \"service\" in tests/Unit/Service/AcknowledgementServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ActionAuthBaselineTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ActionSeedCoverageTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AdminSettingsServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AdminTemplateServiceGalleryTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AdminTemplateServiceGrepGuardTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AdminTemplateServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AnalyticsServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/BulkOperationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CalendarWidgetServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Cleanup",
-     "Found path segment \"service\" in tests/Unit/Service/Cleanup/CategoryRegistryServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CommandServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ConditionalServiceListAllRulesTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Confluence",
-     "Found path segment \"service\" in tests/Unit/Service/Confluence/ArchiveParserTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Confluence/HtmlSanitizerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Confluence/LinkRewriterTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Confluence/MacroRendererTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardCascadeEventDispatchTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardFactoryGroupSharedTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardFactoryTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardLockServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardResolverSharedTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceActiveResolutionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceAllowFlagTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceCreateDefaultsTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceDefaultFlagTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceFooterOverrideTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceForkTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceGroupSharedTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServicePersonalGatingTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServicePublicationTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceQuotaWiringTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardServiceSharedResolutionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardShareServiceFollowupsTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardTranslationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardTreeServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardVersionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DemoDataServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DemoShowcasesServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ExportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/FeedRefreshServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/FileServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/FilesWidgetServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/FooterServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/HealthPingServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/IframeServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ImageMimeValidatorTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ImportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/InitialStateBuilderTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/InitialStateContractLintTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/KioskServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/LiveTileServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/MenuServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/MetadataServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/MetadataValidationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/NewsWidgetServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OrgNavigationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OrphanedDataCleanupServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PeopleWidgetServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PlacementServiceQuotaWiringTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PublicShareContextTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PublicShareServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/QuotaServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ReactionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ResourceServeServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ResourceServiceSvgIntegrationTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ResourceServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RoleFeaturePermissionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RoleServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SetupWizardServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SlugGeneratorTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SvgSanitiserTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/TemplateResyncServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/TileAnalyticsServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/UniqueViewerDedupTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/VisibilityCheckerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WeatherServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WidgetPlacementServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WidgetServiceUpdateValidationTest.php",
-     "Found \"service\" in repository metadata and docs",
-     "Found path segment \"integration\" in tests/integration/.coverage-check.js",
-     "Found path segment \"integration\" in tests/integration/README.md",
-     "Found path segment \"integration\" in tests/integration/launchpad.postman_collection.json",
-     "Found path segment \"integration\" in tests/integration/local.env.json",
-     "Found path segment \"integration\" in tests/integration/seed.sh",
-     "Found \"integration\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs"
+     "Found \"workflow\" in repository metadata and docs",
+     "Found \"integration\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1545,8 +1368,8 @@
     "status": "info",
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Nextcloud App Store launchpad: 0 ratings given (2026-11-19)",
-     "GitHub releases: 1,407 release file downloads, 267 releases with files (2026-11-19)",
+     "Nextcloud App Store mydash: 0 ratings given (2026-11-19)",
+     "GitHub releases: 1,414 release file downloads, 271 releases with files (2026-11-19)",
      "GitHub ConductionNL/launchpad: 0 stars, 0 forks, 0 watchers (2026-11-19)",
      "GitHub commits ConductionNL/launchpad: 21 contributors, 17 from the owning organisation, 0 from other organisations, 4 unknown (2026-11-19)"
     ],
@@ -1556,8 +1379,8 @@
        "id": "nextcloud-appstore",
        "kind": "downloads",
        "source": "Nextcloud App Store",
-       "subject": "launchpad",
-       "url": "https://apps.nextcloud.com/apps/launchpad",
+       "subject": "mydash",
+       "url": "https://apps.nextcloud.com/apps/mydash",
        "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
        "measuredAt": "2026-11-19",
        "figures": [
@@ -1578,11 +1401,11 @@
        "figures": [
         {
          "label": "release file downloads",
-         "value": 1407
+         "value": 1414
         },
         {
          "label": "releases with files",
-         "value": 267
+         "value": 271
         }
        ]
       },
@@ -1638,9 +1461,294 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 8 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (254 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is conduction.nl (6 authors), with 100% of the 254 commits whose organisation is known; 0% of the commits come from 0 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.95",
+      "explanation": "972 change requests were closed (merged or not) and 1,020 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "no response",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12 got a comment or review from anyone but its author.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "no response",
+      "explanation": "None of the 5 latest issues opened by people between 2026-08-21 and 2026-11-12 got a comment from anyone but its author.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "8 in 12 months",
+      "explanation": "8 final releases were published in the last 12 months, about one every 46 days, counted from the GitHub releases. The latest final release is from 2026-09-06. Besides these, 263 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 2,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 2,
+        "waiting": 2
+       },
+       "fix": {
+        "measured": 2,
+        "median": 0.7,
+        "worst": 0.7,
+        "breaches": 0,
+        "waiting": 0
+       }
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 153,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 111,
+        "waiting": 153
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 87,
+     "openBreaches": [
+      {
+       "title": "Pre-existing hydra gate failures on development (6 gates)",
+       "url": "https://github.com/ConductionNL/launchpad/issues/5",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-06T21:04:52.000Z"
+      },
+      {
+       "title": "Legacy @spec tags point at archived change dirs (~253 unresolved gate-46 anchors)",
+       "url": "https://github.com/ConductionNL/launchpad/issues/13",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-06T23:15:23.000Z"
+      },
+      {
+       "title": "Suppression & baseline audit: what the green PHPMD number hides",
+       "url": "https://github.com/ConductionNL/launchpad/issues/48",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-18T15:38:11.000Z"
+      },
+      {
+       "title": "Hydra Gates were dead (pin missing gate script paths); with the pin removed, 9 real gate findings surface",
+       "url": "https://github.com/ConductionNL/launchpad/issues/64",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-20T12:50:26.000Z"
+      },
+      {
+       "title": "gate-57: the GroupFolder dashboard-content backend (REQ-GFSB-001) receives no reads, writes or deletes",
+       "url": "https://github.com/ConductionNL/launchpad/issues/65",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-21T08:18:08.000Z"
+      },
+      {
+       "title": "gate-19's covered half is mostly illusory: 108 of 117 @e2e anchors point at tests CI never runs (4 of ~107 execute)",
+       "url": "https://github.com/ConductionNL/launchpad/issues/82",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-21T22:00:00.000Z"
+      },
+      {
+       "title": "groupfolder-storage-backend is unreachable: read/write/delete all have zero callers, while migrate --prune-source already NULLs the DB column",
+       "url": "https://github.com/ConductionNL/launchpad/issues/80",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-21T22:00:00.000Z"
+      },
+      {
+       "title": "Question: Availability on Nextcloud App Store",
+       "url": "https://github.com/ConductionNL/launchpad/issues/83",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-24T07:46:54.000Z"
+      },
+      {
+       "title": "First full e2e execution: 15 of 80 root-suite tests fail — including a non-admin Create CTA that answers 400",
+       "url": "https://github.com/ConductionNL/launchpad/issues/86",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-24T12:35:32.000Z"
+      },
+      {
+       "title": "gate-26: the admin templates page has no CI e2e coverage, and its only 'test' targets a data-testid that does not exist",
+       "url": "https://github.com/ConductionNL/launchpad/issues/88",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-24T20:31:49.000Z"
+      },
+      {
+       "title": "dashboard-kiosk-mode: 23 spec scenarios are unsatisfiable — the kiosk frontend was removed in 1fd075c5, backend still routed",
+       "url": "https://github.com/ConductionNL/launchpad/issues/93",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T10:02:50.000Z"
+      },
+      {
+       "title": "runtime-shell REQ-SHELL-003 describes a toolbar removed in 18d601a0 — and its two sibling scenarios were @e2e-excluded without noticing",
+       "url": "https://github.com/ConductionNL/launchpad/issues/94",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T10:03:36.000Z"
+      },
+      {
+       "title": "No conditional-visibility EXCLUDE rule can be created: isInclude=false is a boolean bound into a smallint column (400 on PostgreSQL = the CI default)",
+       "url": "https://github.com/ConductionNL/launchpad/issues/96",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T13:56:14.000Z"
+      },
+      {
+       "title": "conditional-visibility editor: the group picker is always empty — Views.vue never passes available-groups, so group rules cannot be built or previewed in the UI",
+       "url": "https://github.com/ConductionNL/launchpad/issues/97",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T13:56:44.000Z"
+      },
+      {
+       "title": "Conditional visibility is never enforced: checkRulesForPlacement() has no render-time caller, so preview says Hidden and the dashboard shows the widget anyway",
+       "url": "https://github.com/ConductionNL/launchpad/issues/98",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T14:45:50.000Z"
+      },
+      {
+       "title": "spec(grid-layout): the \"Placement key regeneration\" scenario mandates a WCAG 2.1.1 regression, and is filed under \"Grid Styling\"",
+       "url": "https://github.com/ConductionNL/launchpad/issues/101",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T21:05:41.000Z"
+      },
+      {
+       "title": "spec(dashboards): two different requirements share the id REQ-DASH-015, so any #req-dash-015 anchor is ambiguous",
+       "url": "https://github.com/ConductionNL/launchpad/issues/102",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T21:06:43.000Z"
+      },
+      {
+       "title": "filterDashboards() would blank every result — extractUuid() probes a magic accessor on launchpad's own Dashboard entity (latent: no callers yet)",
+       "url": "https://github.com/ConductionNL/launchpad/issues/103",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T22:16:40.000Z"
+      },
+      {
+       "title": "stylelint lints 31 of 82 .vue files — the globs are unquoted, so POSIX sh expands them one level deep",
+       "url": "https://github.com/ConductionNL/launchpad/issues/105",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-26T08:01:36.000Z"
+      },
+      {
+       "title": "clock-weather-widgets: the clock and weather requirements share two scenario titles, collapsing four scenarios to two addressable slugs",
+       "url": "https://github.com/ConductionNL/launchpad/issues/112",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-26T23:12:26.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 2,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "publiccode.yml declares no standards under supports.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 8.6
+  "durationSeconds": 14.7,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

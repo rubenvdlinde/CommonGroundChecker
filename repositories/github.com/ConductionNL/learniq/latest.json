@@ -30,28 +30,30 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:09:18.560Z",
+  "lastCheckedAt": "2026-11-19T22:58:45.455Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:55:05.000Z",
-  "updatedAt": "2026-11-19T14:09:18.560Z",
+  "updatedAt": "2026-11-19T22:58:45.455Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-09-18-560Z",
+  "id": "2026-11-19T22-58-45-455Z",
   "repoId": "github.com/ConductionNL/learniq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:09:18.560Z",
-  "createdAt": "2026-11-19T14:09:18.560Z",
+  "checkedAt": "2026-11-19T22:58:45.455Z",
+  "createdAt": "2026-11-19T22:58:45.455Z",
   "version": "v0.3.11",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v0.3.11",
+  "scannedRefKind": "release",
+  "scannedCommit": "221b88616c9dc1cf808768ba420deca34d9d97ae",
   "score": 60,
   "rating": 3.1,
   "categoryRatings": {
@@ -79,6 +81,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -92,6 +97,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -108,6 +116,9 @@
    },
    "layering": {
     "rating": 3
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 2.3
@@ -264,6 +275,7 @@
      "roadmap": null,
      "developmentStatus": "beta",
      "softwareType": "standalone/other",
+     "supports": [],
      "intendedAudience": {
       "countries": [],
       "unsupportedCountries": [],
@@ -407,6 +419,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: this is a Nextcloud app (appinfo/info.xml), not a container component. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -481,12 +506,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.59 (threshold: 15)",
      "Max CCN: 38.00 (threshold: 30)",
-     "9      6     57      1       9 draftWarningHref@79-87@/tmp/cgchecker-repo-BJE686/repo/src/views/BsaRiskDashboard.vue",
-     "3      1     14      1       3 ObjectCreatingEvent::setErrors@76-78@/tmp/cgchecker-repo-BJE686/repo/tests/Stubs/Event/ObjectCreatingEvent.php",
-     "3      1     11      0       3 ObjectCreatingEvent::getErrors@83-85@/tmp/cgchecker-repo-BJE686/repo/tests/Stubs/Event/ObjectCreatingEvent.php",
-     "14      1     47      0      15 BsaWarningSigningGuardTest::warningObject@41-55@/tmp/cgchecker-repo-BJE686/repo/tests/Unit/Lifecycle/BsaWarningSigningGuardTest.php",
-     "3      1     24      1       3 BsaWarningSigningGuardTest::makeGuard@64-66@/tmp/cgchecker-repo-BJE686/repo/tests/Unit/Lifecycle/BsaWarningSigningGuardTest.php",
-     "10      1    127      0      13 BsaWarningSigningGuardTest::testIssueStampsSignature@75-87@/tmp/cgchecker-repo-BJE686/repo/tests/Unit/Lifecycle/BsaWarningSigningGuardTest.php"
+     "5      1     34      1       7 collectFatalErrors@166-172@/tmp/cgchecker-repo-m2JZUJ/repo/tests/e2e/visual/pages.visual.spec.ts",
+     "12      6     87      1      12 assertNoFatalErrors@179-190@/tmp/cgchecker-repo-m2JZUJ/repo/tests/e2e/visual/pages.visual.spec.ts",
+     "5      1     34      1       9 collectFatalErrors@45-53@/tmp/cgchecker-repo-m2JZUJ/repo/tests/e2e/spec-coverage/eportfolio.spec.ts",
+     "12      6     87      1      12 assertNoFatalErrors@55-66@/tmp/cgchecker-repo-m2JZUJ/repo/tests/e2e/spec-coverage/eportfolio.spec.ts",
+     "5      1     34      1       9 collectFatalErrors@49-57@/tmp/cgchecker-repo-m2JZUJ/repo/tests/e2e/spec-coverage/assessment-item-pools-and-analysis.spec.ts",
+     "16      1    104      2      19 assertRendersWithoutFatalError@71-89@/tmp/cgchecker-repo-m2JZUJ/repo/tests/e2e/spec-coverage/assessment-item-pools-and-analysis.spec.ts"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -1174,87 +1199,10 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX); Data layer (data store / register); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
     "evidence": [
-     "Found path segment \"ui\" in docs/Technical/admin-guide.md",
-     "Found path segment \"ui\" in docs/user-guide",
-     "Found path segment \"ui\" in docs/user-guide/_category_.json",
-     "Found path segment \"ui\" in docs/user-guide/admin",
-     "Found path segment \"ui\" in docs/user-guide/index.md",
-     "Found path segment \"ui\" in docs/user-guide/user",
-     "Found path segment \"ui\" in docs/user-guide/user/01-first-launch.md",
-     "Found path segment \"ui\" in docs/user-guide/user/02-create-course.md",
-     "Found path segment \"ui\" in docs/user-guide/user/03-enrol-students.md",
-     "Found path segment \"ui\" in docs/user-guide/user/04-assignments.md",
-     "Found path segment \"ui\" in docs/user-guide/user/05-attendance.md",
-     "Found path segment \"ui\" in docs/user-guide/user/06-grading.md",
-     "Found path segment \"ui\" in docs/user-guide/user/07-issue-certificate.md",
-     "Found path segment \"ui\" in docs/user-guide/user/08-track-progress.md",
-     "Found path segment \"ui\" in docs/user-guide/user/_category_.json",
-     "Found path segment \"ui\" in lib/Listener/EnrolmentPrerequisiteListener.php",
      "Found path segment \"portal\" in lib/Portal/PortalContributionProvider.php",
-     "Found path segment \"ui\" in lib/Service/AuditPackBuilder.php",
-     "Found path segment \"ui\" in lib/Service/DataExchangePayloadBuilder.php",
-     "Found path segment \"ui\" in lib/Service/ExternalTrainingCsvBuilder.php",
-     "Found path segment \"ui\" in lib/Service/MoodleQuizQuestionMapper.php",
-     "Found path segment \"ui\" in lib/Service/VerwerkingsregisterCsvBuilder.php",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-docs-product-pages-conformance/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-docs-product-pages-conformance/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-docs-product-pages-conformance/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/specs/attendance",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/specs/attendance/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/specs/data-exchange",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/specs/data-exchange/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-report-composer/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/specs/assessment",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/specs/assessment/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/specs/course-management",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/specs/course-management/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/specs/enrolment",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/specs/enrolment/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-16-adaptive-release-and-prerequisites/tasks.md",
-     "Found path segment \"ui\" in scripts/build-l10n-js.js",
-     "Found path segment \"ui\" in src/views/CourseBuilder.vue",
-     "Found path segment \"ui\" in src/views/PortfolioBuilder.vue",
-     "Found path segment \"ui\" in tests/Unit/Listener/EnrolmentPrerequisiteListenerTest.php",
-     "Found path segment \"portal\" in tests/Unit/Portal/PortalContributionProviderTest.php",
-     "Found path segment \"ui\" in tests/Unit/Service/MoodleQuizQuestionMapperTest.php",
-     "Found path segment \"ui\" in tests/Unit/Settings/VerzuimReportComposerRegisterTest.php",
      "Found \"frontend\" in repository metadata and docs",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/.gitkeep",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-school-structure-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-school-structure-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-school-structure-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-school-structure-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-school-structure-05.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-compliance-audit-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-compliance-audit-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-compliance-audit-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-compliance-audit-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-compliance-audit-05.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-05.png",
-     "Found path segment \"admin\" in docs/user-guide/admin/01-school-structure.md",
-     "Found path segment \"admin\" in docs/user-guide/admin/02-compliance-audit.md",
-     "Found path segment \"admin\" in docs/user-guide/admin/03-admin-settings.md",
-     "Found path segment \"admin\" in docs/user-guide/admin/04-accessibility-statement.md",
-     "Found path segment \"admin\" in docs/user-guide/admin/_category_.json",
      "Found path segment \"admin\" in src/components/admin/ActionAuthMatrix.vue",
      "Found path segment \"service\" in lib/Service/ActionAuthService.php",
      "Found path segment \"service\" in lib/Service/AiLocalityClassifier.php",
@@ -1329,58 +1277,10 @@
      "Found path segment \"service\" in lib/Service/WalletOfferDelegationService.php",
      "Found path segment \"service\" in lib/Service/WalletRevocationPropagationService.php",
      "Found path segment \"api\" in src/api/timetable.js",
-     "Found path segment \"service\" in tests/Stubs/AppHost/Service/GenericActionAuthService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/AuditHashService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Deferral",
-     "Found path segment \"service\" in tests/Stubs/Service/Deferral/DeferredListenerContext.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Deferral/ListenerDeferralService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Lifecycle",
-     "Found path segment \"service\" in tests/Stubs/Service/Lifecycle/TransitionEngine.php",
-     "Found path segment \"service\" in tests/Stubs/Service/ObjectService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/OrganisationService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/TalkLinkService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/TenantKeyService.php",
-     "Found path segment \"service\" in tests/Stubs/Talk/Service/ParticipantService.php",
-     "Found path segment \"service\" in tests/Unit/Service/AiLocalityClassifierTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CommonCartridgeParserTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CoursePackageExportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CoursePackageImportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CoursePackageRoundTripTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CredentialSigningServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DashboardRoleServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DemoDataServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ExternalTrainingServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ItemAnalysisServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/LearningRecordAggregationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/LearningRecordExportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/LearningRecordExportSigningServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/LearningRecordImportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ListenerSchemaResolverTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/MbzExtractorTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/MoodleBackupParserTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/MoodleQuizQuestionMapperTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/QtiExportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/QtiImportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ReportCardPdfDelegationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RolloverServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SovereigntyPolicyServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WalletClaimSyncServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WalletOfferDelegationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WalletRevocationPropagationServiceTest.php",
-     "Found \"service\" in repository metadata and docs",
-     "Found path segment \"integration\" in tests/Integration/Lifecycle",
-     "Found path segment \"integration\" in tests/Integration/Lifecycle/AssessmentPublishGuardRandomDrawIntegrationTest.php",
-     "Found path segment \"integration\" in tests/Integration/Lifecycle/XapiCompletionHandlerIntegrationTest.php",
-     "Found path segment \"integration\" in tests/Integration/bootstrap.php",
-     "Found path segment \"integration\" in tests/integration/README.md",
-     "Found path segment \"integration\" in tests/integration/learniq.postman_collection.json",
+     "Found \"api\" in repository metadata and docs",
+     "Found \"workflow\" in repository metadata and docs",
      "Found \"integration\" in repository metadata and docs",
-     "Found path segment \"db\" in tests/Stubs/Db/AuditTrailMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/ObjectEntity.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Register.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Schema.php",
-     "Found \"register\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs"
+     "Found \"register\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1407,7 +1307,7 @@
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
      "Nextcloud App Store learniq: 0 ratings given (2026-11-19)",
-     "GitHub releases: 1,270 release file downloads, 450 releases with files (2026-11-19)",
+     "GitHub releases: 1,271 release file downloads, 450 releases with files (2026-11-19)",
      "GitHub ConductionNL/learniq: 0 stars, 0 forks, 0 watchers (2026-11-19)",
      "GitHub commits ConductionNL/learniq: 10 contributors, 8 from the owning organisation, 1 from other organisations, 1 unknown (2026-11-19)"
     ],
@@ -1439,7 +1339,7 @@
        "figures": [
         {
          "label": "release file downloads",
-         "value": 1270
+         "value": 1271
         },
         {
          "label": "releases with files",
@@ -1499,9 +1399,325 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 4 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (203 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is conduction.nl (4 authors), with 100% of the 203 commits whose organisation is known; 0% of the commits come from 0 of 4 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.95",
+      "explanation": "1,676 change requests were closed (merged or not) and 1,765 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "no response",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12 got a comment or review from anyone but its author.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "no response",
+      "explanation": "None of the 2 latest issues opened by people between 2026-08-21 and 2026-11-12 got a comment from anyone but its author.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "3 in 12 months",
+      "explanation": "3 final releases were published in the last 12 months, about one every 122 days, counted from the GitHub releases. The latest final release is from 2026-10-08. Besides these, 447 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": false
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 4,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 4,
+        "waiting": 4
+       },
+       "fix": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 2,
+        "waiting": 4
+       }
+      },
+      {
+       "category": "documentation",
+       "label": "Documentation",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 3,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 3,
+        "waiting": 3
+       },
+       "fix": null
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 5,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 5,
+        "waiting": 5
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 363,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 346,
+        "waiting": 363
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 192,
+     "openBreaches": [
+      {
+       "title": "OR import doesn't propagate full register to app",
+       "url": "https://github.com/ConductionNL/learniq/issues/35",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-27T22:05:29.000Z"
+      },
+      {
+       "title": "AI companion: implement the MCP tool MVP for scholiq",
+       "url": "https://github.com/ConductionNL/learniq/issues/36",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-28T04:49:26.000Z"
+      },
+      {
+       "title": "OR-API conformance pass for remaining Wave 2 PHP exceptions + integration tests + Newman + Playwright + docs",
+       "url": "https://github.com/ConductionNL/learniq/issues/38",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-28T04:51:26.000Z"
+      },
+      {
+       "title": "Roll out the 'Settings → NcAppSettingsDialog' manifest pattern to all Conduction apps",
+       "url": "https://github.com/ConductionNL/learniq/issues/56",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-28T12:27:32.000Z"
+      },
+      {
+       "title": "Re-add dashboard widget-refs once OR's schema-widget-resolution endpoint + the scholiq register import land",
+       "url": "https://github.com/ConductionNL/learniq/issues/61",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-28T13:03:14.000Z"
+      },
+      {
+       "title": "[product-pages] Author UseCases/ and Integrations/ canonical content",
+       "url": "https://github.com/ConductionNL/learniq/issues/73",
+       "category": "documentation",
+       "kind": "response",
+       "due": "2026-05-29T06:58:40.000Z"
+      },
+      {
+       "title": "[product-pages] Dutch translation pass + re-enable nl locale",
+       "url": "https://github.com/ConductionNL/learniq/issues/74",
+       "category": "documentation",
+       "kind": "response",
+       "due": "2026-05-29T06:58:43.000Z"
+      },
+      {
+       "title": "[product-pages] Ship static/oas/scholiq.json OpenAPI spec for Redocusaurus",
+       "url": "https://github.com/ConductionNL/learniq/issues/75",
+       "category": "documentation",
+       "kind": "response",
+       "due": "2026-05-29T06:58:45.000Z"
+      },
+      {
+       "title": "security: requireCourseReadAccess grants any authenticated user course read access",
+       "url": "https://github.com/ConductionNL/learniq/issues/154",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-01T22:00:00.000Z"
+      },
+      {
+       "title": "Implement: Docs Product Pages Conformance",
+       "url": "https://github.com/ConductionNL/learniq/issues/86",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-02T17:20:59.000Z"
+      },
+      {
+       "title": "Bundle leaks Ajv runtime codegen — fires 7-8 CSP EvalErrors on every page load",
+       "url": "https://github.com/ConductionNL/learniq/issues/110",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-03T13:53:12.000Z"
+      },
+      {
+       "title": "Eliminate type:custom pages — push to Tier-4 / ADR-024",
+       "url": "https://github.com/ConductionNL/learniq/issues/113",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T04:57:07.000Z"
+      },
+      {
+       "title": "Implement: Assessment",
+       "url": "https://github.com/ConductionNL/learniq/issues/115",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:46:12.000Z"
+      },
+      {
+       "title": "Implement: Assignments & Submissions",
+       "url": "https://github.com/ConductionNL/learniq/issues/116",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:46:24.000Z"
+      },
+      {
+       "title": "Implement: Attendance & Threshold Reporting",
+       "url": "https://github.com/ConductionNL/learniq/issues/117",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:46:36.000Z"
+      },
+      {
+       "title": "Implement: Certification & Digital Credentials",
+       "url": "https://github.com/ConductionNL/learniq/issues/118",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:46:50.000Z"
+      },
+      {
+       "title": "Implement: Compliance Training & Audit",
+       "url": "https://github.com/ConductionNL/learniq/issues/119",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:47:01.000Z"
+      },
+      {
+       "title": "Implement: Course Management",
+       "url": "https://github.com/ConductionNL/learniq/issues/120",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:47:14.000Z"
+      },
+      {
+       "title": "Implement: Role-Aware Dashboards",
+       "url": "https://github.com/ConductionNL/learniq/issues/121",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:47:26.000Z"
+      },
+      {
+       "title": "Implement: Data Exchange",
+       "url": "https://github.com/ConductionNL/learniq/issues/122",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:47:38.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Only the 200 most recently updated issues of each kind were read.",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "publiccode.yml declares no standards under supports.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 11.4
+  "durationSeconds": 19.4,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

@@ -31,29 +31,31 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:15:07.483Z",
+  "lastCheckedAt": "2026-11-19T23:05:12.732Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:47.595Z",
-  "updatedAt": "2026-11-19T14:15:07.483Z",
+  "updatedAt": "2026-11-19T23:05:12.732Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-15-07-483Z",
+  "id": "2026-11-19T23-05-12-732Z",
   "repoId": "github.com/OpenWebconcept/plugin-openpub-base",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:15:07.483Z",
-  "createdAt": "2026-11-19T14:15:07.483Z",
+  "checkedAt": "2026-11-19T23:05:12.732Z",
+  "createdAt": "2026-11-19T23:05:12.732Z",
   "version": "v3.10.0",
-  "checklistVersion": null,
-  "scannedRef": "master",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
-  "score": 49,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v3.10.0",
+  "scannedRefKind": "release",
+  "scannedCommit": "57318b7d6e253ac97ec80f0742157af885f1165d",
+  "score": 52,
   "rating": 3.1,
   "categoryRatings": {
    "Governance": 2.4,
@@ -80,6 +82,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -95,6 +100,9 @@
    "dependency-management": {
     "rating": null
    },
+   "container-images": {
+    "rating": null
+   },
    "secrets": {
     "rating": null
    },
@@ -108,7 +116,10 @@
     "rating": 4.3
    },
    "layering": {
-    "rating": 3
+    "rating": 5.5
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 4.5
@@ -150,7 +161,7 @@
   },
   "issueCounts": {
    "errors": 5,
-   "warnings": 9
+   "warnings": 8
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -303,6 +314,19 @@
     "evidence": [],
     "referenceUrl": "https://www.cisa.gov/sbom",
     "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
     "starRating": 3
    },
    {
@@ -659,17 +683,15 @@
     "id": "fivelayer",
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
-    "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "status": "pass",
+    "message": "Detected layer signals: Service layer (back-end microservice). This repository appears to target a single Common Ground layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer.",
     "evidence": [
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in src/Base/Admin/AdminServiceProvider.php",
      "Found \"api\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
-    "confidence": "medium",
+    "confidence": "high",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "helmchart",
@@ -691,7 +713,7 @@
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
      "GitHub releases: 453 release file downloads, 60 releases with files (2026-11-19)",
-     "Packagist plugin/openpub-base: 5,054 downloads in total, 736 downloads in the last 30 days, 1 dependent packages (2026-11-19)",
+     "Packagist plugin/openpub-base: 5,075 downloads in total, 757 downloads in the last 30 days, 1 dependent packages (2026-11-19)",
      "GitHub OpenWebconcept/plugin-openpub-base: 2 stars, 4 forks, 4 watchers (2026-11-19)",
      "GitHub commits OpenWebconcept/plugin-openpub-base: 7 contributors, 4 from the owning organisation, 1 from other organisations, 2 unknown (2026-11-19)"
     ],
@@ -727,11 +749,11 @@
        "figures": [
         {
          "label": "downloads in total",
-         "value": 5054
+         "value": 5075
         },
         {
          "label": "downloads in the last 30 days",
-         "value": 736
+         "value": 757
         },
         {
          "label": "dependent packages",
@@ -791,9 +813,147 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "5 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 6 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "2 organisations; largest 97%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (39 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is yard.nl (4 authors), with 97% of the 31 commits whose organisation is known; 21% of the commits come from 2 of 7 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": true
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.86",
+      "explanation": "6 change requests were closed (merged or not) and 7 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 1.1 hours",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 7 latest change requests opened by people between 2026-08-21 and 2026-11-12. 3 got a response; 4 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": null,
+      "explanation": "Not measured: no issues were opened by people between 2026-08-21 and 2026-11-12.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": null
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "18 in 12 months",
+      "explanation": "18 final releases were published in the last 12 months, about one every 20 days, counted from the GitHub releases. The latest final release is from 2026-11-16. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 1,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 0,
+        "waiting": 0
+       },
+       "fix": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       }
+      }
+     ],
+     "openBreachCount": 1,
+     "openBreaches": [
+      {
+       "title": "Foutieve volgorde berichten bij geüpdate publicatiedatum",
+       "url": "https://github.com/OpenWebconcept/plugin-openpub-base/issues/21",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2024-01-10T08:23:54.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "1 of 1 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 2.8
+  "durationSeconds": 4.5,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

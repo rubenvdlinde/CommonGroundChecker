@@ -19,46 +19,46 @@
     "source": "release",
     "detail": "latest release tag: v0.1.4"
    },
-   "displayName": "Planninq",
-   "shortDescription": "Kanban-gebaseerd project- en taakbeheer voor Nextcloud.",
+   "displayName": null,
+   "shortDescription": null,
    "logoUrl": null,
-   "developmentStatus": "beta",
-   "maintenanceType": "community",
-   "maintainers": [
-    "Conduction B.V."
-   ]
+   "developmentStatus": null,
+   "maintenanceType": null,
+   "maintainers": []
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:11:21.762Z",
+  "lastCheckedAt": "2026-11-19T23:00:25.841Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:57:15.170Z",
-  "updatedAt": "2026-11-19T14:11:21.762Z",
+  "updatedAt": "2026-11-19T23:00:25.841Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-11-21-762Z",
+  "id": "2026-11-19T23-00-25-841Z",
   "repoId": "github.com/ConductionNL/planninq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:11:21.762Z",
-  "createdAt": "2026-11-19T14:11:21.762Z",
+  "checkedAt": "2026-11-19T23:00:25.841Z",
+  "createdAt": "2026-11-19T23:00:25.841Z",
   "version": "v0.1.4",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
-  "score": 52,
-  "rating": 3,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v0.1.4",
+  "scannedRefKind": "release",
+  "scannedCommit": "8552df312aac38b4a958a9a63ad35574095bffd1",
+  "score": 63,
+  "rating": 3.6,
   "categoryRatings": {
-   "Governance": 3.1,
-   "Security": 1.8,
+   "Governance": 2.5,
+   "Security": 4.3,
    "Architecture": 4.3,
-   "Software Quality": 3.3,
+   "Software Quality": 3.5,
    "Deployment & Operations": 3.3
   },
   "aspectRatings": {
@@ -66,17 +66,20 @@
     "rating": 5.5
    },
    "ownership": {
-    "rating": 4.3
+    "rating": 3
    },
    "maintenance": {
     "rating": 0.5
    },
    "community-documents": {
-    "rating": 2,
-    "found": 2,
+    "rating": 1,
+    "found": 1,
     "expected": 5
    },
    "usage-and-ecosystem": {
+    "rating": null
+   },
+   "project-health": {
     "rating": null
    },
    "vulnerabilities": {
@@ -94,11 +97,14 @@
    "dependency-management": {
     "rating": null
    },
+   "container-images": {
+    "rating": null
+   },
    "secrets": {
     "rating": null
    },
    "secure-coding": {
-    "rating": 0.5
+    "rating": 5.5
    },
    "supply-chain": {
     "rating": 3
@@ -109,20 +115,23 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
-    "rating": 3.7
+    "rating": 4
    },
    "modifiability": {
-    "rating": 3.8
+    "rating": 4.5
    },
    "testability": {
     "rating": 1.8
    },
    "modularity": {
-    "rating": 2.9
+    "rating": 3.1
    },
    "reusability": {
-    "rating": 3.4
+    "rating": 3.6
    },
    "testing": {
     "rating": 4.3
@@ -139,12 +148,12 @@
   "endorsement": {
    "passed": false,
    "reasons": [
+    "Mandatory criterion fails: publiccode.yml Metadata File",
     "Mandatory criterion fails: Docker support",
     "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
-    "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
-    "Maintainability below 4 stars (3.00)"
+    "No publiccode.yml was found, so there is no maintenance contract.",
+    "Maintainability below 4 stars (3.23)"
    ]
   },
   "issueCounts": {
@@ -160,22 +169,22 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 10,247 lines of code, 1,020 functions, 1,014 files analyzed.",
+    "message": "Code metrics: 808 lines of code, 75 functions, 74 files analyzed.",
     "evidence": [
-     ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
-     "docs/docusaurus.config.js",
-     "docs/sidebars.js",
-     "docs/src/pages/index.js",
+     "docusaurus/docusaurus.config.js",
+     "docusaurus/sidebars.js",
+     "docusaurus/src/components/HomepageFeatures/index.js",
+     "docusaurus/src/pages/index.js",
      "eslint.config.js",
-     "l10n/be.js",
-     "l10n/bg.js",
-     "l10n/bs.js",
-     "l10n/ca.js",
+     "lib/AppInfo/Application.php",
+     "lib/Controller/DashboardController.php",
+     "lib/Controller/SettingsController.php",
+     "lib/Listener/DeepLinkRegistrationListener.php",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 10,247",
-     "Function count: 1,020",
-     "Files analyzed: 1,014"
+     "Total lines of code (NLOC): 808",
+     "Function count: 75",
+     "Files analyzed: 74"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -235,112 +244,13 @@
    {
     "id": "publiccode",
     "title": "publiccode.yml Metadata File",
-    "description": "A publiccode.yml file must be present in the repository root.",
-    "status": "warn",
-    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
-    "evidence": [
-     "publiccode.yml"
-    ],
+    "description": "A publiccode.yml file must be present in the repository root, containing machine-readable metadata per the publiccode.yml standard.",
+    "status": "fail",
+    "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
+    "evidence": [],
     "referenceUrl": "https://standard.publiccode.net/criteria/",
-    "publiccode": {
-     "publiccodeYmlVersion": "0.4",
-     "name": "Planninq",
-     "applicationSuite": null,
-     "url": "https://github.com/ConductionNL/planninq",
-     "landingURL": null,
-     "isBasedOn": [],
-     "softwareVersion": "0.2.1",
-     "releaseDate": "2026-05-26",
-     "logo": null,
-     "platforms": [
-      "nextcloud"
-     ],
-     "categories": [
-      "project-management",
-      "task-management"
-     ],
-     "usedBy": [],
-     "roadmap": null,
-     "developmentStatus": "beta",
-     "softwareType": "standalone/other",
-     "intendedAudience": {
-      "countries": [],
-      "unsupportedCountries": [],
-      "scope": []
-     },
-     "descriptions": [
-      {
-       "language": "en",
-       "localisedName": null,
-       "genericName": null,
-       "shortDescription": "Kanban-based project and task management for Nextcloud.",
-       "longDescription": "Planninq is a kanban-based project and task management application for Nextcloud. It enables teams to visualise workflows, track progress on tasks and projects, and collaborate effectively. Built on Open Register, it integrates with the Nextcloud ecosystem and supports agile and lean work methodologies suitable for both government organisations and businesses.",
-       "documentation": null,
-       "apiDocumentation": null,
-       "features": [
-        "Kanban board for visual workflow management",
-        "Task and project tracking",
-        "Team collaboration",
-        "Agile and lean workflow support"
-       ],
-       "screenshots": [],
-       "videos": [],
-       "awards": []
-      },
-      {
-       "language": "nl",
-       "localisedName": null,
-       "genericName": null,
-       "shortDescription": "Kanban-gebaseerd project- en taakbeheer voor Nextcloud.",
-       "longDescription": "Planninq is een kanban-gebaseerde project- en taakbeheertoepassing voor Nextcloud. Het stelt teams in staat om workflows te visualiseren, voortgang bij te houden op taken en projecten en effectief samen te werken. Gebouwd op Open Register integreert het met het Nextcloud-ecosysteem en ondersteunt agile en lean werkmethoden die geschikt zijn voor zowel overheidsorganisaties als bedrijven.",
-       "documentation": null,
-       "apiDocumentation": null,
-       "features": [
-        "Kanban-bord voor visueel workflowbeheer",
-        "Taken- en projectbeheer",
-        "Teamsamenwerking",
-        "Ondersteuning voor agile en lean workflows"
-       ],
-       "screenshots": [],
-       "videos": [],
-       "awards": []
-      }
-     ],
-     "legal": {
-      "license": "EUPL-1.2",
-      "mainCopyrightOwner": "Conduction B.V.",
-      "repoOwner": "Conduction B.V.",
-      "authorsFile": null
-     },
-     "maintenance": {
-      "type": "community",
-      "contractors": [],
-      "contacts": [
-       {
-        "name": "Conduction B.V.",
-        "email": "info@conduction.nl",
-        "phone": null,
-        "affiliation": "Conduction B.V."
-       }
-      ]
-     },
-     "localisation": {
-      "localisationReady": true,
-      "availableLanguages": [
-       "nl",
-       "en"
-      ]
-     },
-     "dependsOn": {
-      "open": [],
-      "proprietary": [],
-      "hardware": []
-     },
-     "organisation": null,
-     "fundedBy": []
-    },
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "maintenance",
@@ -348,10 +258,8 @@
     "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
     "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
     "status": "fail",
-    "message": "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
-    "evidence": [
-     "publiccode.yml"
-    ],
+    "message": "No publiccode.yml was found, so there is no maintenance contract.",
+    "evidence": [],
     "requirementLevel": "recommended",
     "starRating": 1
    },
@@ -406,6 +314,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: this is a Nextcloud app (appinfo/info.xml), not a container component. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -416,10 +337,10 @@
      "docs/ARCHITECTURE.md",
      "docs/DESIGN-REFERENCES.md",
      "docs/FEATURES.md",
-     "docs/Installation",
-     "docs/Installation/demo-environment.md",
-     "docs/docusaurus.config.js",
-     "docs/features.json"
+     "docs/intro.md",
+     "docusaurus/docusaurus.config.js",
+     "openspec/README.md",
+     "tests/integration/README.md"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
     "requirementLevel": "mandatory",
@@ -429,14 +350,12 @@
     "id": "changelog",
     "title": "Changelog presence",
     "description": "A changelog file helps stakeholders understand what changed between releases.",
-    "status": "pass",
-    "message": "Changelog file found: changelog.md",
-    "evidence": [
-     "changelog.md"
-    ],
+    "status": "warn",
+    "message": "No changelog file was found. Add a CHANGELOG.md, NEWS.md, or equivalent to document release history.",
+    "evidence": [],
     "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
     "requirementLevel": "recommended",
-    "starRating": 5
+    "starRating": 3
    },
    {
     "id": "tests",
@@ -446,15 +365,15 @@
     "message": "Test files or test configuration detected.",
     "evidence": [
      "tests/Unit",
-     "tests/Unit/AppInfo",
-     "tests/Unit/AppInfo/OpenRegisterAutoloaderTest.php",
-     "tests/Unit/Controller",
-     "tests/Unit/Controller/SetupControllerTest.php",
-     "tests/Unit/PlanninqTest.php",
-     "tests/Unit/Service",
-     "tests/Unit/Service/DemoDataServiceTest.php",
+     "tests/Unit/PlanixTest.php",
      "tests/bootstrap-unit.php",
-     "tests/bootstrap.php"
+     "tests/bootstrap.php",
+     "tests/integration",
+     "tests/integration/README.md",
+     "tests/integration/planix.postman_collection.json",
+     "tests/unit",
+     "tests/unit/Controller",
+     "tests/unit/Controller/SettingsControllerTest.php"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
     "requirementLevel": "mandatory",
@@ -476,18 +395,14 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 2.15 <= 15 and Max CCN 22.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 2.37 <= 15 and Max CCN 20.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.15 (threshold: 15)",
-     "Max CCN: 22.00 (threshold: 30)",
-     "6      2     27      0       6 titleError@60-65@/tmp/cgchecker-repo-geZzVP/repo/src/dialogs/LabelEditDialog.vue",
-     "6      2     27      0       6 colorError@72-77@/tmp/cgchecker-repo-geZzVP/repo/src/dialogs/LabelEditDialog.vue",
-     "8      3     37      0       8 durationError@70-77@/tmp/cgchecker-repo-geZzVP/repo/src/dialogs/TimeEntryDialog.vue",
-     "3      1     10      0       3 error@91-93@/tmp/cgchecker-repo-geZzVP/repo/src/views/ProjectList.vue",
-     "14      1    167      0      21 ProjectControllerTest::testCreateReturnsInternalServerErrorForUnexpectedThrowable@288-308@/tmp/cgchecker-repo-geZzVP/repo/tests/unit/Controller/ProjectControllerTest.php",
-     "18      1    179      0      31 ProjectControllerTest::testLeaveProjectReturnsInternalServerErrorForUnexpectedThrowable@315-345@/tmp/cgchecker-repo-geZzVP/repo/tests/unit/Controller/ProjectControllerTest.php"
+     "Average CCN: 2.37 (threshold: 15)",
+     "Max CCN: 20.00 (threshold: 30)",
+     "!!!! Warnings (cyclomatic_complexity > 15 or length > 1000 or nloc > 1000000 or parameter_count > 100) !!!!",
+     "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -500,13 +415,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "warn",
     "starRating": 3,
-    "rating": 3.005,
+    "rating": 3.225,
     "aspectRatings": {
-     "analysability": 3.73,
-     "modifiability": 3.78,
-     "testability": 1.8,
-     "modularity": 2.93,
-     "reusability": 3.35
+     "analysability": 4,
+     "modifiability": 4.48,
+     "testability": 1.79,
+     "modularity": 3.11,
+     "reusability": 3.55
     },
     "measurements": [
      {
@@ -519,7 +434,7 @@
       "rows": [
        {
         "label": "JavaScript",
-        "value": "2.3%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -530,25 +445,25 @@
        },
        {
         "label": "PHP",
-        "value": "4.5%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 4
+        "stars": 5
        },
        {
         "label": "Vue",
-        "value": "3.7%",
+        "value": "1.5%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 4
+        "stars": 5
        }
       ]
      },
@@ -562,7 +477,7 @@
       "rows": [
        {
         "label": "JavaScript, more than 15 lines",
-        "value": "60.8%",
+        "value": "49.7%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -573,7 +488,7 @@
        },
        {
         "label": "JavaScript, more than 30 lines",
-        "value": "12.6%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -584,7 +499,7 @@
        },
        {
         "label": "JavaScript, more than 60 lines",
-        "value": "4.9%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
@@ -595,7 +510,7 @@
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "69.5%",
+        "value": "67.4%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -606,29 +521,29 @@
        },
        {
         "label": "PHP, more than 30 lines",
-        "value": "30.9%",
+        "value": "43.4%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
          "4": "≤ 24.2%",
          "5": "≤ 17.0%"
         },
-        "stars": 3
+        "stars": 2
        },
        {
         "label": "PHP, more than 60 lines",
-        "value": "8.5%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
          "4": "≤ 9.1%",
          "5": "≤ 5.5%"
         },
-        "stars": 4
+        "stars": 5
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "24.3%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -639,7 +554,7 @@
        },
        {
         "label": "Vue, more than 30 lines",
-        "value": "2.7%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -671,25 +586,25 @@
       "rows": [
        {
         "label": "JavaScript, complexity above 5",
-        "value": "50.4%",
+        "value": "14.4%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
          "4": "≤ 20.7%",
          "5": "≤ 15.8%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "JavaScript, complexity above 10",
-        "value": "16.0%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "JavaScript, complexity above 25",
@@ -704,7 +619,7 @@
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "38.0%",
+        "value": "48.4%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -715,14 +630,14 @@
        },
        {
         "label": "PHP, complexity above 10",
-        "value": "5.5%",
+        "value": "12.0%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 4
+        "stars": 2
        },
        {
         "label": "PHP, complexity above 25",
@@ -737,7 +652,7 @@
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "14.2%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -748,7 +663,7 @@
        },
        {
         "label": "Vue, complexity above 10",
-        "value": "2.7%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -779,7 +694,7 @@
       "rows": [
        {
         "label": "JavaScript, 3 or more parameters",
-        "value": "10.2%",
+        "value": "3.2%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -812,18 +727,18 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "23.1%",
+        "value": "14.0%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
          "4": "≤ 15.4%",
          "5": "≤ 12.5%"
         },
-        "stars": 2
+        "stars": 4
        },
        {
         "label": "PHP, 5 or more parameters",
-        "value": "1.8%",
+        "value": "2.0%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
@@ -834,7 +749,7 @@
        },
        {
         "label": "PHP, 7 or more parameters",
-        "value": "0.4%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 2.1%",
          "3": "≤ 1.4%",
@@ -888,7 +803,7 @@
       "rows": [
        {
         "label": "PHP, fan-in above 10",
-        "value": "6.4%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 13.0%",
          "3": "≤ 10.7%",
@@ -931,7 +846,7 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "60.1%",
+        "value": "39.0%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -950,7 +865,7 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "0.1212",
+        "value": "0.125",
         "thresholds": {
          "4": "≤ 0.075",
          "5": "≤ 0.0375"
@@ -961,18 +876,18 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.89 to 3.12 (3 of 5 stars) over 86 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 3.06 to 3.39 (3 of 5 stars) over 29 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★☆ 4.4 (javascript 4.8, php 4.0, vue 4.4)",
-     "Unit size: ★★★☆☆ 3.1 (javascript 2.6, php 2.2, vue 4.8)",
-     "Unit complexity: ★★☆☆☆ 2.3 (javascript 1.3, php 1.4, vue 4.6)",
-     "Unit interfacing: ★★★★☆ 3.6 (javascript 4.7, php 1.9, vue 5.5)",
-     "Module coupling: ★★★★★ 4.6 (php 4.6)",
-     "Component independence: ★☆☆☆☆ 1.3 (php 1.3)",
-     "Component entanglement: ★★★☆☆ 2.9 (php 2.9)",
-     "Lever: component independence in php, about 575 lines to fix for half a star",
-     "Lever: unit complexity in php, about 274 lines to fix for half a star",
-     "Lever: unit complexity in javascript, about 390 lines to fix for half a star"
+     "Duplication: ★★★★★ 5.4 (javascript 5.5, php 5.5, vue 5.1)",
+     "Unit size: ★★★☆☆ 2.6 (javascript 3.4, php 1.9, vue 5.5)",
+     "Unit complexity: ★★★☆☆ 2.6 (javascript 4.6, php 1.3, vue 5.5)",
+     "Unit interfacing: ★★★★☆ 4.5 (javascript 5.2, php 4.0, vue 5.5)",
+     "Module coupling: ★★★★★ 5.5 (php 5.5)",
+     "Component independence: ★☆☆☆☆ 1.0 (php 1.0)",
+     "Component entanglement: ★★★☆☆ 2.8 (php 2.8)",
+     "Lever: component independence in php, about 123 lines to fix for half a star",
+     "Lever: unit complexity in php, about 79 lines to fix for half a star",
+     "Lever: unit size in php, about 47 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -980,23 +895,23 @@
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "fail",
-    "message": "Multiple risky coding patterns were detected (10 findings across 186 scanned source files). Review them against OWASP secure coding guidance.",
+    "status": "pass",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 37 scanned source files.",
     "evidence": [
-     "Dynamic code execution: lib/AppInfo/Application.php",
-     "Dynamic code execution: tests/bootstrap-unit.php",
-     "Dynamic code execution: tests/unit/Activity/ProviderSubjectHandlerTest.php",
-     "Dynamic code execution: tests/unit/Controller/ProjectControllerTest.php",
-     "Dynamic code execution: tests/unit/Listener/TaskActivityListenerTest.php",
-     "Dynamic code execution: tests/unit/Repair/MigrateAppConfigKeysTest.php",
-     "Dynamic code execution: tests/unit/Repair/MigrateRegisterSlugTest.php",
-     "Dynamic code execution: tests/unit/Repair/MigrateUserPreferencesTest.php",
-     "Dynamic code execution: tests/unit/Repair/ReconcileDueReminderOverridesTest.php",
-     "Dynamic code execution: tests/unit/Service/SettingsServiceTest.php"
+     "appinfo/routes.php",
+     "docusaurus/docusaurus.config.js",
+     "docusaurus/sidebars.js",
+     "docusaurus/src/components/HomepageFeatures/index.js",
+     "docusaurus/src/pages/index.js",
+     "eslint.config.js",
+     "lib/AppInfo/Application.php",
+     "lib/Controller/DashboardController.php",
+     "lib/Controller/SettingsController.php",
+     "lib/Listener/DeepLinkRegistrationListener.php"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "adrvalidator",
@@ -1060,62 +975,14 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX); Data layer (data store / register); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Service layer (back-end microservice); Interaction layer (frontend / portal); Process layer (orchestration / BFF); Integration layer (gateway / NLX); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
     "evidence": [
-     "Found path segment \"portal\" in lib/Portal/PortalContributionProvider.php",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-15-task-due-date-warning/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-15-task-due-date-warning/builds/test-build-001.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-15-task-due-date-warning/pipeline-logs/test-build-001.jsonl.gz",
-     "Found path segment \"ui\" in scripts/build-l10n-js.js",
-     "Found path segment \"frontend\" in test-scenarios/TS-003-frontend-adminroot-with-cnversioninfocard.md",
-     "Found path segment \"frontend\" in test-scenarios/TS-004-frontend-default-columns-editor.md",
-     "Found path segment \"frontend\" in test-scenarios/TS-005-frontend-openregister-initialization-section.md",
-     "Found path segment \"ui\" in test-scenarios/TS-009-danger-zone-archive-and-delete-require-confirmation.md",
-     "Found path segment \"portal\" in tests/unit/Portal/PortalContributionProviderTest.php",
-     "Found \"frontend\" in repository metadata and docs",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/.gitkeep",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-default-columns-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-default-columns-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-default-columns-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-default-columns-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-default-columns-05.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-labels-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-labels-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-labels-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-labels-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-labels-05.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-05.png",
-     "Found path segment \"admin\" in docs/tutorials/admin/01-configure-default-columns.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/02-manage-labels.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/03-admin-settings.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json",
-     "Found path segment \"service\" in lib/Service/DemoDataService.php",
-     "Found path segment \"service\" in lib/Service/DependencyGraph.php",
-     "Found path segment \"service\" in lib/Service/DependencyRepository.php",
-     "Found path segment \"service\" in lib/Service/DependencyService.php",
-     "Found path segment \"service\" in lib/Service/DueReminderWindowService.php",
-     "Found path segment \"service\" in lib/Service/LabelService.php",
-     "Found path segment \"service\" in lib/Service/RegisterImportService.php",
      "Found path segment \"service\" in lib/Service/SettingsService.php",
-     "Found path segment \"api\" in src/api/timeline.js",
-     "Found path segment \"service\" in tests/Unit/Service/DemoDataServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DependencyServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/LabelServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/SettingsServiceTest.php",
      "Found \"service\" in repository metadata and docs",
-     "Found path segment \"integration\" in tests/integration/README.md",
-     "Found path segment \"integration\" in tests/integration/planninq.postman_collection.json",
+     "Found \"frontend\" in repository metadata and docs",
+     "Found \"workflow\" in repository metadata and docs",
      "Found \"integration\" in repository metadata and docs",
-     "Found path segment \"db\" in tests/stubs/openregister/Db/ObjectEntity.php",
-     "Found \"database\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs"
+     "Found \"register\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1218,9 +1085,325 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 4 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "2 organisations; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (269 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is conduction.nl (4 authors), with 100% of the 245 commits whose organisation is known; 9% of the commits come from 1 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": true
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.96",
+      "explanation": "793 change requests were closed (merged or not) and 826 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "no response",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12 got a comment or review from anyone but its author.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "no response",
+      "explanation": "None of the 2 latest issues opened by people between 2026-08-21 and 2026-11-12 got a comment from anyone but its author.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "4 in 12 months",
+      "explanation": "4 final releases were published in the last 12 months, about one every 91 days, counted from the GitHub releases. The latest final release is from 2026-08-30. Besides these, 1 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 14,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 14,
+        "waiting": 14
+       },
+       "fix": {
+        "measured": 3,
+        "median": 0.4,
+        "worst": 56.2,
+        "breaches": 0,
+        "waiting": 11
+       }
+      },
+      {
+       "category": "documentation",
+       "label": "Documentation",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 1,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       },
+       "fix": null
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 1,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 106,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 92,
+        "waiting": 104
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 53,
+     "openBreaches": [
+      {
+       "title": "feat(dashboard): replace hardcoded sample KPIs with seed-driven counts",
+       "url": "https://github.com/ConductionNL/planninq/issues/194",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-29T09:14:12.000Z"
+      },
+      {
+       "title": "Implement: Admin & User Settings Specification",
+       "url": "https://github.com/ConductionNL/planninq/issues/212",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:19:41.000Z"
+      },
+      {
+       "title": "Implement: Dashboard & My Work Specification",
+       "url": "https://github.com/ConductionNL/planninq/issues/213",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:19:58.000Z"
+      },
+      {
+       "title": "Implement: Kanban Board Specification",
+       "url": "https://github.com/ConductionNL/planninq/issues/214",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:20:11.000Z"
+      },
+      {
+       "title": "Implement: Procest Integration Specification",
+       "url": "https://github.com/ConductionNL/planninq/issues/215",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:20:24.000Z"
+      },
+      {
+       "title": "Implement: Projects Specification",
+       "url": "https://github.com/ConductionNL/planninq/issues/216",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:20:37.000Z"
+      },
+      {
+       "title": "Implement: Spec: Register Schemas",
+       "url": "https://github.com/ConductionNL/planninq/issues/217",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:20:50.000Z"
+      },
+      {
+       "title": "Implement: Tasks Specification",
+       "url": "https://github.com/ConductionNL/planninq/issues/218",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:21:13.000Z"
+      },
+      {
+       "title": "Implement: Time Tracking Specification",
+       "url": "https://github.com/ConductionNL/planninq/issues/219",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T08:21:25.000Z"
+      },
+      {
+       "title": "Lint debt cleanup post-canonical-sync (Phase 2 fleet rollout)",
+       "url": "https://github.com/ConductionNL/planninq/issues/223",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-06-05T20:24:13.000Z"
+      },
+      {
+       "title": "Implement: BBV Programma Tree (Programma → Doel → Indicator)",
+       "url": "https://github.com/ConductionNL/planninq/issues/226",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T05:46:51.000Z"
+      },
+      {
+       "title": "Implement: Capacity Planning — Resource Scheduling",
+       "url": "https://github.com/ConductionNL/planninq/issues/227",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T05:47:05.000Z"
+      },
+      {
+       "title": "Implement: Portfolio Dashboard PMO (Project Management Office Rollup)",
+       "url": "https://github.com/ConductionNL/planninq/issues/228",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T05:48:01.000Z"
+      },
+      {
+       "title": "Implement: Risk Register & Issue Tracking",
+       "url": "https://github.com/ConductionNL/planninq/issues/229",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T05:50:10.000Z"
+      },
+      {
+       "title": "Implement: Raadsbesluit Deliverable Chain (decidesk → planix → procest → mydash)",
+       "url": "https://github.com/ConductionNL/planninq/issues/230",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T06:03:39.000Z"
+      },
+      {
+       "title": "Implement: Raadsbesluit Deliverable Chain (decidesk → planix → procest → mydash)",
+       "url": "https://github.com/ConductionNL/planninq/issues/231",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T07:08:21.000Z"
+      },
+      {
+       "title": "Fleet coverage retrofit: bring planix to 100% spec coverage",
+       "url": "https://github.com/ConductionNL/planninq/issues/236",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      },
+      {
+       "title": "Adopt Documentation links in widget/page Actions menus (nc-vue#447)",
+       "url": "https://github.com/ConductionNL/planninq/issues/243",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T23:35:05.000Z"
+      },
+      {
+       "title": "Implement: Issue 180",
+       "url": "https://github.com/ConductionNL/planninq/issues/247",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-09T05:06:25.000Z"
+      },
+      {
+       "title": "Implement: P2 Meeting Management",
+       "url": "https://github.com/ConductionNL/planninq/issues/248",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-09T05:06:29.000Z"
+      }
+     ],
+     "fixesByRelease": 1,
+     "fixesByClose": 2,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "2 of 122 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 4.6
+  "durationSeconds": 7.4,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

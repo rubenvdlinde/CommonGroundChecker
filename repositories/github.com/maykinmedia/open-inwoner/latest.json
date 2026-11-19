@@ -30,28 +30,30 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:13:24.302Z",
+  "lastCheckedAt": "2026-11-19T23:03:22.260Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:49.582Z",
-  "updatedAt": "2026-11-19T14:13:24.302Z",
+  "updatedAt": "2026-11-19T23:03:22.260Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-13-24-302Z",
+  "id": "2026-11-19T23-03-22-260Z",
   "repoId": "github.com/maykinmedia/open-inwoner",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:13:24.302Z",
-  "createdAt": "2026-11-19T14:13:24.302Z",
+  "checkedAt": "2026-11-19T23:03:22.260Z",
+  "createdAt": "2026-11-19T23:03:22.260Z",
   "version": "v2.5.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v2.5.0",
+  "scannedRefKind": "declared-version",
+  "scannedCommit": "fd00dfbe8e0ed46d7884d9608ab2aec98d119408",
   "score": 65,
   "rating": 3.1,
   "categoryRatings": {
@@ -79,6 +81,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -92,6 +97,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -109,6 +117,9 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
     "rating": 3.1
    },
@@ -122,7 +133,7 @@
     "rating": 1.5
    },
    "reusability": {
-    "rating": 2.5
+    "rating": 2.4
    },
    "testing": {
     "rating": 4.3
@@ -160,7 +171,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 96,967 lines of code, 7,296 functions, 7,237 files analyzed.",
+    "message": "Code metrics: 96,627 lines of code, 7,257 functions, 7,198 files analyzed.",
     "evidence": [
      ".storybook/main.ts",
      ".storybook/preview.tsx",
@@ -173,9 +184,9 @@
      "bin/docker_start.sh",
      "bin/ensure_dev_network.sh",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 96,967",
-     "Function count: 7,296",
-     "Files analyzed: 7,237"
+     "Total lines of code (NLOC): 96,627",
+     "Function count: 7,257",
+     "Files analyzed: 7,198"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -224,26 +235,15 @@
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
     "status": "pass",
     "confidence": "high",
-    "message": "Probable copyright owners detected: Belangrijkste verbeteringen, Beveiligingsfixes, Beveiligingsverbeteringen, Bugfixes and 13 more (confidence: high).",
+    "message": "Probable copyright owners detected: ci: Changes to CI configuration files and scripts, docs: Documentation only changes, Maykin, Maykin Media and 2 more (confidence: high).",
     "evidence": [
-     "pyproject.toml: Belangrijkste verbeteringen",
-     "pyproject.toml: Beveiligingsfixes",
-     "pyproject.toml: Beveiligingsverbeteringen",
-     "pyproject.toml: Bugfixes",
-     "pyproject.toml: CHANGELOG.rst",
      "pyproject.toml: ci: Changes to CI configuration files and scripts",
      "pyproject.toml: docs: Documentation only changes",
      "README.rst: Maykin",
      "LICENSE.md: Maykin Media",
      "package.json: Maykin Media",
-     "pyproject.toml: Nieuwe functies",
-     "pyproject.toml: Onderhoud",
-     "pyproject.toml: Pre-upgrade aandachtspunten",
      "pyproject.toml: revert: Reverts a previous commit",
-     "pyproject.toml: test: Adding missing tests or correcting existing tests",
-     "pyproject.toml: Uitfaseringen",
-     "pyproject.toml: Voor functioneel beheerders",
-     "pyproject.toml: Voor technisch beheerders"
+     "pyproject.toml: test: Adding missing tests or correcting existing tests"
     ],
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
@@ -280,6 +280,7 @@
      "roadmap": null,
      "developmentStatus": "beta",
      "softwareType": "standalone",
+     "supports": [],
      "intendedAudience": {
       "countries": [
        "nl"
@@ -296,7 +297,7 @@
        "genericName": "Open Inwoner component",
        "shortDescription": "Provide digital services to the residents",
        "longDescription": "Using Open Inwoner platform administrators can easily fill in the information about municipality products and services with the convenient WYSIWYG editor. The users can search through the products with the power of the full-text search and the questionnaires to access the services which are applicable and useful in their situation.\nThe users can interact with each other and exchange messages and documents. The users can create plans together to achieve their goals.\nThe style of the application is easily configurable: all the colors, images, help texts and the logo can be set up and changed in the admin page.\nOpen Inwoner is developed in line with the Common Ground principles and provides integration with Common Ground services such as Open Zaak and Haal Centraal.",
-       "documentation": "https://github.com/maykinmedia/open-inwoner/blob/main/README.rst",
+       "documentation": "https://github.com/maykinmedia/open-inwoner/blob/develop/README.rst",
        "apiDocumentation": null,
        "features": [
         "Display information about available products",
@@ -449,6 +450,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -520,18 +534,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 1.84 (threshold: 15); Max CCN 51.00 (threshold: 30). Threshold exceeded: MaxCCN 51.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 1.85 (threshold: 15); Max CCN 51.00 (threshold: 30). Threshold exceeded: MaxCCN 51.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.84 (threshold: 15)",
+     "Average CCN: 1.85 (threshold: 15)",
      "Max CCN: 51.00 (threshold: 30)",
-     "2      1     11      2       2 get_error_message@27-28@/tmp/cgchecker-repo-RlkHmo/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
-     "2      1     11      2       2 get_error_message@35-36@/tmp/cgchecker-repo-RlkHmo/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
-     "4      1     36      1       5 test_check_without_form_class_raises_value_error@245-249@/tmp/cgchecker-repo-RlkHmo/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
-     "6      1     36      1       7 test_check_without_required_permissions_raises_value_error@251-257@/tmp/cgchecker-repo-RlkHmo/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
-     "2      1     14      2       2 get_error_message@6-7@/tmp/cgchecker-repo-RlkHmo/repo/src/maykin_config_checks/permissions.py",
-     "11      1     80      1      14 test_reset_for_retry_from_pending_raises_error@282-295@/tmp/cgchecker-repo-RlkHmo/repo/src/notifications/tests/test_notification_record.py"
+     "2      1     11      2       2 get_error_message@27-28@/tmp/cgchecker-repo-O0yxZW/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
+     "2      1     11      2       2 get_error_message@35-36@/tmp/cgchecker-repo-O0yxZW/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
+     "4      1     36      1       5 test_check_without_form_class_raises_value_error@245-249@/tmp/cgchecker-repo-O0yxZW/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
+     "6      1     36      1       7 test_check_without_required_permissions_raises_value_error@251-257@/tmp/cgchecker-repo-O0yxZW/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
+     "2      1     14      2       2 get_error_message@6-7@/tmp/cgchecker-repo-O0yxZW/repo/src/maykin_config_checks/permissions.py",
+     "11      1     80      1      14 test_reset_for_retry_from_pending_raises_error@282-295@/tmp/cgchecker-repo-O0yxZW/repo/src/notifications/tests/test_notification_record.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -544,13 +558,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "fail",
     "starRating": 2,
-    "rating": 2.105,
+    "rating": 2.1,
     "aspectRatings": {
      "analysability": 3.07,
-     "modifiability": 2.34,
+     "modifiability": 2.33,
      "testability": 1.59,
-     "modularity": 1.48,
-     "reusability": 2.45
+     "modularity": 1.47,
+     "reusability": 2.44
     },
     "measurements": [
      {
@@ -639,7 +653,7 @@
        },
        {
         "label": "Python, more than 15 lines",
-        "value": "60.6%",
+        "value": "60.8%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -650,7 +664,7 @@
        },
        {
         "label": "Python, more than 30 lines",
-        "value": "34.8%",
+        "value": "34.9%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -661,7 +675,7 @@
        },
        {
         "label": "Python, more than 60 lines",
-        "value": "16.6%",
+        "value": "16.5%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
@@ -672,7 +686,7 @@
        },
        {
         "label": "TypeScript, more than 15 lines",
-        "value": "54.4%",
+        "value": "54.9%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -683,7 +697,7 @@
        },
        {
         "label": "TypeScript, more than 30 lines",
-        "value": "32.8%",
+        "value": "33.1%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -759,7 +773,7 @@
        },
        {
         "label": "Python, complexity above 10",
-        "value": "17.0%",
+        "value": "17.1%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -781,7 +795,7 @@
        },
        {
         "label": "TypeScript, complexity above 5",
-        "value": "20.8%",
+        "value": "21.0%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -792,7 +806,7 @@
        },
        {
         "label": "TypeScript, complexity above 10",
-        "value": "5.3%",
+        "value": "5.4%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -856,7 +870,7 @@
        },
        {
         "label": "Python, 3 or more parameters",
-        "value": "25.8%",
+        "value": "25.9%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -867,7 +881,7 @@
        },
        {
         "label": "Python, 5 or more parameters",
-        "value": "5.7%",
+        "value": "5.8%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
@@ -889,7 +903,7 @@
        },
        {
         "label": "TypeScript, 3 or more parameters",
-        "value": "3.1%",
+        "value": "3.2%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -943,7 +957,7 @@
        },
        {
         "label": "Python, fan-in above 20",
-        "value": "6.3%",
+        "value": "6.2%",
         "thresholds": {
          "2": "≤ 8.0%",
          "3": "≤ 5.9%",
@@ -975,7 +989,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "59.6%",
+        "value": "59.7%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -1005,18 +1019,18 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.03 to 2.18 (2 of 5 stars) over 764 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.02 to 2.18 (2 of 5 stars) over 761 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★★☆ 3.5 (javascript 5.0, python 3.5, typescript 3.4)",
-     "Unit size: ★★★☆☆ 2.6 (javascript 4.3, python 2.4, typescript 2.7)",
+     "Unit size: ★★★☆☆ 2.6 (javascript 4.3, python 2.4, typescript 2.6)",
      "Unit complexity: ★★☆☆☆ 1.9 (javascript 4.0, python 1.4, typescript 3.5)",
      "Unit interfacing: ★★☆☆☆ 2.3 (javascript 5.3, python 1.5, typescript 5.3)",
-     "Module coupling: ★★☆☆☆ 1.6 (python 1.6)",
+     "Module coupling: ★★☆☆☆ 1.5 (python 1.5)",
      "Component independence: ★☆☆☆☆ 1.3 (python 1.3)",
      "Component entanglement: ★★☆☆☆ 1.6 (python 1.6)",
-     "Lever: module coupling in python, about 560 lines to fix for half a star",
-     "Lever: duplication in python, about 805 lines to fix for half a star",
-     "Lever: unit size in python, about 1352 lines to fix for half a star"
+     "Lever: module coupling in python, about 562 lines to fix for half a star",
+     "Lever: duplication in python, about 810 lines to fix for half a star",
+     "Lever: unit size in python, about 1414 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -1025,7 +1039,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "fail",
-    "message": "Multiple risky coding patterns were detected (38 findings across 1682 scanned source files). Review them against OWASP secure coding guidance.",
+    "message": "Multiple risky coding patterns were detected (38 findings across 1675 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
      "Possible hardcoded secret: docker/openklant/seed_conversations.py",
      "Possible hardcoded secret: src/notifications/tests/test_admin.py",
@@ -1139,102 +1153,46 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Data layer (data store / register); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "message": "Detected layer signals: Service layer (back-end microservice); Interaction layer (frontend / portal); Integration layer (gateway / NLX); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
     "evidence": [
-     "Found path segment \"frontend\" in .github/workflows/frontend.yml",
-     "Found path segment \"ui\" in build",
-     "Found path segment \"ui\" in build/collect-static.ts",
-     "Found path segment \"ui\" in build/paths.ts",
-     "Found path segment \"ui\" in docs/beheerhandleiding/04_gebruikers.rst",
-     "Found path segment \"ui\" in docs/beheerhandleiding/13_uitkeringen.rst",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-category.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-page-options.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-pagetree-view.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-plugin-form.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-plugin-menu.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-plugin-tooltip.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-sideframe.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-structure-button.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-structure.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-toolbar.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-wizard-choice.png",
-     "Found path segment \"frontend\" in docs/beheerhandleiding/images/cms-frontend-wizard-form.png",
-     "Found path segment \"ui\" in docs/beheerhandleiding/images/dashboard-menu-gebruikers-authenticatie.png",
-     "Found path segment \"ui\" in docs/beheerhandleiding/images/klantensysteem-esuite.png",
-     "Found path segment \"ui\" in docs/beheerhandleiding/images/koppelingen-ssd-mijn-uitkeringen.png",
-     "Found path segment \"ui\" in docs/beheerhandleiding/images/logging-uitgaande-request-logging-configuratie.png",
-     "Found path segment \"ui\" in docs/beheerhandleiding/images/logging-uitgaande-request-logs.png",
-     "Found path segment \"ui\" in docs/beheerhandleiding/images/site-config-anonieme-gebruikers.png",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/docs.in",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/staging.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/test.txt",
-     "Found path segment \"ui\" in src/notifications/migrations/0004_notificationrecord_uuid_pk.py",
-     "Found path segment \"ui\" in src/open_inwoner/accounts/migrations/0007_contact_uuid.py",
-     "Found path segment \"ui\" in src/open_inwoner/accounts/migrations/0031_message_uuid.py",
-     "Found path segment \"ui\" in src/open_inwoner/accounts/migrations/0032_gen_message_uuid.py",
-     "Found path segment \"ui\" in src/open_inwoner/accounts/migrations/0033_alter_message_uuid.py",
-     "Found path segment \"ui\" in src/open_inwoner/accounts/migrations/0082_user_eherkenning_user_requires_kvk.py",
-     "Found path segment \"ui\" in src/open_inwoner/accounts/migrations/0091_remove_user_phonenumber_alt_requires_phonenumber_primary_and_more.py",
-     "Found path segment \"ui\" in src/open_inwoner/cms/extensions/migrations/0006_rename_requires_auth_bsn_commonextension_requires_auth_bsn_or_kvk.py",
-     "Found path segment \"ui\" in src/open_inwoner/cms/extensions/migrations/0007_alter_commonextension_requires_auth_bsn_or_kvk.py",
-     "Found path segment \"ui\" in src/open_inwoner/conf/parts/case_status_notification_action_required.html",
-     "Found path segment \"ui\" in src/open_inwoner/configurations/migrations/0065_siteconfiguration_email_verification_required.py",
-     "Found path segment \"ui\" in src/open_inwoner/configurations/tests/bootstrap/files/klantensysteem_config_step_with_esuite.yaml",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0018_rename_openklantconfig_esuiteklantconfig_and_more.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0023_remove_esuiteklantconfig_register_contact_moment_and_more.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0024_rename_subject_code_contactformsubject_esuite_subject_code_and_more.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0025_esuiteklantconfig_send_klantcontact_confirmation_email.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0033_esuiteklantconfig_contactmoment_fetch_timeout_and_more.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0034_esuiteklantconfig_contactmoment_cache_timeout.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0036_alter_esuiteklantconfig_contactmoment_cache_timeout.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0037_esuiteklantconfig_contactmoment_max_requests.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/migrations/0040_klantcontactmomentanswer_last_seen_answer_uuid_and_more.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/tests/cassettes/QuestionAnswerTestCase.test_designated_actor_is_required_to_create_question.yaml",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/tests/files/cmc-esuite.yaml",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/tests/files/kc-esuite.yaml",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/tests/test_esuite_service.py",
-     "Found path segment \"ui\" in src/open_inwoner/openklant/tests/test_esuite_vragen_service.py",
-     "Found path segment \"ui\" in src/open_inwoner/openzaak/migrations/0010_openzaakconfig_reformat_esuite_zaak_identificatie.py",
-     "Found path segment \"ui\" in src/open_inwoner/openzaak/migrations/0043_zaaktypestatustypeconfig_action_required.py",
-     "Found path segment \"ui\" in src/open_inwoner/openzaak/migrations/0044_openzaakconfig_action_required_deadline_days.py",
-     "Found path segment \"ui\" in src/open_inwoner/openzaak/migrations/0053_zaaktypeconfig_catalogus_is_required.py",
-     "Found path segment \"ui\" in src/open_inwoner/openzaak/migrations/0054_zgw_api_group_requires_most_services.py",
-     "Found path segment \"ui\" in src/open_inwoner/openzaak/tests/files/submissions-esuite.yaml",
-     "Found path segment \"ui\" in src/open_inwoner/pdc/migrations/0047_alter_productlocation_uuid.py",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/BodyAction_resolved.xsd",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/BodyReaction_resolved.xsd",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/EnvelopeAction_resolved.xsd",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/EnvelopeReaction_resolved.xsd",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/FWI-Include_resolved.xsd",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/FWI_resolved.xsd",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/GWSMLHeader_resolved.xsd",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/UitkeringsSpecificatieClient.wsdl",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/files/uitkering/v0600-b01/ws-addr_resolved.xsd",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/service/uitkering",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/service/uitkering/__init__.py",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/service/uitkering/body_action_resolved.py",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/service/uitkering/body_reaction_resolved.py",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/service/uitkering/fwi_include_resolved.py",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/service/uitkering/fwi_resolved.py",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/service/uitkering/gwsmlheader_resolved.py",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/service/uitkering/uitkerings_specificatie_client.py",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/tests/files/uitkering_empty_body.xml",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/tests/files/uitkering_fwi_fout.xml",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/tests/files/uitkering_fwi_waarschuwing.xml",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/tests/files/uitkering_response_basic.xml",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/tests/files/uitkering_response_extra_report.xml",
-     "Found path segment \"ui\" in src/open_inwoner/ssd/tests/files/uitkering_response_extra_row.xml",
-     "Found path segment \"ui\" in src/open_inwoner/utils/tests/test_uuid_mixin.py",
+     "Found path segment \"api\" in src/maykin_config_checks/api/__init__.py",
+     "Found path segment \"api\" in src/maykin_config_checks/api/api.py",
+     "Found path segment \"api\" in src/maykin_config_checks/api/views.py",
+     "Found path segment \"api\" in src/notifications/api/__init__.py",
+     "Found path segment \"api\" in src/notifications/api/serializers.py",
+     "Found path segment \"api\" in src/open_inwoner/api/__init__.py",
+     "Found path segment \"api\" in src/open_inwoner/api/pdc",
+     "Found path segment \"api\" in src/open_inwoner/api/pdc/__init__.py",
+     "Found path segment \"api\" in src/open_inwoner/api/pdc/serializers.py",
+     "Found path segment \"api\" in src/open_inwoner/api/pdc/views.py",
+     "Found path segment \"api\" in src/open_inwoner/api/search",
+     "Found path segment \"api\" in src/open_inwoner/api/search/__init__.py",
+     "Found path segment \"api\" in src/open_inwoner/api/search/serializers.py",
+     "Found path segment \"api\" in src/open_inwoner/api/search/tests",
+     "Found path segment \"api\" in src/open_inwoner/api/search/views.py",
+     "Found path segment \"api\" in src/open_inwoner/api/tests",
+     "Found path segment \"api\" in src/open_inwoner/api/urls.py",
+     "Found path segment \"api\" in src/open_inwoner/openzaak/api/__init__.py",
+     "Found path segment \"api\" in src/open_inwoner/openzaak/api/urls.py",
+     "Found path segment \"api\" in src/open_inwoner/openzaak/api/views.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/__init__.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/__init__.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/body_action_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/body_reaction_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/fwi_include_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/fwi_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/gwsmlheader_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/jaar_opgave_client.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/__init__.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/body_action_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/body_reaction_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/fwi_include_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/fwi_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/gwsmlheader_resolved.py",
+     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/uitkerings_specificatie_client.py",
+     "Found \"api\" in repository metadata and docs",
      "Found \"frontend\" in repository metadata and docs",
      "Found path segment \"admin\" in src/maykin_config_checks/templates/admin/config_checks_disabled.html",
      "Found path segment \"admin\" in src/maykin_config_checks/templates/admin/run_config_check.html",
@@ -1281,56 +1239,8 @@
      "Found path segment \"admin\" in src/open_inwoner/templates/admin/widgets",
      "Found path segment \"admin\" in src/open_inwoner/templates/admin/widgets/map.html",
      "Found path segment \"admin\" in src/open_inwoner/templates/admin/zaaktypeconfig_change_list.html",
-     "Found path segment \"api\" in src/maykin_config_checks/api/__init__.py",
-     "Found path segment \"api\" in src/maykin_config_checks/api/api.py",
-     "Found path segment \"api\" in src/maykin_config_checks/api/views.py",
-     "Found path segment \"api\" in src/notifications/api/__init__.py",
-     "Found path segment \"api\" in src/notifications/api/serializers.py",
-     "Found path segment \"api\" in src/open_inwoner/api/__init__.py",
-     "Found path segment \"api\" in src/open_inwoner/api/pdc",
-     "Found path segment \"api\" in src/open_inwoner/api/pdc/__init__.py",
-     "Found path segment \"api\" in src/open_inwoner/api/pdc/serializers.py",
-     "Found path segment \"api\" in src/open_inwoner/api/pdc/views.py",
-     "Found path segment \"api\" in src/open_inwoner/api/search",
-     "Found path segment \"api\" in src/open_inwoner/api/search/__init__.py",
-     "Found path segment \"api\" in src/open_inwoner/api/search/serializers.py",
-     "Found path segment \"api\" in src/open_inwoner/api/search/tests",
-     "Found path segment \"api\" in src/open_inwoner/api/search/tests/__init__.py",
-     "Found path segment \"api\" in src/open_inwoner/api/search/tests/test_autocomplete_api.py",
-     "Found path segment \"api\" in src/open_inwoner/api/search/views.py",
-     "Found path segment \"api\" in src/open_inwoner/api/tests",
-     "Found path segment \"api\" in src/open_inwoner/api/tests/__init__.py",
-     "Found path segment \"api\" in src/open_inwoner/api/tests/test_serializers.py",
-     "Found path segment \"api\" in src/open_inwoner/api/tests/test_views.py",
-     "Found path segment \"api\" in src/open_inwoner/api/urls.py",
-     "Found path segment \"api\" in src/open_inwoner/openzaak/api/__init__.py",
-     "Found path segment \"api\" in src/open_inwoner/openzaak/api/urls.py",
-     "Found path segment \"api\" in src/open_inwoner/openzaak/api/views.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/__init__.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/__init__.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/body_action_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/body_reaction_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/fwi_include_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/fwi_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/gwsmlheader_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/jaaropgave/jaar_opgave_client.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/__init__.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/body_action_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/body_reaction_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/fwi_include_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/fwi_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/gwsmlheader_resolved.py",
-     "Found path segment \"service\" in src/open_inwoner/ssd/service/uitkering/uitkerings_specificatie_client.py",
-     "Found \"service\" in repository metadata and docs",
-     "Found path segment \"data\" in src/open_inwoner/soap/tests/data/README.md",
-     "Found path segment \"data\" in src/open_inwoner/soap/tests/data/server.key",
-     "Found path segment \"data\" in src/open_inwoner/soap/tests/data/test.crt",
-     "Found path segment \"data\" in src/open_inwoner/soap/tests/data/test.key",
-     "Found \"database\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs",
-     "Found \"integration\" in repository metadata and docs"
+     "Found \"integration\" in repository metadata and docs",
+     "Found \"database\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1356,7 +1266,7 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Docker Hub maykinmedia/open-inwoner: 76,221 pulls in total (2026-11-19)",
+     "Docker Hub maykinmedia/open-inwoner: 76,249 pulls in total (2026-11-19)",
      "GitHub maykinmedia/open-inwoner: 4 stars, 8 forks, 2 watchers (2026-11-19)",
      "GitHub commits maykinmedia/open-inwoner: 11 contributors, 9 from the owning organisation, 0 from other organisations, 2 unknown (2026-11-19)"
     ],
@@ -1373,7 +1283,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 76221
+         "value": 76249
         }
        ]
       },
@@ -1429,9 +1339,310 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 8 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (286 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (7 authors), with 100% of the 262 commits whose organisation is known; 8% of the commits come from 1 of 8 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.96",
+      "explanation": "220 change requests were closed (merged or not) and 229 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 20 minutes",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 13 got a response; 2 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 26.9 hours",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-21 and 2026-11-12. 3 got a response; 12 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "23 in 12 months",
+      "explanation": "23 final releases were published in the last 12 months, about one every 16 days, counted from the GitHub releases. The latest final release is from 2026-11-04. Besides these, 2 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 52,
+       "response": {
+        "measured": 7,
+        "median": 4.2,
+        "worst": 42.2,
+        "breaches": 9,
+        "waiting": 6
+       },
+       "fix": {
+        "measured": 35,
+        "median": 12,
+        "worst": 42,
+        "breaches": 14,
+        "waiting": 17
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 11,
+       "response": {
+        "measured": 3,
+        "median": 23,
+        "worst": 90,
+        "breaches": 9,
+        "waiting": 6
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 203,
+       "response": {
+        "measured": 15,
+        "median": 4.3,
+        "worst": 89.9,
+        "breaches": 50,
+        "waiting": 52
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 44,
+     "openBreaches": [
+      {
+       "title": "Onduidelijke foutmelding bij het configureren van OpenID Connect ",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/315",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2022-10-20T11:12:48.000Z"
+      },
+      {
+       "title": "/marker-icon.png in wrong location (?)",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/751",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2023-09-08T17:37:21.000Z"
+      },
+      {
+       "title": "Refactor CMS packages to match domain language",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2081",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-01-13T12:51:28.000Z"
+      },
+      {
+       "title": "Mijn vragen - mijn vraag breadcrumb niet goed ingesteld",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2153",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-02-06T11:36:17.000Z"
+      },
+      {
+       "title": "Add Basis tokens and new token relations",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2204",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-02-23T09:48:30.000Z"
+      },
+      {
+       "title": "Inventarisatie OIP components vs. NLDS",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2219",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-03-02T10:51:22.000Z"
+      },
+      {
+       "title": "Update ActionList (single/multiple) component - Task Navigation",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2222",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-03-02T11:39:55.000Z"
+      },
+      {
+       "title": "Theme Wizard research",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2223",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-03-02T11:43:09.000Z"
+      },
+      {
+       "title": "Inventarisatie van uitwisseling",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2244",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-03-10T15:25:47.000Z"
+      },
+      {
+       "title": "Update unorderd list component (and add web-component)",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2265",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-03-16T15:07:00.000Z"
+      },
+      {
+       "title": "Add issue to Den Haag repo for improvement of File component",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2357",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-04-13T09:00:39.000Z"
+      },
+      {
+       "title": "WCAG: Aria label cookiebanner icon",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2458",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-15T14:39:20.000Z"
+      },
+      {
+       "title": "Refactor SCSS directory",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2464",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-20T10:13:17.000Z"
+      },
+      {
+       "title": "Improvement: replace all grey-900 elements with Body color",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2471",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-20T15:19:51.000Z"
+      },
+      {
+       "title": "Dot badge implementeren",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2478",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-21T16:29:32.000Z"
+      },
+      {
+       "title": "Task 'Card' voortgang",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2479",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-21T16:31:47.000Z"
+      },
+      {
+       "title": "Separate PR for File component improvement",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2480",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-21T16:41:18.000Z"
+      },
+      {
+       "title": "403 error page is an invalid HTML document",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2531",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-06-11T13:11:28.000Z"
+      },
+      {
+       "title": "Clean up deprecated env vars from code and deployment manifests",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2555",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-06-16T09:19:44.000Z"
+      },
+      {
+       "title": "Upgrade django-digid-eherkenning",
+       "url": "https://github.com/maykinmedia/open-inwoner/issues/2556",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-16T10:18:17.000Z"
+      }
+     ],
+     "fixesByRelease": 27,
+     "fixesByClose": 8,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "177 of 266 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "publiccode.yaml declares no standards under supports.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 8.7
+  "durationSeconds": 15.1,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

@@ -19,46 +19,46 @@
     "source": "release",
     "detail": "latest release tag: v0.2.0"
    },
-   "displayName": "Filinq",
-   "shortDescription": "AVG-publicatietoestemmingsbeheer en documentmetadata-verrijking voor Nextcloud.",
+   "displayName": null,
+   "shortDescription": null,
    "logoUrl": null,
-   "developmentStatus": "stable",
-   "maintenanceType": "community",
-   "maintainers": [
-    "Conduction B.V."
-   ]
+   "developmentStatus": null,
+   "maintenanceType": null,
+   "maintainers": []
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:08:05.732Z",
+  "lastCheckedAt": "2026-11-19T22:56:55.507Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:53:40.579Z",
-  "updatedAt": "2026-11-19T14:08:05.732Z",
+  "updatedAt": "2026-11-19T22:56:55.507Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-08-05-732Z",
+  "id": "2026-11-19T22-56-55-507Z",
   "repoId": "github.com/ConductionNL/filinq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:08:05.732Z",
-  "createdAt": "2026-11-19T14:08:05.732Z",
+  "checkedAt": "2026-11-19T22:56:55.507Z",
+  "createdAt": "2026-11-19T22:56:55.507Z",
   "version": "v0.2.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
-  "score": 57,
-  "rating": 2.9,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v0.0.34",
+  "scannedRefKind": "declared-version",
+  "scannedCommit": "fc2e6d8e2227d5cab9acca02e3527263fdce5e0a",
+  "score": 46,
+  "rating": 3,
   "categoryRatings": {
-   "Governance": 3.9,
-   "Security": 1.8,
+   "Governance": 2.8,
+   "Security": 3,
    "Architecture": 3,
-   "Software Quality": 3,
+   "Software Quality": 2.8,
    "Deployment & Operations": 3.3
   },
   "aspectRatings": {
@@ -66,17 +66,20 @@
     "rating": 5.5
    },
    "ownership": {
-    "rating": 4.3
+    "rating": 3
    },
    "maintenance": {
     "rating": 0.5
    },
    "community-documents": {
-    "rating": 5.5,
-    "found": 5,
+    "rating": 2,
+    "found": 2,
     "expected": 5
    },
    "usage-and-ecosystem": {
+    "rating": null
+   },
+   "project-health": {
     "rating": null
    },
    "vulnerabilities": {
@@ -94,6 +97,9 @@
    "dependency-management": {
     "rating": null
    },
+   "container-images": {
+    "rating": null
+   },
    "secrets": {
     "rating": null
    },
@@ -101,7 +107,7 @@
     "rating": 0.5
    },
    "supply-chain": {
-    "rating": 3
+    "rating": 5.5
    },
    "api": {
     "rating": 3
@@ -109,20 +115,23 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
-    "rating": 2.5
+    "rating": 2.2
    },
    "modifiability": {
-    "rating": 3.5
+    "rating": 3.2
    },
    "testability": {
-    "rating": 1.8
+    "rating": 1.4
    },
    "modularity": {
-    "rating": 3.4
+    "rating": 3.1
    },
    "reusability": {
-    "rating": 2.5
+    "rating": 2.9
    },
    "testing": {
     "rating": 4.3
@@ -139,19 +148,20 @@
   "endorsement": {
    "passed": false,
    "reasons": [
+    "Mandatory criterion fails: publiccode.yml Metadata File",
     "Mandatory criterion fails: Docker support",
     "Mandatory criterion fails: Available Docker image",
     "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
     "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: API Design Rules",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
-    "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
-    "Maintainability below 4 stars (2.67)"
+    "No publiccode.yml was found, so there is no maintenance contract.",
+    "Maintainability below 4 stars (2.42)"
    ]
   },
   "issueCounts": {
-   "errors": 6,
-   "warnings": 6
+   "errors": 7,
+   "warnings": 7
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -162,22 +172,22 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 41,810 lines of code, 3,733 functions, 3,732 files analyzed.",
+    "message": "Code metrics: 19,836 lines of code, 1,322 functions, 1,307 files analyzed.",
     "evidence": [
-     ".nodeenv.sh",
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
+     "composer-setup.php",
      "docker/init-ubuntu.sh",
      "docs/docusaurus.config.js",
-     "docs/office-suites/test-locally.sh",
-     "docs/office-suites/verify-suite.sh",
      "docs/sidebars.js",
      "docs/src/components/HomepageFeatures/index.js",
      "docs/src/pages/index.js",
+     "docusaurus/docusaurus.config.js",
+     "docusaurus/sidebars.js",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 41,810",
-     "Function count: 3,733",
-     "Files analyzed: 3,732"
+     "Total lines of code (NLOC): 19,836",
+     "Function count: 1,322",
+     "Files analyzed: 1,307"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -237,115 +247,13 @@
    {
     "id": "publiccode",
     "title": "publiccode.yml Metadata File",
-    "description": "A publiccode.yml file must be present in the repository root.",
-    "status": "warn",
-    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
-    "evidence": [
-     "publiccode.yml"
-    ],
+    "description": "A publiccode.yml file must be present in the repository root, containing machine-readable metadata per the publiccode.yml standard.",
+    "status": "fail",
+    "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
+    "evidence": [],
     "referenceUrl": "https://standard.publiccode.net/criteria/",
-    "publiccode": {
-     "publiccodeYmlVersion": "0.4",
-     "name": "Filinq",
-     "applicationSuite": null,
-     "url": "https://github.com/ConductionNL/filinq",
-     "landingURL": null,
-     "isBasedOn": [],
-     "softwareVersion": "0.0.34",
-     "releaseDate": "2026-05-26",
-     "logo": null,
-     "platforms": [
-      "nextcloud"
-     ],
-     "categories": [
-      "document-management"
-     ],
-     "usedBy": [],
-     "roadmap": null,
-     "developmentStatus": "stable",
-     "softwareType": "standalone/other",
-     "intendedAudience": {
-      "countries": [],
-      "unsupportedCountries": [],
-      "scope": []
-     },
-     "descriptions": [
-      {
-       "language": "en",
-       "localisedName": null,
-       "genericName": null,
-       "shortDescription": "GDPR publication consent management and document metadata enrichment for Nextcloud.",
-       "longDescription": "Filinq provides GDPR-compliant publication consent tracking (Wet Open Overheid) and automatic document metadata enrichment. It integrates with Open Register via events to enrich documents as they are created and updated. Features include consent tracking with configurable objection periods, WOO compliance (minimum 4-week objection period), automatic language detection, keyword extraction, topic classification, PDF generation, document signing (SES/AES/QES), and anonymization.",
-       "documentation": null,
-       "apiDocumentation": null,
-       "features": [
-        "GDPR publication consent tracking",
-        "Wet Open Overheid (WOO) compliance",
-        "Automatic document metadata enrichment",
-        "Language detection and keyword extraction",
-        "Document signing (SES / AES / QES)",
-        "Document anonymization"
-       ],
-       "screenshots": [],
-       "videos": [],
-       "awards": []
-      },
-      {
-       "language": "nl",
-       "localisedName": null,
-       "genericName": null,
-       "shortDescription": "AVG-publicatietoestemmingsbeheer en documentmetadata-verrijking voor Nextcloud.",
-       "longDescription": "Filinq biedt AVG-conforme bijhouding van publicatietoestemmingen (Wet Open Overheid) en automatische verrijking van documentmetadata. Het integreert via events met Open Register om documenten te verrijken zodra ze worden aangemaakt of bijgewerkt. Functionaliteit omvat toestemmingsbeheer met instelbare bezwaarperiodes, WOO-compliance (minimaal 4 weken bezwaartermijn), automatische taaldetectie, trefwoordextractie, onderwerpclassificatie, PDF-generatie, documentondertekening (SES/AES/QES) en anonimisering.",
-       "documentation": null,
-       "apiDocumentation": null,
-       "features": [
-        "AVG-publicatietoestemmingsbeheer",
-        "Wet Open Overheid (WOO)-compliance",
-        "Automatische verrijking van documentmetadata",
-        "Taaldetectie en trefwoordextractie",
-        "Documentondertekening (SES / AES / QES)",
-        "Documentanonimisering"
-       ],
-       "screenshots": [],
-       "videos": [],
-       "awards": []
-      }
-     ],
-     "legal": {
-      "license": "EUPL-1.2",
-      "mainCopyrightOwner": "Conduction B.V.",
-      "repoOwner": "Conduction B.V.",
-      "authorsFile": null
-     },
-     "maintenance": {
-      "type": "community",
-      "contractors": [],
-      "contacts": [
-       {
-        "name": "Conduction B.V.",
-        "email": "info@conduction.nl",
-        "phone": null,
-        "affiliation": "Conduction B.V."
-       }
-      ]
-     },
-     "localisation": {
-      "localisationReady": true,
-      "availableLanguages": [
-       "nl",
-       "en"
-      ]
-     },
-     "dependsOn": {
-      "open": [],
-      "proprietary": [],
-      "hardware": []
-     },
-     "organisation": null,
-     "fundedBy": []
-    },
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "maintenance",
@@ -353,10 +261,8 @@
     "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
     "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
     "status": "fail",
-    "message": "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
-    "evidence": [
-     "publiccode.yml"
-    ],
+    "message": "No publiccode.yml was found, so there is no maintenance contract.",
+    "evidence": [],
     "requirementLevel": "recommended",
     "starRating": 1
    },
@@ -367,9 +273,9 @@
     "status": "fail",
     "message": "Docker-compose file found but no Dockerfile detected. A Dockerfile is required.",
     "evidence": [
-     "deploy/office-suites/docker-compose.yml",
      "docker-compose.yml",
-     "docs/static/solr/docker-compose.yml"
+     "docs/static/solr/docker-compose.yml",
+     "docusaurus/static/solr/docker-compose.yml"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
@@ -397,7 +303,7 @@
      ".github/workflows/code-quality.yml",
      ".github/workflows/documentation.yml",
      ".github/workflows/issue-triage.yml",
-     ".github/workflows/l10n.yml"
+     ".github/workflows/openspec-sync.yml"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
     "requirementLevel": "mandatory",
@@ -407,11 +313,26 @@
     "id": "sbom",
     "title": "SBOM (Software Bill of Materials)",
     "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
-    "status": "warn",
-    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
-    "evidence": [],
+    "status": "pass",
+    "message": "SBOM file(s) found: .github/workflows/sbom.yml. Could not determine dependency count from .github/workflows/sbom.yml.",
+    "evidence": [
+     ".github/workflows/sbom.yml"
+    ],
     "referenceUrl": "https://www.cisa.gov/sbom",
     "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: this is a Nextcloud app (appinfo/info.xml), not a container component. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
     "starRating": 3
    },
    {
@@ -423,12 +344,12 @@
     "evidence": [
      "README.md",
      "docs/GOVERNMENT-FEATURES.md",
-     "docs/Installation",
-     "docs/Installation/demo-environment.md",
-     "docs/admin",
-     "docs/admin/anonymisation.md",
-     "docs/admin/document-signing.md",
-     "docs/api"
+     "docs/api",
+     "docs/api/anonymization-logs.md",
+     "docs/api/document-processing.md",
+     "docs/api/document-reports.md",
+     "docs/api/full-text-search.md",
+     "docs/api/openapi.md"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
     "requirementLevel": "mandatory",
@@ -455,15 +376,15 @@
     "message": "Test files or test configuration detected.",
     "evidence": [
      "jest.config.js",
-     "src/services/anonymizationUpload.spec.js",
-     "src/services/highlightText.spec.js",
-     "src/services/odfToHtml.spec.js",
-     "src/store/modules/anonymization.spec.js",
-     "src/store/modules/fileViewer.spec.js",
-     "src/store/modules/myDocuments.spec.js",
      "src/store/modules/navigation.spec.ts",
-     "tests/.coverage-baseline.json",
-     "tests/__mocks__"
+     "tests/bootstrap.php",
+     "tests/sample-documents",
+     "tests/sample-documents/handhavingsbesluit.txt",
+     "tests/sample-documents/incident-rapport-english.txt",
+     "tests/sample-documents/klacht-behandeling-zorg.txt",
+     "tests/sample-documents/notulen-vergadering.txt",
+     "tests/sample-documents/woo-besluit-subsidie.txt",
+     "tests/unit"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
     "requirementLevel": "mandatory",
@@ -485,18 +406,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 1.65 (threshold: 15); Max CCN 32.00 (threshold: 30). Threshold exceeded: MaxCCN 32.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 4.07 (threshold: 15); Max CCN 1019.00 (threshold: 30). Threshold exceeded: MaxCCN 1019.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.65 (threshold: 15)",
-     "Max CCN: 32.00 (threshold: 30)",
-     "2      1      9      1       2 getError@14-15@/tmp/cgchecker-repo-MXcc8S/repo/src/store/modules/settings.js",
-     "6      1     17      0       6 data@35-40@/tmp/cgchecker-repo-MXcc8S/repo/src/components/AnonymiserBackendWarning.vue",
-     "3      1     10      1       3 showWarning@43-45@/tmp/cgchecker-repo-MXcc8S/repo/src/components/AnonymiserBackendWarning.vue",
-     "3      1     12      1       3 appStoreUrl@59-61@/tmp/cgchecker-repo-MXcc8S/repo/src/components/AnonymiserBackendWarning.vue",
-     "20      3     82      0      20 dismissWarning@69-88@/tmp/cgchecker-repo-MXcc8S/repo/src/components/AnonymiserBackendWarning.vue",
-     "7      1     23      0       7 onAnonymiserWarningDismissed@188-194@/tmp/cgchecker-repo-MXcc8S/repo/src/views/dashboard/DashboardIndex.vue"
+     "Average CCN: 4.07 (threshold: 15)",
+     "Max CCN: 1019.00 (threshold: 30)",
+     "1      1     10      0       1 e.onerror@1-1@/tmp/cgchecker-repo-AqZEyj/repo/phpmetrics/html/js/FileSaver.min.js",
+     "8      1     62      1      10 ConsentController::errorResponse@74-83@/tmp/cgchecker-repo-AqZEyj/repo/lib/Controller/ConsentController.php",
+     "15      3     89      1      18 TemplateRequestHandler::buildErrorResponse@116-133@/tmp/cgchecker-repo-AqZEyj/repo/lib/Controller/TemplateRequestHandler.php",
+     "16      2     78      1      18 DocuDeskEventListener::logHandlerError@156-173@/tmp/cgchecker-repo-AqZEyj/repo/lib/EventListener/DocuDeskEventListener.php",
+     "2      1      9      1       2 getError@16-17@/tmp/cgchecker-repo-AqZEyj/repo/src/store/modules/settings.js",
+     "8      2     34      1       8 showWarnings@518-525@/tmp/cgchecker-repo-AqZEyj/repo/composer-setup.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -507,15 +428,15 @@
     "title": "Maintainability (ISO 25010)",
     "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
-    "status": "warn",
-    "starRating": 3,
-    "rating": 2.675,
+    "status": "fail",
+    "starRating": 2,
+    "rating": 2.425,
     "aspectRatings": {
-     "analysability": 2.54,
-     "modifiability": 3.49,
-     "testability": 1.8,
-     "modularity": 3.42,
-     "reusability": 2.52
+     "analysability": 2.24,
+     "modifiability": 3.22,
+     "testability": 1.35,
+     "modularity": 3.06,
+     "reusability": 2.87
     },
     "measurements": [
      {
@@ -528,7 +449,7 @@
       "rows": [
        {
         "label": "JavaScript",
-        "value": "10.0%",
+        "value": "11.0%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -539,7 +460,7 @@
        },
        {
         "label": "PHP",
-        "value": "7.8%",
+        "value": "6.4%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -561,7 +482,7 @@
        },
        {
         "label": "Vue",
-        "value": "10.3%",
+        "value": "7.4%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -582,7 +503,7 @@
       "rows": [
        {
         "label": "JavaScript, more than 15 lines",
-        "value": "61.4%",
+        "value": "57.1%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -593,7 +514,7 @@
        },
        {
         "label": "JavaScript, more than 30 lines",
-        "value": "49.8%",
+        "value": "51.7%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -604,7 +525,7 @@
        },
        {
         "label": "JavaScript, more than 60 lines",
-        "value": "36.3%",
+        "value": "45.7%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
@@ -615,7 +536,7 @@
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "69.3%",
+        "value": "70.7%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -626,7 +547,7 @@
        },
        {
         "label": "PHP, more than 30 lines",
-        "value": "34.9%",
+        "value": "35.9%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -637,14 +558,14 @@
        },
        {
         "label": "PHP, more than 60 lines",
-        "value": "5.0%",
+        "value": "9.5%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
          "4": "≤ 9.1%",
          "5": "≤ 5.5%"
         },
-        "stars": 5
+        "stars": 3
        },
        {
         "label": "TypeScript, more than 15 lines",
@@ -681,18 +602,18 @@
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "37.7%",
+        "value": "25.7%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
          "4": "≤ 48.0%",
          "5": "≤ 36.0%"
         },
-        "stars": 4
+        "stars": 5
        },
        {
         "label": "Vue, more than 30 lines",
-        "value": "14.8%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -703,7 +624,7 @@
        },
        {
         "label": "Vue, more than 60 lines",
-        "value": "3.6%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
@@ -735,7 +656,7 @@
        },
        {
         "label": "JavaScript, complexity above 10",
-        "value": "45.1%",
+        "value": "49.0%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -746,7 +667,7 @@
        },
        {
         "label": "JavaScript, complexity above 25",
-        "value": "32.5%",
+        "value": "46.2%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
@@ -757,7 +678,7 @@
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "28.0%",
+        "value": "28.8%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -768,25 +689,25 @@
        },
        {
         "label": "PHP, complexity above 10",
-        "value": "0.5%",
+        "value": "10.7%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 5
+        "stars": 2
        },
        {
         "label": "PHP, complexity above 25",
-        "value": "0.0%",
+        "value": "6.1%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
          "4": "≤ 1.1%",
          "5": "≤ 0.5%"
         },
-        "stars": 5
+        "stars": 1
        },
        {
         "label": "TypeScript, complexity above 5",
@@ -823,7 +744,7 @@
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "10.5%",
+        "value": "10.4%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -834,7 +755,7 @@
        },
        {
         "label": "Vue, complexity above 10",
-        "value": "2.3%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -865,7 +786,7 @@
       "rows": [
        {
         "label": "JavaScript, 3 or more parameters",
-        "value": "6.3%",
+        "value": "5.0%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -876,7 +797,7 @@
        },
        {
         "label": "JavaScript, 5 or more parameters",
-        "value": "1.1%",
+        "value": "0.3%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
@@ -898,7 +819,7 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "33.4%",
+        "value": "27.3%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -909,25 +830,25 @@
        },
        {
         "label": "PHP, 5 or more parameters",
-        "value": "12.6%",
+        "value": "6.5%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
          "4": "≤ 3.4%",
          "5": "≤ 2.5%"
         },
-        "stars": 1
+        "stars": 2
        },
        {
         "label": "PHP, 7 or more parameters",
-        "value": "2.4%",
+        "value": "0.3%",
         "thresholds": {
          "2": "≤ 2.1%",
          "3": "≤ 1.4%",
          "4": "≤ 0.9%",
          "5": "≤ 0.6%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "TypeScript, 3 or more parameters",
@@ -964,7 +885,7 @@
        },
        {
         "label": "Vue, 3 or more parameters",
-        "value": "0.4%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -1007,7 +928,7 @@
       "rows": [
        {
         "label": "PHP, fan-in above 10",
-        "value": "1.7%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 13.0%",
          "3": "≤ 10.7%",
@@ -1050,7 +971,7 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "64.8%",
+        "value": "70.5%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -1069,28 +990,29 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "0.0688",
+        "value": "0.1818",
         "thresholds": {
          "4": "≤ 0.075",
          "5": "≤ 0.0375"
         },
-        "stars": 4
+        "stars": null,
+        "starsText": "below 4 stars"
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.60 to 2.75 (3 of 5 stars) over 402 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.30 to 2.55 (2 of 5 stars) over 82 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★☆☆ 3.0 (javascript 2.8, php 3.1, typescript 5.5, vue 2.7)",
-     "Unit size: ★★☆☆☆ 2.1 (javascript 1.4, php 2.2, typescript 5.5, vue 4.4)",
-     "Unit complexity: ★★☆☆☆ 2.3 (javascript 1.1, php 2.5, typescript 5.5, vue 4.8)",
-     "Unit interfacing: ★★★☆☆ 2.9 (javascript 5.0, php 1.4, typescript 5.5, vue 5.5)",
-     "Module coupling: ★★★★★ 5.3 (php 5.3)",
-     "Component independence: ★☆☆☆☆ 1.3 (php 1.3)",
-     "Component entanglement: ★★★★☆ 3.7 (php 3.7)",
-     "Lever: duplication in php, about 1255 lines to fix for half a star",
-     "Lever: unit complexity in php, about 1674 lines to fix for half a star",
-     "Lever: duplication in vue, about 1375 lines to fix for half a star"
+     "Duplication: ★★★☆☆ 2.9 (javascript 2.6, php 3.4, typescript 5.5, vue 3.2)",
+     "Unit size: ★★☆☆☆ 1.6 (javascript 1.2, php 2.1, typescript 5.5, vue 4.8)",
+     "Unit complexity: ★☆☆☆☆ 1.3 (javascript 1.1, php 1.5, typescript 5.5, vue 4.8)",
+     "Unit interfacing: ★★★★☆ 4.1 (javascript 5.1, php 1.5, typescript 5.5, vue 5.5)",
+     "Module coupling: ★★★★★ 5.5 (php 5.5)",
+     "Component independence: ★☆☆☆☆ 1.4 (php 1.4)",
+     "Component entanglement: ★★☆☆☆ 2.3 (php 2.3)",
+     "Lever: component independence in php, about 366 lines to fix for half a star",
+     "Lever: unit complexity in php, about 266 lines to fix for half a star",
+     "Lever: duplication in javascript, about 613 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -1099,37 +1021,19 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "fail",
-    "message": "Multiple risky coding patterns were detected (122 findings across 693 scanned source files). Review them against OWASP secure coding guidance.",
+    "message": "Multiple risky coding patterns were detected (22 findings across 103 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
-     "Dynamic code execution: lib/AppInfo/ObservabilityRegistrar.php",
-     "Dynamic code execution: lib/AppInfo/PdfConversionRegistrar.php",
-     "Dynamic code execution: lib/Controller/CustomDictionaryController.php",
-     "Dynamic code execution: lib/Service/AnonymizeRequestService.php",
-     "Dynamic code execution: lib/Service/CorrespondenceService.php",
-     "Dynamic code execution: lib/Service/CustomDictionaryMatchService.php",
-     "Dynamic code execution: lib/Service/DocumentService.php",
-     "Dynamic code execution: lib/Service/DossierEntityCollector.php",
-     "Dynamic code execution: lib/Service/Editing/EditSessionService.php",
-     "Dynamic code execution: lib/Service/Editing/GuardedWriter.php",
-     "Dynamic code execution: lib/Service/Editing/OdpPresentationCodec.php",
-     "Dynamic code execution: lib/Service/Editing/OdsSpreadsheetCodec.php",
-     "Dynamic code execution: lib/Service/Editing/OoxmlBlockStyleCodec.php",
-     "Dynamic code execution: lib/Service/Editing/PptxPresentationCodec.php",
-     "Dynamic code execution: lib/Service/EmlEnvelopeRenderer.php",
-     "Dynamic code execution: lib/Service/EmlStructureReader.php",
-     "Possible hardcoded secret: lib/Service/Extraction/AmountExtractor.php",
+     "Dynamic code execution: js/docudesk-dashboard.js",
+     "Unsafe HTML injection: js/docudesk-dashboard.js",
+     "Possible hardcoded secret: js/docudesk-dashboard.js",
+     "Dynamic code execution: js/docudesk-main.js",
+     "Unsafe HTML injection: js/docudesk-main.js",
+     "Possible hardcoded secret: js/docudesk-main.js",
+     "Dynamic code execution: js/docudesk-nextcloud-vue_node_modules_nextcloud_capabilities_dist_index_mjs.js",
+     "Dynamic code execution: js/docudesk-settings.js",
+     "Unsafe HTML injection: js/docudesk-settings.js",
+     "Possible hardcoded secret: js/docudesk-settings.js",
      "Dynamic code execution: lib/Service/FileListingService.php",
-     "Dynamic code execution: lib/Service/FolderBatchService.php",
-     "Dynamic code execution: lib/Service/FolderFileEnumerator.php",
-     "Dynamic code execution: lib/Service/GlAccountSuggestionService.php",
-     "Dynamic code execution: lib/Service/LegalBasesSummaryService.php",
-     "Dynamic code execution: lib/Service/LegalBasisProposalService.php",
-     "Dynamic code execution: lib/Service/MetadataService.php",
-     "Dynamic code execution: lib/Service/Pdfa3ConversionService.php",
-     "Dynamic code execution: lib/Service/PolicyMatchService.php",
-     "Dynamic code execution: lib/Service/PolicyRetroactiveService.php",
-     "Dynamic code execution: lib/Service/SigningAuditService.php",
-     "Dynamic code execution: lib/Service/TemplateRenderer.php",
      "Dynamic code execution: phpmetrics/html/js/FileSaver.min.js",
      "Dynamic code execution: phpmetrics/html/js/clusterize.min.js",
      "Unsafe HTML injection: phpmetrics/html/js/clusterize.min.js",
@@ -1140,89 +1044,7 @@
      "Dynamic code execution: phpmetrics/html/js/graph-licenses.js",
      "Dynamic code execution: phpmetrics/html/js/graph-maintainability.js",
      "Unsafe HTML injection: phpmetrics/html/js/graph-maintainability.js",
-     "Dynamic code execution: phpmetrics/html/js/sort-table.min.js",
-     "Unsafe HTML injection: src/components/viewers/PdfViewer.vue",
-     "Dynamic code execution: tests/bootstrap-standalone.php",
-     "Dynamic code execution: tests/unit/BackgroundJob/BatchDocumentJobTest.php",
-     "Dynamic code execution: tests/unit/BackgroundJob/FolderExtractionJobTest.php",
-     "Dynamic code execution: tests/unit/BackgroundJob/SigningExpirationJobTest.php",
-     "Dynamic code execution: tests/unit/Command/OfficeProbeCommandTest.php",
-     "Dynamic code execution: tests/unit/Controller/AnonymizationControllerContractTest.php",
-     "Dynamic code execution: tests/unit/Controller/AnonymizationControllerOutputFormatTest.php",
-     "Dynamic code execution: tests/unit/Controller/AnonymizationControllerPublicationClearanceTest.php",
-     "Dynamic code execution: tests/unit/Controller/AnonymizationControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/BatchAnonymizationControllerContractTest.php",
-     "Dynamic code execution: tests/unit/Controller/BatchAnonymizationControllerFolderTest.php",
-     "Dynamic code execution: tests/unit/Controller/ConsentControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/CustomDictionaryControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/DocumentControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/DossierControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/MetadataControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/PdfControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/Pdfa3ConversionControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/PolicyControllerDeleteTest.php",
-     "Dynamic code execution: tests/unit/Controller/PolicyControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/PortalSigningReceiverControllerTest.php",
-     "Possible hardcoded secret: tests/unit/Controller/PortalSigningReceiverControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/SetupControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/SigningControllerAuditTest.php",
-     "Dynamic code execution: tests/unit/Controller/SigningControllerTest.php",
-     "Dynamic code execution: tests/unit/Controller/VersionControllerTest.php",
-     "Dynamic code execution: tests/unit/EventListener/DocumentSigningRequestedListenerTest.php",
-     "Dynamic code execution: tests/unit/EventListener/EntityRelationDecisionListenerTest.php",
-     "Dynamic code execution: tests/unit/EventListener/FilinqEventListenerTest.php",
-     "Dynamic code execution: tests/unit/EventListener/SignerEventTranslatorTest.php",
-     "Dynamic code execution: tests/unit/EventListener/SigningTaskListenerTest.php",
-     "Possible hardcoded secret: tests/unit/Portal/PortalAssertionVerifierTest.php",
-     "Dynamic code execution: tests/unit/RenameDutchColumnsTest.php",
-     "Dynamic code execution: tests/unit/Repair/ConsolidateRegistersTest.php",
-     "Dynamic code execution: tests/unit/Repair/MigrateAppConfigKeysTest.php",
-     "Dynamic code execution: tests/unit/Repair/MigrateSchemaApplicationIdTest.php",
-     "Dynamic code execution: tests/unit/Repair/MigrateUserPreferencesTest.php",
-     "Dynamic code execution: tests/unit/Service/AnonymizationServiceConfidentialityTest.php",
-     "Dynamic code execution: tests/unit/Service/AnonymizationServiceCustomDictionaryTest.php",
-     "Dynamic code execution: tests/unit/Service/AnonymizationServiceProhibitionTest.php",
-     "Dynamic code execution: tests/unit/Service/AnonymizationServicePublicationClearanceTest.php",
-     "Dynamic code execution: tests/unit/Service/AnonymizationServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/BatchStateServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/ConsentCrudServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/ConsentServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/Conversion/LibreOfficeHeadlessBackendTest.php",
-     "Dynamic code execution: tests/unit/Service/Conversion/MpdfBackendTest.php",
-     "Dynamic code execution: tests/unit/Service/Conversion/OutputLayoutResolverTest.php",
-     "Dynamic code execution: tests/unit/Service/Conversion/PhpWordBackendTest.php",
-     "Dynamic code execution: tests/unit/Service/CorrespondenceServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/CustomDictionaryServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/DataResolverServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/DocumentComparisonServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/DocumentServiceTest.php",
-     "Possible hardcoded secret: tests/unit/Service/DocumentValidationServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/Editing/DocumentGuardTest.php",
-     "Dynamic code execution: tests/unit/Service/Editing/EditSessionAgentSurfacesTest.php",
-     "Dynamic code execution: tests/unit/Service/Editing/EditSessionServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/Editing/GuardedWriterTest.php",
-     "Dynamic code execution: tests/unit/Service/EmlPdfAssemblyServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/FinancialExtractionServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/FolderBatchServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/GlAccountSuggestionServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/LegalBasesSummaryServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/LegalBasisProposalServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/ListReferenceResolverTest.php",
-     "Dynamic code execution: tests/unit/Service/OcrServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/Pdfa3ConversionServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/PolicyCrudServiceDeleteTest.php",
-     "Dynamic code execution: tests/unit/Service/PolicyMatchServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/PrintJobServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/RegisterBindingResolutionTest.php",
-     "Dynamic code execution: tests/unit/Service/RegisterDiscoveryServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/Signing/NativeSigningProviderTest.php",
-     "Possible hardcoded secret: tests/unit/Service/Signing/NativeSigningProviderTest.php",
-     "Dynamic code execution: tests/unit/Service/SigningAuditServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/SigningServiceTest.php",
-     "Dynamic code execution: tests/unit/Service/SigningVerificationServiceTest.php",
-     "Possible hardcoded secret: tests/unit/Service/SigningVerificationServiceTest.php",
-     "Dynamic code execution: tests/unit/Wave12SecurityRegressionTest.php",
-     "Possible hardcoded secret: tests/vitest/settingsStore.spec.js"
+     "Dynamic code execution: phpmetrics/html/js/sort-table.min.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
@@ -1233,23 +1055,18 @@
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "fail",
-    "message": "API Design Rules violations found across 1 specification(s): 12 issue(s).",
+    "message": "API Design Rules violations found across 1 specification(s): 7 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/filinq/fc2e6d8e2227d5cab9acca02e3527263fdce5e0a/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "HINT [info-contact] Info object must have \"contact\" object. @ info (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/OCSMeta @ components.schemas.OCSMeta (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./api/anonymization/batch/folder.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/anonymization/batch/folder.post.responses.200 (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "HINT [oas3-schema] \"type\" property must be equal to one of the allowed values: \"array\", \"boolean\", \"integer\", \"number\", \"object\", \"string\". @ paths./api/anonymization/batch/folder.post.responses.200.content.application/json.schema.properties.files.items.properties.error.type (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./api/anonymization/batch/folder.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./api/anonymization/batch/folder.post.responses.404.content (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./ocs/v2.php/apps/dsonextcloud/api.get (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/dsonextcloud/api.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/dsonextcloud/api.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/filinq/main/openapi.json)"
+     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/ConductionNL/filinq/fc2e6d8e2227d5cab9acca02e3527263fdce5e0a/openapi.json)",
+     "HINT [info-contact] Info object must have \"contact\" object. @ info (https://raw.githubusercontent.com/ConductionNL/filinq/fc2e6d8e2227d5cab9acca02e3527263fdce5e0a/openapi.json)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/OCSMeta @ components.schemas.OCSMeta (https://raw.githubusercontent.com/ConductionNL/filinq/fc2e6d8e2227d5cab9acca02e3527263fdce5e0a/openapi.json)",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/ConductionNL/filinq/fc2e6d8e2227d5cab9acca02e3527263fdce5e0a/openapi.json)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./ocs/v2.php/apps/dsonextcloud/api.get (https://raw.githubusercontent.com/ConductionNL/filinq/fc2e6d8e2227d5cab9acca02e3527263fdce5e0a/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/dsonextcloud/api.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/filinq/fc2e6d8e2227d5cab9acca02e3527263fdce5e0a/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/dsonextcloud/api.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/filinq/fc2e6d8e2227d5cab9acca02e3527263fdce5e0a/openapi.json)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -1259,40 +1076,34 @@
     "id": "contributing",
     "title": "Contributing guide",
     "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
-    "status": "pass",
-    "message": "Contributing guide found.",
-    "evidence": [
-     "CONTRIBUTING.md"
-    ],
+    "status": "warn",
+    "message": "No CONTRIBUTING guide found. Add CONTRIBUTING.md to make contribution workflows clear.",
+    "evidence": [],
     "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
     "requirementLevel": "mandatory",
-    "starRating": 5
+    "starRating": 3
    },
    {
     "id": "codeofconduct",
     "title": "Code of Conduct",
     "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
-    "status": "pass",
-    "message": "Code of Conduct file found.",
-    "evidence": [
-     "CODE_OF_CONDUCT.md"
-    ],
+    "status": "warn",
+    "message": "No Code of Conduct file found. Add CODE_OF_CONDUCT.md to clarify community behavior standards.",
+    "evidence": [],
     "referenceUrl": "https://opensource.guide/code-of-conduct/",
     "requirementLevel": "mandatory",
-    "starRating": 5
+    "starRating": 3
    },
    {
     "id": "security",
     "title": "Security policy",
     "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
-    "status": "pass",
-    "message": "Security policy file found.",
-    "evidence": [
-     "SECURITY.md"
-    ],
+    "status": "warn",
+    "message": "No SECURITY.md file found. Add one to document responsible vulnerability disclosure and supported versions.",
+    "evidence": [],
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
     "requirementLevel": "mandatory",
-    "starRating": 5
+    "starRating": 3
    },
    {
     "id": "semver",
@@ -1312,486 +1123,34 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX); Process layer (orchestration / BFF); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Service layer (back-end microservice); Interaction layer (frontend / portal); Process layer (orchestration / BFF); Integration layer (gateway / NLX); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
     "evidence": [
-     "Found path segment \"ui\" in deploy/office-suites",
-     "Found path segment \"ui\" in deploy/office-suites/docker-compose.yml",
-     "Found path segment \"ui\" in docs/office-suite-setup.md",
-     "Found path segment \"ui\" in docs/office-suites",
-     "Found path segment \"ui\" in docs/office-suites/README.md",
-     "Found path segment \"ui\" in docs/office-suites/collabora.md",
-     "Found path segment \"ui\" in docs/office-suites/eurooffice.md",
-     "Found path segment \"ui\" in docs/office-suites/libreoffice.md",
-     "Found path segment \"ui\" in docs/office-suites/onlyoffice.md",
-     "Found path segment \"ui\" in docs/office-suites/test-locally.sh",
-     "Found path segment \"ui\" in docs/office-suites/verify-suite.sh",
-     "Found path segment \"portal\" in lib/Portal/PortalAssertionVerifier.php",
-     "Found path segment \"portal\" in lib/Portal/PortalContributionProvider.php",
-     "Found path segment \"ui\" in lib/Service/Office/OfficeSuiteCapabilityService.php",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-advanced-template-management/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-advanced-template-management/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-advanced-template-management/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-add-dossier-schema/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-add-dossier-schema/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-add-dossier-schema/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-advanced-template-management/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-advanced-template-management/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-advanced-template-management/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-anonymisation-append-basis-summary-flag/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-anonymisation-append-basis-summary-flag/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-anonymisation-append-basis-summary-flag/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-anonymisation-bases-passthrough/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-anonymisation-bases-passthrough/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-anonymisation-bases-passthrough/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/bulk-signing-field-builder",
-     "Found path segment \"ui\" in openspec/changes/bulk-signing-field-builder/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/bulk-signing-field-builder/design.md",
-     "Found path segment \"ui\" in openspec/changes/bulk-signing-field-builder/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/bulk-signing-field-builder/specs",
-     "Found path segment \"ui\" in openspec/changes/bulk-signing-field-builder/specs/bulk-signing-field-builder",
-     "Found path segment \"ui\" in openspec/changes/bulk-signing-field-builder/specs/bulk-signing-field-builder/spec.md",
-     "Found path segment \"ui\" in openspec/changes/bulk-signing-field-builder/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/design.md",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/specs",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/specs/dossier-management-ui",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/specs/dossier-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/specs/dossier-register",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/specs/dossier-register/spec.md",
-     "Found path segment \"ui\" in openspec/changes/dossier-management-ui/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/filinq-adopt-buildmanifest-pipeline",
-     "Found path segment \"ui\" in openspec/changes/filinq-adopt-buildmanifest-pipeline/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/filinq-adopt-buildmanifest-pipeline/design.md",
-     "Found path segment \"ui\" in openspec/changes/filinq-adopt-buildmanifest-pipeline/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/filinq-adopt-buildmanifest-pipeline/specs",
-     "Found path segment \"ui\" in openspec/changes/filinq-adopt-buildmanifest-pipeline/specs/menu-architecture",
-     "Found path segment \"ui\" in openspec/changes/filinq-adopt-buildmanifest-pipeline/specs/menu-architecture/spec.md",
-     "Found path segment \"ui\" in openspec/changes/filinq-adopt-buildmanifest-pipeline/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/design.md",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/specs",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/specs/document-creatie-sjablonen",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/specs/document-creatie-sjablonen/spec.md",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/specs/guided-document-wizard",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/specs/guided-document-wizard/spec.md",
-     "Found path segment \"ui\" in openspec/changes/guided-document-wizard/tasks.md",
-     "Found path segment \"frontend\" in openspec/changes/odt-anonymisation-frontend",
-     "Found path segment \"frontend\" in openspec/changes/odt-anonymisation-frontend/.openspec.yaml",
-     "Found path segment \"frontend\" in openspec/changes/odt-anonymisation-frontend/design.md",
-     "Found path segment \"frontend\" in openspec/changes/odt-anonymisation-frontend/proposal.md",
-     "Found path segment \"frontend\" in openspec/changes/odt-anonymisation-frontend/specs",
-     "Found path segment \"frontend\" in openspec/changes/odt-anonymisation-frontend/specs/anonymization",
-     "Found path segment \"frontend\" in openspec/changes/odt-anonymisation-frontend/specs/anonymization/spec.md",
-     "Found path segment \"frontend\" in openspec/changes/odt-anonymisation-frontend/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/office-suite-portability",
-     "Found path segment \"ui\" in openspec/changes/office-suite-portability/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/office-suite-portability/design.md",
-     "Found path segment \"ui\" in openspec/changes/office-suite-portability/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/office-suite-portability/specs",
-     "Found path segment \"ui\" in openspec/changes/office-suite-portability/specs/office-suite-portability",
-     "Found path segment \"ui\" in openspec/changes/office-suite-portability/specs/office-suite-portability/spec.md",
-     "Found path segment \"ui\" in openspec/changes/office-suite-portability/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/design.md",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/specs",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/specs/consent-endpoint-hardening",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/specs/consent-endpoint-hardening/spec.md",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/specs/document-signing",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/specs/document-signing/spec.md",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/specs/signing-audit-via-or",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/specs/signing-audit-via-or/spec.md",
-     "Found path segment \"ui\" in openspec/changes/signing-trust-rebuild/tasks.md",
-     "Found path segment \"ui\" in openspec/specs/office-suite-portability",
-     "Found path segment \"ui\" in openspec/specs/office-suite-portability/spec.md",
-     "Found path segment \"ui\" in scripts/build-l10n-js.js",
-     "Found path segment \"ui\" in tests/sample-documents/handhavingsbesluit.txt",
-     "Found path segment \"ui\" in tests/sample-documents/woo-besluit-subsidie.txt",
-     "Found path segment \"portal\" in tests/unit/Portal/PortalAssertionVerifierTest.php",
-     "Found path segment \"portal\" in tests/unit/Portal/PortalContributionProviderTest.php",
-     "Found path segment \"ui\" in tests/unit/Service/BuildsAnonymizationService.php",
-     "Found path segment \"ui\" in tests/unit/Service/Office/OfficeSuiteCapabilityServiceTest.php",
-     "Found path segment \"ui\" in tests/unit/Service/Office/SuiteIndependenceTest.php",
-     "Found \"frontend\" in repository metadata and docs",
-     "Found path segment \"admin\" in docs/admin/anonymisation.md",
-     "Found path segment \"admin\" in docs/admin/document-signing.md",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/.gitkeep",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-templates-library-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-templates-library-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-templates-library-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-templates-library-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-anonymisation-rules-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-anonymisation-rules-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-anonymisation-rules-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-anonymisation-rules-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-01.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-02.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-03.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-04.png",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-05.png",
-     "Found path segment \"admin\" in docs/tutorials/admin/01-templates-library.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/02-anonymisation-rules.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/03-admin-settings.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json",
-     "Found path segment \"api\" in docs/api/anonymization-logs.md",
-     "Found path segment \"api\" in docs/api/document-processing.md",
-     "Found path segment \"api\" in docs/api/document-reports.md",
-     "Found path segment \"api\" in docs/api/openapi.md",
-     "Found path segment \"api\" in docs/api/presidio-integration.md",
-     "Found path segment \"service\" in lib/Service/AnonymisedPdfOutputService.php",
-     "Found path segment \"service\" in lib/Service/AnonymiserBackendStateClient.php",
-     "Found path segment \"service\" in lib/Service/AnonymizationPersistenceService.php",
      "Found path segment \"service\" in lib/Service/AnonymizationResultParser.php",
      "Found path segment \"service\" in lib/Service/AnonymizationService.php",
-     "Found path segment \"service\" in lib/Service/AnonymizeRequestService.php",
-     "Found path segment \"service\" in lib/Service/AnonymizeRequestValidator.php",
-     "Found path segment \"service\" in lib/Service/BaseLabelResolver.php",
-     "Found path segment \"service\" in lib/Service/BasesResolverService.php",
-     "Found path segment \"service\" in lib/Service/BatchAnonymizeService.php",
-     "Found path segment \"service\" in lib/Service/BatchExtractionService.php",
-     "Found path segment \"service\" in lib/Service/BatchReportService.php",
-     "Found path segment \"service\" in lib/Service/BatchRequestService.php",
-     "Found path segment \"service\" in lib/Service/BatchStateRepository.php",
-     "Found path segment \"service\" in lib/Service/BatchStateService.php",
-     "Found path segment \"service\" in lib/Service/BatchUploadService.php",
-     "Found path segment \"service\" in lib/Service/Charts",
-     "Found path segment \"service\" in lib/Service/Charts/BarChartRenderer.php",
-     "Found path segment \"service\" in lib/Service/Charts/CartesianFrame.php",
-     "Found path segment \"service\" in lib/Service/Charts/ChartDataNormalizer.php",
-     "Found path segment \"service\" in lib/Service/Charts/ChartLabelFormatter.php",
-     "Found path segment \"service\" in lib/Service/Charts/ChartLegendRenderer.php",
-     "Found path segment \"service\" in lib/Service/Charts/ChartPalette.php",
-     "Found path segment \"service\" in lib/Service/Charts/ChartRenderError.php",
-     "Found path segment \"service\" in lib/Service/Charts/ChartScale.php",
-     "Found path segment \"service\" in lib/Service/Charts/ChartSvgRenderer.php",
-     "Found path segment \"service\" in lib/Service/Charts/LineChartRenderer.php",
-     "Found path segment \"service\" in lib/Service/Charts/PieChartRenderer.php",
-     "Found path segment \"service\" in lib/Service/Charts/SvgPrimitives.php",
-     "Found path segment \"service\" in lib/Service/Charts/TableCellFormatter.php",
-     "Found path segment \"service\" in lib/Service/Charts/TableDataNormalizer.php",
-     "Found path segment \"service\" in lib/Service/Charts/TableHtmlRenderer.php",
-     "Found path segment \"service\" in lib/Service/Charts/ThousandsFormatter.php",
-     "Found path segment \"service\" in lib/Service/Comparison",
-     "Found path segment \"service\" in lib/Service/Comparison/RedactionAnnotator.php",
-     "Found path segment \"service\" in lib/Service/Comparison/WordDiffer.php",
-     "Found path segment \"service\" in lib/Service/ConfidentialityLabel.php",
-     "Found path segment \"service\" in lib/Service/ConfidentialityLabelService.php",
      "Found path segment \"service\" in lib/Service/ConsentCrudService.php",
-     "Found path segment \"service\" in lib/Service/ConsentNotesHelper.php",
-     "Found path segment \"service\" in lib/Service/ConsentPolicyReferentValidator.php",
-     "Found path segment \"service\" in lib/Service/ConsentRecordWriter.php",
-     "Found path segment \"service\" in lib/Service/ConsentScopeValidator.php",
      "Found path segment \"service\" in lib/Service/ConsentService.php",
      "Found path segment \"service\" in lib/Service/ConsentUpdateHandler.php",
-     "Found path segment \"service\" in lib/Service/Conversion",
-     "Found path segment \"service\" in lib/Service/Conversion/ConversionBackendInterface.php",
-     "Found path segment \"service\" in lib/Service/Conversion/EmlBackend.php",
-     "Found path segment \"service\" in lib/Service/Conversion/LibreOfficeHeadlessBackend.php",
-     "Found path segment \"service\" in lib/Service/Conversion/MpdfBackend.php",
-     "Found path segment \"service\" in lib/Service/Conversion/OfficeAppBackend.php",
-     "Found path segment \"service\" in lib/Service/Conversion/OutputLayoutResolver.php",
-     "Found path segment \"service\" in lib/Service/Conversion/PhpWordBackend.php",
-     "Found path segment \"service\" in lib/Service/Conversion/PhpWordIo.php",
-     "Found path segment \"service\" in lib/Service/Conversion/SofficeProcessRunner.php",
-     "Found path segment \"service\" in lib/Service/CorrespondenceService.php",
-     "Found path segment \"service\" in lib/Service/CustomDictionaryAccessGate.php",
-     "Found path segment \"service\" in lib/Service/CustomDictionaryDetectionRunner.php",
-     "Found path segment \"service\" in lib/Service/CustomDictionaryMatchService.php",
-     "Found path segment \"service\" in lib/Service/CustomDictionaryPayloadNormaliser.php",
-     "Found path segment \"service\" in lib/Service/CustomDictionaryRepository.php",
-     "Found path segment \"service\" in lib/Service/CustomDictionaryService.php",
-     "Found path segment \"service\" in lib/Service/DataResolverService.php",
-     "Found path segment \"service\" in lib/Service/DemoDataService.php",
-     "Found path segment \"service\" in lib/Service/DocumentAnonymizeRunner.php",
-     "Found path segment \"service\" in lib/Service/DocumentComparisonService.php",
-     "Found path segment \"service\" in lib/Service/DocumentObjectServiceResolver.php",
-     "Found path segment \"service\" in lib/Service/DocumentRenderPipeline.php",
-     "Found path segment \"service\" in lib/Service/DocumentService.php",
-     "Found path segment \"service\" in lib/Service/DocumentStorageService.php",
      "Found path segment \"service\" in lib/Service/DocumentTextExtractor.php",
-     "Found path segment \"service\" in lib/Service/DocumentValidationService.php",
-     "Found path segment \"service\" in lib/Service/DocumentVersionService.php",
-     "Found path segment \"service\" in lib/Service/DossierEntityCollector.php",
-     "Found path segment \"service\" in lib/Service/DossierObjectRepository.php",
-     "Found path segment \"service\" in lib/Service/DossierPlaceholderRanker.php",
-     "Found path segment \"service\" in lib/Service/DossierSummaryDataService.php",
-     "Found path segment \"service\" in lib/Service/Editing",
-     "Found path segment \"service\" in lib/Service/Editing/AgentArtefactMarker.php",
-     "Found path segment \"service\" in lib/Service/Editing/BlockStyleCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/BlockStyleFamilyCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/ChartCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/DocumentAgentService.php",
-     "Found path segment \"service\" in lib/Service/Editing/DocumentCodecs.php",
-     "Found path segment \"service\" in lib/Service/Editing/DocumentGuard.php",
-     "Found path segment \"service\" in lib/Service/Editing/EditSessionService.php",
-     "Found path segment \"service\" in lib/Service/Editing/GuardedWriter.php",
-     "Found path segment \"service\" in lib/Service/Editing/OdfBlockStyleCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/OdpPresentationCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/OdsSpreadsheetCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/OoxmlBlockStyleCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/PackageCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/PackageMetadataCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/PackagePartIo.php",
-     "Found path segment \"service\" in lib/Service/Editing/PptxPresentationCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/PresentationCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/PresentationFamilyCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/SpreadsheetCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/SpreadsheetFamilyCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/XlsxSpreadsheetCodec.php",
-     "Found path segment \"service\" in lib/Service/Editing/XmlBlockScanner.php",
-     "Found path segment \"service\" in lib/Service/EmlAnonymizationService.php",
-     "Found path segment \"service\" in lib/Service/EmlAttachmentRenderer.php",
-     "Found path segment \"service\" in lib/Service/EmlEnvelopeRenderer.php",
-     "Found path segment \"service\" in lib/Service/EmlPdfAssemblyService.php",
-     "Found path segment \"service\" in lib/Service/EmlPreviewService.php",
-     "Found path segment \"service\" in lib/Service/EmlStructureReader.php",
-     "Found path segment \"service\" in lib/Service/EmlTemplateLoader.php",
-     "Found path segment \"service\" in lib/Service/EntityConsolidationService.php",
      "Found path segment \"service\" in lib/Service/EntityDetectionService.php",
-     "Found path segment \"service\" in lib/Service/Extraction",
-     "Found path segment \"service\" in lib/Service/Extraction/AmountExtractor.php",
-     "Found path segment \"service\" in lib/Service/Extraction/DateExtractor.php",
-     "Found path segment \"service\" in lib/Service/Extraction/IbanExtractor.php",
-     "Found path segment \"service\" in lib/Service/Extraction/KvkExtractor.php",
-     "Found path segment \"service\" in lib/Service/Extraction/TotalsReconciler.php",
-     "Found path segment \"service\" in lib/Service/Extraction/VatIdExtractor.php",
      "Found path segment \"service\" in lib/Service/FileEntityStatsService.php",
      "Found path segment \"service\" in lib/Service/FileListingService.php",
      "Found path segment \"service\" in lib/Service/FileUploadService.php",
-     "Found path segment \"service\" in lib/Service/FinancialExtractionService.php",
-     "Found path segment \"service\" in lib/Service/FolderBatchService.php",
-     "Found path segment \"service\" in lib/Service/FolderFileEnumerator.php",
-     "Found path segment \"service\" in lib/Service/GeneratedDocumentLogger.php",
-     "Found path segment \"service\" in lib/Service/GlAccountSuggestionService.php",
-     "Found path segment \"service\" in lib/Service/GrondslagenPdfWriter.php",
-     "Found path segment \"service\" in lib/Service/GrondslagenSummaryAttacher.php",
      "Found path segment \"service\" in lib/Service/LanguageClassifier.php",
-     "Found path segment \"service\" in lib/Service/LegalBasesSummaryService.php",
-     "Found path segment \"service\" in lib/Service/LegalBasisCatalog.php",
-     "Found path segment \"service\" in lib/Service/LegalBasisProposalService.php",
-     "Found path segment \"service\" in lib/Service/ListReferenceResolver.php",
      "Found path segment \"service\" in lib/Service/MetadataService.php",
-     "Found path segment \"service\" in lib/Service/ObjectResultExtractor.php",
      "Found path segment \"service\" in lib/Service/ObjectionDeadlineChecker.php",
-     "Found path segment \"service\" in lib/Service/OcrService.php",
-     "Found path segment \"service\" in lib/Service/Office",
-     "Found path segment \"service\" in lib/Service/Office/OfficeSuiteCapabilityService.php",
-     "Found path segment \"service\" in lib/Service/Office/SupportedTypeProbe.php",
-     "Found path segment \"service\" in lib/Service/OpenRegisterAvailabilityService.php",
      "Found path segment \"service\" in lib/Service/OpenRegisterResolver.php",
-     "Found path segment \"service\" in lib/Service/OpenRegisterServiceLocator.php",
-     "Found path segment \"service\" in lib/Service/PdfConversionService.php",
      "Found path segment \"service\" in lib/Service/PdfService.php",
-     "Found path segment \"service\" in lib/Service/PdfStreamReaderFactory.php",
-     "Found path segment \"service\" in lib/Service/Pdfa3ConversionService.php",
-     "Found path segment \"service\" in lib/Service/Pdfa3MetadataAssembler.php",
-     "Found path segment \"service\" in lib/Service/PhpWordHtmlRenderer.php",
-     "Found path segment \"service\" in lib/Service/PolicyCrudService.php",
-     "Found path segment \"service\" in lib/Service/PolicyMatchService.php",
-     "Found path segment \"service\" in lib/Service/PolicyRetroactiveService.php",
-     "Found path segment \"service\" in lib/Service/PolicyRuleNormaliser.php",
-     "Found path segment \"service\" in lib/Service/PortalSigningDocumentResolver.php",
-     "Found path segment \"service\" in lib/Service/PrintJobService.php",
-     "Found path segment \"service\" in lib/Service/ProhibitionGateService.php",
-     "Found path segment \"service\" in lib/Service/ProhibitionOverrideCommitter.php",
-     "Found path segment \"service\" in lib/Service/ProhibitionPolicyService.php",
-     "Found path segment \"service\" in lib/Service/ProhibitionSkipTier.php",
      "Found path segment \"service\" in lib/Service/RegisterDiscoveryService.php",
-     "Found path segment \"service\" in lib/Service/RelationSkipDecisionService.php",
-     "Found path segment \"service\" in lib/Service/ReplacementVerificationService.php",
      "Found path segment \"service\" in lib/Service/SettingsInitializer.php",
      "Found path segment \"service\" in lib/Service/SettingsService.php",
-     "Found path segment \"service\" in lib/Service/SignedArtifactProducer.php",
-     "Found path segment \"service\" in lib/Service/Signing",
-     "Found path segment \"service\" in lib/Service/Signing/AssertionCanonicalizer.php",
-     "Found path segment \"service\" in lib/Service/Signing/NativeSigningProvider.php",
-     "Found path segment \"service\" in lib/Service/Signing/SigningCancellationService.php",
-     "Found path segment \"service\" in lib/Service/Signing/SigningProviderFactory.php",
-     "Found path segment \"service\" in lib/Service/Signing/SigningProviderInterface.php",
-     "Found path segment \"service\" in lib/Service/Signing/ValidSignProvider.php",
-     "Found path segment \"service\" in lib/Service/SigningActorResolver.php",
-     "Found path segment \"service\" in lib/Service/SigningAuditService.php",
-     "Found path segment \"service\" in lib/Service/SigningConclusionEmitter.php",
-     "Found path segment \"service\" in lib/Service/SigningRequestValidator.php",
-     "Found path segment \"service\" in lib/Service/SigningService.php",
-     "Found path segment \"service\" in lib/Service/SigningVerificationService.php",
-     "Found path segment \"service\" in lib/Service/Suggestion",
-     "Found path segment \"service\" in lib/Service/Suggestion/CategoryKeywordMapper.php",
-     "Found path segment \"service\" in lib/Service/Suggestion/HistoryRanker.php",
-     "Found path segment \"service\" in lib/Service/Suggestion/SupplierIdentityResolver.php",
-     "Found path segment \"service\" in lib/Service/TemplateLanguageService.php",
-     "Found path segment \"service\" in lib/Service/TemplatePreviewService.php",
      "Found path segment \"service\" in lib/Service/TemplateRenderer.php",
      "Found path segment \"service\" in lib/Service/TemplateService.php",
-     "Found path segment \"service\" in lib/Service/TemplateVersionService.php",
      "Found path segment \"service\" in lib/Service/TextAnalysisService.php",
-     "Found path segment \"service\" in lib/Service/TextNormaliser.php",
-     "Found path segment \"service\" in lib/Service/UnredactedEntitiesValidator.php",
-     "Found path segment \"service\" in lib/Service/Validation",
-     "Found path segment \"service\" in lib/Service/Validation/DocumentFileInspector.php",
-     "Found path segment \"service\" in lib/Service/Validation/ValidationProfileResolver.php",
-     "Found path segment \"service\" in lib/Service/WooProfileService.php",
-     "Found path segment \"services\" in src/services/anonymizationUpload.js",
-     "Found path segment \"services\" in src/services/anonymizationUpload.spec.js",
-     "Found path segment \"services\" in src/services/bases.js",
-     "Found path segment \"services\" in src/services/comparisonService.js",
-     "Found path segment \"services\" in src/services/entityTypes.js",
-     "Found path segment \"services\" in src/services/fileViewerService.js",
      "Found path segment \"services\" in src/services/getTheme.js",
-     "Found path segment \"services\" in src/services/highlightDom.js",
-     "Found path segment \"services\" in src/services/highlightText.js",
-     "Found path segment \"services\" in src/services/highlightText.spec.js",
-     "Found path segment \"services\" in src/services/odfToHtml.js",
-     "Found path segment \"services\" in src/services/odfToHtml.spec.js",
-     "Found path segment \"services\" in src/services/validationService.js",
-     "Found path segment \"services\" in src/services/versionService.js",
-     "Found path segment \"service\" in tests/unit/Service/AnonymiserBackendStateClientTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationLinkServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationResultParserTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationServiceConfidentialityTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationServiceCustomDictionaryTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationServiceOutputFormatTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationServiceProhibitionTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationServicePublicationClearanceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationServiceSingleFileRegressionTest.php",
-     "Found path segment \"service\" in tests/unit/Service/AnonymizationServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BasesResolverServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchAnonymizeServiceOutputLayoutTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchAnonymizeServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchExtractionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchReportServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchStateRepositoryTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchStateServiceKeepAliveTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchStateServicePersistenceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchStateServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchStateTestDoubles.php",
-     "Found path segment \"service\" in tests/unit/Service/BatchUploadServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/BuildsAnonymizationService.php",
-     "Found path segment \"service\" in tests/unit/Service/Charts",
-     "Found path segment \"service\" in tests/unit/Service/Charts/ChartSvgRendererTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Charts/TableHtmlRendererTest.php",
-     "Found path segment \"service\" in tests/unit/Service/ConfidentialityLabelServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/ConsentCrudServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/ConsentNotesHelperTest.php",
-     "Found path segment \"service\" in tests/unit/Service/ConsentScopeValidatorTest.php",
-     "Found path segment \"service\" in tests/unit/Service/ConsentServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/ConsentUpdateHandlerTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Conversion",
-     "Found path segment \"service\" in tests/unit/Service/Conversion/EmlBackendTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Conversion/LibreOfficeHeadlessBackendTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Conversion/MpdfBackendTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Conversion/OfficeAppBackendTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Conversion/OutputLayoutResolverTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Conversion/PhpWordBackendTest.php",
-     "Found path segment \"service\" in tests/unit/Service/CorrespondenceServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/CustomDictionaryMatchServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/CustomDictionaryServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DataResolverServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DemoDataServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DocumentComparisonServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DocumentServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DocumentStorageServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DocumentTextExtractorTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DocumentValidationServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/DocumentVersionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing",
-     "Found path segment \"service\" in tests/unit/Service/Editing/AgentArtefactMarkerTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/BlockStyleCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/BlockStyleCodecsTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/ChartCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/DocumentAgentServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/DocumentGuardFormatTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/DocumentGuardTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/EditSessionAgentSurfacesTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/EditSessionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/GuardedWriterTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/OdpPresentationCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/OdsSpreadsheetCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/PackageCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/PackageMetadataCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/PackagePartIoTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/PptxPresentationCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/PresentationCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/RoundTripFidelityTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/SpreadsheetCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/XlsxSpreadsheetCodecTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Editing/XmlBlockScannerTest.php",
-     "Found path segment \"service\" in tests/unit/Service/EmlPdfAssemblyServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/EmlPreviewServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/EntityConsolidationProhibitionTest.php",
-     "Found path segment \"service\" in tests/unit/Service/EntityConsolidationServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/EntityDetectionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Extraction",
-     "Found path segment \"service\" in tests/unit/Service/Extraction/AmountExtractorTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Extraction/DateExtractorTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Extraction/IbanExtractorTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Extraction/KvkExtractorTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Extraction/TotalsReconcilerTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Extraction/VatIdExtractorTest.php",
-     "Found path segment \"service\" in tests/unit/Service/FileEntityStatsServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/FileListingServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/FileUploadServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/FinancialExtractionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/FolderBatchServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/GlAccountSuggestionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/LanguageClassifierTest.php",
-     "Found path segment \"service\" in tests/unit/Service/LegalBasesSummaryServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/LegalBasisProposalServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/ListReferenceResolverTest.php",
-     "Found path segment \"service\" in tests/unit/Service/MetadataServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/ObjectionDeadlineCheckerTest.php",
-     "Found path segment \"service\" in tests/unit/Service/OcrServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Office",
-     "Found path segment \"service\" in tests/unit/Service/Office/AnchorRoundTripTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Office/OfficeSuiteCapabilityServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Office/SuiteIndependenceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Office/SupportedTypeProbeTest.php",
-     "Found path segment \"service\" in tests/unit/Service/OpenRegisterAvailabilityServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/OpenRegisterResolverTest.php",
-     "Found path segment \"service\" in tests/unit/Service/PdfConversionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/PdfServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Pdfa3ConversionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/PolicyCrudServiceDeleteTest.php",
-     "Found path segment \"service\" in tests/unit/Service/PolicyMatchServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/PolicyRetroactiveServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/PolicyRuleNormaliserTranslatableTest.php",
-     "Found path segment \"service\" in tests/unit/Service/PrintJobServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/RegisterBindingResolutionTest.php",
-     "Found path segment \"service\" in tests/unit/Service/RegisterDiscoveryServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/SettingsInitializerTest.php",
-     "Found path segment \"service\" in tests/unit/Service/SettingsServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Signing",
-     "Found path segment \"service\" in tests/unit/Service/Signing/NativeSigningProviderTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Signing/SigningCancellationServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Signing/SigningProviderFactoryTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Signing/ValidSignProviderTest.php",
-     "Found path segment \"service\" in tests/unit/Service/SigningAuditServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/SigningServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/SigningVerificationServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Suggestion",
-     "Found path segment \"service\" in tests/unit/Service/Suggestion/CategoryKeywordMapperTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Suggestion/HistoryRankerTest.php",
-     "Found path segment \"service\" in tests/unit/Service/Suggestion/SupplierIdentityResolverTest.php",
-     "Found path segment \"service\" in tests/unit/Service/TemplateLanguageServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/TemplatePreviewServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/TemplateRendererTest.php",
-     "Found path segment \"service\" in tests/unit/Service/TemplateServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/TemplateVersionServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/TextAnalysisServiceTest.php",
-     "Found path segment \"service\" in tests/unit/Service/WooProfileServiceTest.php",
      "Found \"service\" in repository metadata and docs",
-     "Found path segment \"integration\" in tests/integration/README-newman.md",
-     "Found path segment \"integration\" in tests/integration/filinq-api-negative.postman_collection.json",
-     "Found path segment \"integration\" in tests/integration/filinq-api.postman_collection.json",
-     "Found path segment \"integration\" in tests/integration/filinq.postman_collection.json",
-     "Found path segment \"integration\" in tests/integration/run-newman.sh",
-     "Found \"integration\" in repository metadata and docs",
+     "Found \"frontend\" in repository metadata and docs",
      "Found \"process\" in repository metadata and docs",
+     "Found \"integration\" in repository metadata and docs",
      "Found \"register\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
@@ -1818,8 +1177,8 @@
     "status": "info",
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Nextcloud App Store filinq: 0 ratings given (2026-11-19)",
-     "GitHub releases: 3,691 release file downloads, 500 most recent releases with files (2026-11-19)",
+     "Nextcloud App Store docudesk: 0 ratings given (2026-11-19)",
+     "GitHub releases: 3,693 release file downloads, 500 most recent releases with files (2026-11-19)",
      "GitHub ConductionNL/filinq: 4 stars, 3 forks, 3 watchers (2026-11-19)",
      "GitHub commits ConductionNL/filinq: 18 contributors, 10 from the owning organisation, 3 from other organisations, 5 unknown (2026-11-19)"
     ],
@@ -1829,8 +1188,8 @@
        "id": "nextcloud-appstore",
        "kind": "downloads",
        "source": "Nextcloud App Store",
-       "subject": "filinq",
-       "url": "https://apps.nextcloud.com/apps/filinq",
+       "subject": "docudesk",
+       "url": "https://apps.nextcloud.com/apps/docudesk",
        "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
        "measuredAt": "2026-11-19",
        "figures": [
@@ -1851,7 +1210,7 @@
        "figures": [
         {
          "label": "release file downloads",
-         "value": 3691
+         "value": 3693
         },
         {
          "label": "most recent releases with files",
@@ -1911,9 +1270,311 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 9 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (194 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is conduction.nl (3 authors), with 100% of the 194 commits whose organisation is known; 0% of the commits come from 0 of 3 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.94",
+      "explanation": "1,298 change requests were closed (merged or not) and 1,374 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "no response",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12 got a comment or review from anyone but its author.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 38.2 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 10 latest issues opened by people between 2026-08-21 and 2026-11-12. 1 got a response; 9 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "7 in 12 months",
+      "explanation": "7 final releases were published in the last 12 months, about one every 52 days, counted from the GitHub releases. The latest final release is from 2026-09-06. Besides these, 476 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 20,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 20,
+        "waiting": 20
+       },
+       "fix": {
+        "measured": 4,
+        "median": 24.5,
+        "worst": 67.7,
+        "breaches": 8,
+        "waiting": 16
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 2,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 2,
+        "waiting": 2
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 261,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 251,
+        "waiting": 259
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 205,
+     "openBreaches": [
+      {
+       "title": "[CRITICAL] Signature verification always returns valid — no cryptographic check",
+       "url": "https://github.com/ConductionNL/filinq/issues/284",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-03T05:20:23.000Z"
+      },
+      {
+       "title": "[HIGH] Detected numeric PII silently skipped by anonymization",
+       "url": "https://github.com/ConductionNL/filinq/issues/285",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-03T05:20:37.000Z"
+      },
+      {
+       "title": "[HIGH] Anonymization reports a replacement count that may be fabricated",
+       "url": "https://github.com/ConductionNL/filinq/issues/286",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-03T05:20:50.000Z"
+      },
+      {
+       "title": "[MEDIUM] NativeSigningProvider sessions in-memory only — signing flow cannot complete",
+       "url": "https://github.com/ConductionNL/filinq/issues/287",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-03T05:21:02.000Z"
+      },
+      {
+       "title": "[MEDIUM] Broad Throwable fallback in listRequests masks real failures as empty success",
+       "url": "https://github.com/ConductionNL/filinq/issues/288",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-03T05:21:13.000Z"
+      },
+      {
+       "title": "[MEDIUM] Audit immutability not enforced at storage layer — Archiefwet compliance gap",
+       "url": "https://github.com/ConductionNL/filinq/issues/289",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-03T05:21:27.000Z"
+      },
+      {
+       "title": "[LOW] Deep-review minor findings: audit memory load and consent extra fields",
+       "url": "https://github.com/ConductionNL/filinq/issues/290",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-03T05:21:40.000Z"
+      },
+      {
+       "title": "Implement: ADDED Requirements",
+       "url": "https://github.com/ConductionNL/filinq/issues/214",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T09:40:51.000Z"
+      },
+      {
+       "title": "Implement: ADDED Requirements",
+       "url": "https://github.com/ConductionNL/filinq/issues/215",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T09:41:24.000Z"
+      },
+      {
+       "title": "Implement: Consent Management",
+       "url": "https://github.com/ConductionNL/filinq/issues/216",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T09:42:14.000Z"
+      },
+      {
+       "title": "Implement: Document Register",
+       "url": "https://github.com/ConductionNL/filinq/issues/217",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T09:43:08.000Z"
+      },
+      {
+       "title": "Implement: Letter/Correspondence Generation",
+       "url": "https://github.com/ConductionNL/filinq/issues/218",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T09:43:31.000Z"
+      },
+      {
+       "title": "Implement: Prometheus Metrics Endpoint",
+       "url": "https://github.com/ConductionNL/filinq/issues/219",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T09:48:31.000Z"
+      },
+      {
+       "title": "Implement: Template Management",
+       "url": "https://github.com/ConductionNL/filinq/issues/220",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T09:48:55.000Z"
+      },
+      {
+       "title": "Implement: Anonymization Pipeline",
+       "url": "https://github.com/ConductionNL/filinq/issues/221",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T11:37:39.000Z"
+      },
+      {
+       "title": "Implement: OCR Document Scanning",
+       "url": "https://github.com/ConductionNL/filinq/issues/222",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T11:38:07.000Z"
+      },
+      {
+       "title": "Implement: PDF Generation",
+       "url": "https://github.com/ConductionNL/filinq/issues/223",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T11:38:18.000Z"
+      },
+      {
+       "title": "Implement: Print Preview",
+       "url": "https://github.com/ConductionNL/filinq/issues/224",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T11:38:30.000Z"
+      },
+      {
+       "title": "Lint debt cleanup post-canonical-sync (Phase 2 fleet rollout)",
+       "url": "https://github.com/ConductionNL/filinq/issues/227",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-06-05T20:41:42.000Z"
+      },
+      {
+       "title": "Implement: Archiefwet retention engine",
+       "url": "https://github.com/ConductionNL/filinq/issues/231",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T05:50:40.000Z"
+      }
+     ],
+     "fixesByRelease": 2,
+     "fixesByClose": 2,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Only the 200 most recently updated issues of each kind were read.",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "2 of 283 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 12
+  "durationSeconds": 18.8,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

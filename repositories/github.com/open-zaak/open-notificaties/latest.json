@@ -35,28 +35,32 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:14:30.536Z",
+  "lastCheckedAt": "2026-11-19T23:04:47.091Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:09.221Z",
-  "updatedAt": "2026-11-19T14:14:30.536Z",
+  "updatedAt": "2026-11-19T23:04:47.091Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [
+   "inwinnen-en-routeren-van-notificaties"
+  ],
+  "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-19T14-14-30-536Z",
+  "id": "2026-11-19T23-04-47-091Z",
   "repoId": "github.com/open-zaak/open-notificaties",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:14:30.536Z",
-  "createdAt": "2026-11-19T14:14:30.536Z",
+  "checkedAt": "2026-11-19T23:04:47.091Z",
+  "createdAt": "2026-11-19T23:04:47.091Z",
   "version": "v1.17.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "1.17.0",
+  "scannedRefKind": "declared-version",
+  "scannedCommit": "e119155f5353a982a1948ea839f2c26f8e1f32e4",
   "score": 60,
   "rating": 3.1,
   "categoryRatings": {
@@ -84,6 +88,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -97,6 +104,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -113,6 +123,9 @@
    },
    "layering": {
     "rating": 3
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 4.1
@@ -168,7 +181,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 6,430 lines of code, 360 functions, 360 files analyzed.",
+    "message": "Code metrics: 6,418 lines of code, 359 functions, 359 files analyzed.",
     "evidence": [
      "Gulpfile.js",
      "bin/bump-my-version.sh",
@@ -181,9 +194,9 @@
      "bin/docker_start.sh",
      "bin/generate_admin_index_fixture.sh",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 6,430",
-     "Function count: 360",
-     "Files analyzed: 360"
+     "Total lines of code (NLOC): 6,418",
+     "Function count: 359",
+     "Files analyzed: 359"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -280,6 +293,7 @@
      "roadmap": null,
      "developmentStatus": "beta",
      "softwareType": "standalone/backend",
+     "supports": [],
      "intendedAudience": {
       "countries": [
        "nl"
@@ -467,6 +481,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -540,18 +567,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 1.80 <= 15 and Max CCN 13.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.81 <= 15 and Max CCN 13.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
-     "Average CCN: 1.80 (threshold: 15)",
+     "Average CCN: 1.81 (threshold: 15)",
      "Max CCN: 13.00 (threshold: 30)",
-     "12      1    112      3      18 assertErrorResponse@48-65@/tmp/cgchecker-repo-2nXXd9/repo/src/nrc/api/tests/test_dso_api_strategy.py",
-     "17      1     58      1      17 test_400_error@67-83@/tmp/cgchecker-repo-2nXXd9/repo/src/nrc/api/tests/test_dso_api_strategy.py",
-     "10      1     33      1      10 test_401_error@85-94@/tmp/cgchecker-repo-2nXXd9/repo/src/nrc/api/tests/test_dso_api_strategy.py",
-     "10      1     33      1      10 test_403_error@96-105@/tmp/cgchecker-repo-2nXXd9/repo/src/nrc/api/tests/test_dso_api_strategy.py",
-     "10      1     33      1      10 test_404_error@107-116@/tmp/cgchecker-repo-2nXXd9/repo/src/nrc/api/tests/test_dso_api_strategy.py",
-     "10      1     33      1      10 test_405_error@118-127@/tmp/cgchecker-repo-2nXXd9/repo/src/nrc/api/tests/test_dso_api_strategy.py",
-     "10      1     33      1      10 test_406_error@129-138@/tmp/cgchecker-repo-2nXXd9/repo/src/nrc/api/tests/test_dso_api_strategy.py"
+     "12      1    112      3      18 assertErrorResponse@48-65@/tmp/cgchecker-repo-WmJ0dg/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "17      1     58      1      17 test_400_error@67-83@/tmp/cgchecker-repo-WmJ0dg/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_401_error@85-94@/tmp/cgchecker-repo-WmJ0dg/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_403_error@96-105@/tmp/cgchecker-repo-WmJ0dg/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_404_error@107-116@/tmp/cgchecker-repo-WmJ0dg/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_405_error@118-127@/tmp/cgchecker-repo-WmJ0dg/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_406_error@129-138@/tmp/cgchecker-repo-WmJ0dg/repo/src/nrc/api/tests/test_dso_api_strategy.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -935,7 +962,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "warn",
-    "message": "Potential OWASP secure coding issues were detected (3 findings across 138 scanned source files).",
+    "message": "Potential OWASP secure coding issues were detected (3 findings across 137 scanned source files).",
     "evidence": [
      "Possible hardcoded secret: src/nrc/accounts/tests/factories.py",
      "Possible hardcoded secret: src/nrc/accounts/tests/test_metrics.py",
@@ -952,26 +979,26 @@
     "status": "fail",
     "message": "API Design Rules violations found across 1 specification(s): 17 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"(notificaties.consumeren | notificaties.publiceren)\" must be listed among scopes. @ paths./abonnement.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"(notificaties.consumeren | notificaties.publiceren)\" must be listed among scopes. @ paths./abonnement/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./cloudevents.post (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./cloudevents.post.tags.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./cloudevents.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"(notificaties.publiceren | notificaties.consumeren)\" must be listed among scopes. @ paths./kanaal.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"(notificaties.publiceren | notificaties.consumeren)\" must be listed among scopes. @ paths./kanaal/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./notificaties.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /api/v1 \"/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)"
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"(notificaties.consumeren | notificaties.publiceren)\" must be listed among scopes. @ paths./abonnement.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"(notificaties.consumeren | notificaties.publiceren)\" must be listed among scopes. @ paths./abonnement/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./cloudevents.post (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./cloudevents.post.tags.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./cloudevents.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"(notificaties.publiceren | notificaties.consumeren)\" must be listed among scopes. @ paths./kanaal.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"(notificaties.publiceren | notificaties.consumeren)\" must be listed among scopes. @ paths./kanaal/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./notificaties.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /api/v1 \"/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/open-zaak/open-notificaties/e119155f5353a982a1948ea839f2c26f8e1f32e4/src/openapi.yaml)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -1030,49 +1057,10 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer. The repository also references Common Ground.",
     "evidence": [
-     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
-     "Found path segment \"ui\" in build.js",
-     "Found path segment \"ui\" in docs/installation/prerequisites.rst",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/docs.in",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/type-checking.in",
-     "Found path segment \"ui\" in requirements/type-checking.txt",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in src/nrc/sass/admin/_admin_theme.scss",
-     "Found path segment \"admin\" in src/nrc/sass/admin/_app_overrides.scss",
-     "Found path segment \"admin\" in src/nrc/sass/admin/_vars.scss",
-     "Found path segment \"admin\" in src/nrc/sass/admin/admin_overrides.scss",
-     "Found path segment \"admin\" in src/nrc/sass/admin/themes",
-     "Found path segment \"admin\" in src/nrc/sass/admin/themes/_dark.scss",
-     "Found path segment \"admin\" in src/nrc/sass/admin/themes/_light.scss",
-     "Found path segment \"admin\" in src/nrc/static/img/admin/calendar-alt-regular.svg",
-     "Found path segment \"admin\" in src/nrc/static/img/admin/clock-regular.svg",
-     "Found path segment \"admin\" in src/nrc/static/img/admin/edit-regular.svg",
-     "Found path segment \"admin\" in src/nrc/static/img/admin/plus-square-regular.svg",
-     "Found path segment \"admin\" in src/nrc/static/img/admin/trash-alt-regular.svg",
-     "Found path segment \"admin\" in src/nrc/templates/admin/base_site.html",
-     "Found path segment \"admin\" in src/nrc/templates/admin/datamodel",
-     "Found path segment \"admin\" in src/nrc/templates/admin/datamodel/abonnement",
-     "Found path segment \"admin\" in src/nrc/templates/admin/datamodel/abonnement/change_list.html",
-     "Found path segment \"admin\" in src/nrc/templates/admin/index.html",
-     "Found path segment \"admin\" in src/nrc/templates/admin/login.html",
-     "Found path segment \"admin\" in src/nrc/tests/admin/__init__.py",
-     "Found path segment \"admin\" in src/nrc/tests/admin/test_abonnement.py",
-     "Found path segment \"admin\" in src/nrc/tests/admin/test_cloudevents.py",
-     "Found path segment \"admin\" in src/nrc/tests/admin/test_notifications.py",
      "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
-     "Found \"postgres\" in repository metadata and docs",
-     "Found path segment \"api\" in docs/api/experimental.rst",
-     "Found path segment \"api\" in docs/api/index.rst",
+     "Found \"redis\" in repository metadata and docs",
      "Found path segment \"api\" in src/nrc/api/__init__.py",
      "Found path segment \"api\" in src/nrc/api/admin.py",
      "Found path segment \"api\" in src/nrc/api/fields.py",
@@ -1082,20 +1070,6 @@
      "Found path segment \"api\" in src/nrc/api/serializers.py",
      "Found path segment \"api\" in src/nrc/api/tasks.py",
      "Found path segment \"api\" in src/nrc/api/tests",
-     "Found path segment \"api\" in src/nrc/api/tests/__init__.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_abonnement.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_auth.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_cloud_event.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_dso_api_strategy.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_kanaal.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_metrics.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_notificatie.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_queries.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_scheduling.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_tasks.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_urls.py",
-     "Found path segment \"api\" in src/nrc/api/tests/test_validation.py",
-     "Found path segment \"api\" in src/nrc/api/tests/views.py",
      "Found path segment \"api\" in src/nrc/api/types.py",
      "Found path segment \"api\" in src/nrc/api/urls.py",
      "Found path segment \"api\" in src/nrc/api/utils.py",
@@ -1130,7 +1104,7 @@
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
      "publiccode.yml usedBy: 3 organisations named (2026-11-19)",
-     "Docker Hub openzaak/open-notificaties: 754,810 pulls in total (2026-11-19)",
+     "Docker Hub openzaak/open-notificaties: 755,478 pulls in total (2026-11-19)",
      "GitHub open-zaak/open-notificaties: 2 stars, 10 forks, 0 watchers (2026-11-19)",
      "GitHub commits open-zaak/open-notificaties: 8 contributors, 7 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-19)"
     ],
@@ -1167,7 +1141,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 754810
+         "value": 755478
         }
        ]
       },
@@ -1223,9 +1197,221 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "5 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 7 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (267 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (7 authors), with 100% of the 265 commits whose organisation is known; 1% of the commits come from 1 of 8 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": null,
+      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
+      "target": {
+       "text": "at least 0.8",
+       "met": null
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 2.0 hours",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 11 got a response; 4 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 8.9 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 4 latest issues opened by people between 2026-08-21 and 2026-11-12. 2 got a response; 2 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "6 in 12 months",
+      "explanation": "6 final releases were published in the last 12 months, about one every 61 days, counted from the version tags. The latest final release is from 2026-10-02. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 4,
+       "response": {
+        "measured": 2,
+        "median": 5.1,
+        "worst": 6.1,
+        "breaches": 3,
+        "waiting": 2
+       },
+       "fix": {
+        "measured": 1,
+        "median": 40.2,
+        "worst": 40.2,
+        "breaches": 2,
+        "waiting": 2
+       }
+      },
+      {
+       "category": "documentation",
+       "label": "Documentation",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 1,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       },
+       "fix": null
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 4,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 4,
+        "waiting": 4
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 3,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 3,
+        "waiting": 3
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 5,
+     "openBreaches": [
+      {
+       "title": "Additional examples django setup configuration",
+       "url": "https://github.com/open-zaak/open-notificaties/issues/241",
+       "category": "documentation",
+       "kind": "response",
+       "due": "2025-03-04T14:41:59.000Z"
+      },
+      {
+       "title": "Translations don't work due to LocaleMiddleware being disabled",
+       "url": "https://github.com/open-zaak/open-notificaties/issues/359",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-02-02T09:07:39.000Z"
+      },
+      {
+       "title": "Translations don't work due to LocaleMiddleware being disabled",
+       "url": "https://github.com/open-zaak/open-notificaties/issues/359",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-02-06T08:37:57.000Z"
+      },
+      {
+       "title": "(WIP) Prepare release 2.0.0",
+       "url": "https://github.com/open-zaak/open-notificaties/issues/366",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-02-24T09:43:21.000Z"
+      },
+      {
+       "title": "Add type checking with pyright",
+       "url": "https://github.com/open-zaak/open-notificaties/issues/400",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-07-07T08:56:18.000Z"
+      }
+     ],
+     "fixesByRelease": 1,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "publiccode.yaml declares no standards under supports. OpenAPI cross-check: 0 declared and found, 0 declared but not found in the repository, 1 found in the repository but not declared.",
+    "evidence": [
+     "Found in the repository, not declared: Notificaties API 1.0.0 in src/openapi.yaml (by paths)"
+    ],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 4.3
+  "durationSeconds": 4.9,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

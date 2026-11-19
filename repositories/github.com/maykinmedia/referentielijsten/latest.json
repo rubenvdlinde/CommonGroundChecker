@@ -32,33 +32,35 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:14:00.056Z",
+  "lastCheckedAt": "2026-11-19T23:04:16.353Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:37.621Z",
-  "updatedAt": "2026-11-19T14:14:00.056Z",
+  "updatedAt": "2026-11-19T23:04:16.353Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-14-00-056Z",
+  "id": "2026-11-19T23-04-16-353Z",
   "repoId": "github.com/maykinmedia/referentielijsten",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:14:00.056Z",
-  "createdAt": "2026-11-19T14:14:00.056Z",
+  "checkedAt": "2026-11-19T23:04:16.353Z",
+  "createdAt": "2026-11-19T23:04:16.353Z",
   "version": "v0.7.5",
-  "checklistVersion": null,
-  "scannedRef": "master",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
-  "score": 69,
-  "rating": 3.4,
+  "checklistVersion": "2026.2",
+  "scannedRef": "0.7.5",
+  "scannedRefKind": "tag",
+  "scannedCommit": "27a6ac78f4c93e8795977f0714ba09c9b1ddb0de",
+  "score": 63,
+  "rating": 3.1,
   "categoryRatings": {
    "Governance": 3.6,
-   "Security": 3,
+   "Security": 1.8,
    "Architecture": 3,
    "Software Quality": 4.5,
    "Deployment & Operations": 3.3
@@ -81,6 +83,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -96,11 +101,14 @@
    "dependency-management": {
     "rating": null
    },
+   "container-images": {
+    "rating": null
+   },
    "secrets": {
     "rating": null
    },
    "secure-coding": {
-    "rating": 3
+    "rating": 0.5
    },
    "supply-chain": {
     "rating": 3
@@ -111,14 +119,17 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
     "rating": 5.1
    },
    "modifiability": {
-    "rating": 4.5
+    "rating": 4.6
    },
    "testability": {
-    "rating": 3.3
+    "rating": 3.4
    },
    "modularity": {
     "rating": 4.9
@@ -143,14 +154,15 @@
    "reasons": [
     "Mandatory criterion fails: publiccode.yml Metadata File",
     "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: API Design Rules",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No publiccode.yml was found, so there is no maintenance contract."
    ]
   },
   "issueCounts": {
-   "errors": 4,
-   "warnings": 4
+   "errors": 5,
+   "warnings": 3
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -161,7 +173,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 1,083 lines of code, 122 functions, 122 files analyzed.",
+    "message": "Code metrics: 1,122 lines of code, 125 functions, 125 files analyzed.",
     "evidence": [
      "bin/bump-my-version.sh",
      "bin/check_changed_files.sh",
@@ -174,9 +186,9 @@
      "bin/load_fixtures.sh",
      "bin/setup_configuration.sh",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 1,083",
-     "Function count: 122",
-     "Files analyzed: 122"
+     "Total lines of code (NLOC): 1,122",
+     "Function count: 125",
+     "Files analyzed: 125"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -313,6 +325,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -404,12 +429,12 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 4.18,
+    "rating": 4.1899999999999995,
     "aspectRatings": {
      "analysability": 5.07,
-     "modifiability": 4.54,
-     "testability": 3.34,
-     "modularity": 4.9,
+     "modifiability": 4.55,
+     "testability": 3.36,
+     "modularity": 4.91,
      "reusability": 3.39
     },
     "measurements": [
@@ -434,7 +459,7 @@
        },
        {
         "label": "Python",
-        "value": "1.3%",
+        "value": "1.2%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -488,7 +513,7 @@
        },
        {
         "label": "Python, more than 15 lines",
-        "value": "19.8%",
+        "value": "19.5%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -499,7 +524,7 @@
        },
        {
         "label": "Python, more than 30 lines",
-        "value": "10.0%",
+        "value": "9.8%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -564,7 +589,7 @@
        },
        {
         "label": "Python, complexity above 5",
-        "value": "10.0%",
+        "value": "9.8%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -575,7 +600,7 @@
        },
        {
         "label": "Python, complexity above 10",
-        "value": "10.0%",
+        "value": "9.8%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -639,7 +664,7 @@
        },
        {
         "label": "Python, 3 or more parameters",
-        "value": "32.5%",
+        "value": "32.0%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -650,7 +675,7 @@
        },
        {
         "label": "Python, 5 or more parameters",
-        "value": "3.2%",
+        "value": "3.1%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
@@ -753,9 +778,9 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.11 to 4.25 (4 of 5 stars) over 57 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.12 to 4.26 (4 of 5 stars) over 56 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★★ 5.2 (javascript 5.5, python 5.1)",
+     "Duplication: ★★★★★ 5.2 (javascript 5.5, python 5.2)",
      "Unit size: ★★★★★ 5.0 (javascript 5.5, python 4.9)",
      "Unit complexity: ★★★☆☆ 3.0 (javascript 5.5, python 2.7)",
      "Unit interfacing: ★★☆☆☆ 1.8 (javascript 5.5, python 1.4)",
@@ -763,8 +788,8 @@
      "Component independence: ★★★★☆ 3.7 (python 3.7)",
      "Component entanglement: ★★★★★ 5.5 (python 5.5)",
      "Lever: unit complexity in python, about 8 lines to fix for half a star",
-     "Lever: unit interfacing in python, about 45 lines to fix for half a star",
-     "Lever: component independence in python, about 21 lines to fix for half a star"
+     "Lever: unit interfacing in python, about 44 lines to fix for half a star",
+     "Lever: component independence in python, about 22 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -772,16 +797,17 @@
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "warn",
-    "message": "Potential OWASP secure coding issues were detected (3 findings across 73 scanned source files).",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (4 findings across 74 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
+     "Dynamic code execution: karma.conf.js",
      "Possible hardcoded secret: src/referentielijsten/accounts/tests/factories.py",
      "Possible hardcoded secret: src/referentielijsten/accounts/tests/test_metrics.py",
      "Dynamic code execution: src/referentielijsten/jstests/components/dummy/dummy.spec.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "adrvalidator",
@@ -790,14 +816,14 @@
     "status": "fail",
     "message": "API Design Rules violations found across 1 specification(s): 5 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/referentielijsten/master/src/referentielijsten/api/openapi.yaml",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/referentielijsten/27a6ac78f4c93e8795977f0714ba09c9b1ddb0de/src/referentielijsten/api/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/referentielijsten/master/src/referentielijsten/api/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./api/v1/items.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/referentielijsten/master/src/referentielijsten/api/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./api/v1/items.get.responses.400.content (https://raw.githubusercontent.com/maykinmedia/referentielijsten/master/src/referentielijsten/api/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./api/v1/tabellen.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/referentielijsten/master/src/referentielijsten/api/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /api/v1 \"/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/referentielijsten/master/src/referentielijsten/api/openapi.yaml)"
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/referentielijsten/27a6ac78f4c93e8795977f0714ba09c9b1ddb0de/src/referentielijsten/api/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./api/v1/items.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/referentielijsten/27a6ac78f4c93e8795977f0714ba09c9b1ddb0de/src/referentielijsten/api/openapi.yaml)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./api/v1/items.get.responses.400.content (https://raw.githubusercontent.com/maykinmedia/referentielijsten/27a6ac78f4c93e8795977f0714ba09c9b1ddb0de/src/referentielijsten/api/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./api/v1/tabellen.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/referentielijsten/27a6ac78f4c93e8795977f0714ba09c9b1ddb0de/src/referentielijsten/api/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /api/v1 \"/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/referentielijsten/27a6ac78f4c93e8795977f0714ba09c9b1ddb0de/src/referentielijsten/api/openapi.yaml)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -860,37 +886,8 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer. The repository also references Common Ground.",
     "evidence": [
-     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
-     "Found path segment \"ui\" in build.js",
-     "Found path segment \"ui\" in docs/installation/prerequisites.rst",
-     "Found path segment \"ui\" in docs/installation/quickstart.rst",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/staging.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/type-checking.in",
-     "Found path segment \"ui\" in requirements/type-checking.txt",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in src/referentielijsten/scss/admin/_admin_theme.scss",
-     "Found path segment \"admin\" in src/referentielijsten/scss/admin/_app_overrides.scss",
-     "Found path segment \"admin\" in src/referentielijsten/scss/admin/_vars.scss",
-     "Found path segment \"admin\" in src/referentielijsten/scss/admin/admin_overrides.scss",
-     "Found path segment \"admin\" in src/referentielijsten/scss/admin/themes",
-     "Found path segment \"admin\" in src/referentielijsten/scss/admin/themes/_dark.scss",
-     "Found path segment \"admin\" in src/referentielijsten/scss/admin/themes/_light.scss",
-     "Found path segment \"admin\" in src/referentielijsten/static/img/admin/calendar-alt-regular.svg",
-     "Found path segment \"admin\" in src/referentielijsten/static/img/admin/clock-regular.svg",
-     "Found path segment \"admin\" in src/referentielijsten/static/img/admin/edit-regular.svg",
-     "Found path segment \"admin\" in src/referentielijsten/static/img/admin/plus-square-regular.svg",
-     "Found path segment \"admin\" in src/referentielijsten/static/img/admin/trash-alt-regular.svg",
-     "Found path segment \"admin\" in src/referentielijsten/templates/admin/base_site.html",
      "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
      "Found path segment \"api\" in src/referentielijsten/api/__init__.py",
      "Found path segment \"api\" in src/referentielijsten/api/admin.py",
@@ -908,18 +905,10 @@
      "Found path segment \"api\" in src/referentielijsten/api/serializers.py",
      "Found path segment \"api\" in src/referentielijsten/api/signals.py",
      "Found path segment \"api\" in src/referentielijsten/api/tests",
-     "Found path segment \"api\" in src/referentielijsten/api/tests/__init__.py",
-     "Found path segment \"api\" in src/referentielijsten/api/tests/factories.py",
-     "Found path segment \"api\" in src/referentielijsten/api/tests/test_import.py",
-     "Found path segment \"api\" in src/referentielijsten/api/tests/test_items.py",
-     "Found path segment \"api\" in src/referentielijsten/api/tests/test_metrics.py",
-     "Found path segment \"api\" in src/referentielijsten/api/tests/test_tabellen.py",
-     "Found path segment \"api\" in src/referentielijsten/api/tests/test_tabellen_admin.py",
      "Found path segment \"api\" in src/referentielijsten/api/urls.py",
      "Found path segment \"api\" in src/referentielijsten/api/viewset.py",
      "Found \"api\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs",
-     "Found \"zaak\" in repository metadata and docs"
+     "Found \"workflow\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -945,7 +934,7 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Docker Hub maykinmedia/referentielijsten-api: 7,937 pulls in total (2026-11-19)",
+     "Docker Hub maykinmedia/referentielijsten-api: 7,976 pulls in total (2026-11-19)",
      "GitHub maykinmedia/referentielijsten: 2 stars, 1 forks, 3 watchers (2026-11-19)",
      "GitHub commits maykinmedia/referentielijsten: 9 contributors, 7 from the owning organisation, 0 from other organisations, 2 unknown (2026-11-19)"
     ],
@@ -962,7 +951,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 7937
+         "value": 7976
         }
        ]
       },
@@ -1018,9 +1007,177 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 7 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (152 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (7 authors), with 100% of the 109 commits whose organisation is known; 28% of the commits come from 2 of 9 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.81",
+      "explanation": "13 change requests were closed (merged or not) and 16 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 7 minutes",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 10 latest change requests opened by people between 2026-08-21 and 2026-11-12. 10 got a response; 0 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 9.1 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 3 latest issues opened by people between 2026-08-21 and 2026-11-12. 2 got a response; 1 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "6 in 12 months",
+      "explanation": "6 final releases were published in the last 12 months, about one every 61 days, counted from the version tags. The latest final release is from 2026-10-05. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 1,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 0,
+        "waiting": 0
+       },
+       "fix": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 2,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 0,
+        "waiting": 1
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 3,
+       "response": {
+        "measured": 2,
+        "median": 6.1,
+        "worst": 7.6,
+        "breaches": 0,
+        "waiting": 0
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 1,
+     "openBreaches": [
+      {
+       "title": "Translations don't work due to LocaleMiddleware being disabled",
+       "url": "https://github.com/maykinmedia/referentielijsten/issues/126",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-02-05T09:48:26.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "3 of 6 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 3.9
+  "durationSeconds": 5,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

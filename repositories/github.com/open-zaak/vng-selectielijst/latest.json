@@ -28,28 +28,30 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:15:04.712Z",
+  "lastCheckedAt": "2026-11-19T23:05:08.039Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:45.329Z",
-  "updatedAt": "2026-11-19T14:15:04.712Z",
+  "updatedAt": "2026-11-19T23:05:08.039Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-15-04-712Z",
+  "id": "2026-11-19T23-05-08-039Z",
   "repoId": "github.com/open-zaak/vng-selectielijst",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:15:04.712Z",
-  "createdAt": "2026-11-19T14:15:04.712Z",
+  "checkedAt": "2026-11-19T23:05:08.039Z",
+  "createdAt": "2026-11-19T23:05:08.039Z",
   "version": "v1.0.6",
-  "checklistVersion": null,
-  "scannedRef": "master",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "1.0.6",
+  "scannedRefKind": "tag",
+  "scannedCommit": "e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b",
   "score": 63,
   "rating": 3.4,
   "categoryRatings": {
@@ -77,6 +79,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -90,6 +95,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -106,6 +114,9 @@
    },
    "layering": {
     "rating": 3
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 4
@@ -306,6 +317,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -377,7 +401,7 @@
      "Analyzer: lizard",
      "Average CCN: 1.56 (threshold: 15)",
      "Max CCN: 7.00 (threshold: 30)",
-     "11      3     59      2      18 server_error@13-30@/tmp/cgchecker-repo-uwGvTX/repo/src/selectielijst/utils/views.py",
+     "11      3     59      2      18 server_error@13-30@/tmp/cgchecker-repo-aAmf4d/repo/src/selectielijst/utils/views.py",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
@@ -785,19 +809,19 @@
     "status": "fail",
     "message": "API Design Rules violations found across 1 specification(s): 10 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./procestypen.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./procestypen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./resultaattypeomschrijvingen.get (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaattypeomschrijvingen.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./resultaattypeomschrijvingen/{uuid}.get (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaattypeomschrijvingen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /api/v1 \"/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/master/src/openapi.yaml)"
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./procestypen.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./procestypen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./resultaattypeomschrijvingen.get (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaattypeomschrijvingen.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./resultaattypeomschrijvingen/{uuid}.get (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaattypeomschrijvingen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /api/v1 \"/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/open-zaak/vng-selectielijst/e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b/src/openapi.yaml)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -854,29 +878,11 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Service layer (back-end microservice); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer.",
     "evidence": [
-     "Found path segment \"ui\" in deployment/requirements.in",
-     "Found path segment \"ui\" in deployment/requirements.txt",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in src/selectielijst/static/css/admin/admin_overrides.css",
-     "Found path segment \"admin\" in src/selectielijst/templates/admin/base_site.html",
-     "Found path segment \"admin\" in src/selectielijst/templates/admin/base_site__admintools.html",
      "Found path segment \"api\" in src/selectielijst/api/__init__.py",
      "Found path segment \"api\" in src/selectielijst/api/schema.py",
      "Found path segment \"api\" in src/selectielijst/api/tests",
-     "Found path segment \"api\" in src/selectielijst/api/tests/__init__.py",
-     "Found path segment \"api\" in src/selectielijst/api/tests/test_acl.py",
-     "Found path segment \"api\" in src/selectielijst/api/tests/test_resultaattypeomschrijvinggeneriek.py",
-     "Found path segment \"api\" in src/selectielijst/api/tests/test_selectielijst.py",
      "Found path segment \"api\" in src/selectielijst/api/urls.py",
      "Found path segment \"api\" in src/selectielijst/selectielijst/api/__init__.py",
      "Found path segment \"api\" in src/selectielijst/selectielijst/api/filters.py",
@@ -966,9 +972,131 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 3 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "2 organisations; largest 94%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (35 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (2 authors), with 94% of the 35 commits whose organisation is known; 0% of the commits come from 0 of 3 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": true
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "1.55",
+      "explanation": "17 change requests were closed (merged or not) and 11 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 4.0 hours",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 8 latest change requests opened by people between 2026-08-21 and 2026-11-12. 5 got a response; 3 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "no response",
+      "explanation": "None of the 4 latest issues opened by people between 2026-08-21 and 2026-11-12 got a comment from anyone but its author.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "1 in 12 months",
+      "explanation": "1 final release was published in the last 12 months, counted from the version tags. The latest final release is from 2026-11-03. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": false
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 7,
+       "response": {
+        "measured": 3,
+        "median": 2.7,
+        "worst": 181.4,
+        "breaches": 5,
+        "waiting": 4
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 0,
+     "openBreaches": [],
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 4
+  "durationSeconds": 4.6,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

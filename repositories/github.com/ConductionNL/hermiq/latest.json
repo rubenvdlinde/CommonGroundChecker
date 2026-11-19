@@ -30,28 +30,30 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:08:16.256Z",
+  "lastCheckedAt": "2026-11-19T22:57:14.494Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:53:52.181Z",
-  "updatedAt": "2026-11-19T14:08:16.256Z",
+  "updatedAt": "2026-11-19T22:57:14.494Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-08-16-256Z",
+  "id": "2026-11-19T22-57-14-494Z",
   "repoId": "github.com/ConductionNL/hermiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:08:16.256Z",
-  "createdAt": "2026-11-19T14:08:16.256Z",
+  "checkedAt": "2026-11-19T22:57:14.494Z",
+  "createdAt": "2026-11-19T22:57:14.494Z",
   "version": "v0.2.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v0.2.0",
+  "scannedRefKind": "tag",
+  "scannedCommit": "0891ba559fa8df139c8be8e9bc5704e8ad95e731",
   "score": 65,
   "rating": 3.1,
   "categoryRatings": {
@@ -79,6 +81,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -92,6 +97,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -108,6 +116,9 @@
    },
    "layering": {
     "rating": 3
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 2.5
@@ -262,6 +273,7 @@
      "roadmap": null,
      "developmentStatus": "development",
      "softwareType": "addon",
+     "supports": [],
      "intendedAudience": {
       "countries": [],
       "unsupportedCountries": [],
@@ -393,6 +405,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: this is a Nextcloud app (appinfo/info.xml), not a container component. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -469,12 +494,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.40 (threshold: 15)",
      "Max CCN: 49.00 (threshold: 30)",
-     "3      1     11      0       3 HookStoppedException::getErrors@64-66@/tmp/cgchecker-repo-t86mYl/repo/tests/Stubs/Exception/HookStoppedException.php",
-     "8      1     96      0      11 ChatControllerTest::testSendMessageMissingAgentUuidLogsWarningNotError@270-280@/tmp/cgchecker-repo-t86mYl/repo/tests/Unit/Controller/ChatControllerTest.php",
-     "11      1    130      0      14 ChatControllerTest::testSendMessageServerFailureStillLogsError@291-304@/tmp/cgchecker-repo-t86mYl/repo/tests/Unit/Controller/ChatControllerTest.php",
-     "6      1     63      0       9 ChatControllerTest::testWarmWithoutIdentifiersIsNotAnError@590-598@/tmp/cgchecker-repo-t86mYl/repo/tests/Unit/Controller/ChatControllerTest.php",
-     "7      1     75      0      10 ChatHealthControllerTest::testHealthConfigErrorWhenSettingsReadFails@106-115@/tmp/cgchecker-repo-t86mYl/repo/tests/Unit/Controller/ChatHealthControllerTest.php",
-     "6      1     68      0       9 TenantOpsControllerTest::testQuotaServiceFailureIsServerError@150-158@/tmp/cgchecker-repo-t86mYl/repo/tests/Unit/Controller/TenantOpsControllerTest.php"
+     "5      1     34      1      28 collectHermiqConsoleErrors@429-456@/tmp/cgchecker-repo-WBvCRn/repo/tests/e2e/spec-coverage/_fixtures.ts",
+     "5      1     34      1      30 collectConsoleErrors@50-79@/tmp/cgchecker-repo-WBvCRn/repo/tests/e2e/spec-coverage/chat.spec.ts",
+     "5      1     34      1      30 collectConsoleErrors@64-93@/tmp/cgchecker-repo-WBvCRn/repo/tests/e2e/wave2-surfaces.spec.ts",
+     "5      1     34      1      43 collectConsoleErrors@65-107@/tmp/cgchecker-repo-WBvCRn/repo/tests/e2e/dashboard-and-agents.spec.ts",
+     "3      1     11      0       3 HookStoppedException::getErrors@64-66@/tmp/cgchecker-repo-WBvCRn/repo/tests/Stubs/Exception/HookStoppedException.php",
+     "30      1    201      0      35 CheckOpenRegisterCompatibilityTest::testMissingClassLogsActionableWarningAndError@69-103@/tmp/cgchecker-repo-WBvCRn/repo/tests/Unit/Repair/CheckOpenRegisterCompatibilityTest.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -1190,7 +1215,7 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Service layer (back-end microservice); Interaction layer (frontend / portal); Data layer (data store / register); Integration layer (gateway / NLX); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Service layer (back-end microservice); Interaction layer (frontend / portal); Process layer (orchestration / BFF); Integration layer (gateway / NLX); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
     "evidence": [
      "Found path segment \"service\" in lib/Service/ActionAuthService.php",
      "Found path segment \"service\" in lib/Service/Agent",
@@ -1341,245 +1366,12 @@
      "Found path segment \"api\" in src/api/toolTaxonomy.js",
      "Found path segment \"api\" in src/api/webResearch.js",
      "Found path segment \"api\" in src/api/webhooks.js",
-     "Found path segment \"service\" in tests/Stubs/Service/Capability",
-     "Found path segment \"service\" in tests/Stubs/Service/Capability/ToolGrantCodec.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Capability/ToolGrantResolutionException.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Capability/ToolGrantResolver.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Capability/ToolGrantSet.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Capability/ToolReachResolver.php",
-     "Found path segment \"service\" in tests/Stubs/Service/ChatService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Config",
-     "Found path segment \"service\" in tests/Stubs/Service/Config/IShareableConfigType.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Config/RegisterShareableConfigTypesEvent.php",
-     "Found path segment \"service\" in tests/Stubs/Service/ContentScanService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Credential",
-     "Found path segment \"service\" in tests/Stubs/Service/Credential/CredentialBrokerService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Flow",
-     "Found path segment \"service\" in tests/Stubs/Service/Flow/FlowOversightRegistry.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Flow/FlowVersionService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Flow/IFlowNode.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Flow/IFlowNodeLogActions.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Flow/IFlowOversightCheck.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Flow/RegisterFlowNodesEvent.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Flow/RegisterFlowOversightEvent.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Integration",
-     "Found path segment \"service\" in tests/Stubs/Service/Integration/IntegrationProvider.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Integration/LeafDescriptor.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Mcp",
-     "Found path segment \"service\" in tests/Stubs/Service/Mcp/ToolRegistryFacade.php",
-     "Found path segment \"service\" in tests/Stubs/Service/ObjectService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/OrganisationService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/SchemaDeletionService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/Task",
-     "Found path segment \"service\" in tests/Stubs/Service/Task/TaskService.php",
-     "Found path segment \"service\" in tests/Stubs/Talk/Service/NoteToSelfService.php",
-     "Found path segment \"service\" in tests/Stubs/Talk/Service/ParticipantService.php",
-     "Found path segment \"service\" in tests/Stubs/Talk/Service/RoomService.php",
-     "Found path segment \"service\" in tests/Unit/Service/ActionAuthServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Agent",
-     "Found path segment \"service\" in tests/Unit/Service/Agent/AgentContextBuilderTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AgentAccessServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AgentTemplateSerializerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AgentTemplateServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AgentVersionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AiOversightServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AlgoritmekaderMapperTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AnalyticsServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Approval",
-     "Found path segment \"service\" in tests/Unit/Service/Approval/ApprovalTaskBridgeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ApprovalServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Assistant",
-     "Found path segment \"service\" in tests/Unit/Service/Assistant/AssistantServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AsyncStageDispatchServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/BudgetServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ComplianceServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ContextAgent",
-     "Found path segment \"service\" in tests/Unit/Service/ContextAgent/ContextAgentInteractionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CourseRecommendationEngineTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Credential",
-     "Found path segment \"service\" in tests/Unit/Service/Credential/CredentialScopeResolverTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DelegationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DeliveryServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/ContextAssemblerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/ContextRetrievalHandlerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/ConversationManagementHandlerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/ConversationTitleWriterTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/DelegationContextTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/EngineParticipantGuardTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/EngineTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/FacadeToolInvokerConstraintTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/FacadeToolInvokerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/FacadeToolInvokerWaiverTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/MessageHistoryHandlerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/ResponseGenerationHandlerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/RunStepBusTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/RunTraceCollectorTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/SanitizesForSaveTraitTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/StreamYieldChannelTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/ToolGrantResolverTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Engine/ToolLoopTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/EvalRunServicePairedTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/EvalRunServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/EvalScoringServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/FlowAgentRunServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/GitHubArchiveExtractorTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/GitHubTemplateCatalogServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/GitHubTemplatePushServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/GuardrailPolicyServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Llm",
-     "Found path segment \"service\" in tests/Unit/Service/Llm/BrokerHttpClientTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Llm/LlmSettingsHandlerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Llm/ProviderFactoryGenerateTextTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Llm/ProviderFactoryTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Llm/RunTokenServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/MemoryServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/NcNative",
-     "Found path segment \"service\" in tests/Unit/Service/NcNative/AgentArtefactMarkerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/NcNative/CalendarWriteServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/NcNative/ContactWriteServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/NcNative/MailReadServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/NcNative/NcNativeWriteServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/NcNative/NotesWriteServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PublicationGatewayTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RedactionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RunHistoryServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Schedule",
-     "Found path segment \"service\" in tests/Unit/Service/Schedule/ScheduleFlowBridgeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ScheduleServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ScheduleWebhookSecretServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SeedFreshnessServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillBundleInstallerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillBundleSerializerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillConsolidationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillIdentityResolverTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillLearningsCaptureServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillLearningsPromotionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillMarketplaceServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillMaturityServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillSerializerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillUpsertPolicyTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SkillVersionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Speech",
-     "Found path segment \"service\" in tests/Unit/Service/Speech/SpeechClientTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/StageDispatchCollectTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/StageDispatchServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Talk",
-     "Found path segment \"service\" in tests/Unit/Service/Talk/ConversationParticipationTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Talk/TalkBridgeStatusTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Talk/TalkMentionMatcherTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Talk/TalkRoomBindingSyncTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Talk/TalkSessionRoomOptInTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Talk/TalkTurnHandOffTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/TenantModelPolicyServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/TenantOpsServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ToolAccessRequestServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ToolClassificationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ToolSearchServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WebResearch",
-     "Found path segment \"service\" in tests/Unit/Service/WebResearch/ReadableTextExtractorTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WebResearch/WebFetchServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WebResearch/WebResearchEgressGuardTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WebResearch/WebResearchSettingsHandlerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WebResearch/WebSearchClientTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WebhookAgentRunServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WebhookSecretServiceTest.php",
      "Found \"service\" in repository metadata and docs",
-     "Found path segment \"ui\" in lib/Service/Agent/AgentContextBuilder.php",
-     "Found path segment \"ui\" in lib/Service/EngineRequiredException.php",
-     "Found path segment \"ui\" in openspec/changes/agent-capability-detail-surface/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/agent-capability-detail-surface/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/agent-management-ui/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/agent-management-ui/design.md",
-     "Found path segment \"ui\" in openspec/changes/agent-management-ui/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/agent-management-ui/specs",
-     "Found path segment \"ui\" in openspec/changes/agent-management-ui/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/agent-management-ui/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/agent-management-ui/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-agent-webhook-trigger/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-agent-webhook-trigger/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-run-trace-observability/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-run-trace-observability/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-tenant-model-policy/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-tenant-model-policy/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-run-replay-and-dry-run/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-run-replay-and-dry-run/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-sub-agent-delegation/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-sub-agent-delegation/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-08-04-agent-object-owner-authorization/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-08-04-agent-object-owner-authorization/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-09-02-agent-graph-builder",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-09-02-agent-graph-builder/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-09-02-agent-graph-builder/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-09-02-agent-graph-builder/specs/agent-graph",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-09-02-agent-graph-builder/specs/agent-graph/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-09-02-agent-graph-builder/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/human-approval-gate-ui",
-     "Found path segment \"ui\" in openspec/changes/human-approval-gate-ui/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/human-approval-gate-ui/design.md",
-     "Found path segment \"ui\" in openspec/changes/human-approval-gate-ui/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/human-approval-gate-ui/specs",
-     "Found path segment \"ui\" in openspec/changes/human-approval-gate-ui/specs/human-approval-gate-ui",
-     "Found path segment \"ui\" in openspec/changes/human-approval-gate-ui/specs/human-approval-gate-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/human-approval-gate-ui/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/raise-nc-minversion-taskprocessing/specs/app-runtime-requirements",
-     "Found path segment \"ui\" in openspec/changes/raise-nc-minversion-taskprocessing/specs/app-runtime-requirements/spec.md",
-     "Found path segment \"frontend\" in openspec/changes/session-frontend-rename",
-     "Found path segment \"frontend\" in openspec/changes/session-frontend-rename/.openspec.yaml",
-     "Found path segment \"frontend\" in openspec/changes/session-frontend-rename/proposal.md",
-     "Found path segment \"frontend\" in openspec/changes/session-frontend-rename/specs",
-     "Found path segment \"frontend\" in openspec/changes/session-frontend-rename/specs/session-surface",
-     "Found path segment \"frontend\" in openspec/changes/session-frontend-rename/specs/session-surface/spec.md",
-     "Found path segment \"frontend\" in openspec/changes/session-frontend-rename/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/taskprocessing-consume-ui",
-     "Found path segment \"ui\" in openspec/changes/taskprocessing-consume-ui/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/taskprocessing-consume-ui/specs",
-     "Found path segment \"ui\" in openspec/changes/taskprocessing-consume-ui/specs/taskprocessing-consume-ui",
-     "Found path segment \"ui\" in openspec/changes/taskprocessing-consume-ui/specs/taskprocessing-consume-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/taskprocessing-consume-ui/tasks.md",
-     "Found path segment \"ui\" in openspec/specs/admin-ui",
-     "Found path segment \"ui\" in openspec/specs/agent-management-ui",
-     "Found path segment \"ui\" in openspec/specs/agent-management-ui/spec.md",
-     "Found path segment \"ui\" in openspec/specs/app-runtime-requirements",
-     "Found path segment \"ui\" in openspec/specs/app-runtime-requirements/spec.md",
-     "Found path segment \"frontend\" in openspec/specs/frontend-data-stores",
-     "Found path segment \"frontend\" in openspec/specs/frontend-data-stores/spec.md",
-     "Found path segment \"ui\" in scripts/build-l10n-js.js",
-     "Found path segment \"ui\" in tests/Unit/Service/Agent/AgentContextBuilderTest.php",
      "Found \"frontend\" in repository metadata and docs",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/.gitkeep",
-     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-admin-settings.png",
-     "Found path segment \"admin\" in docs/tutorials/admin/01-admin-settings.md",
-     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json",
      "Found path segment \"admin-ui\" in openspec/specs/admin-ui/spec.md",
-     "Found path segment \"db\" in tests/Stubs/Db/Agent.php",
-     "Found path segment \"db\" in tests/Stubs/Db/AgentMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/AuditTrail.php",
-     "Found path segment \"db\" in tests/Stubs/Db/AuditTrailMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Conversation.php",
-     "Found path segment \"db\" in tests/Stubs/Db/ConversationMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Flow.php",
-     "Found path segment \"db\" in tests/Stubs/Db/FlowMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/FlowRun.php",
-     "Found path segment \"db\" in tests/Stubs/Db/FlowRunMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/FlowVersion.php",
-     "Found path segment \"db\" in tests/Stubs/Db/ObjectEntity.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Organisation.php",
-     "Found path segment \"db\" in tests/Stubs/Db/OrganisationMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Register.php",
-     "Found path segment \"db\" in tests/Stubs/Db/RegisterMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Schema.php",
-     "Found path segment \"db\" in tests/Stubs/Db/SchemaMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Task.php",
-     "Found \"register\" in repository metadata and docs",
-     "Found path segment \"integration\" in tests/Stubs/Service/Integration/IntegrationProvider.php",
-     "Found path segment \"integration\" in tests/Stubs/Service/Integration/LeafDescriptor.php",
-     "Found path segment \"integration\" in tests/integration/README.md",
-     "Found path segment \"integration\" in tests/integration/hermiq.postman_collection.json",
+     "Found \"workflow\" in repository metadata and docs",
      "Found \"integration\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs"
+     "Found \"register\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1606,7 +1398,7 @@
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
      "Nextcloud App Store hermiq: 0 ratings given (2026-11-19)",
-     "GitHub releases: 1,227 release file downloads, 429 releases with files (2026-11-19)",
+     "GitHub releases: 1,230 release file downloads, 430 releases with files (2026-11-19)",
      "GitHub ConductionNL/hermiq: 2 stars, 1 forks, 0 watchers (2026-11-19)",
      "GitHub commits ConductionNL/hermiq: 7 contributors, 6 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-19)"
     ],
@@ -1638,11 +1430,11 @@
        "figures": [
         {
          "label": "release file downloads",
-         "value": 1227
+         "value": 1230
         },
         {
          "label": "releases with files",
-         "value": 429
+         "value": 430
         }
        ]
       },
@@ -1698,9 +1490,309 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 5 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (200 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is conduction.nl (4 authors), with 100% of the 200 commits whose organisation is known; 0% of the commits come from 0 of 4 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.95",
+      "explanation": "1,231 change requests were closed (merged or not) and 1,291 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "no response",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12 got a comment or review from anyone but its author.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "no response",
+      "explanation": "None of the 4 latest issues opened by people between 2026-08-21 and 2026-11-12 got a comment from anyone but its author.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "7 in 12 months",
+      "explanation": "7 final releases were published in the last 12 months, about one every 52 days, counted from the GitHub releases. The latest final release is from 2026-09-06. Besides these, 423 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 8,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 8,
+        "waiting": 8
+       },
+       "fix": {
+        "measured": 2,
+        "median": 0.4,
+        "worst": 0.4,
+        "breaches": 1,
+        "waiting": 6
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 1,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 176,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 160,
+        "waiting": 176
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 93,
+     "openBreaches": [
+      {
+       "title": "check:strict is red on development: 3 psalm + 8 phpmd findings, none from recent work",
+       "url": "https://github.com/ConductionNL/hermiq/issues/8",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-07-31T10:30:09.000Z"
+      },
+      {
+       "title": "RAG with enableRag on and no views is still an unbounded scan across every magic table",
+       "url": "https://github.com/ConductionNL/hermiq/issues/9",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-07-31T10:30:25.000Z"
+      },
+      {
+       "title": "A fresh npm ci produces an unbuildable tree: @vueuse/core peer is never declared",
+       "url": "https://github.com/ConductionNL/hermiq/issues/10",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-07-31T10:41:24.000Z"
+      },
+      {
+       "title": "Deployed autoloader ships test stubs → shadows real OpenRegister classes, bricks OR data layer instance-wide",
+       "url": "https://github.com/ConductionNL/hermiq/issues/21",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-07-31T22:00:00.000Z"
+      },
+      {
+       "title": "Agent maxTokens is dead config, and there is no turns limit at all",
+       "url": "https://github.com/ConductionNL/hermiq/issues/31",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-07T11:41:05.000Z"
+      },
+      {
+       "title": "Migrate GraphExecutor onto the OpenRegister flow engine",
+       "url": "https://github.com/ConductionNL/hermiq/issues/35",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-07T12:18:27.000Z"
+      },
+      {
+       "title": "run-on-object resolves agents from oc_openregister_agents TABLE but /api/agents UI lists OR-object agents (different uuids) → UI-picked agent 404s",
+       "url": "https://github.com/ConductionNL/hermiq/issues/42",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-07T22:00:00.000Z"
+      },
+      {
+       "title": "Hydra Triage graph's stop message is stale: the OpenConnector command node IS installed",
+       "url": "https://github.com/ConductionNL/hermiq/issues/83",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-13T20:58:00.000Z"
+      },
+      {
+       "title": "62 Playwright tests in 14 files have never run in CI — playwright-test-path scopes the job to tests/e2e/spec-coverage",
+       "url": "https://github.com/ConductionNL/hermiq/issues/176",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-08-17T09:00:17.000Z"
+      },
+      {
+       "title": "Suppression & baseline audit: what the green PHPMD number hides",
+       "url": "https://github.com/ConductionNL/hermiq/issues/151",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-18T15:38:07.000Z"
+      },
+      {
+       "title": "4 gate findings merged with #162 — labels, a placeholder @spec anchor, controller exception translation, detail-page discipline",
+       "url": "https://github.com/ConductionNL/hermiq/issues/167",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-21T08:22:02.000Z"
+      },
+      {
+       "title": "register()-time OCA\\OpenRegister probes (3) — guarded behaviour silently never activates, and no gate reports it",
+       "url": "https://github.com/ConductionNL/hermiq/issues/174",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-21T22:00:00.000Z"
+      },
+      {
+       "title": "gate-57: agent sessions are never recorded, and the channel heartbeat is never emitted",
+       "url": "https://github.com/ConductionNL/hermiq/issues/181",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T13:33:27.000Z"
+      },
+      {
+       "title": "gate-17: three 'pass-through' methods all have callers, and one carries an _rbac:false policy the detector strips",
+       "url": "https://github.com/ConductionNL/hermiq/issues/182",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T13:33:48.000Z"
+      },
+      {
+       "title": "gate-46: the last 25 anchors need requirements that do not exist yet (conversation-title deferral, cross-app flow-engine)",
+       "url": "https://github.com/ConductionNL/hermiq/issues/183",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T13:34:12.000Z"
+      },
+      {
+       "title": "Remaining quality debt after the #180 sweep: E2E red, gate-19 (491), gate-25 (10), gate-26 (4)",
+       "url": "https://github.com/ConductionNL/hermiq/issues/184",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T13:35:14.000Z"
+      },
+      {
+       "title": "hermiq.workload-step has never executed through the flow engine — unit-tested only, no integration coverage",
+       "url": "https://github.com/ConductionNL/hermiq/issues/185",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-25T17:35:48.000Z"
+      },
+      {
+       "title": "All six @e2e anchors CI actually runs are dangling — agent-object-leaf was never promoted out of openspec/changes/",
+       "url": "https://github.com/ConductionNL/hermiq/issues/192",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-26T00:09:45.000Z"
+      },
+      {
+       "title": "gate-7 residue after #187: 17 #[NoAdminRequired] endpoints, 28 of 29 schemas default-open, and two docblocks that assert scoping the body does not do",
+       "url": "https://github.com/ConductionNL/hermiq/issues/203",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-26T22:49:47.000Z"
+      },
+      {
+       "title": "[OpenSpec] skill-source-identity-schema",
+       "url": "https://github.com/ConductionNL/hermiq/issues/259",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 2,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "publiccode.yml declares no standards under supports.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 10.5
+  "durationSeconds": 16,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

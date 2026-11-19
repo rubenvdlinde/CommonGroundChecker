@@ -28,28 +28,30 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:13:43.193Z",
+  "lastCheckedAt": "2026-11-19T23:03:56.081Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:14.389Z",
-  "updatedAt": "2026-11-19T14:13:43.193Z",
+  "updatedAt": "2026-11-19T23:03:56.081Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-13-43-193Z",
+  "id": "2026-11-19T23-03-56-081Z",
   "repoId": "github.com/maykinmedia/open-plan",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:13:43.193Z",
-  "createdAt": "2026-11-19T14:13:43.193Z",
+  "checkedAt": "2026-11-19T23:03:56.081Z",
+  "createdAt": "2026-11-19T23:03:56.081Z",
   "version": "v0.1.0",
-  "checklistVersion": null,
+  "checklistVersion": "2026.2",
   "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "scannedRefKind": "default-branch-fallback",
+  "scannedCommit": "d9085b6731538aa06f2c42519f7050c162a35c97",
   "score": 65,
   "rating": 3.2,
   "categoryRatings": {
@@ -77,6 +79,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -90,6 +95,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -106,6 +114,9 @@
    },
    "layering": {
     "rating": 3
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 3.7
@@ -307,6 +318,19 @@
     "evidence": [],
     "referenceUrl": "https://www.cisa.gov/sbom",
     "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
     "starRating": 3
    },
    {
@@ -849,51 +873,8 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Process layer (orchestration / BFF); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "message": "Detected layer signals: Service layer (back-end microservice); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer. The repository also references Common Ground.",
     "evidence": [
-     "Found path segment \"ui\" in build",
-     "Found path segment \"ui\" in build/paths.js",
-     "Found path segment \"ui\" in docs/installation/reference/prerequisites.rst",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/docs.in",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/staging.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/test.txt",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/__init__.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/configuratie.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/doel.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/doeltype.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/domein.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/evaluatie.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/evaluatietype.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/plan.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/positie.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/positietype.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/subdoel.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/subdoeltype.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/subject.py",
-     "Found path segment \"admin\" in src/openplan/plannen/admin/voortgang.py",
-     "Found path segment \"admin\" in src/openplan/scss/admin/_admin_theme.scss",
-     "Found path segment \"admin\" in src/openplan/scss/admin/_app_overrides.scss",
-     "Found path segment \"admin\" in src/openplan/scss/admin/_vars.scss",
-     "Found path segment \"admin\" in src/openplan/scss/admin/admin_overrides.scss",
-     "Found path segment \"admin\" in src/openplan/scss/admin/themes",
-     "Found path segment \"admin\" in src/openplan/scss/admin/themes/_dark.scss",
-     "Found path segment \"admin\" in src/openplan/scss/admin/themes/_light.scss",
-     "Found path segment \"admin\" in src/openplan/static/img/admin/calendar-alt-regular.svg",
-     "Found path segment \"admin\" in src/openplan/static/img/admin/clock-regular.svg",
-     "Found path segment \"admin\" in src/openplan/static/img/admin/edit-regular.svg",
-     "Found path segment \"admin\" in src/openplan/static/img/admin/plus-square-regular.svg",
-     "Found path segment \"admin\" in src/openplan/static/img/admin/trash-alt-regular.svg",
-     "Found path segment \"admin\" in src/openplan/templates/admin/base_site.html",
-     "Found path segment \"admin\" in src/openplan/templates/hijack/contrib/admin/button.html",
      "Found path segment \"api\" in src/openplan/plannen/api/__init__.py",
      "Found path segment \"api\" in src/openplan/plannen/api/filtersets",
      "Found path segment \"api\" in src/openplan/plannen/api/filtersets/__init__.py",
@@ -914,15 +895,6 @@
      "Found path segment \"api\" in src/openplan/plannen/api/serializers/subject.py",
      "Found path segment \"api\" in src/openplan/plannen/api/serializers/validators.py",
      "Found path segment \"api\" in src/openplan/plannen/api/tests",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/__init__.py",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/api_testcase.py",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/test_configuratie.py",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/test_doel.py",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/test_doeltype.py",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/test_domein.py",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/test_evaluatie.py",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/test_plan.py",
-     "Found path segment \"api\" in src/openplan/plannen/api/tests/test_subject.py",
      "Found path segment \"api\" in src/openplan/plannen/api/urls.py",
      "Found path segment \"api\" in src/openplan/plannen/api/viewsets",
      "Found path segment \"api\" in src/openplan/plannen/api/viewsets/__init__.py",
@@ -934,7 +906,6 @@
      "Found path segment \"api\" in src/openplan/plannen/api/viewsets/plan.py",
      "Found path segment \"api\" in src/openplan/plannen/api/viewsets/subject.py",
      "Found \"api\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs",
      "Found \"register\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
@@ -1018,9 +989,170 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "5 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 1 human contributor. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "2 organisations; largest 99%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (127 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is an organisation with one author, with 99% of the 127 commits whose organisation is known; 0% of the commits come from 0 of 2 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": true
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.74",
+      "explanation": "14 change requests were closed (merged or not) and 19 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": false
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 8.0 days",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 11 got a response; 4 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 28.9 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-21 and 2026-11-12. 2 got a response; 13 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": null,
+      "explanation": "Not measured: the repository has no GitHub releases and no version tags.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": null
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 20,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 5,
+        "waiting": 7
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 1,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 3,
+     "openBreaches": [
+      {
+       "title": "Create API for Positie and Positietype",
+       "url": "https://github.com/maykinmedia/open-plan/issues/53",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-13T12:52:25.000Z"
+      },
+      {
+       "title": "Status logic",
+       "url": "https://github.com/maykinmedia/open-plan/issues/55",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-16T09:56:18.000Z"
+      },
+      {
+       "title": "Security updates: pillow 13.0.0 (October 2026 advisories), certifi, protobuf",
+       "url": "https://github.com/maykinmedia/open-plan/issues/57",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-11-17T08:45:17.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Stable releases could not be read (the repository has no GitHub releases and no version tags), so no fix is dated by a release.",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "13 of 21 issues were opened by the maintainers themselves; they have a fix term but no response term."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 3.6
+  "durationSeconds": 4.8,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

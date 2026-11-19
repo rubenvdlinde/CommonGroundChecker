@@ -32,28 +32,32 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:13:30.992Z",
+  "lastCheckedAt": "2026-11-19T23:03:36.932Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:57.462Z",
-  "updatedAt": "2026-11-19T14:13:30.992Z",
+  "updatedAt": "2026-11-19T23:03:36.932Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [
+   "beheren-van-klantcontacten"
+  ],
+  "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-19T14-13-30-992Z",
+  "id": "2026-11-19T23-03-36-932Z",
   "repoId": "github.com/maykinmedia/open-klant",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:13:30.992Z",
-  "createdAt": "2026-11-19T14:13:30.992Z",
+  "checkedAt": "2026-11-19T23:03:36.932Z",
+  "createdAt": "2026-11-19T23:03:36.932Z",
   "version": "v2.19.2",
-  "checklistVersion": null,
-  "scannedRef": "master",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "2.19.2",
+  "scannedRefKind": "tag",
+  "scannedCommit": "ac8b824d1e00c1d2db58d8f8f2015b29a8e20210",
   "score": 61,
   "rating": 2.9,
   "categoryRatings": {
@@ -81,6 +85,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -94,6 +101,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -111,8 +121,11 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
-    "rating": 2.6
+    "rating": 2.5
    },
    "modifiability": {
     "rating": 2.8
@@ -124,7 +137,7 @@
     "rating": 3
    },
    "reusability": {
-    "rating": 2.3
+    "rating": 2.1
    },
    "testing": {
     "rating": 5.5
@@ -148,7 +161,7 @@
     "Mandatory criterion fails: API Design Rules",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No publiccode.yml was found, so there is no maintenance contract.",
-    "Maintainability below 4 stars (2.48)"
+    "Maintainability below 4 stars (2.44)"
    ]
   },
   "issueCounts": {
@@ -164,7 +177,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 23,615 lines of code, 1,169 functions, 1,164 files analyzed.",
+    "message": "Code metrics: 23,700 lines of code, 1,172 functions, 1,167 files analyzed.",
     "evidence": [
      "bin/bump-my-version.sh",
      "bin/celery_flower.sh",
@@ -177,9 +190,9 @@
      "bin/generate_admin_index_fixture.sh",
      "bin/generate_demo_data.sh",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 23,615",
-     "Function count: 1,169",
-     "Files analyzed: 1,164"
+     "Total lines of code (NLOC): 23,700",
+     "Function count: 1,172",
+     "Files analyzed: 1,167"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -296,8 +309,8 @@
     "evidence": [
      ".github/workflows/bin-check.yml",
      ".github/workflows/ci.yml",
+     ".github/workflows/code-analysis.yml",
      ".github/workflows/code-quality.yml",
-     ".github/workflows/codeql-analysis.yml",
      ".github/workflows/oaf-check.yml"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
@@ -313,6 +326,19 @@
     "evidence": [],
     "referenceUrl": "https://www.cisa.gov/sbom",
     "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
     "starRating": 3
    },
    {
@@ -395,12 +421,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 1.80 (threshold: 15)",
      "Max CCN: 37.00 (threshold: 30)",
-     "11      1     87      1      17 test_missing_service_raises_error@86-102@/tmp/cgchecker-repo-jc1QzV/repo/src/openklant/config/tests/test_admin.py",
-     "20      1    119      1      29 test_missing_kanalen_tabel_code_raises_error@104-132@/tmp/cgchecker-repo-jc1QzV/repo/src/openklant/config/tests/test_admin.py",
-     "21      1    123      1      27 test_request_error_from_referentielijsten_raises_error@134-160@/tmp/cgchecker-repo-jc1QzV/repo/src/openklant/config/tests/test_admin.py",
-     "25      1    144      1      34 test_existing_klantcontacten_with_invalid_kanalen_raises_error@162-195@/tmp/cgchecker-repo-jc1QzV/repo/src/openklant/config/tests/test_admin.py",
-     "24      6    115      2      34 _prevent_protected_error_for_self_contained_identificatoren@296-329@/tmp/cgchecker-repo-jc1QzV/repo/src/openklant/management/commands/delete_klantcontacten_not_related_to_zaken.py",
-     "16      1     85      1      20 test_error_flow_missing_service@38-57@/tmp/cgchecker-repo-jc1QzV/repo/src/openklant/setup_configuration/tests/test_client_config_step.py"
+     "24      1    136      1      31 test_create_klantcontact_validation_error@2409-2439@/tmp/cgchecker-repo-O8W8eX/repo/src/openklant/components/klantinteracties/api/tests/test_klantcontacten.py",
+     "24      1    136      1      31 test_create_betrokkene_validation_error@2441-2471@/tmp/cgchecker-repo-O8W8eX/repo/src/openklant/components/klantinteracties/api/tests/test_klantcontacten.py",
+     "24      1    136      1      31 test_create_onderwerpobject_validation_error@2597-2627@/tmp/cgchecker-repo-O8W8eX/repo/src/openklant/components/klantinteracties/api/tests/test_klantcontacten.py",
+     "10      2    107      1      13 test_no_integrity_error_without_nummer@647-659@/tmp/cgchecker-repo-O8W8eX/repo/src/openklant/components/klantinteracties/tests/test_migrations.py",
+     "25      1    223      1      33 test_partij_create_nummer_error@112-144@/tmp/cgchecker-repo-O8W8eX/repo/src/openklant/components/klantinteracties/tests/test_admin.py",
+     "29      1    254      1      36 test_interetaak_create_nummer_error@753-788@/tmp/cgchecker-repo-O8W8eX/repo/src/openklant/components/klantinteracties/tests/test_admin.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -413,13 +439,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "fail",
     "starRating": 2,
-    "rating": 2.48,
+    "rating": 2.4400000000000004,
     "aspectRatings": {
-     "analysability": 2.6,
-     "modifiability": 2.79,
-     "testability": 1.92,
-     "modularity": 2.95,
-     "reusability": 2.3
+     "analysability": 2.53,
+     "modifiability": 2.81,
+     "testability": 1.93,
+     "modularity": 2.96,
+     "reusability": 2.14
     },
     "measurements": [
      {
@@ -443,7 +469,7 @@
        },
        {
         "label": "Python",
-        "value": "9.9%",
+        "value": "9.8%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -497,7 +523,7 @@
        },
        {
         "label": "Python, more than 15 lines",
-        "value": "51.4%",
+        "value": "52.1%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -508,7 +534,7 @@
        },
        {
         "label": "Python, more than 30 lines",
-        "value": "33.1%",
+        "value": "34.2%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -519,7 +545,7 @@
        },
        {
         "label": "Python, more than 60 lines",
-        "value": "16.6%",
+        "value": "18.1%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
@@ -573,18 +599,18 @@
        },
        {
         "label": "Python, complexity above 5",
-        "value": "34.8%",
+        "value": "34.1%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
          "4": "≤ 20.7%",
          "5": "≤ 15.8%"
         },
-        "stars": 1
+        "stars": 2
        },
        {
         "label": "Python, complexity above 10",
-        "value": "15.3%",
+        "value": "15.0%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -595,7 +621,7 @@
        },
        {
         "label": "Python, complexity above 25",
-        "value": "3.5%",
+        "value": "3.4%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
@@ -648,7 +674,7 @@
        },
        {
         "label": "Python, 3 or more parameters",
-        "value": "20.7%",
+        "value": "22.1%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -659,14 +685,14 @@
        },
        {
         "label": "Python, 5 or more parameters",
-        "value": "3.1%",
+        "value": "4.9%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
          "4": "≤ 3.4%",
          "5": "≤ 2.5%"
         },
-        "stars": 4
+        "stars": 2
        },
        {
         "label": "Python, 7 or more parameters",
@@ -691,7 +717,7 @@
       "rows": [
        {
         "label": "Python, fan-in above 10",
-        "value": "8.4%",
+        "value": "8.3%",
         "thresholds": {
          "2": "≤ 13.0%",
          "3": "≤ 10.7%",
@@ -734,7 +760,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "87.3%",
+        "value": "87.4%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -764,18 +790,18 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.45 to 2.51 (2 of 5 stars) over 145 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.41 to 2.47 (2 of 5 stars) over 146 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★☆☆ 2.8 (javascript 5.5, python 2.8)",
-     "Unit size: ★★☆☆☆ 2.4 (javascript 5.5, python 2.4)",
-     "Unit complexity: ★☆☆☆☆ 1.5 (javascript 5.5, python 1.5)",
-     "Unit interfacing: ★★☆☆☆ 2.2 (javascript 5.5, python 2.2)",
+     "Unit size: ★★☆☆☆ 2.2 (javascript 5.5, python 2.2)",
+     "Unit complexity: ★★☆☆☆ 1.5 (javascript 5.5, python 1.5)",
+     "Unit interfacing: ★★☆☆☆ 2.0 (javascript 5.5, python 2.0)",
      "Module coupling: ★★★★☆ 4.1 (python 4.1)",
-     "Component independence: ★★☆☆☆ 2.3 (python 2.3)",
+     "Component independence: ★★☆☆☆ 2.4 (python 2.4)",
      "Component entanglement: ★★☆☆☆ 2.4 (python 2.4)",
-     "Lever: unit complexity in python, about 150 lines to fix for half a star",
-     "Lever: unit size in python, about 155 lines to fix for half a star",
-     "Lever: duplication in python, about 365 lines to fix for half a star"
+     "Lever: unit complexity in python, about 132 lines to fix for half a star",
+     "Lever: unit size in python, about 181 lines to fix for half a star",
+     "Lever: unit interfacing in python, about 166 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -784,7 +810,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "fail",
-    "message": "Multiple risky coding patterns were detected (5 findings across 266 scanned source files). Review them against OWASP secure coding guidance.",
+    "message": "Multiple risky coding patterns were detected (5 findings across 267 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
      "Possible hardcoded secret: src/openklant/accounts/tests/factories.py",
      "Possible hardcoded secret: src/openklant/accounts/tests/test_metrics.py",
@@ -803,35 +829,35 @@
     "status": "fail",
     "message": "API Design Rules violations found across 2 specification(s): 23 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/contactgegevens/openapi.yaml",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/contactgegevens/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/contactgegevens/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /contactgegevens/api/v1 \"/contactgegevens/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/contactgegevens/openapi.yaml)",
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/contactgegevens/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /contactgegevens/api/v1 \"/contactgegevens/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/contactgegevens/openapi.yaml)",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./maak-klantcontact.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_ActorSerializer @ components.schemas.Base_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_PartijSerializer @ components.schemas.Base_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedBetrokkeneList (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedDigitaalAdresList (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedKlantcontactList (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedPartijList (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_GeautomatiseerdeActor @ components.schemas.actor_identificatie_GeautomatiseerdeActor (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_Medewerker @ components.schemas.actor_identificatie_Medewerker (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_OrganisatorischeEenheid @ components.schemas.actor_identificatie_OrganisatorischeEenheid (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/contactpersoon_PartijSerializer @ components.schemas.contactpersoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/geautomatiseerde_actor_ActorSerializer @ components.schemas.geautomatiseerde_actor_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/medewerker_ActorSerializer @ components.schemas.medewerker_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatie_PartijSerializer @ components.schemas.organisatie_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatorische_eenheid_ActorSerializer @ components.schemas.organisatorische_eenheid_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Contactpersoon @ components.schemas.partij_identificatie_Contactpersoon (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Organisatie @ components.schemas.partij_identificatie_Organisatie (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Persoon @ components.schemas.partij_identificatie_Persoon (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/persoon_PartijSerializer @ components.schemas.persoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /klantinteracties/api/v1 \"/klantinteracties/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)"
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./maak-klantcontact.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_ActorSerializer @ components.schemas.Base_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_PartijSerializer @ components.schemas.Base_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedBetrokkeneList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedDigitaalAdresList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedKlantcontactList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedPartijList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_GeautomatiseerdeActor @ components.schemas.actor_identificatie_GeautomatiseerdeActor (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_Medewerker @ components.schemas.actor_identificatie_Medewerker (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_OrganisatorischeEenheid @ components.schemas.actor_identificatie_OrganisatorischeEenheid (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/contactpersoon_PartijSerializer @ components.schemas.contactpersoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/geautomatiseerde_actor_ActorSerializer @ components.schemas.geautomatiseerde_actor_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/medewerker_ActorSerializer @ components.schemas.medewerker_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatie_PartijSerializer @ components.schemas.organisatie_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatorische_eenheid_ActorSerializer @ components.schemas.organisatorische_eenheid_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Contactpersoon @ components.schemas.partij_identificatie_Contactpersoon (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Organisatie @ components.schemas.partij_identificatie_Organisatie (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Persoon @ components.schemas.partij_identificatie_Persoon (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/persoon_PartijSerializer @ components.schemas.persoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /klantinteracties/api/v1 \"/klantinteracties/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -894,58 +920,14 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer. The repository also references Common Ground.",
     "evidence": [
-     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
-     "Found path segment \"ui\" in build.js",
-     "Found path segment \"ui\" in docs/installation/prerequisites.rst",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.in",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/docs.in",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/type-checking.in",
-     "Found path segment \"ui\" in requirements/type-checking.txt",
-     "Found path segment \"ui\" in src/openklant/components/contactgegevens/migrations/0005_alter_organisatie_adres_nummeraanduiding_id_and_more.py",
-     "Found path segment \"ui\" in src/openklant/components/klantinteracties/migrations/0027_alter_betrokkene_bezoekadres_nummeraanduiding_id_and_more.py",
-     "Found path segment \"ui\" in src/openklant/components/klantinteracties/migrations/0029_betrokkene_bezoekadres_huisnummer_and_more.py",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/__init__.py",
-     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/actoren.py",
-     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/digitaal_adres.py",
-     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/internetaken.py",
-     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/klantcontacten.py",
-     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/partijen.py",
-     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/rekeningnummers.py",
-     "Found path segment \"admin\" in src/openklant/scss/admin/_admin_theme.scss",
-     "Found path segment \"admin\" in src/openklant/scss/admin/_app_overrides.scss",
-     "Found path segment \"admin\" in src/openklant/scss/admin/_tooltip.scss",
-     "Found path segment \"admin\" in src/openklant/scss/admin/admin_overrides.scss",
-     "Found path segment \"admin\" in src/openklant/scss/admin/themes",
-     "Found path segment \"admin\" in src/openklant/scss/admin/themes/_dark.scss",
-     "Found path segment \"admin\" in src/openklant/scss/admin/themes/_light.scss",
-     "Found path segment \"admin\" in src/openklant/static/img/admin/calendar-alt-regular.svg",
-     "Found path segment \"admin\" in src/openklant/static/img/admin/clock-regular.svg",
-     "Found path segment \"admin\" in src/openklant/static/img/admin/edit-regular.svg",
-     "Found path segment \"admin\" in src/openklant/static/img/admin/plus-square-regular.svg",
-     "Found path segment \"admin\" in src/openklant/static/img/admin/trash-alt-regular.svg",
-     "Found path segment \"admin\" in src/openklant/templates/admin/base_site.html",
-     "Found path segment \"admin\" in src/openklant/templates/admin/base_site__admintools.html",
-     "Found path segment \"admin\" in src/openklant/templates/admin/login.html",
      "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
      "Found \"register\" in repository metadata and docs",
      "Found path segment \"api\" in src/openklant/components/contactgegevens/api/__init__.py",
      "Found path segment \"api\" in src/openklant/components/contactgegevens/api/schema.py",
      "Found path segment \"api\" in src/openklant/components/contactgegevens/api/serializers.py",
      "Found path segment \"api\" in src/openklant/components/contactgegevens/api/tests",
-     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/tests/__init__.py",
-     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/tests/factories.py",
-     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/tests/test_apis.py",
      "Found path segment \"api\" in src/openklant/components/contactgegevens/api/urls.py",
      "Found path segment \"api\" in src/openklant/components/contactgegevens/api/viewset.py",
      "Found path segment \"api\" in src/openklant/components/klantinteracties/api/__init__.py",
@@ -968,41 +950,6 @@
      "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/partijen.py",
      "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/rekeningnummers.py",
      "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/__init__.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/factories.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_invalid_kanaal.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_expired_due_to_past_eind.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_not_yet_valid_due_to_future_begin.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_valid_begin_in_past_no_end.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_valid_no_begin_with_future_end.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_valid_open_ended_eind.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_valid_within_geldigheid_window.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_patch_with_invalid_kanaal.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_patch_with_valid_kanaal.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_put_with_invalid_kanaal.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_put_with_valid_kanaal.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_referentielijsten_returns_empty_list.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_valid_kanaal.yaml",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/__init__.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/test_categorie.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/test_partij.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/test_partij_identificator.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/test_vertegenwoordigden.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_actoren.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_cloudevents.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_digitaal_adres.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_expand.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_filters.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_internetaken.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_kanaal_referentielijsten.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_klantcontacten.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_notifications.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_rekeningnummers.py",
-     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_validators.py",
      "Found path segment \"api\" in src/openklant/components/klantinteracties/api/urls.py",
      "Found path segment \"api\" in src/openklant/components/klantinteracties/api/validators.py",
      "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets",
@@ -1041,7 +988,7 @@
     "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "npm Open Klant: not measured: HTTP 405 (2026-11-19)",
-     "Docker Hub maykinmedia/open-klant: 214,035 pulls in total (2026-11-19)",
+     "Docker Hub maykinmedia/open-klant: 214,223 pulls in total (2026-11-19)",
      "GitHub maykinmedia/open-klant: 7 stars, 5 forks, 5 watchers (2026-11-19)",
      "GitHub commits maykinmedia/open-klant: 9 contributors, 7 from the owning organisation, 1 from other organisations, 1 unknown (2026-11-19)"
     ],
@@ -1069,7 +1016,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 214035
+         "value": 214223
         }
        ]
       },
@@ -1125,9 +1072,240 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 8 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "2 organisations; largest 99%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (286 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (7 authors), with 99% of the 282 commits whose organisation is known; 1% of the commits come from 1 of 9 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": true
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.88",
+      "explanation": "22 change requests were closed (merged or not) and 25 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 4 minutes",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 15 got a response; 0 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 9.9 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 14 latest issues opened by people between 2026-08-21 and 2026-11-12. 5 got a response; 9 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "10 in 12 months",
+      "explanation": "10 final releases were published in the last 12 months, about one every 37 days, counted from the version tags. The latest final release is from 2026-10-30. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 14,
+       "response": {
+        "measured": 6,
+        "median": 3.4,
+        "worst": 30.1,
+        "breaches": 4,
+        "waiting": 1
+       },
+       "fix": {
+        "measured": 6,
+        "median": 31.4,
+        "worst": 77.8,
+        "breaches": 11,
+        "waiting": 8
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 12,
+       "response": {
+        "measured": 7,
+        "median": 3.9,
+        "worst": 13.1,
+        "breaches": 2,
+        "waiting": 1
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 5,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 3,
+        "waiting": 3
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 10,
+     "openBreaches": [
+      {
+       "title": "Validate the `partijIdentificatie` so that it conforms with `soortPartij`",
+       "url": "https://github.com/maykinmedia/open-klant/issues/405",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2025-05-14T09:04:59.000Z"
+      },
+      {
+       "title": "`expand` does not always include all specified keys in the response",
+       "url": "https://github.com/maykinmedia/open-klant/issues/528",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2025-12-01T15:01:51.000Z"
+      },
+      {
+       "title": "Interpretation of PUT requests",
+       "url": "https://github.com/maykinmedia/open-klant/issues/538",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2025-12-01T15:01:51.000Z"
+      },
+      {
+       "title": "Translations don't work due to LocaleMiddleware being disabled",
+       "url": "https://github.com/maykinmedia/open-klant/issues/562",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-02-06T09:35:54.000Z"
+      },
+      {
+       "title": "`OnderwerpObject.klantcontact` should be required",
+       "url": "https://github.com/maykinmedia/open-klant/issues/551",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-02-06T09:35:54.000Z"
+      },
+      {
+       "title": "Notifications/cloudevents are not sent when editing resources via Django admin",
+       "url": "https://github.com/maykinmedia/open-klant/issues/660",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-10-02T09:20:07.000Z"
+      },
+      {
+       "title": "Admin-interface staat toe isDigitaalAdres: true te zetten, terwijl verstrektDoorPartij: null",
+       "url": "https://github.com/maykinmedia/open-klant/issues/667",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-10-06T08:54:30.000Z"
+      },
+      {
+       "title": "Metrics callback loses database connection with every PostgreSQL restart",
+       "url": "https://github.com/maykinmedia/open-klant/issues/678",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-10-21T10:41:34.000Z"
+      },
+      {
+       "title": "Metrics callback loses database connection with every PostgreSQL restart",
+       "url": "https://github.com/maykinmedia/open-klant/issues/678",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-10-30T10:03:33.000Z"
+      },
+      {
+       "title": "Add upgrade path check 3.0.0",
+       "url": "https://github.com/maykinmedia/open-klant/issues/685",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-11-12T16:52:26.000Z"
+      }
+     ],
+     "fixesByRelease": 6,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "13 of 31 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 6.6
+  "durationSeconds": 7.4,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

@@ -28,28 +28,30 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:08:21.755Z",
+  "lastCheckedAt": "2026-11-19T22:57:28.916Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:53:58.836Z",
-  "updatedAt": "2026-11-19T14:08:21.755Z",
+  "updatedAt": "2026-11-19T22:57:28.916Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-08-21-755Z",
+  "id": "2026-11-19T22-57-28-916Z",
   "repoId": "github.com/ConductionNL/humaniq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:08:21.755Z",
-  "createdAt": "2026-11-19T14:08:21.755Z",
+  "checkedAt": "2026-11-19T22:57:28.916Z",
+  "createdAt": "2026-11-19T22:57:28.916Z",
   "version": "v0.2.0-dev.20260819135319",
-  "checklistVersion": null,
+  "checklistVersion": "2026.2",
   "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "scannedRefKind": "default-branch-fallback",
+  "scannedCommit": "b6fb30cf98520aaee9a4ed69e7b9f7c4cb8cc0eb",
   "score": 51,
   "rating": 2.9,
   "categoryRatings": {
@@ -77,6 +79,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -90,6 +95,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -106,6 +114,9 @@
    },
    "layering": {
     "rating": 3
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 2.8
@@ -159,7 +170,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 21,012 lines of code, 1,781 functions, 1,777 files analyzed.",
+    "message": "Code metrics: 513 lines of code, 53 functions, 53 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -172,9 +183,9 @@
      "l10n/nl.js",
      "lib/AppInfo/Application.php",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 21,012",
-     "Function count: 1,781",
-     "Files analyzed: 1,777"
+     "Total lines of code (NLOC): 513",
+     "Function count: 53",
+     "Files analyzed: 53"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -303,6 +314,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: this is a Nextcloud app (appinfo/info.xml), not a container component. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -371,16 +395,13 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 1.41 <= 15 and Max CCN 19.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.60 <= 15 and Max CCN 7.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.41 (threshold: 15)",
-     "Max CCN: 19.00 (threshold: 30)",
-     "10      1     85      0      15 PayrollNetPayServiceTest::testCollectLinesExcludesZeroNettoPayWithoutError@381-395@/tmp/cgchecker-repo-JE7FtB/repo/tests/Unit/Service/PayrollNetPayServiceTest.php",
-     "16      1    122      0      19 PayrollNetPayServiceTest::testCollectLinesFailsWholeBatchWhenAnyLineErrors@471-489@/tmp/cgchecker-repo-JE7FtB/repo/tests/Unit/Service/PayrollNetPayServiceTest.php",
-     "11      1     86      0      14 PayrollAuditVerificationServiceTest::testUnknownRunReturnsAnErrorWithoutCallingAuditHashService@310-323@/tmp/cgchecker-repo-JE7FtB/repo/tests/Unit/Service/PayrollAuditVerificationServiceTest.php",
-     "Error: Fail to parse file '/tmp/cgchecker-repo-JE7FtB/repo/tests/e2e/spec-coverage/manifest-pages.spec.ts'",
+     "Average CCN: 1.60 (threshold: 15)",
+     "Max CCN: 7.00 (threshold: 30)",
+     "Error: Fail to parse file '/tmp/cgchecker-repo-QY7pP8/repo/tests/e2e/spec-coverage/manifest-pages.spec.ts'",
      "warning_count = printer(result, options, schema, AllResult)",
      "IndexError: list index out of range"
     ],
@@ -978,83 +999,7 @@
     "status": "warn",
     "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
     "evidence": [
-     "Found path segment \"ui\" in docs/hr/leave-and-verzuim.md",
-     "Found path segment \"ui\" in docs/people/recruiting.md",
      "Found path segment \"portal\" in lib/Portal/PortalContributionProvider.php",
-     "Found path segment \"ui\" in lib/Settings/register.d/hr-verzuim.json",
-     "Found path segment \"ui\" in lib/Standards/Checks/NlUitzendChecks.php",
-     "Found path segment \"ui\" in lib/Standards/cao/cao-ziekenhuizen.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/specs/leave-management",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/specs/leave-management/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/specs/verzuim-wvp",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/specs/verzuim-wvp/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-12-leave-verzuim-mvp/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/specs/recruiting-applications",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/specs/recruiting-applications/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/specs/recruiting-vacancies",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/specs/recruiting-vacancies/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-recruiting-ats-basic/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-analytics-widgets",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-analytics-widgets/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-analytics-widgets/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-analytics-widgets/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-analytics-widgets/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-analytics-widgets/specs/verzuim-analytics-widgets",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-analytics-widgets/specs/verzuim-analytics-widgets/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-13-verzuim-analytics-widgets/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-abp-aansluiting",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-abp-aansluiting/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-abp-aansluiting/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-abp-aansluiting/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-abp-aansluiting/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-abp-aansluiting/specs/abp-aansluiting",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-abp-aansluiting/specs/abp-aansluiting/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-abp-aansluiting/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-functiehuis-hr21",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-functiehuis-hr21/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-functiehuis-hr21/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-functiehuis-hr21/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-functiehuis-hr21/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-functiehuis-hr21/specs/functiehuis-hr21",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-functiehuis-hr21/specs/functiehuis-hr21/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-17-functiehuis-hr21/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-08-20-hrmq-dashboard-steering-indicators/specs/verzuim-analytics-widgets",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-08-20-hrmq-dashboard-steering-indicators/specs/verzuim-analytics-widgets/spec.md",
-     "Found path segment \"ui\" in openspec/changes/uitzend-flexpool",
-     "Found path segment \"ui\" in openspec/changes/uitzend-flexpool/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/uitzend-flexpool/design.md",
-     "Found path segment \"ui\" in openspec/changes/uitzend-flexpool/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/uitzend-flexpool/specs",
-     "Found path segment \"ui\" in openspec/changes/uitzend-flexpool/specs/uitzend-flexpool",
-     "Found path segment \"ui\" in openspec/changes/uitzend-flexpool/specs/uitzend-flexpool/spec.md",
-     "Found path segment \"ui\" in openspec/changes/uitzend-flexpool/tasks.md",
-     "Found path segment \"ui\" in openspec/specs/abp-aansluiting",
-     "Found path segment \"ui\" in openspec/specs/abp-aansluiting/spec.md",
-     "Found path segment \"ui\" in openspec/specs/functiehuis-hr21",
-     "Found path segment \"ui\" in openspec/specs/functiehuis-hr21/spec.md",
-     "Found path segment \"ui\" in openspec/specs/recruiting-applications",
-     "Found path segment \"ui\" in openspec/specs/recruiting-applications/spec.md",
-     "Found path segment \"ui\" in openspec/specs/recruiting-vacancies",
-     "Found path segment \"ui\" in openspec/specs/recruiting-vacancies/spec.md",
-     "Found path segment \"ui\" in openspec/specs/verzuim-analytics-widgets",
-     "Found path segment \"ui\" in openspec/specs/verzuim-analytics-widgets/spec.md",
-     "Found path segment \"ui\" in openspec/specs/verzuim-wvp",
-     "Found path segment \"ui\" in openspec/specs/verzuim-wvp/spec.md",
-     "Found path segment \"ui\" in scripts/build-l10n-js.js",
-     "Found path segment \"ui\" in src/manifest.d/hr-verzuim.json",
-     "Found path segment \"ui\" in tests/Unit/Controller/RequiredIdentifierContractTest.php",
-     "Found path segment \"portal\" in tests/Unit/Portal/PortalContributionProviderTest.php",
-     "Found path segment \"ui\" in tests/Unit/Standards/Checks/NlUitzendChecksTest.php",
      "Found \"frontend\" in repository metadata and docs",
      "Found path segment \"service\" in lib/Service/AbsenceProgression.php",
      "Found path segment \"service\" in lib/Service/AbsenceRateService.php",
@@ -1113,47 +1058,6 @@
      "Found path segment \"service\" in lib/Service/TimeEntryEventService.php",
      "Found path segment \"service\" in lib/Service/TimesheetAggregationService.php",
      "Found path segment \"service\" in lib/Service/WkrService.php",
-     "Found path segment \"service\" in tests/Unit/Service/AbsenceRateServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AdministrationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AnalyticsServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AssetDialectMigrationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AvgDsrServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CompAdjustmentServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/CostAdditionPolicyResolverTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DemoDataServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/EmployeeCostRateServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/EmploymentTermsResolverTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/HoursMigrationRunnerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/HoursRegisterGatewayTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/HrDocumentServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/InternalWriteMarkerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/InterviewCalendarServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/LeaveBuySellSettlementServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/LeaveCalendarServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ObligationsServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OfferEsignServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OfferSigningRecoveryServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OrgResolutionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PayrollAuditVerificationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PayrollGLPostServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PayrollMutationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PayrollNetPayServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PayrollReproduceServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PayrollRetentionGuardServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PayrollRunServiceSickPayTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PayrollRunServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ProformaPayslipServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ReceiptExtractionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RetroAdjustmentServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RosterAssignmentProjectionServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RosterCheckServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RuleAuditServicePayrollScopeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RuleAuditServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RuleTestDataSeederCaoTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RuleTestDataSeederEmployeeIdTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/TimeEntryEventServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/TimesheetAggregationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/WkrServiceTest.php",
      "Found \"service\" in repository metadata and docs",
      "Found \"process\" in repository metadata and docs",
      "Found \"integration\" in repository metadata and docs",
@@ -1260,9 +1164,309 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 2 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (286 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is conduction.nl (3 authors), with 100% of the 206 commits whose organisation is known; 28% of the commits come from 1 of 4 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.97",
+      "explanation": "1,034 change requests were closed (merged or not) and 1,067 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "no response",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12 got a comment or review from anyone but its author.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "no response",
+      "explanation": "None of the 15 latest issues opened by people between 2026-08-21 and 2026-11-12 got a comment from anyone but its author.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "0 in 12 months",
+      "explanation": "0 final releases were published in the last 12 months, counted from the GitHub releases. Besides these, 13 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": false
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 14,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 14,
+        "waiting": 14
+       },
+       "fix": {
+        "measured": 3,
+        "median": 0.5,
+        "worst": 0.5,
+        "breaches": 0,
+        "waiting": 11
+       }
+      },
+      {
+       "category": "documentation",
+       "label": "Documentation",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 1,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 61,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 61,
+        "waiting": 61
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 73,
+     "openBreaches": [
+      {
+       "title": "Implement: Employee Master (NAW, BSN, IBAN, AVG)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/1",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T20:55:09.000Z"
+      },
+      {
+       "title": "Implement: Leave Management MVP (vakantie, accrual, balance)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/2",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T21:24:41.000Z"
+      },
+      {
+       "title": "Implement: Sick Leave / Verzuim MVP (70%/70%, UWV)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/3",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T21:24:52.000Z"
+      },
+      {
+       "title": "Implement: Cross-app: Payroll Cost → shillinq GL Post",
+       "url": "https://github.com/ConductionNL/humaniq/issues/4",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T23:36:03.000Z"
+      },
+      {
+       "title": "Implement: Payroll CAO MVP (10 most-common NL CAOs)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/5",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T23:36:13.000Z"
+      },
+      {
+       "title": "Implement: Pension Admin MVP (PFZW, ABP, BPL, bpfBOUW)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/7",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T23:36:35.000Z"
+      },
+      {
+       "title": "Implement: UPA Loonaangifte to Belastingdienst",
+       "url": "https://github.com/ConductionNL/humaniq/issues/8",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T23:36:47.000Z"
+      },
+      {
+       "title": "Implement: Werkkostenregeling (WKR) calc + eindheffing",
+       "url": "https://github.com/ConductionNL/humaniq/issues/9",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-04T23:36:58.000Z"
+      },
+      {
+       "title": "Implement: 30%-regeling Administratie (Expatregeling)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/10",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T07:40:25.000Z"
+      },
+      {
+       "title": "Implement: ABP Aansluiting Verplicht voor Overheidssector",
+       "url": "https://github.com/ConductionNL/humaniq/issues/11",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T07:40:49.000Z"
+      },
+      {
+       "title": "Implement: AOR Ambtenarenrecht — Public-Sector Employment Workflows",
+       "url": "https://github.com/ConductionNL/humaniq/issues/12",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T07:41:15.000Z"
+      },
+      {
+       "title": "Implement: Asset Management voor HRMQ",
+       "url": "https://github.com/ConductionNL/humaniq/issues/13",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T07:41:40.000Z"
+      },
+      {
+       "title": "Implement: Werknemer Self-service Portal (SSO)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/54",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      },
+      {
+       "title": "Implement: Payroll Core (bruto-netto, loonheffing 2026)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/53",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      },
+      {
+       "title": "Implement: Contract Management (vast/tijdelijk/oproep/freelance)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/52",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      },
+      {
+       "title": "Implement: Compliance Reporting AVG/GDPR",
+       "url": "https://github.com/ConductionNL/humaniq/issues/51",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      },
+      {
+       "title": "Implement: DGA Gebruikelijk-loon Flow",
+       "url": "https://github.com/ConductionNL/humaniq/issues/50",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      },
+      {
+       "title": "Implement: ZZP Eenmanszaak Mode (Geen Werknemers)",
+       "url": "https://github.com/ConductionNL/humaniq/issues/49",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      },
+      {
+       "title": "Implement: ZZP / DGA Single-Person Mode",
+       "url": "https://github.com/ConductionNL/humaniq/issues/48",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      },
+      {
+       "title": "Implement: WNT Disclosure - Wet Normering Topinkomens Rapportage",
+       "url": "https://github.com/ConductionNL/humaniq/issues/47",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-08T22:00:00.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 3,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 5.5
+  "durationSeconds": 7.2,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

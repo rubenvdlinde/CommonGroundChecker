@@ -28,35 +28,37 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:12:58.874Z",
+  "lastCheckedAt": "2026-11-19T23:02:49.629Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:19.663Z",
-  "updatedAt": "2026-11-19T14:12:58.874Z",
+  "updatedAt": "2026-11-19T23:02:49.629Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-12-58-874Z",
+  "id": "2026-11-19T23-02-49-629Z",
   "repoId": "github.com/Interne-Taak-Afhandeling/ITA",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:12:58.874Z",
-  "createdAt": "2026-11-19T14:12:58.874Z",
+  "checkedAt": "2026-11-19T23:02:49.629Z",
+  "createdAt": "2026-11-19T23:02:49.629Z",
   "version": "v3.4.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v3.4.0",
+  "scannedRefKind": "release",
+  "scannedCommit": "6aa5d320d0554ed221f3e5343d57be2d0991b99b",
   "score": 66,
-  "rating": 3.7,
+  "rating": 3.4,
   "categoryRatings": {
    "Governance": 1.5,
-   "Security": 4.3,
+   "Security": 3,
    "Architecture": 4.3,
-   "Software Quality": 4.3,
+   "Software Quality": 4.2,
    "Deployment & Operations": 4.3
   },
   "aspectRatings": {
@@ -77,6 +79,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -91,6 +96,9 @@
    },
    "dependency-management": {
     "rating": null
+   },
+   "container-images": {
+    "rating": 0.5
    },
    "secrets": {
     "rating": null
@@ -107,11 +115,14 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
-    "rating": 4.5
+    "rating": 4.4
    },
    "modifiability": {
-    "rating": 4.4
+    "rating": 4.3
    },
    "testability": {
     "rating": 4.6
@@ -145,7 +156,7 @@
   },
   "issueCounts": {
    "errors": 3,
-   "warnings": 11
+   "warnings": 12
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -156,7 +167,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 14,555 lines of code, 1,003 functions, 963 files analyzed.",
+    "message": "Code metrics: 14,219 lines of code, 987 functions, 947 files analyzed.",
     "evidence": [
      ".github/scripts/release-notes.cjs",
      "EndToEndTest.Common/GlobalUsings.cs",
@@ -169,9 +180,9 @@
      "InterneTaakAfhandeling.Common/ApiClients/ObjectApi/KnownLogboekValues.cs",
      "InterneTaakAfhandeling.Common/ApiClients/ObjectApi/Models/LogboekModels.cs",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 14,555",
-     "Function count: 1,003",
-     "Files analyzed: 963"
+     "Total lines of code (NLOC): 14,219",
+     "Function count: 987",
+     "Files analyzed: 947"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -304,6 +315,20 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "fail",
+    "message": "No Helm package on Artifact Hub belongs to this repository. Searched for internetaakafhandeling, ita. Register the Helm chart on Artifact Hub, and link the package from publiccode.yml or the README if its name differs.",
+    "evidence": [
+     "Container component: the repository has a Helm chart (charts/internetaakafhandeling/Chart.yaml)"
+    ],
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 1
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -370,12 +395,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.25 (threshold: 15)",
      "Max CCN: 26.00 (threshold: 30)",
-     "4      3     39      1       4 handleSubmitError@74-77@/tmp/cgchecker-repo-pNwJgm/repo/InterneTaakAfhandeling.Web.Client/src/components/contactverzoek-doorsturen/ContactverzoekDoorsturen.vue",
-     "7      3     30      1       7 handleLoadingError@79-85@/tmp/cgchecker-repo-pNwJgm/repo/InterneTaakAfhandeling.Web.Client/src/components/contactverzoek-doorsturen/ContactverzoekDoorsturen.vue",
-     "4      3     39      1       4 handleError@41-44@/tmp/cgchecker-repo-pNwJgm/repo/InterneTaakAfhandeling.Web.Client/src/components/ContactverzoekInterneNotitie.vue",
-     "4      3     39      1       4 handleError@148-151@/tmp/cgchecker-repo-pNwJgm/repo/InterneTaakAfhandeling.Web.Client/src/components/ContactverzoekRegistreren.vue",
-     "12      1     81      0      16 KanalenScenarios::User_SeesError_WhenCreatingDuplicateKanaal@178-193@/tmp/cgchecker-repo-pNwJgm/repo/InterneTaakAfhandeling.EndToEndTest/Kanaal/Kanaal.cs",
-     "16      1    119      0      22 ContactverzoekScenarios::Error_Message_For_Invalid_Zaak@469-490@/tmp/cgchecker-repo-pNwJgm/repo/InterneTaakAfhandeling.EndToEndTest/Contactverzoek/ContactverzoekScenarios.cs"
+     "4      3     39      1       4 handleSubmitError@74-77@/tmp/cgchecker-repo-mGzOVK/repo/InterneTaakAfhandeling.Web.Client/src/components/contactverzoek-doorsturen/ContactverzoekDoorsturen.vue",
+     "7      3     30      1       7 handleLoadingError@79-85@/tmp/cgchecker-repo-mGzOVK/repo/InterneTaakAfhandeling.Web.Client/src/components/contactverzoek-doorsturen/ContactverzoekDoorsturen.vue",
+     "4      3     39      1       4 handleError@148-151@/tmp/cgchecker-repo-mGzOVK/repo/InterneTaakAfhandeling.Web.Client/src/components/ContactverzoekRegistreren.vue",
+     "4      3     39      1       4 handleError@41-44@/tmp/cgchecker-repo-mGzOVK/repo/InterneTaakAfhandeling.Web.Client/src/components/ContactverzoekInterneNotitie.vue",
+     "12      1     81      0      16 KanalenScenarios::User_SeesError_WhenCreatingDuplicateKanaal@178-193@/tmp/cgchecker-repo-mGzOVK/repo/InterneTaakAfhandeling.EndToEndTest/Kanaal/Kanaal.cs",
+     "2      1     29      1       2 Locators::GetErrorToast@279-280@/tmp/cgchecker-repo-mGzOVK/repo/InterneTaakAfhandeling.EndToEndTest/Infrastructure/Locators.cs"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -388,10 +413,10 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 5,
-    "rating": 4.575,
+    "rating": 4.54,
     "aspectRatings": {
-     "analysability": 4.5,
-     "modifiability": 4.35,
+     "analysability": 4.43,
+     "modifiability": 4.28,
      "testability": 4.64,
      "modularity": null,
      "reusability": 4.83
@@ -418,14 +443,14 @@
        },
        {
         "label": "Vue",
-        "value": "5.4%",
+        "value": "5.9%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 4
+        "stars": 3
        }
       ]
      },
@@ -657,13 +682,13 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.57 to 4.58 (5 of 5 stars) over 114 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.54 to 4.54 (5 of 5 stars) over 114 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★☆ 4.1 (typescript 5.2, vue 3.7)",
+     "Duplication: ★★★★☆ 3.9 (typescript 5.2, vue 3.5)",
      "Unit size: ★★★★★ 4.9 (typescript 4.9, vue 4.9)",
      "Unit complexity: ★★★★★ 4.6 (typescript 4.5, vue 4.7)",
      "Unit interfacing: ★★★★★ 4.7 (typescript 3.7, vue 5.5)",
-     "Lever: duplication in vue, about 69 lines to fix for half a star",
+     "Lever: duplication in vue, about 72 lines to fix for half a star",
      "Lever: unit complexity in vue",
      "Lever: unit complexity in typescript"
     ],
@@ -674,7 +699,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "pass",
-    "message": "No obvious OWASP-style risky coding patterns were detected in 292 scanned source files.",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 288 scanned source files.",
     "evidence": [
      ".github/scripts/release-notes.cjs",
      "EndToEndTest.Common/GlobalUsings.cs",
@@ -753,7 +778,7 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Service layer (back-end microservice); Data layer (data store / register); Interaction layer (frontend / portal). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Service layer (back-end microservice); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
     "evidence": [
      "Found path segment \"services\" in InterneTaakAfhandeling.Common/Services/Actors",
      "Found path segment \"services\" in InterneTaakAfhandeling.Common/Services/Actors/ActorService.cs",
@@ -770,9 +795,6 @@
      "Found path segment \"services\" in InterneTaakAfhandeling.Common/Services/Internetaken/InternetaakService.cs",
      "Found path segment \"services\" in InterneTaakAfhandeling.Common/Services/Klantcontacten",
      "Found path segment \"services\" in InterneTaakAfhandeling.Common/Services/Klantcontacten/KlantcontactService.cs",
-     "Found path segment \"services\" in InterneTaakAfhandeling.Common/Services/Urgentie",
-     "Found path segment \"services\" in InterneTaakAfhandeling.Common/Services/Urgentie/UrgentieOptions.cs",
-     "Found path segment \"services\" in InterneTaakAfhandeling.Common/Services/Urgentie/UrgentieOptionsValidator.cs",
      "Found path segment \"services\" in InterneTaakAfhandeling.Poller/Services/NotifierState",
      "Found path segment \"services\" in InterneTaakAfhandeling.Poller/Services/NotifierState/NotifierStateService.cs",
      "Found path segment \"services\" in InterneTaakAfhandeling.Web.Client/src/services/authService.ts",
@@ -783,7 +805,7 @@
      "Found path segment \"services\" in InterneTaakAfhandeling.Web.Server/Services/LogboekService",
      "Found path segment \"services\" in InterneTaakAfhandeling.Web.Server/Services/LogboekService/KnownContactAction.cs",
      "Found path segment \"services\" in InterneTaakAfhandeling.Web.Server/Services/LogboekService/LogboekService.cs",
-     "Found \"service\" in repository metadata and docs",
+     "Found \"api\" in repository metadata and docs",
      "Found path segment \"data\" in InterneTaakAfhandeling.Poller/Data/ApplicationDbContext.cs",
      "Found path segment \"data\" in InterneTaakAfhandeling.Poller/Data/ApplicationDbContextFactory.cs",
      "Found path segment \"data\" in InterneTaakAfhandeling.Poller/Data/Entities",
@@ -793,12 +815,7 @@
      "Found path segment \"data\" in InterneTaakAfhandeling.Web.Server/Data/Entities",
      "Found path segment \"data\" in InterneTaakAfhandeling.Web.Server/Data/Entities/BaseEntity.cs",
      "Found path segment \"data\" in InterneTaakAfhandeling.Web.Server/Data/Entities/KanalenEntity.cs",
-     "Found \"database\" in repository metadata and docs",
-     "Found path segment \"ui\" in InterneTaakAfhandeling.Web.Server/Features/GebruikerGroepenAndAfdelingen",
-     "Found path segment \"ui\" in InterneTaakAfhandeling.Web.Server/Features/GebruikerGroepenAndAfdelingen/GebruikerGroepenAndAfdelingenController.cs",
-     "Found path segment \"ui\" in docs/requirements.in",
-     "Found path segment \"ui\" in docs/requirements.txt",
-     "Found \"ui\" in repository metadata and docs"
+     "Found \"database\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -883,9 +900,309 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 14 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "3 organisations; largest 79%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (296 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is info.nl (3 authors), with 79% of the 189 commits whose organisation is known; 36% of the commits come from 7 of 17 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": true
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.93",
+      "explanation": "51 change requests were closed (merged or not) and 55 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 2.8 hours",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 6 got a response; 9 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 40.6 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-21 and 2026-11-12. 1 got a response; 14 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "14 in 12 months",
+      "explanation": "14 final releases were published in the last 12 months, about one every 26 days, counted from the GitHub releases. The latest final release is from 2026-10-29. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 9,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 7,
+        "waiting": 9
+       },
+       "fix": {
+        "measured": 4,
+        "median": 24,
+        "worst": 31.9,
+        "breaches": 3,
+        "waiting": 3
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 10,
+       "response": {
+        "measured": 3,
+        "median": 26.4,
+        "worst": 52.9,
+        "breaches": 7,
+        "waiting": 7
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 49,
+       "response": {
+        "measured": 4,
+        "median": 4.1,
+        "worst": 23.9,
+        "breaches": 43,
+        "waiting": 45
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 33,
+     "openBreaches": [
+      {
+       "title": "🎯 Epic: Notificaties afhandeltermijn ",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/330",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-04-17T13:20:52.000Z"
+      },
+      {
+       "title": "🎯 Epic: Managementinformatie via externe BI-tooling",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/331",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-04-17T15:02:45.000Z"
+      },
+      {
+       "title": "🎯 Epic: UX-verbeteringen en kleine aanpassingen",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/346",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-19T06:37:35.000Z"
+      },
+      {
+       "title": "🎯 Epic: Levenscyclus van afgehandelde contactverzoeken",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/348",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-19T06:48:27.000Z"
+      },
+      {
+       "title": "🎯 Epic: Klantgegevens en -contact consistent in de keten met portaal",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/351",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-19T10:07:22.000Z"
+      },
+      {
+       "title": "🚀 Feature: Ontwikkelaar kan compatibiliteit van alle activiteittypes met het Open Klant audit log documenteren in een besluitrecord",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/354",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-20T22:00:00.000Z"
+      },
+      {
+       "title": "🎯 Epic: Centrale audit trail voor contactverzoekactiviteiten in Open Klant",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/353",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-20T22:00:00.000Z"
+      },
+      {
+       "title": "🎯 Epic: Klantcontact aanvullen na doorverbinden automatiseren",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/370",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-26T09:16:40.000Z"
+      },
+      {
+       "title": "🚀 Feature: Toegestane acties op gesloten contactverzoek",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/392",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-29T18:00:20.000Z"
+      },
+      {
+       "title": "🎯 Epic: Architectuurschuld en infrastructuurverbeteringen",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/393",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-29T22:00:00.000Z"
+      },
+      {
+       "title": "🚀 Onderzoek: Poller vervangen door Open Notificaties voor event-gedreven notificaties",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/394",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-29T22:00:00.000Z"
+      },
+      {
+       "title": "🎯 Epic: Betrouwbare opvolging van contactverzoeken door afdelingen en groepen",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/397",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-29T22:00:00.000Z"
+      },
+      {
+       "title": "🎯 Epic: Aansluiting op nieuwe Common Ground-standaarden",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/396",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-29T22:00:00.000Z"
+      },
+      {
+       "title": "🎯 Epic: Beïnvloeding en gedragsverandering tbv betere opvolging contactverzoeken",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/399",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-29T22:00:00.000Z"
+      },
+      {
+       "title": "🎯 Epic: Medewerker kan eigen werkvoorraad beheren",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/401",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-01T07:51:20.000Z"
+      },
+      {
+       "title": "🎯 Epic:  Klantbeeld in ITA. Rutger vult nog in",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/432",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-17T13:12:43.000Z"
+      },
+      {
+       "title": "🚀 Feature: Ontwikkelteam brengt ITA-performanceknelpunten in kaart",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/451",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-06-24T10:48:47.000Z"
+      },
+      {
+       "title": "🐞 Bug: hardcoded path in OpenKlantApiClient  GetAllInternetakenAsync",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/490",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-06-29T15:02:25.000Z"
+      },
+      {
+       "title": "🚀 Feature: Autorisatiemodel coördinator — permissie + werkbereik",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/475",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-07-02T09:31:00.000Z"
+      },
+      {
+       "title": "🎯 Epic: Functioneel Beheerder kan organisatie-instellingen zelf beheren",
+       "url": "https://github.com/Interne-Taak-Afhandeling/ITA/issues/478",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-07-02T11:24:50.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 4,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 5.2
+  "durationSeconds": 8,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

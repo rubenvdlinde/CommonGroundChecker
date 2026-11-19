@@ -32,28 +32,32 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:12:43.395Z",
+  "lastCheckedAt": "2026-11-19T23:02:29.072Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:01.549Z",
-  "updatedAt": "2026-11-19T14:12:43.395Z",
+  "updatedAt": "2026-11-19T23:02:29.072Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [
+   "openbaar-toegankelijk-publiceren-van-informatie"
+  ],
+  "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-19T14-12-43-395Z",
+  "id": "2026-11-19T23-02-29-072Z",
   "repoId": "github.com/GPP-Woo/GPP-publicatiebank",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:12:43.395Z",
-  "createdAt": "2026-11-19T14:12:43.395Z",
+  "checkedAt": "2026-11-19T23:02:29.072Z",
+  "createdAt": "2026-11-19T23:02:29.072Z",
   "version": "v3.0.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "3.0.0",
+  "scannedRefKind": "tag",
+  "scannedCommit": "f1dd246403cb4a889b131d0df668d0b794fd7602",
   "score": 69,
   "rating": 3.1,
   "categoryRatings": {
@@ -81,6 +85,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -94,6 +101,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -111,6 +121,9 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
     "rating": 3
    },
@@ -121,7 +134,7 @@
     "rating": 1.7
    },
    "modularity": {
-    "rating": 1.7
+    "rating": 1.6
    },
    "reusability": {
     "rating": 2.2
@@ -146,7 +159,7 @@
     "Mandatory criterion fails: API Design Rules",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No publiccode.yml was found, so there is no maintenance contract.",
-    "Maintainability below 4 stars (2.12)"
+    "Maintainability below 4 stars (2.10)"
    ]
   },
   "issueCounts": {
@@ -162,7 +175,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 26,489 lines of code, 1,274 functions, 1,271 files analyzed.",
+    "message": "Code metrics: 24,919 lines of code, 1,203 functions, 1,200 files analyzed.",
     "evidence": [
      "bin/celery_beat.sh",
      "bin/celery_flower.sh",
@@ -175,9 +188,9 @@
      "bin/generate_env_config_docs.sh",
      "bin/live2staging.sh",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 26,489",
-     "Function count: 1,274",
-     "Files analyzed: 1,271"
+     "Total lines of code (NLOC): 24,919",
+     "Function count: 1,203",
+     "Files analyzed: 1,200"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -226,9 +239,8 @@
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
     "status": "pass",
     "confidence": "high",
-    "message": "Probable copyright owners detected: GPP-Publicatiebank, Maykin, README.EN.rst, README.rst and 1 more (confidence: high).",
+    "message": "Probable copyright owners detected: Maykin, README.EN.rst, README.rst, src/woo_publications/conf/locale/nl/LC_MESSAGES/django.po (confidence: high).",
     "evidence": [
-     "pyproject.toml: GPP-Publicatiebank",
      "LICENSE.md: Maykin",
      "README.rst: Maykin",
      "package.json: Maykin",
@@ -317,6 +329,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -396,12 +421,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 1.81 (threshold: 15)",
      "Max CCN: 23.00 (threshold: 30)",
-     "14      1     72      3      16 test_client_raises_error_in_range_to_trigger_retry@257-272@/tmp/cgchecker-repo-5nrtrw/repo/src/woo_publications/config/tests/test_tasks.py",
-     "13      1     64      3      15 test_client_raises_other_error_will_not_trigger_retry@279-293@/tmp/cgchecker-repo-5nrtrw/repo/src/woo_publications/config/tests/test_tasks.py",
-     "25      1    166      2      28 test_creating_catalogus_generates_error@319-346@/tmp/cgchecker-repo-5nrtrw/repo/src/woo_publications/config/tests/test_admin.py",
-     "31      1    194      2      35 test_creating_iot_generates_error@352-386@/tmp/cgchecker-repo-5nrtrw/repo/src/woo_publications/config/tests/test_admin.py",
-     "10      1     53      1      11 test_create_catalogi_request_error@36-46@/tmp/cgchecker-repo-5nrtrw/repo/src/woo_publications/contrib/catalogi_api/tests/test_client.py",
-     "14      1     59      1      14 test_get_iot_by_description_error@94-107@/tmp/cgchecker-repo-5nrtrw/repo/src/woo_publications/contrib/catalogi_api/tests/test_client.py"
+     "10      1     53      1      11 test_destroy_document_error@177-187@/tmp/cgchecker-repo-XpmANO/repo/src/woo_publications/contrib/documents_api/tests/test_client.py",
+     "10      1     53      1      11 test_create_catalogi_request_error@36-46@/tmp/cgchecker-repo-XpmANO/repo/src/woo_publications/contrib/catalogi_api/tests/test_client.py",
+     "14      1     59      1      14 test_get_iot_by_description_error@94-107@/tmp/cgchecker-repo-XpmANO/repo/src/woo_publications/contrib/catalogi_api/tests/test_client.py",
+     "27      1    136      1      30 test_while_encountering_error_during_publishing_deleted_iot@157-186@/tmp/cgchecker-repo-XpmANO/repo/src/woo_publications/contrib/catalogi_api/tests/test_client.py",
+     "14      1     66      2      15 test_error_during_creating_iot@192-206@/tmp/cgchecker-repo-XpmANO/repo/src/woo_publications/contrib/catalogi_api/tests/test_client.py",
+     "15      1     75      1      17 test_destroy_iot_error@224-240@/tmp/cgchecker-repo-XpmANO/repo/src/woo_publications/contrib/catalogi_api/tests/test_client.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -414,13 +439,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "fail",
     "starRating": 2,
-    "rating": 2.115,
+    "rating": 2.105,
     "aspectRatings": {
-     "analysability": 2.95,
-     "modifiability": 2.33,
-     "testability": 1.7,
-     "modularity": 1.66,
-     "reusability": 2.19
+     "analysability": 2.99,
+     "modifiability": 2.34,
+     "testability": 1.67,
+     "modularity": 1.64,
+     "reusability": 2.16
     },
     "measurements": [
      {
@@ -444,7 +469,7 @@
        },
        {
         "label": "Python",
-        "value": "6.7%",
+        "value": "6.1%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -498,7 +523,7 @@
        },
        {
         "label": "Python, more than 15 lines",
-        "value": "62.2%",
+        "value": "62.6%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -509,7 +534,7 @@
        },
        {
         "label": "Python, more than 30 lines",
-        "value": "33.4%",
+        "value": "34.2%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -520,7 +545,7 @@
        },
        {
         "label": "Python, more than 60 lines",
-        "value": "7.2%",
+        "value": "7.3%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
@@ -574,7 +599,7 @@
        },
        {
         "label": "Python, complexity above 5",
-        "value": "30.2%",
+        "value": "30.7%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -585,7 +610,7 @@
        },
        {
         "label": "Python, complexity above 10",
-        "value": "8.5%",
+        "value": "8.7%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -649,7 +674,7 @@
        },
        {
         "label": "Python, 3 or more parameters",
-        "value": "23.5%",
+        "value": "23.7%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -660,7 +685,7 @@
        },
        {
         "label": "Python, 5 or more parameters",
-        "value": "5.4%",
+        "value": "5.5%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
@@ -692,7 +717,7 @@
       "rows": [
        {
         "label": "Python, fan-in above 10",
-        "value": "13.6%",
+        "value": "14.1%",
         "thresholds": {
          "2": "≤ 13.0%",
          "3": "≤ 10.7%",
@@ -703,7 +728,7 @@
        },
        {
         "label": "Python, fan-in above 20",
-        "value": "0.1%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 8.0%",
          "3": "≤ 5.9%",
@@ -754,7 +779,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "0.1926",
+        "value": "0.2",
         "thresholds": {
          "4": "≤ 0.075",
          "5": "≤ 0.0375"
@@ -765,18 +790,18 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.07 to 2.16 (2 of 5 stars) over 145 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.05 to 2.16 (2 of 5 stars) over 132 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★☆☆ 3.3 (javascript 5.5, python 3.3)",
+     "Duplication: ★★★☆☆ 3.5 (javascript 5.5, python 3.5)",
      "Unit size: ★★★☆☆ 2.5 (python 2.5)",
      "Unit complexity: ★★☆☆☆ 2.1 (python 2.1)",
      "Unit interfacing: ★★☆☆☆ 1.8 (python 1.8)",
      "Module coupling: ★☆☆☆☆ 1.5 (python 1.5)",
      "Component independence: ★☆☆☆☆ 1.3 (python 1.3)",
      "Component entanglement: ★★☆☆☆ 2.2 (python 2.2)",
-     "Lever: module coupling in python, about 188 lines to fix for half a star",
-     "Lever: unit complexity in python, about 180 lines to fix for half a star",
-     "Lever: unit interfacing in python, about 200 lines to fix for half a star"
+     "Lever: unit complexity in python, about 175 lines to fix for half a star",
+     "Lever: module coupling in python, about 230 lines to fix for half a star",
+     "Lever: unit interfacing in python, about 195 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -785,7 +810,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "warn",
-    "message": "Potential OWASP secure coding issues were detected (2 findings across 311 scanned source files).",
+    "message": "Potential OWASP secure coding issues were detected (2 findings across 290 scanned source files).",
     "evidence": [
      "Possible hardcoded secret: src/woo_publications/accounts/tests/test_oidc.py",
      "Possible hardcoded secret: src/woo_publications/contrib/tests/factories.py"
@@ -799,68 +824,49 @@
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "fail",
-    "message": "API Design Rules violations found across 2 specification(s): 54 issue(s).",
+    "message": "API Design Rules violations found across 1 specification(s): 38 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./accounts/organisatie-eenheden.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./accounts/organisatie-eenheden/{identifier}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./accounts/organisatie-eenheden/{identifier}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./accounts/organisatie-eenheden/{identifier}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten.post.responses.201 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten/{uuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten/{uuid}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten/{uuid}.delete.responses.204 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten/{uuid}/bestandsdelen/{partUuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-version-header] Return the full version number in a response header @ paths./documenten/{uuid}/download.get.responses.200.headers (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./informatiecategorieen.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./informatiecategorieen/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./inzageprocedure.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./inzageprocedure.post.responses.201 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./inzageprocedure/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./inzageprocedure/{uuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./inzageprocedure/{uuid}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./inzageprocedure/{uuid}.delete.responses.204 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./onderwerpen.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./onderwerpen/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./organisaties.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./organisaties.post.responses.201 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./organisaties/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./organisaties/{uuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./organisaties/{uuid}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./publicaties.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./publicaties.post.responses.201 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./publicaties/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./publicaties/{uuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./publicaties/{uuid}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./publicaties/{uuid}.delete.responses.204 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./themas.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./themas/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /api/v3 \"/api/v3\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/application_api/openapi.yaml)",
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml",
-     "Discovery source: auto-discovered",
-     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./documenten/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-version-header] Return the full version number in a response header @ paths./documenten/{uuid}/download.get.responses.200.headers (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./informatiecategorieen.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./informatiecategorieen/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./onderwerpen.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./onderwerpen/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./organisaties.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./organisaties/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./publicaties.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./publicaties/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./themas.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./themas/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /hergebruik/api/v1 \"/hergebruik/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/main/src/woo_publications/api/reuse_api/openapi.yaml)"
+     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/accounts/organisatie-eenheden.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/accounts/organisatie-eenheden/{identifier}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/accounts/organisatie-eenheden/{identifier}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/accounts/organisatie-eenheden/{identifier}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/documenten.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/documenten.post.responses.201 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/documenten/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/documenten/{uuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/documenten/{uuid}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/documenten/{uuid}.delete.responses.204 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/documenten/{uuid}/bestandsdelen/{partUuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-version-header] Return the full version number in a response header @ paths./api/v2/documenten/{uuid}/download.get.responses.200.headers (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/informatiecategorieen.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/informatiecategorieen/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/inzageprocedure.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/inzageprocedure.post.responses.201 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/inzageprocedure/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/inzageprocedure/{uuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/inzageprocedure/{uuid}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/inzageprocedure/{uuid}.delete.responses.204 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/onderwerpen.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/onderwerpen/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/organisaties.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/organisaties.post.responses.201 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/organisaties/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/organisaties/{uuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/organisaties/{uuid}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/publicaties.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/publicaties.post.responses.201 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/publicaties/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/publicaties/{uuid}.put.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/publicaties/{uuid}.patch.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/publicaties/{uuid}.delete.responses.204 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/themas.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/v2/themas/{uuid}.get.responses.200 (https://raw.githubusercontent.com/GPP-Woo/GPP-publicatiebank/f1dd246403cb4a889b131d0df668d0b794fd7602/src/woo_publications/api/openapi.yaml)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -923,95 +929,17 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer.",
     "evidence": [
-     "Found path segment \"ui\" in build.mjs",
-     "Found path segment \"ui\" in docs/installation/requirements.rst",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/docs.in",
-     "Found path segment \"ui\" in requirements/perf.in",
-     "Found path segment \"ui\" in requirements/perf.txt",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/staging.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/test.txt",
-     "Found path segment \"ui\" in requirements/type-checking.in",
-     "Found path segment \"ui\" in requirements/type-checking.txt",
-     "Found path segment \"ui\" in src/woo_publications/accounts/migrations/0007_remove_organisationunit_uuid_and_more.py",
-     "Found path segment \"ui\" in src/woo_publications/metadata/migrations/0004_informationcategory_uuid_theme_uuid.py",
-     "Found path segment \"ui\" in src/woo_publications/publications/migrations/0003_document_document_service_document_document_uuid_and_more.py",
-     "Found path segment \"ui\" in src/woo_publications/publications/migrations/0004_document_uuid_alter_document_identifier.py",
-     "Found path segment \"ui\" in src/woo_publications/publications/tests/vcr_cassettes/test_remove_document_from_index_task/RemoveDocumentFromIndexTaskTests/test_remove_by_uuid.yaml",
-     "Found path segment \"ui\" in src/woo_publications/publications/tests/vcr_cassettes/test_remove_publication_from_index_task/RemovePublicationFromIndexTaskTests/test_remove_by_uuid.yaml",
-     "Found path segment \"ui\" in src/woo_publications/publications/tests/vcr_cassettes/test_remove_topic_from_index/RemoveTopicFromIndexTaskTests/test_remove_by_uuid.yaml",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in docs/admin/accounts",
-     "Found path segment \"admin\" in docs/admin/accounts/index.rst",
-     "Found path segment \"admin\" in docs/admin/api_access",
-     "Found path segment \"admin\" in docs/admin/api_access/index.rst",
-     "Found path segment \"admin\" in docs/admin/configuratie",
-     "Found path segment \"admin\" in docs/admin/configuratie/index.rst",
-     "Found path segment \"admin\" in docs/admin/handige_links",
-     "Found path segment \"admin\" in docs/admin/handige_links/index.rst",
-     "Found path segment \"admin\" in docs/admin/index.rst",
-     "Found path segment \"admin\" in docs/admin/logging",
-     "Found path segment \"admin\" in docs/admin/logging/index.rst",
-     "Found path segment \"admin\" in docs/admin/menubalk_rechtsboven.png",
-     "Found path segment \"admin\" in docs/admin/metadata",
-     "Found path segment \"admin\" in docs/admin/metadata/index.rst",
-     "Found path segment \"admin\" in docs/admin/overige",
-     "Found path segment \"admin\" in docs/admin/overige/index.rst",
-     "Found path segment \"admin\" in docs/admin/publicaties",
-     "Found path segment \"admin\" in docs/admin/publicaties/index.rst",
-     "Found path segment \"admin\" in src/woo_publications/admin/__init__.py",
-     "Found path segment \"admin\" in src/woo_publications/admin/urls.py",
-     "Found path segment \"admin\" in src/woo_publications/metadata/templates/admin/metadata",
-     "Found path segment \"admin\" in src/woo_publications/metadata/templates/admin/metadata/informationcategory",
-     "Found path segment \"admin\" in src/woo_publications/metadata/templates/admin/metadata/informationcategory/change_list_object_tools.html",
-     "Found path segment \"admin\" in src/woo_publications/publications/templates/admin/publications",
-     "Found path segment \"admin\" in src/woo_publications/publications/templates/admin/publications/publication",
-     "Found path segment \"admin\" in src/woo_publications/publications/templates/admin/publications/publication/add_document_link.html",
-     "Found path segment \"admin\" in src/woo_publications/publications/templates/admin/publications/publication/document_inline.html",
-     "Found path segment \"admin\" in src/woo_publications/scss/admin/_admin_theme.scss",
-     "Found path segment \"admin\" in src/woo_publications/scss/admin/_app_overrides.scss",
-     "Found path segment \"admin\" in src/woo_publications/scss/admin/_vars.scss",
-     "Found path segment \"admin\" in src/woo_publications/scss/admin/admin_overrides.scss",
-     "Found path segment \"admin\" in src/woo_publications/scss/admin/themes",
-     "Found path segment \"admin\" in src/woo_publications/scss/admin/themes/_dark.scss",
-     "Found path segment \"admin\" in src/woo_publications/scss/admin/themes/_light.scss",
-     "Found path segment \"admin\" in src/woo_publications/static/img/admin/calendar-alt-regular.svg",
-     "Found path segment \"admin\" in src/woo_publications/static/img/admin/clock-regular.svg",
-     "Found path segment \"admin\" in src/woo_publications/static/img/admin/edit-regular.svg",
-     "Found path segment \"admin\" in src/woo_publications/static/img/admin/plus-square-regular.svg",
-     "Found path segment \"admin\" in src/woo_publications/static/img/admin/trash-alt-regular.svg",
-     "Found path segment \"admin\" in src/woo_publications/templates/admin/base_site.html",
-     "Found path segment \"admin\" in src/woo_publications/templates/admin/change_form_object_tools.html",
-     "Found path segment \"admin\" in src/woo_publications/templates/admin/change_owner.html",
-     "Found path segment \"admin\" in src/woo_publications/templates/admin/change_owner_group.html",
-     "Found path segment \"admin\" in src/woo_publications/templates/admin/token.html",
-     "Found path segment \"admin\" in src/woo_publications/templates/admin/tree_change_list.html",
-     "Found path segment \"admin\" in src/woo_publications/templates/hijack/contrib/admin/button.html",
      "Found path segment \"db\" in docker/gpp-zoeken/db/0001-init-gpp-zoeken-db.sql",
      "Found path segment \"db\" in docker/open-zaak/db/0001-init-open-zaak-db.sql",
      "Found path segment \"db\" in docker/open-zaak/db/0002-extensions.sh",
-     "Found \"register\" in repository metadata and docs",
-     "Found path segment \"api\" in docs/api/api-strategy-compliancy.rst",
-     "Found path segment \"api\" in docs/api/index.rst",
+     "Found \"storage\" in repository metadata and docs",
      "Found path segment \"api\" in src/woo_publications/accounts/api/__init__.py",
      "Found path segment \"api\" in src/woo_publications/accounts/api/serializers.py",
      "Found path segment \"api\" in src/woo_publications/accounts/api/viewsets.py",
      "Found path segment \"api\" in src/woo_publications/api/__init__.py",
      "Found path segment \"api\" in src/woo_publications/api/admin.py",
-     "Found path segment \"api\" in src/woo_publications/api/application_api",
-     "Found path segment \"api\" in src/woo_publications/api/application_api/__init__.py",
-     "Found path segment \"api\" in src/woo_publications/api/application_api/openapi.yaml",
-     "Found path segment \"api\" in src/woo_publications/api/application_api/settings.py",
-     "Found path segment \"api\" in src/woo_publications/api/application_api/urls.py",
      "Found path segment \"api\" in src/woo_publications/api/apps.py",
      "Found path segment \"api\" in src/woo_publications/api/authorization.py",
      "Found path segment \"api\" in src/woo_publications/api/constants.py",
@@ -1019,58 +947,28 @@
      "Found path segment \"api\" in src/woo_publications/api/drf_spectacular/__init__.py",
      "Found path segment \"api\" in src/woo_publications/api/drf_spectacular/extensions.py",
      "Found path segment \"api\" in src/woo_publications/api/drf_spectacular/headers.py",
+     "Found path segment \"api\" in src/woo_publications/api/drf_spectacular/hooks.py",
      "Found path segment \"api\" in src/woo_publications/api/exceptions.py",
      "Found path segment \"api\" in src/woo_publications/api/fields.py",
      "Found path segment \"api\" in src/woo_publications/api/filters.py",
-     "Found path segment \"api\" in src/woo_publications/api/management",
-     "Found path segment \"api\" in src/woo_publications/api/management/__init__.py",
-     "Found path segment \"api\" in src/woo_publications/api/management/commands",
-     "Found path segment \"api\" in src/woo_publications/api/management/commands/__init__.py",
-     "Found path segment \"api\" in src/woo_publications/api/management/commands/spectacular_for_api.py",
      "Found path segment \"api\" in src/woo_publications/api/migrations",
      "Found path segment \"api\" in src/woo_publications/api/migrations/0001_initial.py",
      "Found path segment \"api\" in src/woo_publications/api/migrations/0002_alter_application_contact_person.py",
-     "Found path segment \"api\" in src/woo_publications/api/migrations/0003_application_api_access.py",
-     "Found path segment \"api\" in src/woo_publications/api/migrations/0004_application_expire_date_application_unique_token.py",
-     "Found path segment \"api\" in src/woo_publications/api/migrations/0005_application_viewed_token_at.py",
-     "Found path segment \"api\" in src/woo_publications/api/migrations/0006_alter_application_token.py",
      "Found path segment \"api\" in src/woo_publications/api/migrations/__init__.py",
      "Found path segment \"api\" in src/woo_publications/api/models.py",
+     "Found path segment \"api\" in src/woo_publications/api/openapi.yaml",
      "Found path segment \"api\" in src/woo_publications/api/pagination.py",
      "Found path segment \"api\" in src/woo_publications/api/permissions.py",
-     "Found path segment \"api\" in src/woo_publications/api/reuse_api",
-     "Found path segment \"api\" in src/woo_publications/api/reuse_api/__init__.py",
-     "Found path segment \"api\" in src/woo_publications/api/reuse_api/openapi.yaml",
-     "Found path segment \"api\" in src/woo_publications/api/reuse_api/settings.py",
-     "Found path segment \"api\" in src/woo_publications/api/reuse_api/urls.py",
      "Found path segment \"api\" in src/woo_publications/api/tests",
-     "Found path segment \"api\" in src/woo_publications/api/tests/__init__.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/factories.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/mixins.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_application_admin.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_custom_fields.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_logging.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_migrations.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_model.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_pagination.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_permissions.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_schema_generation.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_spectacular_for_api.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_throttling.py",
-     "Found path segment \"api\" in src/woo_publications/api/tests/test_utils.py",
-     "Found path segment \"api\" in src/woo_publications/api/throttling.py",
+     "Found path segment \"api\" in src/woo_publications/api/urls.py",
      "Found path segment \"api\" in src/woo_publications/api/utils.py",
      "Found path segment \"api\" in src/woo_publications/api/views.py",
      "Found path segment \"api\" in src/woo_publications/metadata/api/__init__.py",
      "Found path segment \"api\" in src/woo_publications/metadata/api/filters.py",
      "Found path segment \"api\" in src/woo_publications/metadata/api/serializers.py",
-     "Found path segment \"api\" in src/woo_publications/metadata/api/viewsets",
-     "Found path segment \"api\" in src/woo_publications/metadata/api/viewsets/__init__.py",
-     "Found path segment \"api\" in src/woo_publications/metadata/api/viewsets/application.py",
-     "Found path segment \"api\" in src/woo_publications/metadata/api/viewsets/reuse.py",
+     "Found path segment \"api\" in src/woo_publications/metadata/api/viewsets.py",
      "Found path segment \"api\" in src/woo_publications/publications/api/__init__.py",
      "Found path segment \"api\" in src/woo_publications/publications/api/filters.py",
-     "Found path segment \"api\" in src/woo_publications/publications/api/mixins.py",
      "Found path segment \"api\" in src/woo_publications/publications/api/serializers",
      "Found path segment \"api\" in src/woo_publications/publications/api/serializers/__init__.py",
      "Found path segment \"api\" in src/woo_publications/publications/api/serializers/document.py",
@@ -1080,12 +978,8 @@
      "Found path segment \"api\" in src/woo_publications/publications/api/serializers/topic.py",
      "Found path segment \"api\" in src/woo_publications/publications/api/utils.py",
      "Found path segment \"api\" in src/woo_publications/publications/api/validators.py",
-     "Found path segment \"api\" in src/woo_publications/publications/api/viewsets",
-     "Found path segment \"api\" in src/woo_publications/publications/api/viewsets/__init__.py",
-     "Found path segment \"api\" in src/woo_publications/publications/api/viewsets/application.py",
-     "Found path segment \"api\" in src/woo_publications/publications/api/viewsets/reuse.py",
-     "Found \"api\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs"
+     "Found path segment \"api\" in src/woo_publications/publications/api/viewsets.py",
+     "Found \"api\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1168,9 +1062,324 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 6 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "5 organisations; largest 85%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (300 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (3 authors), with 85% of the 291 commits whose organisation is known; 3% of the commits come from 1 of 9 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": true
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.98",
+      "explanation": "41 change requests were closed (merged or not) and 42 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 39.0 hours",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 14 got a response; 1 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 22.3 hours",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-21 and 2026-11-12. 4 got a response; 11 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "2 in 12 months",
+      "explanation": "2 final releases were published in the last 12 months, about one every 183 days, counted from the version tags. The latest final release is from 2026-10-26. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": false
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 9,
+       "response": {
+        "measured": 4,
+        "median": 2.5,
+        "worst": 54.8,
+        "breaches": 6,
+        "waiting": 5
+       },
+       "fix": {
+        "measured": 5,
+        "median": 35.9,
+        "worst": 55.6,
+        "breaches": 2,
+        "waiting": 3
+       }
+      },
+      {
+       "category": "documentation",
+       "label": "Documentation",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 3,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 3,
+        "waiting": 3
+       },
+       "fix": null
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 43,
+       "response": {
+        "measured": 1,
+        "median": 174.9,
+        "worst": 174.9,
+        "breaches": 39,
+        "waiting": 42
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 31,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 30,
+        "waiting": 31
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 52,
+     "openBreaches": [
+      {
+       "title": "Organisatieonderdeel datamodel + API resource",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/34",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-10-02T07:54:49.000Z"
+      },
+      {
+       "title": "[FORMAAT] add model/admin interface for 'formaat' waardelijst",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/36",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-10-02T10:00:38.000Z"
+      },
+      {
+       "title": "Set up prettier for frontend code style",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/60",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-10-14T14:00:12.000Z"
+      },
+      {
+       "title": "Optimize database queries when retrieving the themes in endpoint",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/63",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-10-21T07:40:17.000Z"
+      },
+      {
+       "title": "[THEMA'S] Publicatie uitbreiden met thema's",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/65",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-10-22T10:36:59.000Z"
+      },
+      {
+       "title": "[THEMA'S] Geef alle hoofd-thema's",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/75",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2024-10-30T12:02:37.000Z"
+      },
+      {
+       "title": "ODRC: Logging kunnen filteren op data-objecttype",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/87",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-11-05T16:12:50.000Z"
+      },
+      {
+       "title": "Groot bestand uploaden via admin-interface",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/129",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-11-22T13:13:44.000Z"
+      },
+      {
+       "title": "Added better logging for documents and publications",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/130",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2024-11-22T17:05:33.000Z"
+      },
+      {
+       "title": "[THEMA'S] Koppel `thema`'s aan publicaties",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/197",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-02-28T14:44:40.000Z"
+      },
+      {
+       "title": "Scan files for virusses",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/288",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-06-03T12:35:57.000Z"
+      },
+      {
+       "title": "[FORMAAT] Validate filetype of a document",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/289",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-06-03T13:35:19.000Z"
+      },
+      {
+       "title": "[TAAL] Store language on document",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/293",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-06-03T19:13:53.000Z"
+      },
+      {
+       "title": "Voeg organisatiegroepen toe aan datamodel",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/368",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-08-21T12:28:33.000Z"
+      },
+      {
+       "title": "Vul embedded metadata van PDF-bestanden",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/392",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-10-23T12:12:13.000Z"
+      },
+      {
+       "title": "Koppeling met Open Notificaties",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/395",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2025-11-04T16:36:28.000Z"
+      },
+      {
+       "title": "As a DevOpser I want to be able to automatically configure the application",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/396",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2025-11-06T09:19:51.000Z"
+      },
+      {
+       "title": "Strip embedded metadata van ouderwetse MS Office-bestanden",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/421",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-02-26T09:48:55.000Z"
+      },
+      {
+       "title": "Blokkeer publicatiebank voor zoekmachines",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/434",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-03-24T15:30:46.000Z"
+      },
+      {
+       "title": "Attribute `Reden voor intrekking`",
+       "url": "https://github.com/GPP-Woo/GPP-publicatiebank/issues/436",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-04-13T13:34:56.000Z"
+      }
+     ],
+     "fixesByRelease": 3,
+     "fixesByClose": 2,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 7.1
+  "durationSeconds": 6.9,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

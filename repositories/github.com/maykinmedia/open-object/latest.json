@@ -34,28 +34,32 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:13:35.735Z",
+  "lastCheckedAt": "2026-11-19T23:03:44.233Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:06.327Z",
-  "updatedAt": "2026-11-19T14:13:35.735Z",
+  "updatedAt": "2026-11-19T23:03:44.233Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [
+   "registreren-en-delen-van-basisgegevens"
+  ],
+  "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-19T14-13-35-735Z",
+  "id": "2026-11-19T23-03-44-233Z",
   "repoId": "github.com/maykinmedia/open-object",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:13:35.735Z",
-  "createdAt": "2026-11-19T14:13:35.735Z",
+  "checkedAt": "2026-11-19T23:03:44.233Z",
+  "createdAt": "2026-11-19T23:03:44.233Z",
   "version": "v4.3.0",
-  "checklistVersion": null,
-  "scannedRef": "master",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "4.3.0",
+  "scannedRefKind": "declared-version",
+  "scannedCommit": "57c89ac26584155153b53409fa038277411d87ce",
   "score": 65,
   "rating": 3,
   "categoryRatings": {
@@ -83,6 +87,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -96,6 +103,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -113,20 +123,23 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
-    "rating": 4.3
+    "rating": 4.2
    },
    "modifiability": {
     "rating": 4
    },
    "testability": {
-    "rating": 1.8
+    "rating": 1.9
    },
    "modularity": {
     "rating": 2.7
    },
    "reusability": {
-    "rating": 3.1
+    "rating": 3
    },
    "testing": {
     "rating": 5.5
@@ -164,7 +177,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 10,936 lines of code, 819 functions, 819 files analyzed.",
+    "message": "Code metrics: 11,013 lines of code, 822 functions, 822 files analyzed.",
     "evidence": [
      "bin/bump-my-version.sh",
      "bin/celery_flower.sh",
@@ -177,9 +190,9 @@
      "bin/generate_admin_index_fixture.sh",
      "bin/generate_demo_fixture.sh",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 10,936",
-     "Function count: 819",
-     "Files analyzed: 819"
+     "Total lines of code (NLOC): 11,013",
+     "Function count: 822",
+     "Files analyzed: 822"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -274,6 +287,7 @@
      "roadmap": null,
      "developmentStatus": "beta",
      "softwareType": "standalone/backend",
+     "supports": [],
      "intendedAudience": {
       "countries": [
        "nl"
@@ -456,6 +470,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -534,13 +561,13 @@
      "Analyzer: lizard",
      "Average CCN: 1.75 (threshold: 15)",
      "Max CCN: 12.00 (threshold: 30)",
-     "1      1      7      0       1 (anonymous)@9-9@/tmp/cgchecker-repo-krnLUt/repo/src/objects/js/components/forms/error-list.js",
-     "8      2     56      1       9 ErrorList@4-12@/tmp/cgchecker-repo-krnLUt/repo/src/objects/js/components/forms/error-list.js",
-     "4      1     34      1       4 test_command_fails_if_http_error@128-131@/tmp/cgchecker-repo-krnLUt/repo/src/objects/core/tests/test_import_objecttypes.py",
-     "2      1     11      1       2 test_import_upload_list_of_files.report_error@221-222@/tmp/cgchecker-repo-krnLUt/repo/src/objects/core/tests/test_export_import.py",
-     "14      7     94      1      16 _flatten_drf_error@153-168@/tmp/cgchecker-repo-krnLUt/repo/src/objects/core/import_export.py",
-     "12      2     66      2      17 jsonpath_database_error_handler@9-25@/tmp/cgchecker-repo-krnLUt/repo/src/objects/utils/views.py",
-     "15      1     82      2      19 test_filter_db_error@1214-1232@/tmp/cgchecker-repo-krnLUt/repo/src/objects/tests/v2/test_filters.py"
+     "1      1      7      0       1 (anonymous)@9-9@/tmp/cgchecker-repo-ITg2nY/repo/src/objects/js/components/forms/error-list.js",
+     "8      2     56      1       9 ErrorList@4-12@/tmp/cgchecker-repo-ITg2nY/repo/src/objects/js/components/forms/error-list.js",
+     "15      1    104      1      22 test_create_import_from_file_validation_error@316-337@/tmp/cgchecker-repo-ITg2nY/repo/src/objects/tests/admin/test_objecttype_admin.py",
+     "15      1     82      2      19 test_filter_db_error@1214-1232@/tmp/cgchecker-repo-ITg2nY/repo/src/objects/tests/v2/test_filters.py",
+     "4      1     34      1       4 test_command_fails_if_http_error@128-131@/tmp/cgchecker-repo-ITg2nY/repo/src/objects/core/tests/test_import_objecttypes.py",
+     "2      1     11      1       2 test_import_upload_list_of_files.report_error@221-222@/tmp/cgchecker-repo-ITg2nY/repo/src/objects/core/tests/test_export_import.py",
+     "8      5     56      1       8 _flatten_drf_error@153-160@/tmp/cgchecker-repo-ITg2nY/repo/src/objects/core/import_export.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -553,13 +580,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "warn",
     "starRating": 3,
-    "rating": 3.045,
+    "rating": 3.04,
     "aspectRatings": {
-     "analysability": 4.28,
-     "modifiability": 3.99,
-     "testability": 1.84,
-     "modularity": 2.68,
-     "reusability": 3.14
+     "analysability": 4.23,
+     "modifiability": 4.04,
+     "testability": 1.91,
+     "modularity": 2.69,
+     "reusability": 2.96
     },
     "measurements": [
      {
@@ -583,7 +610,7 @@
        },
        {
         "label": "Python",
-        "value": "1.9%",
+        "value": "2.0%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -637,7 +664,7 @@
        },
        {
         "label": "Python, more than 15 lines",
-        "value": "49.5%",
+        "value": "50.9%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -648,7 +675,7 @@
        },
        {
         "label": "Python, more than 30 lines",
-        "value": "19.9%",
+        "value": "22.1%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -659,14 +686,14 @@
        },
        {
         "label": "Python, more than 60 lines",
-        "value": "3.1%",
+        "value": "5.8%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
          "4": "≤ 9.1%",
          "5": "≤ 5.5%"
         },
-        "stars": 5
+        "stars": 4
        }
       ]
      },
@@ -713,7 +740,7 @@
        },
        {
         "label": "Python, complexity above 5",
-        "value": "32.3%",
+        "value": "30.9%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -724,14 +751,14 @@
        },
        {
         "label": "Python, complexity above 10",
-        "value": "4.5%",
+        "value": "4.3%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 4
+        "stars": 5
        },
        {
         "label": "Python, complexity above 25",
@@ -788,7 +815,7 @@
        },
        {
         "label": "Python, 3 or more parameters",
-        "value": "19.0%",
+        "value": "21.3%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -799,14 +826,14 @@
        },
        {
         "label": "Python, 5 or more parameters",
-        "value": "2.4%",
+        "value": "5.1%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
          "4": "≤ 3.4%",
          "5": "≤ 2.5%"
         },
-        "stars": 5
+        "stars": 2
        },
        {
         "label": "Python, 7 or more parameters",
@@ -831,7 +858,7 @@
       "rows": [
        {
         "label": "Python, fan-in above 10",
-        "value": "6.3%",
+        "value": "6.2%",
         "thresholds": {
          "2": "≤ 13.0%",
          "3": "≤ 10.7%",
@@ -874,7 +901,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "68.5%",
+        "value": "67.5%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -893,7 +920,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "0.2241",
+        "value": "0.2203",
         "thresholds": {
          "4": "≤ 0.075",
          "5": "≤ 0.0375"
@@ -904,18 +931,18 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.91 to 3.18 (3 of 5 stars) over 112 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.91 to 3.17 (3 of 5 stars) over 113 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★★ 5.0 (javascript 5.5, python 5.0)",
-     "Unit size: ★★★★☆ 3.6 (javascript 4.7, python 3.4)",
-     "Unit complexity: ★★☆☆☆ 2.3 (javascript 5.5, python 1.8)",
-     "Unit interfacing: ★★★☆☆ 2.7 (javascript 4.9, python 2.4)",
+     "Duplication: ★★★★★ 5.0 (javascript 5.5, python 4.9)",
+     "Unit size: ★★★☆☆ 3.5 (javascript 4.7, python 3.3)",
+     "Unit complexity: ★★☆☆☆ 2.5 (javascript 5.5, python 2.0)",
+     "Unit interfacing: ★★☆☆☆ 2.5 (javascript 4.9, python 2.1)",
      "Module coupling: ★★★★★ 4.7 (python 4.7)",
      "Component independence: ★☆☆☆☆ 1.4 (python 1.4)",
      "Component entanglement: ★★☆☆☆ 2.0 (python 2.0)",
-     "Lever: unit complexity in python, about 109 lines to fix for half a star",
-     "Lever: unit size in python, about 198 lines to fix for half a star",
-     "Lever: component independence in python, about 788 lines to fix for half a star"
+     "Lever: unit complexity in python, about 112 lines to fix for half a star",
+     "Lever: component independence in python, about 846 lines to fix for half a star",
+     "Lever: unit interfacing in python, about 99 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -924,7 +951,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "fail",
-    "message": "Multiple risky coding patterns were detected (7 findings across 216 scanned source files). Review them against OWASP secure coding guidance.",
+    "message": "Multiple risky coding patterns were detected (7 findings across 217 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
      "Possible hardcoded secret: src/objects/accounts/tests/factories.py",
      "Possible hardcoded secret: src/objects/accounts/tests/test_metrics.py",
@@ -945,18 +972,18 @@
     "status": "fail",
     "message": "API Design Rules violations found across 1 specification(s): 9 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes.get (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes.post (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.get (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.put (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.patch (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.delete (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/GeoJSONGeometry @ components.schemas.GeoJSONGeometry (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /api/v2 \"/api/v2\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)"
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes.get (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes.post (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.get (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.put (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.patch (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.delete (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/GeoJSONGeometry @ components.schemas.GeoJSONGeometry (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /api/v2 \"/api/v2\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-object/57c89ac26584155153b53409fa038277411d87ce/src/objects/api/v2/openapi.yaml)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -1019,62 +1046,29 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice); Interaction layer (frontend / portal); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
     "evidence": [
-     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
-     "Found path segment \"ui\" in build.js",
-     "Found path segment \"ui\" in docs/api/_assets/object-and-objecttypes-quickstart.postman_environment.json",
-     "Found path segment \"ui\" in docs/installation/prerequisites.rst",
-     "Found path segment \"ui\" in docs/installation/quickstart.rst",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/docs.in",
-     "Found path segment \"ui\" in requirements/performance-tests.in",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/staging.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/test.txt",
-     "Found path segment \"ui\" in requirements/type-checking.in",
-     "Found path segment \"ui\" in requirements/type-checking.txt",
-     "Found path segment \"ui\" in src/objects/core/migrations/0012_objectrecord_uuid.py",
-     "Found path segment \"ui\" in src/objects/core/migrations/0013_generate_record_uuids.py",
-     "Found path segment \"ui\" in src/objects/core/tests/files/objecttypes_invalid_uuid.yaml",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in docs/admin/_assets",
-     "Found path segment \"admin\" in docs/admin/_assets/img",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authentication_objects_add.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authentication_objects_main.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_main_objecttype.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_main_permission.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_main_service.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_objecttype.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_permission.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_permission_fields.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_permissions.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/notifications_admin_config.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/notifications_admin_index.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/notifications_admin_index_2.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/notifications_service_add.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/object_create.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/object_create_record.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/object_main.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_create_meta.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_create_version.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_export_import.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_history.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_main.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_new_version.png",
-     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_publish.png",
-     "Found path segment \"admin\" in docs/admin/authentication.rst",
-     "Found path segment \"admin\" in docs/admin/authorization.rst",
-     "Found path segment \"admin\" in docs/admin/index.rst",
-     "Found path segment \"admin\" in docs/admin/notifications.rst",
-     "Found path segment \"admin\" in docs/admin/object.rst",
-     "Found path segment \"admin\" in docs/admin/objecttype.rst",
+     "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
+     "Found path segment \"api\" in src/objects/api/__init__.py",
+     "Found path segment \"api\" in src/objects/api/constants.py",
+     "Found path segment \"api\" in src/objects/api/fields.py",
+     "Found path segment \"api\" in src/objects/api/filter_backends.py",
+     "Found path segment \"api\" in src/objects/api/kanalen.py",
+     "Found path segment \"api\" in src/objects/api/metrics.py",
+     "Found path segment \"api\" in src/objects/api/mixins.py",
+     "Found path segment \"api\" in src/objects/api/serializers.py",
+     "Found path segment \"api\" in src/objects/api/tests",
+     "Found path segment \"api\" in src/objects/api/urls.py",
+     "Found path segment \"api\" in src/objects/api/utils.py",
+     "Found path segment \"api\" in src/objects/api/v2",
+     "Found path segment \"api\" in src/objects/api/v2/__init__.py",
+     "Found path segment \"api\" in src/objects/api/v2/filters.py",
+     "Found path segment \"api\" in src/objects/api/v2/openapi.yaml",
+     "Found path segment \"api\" in src/objects/api/v2/urls.py",
+     "Found path segment \"api\" in src/objects/api/v2/views.py",
+     "Found path segment \"api\" in src/objects/api/validators.py",
+     "Found \"api\" in repository metadata and docs",
+     "Found \"interface\" in repository metadata and docs",
      "Found path segment \"admin\" in src/objects/js/components/admin/permissions",
      "Found path segment \"admin\" in src/objects/js/components/admin/permissions/auth-fields.js",
      "Found path segment \"admin\" in src/objects/js/components/admin/permissions/index.js",
@@ -1108,44 +1102,7 @@
      "Found path segment \"admin\" in src/objects/templates/admin/token",
      "Found path segment \"admin\" in src/objects/templates/admin/token/permission",
      "Found path segment \"admin\" in src/objects/templates/admin/token/permission/change_form.html",
-     "Found path segment \"admin\" in src/objects/tests/admin/__init__.py",
-     "Found path segment \"admin\" in src/objects/tests/admin/test_objecttype_admin.py",
-     "Found path segment \"admin\" in src/objects/tests/admin/test_token_permissions.py",
-     "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
-     "Found \"postgres\" in repository metadata and docs",
-     "Found path segment \"api\" in docs/api/_assets",
-     "Found path segment \"api\" in docs/api/_assets/object-and-objecttypes-quickstart.postman_environment.json",
-     "Found path segment \"api\" in docs/api/_assets/objects-api.postman_collection.json",
-     "Found path segment \"api\" in docs/api/_assets/objecttypes-api.postman_collection.json",
-     "Found path segment \"api\" in docs/api/compliancy",
-     "Found path segment \"api\" in docs/api/compliancy/api-strategy.rst",
-     "Found path segment \"api\" in docs/api/compliancy/vng.rst",
-     "Found path segment \"api\" in docs/api/index.rst",
-     "Found path segment \"api\" in docs/api/postman.rst",
-     "Found path segment \"api\" in docs/api/usage.rst",
-     "Found path segment \"api\" in src/objects/api/__init__.py",
-     "Found path segment \"api\" in src/objects/api/constants.py",
-     "Found path segment \"api\" in src/objects/api/fields.py",
-     "Found path segment \"api\" in src/objects/api/filter_backends.py",
-     "Found path segment \"api\" in src/objects/api/kanalen.py",
-     "Found path segment \"api\" in src/objects/api/metrics.py",
-     "Found path segment \"api\" in src/objects/api/mixins.py",
-     "Found path segment \"api\" in src/objects/api/serializers.py",
-     "Found path segment \"api\" in src/objects/api/tests",
-     "Found path segment \"api\" in src/objects/api/tests/__init__.py",
-     "Found path segment \"api\" in src/objects/api/tests/test_utils.py",
-     "Found path segment \"api\" in src/objects/api/urls.py",
-     "Found path segment \"api\" in src/objects/api/utils.py",
-     "Found path segment \"api\" in src/objects/api/v2",
-     "Found path segment \"api\" in src/objects/api/v2/__init__.py",
-     "Found path segment \"api\" in src/objects/api/v2/filters.py",
-     "Found path segment \"api\" in src/objects/api/v2/openapi.yaml",
-     "Found path segment \"api\" in src/objects/api/v2/urls.py",
-     "Found path segment \"api\" in src/objects/api/v2/views.py",
-     "Found path segment \"api\" in src/objects/api/validators.py",
-     "Found \"api\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs",
-     "Found \"zaak\" in repository metadata and docs"
+     "Found \"workflow\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1172,7 +1129,7 @@
     "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "npm Open Object: not measured: HTTP 405 (2026-11-19)",
-     "Docker Hub maykinmedia/open-object: 19,430 pulls in total (2026-11-19)",
+     "Docker Hub maykinmedia/open-object: 19,554 pulls in total (2026-11-19)",
      "GitHub maykinmedia/open-object: 8 stars, 16 forks, 5 watchers (2026-11-19)",
      "GitHub commits maykinmedia/open-object: 11 contributors, 8 from the owning organisation, 0 from other organisations, 3 unknown (2026-11-19)"
     ],
@@ -1200,7 +1157,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 19430
+         "value": 19554
         }
        ]
       },
@@ -1256,9 +1213,179 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 9 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (298 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (8 authors), with 100% of the 294 commits whose organisation is known; 1% of the commits come from 3 of 11 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.85",
+      "explanation": "17 change requests were closed (merged or not) and 20 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 9 minutes",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 13 latest change requests opened by people between 2026-08-21 and 2026-11-12. 12 got a response; 1 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 11.6 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 5 latest issues opened by people between 2026-08-21 and 2026-11-12. 1 got a response; 4 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "13 in 12 months",
+      "explanation": "13 final releases were published in the last 12 months, about one every 28 days, counted from the version tags. The latest final release is from 2026-10-05. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 2,
+       "response": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 1
+       },
+       "fix": {
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 2
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 4,
+       "response": {
+        "measured": 1,
+        "median": 4.9,
+        "worst": 4.9,
+        "breaches": 0,
+        "waiting": 0
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 2,
+       "response": {
+        "measured": 1,
+        "median": 7.6,
+        "worst": 7.6,
+        "breaches": 0,
+        "waiting": 0
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 1,
+     "openBreaches": [
+      {
+       "title": "Translations don't work due to LocaleMiddleware being disabled",
+       "url": "https://github.com/maykinmedia/open-object/issues/722",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-02-06T09:59:57.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "5 of 8 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "publiccode.yaml declares no standards under supports. OpenAPI cross-check: 0 declared and found, 0 declared but not found in the repository, 1 found in the repository but not declared.",
+    "evidence": [
+     "Found in the repository, not declared: Objects API 2.8.0 in src/objects/api/v2/openapi.yaml (by title)"
+    ],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 4.7
+  "durationSeconds": 6.8,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

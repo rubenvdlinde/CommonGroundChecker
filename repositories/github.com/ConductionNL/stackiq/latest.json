@@ -30,28 +30,30 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:12:13.150Z",
+  "lastCheckedAt": "2026-11-19T23:01:23.304Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:58:29.673Z",
-  "updatedAt": "2026-11-19T14:12:13.150Z",
+  "updatedAt": "2026-11-19T23:01:23.304Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-12-13-150Z",
+  "id": "2026-11-19T23-01-23-304Z",
   "repoId": "github.com/ConductionNL/stackiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:12:13.150Z",
-  "createdAt": "2026-11-19T14:12:13.150Z",
+  "checkedAt": "2026-11-19T23:01:23.304Z",
+  "createdAt": "2026-11-19T23:01:23.304Z",
   "version": "v0.2.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "v0.2.0",
+  "scannedRefKind": "tag",
+  "scannedCommit": "e2a80d2efb471ad66e3137ca65e917ef136911ac",
   "score": 58,
   "rating": 3.1,
   "categoryRatings": {
@@ -79,6 +81,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -92,6 +97,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -108,6 +116,9 @@
    },
    "layering": {
     "rating": 3
+   },
+   "standards": {
+    "rating": null
    },
    "analysability": {
     "rating": 2
@@ -265,6 +276,7 @@
      "roadmap": null,
      "developmentStatus": "stable",
      "softwareType": "standalone/other",
+     "supports": [],
      "intendedAudience": {
       "countries": [],
       "unsupportedCountries": [],
@@ -416,6 +428,19 @@
     "starRating": 5
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: this is a Nextcloud app (appinfo/info.xml), not a container component. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -492,12 +517,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.86 (threshold: 15)",
      "Max CCN: 41.00 (threshold: 30)",
-     "2      1      9      1       9 getError@52-60@/tmp/cgchecker-repo-dC6iH9/repo/src/store/modules/organisatie.js",
-     "3      1      9      0       3 clearError@404-406@/tmp/cgchecker-repo-dC6iH9/repo/src/store/modules/organisatie.js",
-     "2      1      9      1       2 getError@39-40@/tmp/cgchecker-repo-dC6iH9/repo/src/store/modules/catalog.js",
-     "3      1     10      1       3 setError@57-59@/tmp/cgchecker-repo-dC6iH9/repo/src/store/modules/catalog.js",
-     "3      1      9      0       3 clearError@75-77@/tmp/cgchecker-repo-dC6iH9/repo/src/store/modules/catalog.js",
-     "3      1     10      1       3 setError@362-364@/tmp/cgchecker-repo-dC6iH9/repo/src/store/modules/settings.js"
+     "1      1      4      0       1 showError@9-9@/tmp/cgchecker-repo-7nx1SD/repo/tests/vitest/stubs/nextcloud-dialogs.js",
+     "1      1      4      0       1 showWarning@11-11@/tmp/cgchecker-repo-7nx1SD/repo/tests/vitest/stubs/nextcloud-dialogs.js",
+     "3      1      5      0       3 app.config.errorHandler@115-117@/tmp/cgchecker-repo-7nx1SD/repo/tests/vitest/settingsInfoPanels.spec.js",
+     "16      6    112      1      33 collectAppErrors@39-71@/tmp/cgchecker-repo-7nx1SD/repo/tests/e2e/spec-coverage/_helpers.ts",
+     "12      1     60      1      12 expectNoAppErrors@74-85@/tmp/cgchecker-repo-7nx1SD/repo/tests/e2e/spec-coverage/_helpers.ts",
+     "12      1     81      0      15 ViewControllerDecompositionTest::testBuildListErrorPayloadIncludesExceptionMessage@104-118@/tmp/cgchecker-repo-7nx1SD/repo/tests/Unit/Controller/ViewControllerDecompositionTest.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -1243,12 +1268,12 @@
     "status": "fail",
     "message": "API Design Rules violations found across 1 specification(s): 3 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/stackiq/main/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/stackiq/e2a80d2efb471ad66e3137ca65e917ef136911ac/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/ConductionNL/stackiq/main/openapi.json)",
-     "HINT [oas3-schema] must have required property \"paths\". (https://raw.githubusercontent.com/ConductionNL/stackiq/main/openapi.json)",
-     "HINT [info-contact] Info object must have \"contact\" object. @ info (https://raw.githubusercontent.com/ConductionNL/stackiq/main/openapi.json)"
+     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/ConductionNL/stackiq/e2a80d2efb471ad66e3137ca65e917ef136911ac/openapi.json)",
+     "HINT [oas3-schema] must have required property \"paths\". (https://raw.githubusercontent.com/ConductionNL/stackiq/e2a80d2efb471ad66e3137ca65e917ef136911ac/openapi.json)",
+     "HINT [info-contact] Info object must have \"contact\" object. @ info (https://raw.githubusercontent.com/ConductionNL/stackiq/e2a80d2efb471ad66e3137ca65e917ef136911ac/openapi.json)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -1311,112 +1336,9 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX); Data layer (data store / register); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
     "evidence": [
-     "Found path segment \"frontend\" in .claude/openspec/architecture/adr-004-frontend.md",
-     "Found path segment \"frontend\" in FRONTEND_DEVELOPMENT_GUIDE.md",
-     "Found path segment \"ui\" in docs/ARCHIMATE_QUICK_TEST.md",
-     "Found path segment \"ui\" in docs/ARCHIMATE_TESTING_GUIDE.md",
-     "Found path segment \"frontend\" in docs/FRONTEND_INTEGRATION.md",
-     "Found path segment \"ui\" in docs/USER_GUIDE.md",
-     "Found path segment \"ui\" in docs/features/suite-wizard.md",
-     "Found path segment \"ui\" in docs/styleguide.md",
-     "Found path segment \"ui\" in lib/Controller/AangebodenGebruikController.php",
-     "Found path segment \"ui\" in lib/Controller/GebruikController.php",
      "Found path segment \"portal\" in lib/Portal/PortalContributionProvider.php",
-     "Found path segment \"ui\" in lib/Service/AangebodenGebruik",
-     "Found path segment \"ui\" in lib/Service/AangebodenGebruik/GebruikBulkHandler.php",
-     "Found path segment \"ui\" in lib/Service/AangebodenGebruikService.php",
-     "Found path segment \"ui\" in lib/Service/GebruikService.php",
-     "Found path segment \"ui\" in lib/Service/GebruikSyncService.php",
-     "Found path segment \"ui\" in lib/Service/ViewQueryBuilder.php",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/specs",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/specs/realtime-updates-ui",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/specs/realtime-updates-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-24-gebruik-services",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-24-gebruik-services/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-24-gebruik-services/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-24-gebruik-services/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-24-gebruik-services/specs/gebruik-services",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-24-gebruik-services/specs/gebruik-services/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-24-gebruik-services/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-aangeboden-gebruik-api",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-aangeboden-gebruik-api/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-aangeboden-gebruik-api/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-aangeboden-gebruik-api/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-aangeboden-gebruik-api/specs/aangeboden-gebruik-api",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-aangeboden-gebruik-api/specs/aangeboden-gebruik-api/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-aangeboden-gebruik-api/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-fe-settings-ui",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-fe-settings-ui/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-fe-settings-ui/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-fe-settings-ui/specs/fe-settings-ui",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-fe-settings-ui/specs/fe-settings-ui/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-fe-settings-ui/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik/hydra.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik/specs/deelnames-gebruik",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik/specs/deelnames-gebruik/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-deelnames-gebruik/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-softwarecatalog-store-migration/builds",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-softwarecatalog-store-migration/builds/build.json",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-softwarecatalog-store-migration/pipeline-logs/build.jsonl.gz",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/.openspec.yaml",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/context-brief.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/design.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/proposal.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/specs",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/specs/suite-wizard",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/specs/suite-wizard/spec.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/tasks.md",
-     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-suite-wizard/test-plan.md",
-     "Found path segment \"frontend\" in openspec/changes/bundle-hygiene-apexcharts-lodash/specs/frontend-bundle-hygiene",
-     "Found path segment \"frontend\" in openspec/changes/bundle-hygiene-apexcharts-lodash/specs/frontend-bundle-hygiene/spec.md",
-     "Found path segment \"ui\" in openspec/specs/aangeboden-gebruik-api",
-     "Found path segment \"ui\" in openspec/specs/aangeboden-gebruik-api/spec.md",
-     "Found path segment \"ui\" in openspec/specs/deelnames-gebruik",
-     "Found path segment \"ui\" in openspec/specs/deelnames-gebruik/spec.md",
-     "Found path segment \"ui\" in openspec/specs/fe-settings-ui",
-     "Found path segment \"ui\" in openspec/specs/fe-settings-ui/spec.md",
-     "Found path segment \"ui\" in openspec/specs/gebruik-services",
-     "Found path segment \"ui\" in openspec/specs/gebruik-services/spec.md",
-     "Found path segment \"ui\" in openspec/specs/realtime-updates-ui",
-     "Found path segment \"ui\" in openspec/specs/realtime-updates-ui/spec.md",
-     "Found path segment \"ui\" in openspec/specs/suite-wizard",
-     "Found path segment \"ui\" in openspec/specs/suite-wizard/spec.md",
-     "Found path segment \"frontend\" in reacties/frontend-review.md",
-     "Found path segment \"ui\" in scripts/build-l10n-js.js",
-     "Found path segment \"ui\" in src/dialogs/SuiteWizard",
-     "Found path segment \"ui\" in src/dialogs/SuiteWizard/Step1Details.vue",
-     "Found path segment \"ui\" in src/dialogs/SuiteWizard/Step2Applications.vue",
-     "Found path segment \"ui\" in src/dialogs/SuiteWizard/Step3Confirm.vue",
-     "Found path segment \"ui\" in src/dialogs/SuiteWizardDialog.vue",
-     "Found path segment \"ui\" in src/utils/suiteWizard.js",
-     "Found path segment \"ui\" in src/utils/suiteWizard.spec.js",
-     "Found path segment \"ui\" in src/views/suites",
-     "Found path segment \"ui\" in src/views/suites/SuitesIndexView.vue",
-     "Found path segment \"ui\" in tests/Integration/KoppelingenGebruikIntegrationTest.php",
-     "Found path segment \"ui\" in tests/Unit/Controller/AangebodenGebruikControllerEndpointContractTest.php",
-     "Found path segment \"ui\" in tests/Unit/Controller/AangebodenGebruikControllerStatusCodeTest.php",
-     "Found path segment \"ui\" in tests/Unit/Controller/AangebodenGebruikControllerTest.php",
-     "Found path segment \"ui\" in tests/Unit/Controller/GebruikControllerContractTest.php",
-     "Found path segment \"ui\" in tests/Unit/Controller/GebruikControllerDecompositionTest.php",
-     "Found path segment \"portal\" in tests/Unit/Portal/PortalContributionProviderTest.php",
-     "Found path segment \"ui\" in tests/Unit/Service/AangebodenGebruikServiceDecompositionTest.php",
-     "Found path segment \"ui\" in tests/Unit/Service/AangebodenGebruikServiceTest.php",
-     "Found path segment \"ui\" in tests/Unit/Service/GebruikServiceGetApplicationIdsTest.php",
-     "Found path segment \"ui\" in tests/Unit/Service/GebruikSyncServiceDecompositionTest.php",
-     "Found path segment \"ui\" in tests/e2e/spec-coverage/suite-wizard.spec.ts",
-     "Found path segment \"ui\" in tests/e2e/workflows/_ui.ts",
-     "Found path segment \"ui\" in tests/vitest/suiteWizard.spec.js",
      "Found \"frontend\" in repository metadata and docs",
      "Found path segment \"service\" in lib/Service/AanbodService.php",
      "Found path segment \"service\" in lib/Service/AangebodenGebruik",
@@ -1481,87 +1403,10 @@
      "Found path segment \"services\" in src/services/facets.js",
      "Found path segment \"services\" in src/services/facets.spec.js",
      "Found path segment \"services\" in src/services/getTheme.js",
-     "Found path segment \"service\" in tests/Stubs/Service/ConfigurationService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/ObjectService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/OrganisationService.php",
-     "Found path segment \"service\" in tests/Stubs/Service/RegisterResolverService.php",
-     "Found path segment \"service\" in tests/Unit/Service/AanbodServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AangebodenGebruikServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/AangebodenGebruikServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ArchiMateConfigFailModeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ArchiMateExportServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ArchiMateImportServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ArchiMateServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/BioComplianceRegisterShapeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ContactPersonHandlerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ContactpersoonServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ContractApprovalServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ContractStatusServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DeepMergeAuthorizationTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/DemoDataServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/EolMatcherServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/EolRegisterShapeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/EolSyncServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/FacetServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/FederationMergerTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/FederationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/GebruikServiceGetApplicationIdsTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/GebruikSyncServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/IntakeModerationTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/LifecycleRegisterShapeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/MergeOrganisatieServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ModuleComplianceServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ModuleComplianceServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ModuleRegistrationServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ModuleVersionServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OpenDataRegisterShapeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OrganisatieServiceMapStatusMergeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OrganisatieServiceParentHierarchyTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/OrganizationSyncServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PortfolioReportServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PortfolioTimeRegisterShapeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PublicationServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/PublishGateRbacTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/QueryLimitBoundingTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/RegisterFragmentMergeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ReviewAggregateServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ReviewModerationOverlayReachesTheSchemaTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ReviewServiceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SbomRegisterShapeTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceArchiMateStatusFallbackTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceCatalogTypeResolutionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceConfigVersionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceEolConfigTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceRegisterVerificationTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceResolveImportForceTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceResolverWiringTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceSharedOrganisationTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Stackiq",
-     "Found path segment \"service\" in tests/Unit/Service/Stackiq/ContactPersonHandlerDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Stackiq/GroupHandlerDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Stackiq/HierarchyHandlerDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/Stackiq/OrganizationHandlerDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/StackiqServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/StackiqServiceOrganisationMapperTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/SymfonyEmailServiceDecompositionTest.php",
-     "Found path segment \"service\" in tests/Unit/Service/ViewServiceTest.php",
      "Found \"service\" in repository metadata and docs",
-     "Found path segment \"integration\" in tests/Integration/KoppelingenGebruikIntegrationTest.php",
-     "Found path segment \"integration\" in tests/Integration/README.md",
-     "Found path segment \"integration\" in tests/Integration/TEST_MATRIX.md",
-     "Found path segment \"integration\" in tests/Integration/THREE_ORG_TEST_SUMMARY.md",
-     "Found path segment \"integration\" in tests/integration/README-newman.md",
-     "Found path segment \"integration\" in tests/integration/run-newman.sh",
-     "Found path segment \"integration\" in tests/integration/stackiq.postman_collection.json",
+     "Found \"workflow\" in repository metadata and docs",
      "Found \"integration\" in repository metadata and docs",
-     "Found path segment \"db\" in tests/Stubs/Db/ObjectEntity.php",
-     "Found path segment \"db\" in tests/Stubs/Db/Organisation.php",
-     "Found path segment \"db\" in tests/Stubs/Db/OrganisationMapper.php",
-     "Found path segment \"db\" in tests/Stubs/Db/SchemaMapper.php",
-     "Found path segment \"data\" in tests/data/sample_archimate.xml",
-     "Found \"database\" in repository metadata and docs",
-     "Found \"process\" in repository metadata and docs"
+     "Found \"database\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1588,7 +1433,7 @@
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
      "Nextcloud App Store stackiq: 0 ratings given (2026-11-19)",
-     "GitHub releases: 5,822 release file downloads, 500 most recent releases with files (2026-11-19)",
+     "GitHub releases: 5,827 release file downloads, 500 most recent releases with files (2026-11-19)",
      "GitHub ConductionNL/stackiq: 0 stars, 3 forks, 3 watchers (2026-11-19)",
      "GitHub commits ConductionNL/stackiq: 13 contributors, 9 from the owning organisation, 1 from other organisations, 3 unknown (2026-11-19)"
     ],
@@ -1620,7 +1465,7 @@
        "figures": [
         {
          "label": "release file downloads",
-         "value": 5822
+         "value": 5827
         },
         {
          "label": "most recent releases with files",
@@ -1680,9 +1525,112 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 8 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (191 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is conduction.nl (4 authors), with 100% of the 191 commits whose organisation is known; 0% of the commits come from 0 of 4 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.95",
+      "explanation": "1,232 change requests were closed (merged or not) and 1,300 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "no response",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12 got a comment or review from anyone but its author.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 3.1 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-21 and 2026-11-12. 1 got a response; 14 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "29 in 12 months",
+      "explanation": "29 final releases were published in the last 12 months, about one every 13 days, counted from the GitHub releases. The latest final release is from 2026-09-06. Besides these, 488 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": "the GitHub API answered with an error (GitHub API 502)",
+     "from": "2026-11-19",
+     "to": "2026-11-19",
+     "categories": [],
+     "openBreaches": [],
+     "openBreachCount": 0,
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": []
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "publiccode.yml declares no standards under supports.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 12.4
+  "durationSeconds": 25.4,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

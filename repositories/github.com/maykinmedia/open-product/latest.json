@@ -32,28 +32,32 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:13:47.804Z",
+  "lastCheckedAt": "2026-11-19T23:04:00.945Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:21.657Z",
-  "updatedAt": "2026-11-19T14:13:47.804Z",
+  "updatedAt": "2026-11-19T23:04:00.945Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [
+   "beheren-van-producten-en-diensten"
+  ],
+  "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-19T14-13-47-804Z",
+  "id": "2026-11-19T23-04-00-945Z",
   "repoId": "github.com/maykinmedia/open-product",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:13:47.804Z",
-  "createdAt": "2026-11-19T14:13:47.804Z",
+  "checkedAt": "2026-11-19T23:04:00.945Z",
+  "createdAt": "2026-11-19T23:04:00.945Z",
   "version": "v1.10.0",
-  "checklistVersion": null,
-  "scannedRef": "master",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "1.10.0",
+  "scannedRefKind": "tag",
+  "scannedCommit": "783c32a153e3082f02f9cb536f341d018d197ff9",
   "score": 66,
   "rating": 3.2,
   "categoryRatings": {
@@ -81,6 +85,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -94,6 +101,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -111,6 +121,9 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
     "rating": 3.8
    },
@@ -121,10 +134,10 @@
     "rating": 1.6
    },
    "modularity": {
-    "rating": 3.1
+    "rating": 3
    },
    "reusability": {
-    "rating": 3.1
+    "rating": 3
    },
    "testing": {
     "rating": 5.5
@@ -146,7 +159,7 @@
     "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No publiccode.yml was found, so there is no maintenance contract.",
-    "Maintainability below 4 stars (2.77)"
+    "Maintainability below 4 stars (2.73)"
    ]
   },
   "issueCounts": {
@@ -162,7 +175,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 20,005 lines of code, 1,448 functions, 1,445 files analyzed.",
+    "message": "Code metrics: 20,086 lines of code, 1,451 functions, 1,448 files analyzed.",
     "evidence": [
      "bin/bump-my-version.sh",
      "bin/celery_beat.sh",
@@ -175,9 +188,9 @@
      "bin/dump_data.sh",
      "bin/flake8_summary.py",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 20,005",
-     "Function count: 1,448",
-     "Files analyzed: 1,445"
+     "Total lines of code (NLOC): 20,086",
+     "Function count: 1,451",
+     "Files analyzed: 1,448"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -314,6 +327,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -393,12 +419,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 1.66 (threshold: 15)",
      "Max CCN: 26.00 (threshold: 30)",
-     "3      1     29      1       3 test_read_product_without_credentials_returns_error@78-80@/tmp/cgchecker-repo-FSmgBE/repo/src/openproduct/producten/tests/api/test_product.py",
-     "3      1     22      1       4 test_validate_product_status_does_not_raise_error_on_status_initieel@195-198@/tmp/cgchecker-repo-FSmgBE/repo/src/openproduct/producten/tests/test_product.py",
-     "3      1     29      1       3 test_read_content_element_without_credentials_returns_error@37-39@/tmp/cgchecker-repo-FSmgBE/repo/src/openproduct/producttypen/tests/api/test_content.py",
-     "3      1     29      1       3 test_read_link_without_credentials_returns_error@30-32@/tmp/cgchecker-repo-FSmgBE/repo/src/openproduct/producttypen/tests/api/test_link.py",
-     "3      1     29      1       3 test_read_prijs_without_credentials_returns_error@45-47@/tmp/cgchecker-repo-FSmgBE/repo/src/openproduct/producttypen/tests/api/test_prijs.py",
-     "20      1    134      1      24 test_update_prijs_with_optie_not_part_of_prijs_returns_error@463-486@/tmp/cgchecker-repo-FSmgBE/repo/src/openproduct/producttypen/tests/api/test_prijs.py"
+     "3      1     29      1       3 test_read_locatie_without_credentials_returns_error@25-27@/tmp/cgchecker-repo-cJzNbZ/repo/src/openproduct/locaties/tests/api/test_locatie.py",
+     "3      1     29      1       3 test_read_contact_without_credentials_returns_error@29-31@/tmp/cgchecker-repo-cJzNbZ/repo/src/openproduct/locaties/tests/api/test_contact.py",
+     "3      1     29      1       3 test_read_organisatie_without_credentials_returns_error@31-33@/tmp/cgchecker-repo-cJzNbZ/repo/src/openproduct/locaties/tests/api/test_organisatie.py",
+     "3      1     29      1       3 test_read_product_without_credentials_returns_error@78-80@/tmp/cgchecker-repo-cJzNbZ/repo/src/openproduct/producten/tests/api/test_product.py",
+     "3      1     22      1       4 test_validate_product_status_does_not_raise_error_on_status_initieel@195-198@/tmp/cgchecker-repo-cJzNbZ/repo/src/openproduct/producten/tests/test_product.py",
+     "3      1     29      1       3 test_read_facettype_without_credentials_returns_error@30-32@/tmp/cgchecker-repo-cJzNbZ/repo/src/openproduct/producttypen/tests/api/test_facets.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -411,13 +437,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "warn",
     "starRating": 3,
-    "rating": 2.765,
+    "rating": 2.73,
     "aspectRatings": {
-     "analysability": 3.8,
-     "modifiability": 2.88,
-     "testability": 1.57,
-     "modularity": 3.1,
-     "reusability": 3.08
+     "analysability": 3.76,
+     "modifiability": 2.9,
+     "testability": 1.59,
+     "modularity": 3.02,
+     "reusability": 2.96
     },
     "measurements": [
      {
@@ -495,7 +521,7 @@
        },
        {
         "label": "Python, more than 15 lines",
-        "value": "39.0%",
+        "value": "40.1%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -506,7 +532,7 @@
        },
        {
         "label": "Python, more than 30 lines",
-        "value": "15.2%",
+        "value": "16.7%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -517,14 +543,14 @@
        },
        {
         "label": "Python, more than 60 lines",
-        "value": "4.0%",
+        "value": "5.8%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
          "4": "≤ 9.1%",
          "5": "≤ 5.5%"
         },
-        "stars": 5
+        "stars": 4
        }
       ]
      },
@@ -571,7 +597,7 @@
        },
        {
         "label": "Python, complexity above 5",
-        "value": "25.9%",
+        "value": "25.4%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -582,7 +608,7 @@
        },
        {
         "label": "Python, complexity above 10",
-        "value": "6.8%",
+        "value": "6.7%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -593,7 +619,7 @@
        },
        {
         "label": "Python, complexity above 25",
-        "value": "2.5%",
+        "value": "2.4%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
@@ -646,7 +672,7 @@
        },
        {
         "label": "Python, 3 or more parameters",
-        "value": "24.1%",
+        "value": "25.4%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -657,14 +683,14 @@
        },
        {
         "label": "Python, 5 or more parameters",
-        "value": "3.9%",
+        "value": "5.6%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
          "4": "≤ 3.4%",
          "5": "≤ 2.5%"
         },
-        "stars": 3
+        "stars": 2
        },
        {
         "label": "Python, 7 or more parameters",
@@ -700,7 +726,7 @@
        },
        {
         "label": "Python, fan-in above 20",
-        "value": "1.5%",
+        "value": "1.4%",
         "thresholds": {
          "2": "≤ 8.0%",
          "3": "≤ 5.9%",
@@ -732,7 +758,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "69.9%",
+        "value": "69.5%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -751,7 +777,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "0.0437",
+        "value": "0.0543",
         "thresholds": {
          "4": "≤ 0.075",
          "5": "≤ 0.0375"
@@ -761,18 +787,18 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.64 to 2.89 (3 of 5 stars) over 218 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.62 to 2.84 (3 of 5 stars) over 218 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★☆☆ 3.3 (javascript 3.1, python 3.3)",
-     "Unit size: ★★★★☆ 4.3 (javascript 4.7, python 4.3)",
-     "Unit complexity: ★★☆☆☆ 1.7 (javascript 2.2, python 1.7)",
-     "Unit interfacing: ★★☆☆☆ 1.9 (javascript 5.5, python 1.8)",
+     "Unit size: ★★★★☆ 4.2 (javascript 4.7, python 4.2)",
+     "Unit complexity: ★★☆☆☆ 1.8 (javascript 2.2, python 1.8)",
+     "Unit interfacing: ★★☆☆☆ 1.7 (javascript 5.5, python 1.6)",
      "Module coupling: ★★★★☆ 3.6 (python 3.6)",
      "Component independence: ★☆☆☆☆ 1.4 (python 1.4)",
-     "Component entanglement: ★★★★☆ 4.3 (python 4.3)",
-     "Lever: unit complexity in python, about 21 lines to fix for half a star",
-     "Lever: duplication in python, about 216 lines to fix for half a star",
-     "Lever: unit interfacing in python, about 162 lines to fix for half a star"
+     "Component entanglement: ★★★★☆ 4.0 (python 4.0)",
+     "Lever: unit complexity in python, about 22 lines to fix for half a star",
+     "Lever: unit interfacing in python, about 165 lines to fix for half a star",
+     "Lever: duplication in python, about 219 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -865,120 +891,11 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "message": "Detected layer signals: Data layer (data store / register); Process layer (orchestration / BFF); Service layer (back-end microservice). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer. The repository also references Common Ground.",
     "evidence": [
-     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
-     "Found path segment \"ui\" in build.js",
-     "Found path segment \"ui\" in docs/installation/reference/prerequisites.rst",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/staging.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/test.txt",
-     "Found path segment \"ui\" in requirements/type-checking.in",
-     "Found path segment \"ui\" in requirements/type-checking.txt",
-     "Found path segment \"ui\" in src/openproduct/producten/migrations/0014_remove_document_uuid_remove_taak_uuid_and_more.py",
-     "Found path segment \"ui\" in src/openproduct/producttypen/migrations/0013_remove_proces_uuid_remove_verzoektype_uuid_and_more.py",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in src/openproduct/locaties/admin/__init__.py",
-     "Found path segment \"admin\" in src/openproduct/locaties/admin/contact.py",
-     "Found path segment \"admin\" in src/openproduct/locaties/admin/locatie.py",
-     "Found path segment \"admin\" in src/openproduct/locaties/admin/organisatie.py",
-     "Found path segment \"admin\" in src/openproduct/producten/admin/__init__.py",
-     "Found path segment \"admin\" in src/openproduct/producten/admin/document.py",
-     "Found path segment \"admin\" in src/openproduct/producten/admin/eigenaar.py",
-     "Found path segment \"admin\" in src/openproduct/producten/admin/product.py",
-     "Found path segment \"admin\" in src/openproduct/producten/admin/taak.py",
-     "Found path segment \"admin\" in src/openproduct/producten/admin/zaak.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/__init__.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/actie.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/bestand.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/contact.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/content.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/dmn_config.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/externe_code.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/facets.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/filters.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/jsonschema.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/link.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/organisatie.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/parameter.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/prijs.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/proces.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/producttype.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/producttypepermission.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/subtype.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/thema.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/upn.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/verzoektype.py",
-     "Found path segment \"admin\" in src/openproduct/producttypen/admin/zaaktype.py",
-     "Found path segment \"admin\" in src/openproduct/scss/admin/_admin_theme.scss",
-     "Found path segment \"admin\" in src/openproduct/scss/admin/_app_overrides.scss",
-     "Found path segment \"admin\" in src/openproduct/scss/admin/_vars.scss",
-     "Found path segment \"admin\" in src/openproduct/scss/admin/admin_overrides.scss",
-     "Found path segment \"admin\" in src/openproduct/scss/admin/themes",
-     "Found path segment \"admin\" in src/openproduct/scss/admin/themes/_dark.scss",
-     "Found path segment \"admin\" in src/openproduct/scss/admin/themes/_light.scss",
-     "Found path segment \"admin\" in src/openproduct/static/admin/js",
-     "Found path segment \"admin\" in src/openproduct/static/admin/js/admin",
-     "Found path segment \"admin\" in src/openproduct/static/admin/js/admin/facet_inline.js",
-     "Found path segment \"admin\" in src/openproduct/static/admin/js/admin/product_subtype.js",
-     "Found path segment \"admin\" in src/openproduct/static/img/admin/calendar-alt-regular.svg",
-     "Found path segment \"admin\" in src/openproduct/static/img/admin/clock-regular.svg",
-     "Found path segment \"admin\" in src/openproduct/static/img/admin/edit-regular.svg",
-     "Found path segment \"admin\" in src/openproduct/static/img/admin/plus-square-regular.svg",
-     "Found path segment \"admin\" in src/openproduct/static/img/admin/trash-alt-regular.svg",
-     "Found path segment \"admin\" in src/openproduct/templates/admin/base_site.html",
-     "Found path segment \"admin\" in src/openproduct/templates/admin/change_form_object_tools.html",
-     "Found path segment \"admin\" in src/openproduct/templates/admin/parler",
-     "Found path segment \"admin\" in src/openproduct/templates/admin/parler/language_tabs.html",
-     "Found path segment \"admin\" in src/openproduct/templates/admin/producttypen",
-     "Found path segment \"admin\" in src/openproduct/templates/admin/producttypen/change_form.html",
-     "Found path segment \"admin\" in src/openproduct/templates/admin/producttypen/producttype",
-     "Found path segment \"admin\" in src/openproduct/templates/admin/producttypen/producttype/change_form.html",
      "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
-     "Found path segment \"data\" in src/openproduct/producttypen/tests/data/upl-empty-data.csv",
-     "Found path segment \"data\" in src/openproduct/producttypen/tests/data/upl-missing-columns.csv",
-     "Found path segment \"data\" in src/openproduct/producttypen/tests/data/upl.csv",
-     "Found path segment \"api\" in docs/api/index.rst",
-     "Found path segment \"api\" in src/openproduct/locaties/tests/api/__init__.py",
-     "Found path segment \"api\" in src/openproduct/locaties/tests/api/test_contact.py",
-     "Found path segment \"api\" in src/openproduct/locaties/tests/api/test_contact_filters.py",
-     "Found path segment \"api\" in src/openproduct/locaties/tests/api/test_locatie.py",
-     "Found path segment \"api\" in src/openproduct/locaties/tests/api/test_locatie_filters.py",
-     "Found path segment \"api\" in src/openproduct/locaties/tests/api/test_organisatie.py",
-     "Found path segment \"api\" in src/openproduct/locaties/tests/api/test_organisatie_filters.py",
-     "Found path segment \"api\" in src/openproduct/producten/tests/api/__init__.py",
-     "Found path segment \"api\" in src/openproduct/producten/tests/api/test_cloudevents.py",
-     "Found path segment \"api\" in src/openproduct/producten/tests/api/test_notifications_send.py",
-     "Found path segment \"api\" in src/openproduct/producten/tests/api/test_product.py",
-     "Found path segment \"api\" in src/openproduct/producten/tests/api/test_product_auth.py",
-     "Found path segment \"api\" in src/openproduct/producten/tests/api/test_product_filters.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/__init__.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_actie.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_actie_filters.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_bestand.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_bestand_filters.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_content.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_content_filters.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_facets.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_jsonschema.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_jsonschema_filters.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_link.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_link_filters.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_prijs.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_prijs_filters.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_producttype.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_producttype_filters.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_thema.py",
-     "Found path segment \"api\" in src/openproduct/producttypen/tests/api/test_thema_filters.py",
-     "Found \"api\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs"
+     "Found \"workflow\" in repository metadata and docs",
+     "Found \"api\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1005,7 +922,7 @@
     "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "npm Open Product: not measured: HTTP 405 (2026-11-19)",
-     "Docker Hub maykinmedia/open-product: 22,167 pulls in total (2026-11-19)",
+     "Docker Hub maykinmedia/open-product: 22,238 pulls in total (2026-11-19)",
      "GitHub maykinmedia/open-product: 4 stars, 1 forks, 4 watchers (2026-11-19)",
      "GitHub commits maykinmedia/open-product: 11 contributors, 8 from the owning organisation, 0 from other organisations, 3 unknown (2026-11-19)"
     ],
@@ -1033,7 +950,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 22167
+         "value": 22238
         }
        ]
       },
@@ -1089,9 +1006,247 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "2",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 10 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": true
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (298 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (8 authors), with 100% of the 216 commits whose organisation is known; 28% of the commits come from 3 of 11 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.85",
+      "explanation": "22 change requests were closed (merged or not) and 26 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 28 minutes",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 14 got a response; 1 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "median 4.1 days",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-21 and 2026-11-12. 7 got a response; 8 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "7 in 12 months",
+      "explanation": "7 final releases were published in the last 12 months, about one every 52 days, counted from the version tags. The latest final release is from 2026-10-22. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": true
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "bug",
+       "label": "Other bug",
+       "respondDays": 5,
+       "fixDays": "next-release",
+       "count": 5,
+       "response": {
+        "measured": 1,
+        "median": 4.8,
+        "worst": 4.8,
+        "breaches": 2,
+        "waiting": 2
+       },
+       "fix": {
+        "measured": 3,
+        "median": 18,
+        "worst": 229.7,
+        "breaches": 2,
+        "waiting": 2
+       }
+      },
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 20,
+       "response": {
+        "measured": 5,
+        "median": 1.1,
+        "worst": 30,
+        "breaches": 10,
+        "waiting": 9
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 9,
+       "response": {
+        "measured": 2,
+        "median": 5.8,
+        "worst": 7.6,
+        "breaches": 6,
+        "waiting": 6
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 11,
+     "openBreaches": [
+      {
+       "title": "Toevoegen requirements voor aanvragen product",
+       "url": "https://github.com/maykinmedia/open-product/issues/313",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-06-03T12:22:38.000Z"
+      },
+      {
+       "title": "Zoeken in producten",
+       "url": "https://github.com/maykinmedia/open-product/issues/324",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-07-02T13:30:37.000Z"
+      },
+      {
+       "title": "mijn plan mapping",
+       "url": "https://github.com/maykinmedia/open-product/issues/356",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-09-10T09:09:07.000Z"
+      },
+      {
+       "title": "Uitbreiding attributen (vervanging EVA & Dennis)",
+       "url": "https://github.com/maykinmedia/open-product/issues/359",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-09-16T15:36:24.000Z"
+      },
+      {
+       "title": "Niet alle content elementen worden terug gegeven",
+       "url": "https://github.com/maykinmedia/open-product/issues/370",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-10-08T11:22:00.000Z"
+      },
+      {
+       "title": "Content element: Content kunnen bewerken zonder editor",
+       "url": "https://github.com/maykinmedia/open-product/issues/371",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-10-15T11:23:42.000Z"
+      },
+      {
+       "title": "Niet alle content elementen worden terug gegeven",
+       "url": "https://github.com/maykinmedia/open-product/issues/370",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-10-22T13:38:58.000Z"
+      },
+      {
+       "title": "Product catalogi",
+       "url": "https://github.com/maykinmedia/open-product/issues/376",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-10-27T11:29:36.000Z"
+      },
+      {
+       "title": "Feedback op content-specificatie",
+       "url": "https://github.com/maykinmedia/open-product/issues/380",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-03T15:19:09.000Z"
+      },
+      {
+       "title": "Remarks regarding the API spec",
+       "url": "https://github.com/maykinmedia/open-product/issues/381",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-04T10:58:50.000Z"
+      },
+      {
+       "title": "Snake case instead of camel case",
+       "url": "https://github.com/maykinmedia/open-product/issues/382",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-11-04T11:01:44.000Z"
+      }
+     ],
+     "fixesByRelease": 2,
+     "fixesByClose": 1,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "9 of 34 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 4.6
+  "durationSeconds": 6.2,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }

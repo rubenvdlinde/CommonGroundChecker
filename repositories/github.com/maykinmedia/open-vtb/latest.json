@@ -28,35 +28,37 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-19T14:13:56.129Z",
+  "lastCheckedAt": "2026-11-19T23:04:06.991Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:31.398Z",
-  "updatedAt": "2026-11-19T14:13:56.129Z",
+  "updatedAt": "2026-11-19T23:04:06.991Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
-  "providers": []
+  "providers": [],
+  "functionalities": [],
+  "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-19T14-13-56-129Z",
+  "id": "2026-11-19T23-04-06-991Z",
   "repoId": "github.com/maykinmedia/open-vtb",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-19T14:13:56.129Z",
-  "createdAt": "2026-11-19T14:13:56.129Z",
+  "checkedAt": "2026-11-19T23:04:06.991Z",
+  "createdAt": "2026-11-19T23:04:06.991Z",
   "version": "v0.2.0",
-  "checklistVersion": null,
-  "scannedRef": "main",
-  "scannedRefKind": "default-branch",
-  "scannedCommit": null,
+  "checklistVersion": "2026.2",
+  "scannedRef": "0.2.0",
+  "scannedRefKind": "tag",
+  "scannedCommit": "83972bfe288e5d2f7f4345e4e891529b4a1d0535",
   "score": 63,
-  "rating": 3.1,
+  "rating": 3,
   "categoryRatings": {
    "Governance": 3.6,
    "Security": 1.8,
    "Architecture": 3,
-   "Software Quality": 4.3,
+   "Software Quality": 4.1,
    "Deployment & Operations": 3.3
   },
   "aspectRatings": {
@@ -77,6 +79,9 @@
    "usage-and-ecosystem": {
     "rating": null
    },
+   "project-health": {
+    "rating": null
+   },
    "vulnerabilities": {
     "rating": null
    },
@@ -90,6 +95,9 @@
     "rating": null
    },
    "dependency-management": {
+    "rating": null
+   },
+   "container-images": {
     "rating": null
    },
    "secrets": {
@@ -107,6 +115,9 @@
    "layering": {
     "rating": 3
    },
+   "standards": {
+    "rating": null
+   },
    "analysability": {
     "rating": 4
    },
@@ -114,13 +125,13 @@
     "rating": 4.5
    },
    "testability": {
-    "rating": 3.8
+    "rating": 3.4
    },
    "modularity": {
-    "rating": 3.7
+    "rating": 3.6
    },
    "reusability": {
-    "rating": 4
+    "rating": 3.3
    },
    "testing": {
     "rating": 5.5
@@ -158,7 +169,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 10,883 lines of code, 513 functions, 513 files analyzed.",
+    "message": "Code metrics: 11,358 lines of code, 548 functions, 548 files analyzed.",
     "evidence": [
      "bin/bump-my-version.sh",
      "bin/celery_beat.sh",
@@ -171,9 +182,9 @@
      "bin/generate_api_schema.sh",
      "bin/generate_demo_data.sh",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 10,883",
-     "Function count: 513",
-     "Files analyzed: 513"
+     "Total lines of code (NLOC): 11,358",
+     "Function count: 548",
+     "Files analyzed: 548"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -312,6 +323,19 @@
     "starRating": 3
    },
    {
+    "id": "artifacthub",
+    "title": "Helm chart on Artifact Hub, images scanned",
+    "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
+    "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
+    "status": "info",
+    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
+    "evidence": [],
+    "notApplicable": true,
+    "requirementLevel": "mandatory",
+    "mandatoryFrom": "2027-05-19",
+    "starRating": 3
+   },
+   {
     "id": "documentation",
     "title": "Documentation Availability",
     "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
@@ -385,18 +409,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 1.55 <= 15 and Max CCN 13.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.57 <= 15 and Max CCN 13.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
-     "Average CCN: 1.55 (threshold: 15)",
+     "Average CCN: 1.57 (threshold: 15)",
      "Max CCN: 13.00 (threshold: 30)",
-     "28      1    177      4      41 test_cloud_event_client_error_retry@121-161@/tmp/cgchecker-repo-0XDxua/repo/src/openvtb/components/berichten/api/tests/test_cloudevents.py",
-     "30      1    199      4      42 test_cloud_event_client_error_retry@231-272@/tmp/cgchecker-repo-0XDxua/repo/src/openvtb/components/taken/api/tests/test_cloudevents.py",
-     "12      1    112      3      18 assertErrorResponse@16-33@/tmp/cgchecker-repo-0XDxua/repo/src/openvtb/tests/api_strategy/test_error_format.py",
-     "17      1     58      1      17 test_400_error@35-51@/tmp/cgchecker-repo-0XDxua/repo/src/openvtb/tests/api_strategy/test_error_format.py",
-     "10      1     33      1      10 test_401_error@53-62@/tmp/cgchecker-repo-0XDxua/repo/src/openvtb/tests/api_strategy/test_error_format.py",
-     "10      1     33      1      10 test_403_error@64-73@/tmp/cgchecker-repo-0XDxua/repo/src/openvtb/tests/api_strategy/test_error_format.py",
-     "10      1     33      1      10 test_404_error@75-84@/tmp/cgchecker-repo-0XDxua/repo/src/openvtb/tests/api_strategy/test_error_format.py"
+     "30      1    199      4      42 test_cloud_event_client_error_retry@231-272@/tmp/cgchecker-repo-8ltTiF/repo/src/openvtb/components/taken/api/tests/test_cloudevents.py",
+     "28      1    177      4      41 test_cloud_event_client_error_retry@121-161@/tmp/cgchecker-repo-8ltTiF/repo/src/openvtb/components/berichten/api/tests/test_cloudevents.py",
+     "2      1     17      4       2 get@12-13@/tmp/cgchecker-repo-8ltTiF/repo/src/openvtb/tests/api_strategy/error_views.py",
+     "12      1    112      3      18 assertErrorResponse@16-33@/tmp/cgchecker-repo-8ltTiF/repo/src/openvtb/tests/api_strategy/test_error_format.py",
+     "17      1     58      1      17 test_400_error@35-51@/tmp/cgchecker-repo-8ltTiF/repo/src/openvtb/tests/api_strategy/test_error_format.py",
+     "10      1     33      1      10 test_401_error@53-62@/tmp/cgchecker-repo-8ltTiF/repo/src/openvtb/tests/api_strategy/test_error_format.py",
+     "10      1     33      1      10 test_403_error@64-73@/tmp/cgchecker-repo-8ltTiF/repo/src/openvtb/tests/api_strategy/test_error_format.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
@@ -409,13 +433,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 4,
+    "rating": 3.745,
     "aspectRatings": {
-     "analysability": 3.98,
-     "modifiability": 4.5,
-     "testability": 3.81,
-     "modularity": 3.72,
-     "reusability": 4.03
+     "analysability": 3.95,
+     "modifiability": 4.51,
+     "testability": 3.44,
+     "modularity": 3.61,
+     "reusability": 3.33
     },
     "measurements": [
      {
@@ -439,7 +463,7 @@
        },
        {
         "label": "Python",
-        "value": "6.7%",
+        "value": "6.3%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
@@ -493,7 +517,7 @@
        },
        {
         "label": "Python, more than 15 lines",
-        "value": "33.5%",
+        "value": "33.8%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -504,7 +528,7 @@
        },
        {
         "label": "Python, more than 30 lines",
-        "value": "6.2%",
+        "value": "10.9%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -515,14 +539,14 @@
        },
        {
         "label": "Python, more than 60 lines",
-        "value": "0.0%",
+        "value": "5.7%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
          "4": "≤ 9.1%",
          "5": "≤ 5.5%"
         },
-        "stars": 5
+        "stars": 4
        }
       ]
      },
@@ -569,7 +593,7 @@
        },
        {
         "label": "Python, complexity above 5",
-        "value": "13.3%",
+        "value": "14.0%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
@@ -580,7 +604,7 @@
        },
        {
         "label": "Python, complexity above 10",
-        "value": "3.7%",
+        "value": "3.1%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
@@ -644,25 +668,25 @@
        },
        {
         "label": "Python, 3 or more parameters",
-        "value": "15.6%",
+        "value": "19.5%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
          "4": "≤ 15.4%",
          "5": "≤ 12.5%"
         },
-        "stars": 3
+        "stars": 2
        },
        {
         "label": "Python, 5 or more parameters",
-        "value": "0.0%",
+        "value": "5.7%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
          "4": "≤ 3.4%",
          "5": "≤ 2.5%"
         },
-        "stars": 5
+        "stars": 2
        },
        {
         "label": "Python, 7 or more parameters",
@@ -687,7 +711,7 @@
       "rows": [
        {
         "label": "Python, fan-in above 10",
-        "value": "0.3%",
+        "value": "0.2%",
         "thresholds": {
          "2": "≤ 13.0%",
          "3": "≤ 10.7%",
@@ -730,7 +754,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "91.5%",
+        "value": "86.3%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -749,7 +773,7 @@
       "rows": [
        {
         "label": "Python",
-        "value": "0.1316",
+        "value": "0.1042",
         "thresholds": {
          "4": "≤ 0.075",
          "5": "≤ 0.0375"
@@ -760,18 +784,18 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 3.99 to 4.01 (4 of 5 stars) over 107 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 3.72 to 3.77 (4 of 5 stars) over 109 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★☆☆ 3.4 (javascript 5.5, python 3.4)",
-     "Unit size: ★★★★★ 4.6 (javascript 5.5, python 4.6)",
-     "Unit complexity: ★★★★★ 4.7 (javascript 5.5, python 4.7)",
-     "Unit interfacing: ★★★☆☆ 3.5 (javascript 5.5, python 3.4)",
+     "Unit size: ★★★★☆ 4.5 (javascript 5.5, python 4.5)",
+     "Unit complexity: ★★★★★ 4.6 (javascript 5.5, python 4.6)",
+     "Unit interfacing: ★★☆☆☆ 2.2 (javascript 5.5, python 2.1)",
      "Module coupling: ★★★★★ 5.5 (python 5.5)",
-     "Component independence: ★★★☆☆ 3.0 (python 3.0)",
-     "Component entanglement: ★★★☆☆ 2.8 (python 2.8)",
-     "Lever: component independence in python, about 140 lines to fix for half a star",
-     "Lever: duplication in python, about 90 lines to fix for half a star",
-     "Lever: unit size in python, about 225 lines to fix for half a star"
+     "Component independence: ★★☆☆☆ 2.3 (python 2.3)",
+     "Component entanglement: ★★★☆☆ 3.1 (python 3.1)",
+     "Lever: component independence in python, about 225 lines to fix for half a star",
+     "Lever: unit interfacing in python, about 25 lines to fix for half a star",
+     "Lever: duplication in python, about 83 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -780,8 +804,9 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "fail",
-    "message": "Multiple risky coding patterns were detected (5 findings across 157 scanned source files). Review them against OWASP secure coding guidance.",
+    "message": "Multiple risky coding patterns were detected (6 findings across 160 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
+     "Dynamic code execution: karma.conf.js",
      "Possible hardcoded secret: src/openvtb/accounts/tests/factories.py",
      "Possible hardcoded secret: src/openvtb/components/berichten/api/tests/test_auth.py",
      "Possible hardcoded secret: src/openvtb/components/taken/api/tests/test_auth.py",
@@ -799,58 +824,58 @@
     "status": "fail",
     "message": "API Design Rules violations found across 3 specification(s): 43 issue(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./berichttypen/{uuid}.delete (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /berichten/api/v1 \"/berichten/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./berichttypen/{uuid}.delete (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /berichten/api/v1 \"/berichten/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/berichten/openapi.yaml)",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_ExterneTaakPolymorphicSerializer @ components.schemas.Base_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/PaginatedURLTaakListResponseList @ components.schemas.PaginatedURLTaakListResponseList (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/PatchedURLTaakPartialUpdateRequest @ components.schemas.PatchedURLTaakPartialUpdateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaak @ components.schemas.URLTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakCreateRequest @ components.schemas.URLTaakCreateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakCreateResponse @ components.schemas.URLTaakCreateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakListResponse @ components.schemas.URLTaakListResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakPartialUpdateResponse @ components.schemas.URLTaakPartialUpdateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakRetrieveResponse @ components.schemas.URLTaakRetrieveResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakUpdateRequest @ components.schemas.URLTaakUpdateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakUpdateResponse @ components.schemas.URLTaakUpdateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/betaaltaak_ExterneTaakPolymorphicSerializer @ components.schemas.betaaltaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_BetaalTaak @ components.schemas.details_BetaalTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_FormulierTaak @ components.schemas.details_FormulierTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_URLTaak @ components.schemas.details_URLTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/formuliertaak_ExterneTaakPolymorphicSerializer @ components.schemas.formuliertaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/urltaak_ExterneTaakPolymorphicSerializer @ components.schemas.urltaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /taken/api/v1 \"/taken/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_ExterneTaakPolymorphicSerializer @ components.schemas.Base_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/PaginatedURLTaakListResponseList @ components.schemas.PaginatedURLTaakListResponseList (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/PatchedURLTaakPartialUpdateRequest @ components.schemas.PatchedURLTaakPartialUpdateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaak @ components.schemas.URLTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakCreateRequest @ components.schemas.URLTaakCreateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakCreateResponse @ components.schemas.URLTaakCreateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakListResponse @ components.schemas.URLTaakListResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakPartialUpdateResponse @ components.schemas.URLTaakPartialUpdateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakRetrieveResponse @ components.schemas.URLTaakRetrieveResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakUpdateRequest @ components.schemas.URLTaakUpdateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakUpdateResponse @ components.schemas.URLTaakUpdateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/betaaltaak_ExterneTaakPolymorphicSerializer @ components.schemas.betaaltaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_BetaalTaak @ components.schemas.details_BetaalTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_FormulierTaak @ components.schemas.details_FormulierTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_URLTaak @ components.schemas.details_URLTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/formuliertaak_ExterneTaakPolymorphicSerializer @ components.schemas.formuliertaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/urltaak_ExterneTaakPolymorphicSerializer @ components.schemas.urltaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /taken/api/v1 \"/taken/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/taken/openapi.yaml)",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/GeoJSONGeometry @ components.schemas.GeoJSONGeometry (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /verzoeken/api/v1 \"/verzoeken/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)"
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/GeoJSONGeometry @ components.schemas.GeoJSONGeometry (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /verzoeken/api/v1 \"/verzoeken/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/83972bfe288e5d2f7f4345e4e891529b4a1d0535/src/openvtb/components/verzoeken/openapi.yaml)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -913,41 +938,8 @@
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
     "status": "warn",
-    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer.",
     "evidence": [
-     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
-     "Found path segment \"ui\" in build.js",
-     "Found path segment \"ui\" in requirements",
-     "Found path segment \"ui\" in requirements/base.in",
-     "Found path segment \"ui\" in requirements/base.txt",
-     "Found path segment \"ui\" in requirements/ci.txt",
-     "Found path segment \"ui\" in requirements/dev.in",
-     "Found path segment \"ui\" in requirements/dev.txt",
-     "Found path segment \"ui\" in requirements/docs.in",
-     "Found path segment \"ui\" in requirements/production.txt",
-     "Found path segment \"ui\" in requirements/staging.txt",
-     "Found path segment \"ui\" in requirements/test-tools.in",
-     "Found path segment \"ui\" in requirements/test.txt",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"admin\" in src/openvtb/scss/admin/_admin_theme.scss",
-     "Found path segment \"admin\" in src/openvtb/scss/admin/_app_overrides.scss",
-     "Found path segment \"admin\" in src/openvtb/scss/admin/_vars.scss",
-     "Found path segment \"admin\" in src/openvtb/scss/admin/admin_overrides.scss",
-     "Found path segment \"admin\" in src/openvtb/scss/admin/themes",
-     "Found path segment \"admin\" in src/openvtb/scss/admin/themes/_dark.scss",
-     "Found path segment \"admin\" in src/openvtb/scss/admin/themes/_light.scss",
-     "Found path segment \"admin\" in src/openvtb/static/img/admin/calendar-alt-regular.svg",
-     "Found path segment \"admin\" in src/openvtb/static/img/admin/clock-regular.svg",
-     "Found path segment \"admin\" in src/openvtb/static/img/admin/edit-regular.svg",
-     "Found path segment \"admin\" in src/openvtb/static/img/admin/plus-square-regular.svg",
-     "Found path segment \"admin\" in src/openvtb/static/img/admin/trash-alt-regular.svg",
-     "Found path segment \"admin\" in src/openvtb/templates/admin/base_site.html",
-     "Found path segment \"admin\" in src/openvtb/templates/admin/login.html",
-     "Found path segment \"admin\" in src/openvtb/templates/admin/verzoeken",
-     "Found path segment \"admin\" in src/openvtb/templates/admin/verzoeken/verzoektype",
-     "Found path segment \"admin\" in src/openvtb/templates/admin/verzoeken/verzoektype/object_history.html",
-     "Found path segment \"admin\" in src/openvtb/templates/admin/verzoeken/verzoektype/submit_line.html",
-     "Found path segment \"admin\" in src/openvtb/templates/hijack/contrib/admin/button.html",
      "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
      "Found \"register\" in repository metadata and docs",
      "Found path segment \"api\" in src/openvtb/components/berichten/api/__init__.py",
@@ -955,20 +947,6 @@
      "Found path segment \"api\" in src/openvtb/components/berichten/api/schema.py",
      "Found path segment \"api\" in src/openvtb/components/berichten/api/serializers.py",
      "Found path segment \"api\" in src/openvtb/components/berichten/api/tests",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/__init__.py",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_get.yaml",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_invalid_token.yaml",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_client_credentials_token.yaml",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_oidc_create_user_false.yaml",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_username_password.yaml",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_auth.py",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_bericht.py",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_berichttype.py",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_cloudevents.py",
-     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_filters.py",
      "Found path segment \"api\" in src/openvtb/components/berichten/api/urls.py",
      "Found path segment \"api\" in src/openvtb/components/berichten/api/viewsets.py",
      "Found path segment \"api\" in src/openvtb/components/taken/api/__init__.py",
@@ -976,23 +954,6 @@
      "Found path segment \"api\" in src/openvtb/components/taken/api/schema.py",
      "Found path segment \"api\" in src/openvtb/components/taken/api/serializers.py",
      "Found path segment \"api\" in src/openvtb/components/taken/api/tests",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/__init__.py",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_get.yaml",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_invalid_token.yaml",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_client_credentials_token.yaml",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_oidc_create_user_false.yaml",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_username_password.yaml",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_auth.py",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_betaaltaak.py",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_cloudevents.py",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_externetaak.py",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_externetaak_validators.py",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_filters.py",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_formuliertaak.py",
-     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_urltaak.py",
      "Found path segment \"api\" in src/openvtb/components/taken/api/urls.py",
      "Found path segment \"api\" in src/openvtb/components/taken/api/utils.py",
      "Found path segment \"api\" in src/openvtb/components/taken/api/validators.py",
@@ -1002,27 +963,11 @@
      "Found path segment \"api\" in src/openvtb/components/verzoeken/api/schema.py",
      "Found path segment \"api\" in src/openvtb/components/verzoeken/api/serializers.py",
      "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/__init__.py",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_get.yaml",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_invalid_token.yaml",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_client_credentials_token.yaml",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_oidc_create_user_false.yaml",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_username_password.yaml",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_auth.py",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_filters.py",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_verzoek.py",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_verzoek_validators.py",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_verzoektype.py",
-     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_verzoektypeversion.py",
      "Found path segment \"api\" in src/openvtb/components/verzoeken/api/urls.py",
      "Found path segment \"api\" in src/openvtb/components/verzoeken/api/utils.py",
      "Found path segment \"api\" in src/openvtb/components/verzoeken/api/validators.py",
      "Found path segment \"api\" in src/openvtb/components/verzoeken/api/viewsets.py",
      "Found \"api\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs",
      "Found \"zaak\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
@@ -1047,26 +992,14 @@
     "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
+    "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "npm Open VTB: not measured: HTTP 405 (2026-11-19)",
-     "Docker Hub maykinmedia/open-vtb: 7,285 pulls in total (2026-11-19)",
+     "Docker Hub maykinmedia/open-vtb: 7,308 pulls in total (2026-11-19)",
      "GitHub maykinmedia/open-vtb: 3 stars, 1 forks, 0 watchers (2026-11-19)",
      "GitHub commits maykinmedia/open-vtb: 6 contributors, 5 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-19)"
     ],
     "usage": {
      "sources": [
-      {
-       "id": "npm",
-       "kind": "downloads",
-       "source": "npm",
-       "subject": "Open VTB",
-       "url": "https://www.npmjs.com/package/Open VTB",
-       "caveat": "Counts every download of the package, including CI builds and mirrors, not installations.",
-       "measuredAt": "2026-11-19",
-       "figures": [],
-       "notMeasured": "HTTP 405"
-      },
       {
        "id": "dockerhub:maykinmedia/open-vtb",
        "kind": "containers",
@@ -1078,7 +1011,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 7285
+         "value": 7308
         }
        ]
       },
@@ -1134,9 +1067,267 @@
       }
      ]
     }
+   },
+   {
+    "id": "projecthealth",
+    "title": "Project health (CHAOSS)",
+    "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
+    "status": "info",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "evidence": [],
+    "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
+    "metrics": [
+     {
+      "id": "contributor-absence-factor",
+      "name": "Contributor Absence Factor",
+      "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 5 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "target": {
+       "text": "at least 2 people",
+       "met": false
+      }
+     },
+     {
+      "id": "organizational-diversity",
+      "name": "Organizational Diversity",
+      "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (296 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (5 authors), with 100% of the 275 commits whose organisation is known; 7% of the commits come from 1 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "target": {
+       "text": "at least 2 organisations",
+       "met": false
+      }
+     },
+     {
+      "id": "change-request-closure-ratio",
+      "name": "Change Request Closure Ratio",
+      "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
+      "value": "0.92",
+      "explanation": "22 change requests were closed (merged or not) and 24 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "target": {
+       "text": "at least 0.8",
+       "met": true
+      }
+     },
+     {
+      "id": "time-to-first-response",
+      "name": "Time to First Response",
+      "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
+      "value": "median 8 minutes",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-21 and 2026-11-12. 12 got a response; 3 had none yet. Bots are left out.",
+      "target": {
+       "text": "at most 48 hours",
+       "met": true
+      }
+     },
+     {
+      "id": "issue-response-time",
+      "name": "Issue Response Time",
+      "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
+      "value": "no response",
+      "explanation": "None of the 15 latest issues opened by people between 2026-08-21 and 2026-11-12 got a comment from anyone but its author.",
+      "target": {
+       "text": "at most 120 hours",
+       "met": false
+      }
+     },
+     {
+      "id": "release-frequency",
+      "name": "Release Frequency",
+      "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
+      "value": "2 in 12 months",
+      "explanation": "2 final releases were published in the last 12 months, about one every 183 days, counted from the version tags. The latest final release is from 2026-10-06. Drafts and pre-releases are left out.",
+      "target": {
+       "text": "at least 4 releases in 12 months",
+       "met": false
+      }
+     }
+    ],
+    "sla": {
+     "notMeasured": null,
+     "from": "2026-08-21",
+     "to": "2026-11-19",
+     "categories": [
+      {
+       "category": "feature-request",
+       "label": "Feature request",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 37,
+       "response": {
+        "measured": 4,
+        "median": 32.5,
+        "worst": 45.1,
+        "breaches": 20,
+        "waiting": 18
+       },
+       "fix": null
+      },
+      {
+       "category": "unclassified",
+       "label": "Unclassified",
+       "respondDays": 10,
+       "fixDays": null,
+       "count": 6,
+       "response": {
+        "measured": 1,
+        "median": 1,
+        "worst": 1,
+        "breaches": 5,
+        "waiting": 5
+       },
+       "fix": null
+      }
+     ],
+     "openBreachCount": 17,
+     "openBreaches": [
+      {
+       "title": "Implement `django-jsonform` in admin for different task type",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/18",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2025-11-18T09:43:34.000Z"
+      },
+      {
+       "title": "Documenteren van afspraken en 'buiten scope'",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/108",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-04-21T13:49:24.000Z"
+      },
+      {
+       "title": "Add type checking with pyright",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/138",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-07-07T09:00:43.000Z"
+      },
+      {
+       "title": "Bepalen: toevoegen taaktype UploadUitvoering",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/144",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-07-09T11:31:36.000Z"
+      },
+      {
+       "title": "Add 'Berichtenbox'-validation service",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/156",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-07-20T14:15:49.000Z"
+      },
+      {
+       "title": "Patroonbeschrijvingen opnemen in documentatie",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/198",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-10-01T08:41:04.000Z"
+      },
+      {
+       "title": "Betaaltaak: transactieReferentie toevoegen",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/201",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-10-14T06:09:30.000Z"
+      },
+      {
+       "title": "Conceptueel informatiemodel MijnTaken v0.6.0 (o.b.v. OpenVTB 0.2.0)",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/207",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-10-22T12:23:53.000Z"
+      },
+      {
+       "title": "Hoe KVK registreren",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/208",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-10-26T10:27:11.000Z"
+      },
+      {
+       "title": "Zoeken in taken",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/210",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-05T09:45:24.000Z"
+      },
+      {
+       "title": "Zoeken op delen van bericht onderwerp",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/211",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-09T15:28:54.000Z"
+      },
+      {
+       "title": "Verrijken van taken voor presentatie en klantnotificaties",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/212",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-12T16:00:44.000Z"
+      },
+      {
+       "title": "Rechtmatigheid en doelmatigheid: positionering van procedurecontext",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/213",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-12T16:01:16.000Z"
+      },
+      {
+       "title": "Inhoudelijke taaktypen naast technische taaksoorten",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/214",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-12T16:02:04.000Z"
+      },
+      {
+       "title": "Security updates: certifi (emSign root with compromised intermediates), djangorestframework, dnspython",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/215",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-11-17T08:45:16.000Z"
+      },
+      {
+       "title": "CI fails on Ubuntu 26.04 runners: renamed libxml2/xmlsec packages",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/217",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-11-17T09:33:21.000Z"
+      },
+      {
+       "title": "Automated performance measurement in CI",
+       "url": "https://github.com/maykinmedia/open-vtb/issues/225",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-11-19T10:19:12.000Z"
+      }
+     ],
+     "fixesByRelease": 0,
+     "fixesByClose": 0,
+     "notes": [
+      "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "15 of 43 issues were opened by the maintainers themselves; they have a fix term but no response term."
+     ]
+    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "standards",
+    "title": "Supported standards",
+    "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+    "status": "info",
+    "message": "No publiccode.yml found, so no standards are declared.",
+    "evidence": [],
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 8.3
+  "durationSeconds": 9.2,
+  "scanMode": "full",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:f7c7af5529028bfc2db09b440daff30f",
+  "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
 }
