@@ -401,7 +401,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
           "Artifact Hub scans the images of every chart version with Trivy. It takes the images from a dry run of the chart with its default values, or from the artifacthub.io/images annotation in Chart.yaml. The latest version is scanned again every day.",
           "Pass: the latest version has no critical vulnerabilities. The result shows the counts per severity per image, the date of the scan and the link to the package. Fail: no package on Artifact Hub, or at least one critical vulnerability.",
           "Not measured, shown as a warning and never as a pass: the version is older than one year, it uses more than 15 images, the images are private or excluded, the scanner is switched off, or there is no report yet. Artifact Hub skips images over 4 GiB without saying so; the checker names every image that is missing from the report.",
-          "A pass rates 5, a warning 3 and a fail 1. The criterion is mandatory from 19 May 2027. Until then a fail is a warning and does not count against the verdict.",
+          "A pass rates 5.5, a warning 3 and a fail 0.5. The criterion is mandatory from 19 May 2027. Until then a fail is a warning and does not count against the verdict.",
         ],
         counted: true,
         sources: [SOURCES.artifactHubSecurity, SOURCES.artifactHubImages, SOURCES.trivy],
