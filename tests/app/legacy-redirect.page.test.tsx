@@ -31,8 +31,8 @@ describe("redirect pages of the static export", () => {
     const { history } = await pagesIn("static");
     const { container } = render(history());
 
-    expect(container.querySelector("meta[http-equiv='refresh']")?.getAttribute("content")).toBe("0; url=/components");
-    expect(container.querySelector("script")?.innerHTML).toContain('location.replace("/components" + location.search');
+    expect(container.querySelector("meta[http-equiv='refresh']")?.getAttribute("content")).toBe("0; url=/components/");
+    expect(container.querySelector("script")?.innerHTML).toContain('location.replace("/components/" + location.search');
     expect(screen.getByText("History is now called Components.")).toBeTruthy();
     expect(screen.getByRole("link", { name: "Go to the new page" }).getAttribute("href")).toBe("/components");
   });
@@ -57,7 +57,7 @@ describe("redirect pages of the static export", () => {
     const { history } = await pagesIn("static");
     const { container } = render(history());
     expect(container.querySelector("meta[http-equiv='refresh']")?.getAttribute("content")).toBe(
-      "0; url=/CommonGroundChecker/components"
+      "0; url=/CommonGroundChecker/components/"
     );
   });
 });

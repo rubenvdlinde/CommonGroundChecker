@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getRepositories, type RepoSummary } from "@/lib/apiClient";
+import { connection } from "next/server";
+import type { RepoSummary } from "@/lib/apiClient";
 import {
   BASISSET_REPOSITORY_URL,
   basissetOverview,
@@ -8,9 +9,9 @@ import {
   type CheckedRepository,
   type VersionComparison,
 } from "@/lib/basisset";
+import { dataSource } from "@/lib/dataSource";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { repositoryRunHref } from "@/lib/repositoryRun";
-
-export const dynamic = "force-dynamic";
 
 const COMPARISON_LABELS: Record<VersionComparison, string> = {
   equal: "the same version",
@@ -92,11 +93,13 @@ function Row({ row }: { row: BasissetOverviewRow }) {
 
 /** Every entry of the Common Ground basisset, with the component in the checker that matches it. */
 export default async function BasissetPage() {
+  // On the server the page renders per request; the static export renders it once, at build time.
+  if (!IS_STATIC_SITE) await connection();
   const basissetLoad = loadBasisset();
   let repositories: RepoSummary[] = [];
   let repositoriesError = false;
   try {
-    repositories = await getRepositories(50);
+    repositories = await dataSource().listRepositories({ limit: 50 });
   } catch {
     repositoriesError = true;
   }

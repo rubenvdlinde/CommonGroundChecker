@@ -13,7 +13,8 @@ interface LegacyRedirectProps {
  * neither runs.
  */
 export default function LegacyRedirect({ to, notice }: LegacyRedirectProps) {
-  const target = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${to}`;
+  // The export is built with trailingSlash, so every page is a directory.
+  const target = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${to.replace(/\/?$/, "/")}`;
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 space-y-3">
       <meta httpEquiv="refresh" content={`0; url=${target}`} />

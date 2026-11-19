@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { PROVIDERS_PATH } from "@/lib/routes";
 import { SERVICE_LABELS, contactHref, loadProviders } from "@/lib/serviceProviders";
 import type { ProviderService } from "@/lib/staticSite/config";
@@ -8,9 +9,13 @@ interface ProviderPageProps {
   params: Promise<{ slug: string }>;
 }
 
+/** The one page a static export without providers builds, since an export needs at least one page per route. */
+export const NO_PROVIDER_SLUG = "none";
+
 /** Built from the component list in both modes; a new provider arrives with a new build. */
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
-  return (await loadProviders()).map((provider) => ({ slug: provider.slug }));
+  const params = (await loadProviders()).map((provider) => ({ slug: provider.slug }));
+  return params.length === 0 && IS_STATIC_SITE ? [{ slug: NO_PROVIDER_SLUG }] : params;
 }
 
 export const dynamicParams = false;

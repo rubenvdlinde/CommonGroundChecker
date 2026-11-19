@@ -6,6 +6,7 @@ import { cleanup, render, screen, within } from "@testing-library/react";
 const getRepositories = vi.hoisted(() => vi.fn());
 const loadBasisset = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/apiClient", () => ({ getRepositories }));
+vi.mock("next/server", () => ({ connection: vi.fn().mockResolvedValue(undefined) }));
 vi.mock("@/lib/basisset", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/basisset")>()),
   loadBasisset,
@@ -42,7 +43,7 @@ describe("BasissetPage", () => {
     expect(within(openZaak).getByRole("link", { name: "open-zaak/open-zaak" }).getAttribute("href")).toBe("/components/open-zaak/open-zaak");
     expect(screen.getByRole("list", { name: "At another address for OpenRegister" }).textContent).toContain("ConductionNL/openregister");
     expect(rows.some((row) => row.textContent?.includes("OpenFormulieren") && row.textContent.includes("Next to basisset"))).toBe(true);
-    expect(getRepositories).toHaveBeenCalledWith(50);
+    expect(getRepositories).toHaveBeenCalledWith(50, undefined);
   });
 
   it("says when the list cannot be read", async () => {

@@ -55,6 +55,14 @@ describe("ProviderPage", () => {
     expect(await generateStaticParams()).toEqual([]);
   });
 
+  it("builds one placeholder page in a static export without providers, which needs a page per route", async () => {
+    useList("empty.yml");
+    vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "static");
+    vi.resetModules();
+    const staticPage = await import("@/app/providers/[slug]/page");
+    expect(await staticPage.generateStaticParams()).toEqual([{ slug: staticPage.NO_PROVIDER_SLUG }]);
+  });
+
   it("shows the provider's services, website, contact and date, and the components it serves", async () => {
     useList("repositories.yml");
     render(await ProviderPage({ params: Promise.resolve({ slug: "maykin-media" }) }));
