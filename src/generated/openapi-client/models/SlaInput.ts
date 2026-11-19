@@ -4,7 +4,7 @@
 /* eslint-disable */
 export type SlaInput = {
     /**
-     * Who agreed the SLA, for example VNG
+     * Who contracts the maintainer, usually a municipality, on the VNG model contract
      */
     party: string;
     maintainer: string;

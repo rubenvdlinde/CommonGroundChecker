@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { minUsers } from "@/lib/maintained";
+import { minUsers, organisationsLabel } from "@/lib/maintained";
 import { RATING_DOCS } from "@/lib/ratingDocs";
 
 export const metadata: Metadata = {
@@ -79,9 +79,11 @@ export default function RatingGuidePage() {
           <li>
             <strong>A component is Maintained</strong>, the level above suitable, when it is suitable for Common
             Ground, its publiccode.yml declares the development status stable and at least{" "}
-            {minUsers()} organisations under usedBy, and an SLA is valid. The usedBy list is self-declared by the
-            maintainers and not verified. An SLA is valid up to and including its end date. The minimum is a
-            proposal: a component with one user is not yet a shared component. The checker counts usage only here:
+            {organisationsLabel(minUsers())} under usedBy, and there is a valid SLA with a maintainer, on the VNG
+            model contract. VNG does not contract the maintainer: municipalities do, on the VNG model contracts and
+            framework agreements. The usedBy list is self-declared by the maintainers and not verified. An SLA is
+            valid up to and including its end date. The minimum follows the Common Ground standard put to the VNG
+            ALV: a component is proven in practice by one or more municipalities. The checker counts usage only here:
             it never gives stars and never counts in a rating.
           </li>
         </ul>

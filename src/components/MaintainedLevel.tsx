@@ -1,4 +1,4 @@
-import type { MaintainedLevelResult } from "@/lib/maintained";
+import { organisationsLabel, type MaintainedLevelResult } from "@/lib/maintained";
 import type { Endorsement } from "@/lib/types";
 
 interface MaintainedLevelProps {
@@ -51,7 +51,7 @@ export default function MaintainedLevel({ level, endorsement, minUsers }: Mainta
       <LevelRow
         title="Maintained"
         reached={level.maintained}
-        detail={`Suitable for Common Ground, stable, used by at least ${minUsers} organisations declared in publiccode.yml and maintained under a valid SLA.${
+        detail={`Suitable for Common Ground, stable, used by at least ${organisationsLabel(minUsers)} declared in publiccode.yml, and a valid SLA with a maintainer, on the VNG model contract.${
           level.sla ? ` SLA: ${level.sla.party} with ${level.sla.maintainer}, until ${level.sla.until}.` : ""
         }`}
         reasons={level.reasons}

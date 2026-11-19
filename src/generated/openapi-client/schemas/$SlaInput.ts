@@ -6,7 +6,7 @@ export const $SlaInput = {
     properties: {
         party: {
             type: 'string',
-            description: `Who agreed the SLA, for example VNG`,
+            description: `Who contracts the maintainer, usually a municipality, on the VNG model contract`,
             isRequired: true,
         },
         maintainer: {
