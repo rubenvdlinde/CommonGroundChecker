@@ -46,7 +46,7 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
       },
       {
         id: "maintenance",
-        label: "Maintained",
+        label: "Maintenance contract",
         explanation:
           "Reads maintenance from publiccode.yml: passes only on maintenance under contract with at least one valid contractor (a name, an end date that has not passed, a valid email address if given). Any other declaration fails and says what is missing or invalid.",
       },

@@ -105,6 +105,15 @@ describe("RatingGuidePage", () => {
       CHECKLIST_CHANGE_PROPOSAL_URL
     );
   });
+
+  it("calls suitable for Common Ground the programme's threshold, not advice and not a listing condition", () => {
+    render(<RatingGuidePage />);
+
+    const text = document.body.textContent ?? "";
+    expect(text).toMatch(/threshold the Common Ground programme uses to decide whether to adopt\s+a component as supported/);
+    expect(text).toMatch(/It is not a condition for being listed/);
+    expect(text).not.toMatch(/advice/i);
+  });
 });
 
 describe("CategoryDocPage", () => {
