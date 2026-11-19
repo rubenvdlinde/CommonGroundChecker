@@ -281,7 +281,7 @@ export default function HistoryPageClient({
                 key={`${option.sort}-${option.direction}`}
                 href={hrefWith({ sort: option.sort, direction: option.direction })}
                 aria-current={isActive ? "true" : undefined}
-                className={`inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border transition-colors ${
+                className={`inline-flex items-center min-h-[44px] sm:min-h-0 text-xs font-semibold px-2 py-0.5 rounded-full border transition-colors ${
                   isActive
                     ? "border-cg-lightblue text-cg-blue bg-cg-lightblue/10"
                     : "border-gray-300 text-gray-600 bg-white hover:border-cg-lightblue hover:text-cg-blue"
@@ -372,7 +372,7 @@ export default function HistoryPageClient({
 
       <section
         aria-label="Repositories"
-        className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
+        className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6"
       >
         {(query || filtered) && !error && sortedRepositories.length > 0 && (
           <p role="status" className="text-xs text-gray-500 mb-3">
@@ -451,7 +451,7 @@ export default function HistoryPageClient({
                     className="block min-w-0 flex-1 border border-gray-200 rounded-xl px-4 py-3 hover:border-cg-lightblue hover:bg-gray-50 transition-colors"
                   >
                     <div className="flex items-start justify-between gap-3 flex-wrap">
-                      <div className="flex items-start gap-3">
+                      <div className="flex min-w-0 items-start gap-3">
                         <RepoLogo logoUrl={repository.logoUrl ?? null} name={displayName} size={40} />
                         <div>
                           <p className="flex flex-wrap items-baseline gap-x-2 font-semibold text-gray-800">
@@ -473,7 +473,7 @@ export default function HistoryPageClient({
                           {repository.shortDescription && (
                             <p className="text-sm text-gray-600">{repository.shortDescription}</p>
                           )}
-                          <p className="text-xs text-gray-500">{repository.repoUrl}</p>
+                          <p className="break-all text-xs text-gray-500">{repository.repoUrl}</p>
                         </div>
                       </div>
                       <div className="text-right text-xs text-gray-500">

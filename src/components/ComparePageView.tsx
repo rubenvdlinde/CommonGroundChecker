@@ -89,7 +89,7 @@ function TableHead({ a, b, first }: { a: string; b: string; first: string }) {
 
 function RatingTable({ caption, rows, a, b }: { caption: string; rows: RatingRow[]; a: string; b: string }) {
   return (
-    <table className="w-full table-fixed text-sm">
+    <table className="w-full table-fixed text-xs sm:text-sm">
       <caption className="pb-1 text-left text-sm font-semibold text-gray-800">{caption}</caption>
       <TableHead a={a} b={b} first="Rating" />
       <tbody>
@@ -383,7 +383,7 @@ function Comparison({ a, b, functionalityNames }: { a: CompareSide; b: CompareSi
             {a.name} scores better on {tally.a}, {b.name} on {tally.b}, and they are equal on {tally.equal}.{" "}
             {tally["not-comparable"]} cannot be compared: informative, not applicable or measured for one of them only.
           </p>
-          <table className="w-full table-fixed text-sm">
+          <table className="w-full table-fixed text-xs sm:text-sm">
             <caption className="sr-only">Every criterion, with the result of each component</caption>
             <TableHead a={a.name} b={b.name} first="Criterion" />
             <tbody>
