@@ -25,6 +25,10 @@ export type CheckResult = {
      * Ratings from 0.5 to 5.5 the check measures for aspects of the rating model, by key
      */
     aspectRatings?: Record<string, Rating>;
+    /**
+     * For a mandatory criterion in its transition period at the time of the check: the date it becomes mandatory. Until then a fail is a warning.
+     */
+    mandatoryFrom?: string;
 };
 export namespace CheckResult {
     export enum requirementLevel {

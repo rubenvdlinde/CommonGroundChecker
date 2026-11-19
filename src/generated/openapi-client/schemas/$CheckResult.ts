@@ -57,5 +57,10 @@ export const $CheckResult = {
                 type: 'Rating',
             },
         },
+        mandatoryFrom: {
+            type: 'string',
+            description: `For a mandatory criterion in its transition period at the time of the check: the date it becomes mandatory. Until then a fail is a warning.`,
+            format: 'date',
+        },
     },
 } as const;

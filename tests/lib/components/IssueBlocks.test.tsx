@@ -240,3 +240,45 @@ describe("IssueBlocks", () => {
     expect(toggle.getAttribute("aria-expanded")).toBe("true");
   });
 });
+
+describe("a mandatory criterion in its transition period", () => {
+  afterEach(cleanup);
+
+  const inTransition = (status: CheckStatus) =>
+    result("license", "mandatory", status, { title: "License file", mandatoryFrom: "2027-03-01" });
+
+  it("is a warning, not an error, when it fails", () => {
+    const { errors, warnings } = splitIssues([inTransition("fail")]);
+    expect(errors).toEqual([]);
+    expect(warnings.map(({ result: entry }) => entry.id)).toEqual(["license"]);
+    expect(countIssues([inTransition("fail")], 4, { passed: true, reasons: [] })).toEqual({ errors: 0, warnings: 1 });
+  });
+
+  it("is an error again once it no longer carries a transition date", () => {
+    expect(splitIssues([result("license", "mandatory", "fail")]).errors).toHaveLength(1);
+  });
+
+  it("says in the warnings block when it becomes mandatory", () => {
+    render(<IssueBlocks results={[inTransition("fail")]} />);
+
+    const warnings = screen.getByRole("region", { name: /1 warning: missing or incomplete items/i });
+    expect(within(warnings).getByText("Becomes mandatory on 1 March 2027")).toBeTruthy();
+    expect(screen.queryByRole("region", { name: /missing mandatory items/i })).toBeNull();
+  });
+
+  it("shows its result card as a warning that says when it becomes mandatory", () => {
+    render(<ResultCard {...inTransition("fail")} />);
+
+    const toggle = screen.getByRole("button");
+    expect(within(toggle).getByText("Warning")).toBeTruthy();
+    expect(within(toggle).queryByText("Fail")).toBeNull();
+    expect(within(toggle).getByText("Becomes mandatory on 1 March 2027")).toBeTruthy();
+    expect(within(toggle).queryByText("Mandatory")).toBeNull();
+  });
+
+  it("shows a passing result card as a pass", () => {
+    render(<ResultCard {...inTransition("pass")} />);
+
+    expect(within(screen.getByRole("button")).getByText("Pass")).toBeTruthy();
+  });
+});

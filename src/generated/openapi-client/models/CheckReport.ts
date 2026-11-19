@@ -14,6 +14,10 @@ export type CheckReport = {
     repo: string;
     checkedAt: string;
     scoringConfigId?: string | null;
+    /**
+     * The checklist version the analysis was measured against, for example 2026.1
+     */
+    checklistVersion?: string;
     score: number;
     rating?: Rating;
     categoryRatings?: CategoryRatings;

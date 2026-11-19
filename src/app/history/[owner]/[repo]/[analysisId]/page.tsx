@@ -11,7 +11,13 @@ import { isRating } from "@/lib/ratings";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import type { CheckReport, CheckResult, StarRating } from "@/lib/types";
 import type { RepoMeta } from "@/generated/openapi-client";
-import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "@/lib/criteria";
+import {
+  CATEGORY_ORDER,
+  RESULT_CATEGORY_BY_ID,
+  RESULT_ORDER_BY_ID,
+  checklistVersionLabel,
+  isMandatoryFromDate,
+} from "@/lib/criteria";
 
 interface AnalysisDetailPageProps {
   params: Promise<{
@@ -65,6 +71,7 @@ function normalizeResults(raw: unknown): CheckResult[] {
             : undefined,
         rating: isRating(item.rating) ? item.rating : undefined,
         measurements: parseMeasurements(item.measurements),
+        mandatoryFrom: isMandatoryFromDate(item.mandatoryFrom) ? item.mandatoryFrom : undefined,
       } satisfies CheckResult;
     });
 }
@@ -177,6 +184,7 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
         <p className="text-xs text-gray-500">
           Checked at {new Date(analysis.checkedAt).toLocaleString("nl-NL")}
         </p>
+        <p className="text-xs text-gray-500">{checklistVersionLabel(analysis.checklistVersion)}</p>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
           <RatingSummary rating={rating} endorsement={endorsement} score={analysis.score} />
           <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
@@ -250,6 +258,7 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
                         evidence={result.evidence}
                         referenceUrl={result.referenceUrl}
                         starRating={result.starRating ?? statusToStars(result.status)}
+                        mandatoryFrom={result.mandatoryFrom}
                       />
                     ))}
                   </div>

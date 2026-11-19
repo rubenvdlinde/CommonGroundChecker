@@ -33,6 +33,9 @@ export const $RepoAnalysisInput = {
         endorsement: {
             type: 'Endorsement',
         },
+        checklistVersion: {
+            type: 'ChecklistVersion',
+        },
         issueCounts: {
             type: 'IssueCounts',
         },

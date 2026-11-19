@@ -13,6 +13,7 @@ vi.mock("next/navigation", () => ({ notFound }));
 import RatingGuidePage from "@/app/docs/page";
 import CategoryDocPage, { generateStaticParams } from "@/app/docs/[category]/page";
 import { ALL_SOURCES, RATING_DOCS, aspectDocHref } from "@/lib/ratingDocs";
+import { CHECKLIST_CHANGE_PROPOSAL_URL, CHECKLIST_VERSION } from "@/lib/criteria";
 
 const EXPECTED_MODEL: Record<string, string[]> = {
   security: [
@@ -91,6 +92,17 @@ describe("RatingGuidePage", () => {
     }
     expect(screen.getByRole("heading", { level: 2, name: "How ratings work" })).toBeTruthy();
     expect(screen.getByText(/not a SIG rating and not a certification/)).toBeTruthy();
+  });
+
+  it("explains the checklist versions and the transition period, and links the change proposal form", () => {
+    render(<RatingGuidePage />);
+
+    expect(screen.getByRole("heading", { level: 2, name: "The checklist and its versions" })).toBeTruthy();
+    expect(screen.getByText(new RegExp(`This is version ${CHECKLIST_VERSION.replace(".", "\\.")}\\.`))).toBeTruthy();
+    expect(screen.getByText(/Until that date a fail shows as a warning/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Propose a change to the checklist" }).getAttribute("href")).toBe(
+      CHECKLIST_CHANGE_PROPOSAL_URL
+    );
   });
 });
 

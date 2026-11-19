@@ -34,6 +34,11 @@ export interface CheckResult {
   aspectRatings?: Record<string, number | null>;
   /** The measured values behind the check's rating, with the thresholds per star level */
   measurements?: MeasurementGroup[];
+  /**
+   * For a mandatory criterion in its transition period at the time of the check:
+   * the date (YYYY-MM-DD) it becomes mandatory. Until then a fail is a warning.
+   */
+  mandatoryFrom?: string;
 }
 
 /** A star level that has a threshold of its own; below 2 stars is 1 star. */
@@ -97,6 +102,8 @@ export interface CheckReport {
   repo: string;
   checkedAt: string;
   scoringConfigId: string | null;
+  /** The checklist version the analysis was measured against */
+  checklistVersion: string;
   score: number; // 0-100
   /** Overall rating from 0.5 to 5.5, or null when no criterion counts */
   rating: number | null;

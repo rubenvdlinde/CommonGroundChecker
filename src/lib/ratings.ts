@@ -1,5 +1,5 @@
 import type { AspectRating, CheckResult, CheckStatus, Endorsement, RequirementLevel } from "./types";
-import { CATEGORY_ORDER, CATEGORY_WEIGHTS } from "./criteria";
+import { CATEGORY_ORDER, CATEGORY_WEIGHTS, isInTransition, isMandatoryFromDate } from "./criteria";
 import { ASPECT_MODEL, resolveCategory, type AspectDefinition, type CategoryAspects } from "./aspects";
 import { formatStars, minimumRatingFor, ratingToStars } from "./stars";
 
@@ -35,7 +35,7 @@ export interface RatingConfig {
 
 export type RatingInput = Pick<
   CheckResult,
-  "id" | "status" | "requirementLevel" | "rating" | "starRating" | "aspectRatings"
+  "id" | "status" | "requirementLevel" | "rating" | "starRating" | "aspectRatings" | "mandatoryFrom"
 > & { title?: string; message?: string };
 
 /** An analysis as the backend stores it; older analyses have no ratings. */
@@ -95,6 +95,16 @@ function weightedMean(items: Array<{ value: number; weight: number }>): number |
 
 function requirementLevelOf(result: RatingInput, config: RatingConfig): RequirementLevel {
   return result.requirementLevel ?? config.criterionConfigByCheckId[result.id]?.requirementLevel ?? "recommended";
+}
+
+/** A mandatory criterion in its transition period: it does not count as mandatory yet. */
+function inTransition(result: RatingInput, config: RatingConfig): boolean {
+  return isInTransition({ requirementLevel: requirementLevelOf(result, config), mandatoryFrom: result.mandatoryFrom });
+}
+
+/** A mandatory criterion that fails and already counts as mandatory. */
+function failsMandatory(result: RatingInput, config: RatingConfig): boolean {
+  return result.status === "fail" && requirementLevelOf(result, config) === "mandatory" && !inTransition(result, config);
 }
 
 /** The criterion weight of a result that counts: not informative, weight above 0 and measured. */
@@ -206,7 +216,8 @@ export function computeRatings(
  * mandatory criterion, a rating that is too low, in the words of the
  * Maintained criterion why there is no valid maintenance contract, and a
  * maintainability below 4 stars or not measured. A scan without the
- * maintenance criterion is not judged on it.
+ * maintenance criterion is not judged on it. A mandatory criterion in its
+ * transition period does not count yet: its fail is a warning, not a reason.
  */
 export function computeEndorsement(
   results: RatingInput[],
@@ -214,7 +225,7 @@ export function computeEndorsement(
   config: RatingConfig
 ): Endorsement {
   const reasons = results
-    .filter((result) => result.status === "fail" && requirementLevelOf(result, config) === "mandatory")
+    .filter((result) => failsMandatory(result, config))
     .map((result) => `Mandatory criterion fails: ${result.title ?? result.id}`);
 
   if (rating === null) {
@@ -224,8 +235,8 @@ export function computeEndorsement(
   }
 
   const maintenance = results.find((result) => result.id === "maintenance");
-  const alreadyCounted = maintenance?.status === "fail" && requirementLevelOf(maintenance, config) === "mandatory";
-  if (maintenance && maintenance.status !== "pass" && !alreadyCounted) {
+  const alreadyCounted = maintenance !== undefined && failsMandatory(maintenance, config);
+  if (maintenance && maintenance.status !== "pass" && !alreadyCounted && !inTransition(maintenance, config)) {
     reasons.push(
       maintenance.status === "fail"
         ? (maintenance.message ?? "No valid maintenance contract")
@@ -279,6 +290,7 @@ function parseStoredResults(raw: unknown): RatingInput[] {
           ? (item.starRating as RatingInput["starRating"])
           : undefined,
       aspectRatings: parseRatingMap(item.aspectRatings) ?? undefined,
+      mandatoryFrom: isMandatoryFromDate(item.mandatoryFrom) ? item.mandatoryFrom : undefined,
     }));
 }
 
