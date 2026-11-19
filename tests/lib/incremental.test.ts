@@ -1,3 +1,4 @@
+import { criterionRating } from "@/lib/ratings";
 import { describe, expect, it } from "vitest";
 import {
   CRITERION_FRESHNESS_BY_CHECK_ID,
@@ -148,6 +149,14 @@ describe("reuseResult", () => {
     expect(copy).toMatchObject({ id: "complexity", status: "fail", rating: 2.1, starRating: 2, reusedFrom: from });
     expect(copy).not.toHaveProperty("mandatoryFrom");
     expect(copy).not.toHaveProperty("requirementLevel");
+  });
+
+  it("drops stars that were filled in from the status, so a reused pass rates like a measured one", () => {
+    const from = { analysisId: "a", checkedAt: "2026-11-18T02:00:00Z", commit: COMMIT };
+    const copy = reuseResult(result("tests", { status: "pass", starRating: 5 }), from);
+
+    expect(copy).not.toHaveProperty("starRating");
+    expect(criterionRating(copy)).toBe(5.5);
   });
 });
 

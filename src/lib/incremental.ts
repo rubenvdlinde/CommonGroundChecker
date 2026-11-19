@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { criterionFreshness } from "./checkers/config";
+import { isRating } from "./ratings";
 import type { CheckResult, ReusedFrom, ScanMode } from "./types";
 
 /** A full scan at least this often, also when nothing changed. */
@@ -96,6 +97,8 @@ export function reuseResult(result: CheckResult, from: ReusedFrom): CheckResult 
   const copy: CheckResult = { ...result, reusedFrom: from };
   delete copy.mandatoryFrom;
   delete copy.requirementLevel;
+  // Stars without a continuous rating were filled in from the status after rating, so they are set again.
+  if (!isRating(copy.rating)) delete copy.starRating;
   return copy;
 }
 
