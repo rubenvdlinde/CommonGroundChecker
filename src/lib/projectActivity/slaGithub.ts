@@ -164,7 +164,7 @@ export async function fetchGitHubSlaInput(fullName: string, now: Date): Promise<
     ]);
     const closedInWindow = closed.nodes.filter((node) => node.closedAt !== null && Date.parse(node.closedAt) >= since);
     const notes = [
-      `Measured over the open issues and the issues closed in the last ${WINDOW_DAYS} days, in working days (Monday to Friday, Europe/Amsterdam; public holidays count as working days).`,
+      `Measured over the open issues and the issues closed in the last ${WINDOW_DAYS} days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).`,
     ];
     if (!releases.measured) {
       notes.push(`Stable releases could not be read (${releases.reason}), so no fix is dated by a release.`);

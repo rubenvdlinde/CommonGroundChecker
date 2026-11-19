@@ -3,6 +3,8 @@ import { DEFAULT_SLA_TERMS, effectiveSlaLabels } from "@/lib/maintenanceTerms";
 import {
   addWorkingDays,
   classifyIssue,
+  dutchPublicHolidays,
+  easterSunday,
   parseSla,
   slaNotMeasured,
   summarizeSla,
@@ -35,6 +37,47 @@ describe("working days", () => {
   it("keeps the local clock across the switch to winter time", () => {
     // Friday 23 October 12:00 CEST (10:00 UTC) plus 1 working day is Monday 26 October 12:00 CET (11:00 UTC).
     expect(addWorkingDays(new Date("2026-10-23T10:00:00Z"), 1)).toEqual(new Date("2026-10-26T11:00:00Z"));
+  });
+});
+
+describe("Dutch public holidays", () => {
+  it("computes Easter Sunday, also in early and late years", () => {
+    expect(easterSunday(2008).toISOString().slice(0, 10)).toBe("2008-03-23");
+    expect(easterSunday(2024).toISOString().slice(0, 10)).toBe("2024-03-31");
+    expect(easterSunday(2025).toISOString().slice(0, 10)).toBe("2025-04-20");
+    expect(easterSunday(2026).toISOString().slice(0, 10)).toBe("2026-04-05");
+    expect(easterSunday(2038).toISOString().slice(0, 10)).toBe("2038-04-25");
+  });
+
+  it("lists the national holidays of 2026", () => {
+    expect([...dutchPublicHolidays(2026)].sort()).toEqual([
+      "2026-01-01",
+      "2026-04-03",
+      "2026-04-05",
+      "2026-04-06",
+      "2026-04-27",
+      "2026-05-05",
+      "2026-05-14",
+      "2026-05-24",
+      "2026-05-25",
+      "2026-12-25",
+      "2026-12-26",
+    ]);
+  });
+
+  it("moves Koningsdag to 26 April when the 27th is a Sunday, and keeps Bevrijdingsdag every year", () => {
+    expect(dutchPublicHolidays(2025).has("2025-04-26")).toBe(true);
+    expect(dutchPublicHolidays(2025).has("2025-04-27")).toBe(false);
+    expect(dutchPublicHolidays(2027).has("2027-05-05")).toBe(true);
+  });
+
+  it("leaves the holidays out of working days", () => {
+    // Thursday 24 December 2026 12:00 plus 1 working day skips Christmas (Friday) and the weekend.
+    expect(addWorkingDays(new Date("2026-12-24T11:00:00Z"), 1)).toEqual(new Date("2026-12-28T11:00:00Z"));
+    // Tuesday 5 May 2026 (Bevrijdingsdag) is not a working day.
+    expect(workingDaysBetween(new Date("2026-05-04T22:00:00Z"), new Date("2026-05-05T22:00:00Z"))).toBe(0);
+    // Easter week 2026: Thursday 2 April to Tuesday 7 April is 2 working days (Thursday and Tuesday).
+    expect(workingDaysBetween(new Date("2026-04-01T22:00:00Z"), new Date("2026-04-07T22:00:00Z"))).toBe(2);
   });
 });
 

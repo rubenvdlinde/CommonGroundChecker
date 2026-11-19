@@ -50,7 +50,8 @@ export const SLA_CATEGORY_LABELS: Record<SlaCategory, string> = {
 };
 
 /**
- * Terms in working days (Monday to Friday, Europe/Amsterdam). `fixDays` is
+ * Terms in working days (Monday to Friday, Europe/Amsterdam, without Dutch
+ * public holidays). `fixDays` is
  * "next-release" when the fix is due in the next stable release, and null
  * when the category has no fix term (development, outside maintenance).
  */
