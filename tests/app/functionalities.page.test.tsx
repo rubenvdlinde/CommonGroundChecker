@@ -6,6 +6,8 @@ import { cleanup, render, screen, within } from "@testing-library/react";
 
 const listRepositories = vi.fn();
 
+vi.mock("next/server", () => ({ connection: vi.fn().mockResolvedValue(undefined) }));
+
 vi.mock("@/lib/dataSource", () => ({
   dataSource: () => ({ listRepositories }),
 }));

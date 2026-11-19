@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { connection } from "next/server";
 import LandscapeComponentLinks from "@/components/LandscapeComponentLinks";
-import { STATIC_SITE_LINKS } from "@/lib/dataSource/mode";
+import { IS_STATIC_SITE, STATIC_SITE_LINKS } from "@/lib/dataSource/mode";
 import { loadFunctionalityLandscape } from "@/lib/functionalities/landscapeData";
 import { landscapeCounts, type LandscapeEntry } from "@/lib/functionalities/overlap";
 import { functionalityHref } from "@/lib/routes";
@@ -35,6 +36,8 @@ function EntryList({ entries, analysed }: { entries: LandscapeEntry[]; analysed:
 }
 
 export default async function FunctionalitiesPage() {
+  // The server reads the component names from the API on each request; the static export at build time.
+  if (!IS_STATIC_SITE) await connection();
   const { taxonomy, entries, analysed, mapped, drafts } = await loadFunctionalityLandscape();
   const counts = landscapeCounts(entries);
   const overlap = entries.filter((entry) => entry.kind === "overlap");
