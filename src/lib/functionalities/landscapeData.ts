@@ -1,8 +1,18 @@
 /** The data of the functionality pages, in both modes read when the page is built or rendered. */
+import type { RepoSummary } from "@/generated/openapi-client";
 import { dataSource } from "@/lib/dataSource";
 import { loadLandscapeComponents, loadTaxonomy } from "./load";
 import { buildLandscape, type LandscapeEntry } from "./overlap";
 import type { FunctionalityTaxonomy } from "./taxonomy";
+
+/** The components the data source lists; none when it cannot be read, so the page still renders from the config. */
+export async function listRepositoriesOrNone(): Promise<RepoSummary[]> {
+  try {
+    return await dataSource().listRepositories({ limit: 50 });
+  } catch {
+    return [];
+  }
+}
 
 export interface FunctionalityLandscape {
   taxonomy: FunctionalityTaxonomy;
@@ -17,9 +27,7 @@ export interface FunctionalityLandscape {
 export async function loadFunctionalityLandscape(): Promise<FunctionalityLandscape> {
   const [taxonomy, repositories] = await Promise.all([
     loadTaxonomy(),
-    dataSource()
-      .listRepositories({ limit: 50 })
-      .catch(() => []),
+    listRepositoriesOrNone(),
   ]);
   const components = await loadLandscapeComponents(repositories);
   return {

@@ -8,6 +8,7 @@ import { minUsers } from "@/lib/maintained";
 import type { ComponentLandscape } from "@/components/FunctionalitiesSection";
 import { publiccodeFeatures } from "@/lib/compareSide";
 import { standardsOfResults } from "@/lib/componentStandards";
+import { listRepositoriesOrNone } from "@/lib/functionalities/landscapeData";
 import { listedFunctionalitiesOf, loadListedFunctionalities, loadTaxonomy } from "@/lib/functionalities/load";
 import type { RepositoryRun } from "@/lib/repositoryRun";
 
@@ -16,9 +17,7 @@ async function loadLandscape(run: RepositoryRun): Promise<ComponentLandscape> {
   const [taxonomy, listed, repositories] = await Promise.all([
     loadTaxonomy(),
     loadListedFunctionalities(),
-    dataSource()
-      .listRepositories({ limit: 50 })
-      .catch(() => []),
+    listRepositoriesOrNone(),
   ]);
   const names = new Map(taxonomy.functionalities.map((item) => [item.id, item.name]));
   const own = listedFunctionalitiesOf(listed, run.repository.repoUrl);
