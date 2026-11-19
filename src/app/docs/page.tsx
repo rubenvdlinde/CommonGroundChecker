@@ -82,10 +82,15 @@ export default function RatingGuidePage() {
             <strong>A component is suitable for Common Ground</strong> when every mandatory item is present, the
             overall rating is at least 2.5, publiccode.yml declares a valid maintenance contract, and the estimated
             maintainability is at least 4 stars (a rating of 3.5 or more). 2.5 is 3 stars, as the SIG models count 3
-            stars from 2.5. 4 stars is the level SIG and TÜViT certify maintainability at. A scan without a
+            stars from 2.5. 4 stars is the level at which SIG and TÜViT certify maintainability. The checker does not
+            certify: certification is a manual assessment by SIG and TÜViT, and the checker only estimates whether a
+            component looks ready for it. Whether adoption into Common Ground needs a SIG certificate is up to VNG as
+            regievoerder. The ALV papers do not ask for one. A scan without a
             maintainability rating, for example because no source code in a supported language was found, is not
-            yet suitable. The maintainability rating is an estimate that is not calibrated against real audits. The
-            verdict is advice for a buyer: a component that is not yet suitable is still listed.
+            yet suitable. The maintainability rating is an estimate that is not calibrated against real audits.
+            Suitable for Common Ground is the threshold the Common Ground programme uses to decide whether to adopt
+            a component as supported. It is not a condition for being listed: a component that is not yet suitable
+            is still listed.
           </li>
         </ul>
         <p className="text-gray-700">

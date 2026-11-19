@@ -92,6 +92,23 @@ describe("RatingGuidePage", () => {
     expect(screen.getByRole("heading", { level: 2, name: "How ratings work" })).toBeTruthy();
     expect(screen.getByText(/not a SIG rating and not a certification/)).toBeTruthy();
   });
+
+  it("calls suitable for Common Ground the programme's threshold, not advice and not a listing condition", () => {
+    render(<RatingGuidePage />);
+
+    const text = document.body.textContent ?? "";
+    expect(text).toMatch(/threshold the Common Ground programme uses to decide whether to adopt\s+a component as supported/);
+    expect(text).toMatch(/It is not a condition for being listed/);
+    expect(text).not.toMatch(/advice/i);
+  });
+
+  it("says the checker does not certify and leaves a SIG certificate to the regievoerder", () => {
+    render(<RatingGuidePage />);
+
+    const text = document.body.textContent ?? "";
+    expect(text).toMatch(/4 stars is the level at which SIG and TÜViT certify maintainability\. The checker does not\s+certify/);
+    expect(text).toMatch(/up to VNG as\s+regievoerder\. The ALV papers do not ask for one\./);
+  });
 });
 
 describe("CategoryDocPage", () => {
