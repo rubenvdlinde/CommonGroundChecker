@@ -111,7 +111,7 @@ export const PROFILE_FIELDS: ProfileField[] = [
     keys: "usedBy",
     what: [
       "The names of the organisations that use the component in production.",
-      "The publiccode.yml standard marks usedBy as deprecated from 0.8 on. The reference parser warns, but still accepts the file. The checker reads it until the standard offers a replacement.",
+      "The publiccode.yml standard marks usedBy as deprecated from 0.8 on and names no replacement key. The proposal behind it moves usage to the catalogue level. The reference parser warns, but still accepts the file. The checker reads it until there is a replacement.",
     ],
     example: "usedBy:\n  - Gemeente Voorbeeld\n  - Gemeente Proefstad",
     usedBy: "The Approved level counts at least two users. The usage overview and the organisation pages list them.",
@@ -124,6 +124,7 @@ export const PROFILE_FIELDS: ProfileField[] = [
     what: [
       "One supports entry for the layer of the five-layer model: interaction, process, integration, service or data, after the # of the model's URI.",
       "Declare one layer. Two or more layers give a warning.",
+      "The model's page on commonground.nl no longer resolves. The URI still works as an identifier, until VNG agrees a new one.",
     ],
     example: 'supports:\n  - id: "https://commonground.nl/cms/view/54476261/5-lagen-model#service"',
     usedBy:
