@@ -6,6 +6,7 @@ import FollowControl from "@/components/FollowControl";
 import IssueBlocks from "@/components/IssueBlocks";
 import LifecycleSection, { type RepositoryLifecycle } from "@/components/LifecycleSection";
 import MaintainedSection from "@/components/MaintainedSection";
+import FunctionalitiesSection, { type ComponentLandscape } from "@/components/FunctionalitiesSection";
 import ProvidersSection from "@/components/ProvidersSection";
 import PublicCodeSection from "@/components/PublicCodeSection";
 import RatingHistoryChart from "@/components/RatingHistoryChart";
@@ -27,6 +28,8 @@ interface RepositoryRunPageProps {
   maintained?: RepositoryMaintained;
   /** Shown on the repository page: the Common Ground status and the basisset */
   lifecycle?: RepositoryLifecycle;
+  /** Shown on the repository page: functionalities, standards and the compare control */
+  landscape?: ComponentLandscape;
 }
 
 export interface RepositoryMaintained {
@@ -68,7 +71,7 @@ function StaticFollowSection({ extras }: { extras: RepositoryExtras | null }) {
  * latest run, a run page the requested one. Both list every run and graph
  * the overall rating over time.
  */
-export default function RepositoryRunPage({ owner, repo, result, maintained, lifecycle }: RepositoryRunPageProps) {
+export default function RepositoryRunPage({ owner, repo, result, maintained, lifecycle, landscape }: RepositoryRunPageProps) {
   if (result.kind !== "found") {
     return (
       <div className="max-w-4xl mx-auto px-6 py-10 space-y-4">
@@ -139,6 +142,8 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
       )}
 
       {extras && <ProvidersSection providers={extras.providers} listUrl={STATIC_SITE_LINKS.componentList} />}
+
+      {landscape && <FunctionalitiesSection landscape={landscape} />}
 
       {isOlder && (
         <p className="text-sm text-amber-900 bg-amber-50 border border-amber-300 rounded-lg px-4 py-3">

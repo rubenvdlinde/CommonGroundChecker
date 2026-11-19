@@ -5,6 +5,39 @@ import { dataSource } from "@/lib/dataSource";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { staticRepositoryParams } from "@/lib/dataSource/staticDataSource";
 import { minUsers } from "@/lib/maintained";
+import type { ComponentLandscape } from "@/components/FunctionalitiesSection";
+import { publiccodeFeatures } from "@/lib/compareSide";
+import { standardsOfResults } from "@/lib/componentStandards";
+import { listedFunctionalitiesOf, loadListedFunctionalities, loadTaxonomy } from "@/lib/functionalities/load";
+import type { RepositoryRun } from "@/lib/repositoryRun";
+
+async function loadLandscape(run: RepositoryRun): Promise<ComponentLandscape> {
+  const componentKey = `${run.repository.owner}/${run.repository.name}`;
+  const [taxonomy, listed, repositories] = await Promise.all([
+    loadTaxonomy(),
+    loadListedFunctionalities(),
+    dataSource()
+      .listRepositories({ limit: 50 })
+      .catch(() => []),
+  ]);
+  const names = new Map(taxonomy.functionalities.map((item) => [item.id, item.name]));
+  const own = listedFunctionalitiesOf(listed, run.repository.repoUrl);
+  const results = run.selected?.results ?? [];
+  return {
+    componentKey,
+    functionalities: own.functionalities.filter((id) => names.has(id)).map((id) => ({ id, name: names.get(id) as string })),
+    draft: own.functionalitiesDraft,
+    features: publiccodeFeatures(results),
+    standards: run.selected?.detailAvailable === false ? null : standardsOfResults(results),
+    compareOptions: repositories
+      .filter((repository) => repository.latestAnalysis && `${repository.owner}/${repository.name}` !== componentKey)
+      .map((repository) => {
+        const key = `${repository.owner}/${repository.name}`;
+        return { key, label: repository.displayName ? `${repository.displayName} (${key})` : key };
+      })
+      .sort((a, b) => a.label.localeCompare(b.label, "en", { sensitivity: "base" })),
+  };
+}
 import { organisationSlugsByKey } from "@/lib/organisations";
 import { lifecycleOfRun, loadRepositoryRun } from "@/lib/repositoryRun";
 
@@ -41,10 +74,11 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
   const result = await loadRepositoryRun(owner, repo);
   if (result.kind !== "found") return <RepositoryRunPage owner={owner} repo={repo} result={result} />;
 
-  const [usage, organisationSlugs, basisset] = await Promise.all([
+  const [usage, organisationSlugs, basisset, landscape] = await Promise.all([
     loadUsage(result.run.repository.id),
     loadOrganisationSlugs(),
     loadBasisset(),
+    loadLandscape(result.run),
   ]);
   const today = new Date().toISOString().slice(0, 10);
   const minimumUsers = minUsers();
@@ -64,6 +98,7 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
         retiredAt: run.repository.retiredAt,
         adminControls: !IS_STATIC_SITE,
       }}
+      landscape={landscape}
     />
   );
 }
