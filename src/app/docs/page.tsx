@@ -91,8 +91,8 @@ export default function RatingGuidePage() {
         </h2>
         <p className="text-gray-700">
           What the checker measures decides which components are called suitable for Common Ground. Buyers,
-          suppliers and municipalities rely on it, so the checklist works like a standard. The community decides
-          what is in it, through an open process.
+          suppliers and municipalities rely on it, so the checklist works like a standard. It changes through the
+          change process of the Common Ground standard put to the VNG ALV of 11 December 2026.
         </p>
         <ul className="list-disc pl-6 space-y-2 text-gray-700">
           <li>
@@ -109,8 +109,13 @@ export default function RatingGuidePage() {
           <li>
             <strong>Proposals.</strong> Anyone can propose a change: a new criterion, another threshold or weight, or
             the removal of a criterion. A proposal says what changes, why, what it does to the components that were
-            measured, and which transition period it proposes. It stays open for comments for a fixed period before
-            a decision is made.
+            measured, and which transition period it proposes.
+          </li>
+          <li>
+            <strong>Decisions.</strong> VNG, as regievoerder, organises the input of municipalities and decides within
+            the mandate of the ALV. The VNG board sets the priorities, advised by the Commissie
+            Informatiesamenleving. The College voor Dienstverleningszaken assesses new standards and is the route to
+            national standardisation. A change outside the mandate goes to the ALV.
           </li>
         </ul>
         <p className="text-gray-700">
