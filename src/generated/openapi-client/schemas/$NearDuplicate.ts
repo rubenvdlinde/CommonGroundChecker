@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export const $NearDuplicate = {
-    description: `Organisations listed separately whose names differ only in accents, punctuation or a prefix such as Gemeente`,
+    description: `Organisations listed separately whose names differ only in accents, punctuation, a prefix such as Gemeente, or one typo`,
     properties: {
         names: {
             type: 'array',
