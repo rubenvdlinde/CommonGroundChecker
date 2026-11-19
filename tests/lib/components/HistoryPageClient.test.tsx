@@ -57,6 +57,24 @@ describe("HistoryPageClient", () => {
     expect(screen.getByText("Latest score: 71")).toBeTruthy();
   });
 
+  it("shows the open and overdue drops on a repository's card", () => {
+    render(
+      <HistoryPageClient
+        sort="date"
+        direction="desc"
+        repositories={[
+          repository({ id: "late", name: "late", openDropCount: 2, overdueDropCount: 1 }),
+          repository({ id: "open", name: "open", openDropCount: 1, overdueDropCount: 0 }),
+          repository({ id: "fine", name: "fine", openDropCount: 0, overdueDropCount: 0 }),
+        ]}
+      />
+    );
+
+    expect(screen.getByText("2 open drops, 1 overdue")).toBeTruthy();
+    expect(screen.getByText("1 open drop")).toBeTruthy();
+    expect(screen.queryAllByText(/open drop/)).toHaveLength(2);
+  });
+
   it("marks followed repositories and shows their next check", () => {
     render(
       <HistoryPageClient

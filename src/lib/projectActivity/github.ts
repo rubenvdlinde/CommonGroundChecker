@@ -38,7 +38,7 @@ interface FetchOptions {
   retryDelayMs?: number;
 }
 
-async function ghGet(path: string): Promise<{ status: number; data: unknown }> {
+export async function ghGet(path: string): Promise<{ status: number; data: unknown }> {
   const res = await fetch(`${BASE}${path}`, {
     headers: githubHeaders(),
     next: { revalidate: REVALIDATE_SECONDS },
@@ -212,7 +212,7 @@ interface ReleasePage {
 }
 
 /** Posts a GraphQL query; GraphQL reports query errors in the body with status 200. */
-async function ghGraphql<T>(
+export async function ghGraphql<T>(
   query: string,
   variables: Record<string, unknown>
 ): Promise<{ data?: T; errors?: Array<{ message?: string }> }> {

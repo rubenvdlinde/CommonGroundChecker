@@ -328,6 +328,32 @@ describe("runChecks", () => {
     expect(report.results.find((result) => result.id === "license")?.starRating).toBe(5);
   });
 
+  it("passes the KPI targets, the SLA terms and the repository's labels to project health", async () => {
+    const kpiTargets = { "release-frequency": { min: 4 } };
+    const slaTerms = { bug: { respondDays: 5, fixDays: "next-release" } };
+    mocks.checkProjectHealth.mockResolvedValue(resultFor("projecthealth", "info"));
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-1",
+      config: {
+        criterionConfigByCheckId: criterionConfig(1, "mandatory"),
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+        kpiTargets,
+        slaTerms,
+      },
+    });
+
+    await runChecks("https://github.com/org/repo", { slaLabels: { p0: "blocking-bug" } });
+
+    expect(mocks.checkProjectHealth).toHaveBeenCalledWith(expect.anything(), expect.anything(), expect.any(Date), {
+      kpiTargets,
+      slaTerms,
+      slaLabels: { p0: "blocking-bug" },
+    });
+  });
+
   it("rates the aspects, the categories and the component, and judges the endorsement", async () => {
     const configById = criterionConfig(0);
     configById.maintainability = { weight: 1, requirementLevel: "recommended" };

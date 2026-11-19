@@ -3,6 +3,15 @@ import { getAdminScoring } from "@/lib/apiClient";
 import type { ScoringConfigResponse } from "@/generated/openapi-client";
 import { CATEGORY_WEIGHTS } from "../criteria";
 import type { CriteriaCategory, CategoryWeights } from "../criteria";
+import {
+  DEFAULT_KPI_TARGETS,
+  DEFAULT_SLA_TERMS,
+  parseKpiTargets,
+  parseSlaTerms,
+  type KpiTarget,
+  type SlaCategory,
+  type SlaTerm,
+} from "../maintenanceTerms";
 
 export interface CriterionConfig {
   weight: number;
@@ -16,6 +25,8 @@ interface ScoringConfigOverrides {
   complexityThreshold?: number;
   complexityMaxCcnThreshold?: number;
   spectralRulesetSource?: string;
+  kpiTargets?: Record<string, KpiTarget>;
+  slaTerms?: Record<SlaCategory, SlaTerm>;
 }
 
 export interface ScoringConfig {
@@ -25,6 +36,10 @@ export interface ScoringConfig {
   complexityThreshold: number;
   complexityMaxCcnThreshold: number;
   spectralRulesetSource: string;
+  /** Proposed targets of the project health KPIs; informative */
+  kpiTargets: Record<string, KpiTarget>;
+  /** Proposed SLA terms for issues, in working days; informative */
+  slaTerms: Record<SlaCategory, SlaTerm>;
 }
 
 export interface ActiveScoringConfig {
@@ -153,6 +168,8 @@ function buildScoringConfig(overrides?: ScoringConfigOverrides): ScoringConfig {
     spectralRulesetSource: sanitizeSpectralRulesetSource(
       overrides?.spectralRulesetSource
     ),
+    kpiTargets: overrides?.kpiTargets ?? DEFAULT_KPI_TARGETS,
+    slaTerms: overrides?.slaTerms ?? DEFAULT_SLA_TERMS,
   };
 }
 
@@ -232,6 +249,8 @@ function parseScoringConfigResponse(response: ScoringConfigResponse) {
     complexityThreshold: response.complexityThreshold,
     complexityMaxCcnThreshold: response.complexityMaxCcnThreshold,
     spectralRulesetSource: response.spectralRulesetSource,
+    kpiTargets: parseKpiTargets(response.kpiTargets),
+    slaTerms: parseSlaTerms(response.slaTerms),
   });
 }
 

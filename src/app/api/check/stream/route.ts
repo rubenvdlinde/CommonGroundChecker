@@ -1,4 +1,5 @@
 ﻿import { runChecks } from "@/lib/checkers";
+import { readSlaLabelsOption } from "@/lib/maintenanceTerms";
 import { getSupportedProviders, resolveRepositoryContext } from "@/lib/providers";
 import type { CheckReport } from "@/lib/types";
 import type { CheckResult as ApiCheckResult } from "@/generated/openapi-client/models/CheckResult";
@@ -113,6 +114,7 @@ export async function POST(request: Request) {
             dockerLocations,
             apiSpecificationLocations,
             isRegister,
+            slaLabels: readSlaLabelsOption(body?.slaLabels),
           },
           (step, pct) => send({ step, pct })
         );

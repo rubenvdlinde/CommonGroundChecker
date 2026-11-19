@@ -87,6 +87,8 @@ interface RunChecksOptions {
   dockerLocations?: string[];
   apiSpecificationLocations?: string[];
   isRegister?: boolean;
+  /** The repository's own labels for the SLA times, on top of GitHub's default labels */
+  slaLabels?: Record<string, string> | null;
 }
 
 export async function runChecks(
@@ -155,7 +157,11 @@ export async function runChecks(
     analysePublicCode(context, tree),
     checkFiveLayer(context, tree, meta),
     checkHelmChart(context, tree, options?.helmChartLocations ?? []),
-    checkProjectHealth(context, meta),
+    checkProjectHealth(context, meta, new Date(), {
+      kpiTargets: scoringConfig.kpiTargets,
+      slaTerms: scoringConfig.slaTerms,
+      slaLabels: options?.slaLabels,
+    }),
   ]);
   const complexityPromise = checkComplexity(
     owner,

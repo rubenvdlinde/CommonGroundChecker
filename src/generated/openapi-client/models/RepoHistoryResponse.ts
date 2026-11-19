@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { MaintenanceDrop } from './MaintenanceDrop';
 import type { RepoAnalysisOutput } from './RepoAnalysisOutput';
 import type { RepoMeta } from './RepoMeta';
 export type RepoHistoryResponse = {
@@ -31,5 +32,9 @@ export type RepoHistoryResponse = {
         updatedAt: string;
     };
     analyses: Array<RepoAnalysisOutput>;
+    /**
+     * The drops of the repository, newest first
+     */
+    drops?: Array<MaintenanceDrop>;
 };
 

@@ -118,6 +118,45 @@ describe("RepoHistoryPage", () => {
     ]);
   });
 
+  it("shows the open drops with their fix-by date, and no drops card on a backend without drops", async () => {
+    getAdminScoring.mockRejectedValue(new Error("offline"));
+    getRepoHistory.mockResolvedValue({
+      repository,
+      analyses: [latest, older],
+      drops: [
+        {
+          id: "d1",
+          repoId: "repo-id",
+          analysisId: "new",
+          previousAnalysisId: "old",
+          scannedRefKind: "release",
+          kind: "verdict",
+          subject: "suitable",
+          label: "Suitable for Common Ground",
+          from: "suitable",
+          to: "not suitable",
+          detectedAt: "2026-11-11T15:39:33Z",
+          fixTermDays: 30,
+          fixBy: "2026-12-11T15:39:33Z",
+          resolvedAt: null,
+          resolvedAnalysisId: null,
+          overdue: false,
+        },
+      ],
+    });
+
+    render(await RepoHistoryPage({ params: Promise.resolve({ owner: "org", repo: "repo" }) }));
+
+    const drops = screen.getByRole("region", { name: "Drops to fix" });
+    expect(within(drops).getByText("Suitable for Common Ground")).toBeTruthy();
+    expect(within(drops).getByText("Fix by 11-12-2026 (30 days)")).toBeTruthy();
+
+    cleanup();
+    getRepoHistory.mockResolvedValue({ repository, analyses: [latest] });
+    render(await RepoHistoryPage({ params: Promise.resolve({ owner: "org", repo: "repo" }) }));
+    expect(screen.queryByRole("region", { name: "Drops to fix" })).toBeNull();
+  }, 15000);
+
   it("says so when the repository has no saved analyses", async () => {
     getRepoHistory.mockRejectedValue(new Error("not found"));
 

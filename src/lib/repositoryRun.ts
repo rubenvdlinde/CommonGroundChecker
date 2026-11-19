@@ -3,8 +3,9 @@ import { parseMeasurements, parseMetrics } from "@/lib/measurements";
 import { countIssues } from "@/lib/issues";
 import { isRating, type Ratings } from "@/lib/ratings";
 import { loadStoredRatings } from "@/lib/storedRatings";
+import { parseSla } from "@/lib/sla";
 import type { CheckReport, CheckResult, Endorsement, StarRating } from "@/lib/types";
-import type { RepoMeta } from "@/generated/openapi-client";
+import type { MaintenanceDrop, RepoMeta } from "@/generated/openapi-client";
 
 /** How many stored runs a repository page loads. */
 export const RUN_HISTORY_LIMIT = 50;
@@ -47,6 +48,8 @@ export interface RepositoryRun {
   /** The requested run, or the latest one; null when no run is stored */
   selected: SelectedRun | null;
   latestId: string | null;
+  /** Drops the backend recorded, newest first; empty on a backend without drops */
+  drops: MaintenanceDrop[];
 }
 
 export type RepositoryRunResult =
@@ -99,6 +102,7 @@ export function normalizeResults(raw: unknown): CheckResult[] {
         rating: isRating(item.rating) ? item.rating : undefined,
         measurements: parseMeasurements(item.measurements),
         metrics: parseMetrics(item.metrics),
+        sla: parseSla(item.sla),
       } satisfies CheckResult;
     });
 }
@@ -218,6 +222,7 @@ export async function loadRepositoryRun(
       runs,
       selected,
       latestId: runs[0]?.id ?? null,
+      drops: response?.drops ?? [],
     },
   };
 }

@@ -1,7 +1,8 @@
 "use client";
 
-import type { CheckStatus, ConfidenceLevel, InformativeMetric, RequirementLevel, StarRating } from "@/lib/types";
+import type { CheckStatus, ConfidenceLevel, InformativeMetric, RequirementLevel, SlaSummary, StarRating } from "@/lib/types";
 import MetricTable from "@/components/MetricTable";
+import SlaTable from "@/components/SlaTable";
 import { formatStars } from "@/lib/stars";
 import {
   CheckCircle,
@@ -27,6 +28,7 @@ interface ResultCardProps {
   referenceUrl?: string;
   starRating?: StarRating;
   metrics?: InformativeMetric[];
+  sla?: SlaSummary;
 }
 
 const REQUIREMENT_CONFIG: Record<
@@ -93,6 +95,7 @@ export default function ResultCard({
   referenceUrl,
   starRating,
   metrics,
+  sla,
 }: ResultCardProps) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -170,6 +173,8 @@ export default function ResultCard({
           <p className={`text-sm font-medium ${text}`}>{message}</p>
 
           {metrics && metrics.length > 0 && <MetricTable caption={`${title}: measured values`} metrics={metrics} />}
+
+          {sla && <SlaTable sla={sla} />}
 
           {evidence && evidence.length > 0 && (
             <div>

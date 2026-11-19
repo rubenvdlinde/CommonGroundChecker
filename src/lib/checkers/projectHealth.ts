@@ -3,6 +3,18 @@ import type { CheckResult, InformativeMetric } from "../types";
 import { fetchGitHubActivity } from "../projectActivity/github";
 import { fetchGitLabActivity } from "../projectActivity/gitlab";
 import { profileLookupLimit } from "../contributorOrganisations";
+import { fetchGitHubSlaInput } from "../projectActivity/slaGithub";
+import { withKpiTargets } from "../kpi";
+import {
+  DEFAULT_KPI_TARGETS,
+  DEFAULT_SLA_TERMS,
+  effectiveSlaLabels,
+  type KpiTarget,
+  type SlaCategory,
+  type SlaTerm,
+} from "../maintenanceTerms";
+import { slaNotMeasured, summarizeSla } from "../sla";
+import type { SlaSummary } from "../types";
 import { DAY_MS, type CommitDomains, type Measured, type ProjectActivity, type Releases, type ResponseSet } from "../projectActivity/types";
 
 export const PROJECT_HEALTH_CHECK_ID = "projecthealth";
@@ -251,7 +263,7 @@ export function projectHealthMetrics(activity: ProjectActivity, now: Date): Info
   ];
 }
 
-export function projectHealthResult(metrics: InformativeMetric[]): CheckResult {
+export function projectHealthResult(metrics: InformativeMetric[], sla?: SlaSummary): CheckResult {
   const measured = metrics.filter((metric) => metric.value !== null).length;
   return {
     id: PROJECT_HEALTH_CHECK_ID,
@@ -263,21 +275,42 @@ export function projectHealthResult(metrics: InformativeMetric[]): CheckResult {
     evidence: [],
     referenceUrl: CHAOSS_METRICS,
     metrics,
+    ...(sla ? { sla } : {}),
   };
+}
+
+export interface ProjectHealthOptions {
+  kpiTargets?: Record<string, KpiTarget>;
+  slaTerms?: Record<SlaCategory, SlaTerm>;
+  slaLabels?: Record<string, string> | null;
 }
 
 /** Measures the light CHAOSS project health set through the forge's REST API. */
 export async function checkProjectHealth(
   context: RepoContext,
   meta: RepositoryMeta,
-  now: Date = new Date()
+  now: Date = new Date(),
+  options: ProjectHealthOptions = {}
 ): Promise<CheckResult> {
   let activity: ProjectActivity;
+  let sla: SlaSummary;
   if (context.provider.id === "github") {
     const fullName = typeof meta.full_name === "string" ? meta.full_name : context.projectPath;
-    activity = await fetchGitHubActivity(fullName, now, { hasIssues: meta.has_issues !== false });
+    const hasIssues = meta.has_issues !== false;
+    const [githubActivity, slaInput] = await Promise.all([
+      fetchGitHubActivity(fullName, now, { hasIssues }),
+      hasIssues
+        ? fetchGitHubSlaInput(fullName, now)
+        : Promise.resolve({ notMeasured: "the repository has its issue tracker switched off" }),
+    ]);
+    activity = githubActivity;
+    sla =
+      "notMeasured" in slaInput
+        ? slaNotMeasured(slaInput.notMeasured, now)
+        : summarizeSla(slaInput, options.slaTerms ?? DEFAULT_SLA_TERMS, effectiveSlaLabels(options.slaLabels), now);
   } else if (context.provider.id === "gitlab") {
     activity = await fetchGitLabActivity(context.projectPath, now);
+    sla = slaNotMeasured("issue response and fix times are read from GitHub only", now);
   } else {
     const reason = `the ${context.provider.id} provider has no activity API`;
     const failed = { measured: false as const, reason };
@@ -289,6 +322,7 @@ export async function checkProjectHealth(
       issueResponses: failed,
       releases: failed,
     };
+    sla = slaNotMeasured(reason, now);
   }
-  return projectHealthResult(projectHealthMetrics(activity, now));
+  return projectHealthResult(withKpiTargets(projectHealthMetrics(activity, now), options.kpiTargets ?? DEFAULT_KPI_TARGETS), sla);
 }

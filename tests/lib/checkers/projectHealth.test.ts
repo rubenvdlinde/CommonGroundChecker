@@ -591,3 +591,86 @@ describe("checkProjectHealth on GitLab", () => {
     expect(JSON.stringify(result)).not.toMatch(/@/);
   });
 });
+
+describe("SLA times and KPI targets on GitHub", () => {
+  const token = process.env.GITHUB_TOKEN;
+
+  beforeEach(() => {
+    process.env.GITHUB_TOKEN = "test-token";
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    if (token === undefined) delete process.env.GITHUB_TOKEN;
+    else process.env.GITHUB_TOKEN = token;
+  });
+
+  const openBug = {
+    title: "Login fails",
+    url: "https://github.com/org/repo/issues/3",
+    createdAt: "2026-11-02T09:00:00Z",
+    closedAt: null,
+    stateReason: null,
+    author: { login: "reporter" },
+    issueType: null,
+    labels: { nodes: [{ name: "Bug" }] },
+    comments: {
+      nodes: [
+        { createdAt: "2026-11-02T10:00:00Z", authorAssociation: "NONE", author: { __typename: "User", login: "someone" } },
+        { createdAt: "2026-11-03T09:00:00Z", authorAssociation: "MEMBER", author: { __typename: "User", login: "maintainer" } },
+      ],
+    },
+    timelineItems: { nodes: [] },
+  };
+
+  it("measures the issues against the SLA terms with the repository's labels, and adds the KPI targets", async () => {
+    const fetchMock = mockFetch([
+      [
+        /\/graphql$/,
+        (request: GraphqlRequest & { variables: { states?: string[] } }) => {
+          if (request.query.includes("issues(")) {
+            const nodes = request.variables.states?.[0] === "OPEN" ? [{ ...openBug, labels: { nodes: [{ name: "P0" }] } }] : [];
+            return { data: { repository: { issues: { pageInfo: { hasNextPage: false, endCursor: null }, nodes } } } };
+          }
+          return releasesAnswer([], false);
+        },
+      ],
+      [/\/security-advisories\?state=published/, []],
+    ]);
+
+    const result = await checkProjectHealth(githubContext(), { full_name: "org/repo", has_issues: true }, NOW, {
+      kpiTargets: { "release-frequency": { min: 4 } },
+      slaLabels: { p0: "blocking-bug" },
+    });
+
+    expect(result.sla?.notMeasured).toBeNull();
+    expect(result.sla?.categories).toEqual([
+      expect.objectContaining({
+        category: "blocking-bug",
+        count: 1,
+        response: { measured: 1, median: 1, worst: 1, breaches: 0, waiting: 0 },
+      }),
+    ]);
+    expect(result.sla?.openBreaches).toEqual([
+      expect.objectContaining({ title: "Login fails", kind: "fix", due: "2026-11-16T09:00:00.000Z" }),
+    ]);
+    const graphqlQueries = graphqlCalls(fetchMock).map((call) => call.query);
+    expect(graphqlQueries.filter((query) => query.includes("issues("))).toHaveLength(2);
+    const release = result.metrics?.find((entry) => entry.id === "release-frequency");
+    expect(release?.target?.text).toBe("at least 4 releases in 12 months");
+    expect(result.metrics?.find((entry) => entry.id === "contributor-absence-factor")?.target).toBeUndefined();
+  });
+
+  it("says the SLA times are not measured without a token", async () => {
+    delete process.env.GITHUB_TOKEN;
+    mockFetch([]);
+
+    const result = await checkProjectHealth(githubContext(), { full_name: "org/repo", has_issues: true }, NOW);
+
+    expect(result.sla?.notMeasured).toBe("needs a GITHUB_TOKEN, because the issues are read through GraphQL");
+    expect(result.metrics?.find((entry) => entry.id === "release-frequency")?.target).toEqual({
+      text: "at least 4 releases in 12 months",
+      met: null,
+    });
+  });
+});

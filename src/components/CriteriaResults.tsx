@@ -72,6 +72,7 @@ export default function CriteriaResults({ results, categoryRatings }: CriteriaRe
                       referenceUrl={result.referenceUrl}
                       starRating={result.starRating ?? statusToStars(result.status)}
                       metrics={result.metrics}
+                      sla={result.sla}
                     />
                   ))}
                 </div>

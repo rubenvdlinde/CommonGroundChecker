@@ -54,11 +54,15 @@ export function parseMeasurements(raw: unknown): MeasurementGroup[] | undefined 
 
 function parseMetric(raw: unknown): InformativeMetric[] {
   if (!isPlainObject(raw)) return [];
-  const { id, name, referenceUrl, value, explanation } = raw;
+  const { id, name, referenceUrl, value, explanation, target } = raw;
   if (typeof id !== "string" || typeof name !== "string" || typeof explanation !== "string") return [];
   if (typeof referenceUrl !== "string" || !/^https:\/\//.test(referenceUrl)) return [];
   if (value !== null && typeof value !== "string") return [];
-  return [{ id, name, referenceUrl, value, explanation }];
+  const kpi =
+    isPlainObject(target) && typeof target.text === "string" && (typeof target.met === "boolean" || target.met === null)
+      ? { target: { text: target.text, met: target.met } }
+      : {};
+  return [{ id, name, referenceUrl, value, explanation, ...kpi }];
 }
 
 /** The informative metrics of a stored check result; malformed metrics are left out. */

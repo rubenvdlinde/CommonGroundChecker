@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CategoryRatings from "@/components/CategoryRatings";
 import CriteriaResults from "@/components/CriteriaResults";
+import DropsCard from "@/components/DropsCard";
 import FollowControl from "@/components/FollowControl";
 import IssueBlocks from "@/components/IssueBlocks";
 import RatingHistoryChart from "@/components/RatingHistoryChart";
@@ -61,7 +62,7 @@ export default function RepositoryRunPage({ owner, repo, result }: RepositoryRun
     );
   }
 
-  const { repository, repoMeta, runs, selected, latestId } = result.run;
+  const { repository, repoMeta, runs, selected, latestId, drops } = result.run;
   const analysisHref = (analysisId: string) => repositoryRunHref(repository.owner, repository.name, analysisId);
   const latestHref = repositoryRunHref(repository.owner, repository.name);
   const isOlder = selected !== null && selected.id !== latestId;
@@ -117,6 +118,8 @@ export default function RepositoryRunPage({ owner, repo, result }: RepositoryRun
       {selected && selected.results.length > 0 && (
         <IssueBlocks results={selected.results} rating={selected.rating} endorsement={selected.endorsement} />
       )}
+
+      {drops.length > 0 && <DropsCard drops={drops} />}
 
       <section aria-labelledby="rating-history-heading" className={SECTION_CLASS}>
         <h3 id="rating-history-heading" className="text-lg font-semibold text-gray-800">
