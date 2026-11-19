@@ -22,7 +22,6 @@ describe("AdminWeightsForm", () => {
     codeofconduct: 1,
     security: 1,
     fivelayer: 1,
-    openapi: 1,
     adrvalidator: 1,
     documentation: 1,
     changelog: 1,

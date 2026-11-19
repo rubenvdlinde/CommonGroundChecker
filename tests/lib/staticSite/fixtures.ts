@@ -41,5 +41,5 @@ export function report(overrides: Partial<CheckReport> = {}): CheckReport {
       maintainers: ["Maykin"],
     },
     ...overrides,
-  };
+  } as CheckReport;
 }

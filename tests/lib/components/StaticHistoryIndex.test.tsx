@@ -5,13 +5,27 @@ import { SERVER_NAV_LINKS, STATIC_NAV_LINKS } from "@/lib/navigation";
 
 describe("readHistoryParams", () => {
   it("reads sort, direction and search from the URL with the server's defaults", () => {
-    expect(readHistoryParams(new URLSearchParams(""))).toEqual({ sort: "rating", direction: "desc", query: "" });
+    const noFilter = { status: null, basisset: false };
+    expect(readHistoryParams(new URLSearchParams(""))).toEqual({ sort: "rating", direction: "desc", query: "", filter: noFilter });
     expect(readHistoryParams(new URLSearchParams("sort=score&direction=asc&q=%20zaak%20"))).toEqual({
       sort: "score",
       direction: "asc",
       query: "zaak",
+      filter: noFilter,
     });
-    expect(readHistoryParams(new URLSearchParams("sort=stars&direction=up"))).toEqual({ sort: "rating", direction: "desc", query: "" });
+    expect(readHistoryParams(new URLSearchParams("sort=stars&direction=up"))).toEqual({
+      sort: "rating",
+      direction: "desc",
+      query: "",
+      filter: noFilter,
+    });
+  });
+
+  it("reads the Common Ground status filter and the basisset chip from the URL", () => {
+    expect(readHistoryParams(new URLSearchParams("status=maintained&basisset=1")).filter).toEqual({
+      status: "maintained",
+      basisset: true,
+    });
   });
 });
 

@@ -208,7 +208,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
       "Name the organisations that use the component in usedBy in publiccode.yml.",
     ],
     publiccodeFields: ["used-by"],
-    planned: { category: "Governance", level: "informative" },
   },
   {
     id: "docker",
@@ -525,7 +524,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     why: "A project that rests on one person or one organisation is at risk when they stop.",
     tool: "the CHAOSS metrics, computed from the git history and the issue tracker",
     howToPass: ["There is nothing to pass: the criterion is informative."],
-    planned: { category: "Governance", level: "informative" },
   },
   {
     id: "semver",
@@ -575,7 +573,7 @@ function aspectRefs(id: string, planned?: PlannedCriterion): CriterionAspectRef[
   for (const category of ASPECT_MODEL) {
     for (const aspect of category.aspects) {
       const { source } = aspect;
-      const feeds = source.type === "check-aspect" ? source.checkId === id : source.checkIds.includes(id);
+      const feeds = "checkId" in source ? source.checkId === id : source.checkIds.includes(id);
       if (feeds) refs.push({ id: aspect.id, title: aspect.title, modelCategory: category.category });
     }
   }

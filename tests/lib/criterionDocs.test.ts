@@ -15,7 +15,6 @@ import { PROFILE_FIELDS } from "@/lib/publiccodeProfile";
 const PLANNED_IDS = [
   "licenceconsistency",
   "spdxheaders",
-  "usage",
   "opentrack",
   "sonarqube",
   "coupling",
@@ -25,13 +24,12 @@ const PLANNED_IDS = [
   "duplication",
   "secretscanning",
   "openssfscorecard",
-  "projecthealth",
 ];
 
 function modelIds(): string[] {
   return ASPECT_MODEL.flatMap((category) =>
     category.aspects.flatMap((aspect) =>
-      aspect.source.type === "check-aspect" ? [aspect.source.checkId] : aspect.source.checkIds
+      "checkId" in aspect.source ? [aspect.source.checkId] : aspect.source.checkIds
     )
   );
 }
@@ -70,7 +68,7 @@ describe("criterion docs coverage", () => {
       const inModel = ASPECT_MODEL.flatMap((category) =>
         category.aspects
           .filter((aspect) =>
-            aspect.source.type === "check-aspect" ? aspect.source.checkId === doc.id : aspect.source.checkIds.includes(doc.id)
+            "checkId" in aspect.source ? aspect.source.checkId === doc.id : aspect.source.checkIds.includes(doc.id)
           )
           .map((aspect) => ({ aspect: aspect.id, category: category.category }))
       );

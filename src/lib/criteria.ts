@@ -154,6 +154,8 @@ export const CRITERION_VERSIONS: CriterionVersions = {
   codeofconduct: { introducedIn: "2026.1" },
   security: { introducedIn: "2026.1" },
   semver: { introducedIn: "2026.1" },
+  usage: { introducedIn: "2026.2" },
+  projecthealth: { introducedIn: "2026.2" },
 };
 
 /** The start of a YYYY-MM-DD date in UTC, or null for anything else. */
