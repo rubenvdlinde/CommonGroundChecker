@@ -134,7 +134,7 @@ export default function UsageHistoryChart({ analyses, minUsers }: UsageHistoryCh
             strokeDasharray="4 4"
           />
           <text x={PLOT_RIGHT} y={scaleY(minUsers, max) - 4} textAnchor="end" className="fill-green-700 text-[10px]">
-            proposed minimum {minUsers}
+            minimum {minUsers}
           </text>
           <text x={PLOT_LEFT} y={CHART_HEIGHT - 8} className="fill-gray-500 text-[10px]">
             {formatDay(first.checkedAt)}
