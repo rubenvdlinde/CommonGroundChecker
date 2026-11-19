@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useId, useState } from "react";
 import ApprovalLevel from "@/components/ApprovalLevel";
 import { deleteSla, postSla, type UsageStatus } from "@/lib/apiClient";
 import { computeApproval } from "@/lib/approval";
+import { organisationHref, organisationKey } from "@/lib/organisations";
 import type { Endorsement } from "@/lib/types";
 
 interface ApprovalSectionProps {
@@ -16,6 +18,8 @@ interface ApprovalSectionProps {
   minUsers: number;
   /** Today as YYYY-MM-DD */
   today: string;
+  /** Slugs of the organisation pages by organisation key; a declared name without one is shown without a link */
+  organisationSlugs?: Record<string, string>;
 }
 
 const inputClass = "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm";
@@ -46,6 +50,7 @@ export default function ApprovalSection({
   initialUsage,
   minUsers,
   today,
+  organisationSlugs = {},
 }: ApprovalSectionProps) {
   const idPrefix = useId();
   const [usage, setUsage] = useState(initialUsage);
@@ -109,9 +114,20 @@ export default function ApprovalSection({
         </p>
         {declaredUsers.length > 0 && (
           <ul aria-label="Declared users" className="list-disc pl-5 text-sm text-gray-700 space-y-0.5">
-            {declaredUsers.map((name) => (
-              <li key={name}>{name}</li>
-            ))}
+            {declaredUsers.map((name) => {
+              const slug = organisationSlugs[organisationKey(name)];
+              return (
+                <li key={name}>
+                  {slug ? (
+                    <Link href={organisationHref(slug)} className="inline-flex items-center min-h-[44px] text-cg-lightblue hover:underline">
+                      {name}
+                    </Link>
+                  ) : (
+                    name
+                  )}
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

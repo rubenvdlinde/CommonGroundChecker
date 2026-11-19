@@ -6,7 +6,8 @@ import { cleanup, render, screen } from "@testing-library/react";
 const getRepoHistory = vi.hoisted(() => vi.fn());
 const getAdminScoring = vi.hoisted(() => vi.fn());
 const getRepositoryUsage = vi.hoisted(() => vi.fn());
-vi.mock("@/lib/apiClient", () => ({ getRepoHistory, getAdminScoring, getRepositoryUsage }));
+const getOrganisations = vi.hoisted(() => vi.fn());
+vi.mock("@/lib/apiClient", () => ({ getRepoHistory, getAdminScoring, getRepositoryUsage, getOrganisations }));
 
 import RepoHistoryPage from "@/app/history/[owner]/[repo]/page";
 
@@ -77,5 +78,24 @@ describe("RepoHistoryPage", () => {
 
     expect(screen.getByText("Usage could not be loaded from the backend.")).toBeTruthy();
     expect(screen.getByRole("list", { name: "Why it is not approved" }).textContent).toContain("Not yet suitable");
+  });
+
+  it("links the declared users to their organisation pages", async () => {
+    getAdminScoring.mockRejectedValue(new Error("offline"));
+    getRepoHistory.mockResolvedValue({
+      repository: { id: "repo-id", owner: "org", name: "repo", metadata: { topics: [], stars: 0, forks: 0 } },
+      analyses: [],
+    });
+    getRepositoryUsage.mockResolvedValue({ declaredUsers: ["Gemeente  Utrecht", "Buren"], declaredUserCount: 2, slas: [] });
+    getOrganisations.mockResolvedValue({
+      organisations: [{ name: "Gemeente Utrecht", slug: "gemeente-utrecht", componentCount: 1 }],
+      nearDuplicates: [],
+    });
+
+    render(await RepoHistoryPage({ params: Promise.resolve({ owner: "org", repo: "repo" }) }));
+
+    const users = screen.getByRole("list", { name: "Declared users" });
+    expect(users.querySelector("a")?.getAttribute("href")).toBe("/organisations/gemeente-utrecht");
+    expect(users.querySelectorAll("a")).toHaveLength(1);
   });
 });

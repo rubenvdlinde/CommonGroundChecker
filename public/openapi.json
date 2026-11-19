@@ -518,6 +518,62 @@
         }
       }
     },
+    "/api/organisations": {
+      "get": {
+        "summary": "Organisations that use followed components",
+        "description": "Aggregated over the latest analysis of every followed repository, from the organisations under usedBy in publiccode.yml. Names group when they are equal after trimming, collapsing whitespace and ignoring case. Sorted by name; there is no ranking.",
+        "responses": {
+          "200": {
+            "description": "Organisations and possible duplicates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/organisations/{slug}": {
+      "get": {
+        "operationId": "getApiOrganisation",
+        "summary": "The followed components an organisation uses",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The organisation and its components, sorted by repository name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Organisation not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/repo-history": {
       "get": {
         "summary": "Return analysis history for a repository",
@@ -1778,6 +1834,207 @@
           "declaredUsers",
           "declaredUserCount",
           "slas"
+        ]
+      },
+      "OrganisationSummary": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The most common spelling under usedBy"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "componentCount": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "slug",
+          "componentCount"
+        ]
+      },
+      "NearDuplicate": {
+        "type": "object",
+        "description": "Organisations listed separately whose names differ only in accents, punctuation or a prefix such as Gemeente",
+        "properties": {
+          "names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "slugs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "names",
+          "slugs"
+        ]
+      },
+      "OrganisationList": {
+        "type": "object",
+        "properties": {
+          "organisations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganisationSummary"
+            }
+          },
+          "nearDuplicates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NearDuplicate"
+            }
+          }
+        },
+        "required": [
+          "organisations",
+          "nearDuplicates"
+        ]
+      },
+      "OrganisationAnalysis": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "checkedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "version": {
+            "type": [
+              "string",
+              null
+            ]
+          },
+          "scannedRef": {
+            "type": [
+              "string",
+              null
+            ]
+          },
+          "scannedRefKind": {
+            "type": [
+              "string",
+              null
+            ]
+          },
+          "declaredUserCount": {
+            "type": [
+              "integer",
+              null
+            ]
+          },
+          "score": {
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CheckResult"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "checkedAt",
+          "version",
+          "scannedRef",
+          "scannedRefKind",
+          "declaredUserCount",
+          "score",
+          "results"
+        ]
+      },
+      "OrganisationComponent": {
+        "type": "object",
+        "properties": {
+          "repoId": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "repoUrl": {
+            "type": "string"
+          },
+          "slas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Sla"
+            }
+          },
+          "latestAnalysis": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/OrganisationAnalysis"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "repoId",
+          "owner",
+          "name",
+          "repoUrl",
+          "slas",
+          "latestAnalysis"
+        ]
+      },
+      "OrganisationDetail": {
+        "type": "object",
+        "properties": {
+          "organisation": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "spellings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Every spelling seen under usedBy, most common first"
+              },
+              "componentCount": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "slug",
+              "spellings",
+              "componentCount"
+            ]
+          },
+          "components": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganisationComponent"
+            }
+          }
+        },
+        "required": [
+          "organisation",
+          "components"
         ]
       }
     }

@@ -6,6 +6,8 @@ import type {
   CheckRequest,
   FollowSettings,
   FollowSettingsInput,
+  OrganisationDetail,
+  OrganisationList,
   RepoAnalysisInput,
   RepoAnalysisOutput,
   RepoHistoryResponse,
@@ -33,6 +35,8 @@ export type {
   CheckRequest,
   FollowSettings,
   FollowSettingsInput,
+  OrganisationDetail,
+  OrganisationList,
   RepoSummary,
   RepoMetadata,
   RepoAnalysisInput,
@@ -84,6 +88,24 @@ export async function getRepoHistory(owner: string, repo: string, limit = 50) {
     `/api/repo-history?owner=${encodeURIComponent(owner)}&repo=${encodeURIComponent(repo)}&limit=${limit}`
   );
   return client.default.getApiRepoHistory(owner, repo, limit);
+}
+
+export async function getOrganisations(): Promise<OrganisationList> {
+  const client = clientForRemoteCalls();
+  logApiRequest(isServer ? "remote" : "local", "GET", "/api/organisations");
+  return client.default.getApiOrganisations();
+}
+
+/** One organisation and the components it uses, or null when no followed component declares it. */
+export async function getOrganisation(slug: string): Promise<OrganisationDetail | null> {
+  const client = clientForRemoteCalls();
+  logApiRequest(isServer ? "remote" : "local", "GET", `/api/organisations/${encodeURIComponent(slug)}`);
+  try {
+    return await client.default.getApiOrganisation(slug);
+  } catch (err) {
+    if ((err as { status?: unknown }).status === 404) return null;
+    throw err;
+  }
 }
 
 export async function getAdminScoring() {

@@ -6,6 +6,8 @@ import type { CheckReport } from '../models/CheckReport';
 import type { CheckRequest } from '../models/CheckRequest';
 import type { FollowSettings } from '../models/FollowSettings';
 import type { FollowSettingsInput } from '../models/FollowSettingsInput';
+import type { OrganisationDetail } from '../models/OrganisationDetail';
+import type { OrganisationList } from '../models/OrganisationList';
 import type { RepoAnalysisInput } from '../models/RepoAnalysisInput';
 import type { RepoAnalysisOutput } from '../models/RepoAnalysisOutput';
 import type { RepoHistoryResponse } from '../models/RepoHistoryResponse';
@@ -233,6 +235,38 @@ export class DefaultService {
                 401: `Missing or invalid admin token`,
                 404: `SLA not found`,
                 503: `Admin actions are disabled because ADMIN_TOKEN is not configured`,
+            },
+        });
+    }
+    /**
+     * Organisations that use followed components
+     * Aggregated over the latest analysis of every followed repository, from the organisations under usedBy in publiccode.yml. Names group when they are equal after trimming, collapsing whitespace and ignoring case. Sorted by name; there is no ranking.
+     * @returns OrganisationList Organisations and possible duplicates
+     * @throws ApiError
+     */
+    public getApiOrganisations(): CancelablePromise<OrganisationList> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organisations',
+        });
+    }
+    /**
+     * The followed components an organisation uses
+     * @param slug
+     * @returns OrganisationDetail The organisation and its components, sorted by repository name
+     * @throws ApiError
+     */
+    public getApiOrganisation(
+        slug: string,
+    ): CancelablePromise<OrganisationDetail> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organisations/{slug}',
+            path: {
+                'slug': slug,
+            },
+            errors: {
+                404: `Organisation not found`,
             },
         });
     }

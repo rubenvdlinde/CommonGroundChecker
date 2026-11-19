@@ -4,8 +4,9 @@ import FollowControl from "@/components/FollowControl";
 import RepoMeta from "@/components/RepoMeta";
 import RatingBadge from "@/components/RatingBadge";
 import UsageHistoryChart from "@/components/UsageHistoryChart";
-import { getRepoHistory, getRepositoryUsage } from "@/lib/apiClient";
+import { getOrganisations, getRepoHistory, getRepositoryUsage } from "@/lib/apiClient";
 import { developmentStatusOf, minUsers } from "@/lib/approval";
+import { organisationSlugsByKey } from "@/lib/organisations";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import type { CheckReport } from "@/lib/types";
 import type { RepoMeta as RepoMetaType } from "@/generated/openapi-client";
@@ -126,6 +127,12 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
   } catch {
     usage = null;
   }
+  let organisationSlugs: Record<string, string> = {};
+  try {
+    organisationSlugs = Object.fromEntries(organisationSlugsByKey((await getOrganisations()).organisations ?? []));
+  } catch {
+    organisationSlugs = {};
+  }
   const minimumUsers = minUsers();
 
   return (
@@ -166,6 +173,7 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
         initialUsage={usage}
         minUsers={minimumUsers}
         today={new Date().toISOString().slice(0, 10)}
+        organisationSlugs={organisationSlugs}
       />
 
       <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">

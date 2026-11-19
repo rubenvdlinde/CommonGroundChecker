@@ -184,4 +184,18 @@ describe("ApprovalSection", () => {
 
     expect(screen.getByText("Usage could not be loaded from the backend.")).toBeTruthy();
   });
+
+  it("links each declared user that has an organisation page, and shows the others as text", () => {
+    renderSection({
+      initialUsage: { ...twoUsers, slas: [] },
+      organisationSlugs: { "gemeente utrecht": "gemeente-utrecht" },
+    });
+
+    const users = screen.getByRole("list", { name: "Declared users" });
+    expect(within(users).getByRole("link", { name: "Gemeente Utrecht" }).getAttribute("href")).toBe(
+      "/organisations/gemeente-utrecht"
+    );
+    expect(within(users).queryByRole("link", { name: "Gemeente Den Haag" })).toBeNull();
+    expect(users.textContent).toContain("Gemeente Den Haag");
+  });
 });
