@@ -29,6 +29,10 @@ export type CheckResult = {
      * For a mandatory criterion in its transition period at the time of the check: the date it becomes mandatory. Until then a fail is a warning.
      */
     mandatoryFrom?: string;
+    /**
+     * True when the criterion does not apply to this component. It then counts in no score, rating or verdict.
+     */
+    notApplicable?: boolean;
 };
 export namespace CheckResult {
     export enum requirementLevel {

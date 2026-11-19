@@ -396,7 +396,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
           },
         ],
         rating: [
-          "Only for container components: a repository with a Dockerfile, a Helm chart, or a given image or chart location. A Nextcloud app or a library is not applicable and keeps the repository dependency scan.",
+          "Only for container components: a component that publishes a container image, found by the Docker image criterion, or that has a Helm chart. A Dockerfile alone, for development or tests, does not count. For a Nextcloud app or a library the criterion does not apply: it counts in no score, rating or verdict, and the repository dependency scan stays the check that counts.",
           "The checker looks for the component's Helm package on Artifact Hub. A link to the package in the README or publiccode.yml counts first, then the repositoryID in artifacthub-repo.yml, then a package whose links point at the repository, then a package with the chart's name from the same owner. The result says how the package was matched.",
           "Artifact Hub scans the images of every chart version with Trivy. It takes the images from a dry run of the chart with its default values, or from the artifacthub.io/images annotation in Chart.yaml. The latest version is scanned again every day.",
           "Pass: the latest version has no critical vulnerabilities. The result shows the counts per severity per image, the date of the scan and the link to the package. Fail: no package on Artifact Hub, or at least one critical vulnerability.",

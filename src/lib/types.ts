@@ -39,6 +39,8 @@ export interface CheckResult {
    * the date (YYYY-MM-DD) it becomes mandatory. Until then a fail is a warning.
    */
   mandatoryFrom?: string;
+  /** True when the criterion does not apply to this component; it then counts in no score, rating or verdict */
+  notApplicable?: boolean;
 }
 
 /** A star level that has a threshold of its own; below 2 stars is 1 star. */

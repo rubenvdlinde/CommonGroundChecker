@@ -158,6 +158,9 @@ export async function runChecks(
         referenceUrl: "https://commonground.nl/cms/view/54476259/api-designrules",
       });
 
+  const dockerimage = checkDockerImage(options?.dockerLocations ?? []);
+  const helmChartPromise = checkHelmChart(context, tree, options?.helmChartLocations ?? []);
+
   // Kick off network-dependent and slow checks immediately so they run concurrently
   const networkChecksPromise = Promise.all([
     openApiCheckPromise,
@@ -166,7 +169,7 @@ export async function runChecks(
     analysePublicCode(context, tree),
     checkMaintenance(context, tree),
     checkFiveLayer(context, tree, meta),
-    checkHelmChart(context, tree, options?.helmChartLocations ?? []),
+    helmChartPromise,
   ]);
   const complexityPromise = checkComplexity(
     owner,
@@ -178,11 +181,14 @@ export async function runChecks(
   );
   const maintainabilityPromise = checkMaintainability(localRepoPath);
   const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
-  const artifactHubPromise = checkArtifactHub(context, tree, {
-    dockerLocations: options?.dockerLocations ?? [],
-    helmChartLocations: options?.helmChartLocations ?? [],
-    now: checkedAt,
-  });
+  const artifactHubPromise = helmChartPromise.then((helmChart) =>
+    checkArtifactHub(context, tree, {
+      dockerImage: dockerimage,
+      helmChart,
+      helmChartLocations: options?.helmChartLocations ?? [],
+      now: checkedAt,
+    })
+  );
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
     owner,
@@ -199,7 +205,6 @@ export async function runChecks(
   onProgress?.("Running code structure checks...", 45);
   let sourcecode = checkSourceCode(tree);
   const docker = checkDocker(tree);
-  const dockerimage = checkDockerImage(options?.dockerLocations ?? []);
   const cicd = checkCiConfig(tree);
   const sbom = await checkSbom(context, tree);
   const documentation = checkDocumentation(tree, options?.documentationLocations ?? []);
@@ -291,6 +296,7 @@ export async function runChecks(
         "recommended";
       if (
         requirementLevel !== "mandatory" ||
+        result.notApplicable ||
         upcomingMandatoryFrom({ id: result.id, requirementLevel }, checkedAt) !== null
       ) {
         return acc;

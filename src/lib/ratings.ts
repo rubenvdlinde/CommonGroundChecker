@@ -35,7 +35,7 @@ export interface RatingConfig {
 
 export type RatingInput = Pick<
   CheckResult,
-  "id" | "status" | "requirementLevel" | "rating" | "starRating" | "aspectRatings" | "mandatoryFrom"
+  "id" | "status" | "requirementLevel" | "rating" | "starRating" | "aspectRatings" | "mandatoryFrom" | "notApplicable"
 > & { title?: string; message?: string };
 
 /** An analysis as the backend stores it; older analyses have no ratings. */
@@ -71,10 +71,10 @@ export function formatRating(rating: number): string {
 
 /**
  * A criterion's rating: its continuous rating, else its stars, else its status
- * (pass 5.5, warn 3, fail 0.5). Null for a result that was not measured.
+ * (pass 5.5, warn 3, fail 0.5). Null for a result that was not measured or does not apply.
  */
 export function criterionRating(result: RatingInput): number | null {
-  if (result.status === "info") return null;
+  if (result.status === "info" || result.notApplicable) return null;
   if (isRating(result.rating)) return result.rating;
   if (typeof result.starRating === "number") return result.starRating;
   return RATING_BY_STATUS[result.status] ?? null;
@@ -102,14 +102,19 @@ function inTransition(result: RatingInput, config: RatingConfig): boolean {
   return isInTransition({ requirementLevel: requirementLevelOf(result, config), mandatoryFrom: result.mandatoryFrom });
 }
 
-/** A mandatory criterion that fails and already counts as mandatory. */
+/** An applicable mandatory criterion that fails and already counts as mandatory. */
 function failsMandatory(result: RatingInput, config: RatingConfig): boolean {
-  return result.status === "fail" && requirementLevelOf(result, config) === "mandatory" && !inTransition(result, config);
+  return (
+    result.status === "fail" &&
+    !result.notApplicable &&
+    requirementLevelOf(result, config) === "mandatory" &&
+    !inTransition(result, config)
+  );
 }
 
-/** The criterion weight of a result that counts: not informative, weight above 0 and measured. */
+/** The criterion weight of a result that counts: applicable, not informative, weight above 0 and measured. */
 function countedWeight(result: RatingInput | undefined, config: RatingConfig): number | null {
-  if (!result || result.status === "info") return null;
+  if (!result || result.status === "info" || result.notApplicable) return null;
   if (requirementLevelOf(result, config) === "informative") return null;
   const weight = Math.max(0, config.criterionConfigByCheckId[result.id]?.weight ?? 1);
   return weight > 0 ? weight : null;
@@ -291,6 +296,7 @@ function parseStoredResults(raw: unknown): RatingInput[] {
           : undefined,
       aspectRatings: parseRatingMap(item.aspectRatings) ?? undefined,
       mandatoryFrom: isMandatoryFromDate(item.mandatoryFrom) ? item.mandatoryFrom : undefined,
+      notApplicable: item.notApplicable === true ? true : undefined,
     }));
 }
 

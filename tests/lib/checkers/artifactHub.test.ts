@@ -10,6 +10,7 @@ import {
   parseArtifactHubRepositoryId,
 } from "@/lib/checkers/artifactHub";
 import type { RepoContext } from "@/lib/providers/types";
+import type { CheckResult } from "@/lib/types";
 
 /** Responses recorded from artifacthub.io on 19 November 2026, trimmed to the fields the check reads. */
 const FIXTURES = path.join(__dirname, "../../fixtures/artifacthub");
@@ -66,6 +67,18 @@ function contextFor(owner: string, repo: string, files: Record<string, string> =
 
 const NOW = new Date("2026-11-19T12:00:00Z");
 
+/** A Docker image criterion that found a published image, which makes a repository a container component. */
+const PUBLISHES_IMAGE = {
+  dockerImage: {
+    id: "dockerimage",
+    title: "Available Docker image",
+    description: "",
+    status: "pass",
+    message: "Docker image location provided.",
+    evidence: ["ghcr.io/org/image"],
+  } satisfies CheckResult,
+};
+
 describe("checkArtifactHub", () => {
   let fetchMock: ReturnType<typeof recordedArtifactHub>;
 
@@ -85,6 +98,21 @@ describe("checkArtifactHub", () => {
     expect(result.id).toBe("artifacthub");
     expect(result.status).toBe("info");
     expect(result.message).toMatch(/^Not applicable: this is a Nextcloud app/);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("is not applicable to a library that only has a development Dockerfile", async () => {
+    const result = await checkArtifactHub(
+      contextFor("org", "library"),
+      ["src/index.ts", "package.json", ".devcontainer/Dockerfile", "tests/Dockerfile.dev"],
+      { dockerImage: { ...PUBLISHES_IMAGE.dockerImage, status: "fail", evidence: [] }, now: NOW }
+    );
+
+    expect(result.status).toBe("info");
+    expect(result.notApplicable).toBe(true);
+    expect(result.message).toBe(
+      "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (.devcontainer/Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan."
+    );
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
@@ -112,7 +140,7 @@ describe("checkArtifactHub", () => {
   });
 
   it("does not take a package with the same name from another publisher", async () => {
-    const result = await checkArtifactHub(contextFor("someone", "podinfo"), ["Dockerfile"], { now: NOW });
+    const result = await checkArtifactHub(contextFor("someone", "podinfo"), ["Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
     expect(result.status).toBe("fail");
     expect(result.message).toBe(
       "No Helm package on Artifact Hub belongs to this repository. Searched for podinfo. Register the Helm chart on Artifact Hub, and link the package from publiccode.yml or the README if its name differs."
@@ -120,7 +148,7 @@ describe("checkArtifactHub", () => {
   });
 
   it("does not measure Open Zaak: the latest version on Artifact Hub is older than one year, and says how it matched", async () => {
-    const result = await checkArtifactHub(contextFor("open-zaak", "open-zaak"), ["Dockerfile", "publiccode.yaml"], { now: NOW });
+    const result = await checkArtifactHub(contextFor("open-zaak", "open-zaak"), ["Dockerfile", "publiccode.yaml"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("warn");
     expect(result.message).toBe(
@@ -136,6 +164,7 @@ describe("checkArtifactHub", () => {
 
   it("fails on critical vulnerabilities and lists the images with their counts", async () => {
     const result = await checkArtifactHub(contextFor("open-zaak", "open-zaak"), ["Dockerfile"], {
+      ...PUBLISHES_IMAGE,
       now: new Date("2022-06-01T00:00:00Z"),
     });
 
@@ -148,6 +177,7 @@ describe("checkArtifactHub", () => {
 
   it("takes an external chart location as the repository the package must point at", async () => {
     const result = await checkArtifactHub(contextFor("maykinmedia", "something"), [], {
+      helmChart: { ...PUBLISHES_IMAGE.dockerImage, id: "helmchart", message: "External Helm chart detected" },
       helmChartLocations: ["https://github.com/open-zaak/charts/tree/main/charts/open-zaak"],
       now: new Date("2022-06-01T00:00:00Z"),
     });
@@ -162,7 +192,7 @@ describe("checkArtifactHub", () => {
     const context = contextFor("stefanprodan", "podinfo-app", {
       "README.md": "[![Artifact Hub](https://img.shields.io/badge)](https://artifacthub.io/packages/helm/podinfo/podinfo)",
     });
-    const result = await checkArtifactHub(context, ["README.md", "Dockerfile"], { now: NOW });
+    const result = await checkArtifactHub(context, ["README.md", "Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("pass");
     expect(result.evidence).toContain("Matched because README.md links to it on Artifact Hub");
@@ -173,7 +203,7 @@ describe("checkArtifactHub", () => {
     const context = contextFor("someone", "component", {
       "README.md": "Install the database first: https://artifacthub.io/packages/helm/podinfo/podinfo",
     });
-    const result = await checkArtifactHub(context, ["README.md", "Dockerfile"], { now: NOW });
+    const result = await checkArtifactHub(context, ["README.md", "Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("fail");
     expect(result.evidence).toContain(
@@ -185,7 +215,7 @@ describe("checkArtifactHub", () => {
     const context = contextFor("someone", "component", {
       "publiccode.yml": "url: https://github.com/someone/component\n# https://artifacthub.io/packages/helm/podinfo/podinfo\n",
     });
-    const result = await checkArtifactHub(context, ["publiccode.yml", "Dockerfile"], { now: NOW });
+    const result = await checkArtifactHub(context, ["publiccode.yml", "Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("pass");
     expect(result.evidence).toContain("Matched because publiccode.yml links to it on Artifact Hub");
@@ -195,7 +225,7 @@ describe("checkArtifactHub", () => {
     const context = contextFor("org", "podinfo", {
       "charts/artifacthub-repo.yml": "repositoryID: 6fee1008-3f69-41f1-bb1e-f4606fc17403\n",
     });
-    const result = await checkArtifactHub(context, ["Dockerfile", "charts/artifacthub-repo.yml"], { now: NOW });
+    const result = await checkArtifactHub(context, ["Dockerfile", "charts/artifacthub-repo.yml"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("pass");
     expect(result.evidence).toContain(
@@ -204,7 +234,7 @@ describe("checkArtifactHub", () => {
   });
 
   it("finds Signalen's backend among many packages called backend, and does not measure it: the scanner is off", async () => {
-    const result = await checkArtifactHub(contextFor("Signalen", "backend"), ["Dockerfile"], { now: NOW });
+    const result = await checkArtifactHub(contextFor("Signalen", "backend"), ["Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("warn");
     expect(result.message).toBe(
@@ -213,7 +243,7 @@ describe("checkArtifactHub", () => {
   });
 
   it("does not measure a chart without images: Zaakbrug", async () => {
-    const result = await checkArtifactHub(contextFor("wearefrank", "zaakbrug"), ["Dockerfile"], { now: NOW });
+    const result = await checkArtifactHub(contextFor("wearefrank", "zaakbrug"), ["Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("warn");
     expect(result.message).toBe(
@@ -223,6 +253,7 @@ describe("checkArtifactHub", () => {
 
   it("does not measure a version without a security report", async () => {
     const result = await checkArtifactHub(contextFor("ConductionNL", "commonground-gateway"), ["Dockerfile"], {
+      ...PUBLISHES_IMAGE,
       now: new Date("2024-01-01T00:00:00Z"),
     });
 
@@ -239,7 +270,7 @@ describe("checkArtifactHub", () => {
     const extraImage = { ...pkg, containers_images: [...pkg.containers_images, { image: "ghcr.io/big/image:1" }] };
     const run = async (body: unknown) => {
       vi.stubGlobal("fetch", recordedArtifactHub(undefined, { "/packages/helm/podinfo/podinfo": JSON.stringify(body) }));
-      return checkArtifactHub(contextFor("stefanprodan", "podinfo"), ["Dockerfile"], { now: NOW });
+      return checkArtifactHub(contextFor("stefanprodan", "podinfo"), ["Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
     };
 
     expect((await run(many)).message).toBe(
@@ -254,7 +285,7 @@ describe("checkArtifactHub", () => {
 
   it("does not measure when Artifact Hub cannot be reached", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response("", { status: 503 })));
-    const result = await checkArtifactHub(contextFor("stefanprodan", "podinfo"), ["Dockerfile"], { now: NOW });
+    const result = await checkArtifactHub(contextFor("stefanprodan", "podinfo"), ["Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("warn");
     expect(result.message).toMatch(/^Not measured: Artifact Hub could not be reached \(Artifact Hub answered 503/);
@@ -265,7 +296,7 @@ describe("checkArtifactHub", () => {
     fetchMock = recordedArtifactHub("https://hub.example.nl");
     vi.stubGlobal("fetch", fetchMock);
 
-    const result = await checkArtifactHub(contextFor("stefanprodan", "podinfo"), ["Dockerfile"], { now: NOW });
+    const result = await checkArtifactHub(contextFor("stefanprodan", "podinfo"), ["Dockerfile"], { ...PUBLISHES_IMAGE, now: NOW });
 
     expect(result.status).toBe("pass");
     expect(result.referenceUrl).toBe("https://hub.example.nl/packages/helm/podinfo/podinfo");
@@ -304,11 +335,11 @@ describe("artifact Hub helpers", () => {
   });
 
   it("decides what a container component is", () => {
-    expect(containerComponentReason(["src/Dockerfile"]).applies).toBe(true);
     expect(containerComponentReason(["charts/x/Chart.yaml"]).applies).toBe(true);
-    expect(containerComponentReason([], ["ghcr.io/org/image"]).applies).toBe(true);
-    expect(containerComponentReason([], [], ["https://github.com/org/charts/tree/main/x"]).applies).toBe(true);
-    expect(containerComponentReason(["README.md"]).applies).toBe(false);
+    expect(containerComponentReason([], PUBLISHES_IMAGE)).toEqual({ applies: true, reason: "it publishes a container image (ghcr.io/org/image)" });
+    expect(containerComponentReason([], { helmChart: { status: "pass" } }).applies).toBe(true);
+    expect(containerComponentReason(["README.md"], { dockerImage: { status: "fail" }, helmChart: { status: "fail" } }).applies).toBe(false);
+    expect(containerComponentReason(["appinfo/info.xml", "charts/x/Chart.yaml"], PUBLISHES_IMAGE).applies).toBe(false);
   });
 
   it("counts severities, an unknown severity as unknown", () => {

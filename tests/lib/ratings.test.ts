@@ -78,6 +78,10 @@ describe("criterionRating", () => {
   it("does not rate a result that was not measured", () => {
     expect(criterionRating(result("license", "info", { starRating: 3 }))).toBeNull();
   });
+
+  it("does not rate a criterion that does not apply, whatever its status", () => {
+    expect(criterionRating({ ...result("artifacthub", "fail"), notApplicable: true })).toBeNull();
+  });
 });
 
 describe("documentCountRating", () => {
@@ -617,6 +621,20 @@ describe("ratingsForStoredAnalysis", () => {
     const older = { results: [{ id: "maintenance", title: "Maintained", status: "fail", message }] };
 
     expect(ratingsForStoredAnalysis(older, config()).endorsement.reasons).toContain(message);
+  });
+
+  it("leaves a stored criterion that does not apply out of the recomputed ratings", () => {
+    const older = {
+      results: [
+        { id: "license", status: "pass" },
+        { id: "artifacthub", title: "Helm chart on Artifact Hub, images scanned", status: "fail", notApplicable: true },
+      ],
+    };
+
+    const ratings = ratingsForStoredAnalysis(older, config({ artifacthub: mandatory }));
+    expect(ratings.aspectRatings["container-images"]).toEqual({ rating: null });
+    expect(ratings.categoryRatings[SECURITY]).toBeNull();
+    expect(ratings.endorsement.reasons).not.toContain("Mandatory criterion fails: Helm chart on Artifact Hub, images scanned");
   });
 
   it("keeps a stored null rating", () => {

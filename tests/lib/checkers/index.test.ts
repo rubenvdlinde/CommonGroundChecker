@@ -443,7 +443,9 @@ describe("runChecks", () => {
     const after = await runChecks("https://github.com/org/repo", { ...options, now: new Date("2027-05-19T00:00:00Z") });
 
     expect(mocks.checkArtifactHub).toHaveBeenCalledWith(expect.objectContaining({ repo: "repo" }), ["src/main.ts", "README.md"], {
-      ...options,
+      dockerImage: resultFor("dockerimage", "pass"),
+      helmChart: resultFor("helmchart", "pass"),
+      helmChartLocations: ["charts/repo"],
       now: new Date("2027-05-18T23:59:59Z"),
     });
     expect(before.results.find((result) => result.id === "artifacthub")?.mandatoryFrom).toBe("2027-05-19");
@@ -451,6 +453,34 @@ describe("runChecks", () => {
     expect(after.results.find((result) => result.id === "artifacthub")).not.toHaveProperty("mandatoryFrom");
     expect(after.endorsement.reasons).toContain("Mandatory criterion fails: Helm chart on Artifact Hub, images scanned");
   });
+
+  it.each(["2027-05-18T00:00:00Z", "2027-05-19T00:00:00Z"])(
+    "leaves a criterion that does not apply out of the score and the ratings, on %s",
+    async (now) => {
+      const configById = criterionConfig(0, "recommended");
+      configById.sourcecode = { weight: 1, requirementLevel: "mandatory" };
+      configById.artifacthub = { weight: 1, requirementLevel: "mandatory" };
+      mocks.checkArtifactHub.mockResolvedValue({ ...resultFor("artifacthub", "info"), notApplicable: true });
+      mocks.getActiveScoringConfig.mockResolvedValue({
+        id: "cfg-not-applicable",
+        config: {
+          criterionConfigByCheckId: configById,
+          statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+          complexityThreshold: 12,
+          complexityMaxCcnThreshold: 20,
+          spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+        },
+      });
+
+      const report = await runChecks("https://github.com/org/repo", { now: new Date(now) });
+
+      // Only sourcecode counts. Counted as an info result, it would make the score 69 from 19 May 2027.
+      expect(report.score).toBe(100);
+      expect(report.aspectRatings["container-images"]).toEqual({ rating: null });
+      expect(report.categoryRatings[resolveCategory("Security")!]).toBeNull();
+      expect(report.results.find((result) => result.id === "artifacthub")?.notApplicable).toBe(true);
+    }
+  );
 
   it("applies fixed category weights when aggregating mandatory criteria", async () => {
     const configById = criterionConfig(0, "recommended");

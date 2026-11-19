@@ -35,6 +35,7 @@ describe("AdminWeightsForm", () => {
     dockerimage: 1,
     cicd: 1,
     helmchart: 1,
+    artifacthub: 1,
     semver: 1,
     sbom: 1,
   };
@@ -128,6 +129,28 @@ describe("AdminWeightsForm", () => {
 
     expect(await screen.findByText(/configuration saved/i)).toBeTruthy();
     expect(saveButton.disabled).toBe(true);
+  });
+
+  it("shows the Artifact Hub criterion with its weight and requirement level", () => {
+    render(
+      <AdminWeightsForm
+        initialWeights={{ ...initialWeights, artifacthub: 0.5 }}
+        defaultWeights={defaultWeights}
+        initialRequirementLevels={initialRequirementLevels}
+        defaultRequirementLevels={defaultRequirementLevels}
+        initialCategoryWeights={initialCategoryWeights}
+        defaultCategoryWeights={defaultCategoryWeights}
+        initialComplexityThreshold={initialComplexityThreshold}
+        defaultComplexityThreshold={defaultComplexityThreshold}
+        initialComplexityMaxCcnThreshold={initialComplexityMaxCcnThreshold}
+        defaultComplexityMaxCcnThreshold={defaultComplexityMaxCcnThreshold}
+        initialSpectralRulesetSource={initialSpectralRulesetSource}
+        defaultSpectralRulesetSource={defaultSpectralRulesetSource}
+      />
+    );
+
+    expect(screen.getByText("Helm chart on Artifact Hub, images scanned")).toBeTruthy();
+    expect((document.getElementById("weight-artifacthub") as HTMLInputElement).value).toBe("0.5");
   });
 
   it("retains category weights locally when the backend response omits them", async () => {

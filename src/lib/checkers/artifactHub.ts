@@ -86,7 +86,10 @@ export interface ImageScan {
 }
 
 export interface CheckArtifactHubOptions {
-  dockerLocations?: string[];
+  /** The result of the Docker image criterion; a pass means the component publishes an image */
+  dockerImage?: CheckResult;
+  /** The result of the Helm chart criterion */
+  helmChart?: CheckResult;
   helmChartLocations?: string[];
   /** The time the check runs at; decides whether the latest version is still scanned */
   now?: Date;
@@ -105,14 +108,14 @@ function filename(path: string): string {
 }
 
 /**
- * Whether the check applies: to a container component, one with a Dockerfile,
- * a Helm chart or a given image or chart location. A Nextcloud app is never
- * one; it ships as an app, and its dependencies are scanned in the repository.
+ * Whether the check applies: to a container component, one that publishes a
+ * container image or has a Helm chart. A Dockerfile alone, for development or
+ * tests, does not make one. A Nextcloud app is never one; it ships as an app,
+ * and its dependencies are scanned in the repository.
  */
 export function containerComponentReason(
   tree: string[],
-  dockerLocations: string[] = [],
-  helmChartLocations: string[] = []
+  criteria: { dockerImage?: Pick<CheckResult, "status" | "evidence">; helmChart?: Pick<CheckResult, "status" | "evidence"> } = {}
 ): { applies: true; reason: string } | { applies: false; reason: string } {
   const lowerTree = tree.map((path) => path.toLowerCase().replace(/^\/+/, ""));
   if (lowerTree.includes("appinfo/info.xml")) {
@@ -122,16 +125,19 @@ export function containerComponentReason(
         "this is a Nextcloud app (appinfo/info.xml), not a container component. Its dependencies are covered by the repository dependency scan.",
     };
   }
-  const dockerfile = tree.find((path) => DOCKER_FILES.includes(filename(path)));
-  if (dockerfile) return { applies: true, reason: `the repository has a Dockerfile (${dockerfile})` };
+  if (criteria.dockerImage?.status === "pass") {
+    const image = criteria.dockerImage.evidence?.[0];
+    return { applies: true, reason: `it publishes a container image${image ? ` (${image})` : ""}` };
+  }
   const chart = tree.find((path) => filename(path) === "chart.yaml");
   if (chart) return { applies: true, reason: `the repository has a Helm chart (${chart})` };
-  if (helmChartLocations.some((value) => value.trim())) return { applies: true, reason: "a Helm chart location was given" };
-  if (dockerLocations.some((value) => value.trim())) return { applies: true, reason: "a container image location was given" };
+  if (criteria.helmChart?.status === "pass") return { applies: true, reason: "the Helm chart criterion found a chart" };
+  const dockerfile = tree.find((path) => DOCKER_FILES.includes(filename(path)));
   return {
     applies: false,
-    reason:
-      "no Dockerfile, Helm chart or container image was found, so this is not a container component. Its dependencies are covered by the repository dependency scan.",
+    reason: `no published container image or Helm chart was found, so this is not a container component${
+      dockerfile ? `. A Dockerfile alone (${dockerfile}) does not make it one` : ""
+    }. Its dependencies are covered by the repository dependency scan.`,
   };
 }
 
@@ -427,9 +433,9 @@ export async function checkArtifactHub(
   options: CheckArtifactHubOptions = {}
 ): Promise<CheckResult> {
   const helmChartLocations = (options.helmChartLocations ?? []).map((value) => value.trim()).filter(Boolean);
-  const applicability = containerComponentReason(tree, options.dockerLocations, helmChartLocations);
+  const applicability = containerComponentReason(tree, { dockerImage: options.dockerImage, helmChart: options.helmChart });
   if (!applicability.applies) {
-    return result("info", `Not applicable: ${applicability.reason}`);
+    return { ...result("info", `Not applicable: ${applicability.reason}`), notApplicable: true };
   }
 
   const baseUrl = options.baseUrl ?? artifactHubBaseUrl();
