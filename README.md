@@ -34,6 +34,13 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 | 8 | **NL API Design Rules (ADR) validation** — OpenAPI / API design is validated against the configured Spectral ruleset | Mandatory | [API Design Rules](https://commonground.nl/cms/view/54476259/api-designrules) |
 | 9 | **5-Layer Architecture** — component belongs to a recognised Common Ground layer | Recommended | [5-lagen model](https://commonground.nl/cms/view/54476261/5-lagen-model) |
 
+A component can declare its layer in `publiccode.yml` with a `supports` entry. The declaration takes precedence over the heuristics on paths and text. The layer is one of `interaction`, `process`, `integration`, `service` or `data` (the Dutch names are accepted too):
+
+```yaml
+supports:
+  - id: https://commonground.nl/cms/view/54476261/5-lagen-model#data
+```
+
 ### Security
 
 | # | Criterion | Level | Standard |

@@ -23,8 +23,6 @@ const LAYER_DEFINITIONS: Record<LayerKey, LayerDefinition> = {
       { value: "/client/", strength: "strong" },
       { value: "/admin/", strength: "weak" },
       { value: "/admin-ui/", strength: "weak" },
-      { value: "frontend", strength: "strong" },
-      { value: "ui", strength: "strong" },
     ],
     textKeywords: [
       { value: "frontend", strength: "strong" },
@@ -34,7 +32,8 @@ const LAYER_DEFINITIONS: Record<LayerKey, LayerDefinition> = {
       { value: "react", strength: "strong" },
       { value: "vue", strength: "strong" },
       { value: "angular", strength: "strong" },
-      { value: "next", strength: "strong" },
+      { value: "next.js", strength: "strong" },
+      { value: "nextjs", strength: "strong" },
       { value: "nuxt", strength: "strong" },
       { value: "web app", strength: "strong" },
       { value: "user interface", strength: "strong" },
@@ -137,8 +136,25 @@ const LAYER_DEFINITIONS: Record<LayerKey, LayerDefinition> = {
 const README_FILENAMES = ["readme.md", "readme.txt", "readme.rst", "readme"];
 const PUBLICCODE_FILENAMES = ["publiccode.yml", "publiccode.yaml"];
 
+/** Documentation, tests, examples, dependencies and build output say nothing about the component's own layer. */
+const IGNORED_DIRECTORIES = new Set([
+  "docs", "doc", "documentation", "test", "tests", "__tests__", "spec", "e2e", "fixtures", "__fixtures__",
+  "testdata", "example", "examples", "samples", "vendor", "node_modules", "third_party", "dist", "build", ".github",
+]);
+
 function normalizePath(path: string): string {
   return path.replace(/\\/g, "/").toLowerCase();
+}
+
+/** The directory names of a path, without the file name. */
+function directorySegments(path: string): string[] {
+  return normalizePath(path).split("/").slice(0, -1);
+}
+
+/** Whether `keyword` occurs in `text` as a whole word, not as part of a longer word. */
+function containsWord(text: string, keyword: string): boolean {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`(?<![a-z0-9])${escaped}(?![a-z0-9])`).test(text);
 }
 
 function flattenStrings(value: unknown): string[] {
@@ -157,12 +173,15 @@ interface LayerDetection {
 }
 
 function detectLayerSignalsFromPath(repoPath: string): LayerDetection[] {
-  const normalized = normalizePath(repoPath);
+  const directories = directorySegments(repoPath);
   const detections: LayerDetection[] = [];
+  if (directories.some((directory) => IGNORED_DIRECTORIES.has(directory))) {
+    return detections;
+  }
 
   for (const [layer, definition] of Object.entries(LAYER_DEFINITIONS) as [LayerKey, LayerDefinition][]) {
     for (const keyword of definition.pathKeywords) {
-      if (normalized.includes(keyword.value)) {
+      if (directories.includes(keyword.value.replace(/\//g, ""))) {
         detections.push({
           layer,
           strength: keyword.strength,
@@ -185,7 +204,7 @@ function detectLayerSignalsFromText(
 
   for (const [layer, definition] of Object.entries(LAYER_DEFINITIONS) as [LayerKey, LayerDefinition][]) {
     for (const keyword of definition.textKeywords) {
-      if (lower.includes(keyword.value)) {
+      if (containsWord(lower, keyword.value)) {
         detections.push({
           layer,
           strength: keyword.strength,
@@ -199,26 +218,84 @@ function detectLayerSignalsFromText(
   return detections;
 }
 
-async function extractPublicCodeText(context: RepoContext, tree: string[]): Promise<string> {
+async function readPublicCode(
+  context: RepoContext,
+  tree: string[]
+): Promise<{ text: string; parsed: unknown }> {
   const publiccodePath = tree.find((path) =>
     PUBLICCODE_FILENAMES.includes(path.toLowerCase())
   );
 
   if (!publiccodePath) {
-    return "";
+    return { text: "", parsed: null };
   }
 
   const raw = await context.provider.getFileContent(context, publiccodePath);
   if (!raw) {
-    return "";
+    return { text: "", parsed: null };
   }
 
   try {
     const parsed = loadYaml(raw);
-    return flattenStrings(parsed).join(" ");
+    return { text: flattenStrings(parsed).join(" "), parsed };
   } catch {
-    return raw;
+    return { text: raw, parsed: null };
   }
+}
+
+// A component declares its layer in publiccode.yml as a `supports` entry whose id is LAYER_URI#<layer>.
+// `supports` takes any URI; country sections are deprecated, and none is defined for NL.
+export const LAYER_URI = "https://commonground.nl/cms/view/54476261/5-lagen-model";
+
+const LAYER_ALIASES: Record<string, LayerKey> = {
+  interaction: "interaction",
+  interactie: "interaction",
+  process: "process",
+  proces: "process",
+  integration: "integration",
+  integratie: "integration",
+  service: "service",
+  services: "service",
+  dienst: "service",
+  diensten: "service",
+  data: "data",
+};
+
+interface DeclaredLayers {
+  layers: LayerKey[];
+  unknown: string[];
+  source: string;
+}
+
+function record(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : null;
+}
+
+export function readDeclaredLayers(parsed: unknown): DeclaredLayers | null {
+  const root = record(parsed);
+  if (!root) return null;
+
+  const values: string[] = [];
+  for (const item of Array.isArray(root.supports) ? root.supports : []) {
+    const id = record(item)?.id;
+    if (typeof id === "string" && id.startsWith(`${LAYER_URI}#`)) {
+      values.push(id.slice(LAYER_URI.length + 1));
+    }
+  }
+  if (values.length === 0) return null;
+  const source = "publiccode.yml supports";
+
+  const layers: LayerKey[] = [];
+  const unknown: string[] = [];
+  for (const value of values) {
+    const layer = LAYER_ALIASES[value.trim().toLowerCase()];
+    if (!layer) unknown.push(value);
+    else if (!layers.includes(layer)) layers.push(layer);
+  }
+
+  return { layers, unknown, source };
 }
 
 function formatLayerLabels(layers: LayerKey[]): string[] {
@@ -276,7 +353,47 @@ export async function checkFiveLayer(
     README_FILENAMES.includes(path.toLowerCase())
   );
   const readme = readmePath ? await context.provider.getFileContent(context, readmePath) : "";
-  const publiccodeText = await extractPublicCodeText(context, tree);
+  const publiccode = await readPublicCode(context, tree);
+  const publiccodeText = publiccode.text;
+
+  const declared = readDeclaredLayers(publiccode.parsed);
+  if (declared) {
+    const base = {
+      id: "fivelayer",
+      title: "Common Ground 5-Layer Architecture",
+      description:
+        "The component should clearly belong to one of the five Common Ground architectural layers.",
+      referenceUrl: "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    };
+    const evidence = [
+      ...declared.layers.map((layer) => `Declared "${layer}" in ${declared.source}`),
+      ...declared.unknown.map((value) => `Unknown layer "${value}" in ${declared.source}`),
+    ];
+
+    if (declared.unknown.length > 0) {
+      return {
+        ...base,
+        status: "warn",
+        message:
+          `${declared.source} declares an unknown layer: ${declared.unknown.join(", ")}. ` +
+          "Use one of interaction, process, integration, service or data.",
+        evidence,
+        confidence: "high",
+      };
+    }
+
+    const labels = formatLayerLabels(declared.layers);
+    return {
+      ...base,
+      status: declared.layers.length === 1 ? "pass" : "warn",
+      message:
+        declared.layers.length === 1
+          ? `Declared layer: ${labels[0]}.`
+          : `Declared layers: ${labels.join("; ")}. A component should belong to one Common Ground layer.`,
+      evidence,
+      confidence: "high",
+    };
+  }
 
   const allDetections: LayerDetection[] = [];
 
