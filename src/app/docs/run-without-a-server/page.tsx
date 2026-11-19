@@ -43,6 +43,12 @@ export default function RunWithoutAServerPage() {
             the data files.
           </li>
           <li>
+            When the scanned commit did not change since the last scan, it copies the code checks from there and runs
+            only the checks that depend on the outside world, such as known vulnerabilities, the Docker image and usage.
+            Every 7 days, after a change of the checker or its tools, and when a maintainer starts the workflow with{" "}
+            <strong>full</strong> ticked, it runs every check.
+          </li>
+          <li>
             It compares each scan with the previous scan of the same kind of ref and the same checklist version. A
             criterion that went from pass to fail, a rating that lost a star, or a lost verdict is recorded as a drop,
             with the same fix terms as the server.

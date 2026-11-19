@@ -286,6 +286,17 @@ By default a check scans the released version, chosen in this order:
 
 The tree, every file read, the clone used by the code tools and the API rules all read the same commit. Each result records `scannedRef`, `scannedRefKind` (why that ref was chosen: `declared-version`, `release`, `tag`, `branch`, `default-branch` or `default-branch-fallback`) and `scannedCommit`, and the result and history pages show it, for example "Scanned: declared version v1.2.2 @ abc1234", "Scanned: latest release v1.2.0 @ abc1234" or "Scanned: main (default branch, no release found)".
 
+### Scans of an unchanged commit
+
+A check first resolves the ref to a commit. When the previous analysis of the repository scanned the same commit, the scan is partial: the checks that depend only on the code are copied from that analysis, and only the checks that depend on the outside world run again. Every criterion has a class in `CRITERION_FRESHNESS_BY_CHECK_ID` (`src/lib/checkers/config.ts`):
+
+- `per-commit`: the same commit gives the same answer. Complexity, duplication, coupling, size, the maintainability estimate, the open track, OWASP patterns, secrets, licences and licence headers, file presence (Dockerfile, Helm chart, documentation, tests, CI), the content of publiccode.yml and the standards cross-check.
+- `per-run`: measured on every scan. Known vulnerabilities and the health of the locked dependencies (OSV), the Artifact Hub and Trivy report, OpenSSF Scorecard, project health and SLA times, usage and downloads, whether the Docker image is still in its registry, the maintenance contract's `until` date, the version from the releases and tags, the coverage badges and the NL API Design Rules ruleset. A criterion without a class counts as per-run.
+
+A scan is partial only when the scanned commit, the checklist version, the checker fingerprint (a hash of the checker's own code and its pinned tool versions, written to `checker-fingerprint.json` when the image is built) and the scan settings (the hints, `isRegister` and the complexity thresholds) are all unchanged, and the code checks were measured less than `FULL_SCAN_INTERVAL_DAYS` days ago (default 7). Otherwise every check runs. `full: true` in the request runs every check too.
+
+Each copied result carries `reusedFrom` (`analysisId`, `checkedAt`, `commit` of the scan that measured it). Ratings, the verdict, Maintained and drops are computed from the combined results as usual. Each analysis stores `scanMode` (`full` or `partial`), `scanDurationSeconds`, `toolFingerprint` and `inputsFingerprint`. The run page says "Code unchanged since <date> (commit abc1234): code checks reused, outside-world checks run again", and each reused criterion card is marked reused. A partial scan that reuses every code check does not clone the repository.
+
 ### ADR Spectral ruleset source (Admin)
 
 On the **Admin** page, the field **"Spectral ruleset source"** controls which ruleset is used for the **NL API Design Rules** check.
