@@ -29,7 +29,7 @@ export default function BasissetNote({ match, scannedVersion }: BasissetNoteProp
         </ul>
       )}
       {match.otherAddress.length > 0 && (
-        <ul aria-label="Basisset entries at another address" className="space-y-1 text-amber-900">
+        <ul aria-label="Basisset entries at another address" className="space-y-1 text-amber-900 break-words">
           {match.otherAddress.map((entry) => (
             <li key={`${entry.name}-${entry.repo}`}>
               The basisset lists {entry.name} with the same repository name at another address: {entry.repo}.
