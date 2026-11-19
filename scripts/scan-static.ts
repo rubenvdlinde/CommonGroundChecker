@@ -16,7 +16,7 @@
  */
 import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -114,7 +114,9 @@ async function main(argv: string[]): Promise<number> {
 
   const repositoriesRaw = parseYaml(readFileSync(path.join(CHECKER_ROOT, "config/repositories.yml"), "utf-8"));
   const slasRaw = parseYaml(readFileSync(path.join(CHECKER_ROOT, "config/slas.yml"), "utf-8"));
-  const errors = checkConfig(repositoriesRaw, slasRaw).filter((finding) => finding.level === "error");
+  const functionalitiesFile = path.join(CHECKER_ROOT, "config/functionalities.yml");
+  const functionalitiesRaw = existsSync(functionalitiesFile) ? parseYaml(readFileSync(functionalitiesFile, "utf-8")) : undefined;
+  const errors = checkConfig(repositoriesRaw, slasRaw, functionalitiesRaw).filter((finding) => finding.level === "error");
   if (errors.length > 0) {
     for (const finding of errors) process.stderr.write(`scan:static: ${finding.subject}: ${finding.message}\n`);
     return NO_RUN;

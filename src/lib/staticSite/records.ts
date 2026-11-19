@@ -52,6 +52,9 @@ export interface LatestRepository {
   slaLabels: string[];
   retired: RetiredInfo | null;
   providers: ServiceProvider[];
+  /** Ids of config/functionalities.yml */
+  functionalities: string[];
+  functionalitiesDraft: boolean;
 }
 
 export interface LatestAnalysis extends ScannedRef {
@@ -127,6 +130,8 @@ export interface IndexLatestAnalysis extends ScannedRef {
   version: string | null;
   checklistVersion: string | null;
   maintained: boolean;
+  /** Evidence of the "Supported standards" result; null when the analysis has none */
+  standardsEvidence: string[] | null;
 }
 
 /** One repository in index.json: the fields of GET /api/repositories, plus what the static site adds. */
@@ -163,6 +168,10 @@ export interface IndexEntry {
   slaLabels: string[];
   retired: RetiredInfo | null;
   providers: ServiceProvider[];
+  /** Ids of config/functionalities.yml */
+  functionalities: string[];
+  /** True while the component owner has not confirmed the functionalities */
+  functionalitiesDraft: boolean;
   declaredUsers: string[];
   slas: StaticSla[];
   openDropCount: number;
@@ -250,6 +259,8 @@ export function buildLatestFile(input: ScanInput, previous: LatestFile | null): 
       slaLabels: config.slaLabels ?? [],
       retired: config.retired ?? null,
       providers: config.providers ?? [],
+      functionalities: config.functionalities ?? [],
+      functionalitiesDraft: config.functionalitiesDraft === true,
     },
     analysis: {
       id: analysisIdFor(report.checkedAt),
@@ -324,6 +335,12 @@ export function appendToHistory(
   return { schemaVersion: DATA_SCHEMA_VERSION, repoId: latest.repository.id, analyses: [entry, ...earlier], drops };
 }
 
+/** The evidence of the "Supported standards" result, which the Components filter reads; null without that result. */
+export function standardsEvidenceOf(results: Array<{ id: string; evidence?: string[] }>): string[] | null {
+  const result = results.find((item) => item.id === "standards");
+  return result ? [...(result.evidence ?? [])] : null;
+}
+
 export interface IndexSource {
   path: RepositoryPath;
   dataDir: string;
@@ -381,6 +398,7 @@ export function buildIndexEntry(source: IndexSource, now: Date): IndexEntry {
           scannedRefKind: analysis.scannedRefKind,
           scannedCommit: analysis.scannedCommit,
           maintained: analysis.maintained,
+          standardsEvidence: standardsEvidenceOf(analysis.results),
         }
       : null,
     basisset: config.basisset === true,
@@ -389,6 +407,8 @@ export function buildIndexEntry(source: IndexSource, now: Date): IndexEntry {
     slaLabels: config.slaLabels ?? [],
     retired: config.retired ?? null,
     providers: config.providers ?? [],
+    functionalities: config.functionalities ?? [],
+    functionalitiesDraft: config.functionalitiesDraft === true,
     declaredUsers: analysis?.declaredUsers ?? [],
     slas: toStaticSlas(source.slas),
     openDropCount: open.length,

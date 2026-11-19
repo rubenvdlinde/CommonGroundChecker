@@ -8,6 +8,7 @@ import {
   type LifecycleStatus,
 } from "./lifecycle";
 import type { MaintainedSla } from "./maintained";
+import { standardsFromEvidence } from "./componentStandards";
 import { isRating } from "./ratings";
 import type { Endorsement } from "./types";
 
@@ -23,6 +24,10 @@ export interface HistoryIndexEntry extends RepoSummary {
   /** Whether the verdict "Suitable for Common Ground" holds; null without an analysis that stored one */
   verdict: boolean | null;
   version: string | null;
+  /** Ids of config/functionalities.yml the component lists */
+  functionalities: string[];
+  /** Ids of the standards its latest analysis declares or implements; null when it measured none */
+  standards: string[] | null;
 }
 
 export interface HistoryIndexOptions {
@@ -91,8 +96,15 @@ export function toHistoryIndexEntry(repository: RepoSummary, options: HistoryInd
     },
   });
 
+  const standards = standardsFromEvidence(
+    Array.isArray(latest?.standardsEvidence) ? (latest.standardsEvidence as string[]) : null
+  );
   return {
     ...repository,
+    functionalities: Array.isArray(summary.functionalities)
+      ? summary.functionalities.filter((id): id is string => typeof id === "string")
+      : [],
+    standards: standards ? standards.map((standard) => standard.id) : null,
     lifecycle,
     basisset: matchBasisset(options.basisset, repository.repoUrl, version),
     rating: isRating(latest?.rating) ? (latest.rating as number) : null,
@@ -105,22 +117,51 @@ export function buildHistoryIndex(repositories: RepoSummary[], options: HistoryI
   return repositories.map((repository) => toHistoryIndexEntry(repository, options));
 }
 
-/** The status filter of the Components index: one status or every status, and whether only basisset components show. */
+/**
+ * The filter of the Components index: one status or every status, only
+ * basisset components or all, and one functionality and one standard or any.
+ */
 export interface HistoryFilter {
   status: LifecycleStatus | null;
   basisset: boolean;
+  /** An id of config/functionalities.yml */
+  functionality?: string | null;
+  /** An id of the standards registry */
+  standard?: string | null;
 }
 
-/** Reads `?status=` and `?basisset=1`; an unknown status shows every status. */
-export function parseHistoryFilter(status: string | undefined, basisset: string | undefined): HistoryFilter {
+const FILTER_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function filterId(value: string | undefined): string | null {
+  const id = value?.trim().toLowerCase();
+  return id && FILTER_ID.test(id) ? id : null;
+}
+
+/** Reads `?status=`, `?basisset=1`, `?functionality=` and `?standard=`; an unknown status shows every status. */
+export function parseHistoryFilter(
+  status: string | undefined,
+  basisset: string | undefined,
+  functionality?: string,
+  standard?: string
+): HistoryFilter {
   const value = status?.trim().toLowerCase();
-  return { status: isLifecycleStatus(value) ? value : null, basisset: basisset === "1" || basisset === "true" };
+  return {
+    status: isLifecycleStatus(value) ? value : null,
+    basisset: basisset === "1" || basisset === "true",
+    functionality: filterId(functionality),
+    standard: filterId(standard),
+  };
 }
 
 /** Whether an entry shows under the filter. */
-export function matchesFilter(entry: Pick<HistoryIndexEntry, "lifecycle" | "basisset">, filter: HistoryFilter): boolean {
+export function matchesFilter(
+  entry: Pick<HistoryIndexEntry, "lifecycle" | "basisset"> & Partial<Pick<HistoryIndexEntry, "functionalities" | "standards">>,
+  filter: HistoryFilter
+): boolean {
   if (filter.status && entry.lifecycle?.status !== filter.status) return false;
   if (filter.basisset && !isInBasisset(entry.basisset)) return false;
+  if (filter.functionality && !(entry.functionalities ?? []).includes(filter.functionality)) return false;
+  if (filter.standard && !(entry.standards ?? []).includes(filter.standard)) return false;
   return true;
 }
 
