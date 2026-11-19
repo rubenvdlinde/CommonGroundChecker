@@ -10,7 +10,7 @@ const runs = [
   { id: "old", checkedAt: "2026-11-01T15:39:33Z", version: null, score: 45, rating: 1.8, passed: false, errors: 3, warnings: null },
 ];
 
-const hrefFor = (id: string) => `/history/org/repo/${id}`;
+const hrefFor = (id: string) => `/components/org/repo/${id}`;
 
 describe("RunList", () => {
   afterEach(() => cleanup());
@@ -32,7 +32,7 @@ describe("RunList", () => {
     expect(rows).toHaveLength(2);
 
     const newest = within(rows[0]);
-    expect(newest.getByRole("link").getAttribute("href")).toBe("/history/org/repo/new");
+    expect(newest.getByRole("link").getAttribute("href")).toBe("/components/org/repo/new");
     expect(newest.getByRole("img", { name: "Overall rating 3.4 of 5.5, 3 stars" })).toBeTruthy();
     expect(newest.getByText("Suitable for Common Ground")).toBeTruthy();
     const counts = (row: HTMLElement) => within(row).getAllByRole("cell").slice(2, 4).map((cell) => cell.textContent);
@@ -53,7 +53,7 @@ describe("RunList", () => {
 
     const links = screen.getAllByRole("link");
     expect(links.map((link) => link.getAttribute("aria-current"))).toEqual([null, "page"]);
-    expect(links[1].getAttribute("href")).toBe("/history/org/repo/old");
+    expect(links[1].getAttribute("href")).toBe("/components/org/repo/old");
   });
 
   it("says so when no run is stored", () => {

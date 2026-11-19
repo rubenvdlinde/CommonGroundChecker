@@ -8,7 +8,7 @@ const getAdminScoring = vi.hoisted(() => vi.fn());
 const putRepositoryFollow = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/apiClient", () => ({ getRepoHistory, getAdminScoring, putRepositoryFollow }));
 
-import AnalysisDetailPage from "@/app/history/[owner]/[repo]/[analysisId]/page";
+import AnalysisDetailPage from "@/app/components/[owner]/[repo]/[analysisId]/page";
 import { resolveCategory } from "@/lib/aspects";
 import { mapMaintainabilityReport, type MaintainabilityReport } from "@/lib/checkers/maintainability";
 import openZaakFixture from "../fixtures/maintainability-report-open-zaak.json";
@@ -243,14 +243,14 @@ describe("AnalysisDetailPage", () => {
       render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "older" }) }));
 
       expect(screen.getByText(/This is an older run/)).toBeTruthy();
-      expect(screen.getByRole("link", { name: "See the latest run" }).getAttribute("href")).toBe("/history/org/repo");
+      expect(screen.getByRole("link", { name: "See the latest run" }).getAttribute("href")).toBe("/components/org/repo");
       expect(summary("Older run").getByRole("img", { name: "Overall rating 2.2 of 5.5, 2 stars" })).toBeTruthy();
       expect(summary("Older run").getByText("60")).toBeTruthy();
 
       const runLinks = within(screen.getByRole("region", { name: "All runs" })).getAllByRole("link");
       expect(runLinks.map((link) => link.getAttribute("aria-current"))).toEqual([null, "page"]);
       const graph = screen.getByRole("region", { name: "Rating over time" });
-      expect(graph.querySelector("svg a[aria-current='page']")?.getAttribute("href")).toBe("/history/org/repo/older");
+      expect(graph.querySelector("svg a[aria-current='page']")?.getAttribute("href")).toBe("/components/org/repo/older");
     });
 
     it("shows no older-run notice on the latest run's own page", async () => {
@@ -268,7 +268,7 @@ describe("AnalysisDetailPage", () => {
       render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "gone" }) }));
 
       expect(screen.getByText("Analysis not found for org/repo.")).toBeTruthy();
-      expect(screen.getByRole("link", { name: "← See the latest run" }).getAttribute("href")).toBe("/history/org/repo");
+      expect(screen.getByRole("link", { name: "← See the latest run" }).getAttribute("href")).toBe("/components/org/repo");
     });
   });
 

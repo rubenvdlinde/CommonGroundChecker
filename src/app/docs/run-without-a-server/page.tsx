@@ -103,7 +103,7 @@ data/repositories/<host>/<owner>/<repo>/history.json a short summary per analysi
           <li>
             <code>retired</code>: the date and the reason; a retired component is no longer scanned.
           </li>
-          <li>
+          <li id="providers" className="scroll-mt-6">
             <code>providers</code>: organisations that offer services on top of the component. Each has a{" "}
             <code>name</code> and one or more <code>services</code>: maintenance, support, hosting, implementation or
             training. <code>url</code>, <code>contact</code> (a general address, no personal data) and{" "}

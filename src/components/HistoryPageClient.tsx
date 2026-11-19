@@ -11,6 +11,7 @@ import RepoLogo from "@/components/RepoLogo";
 import RunStatus, { runStatus } from "@/components/RunStatus";
 import { buildHistoryHref, normalizeSearchQuery, SEARCH_DEBOUNCE_MS } from "@/lib/historySearch";
 import { isRating } from "@/lib/ratings";
+import { componentHref } from "@/lib/routes";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import type { Basisset } from "@/lib/basisset";
 import { buildHistoryIndex, matchesFilter, statusCounts } from "@/lib/historyIndex";
@@ -154,20 +155,21 @@ export default function HistoryPageClient({
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
       <section className="space-y-2">
-        <h2 className="text-2xl font-bold text-cg-blue">Analyzed Repositories</h2>
+        <h2 className="text-2xl font-bold text-cg-blue">Components</h2>
         <p className="text-gray-600">
-          Select a repository to view metadata and historical analyses over time.
+          Every component the checker has rated. Select one to see its rating, its Common Ground status and every run
+          over time.
         </p>
         <form
           role="search"
           method="get"
-          action="/history"
+          action="/components"
           onSubmit={handleSubmit}
           className="flex flex-wrap items-end gap-2 pt-2"
         >
           <div className="flex flex-col gap-1">
             <label htmlFor="history-search" className="text-xs font-semibold text-gray-700">
-              Search repositories
+              Search components
             </label>
             <input
               id="history-search"
@@ -288,7 +290,7 @@ export default function HistoryPageClient({
               return (
                 <Link
                   key={repository.id}
-                  href={`/history/${encodeURIComponent(repository.owner)}/${encodeURIComponent(repository.name)}`}
+                  href={componentHref(repository.owner, repository.name)}
                   className="block border border-gray-200 rounded-xl px-4 py-3 hover:border-cg-lightblue hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-3 flex-wrap">

@@ -1,3 +1,4 @@
+import { userHref } from "@/lib/routes";
 import type { OrganisationSummary } from "@/generated/openapi-client";
 
 /**
@@ -9,9 +10,8 @@ export function organisationKey(name: string): string {
   return name.trim().replace(/\s+/g, " ").toLowerCase();
 }
 
-export function organisationHref(slug: string): string {
-  return `/organisations/${encodeURIComponent(slug)}`;
-}
+/** The Users page of an organisation that uses components. */
+export const organisationHref = userHref;
 
 /** The slug of every listed organisation by its key, to link a declared name to its page. */
 export function organisationSlugsByKey(organisations: OrganisationSummary[]): Map<string, string> {

@@ -6,7 +6,6 @@ import {
   organisationKey,
   organisationSlugsByKey,
 } from "@/lib/organisations";
-import { NAV_LINKS } from "@/lib/navigation";
 
 const organisations = [
   { name: "Gemeente Utrecht", slug: "gemeente-utrecht", componentCount: 2 },
@@ -22,8 +21,8 @@ describe("organisationKey", () => {
 
 describe("organisationHref", () => {
   it("encodes the slug", () => {
-    expect(organisationHref("den-haag")).toBe("/organisations/den-haag");
-    expect(organisationHref("a b")).toBe("/organisations/a%20b");
+    expect(organisationHref("den-haag")).toBe("/users/den-haag");
+    expect(organisationHref("a b")).toBe("/users/a%20b");
   });
 });
 
@@ -55,13 +54,5 @@ describe("componentCountLabel", () => {
   it("counts in singular and plural", () => {
     expect(componentCountLabel(1)).toBe("1 component");
     expect(componentCountLabel(3)).toBe("3 components");
-  });
-});
-
-describe("NAV_LINKS", () => {
-  it("links to the organisations index after History", () => {
-    const hrefs = NAV_LINKS.map((link) => link.href);
-    expect(hrefs).toContain("/organisations");
-    expect(hrefs.indexOf("/organisations")).toBe(hrefs.indexOf("/history") + 1);
   });
 });

@@ -31,13 +31,13 @@ describe("history search URL handling", () => {
 
   it("keeps the sort options and adds an encoded q only when set", () => {
     expect(buildHistoryHref({ sort: "date", direction: "desc" })).toBe(
-      "/history?sort=date&direction=desc"
+      "/components?sort=date&direction=desc"
     );
     expect(buildHistoryHref({ q: "  ", sort: "score", direction: "asc" })).toBe(
-      "/history?sort=score&direction=asc"
+      "/components?sort=score&direction=asc"
     );
     expect(buildHistoryHref({ q: "open zaak&co", sort: "score", direction: "asc" })).toBe(
-      "/history?sort=score&direction=asc&q=open+zaak%26co"
+      "/components?sort=score&direction=asc&q=open+zaak%26co"
     );
   });
 });
@@ -58,12 +58,12 @@ describe("HistoryPageClient search", () => {
       <HistoryPageClient sort="score" direction="asc" query="zaak" repositories={[repository]} />
     );
 
-    const input = screen.getByLabelText("Search repositories") as HTMLInputElement;
+    const input = screen.getByLabelText("Search components") as HTMLInputElement;
     expect(input.name).toBe("q");
     expect(input.value).toBe("zaak");
     const form = container.querySelector("form");
     expect(form?.getAttribute("method")).toBe("get");
-    expect(form?.getAttribute("action")).toBe("/history");
+    expect(form?.getAttribute("action")).toBe("/components");
     expect(container.querySelector('input[type="hidden"][name="sort"]')?.getAttribute("value")).toBe("score");
     expect(container.querySelector('input[type="hidden"][name="direction"]')?.getAttribute("value")).toBe("asc");
   });
@@ -72,17 +72,17 @@ describe("HistoryPageClient search", () => {
     render(<HistoryPageClient sort="date" direction="desc" query="zaak" repositories={[repository]} />);
 
     expect(screen.getByRole("link", { name: "Score ↓" }).getAttribute("href")).toBe(
-      "/history?sort=score&direction=desc&q=zaak"
+      "/components?sort=score&direction=desc&q=zaak"
     );
     expect(screen.getByRole("link", { name: "Rating ↑" }).getAttribute("href")).toBe(
-      "/history?sort=rating&direction=asc&q=zaak"
+      "/components?sort=rating&direction=asc&q=zaak"
     );
   });
 
   it("updates the URL with q after the debounce while typing", () => {
     render(<HistoryPageClient sort="score" direction="desc" query="" repositories={[repository]} />);
 
-    const input = screen.getByLabelText("Search repositories");
+    const input = screen.getByLabelText("Search components");
     fireEvent.change(input, { target: { value: "za" } });
     fireEvent.change(input, { target: { value: "zaak " } });
     act(() => {
@@ -94,17 +94,17 @@ describe("HistoryPageClient search", () => {
       vi.advanceTimersByTime(1);
     });
     expect(replace).toHaveBeenCalledTimes(1);
-    expect(replace).toHaveBeenCalledWith("/history?sort=score&direction=desc&q=zaak", { scroll: false });
+    expect(replace).toHaveBeenCalledWith("/components?sort=score&direction=desc&q=zaak", { scroll: false });
   });
 
   it("removes q from the URL when the search is cleared", () => {
     render(<HistoryPageClient sort="date" direction="desc" query="zaak" repositories={[repository]} />);
 
-    fireEvent.change(screen.getByLabelText("Search repositories"), { target: { value: "" } });
+    fireEvent.change(screen.getByLabelText("Search components"), { target: { value: "" } });
     act(() => {
       vi.advanceTimersByTime(SEARCH_DEBOUNCE_MS);
     });
-    expect(replace).toHaveBeenCalledWith("/history?sort=date&direction=desc", { scroll: false });
+    expect(replace).toHaveBeenCalledWith("/components?sort=date&direction=desc", { scroll: false });
   });
 
   it("does not navigate when the term is unchanged", () => {
@@ -393,10 +393,10 @@ describe("HistoryPageClient status filter", () => {
     ]);
     expect(within(chips).getByRole("link", { name: "All (3)" }).getAttribute("aria-current")).toBe("true");
     expect(within(chips).getByRole("link", { name: "Maintained (1)" }).getAttribute("href")).toBe(
-      "/history?sort=rating&direction=desc&q=zaak&status=maintained"
+      "/components?sort=rating&direction=desc&q=zaak&status=maintained"
     );
     expect(within(chips).getByRole("link", { name: "In basisset (1)" }).getAttribute("href")).toBe(
-      "/history?sort=rating&direction=desc&q=zaak&basisset=1"
+      "/components?sort=rating&direction=desc&q=zaak&basisset=1"
     );
   });
 
@@ -409,10 +409,10 @@ describe("HistoryPageClient status filter", () => {
     expect(card.querySelector("[data-lifecycle-status]")?.textContent).toBe("Maintained");
     expect(within(card).getByText("In basisset")).toBeTruthy();
     expect(screen.getByRole("link", { name: "Date ↓" }).getAttribute("href")).toBe(
-      "/history?sort=date&direction=desc&q=zaak&status=maintained"
+      "/components?sort=date&direction=desc&q=zaak&status=maintained"
     );
     expect(screen.getByRole("link", { name: "All (3)" }).getAttribute("href")).toBe(
-      "/history?sort=rating&direction=desc&q=zaak"
+      "/components?sort=rating&direction=desc&q=zaak"
     );
     expect(container.querySelector('input[type="hidden"][name="status"]')?.getAttribute("value")).toBe("maintained");
   });
@@ -422,7 +422,7 @@ describe("HistoryPageClient status filter", () => {
 
     expect(screen.getByRole("link", { name: "All (1)" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "In basisset (1)" }).getAttribute("href")).toBe(
-      "/history?sort=rating&direction=desc&q=zaak&status=measured"
+      "/components?sort=rating&direction=desc&q=zaak&status=measured"
     );
     expect(screen.getByRole("status").textContent).toBe(
       "No repositories match “zaak” with status Measured in the basisset."

@@ -23,7 +23,7 @@ vi.mock("@/lib/basisset", async (importOriginal) => ({
   loadBasisset,
 }));
 
-import RepoHistoryPage from "@/app/history/[owner]/[repo]/page";
+import RepoHistoryPage from "@/app/components/[owner]/[repo]/page";
 
 const repository = {
   id: "repo-id",
@@ -90,11 +90,11 @@ describe("RepoHistoryPage", () => {
 
     const graph = screen.getByRole("region", { name: "Rating over time" });
     expect(graph.querySelectorAll("svg a")).toHaveLength(2);
-    expect(graph.querySelector("svg a[aria-current='page']")?.getAttribute("href")).toBe("/history/org/repo/new");
+    expect(graph.querySelector("svg a[aria-current='page']")?.getAttribute("href")).toBe("/components/org/repo/new");
 
     const runs = screen.getByRole("region", { name: "All runs" });
     const runLinks = within(runs).getAllByRole("link");
-    expect(runLinks.map((link) => link.getAttribute("href"))).toEqual(["/history/org/repo/new", "/history/org/repo/old"]);
+    expect(runLinks.map((link) => link.getAttribute("href"))).toEqual(["/components/org/repo/new", "/components/org/repo/old"]);
     expect(runLinks[0].getAttribute("aria-current")).toBe("page");
     expect(runLinks[1].getAttribute("aria-current")).toBeNull();
     const counts = within(runs)
@@ -111,7 +111,7 @@ describe("RepoHistoryPage", () => {
     expect(screen.getByText("Follow this repository (admin)")).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Criteria results for this run" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "Run new check" }).getAttribute("href")).toBe("/");
-    expect(screen.getByRole("link", { name: "Search another repository" }).getAttribute("href")).toBe("/history");
+    expect(screen.getByRole("link", { name: "Search another component" }).getAttribute("href")).toBe("/components");
   });
 
   it("rates a run without a stored rating from its stored results", async () => {
@@ -246,7 +246,7 @@ describe("RepoHistoryPage", () => {
     render(await RepoHistoryPage({ params: Promise.resolve({ owner: "org", repo: "repo" }) }));
 
     const users = screen.getByRole("list", { name: "Declared users" });
-    expect(users.querySelector("a")?.getAttribute("href")).toBe("/organisations/gemeente-utrecht");
+    expect(users.querySelector("a")?.getAttribute("href")).toBe("/users/gemeente-utrecht");
     expect(users.querySelectorAll("a")).toHaveLength(1);
   });
 });

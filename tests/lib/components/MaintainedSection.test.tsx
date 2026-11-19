@@ -211,7 +211,7 @@ describe("MaintainedSection", () => {
 
     const users = screen.getByRole("list", { name: "Declared users" });
     expect(within(users).getByRole("link", { name: "Gemeente Utrecht" }).getAttribute("href")).toBe(
-      "/organisations/gemeente-utrecht"
+      "/users/gemeente-utrecht"
     );
     expect(within(users).queryByRole("link", { name: "Gemeente Den Haag" })).toBeNull();
     expect(users.textContent).toContain("Gemeente Den Haag");

@@ -1,24 +1,32 @@
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
+import { PROVIDERS_PATH, USERS_PATH } from "@/lib/routes";
 
-type NavLink = { href: string; label: string };
+export type NavLink = { href: string; label: string };
 
-/** The links of the site navigation, in order. */
-export const SERVER_NAV_LINKS: ReadonlyArray<NavLink> = [
-  { href: "/", label: "Checker" },
-  { href: "/history", label: "History" },
-  { href: "/organisations", label: "Organisations" },
-  { href: "/docs", label: "Rating guide" },
-  { href: "/admin", label: "Admin" },
-  { href: "/about", label: "About" },
-];
-
-/** The static site has no checker form and no admin: the home page explains how to add a component. */
-export const STATIC_NAV_LINKS: ReadonlyArray<NavLink> = [
-  { href: "/history", label: "History" },
-  { href: "/organisations", label: "Organisations" },
-  { href: "/", label: "Add your component" },
+/** The links both modes share, in order. Components is the home page. */
+const SHARED_NAV_LINKS: ReadonlyArray<NavLink> = [
+  { href: "/", label: "Components" },
+  { href: USERS_PATH, label: "Users" },
+  { href: PROVIDERS_PATH, label: "Providers" },
   { href: "/docs", label: "Rating guide" },
   { href: "/about", label: "About" },
 ];
 
-export const NAV_LINKS: ReadonlyArray<NavLink> = IS_STATIC_SITE ? STATIC_NAV_LINKS : SERVER_NAV_LINKS;
+/** The server has an admin; the check form lives on About. */
+export const SERVER_NAV_LINKS: ReadonlyArray<NavLink> = [...SHARED_NAV_LINKS, { href: "/admin", label: "Admin" }];
+
+/** The static site has no admin: settings change by pull request. */
+export const STATIC_NAV_LINKS: ReadonlyArray<NavLink> = SHARED_NAV_LINKS;
+
+export function navLinks(isStaticSite: boolean = IS_STATIC_SITE): ReadonlyArray<NavLink> {
+  return isStaticSite ? STATIC_NAV_LINKS : SERVER_NAV_LINKS;
+}
+
+export const NAV_LINKS: ReadonlyArray<NavLink> = navLinks();
+
+/** Whether a link is the current section: Components covers the home page and every component page. */
+export function isActiveNavLink(href: string, pathname: string): boolean {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  if (href === "/") return path === "/" || path === "/components" || path.startsWith("/components/");
+  return path === href || path.startsWith(`${href}/`);
+}

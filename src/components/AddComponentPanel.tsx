@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { STATIC_SITE_LINKS } from "@/lib/dataSource/mode";
+import { ADD_COMPONENT_PATH } from "@/lib/routes";
 
 export const EXAMPLE_ENTRY = `  - url: https://github.com/example-org/example-component
     scanRef: latest-release
@@ -15,14 +16,15 @@ const linkClass = "inline-flex items-center min-h-[44px] text-cg-lightblue hover
 
 /**
  * How a component gets into the static site: a pull request on the component
- * list. Shown on the static home page in place of the checker form.
+ * list. Shown on About and on /add-component of the static site, in place of
+ * the checker form.
  */
 export default function AddComponentPanel({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
       <p className="text-sm text-gray-700">
         Missing a component?{" "}
-        <Link href="/" className="text-cg-lightblue hover:underline">
+        <Link href={ADD_COMPONENT_PATH} className="text-cg-lightblue hover:underline">
           Add it to the component list
         </Link>{" "}
         with a pull request. It is scanned in the next nightly run.

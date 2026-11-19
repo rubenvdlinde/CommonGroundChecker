@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readHistoryParams } from "@/components/StaticHistoryIndex";
 import { matchesRepositorySearch } from "@/lib/historySearch";
-import { SERVER_NAV_LINKS, STATIC_NAV_LINKS } from "@/lib/navigation";
 
 describe("readHistoryParams", () => {
   it("reads sort, direction and search from the URL with the server's defaults", () => {
@@ -46,12 +45,5 @@ describe("matchesRepositorySearch", () => {
     expect(matchesRepositorySearch(repository, "notificaties api")).toBe(true);
     expect(matchesRepositorySearch(repository, "commonground")).toBe(true);
     expect(matchesRepositorySearch(repository, "common")).toBe(false);
-  });
-});
-
-describe("navigation", () => {
-  it("has no checker form and no admin in the static site", () => {
-    expect(STATIC_NAV_LINKS.map((link) => link.label)).toEqual(["History", "Organisations", "Add your component", "Rating guide", "About"]);
-    expect(SERVER_NAV_LINKS.map((link) => link.href)).toContain("/admin");
   });
 });

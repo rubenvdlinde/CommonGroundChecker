@@ -8,8 +8,8 @@ const getOrganisation = vi.hoisted(() => vi.fn());
 const getAdminScoring = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/apiClient", () => ({ getOrganisations, getOrganisation, getAdminScoring }));
 
-import OrganisationsPage from "@/app/organisations/page";
-import OrganisationPage from "@/app/organisations/[slug]/page";
+import OrganisationsPage from "@/app/users/page";
+import OrganisationPage from "@/app/users/[slug]/page";
 
 const SOURCE_NOTE = /comes from what components declare under usedBy in their publiccode.yml, not from the organisations/;
 
@@ -29,7 +29,7 @@ describe("OrganisationsPage", () => {
 
     const list = screen.getByRole("list", { name: "Organisations" });
     const links = within(list).getAllByRole("link");
-    expect(links.map((link) => link.getAttribute("href"))).toEqual(["/organisations/buren", "/organisations/utrecht"]);
+    expect(links.map((link) => link.getAttribute("href"))).toEqual(["/users/buren", "/users/utrecht"]);
     expect(links[0].textContent).toContain("1 component");
     expect(links[1].textContent).toContain("3 components");
     expect(screen.getByText(SOURCE_NOTE)).toBeTruthy();
@@ -50,7 +50,7 @@ describe("OrganisationsPage", () => {
     expect(within(screen.getByRole("list", { name: "Organisations" })).getAllByRole("link")).toHaveLength(1);
     expect(screen.getByText("1 of 2 organisations")).toBeTruthy();
 
-    fireEvent.change(screen.getByLabelText("Search organisations"), { target: { value: "rotterdam" } });
+    fireEvent.change(screen.getByLabelText("Search users"), { target: { value: "rotterdam" } });
     expect(screen.getByText("No organisation matches this search.")).toBeTruthy();
   });
 
@@ -131,7 +131,7 @@ describe("OrganisationPage", () => {
 
     const rows = within(screen.getByRole("list", { name: "Components" })).getAllByRole("listitem");
     expect(within(rows[0]).getByRole("link", { name: "open-formulieren/open-forms" }).getAttribute("href")).toBe(
-      "/history/open-formulieren/open-forms"
+      "/components/open-formulieren/open-forms"
     );
     expect(within(rows[0]).getByRole("img", { name: "Overall rating 4.2 of 5.5, 4 stars" })).toBeTruthy();
     expect(rows[0].textContent).toContain("Suitable for Common Ground");
@@ -148,7 +148,7 @@ describe("OrganisationPage", () => {
     render(await OrganisationPage({ params: Promise.resolve({ slug: "nowhere" }) }));
 
     expect(screen.getByText("No followed component declares an organisation with the address nowhere.")).toBeTruthy();
-    expect(screen.getByRole("link", { name: "← All organisations" }).getAttribute("href")).toBe("/organisations");
+    expect(screen.getByRole("link", { name: "← All users" }).getAttribute("href")).toBe("/users");
   });
 
   it("says when the backend cannot be reached", async () => {

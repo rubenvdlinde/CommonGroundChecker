@@ -7,6 +7,7 @@ import { parseSla } from "@/lib/sla";
 import { USAGE_CHECK_ID, readUsageData } from "@/lib/usage";
 import { readPublicCodeData } from "@/lib/checkers/publiccode";
 import { isMandatoryFromDate } from "@/lib/criteria";
+import { componentHref } from "@/lib/routes";
 import { developmentStatusOf, type MaintainedSla } from "@/lib/maintained";
 import { computeLifecycleStatus, openDropsOf, type LifecycleResult } from "@/lib/lifecycle";
 import type { CheckReport, CheckResult, Endorsement, StarRating } from "@/lib/types";
@@ -176,10 +177,7 @@ function checkedAtTime(checkedAt: string): number {
 }
 
 /** The href of a repository page, or of one of its runs. */
-export function repositoryRunHref(owner: string, repo: string, analysisId?: string): string {
-  const base = `/components/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}`;
-  return analysisId === undefined ? base : `${base}/${encodeURIComponent(analysisId)}`;
-}
+export const repositoryRunHref = componentHref;
 
 /**
  * Loads a repository with its stored runs, rated, and selects the requested

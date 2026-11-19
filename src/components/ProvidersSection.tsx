@@ -1,18 +1,7 @@
+import Link from "next/link";
+import { PROVIDERS_PATH } from "@/lib/routes";
+import { SERVICE_LABELS, contactHref } from "@/lib/serviceProviders";
 import type { ServiceProvider } from "@/lib/staticSite/config";
-
-const SERVICE_LABELS: Record<string, string> = {
-  maintenance: "Maintenance",
-  support: "Support",
-  hosting: "Hosting",
-  implementation: "Implementation",
-  training: "Training",
-};
-
-function contactHref(contact: string): string | null {
-  if (/^https?:\/\//.test(contact)) return contact;
-  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact)) return `mailto:${contact}`;
-  return null;
-}
 
 /** Organisations that offer services on top of a component, as listed in the component list. */
 export default function ProvidersSection({ providers, listUrl }: { providers: ServiceProvider[]; listUrl: string }) {
@@ -72,7 +61,10 @@ export default function ProvidersSection({ providers, listUrl }: { providers: Se
         <a href={listUrl} className="text-cg-lightblue hover:underline">
           component list
         </a>{" "}
-        with a pull request. The checker does not verify what they offer.
+        with a pull request. The checker does not verify what they offer.{" "}
+        <Link href={PROVIDERS_PATH} className="text-cg-lightblue hover:underline">
+          All providers
+        </Link>
       </p>
     </section>
   );

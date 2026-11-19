@@ -1,4 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import AddComponentPanel from "@/components/AddComponentPanel";
+import CheckerHome from "@/components/CheckerHome";
 import AdoptionDiagram, { NARROW_ADOPTION_LAYOUT, WIDE_ADOPTION_LAYOUT } from "@/components/AdoptionDiagram";
 import ChecklistSourcesDiagram, { NARROW_SOURCES_LAYOUT, WIDE_SOURCES_LAYOUT } from "@/components/ChecklistSourcesDiagram";
 import DocTable from "@/components/DocTable";
@@ -22,7 +25,12 @@ import {
   SETUP_POINTS,
   stateName,
 } from "@/lib/aboutDocs";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { PATH_DOC_HREF } from "@/lib/pathDocs";
+
+export const metadata: Metadata = {
+  title: "About | Common Ground Component Checker",
+};
 
 const CARD = "bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6 space-y-4 scroll-mt-6";
 const H2 = "text-2xl font-bold text-cg-blue";
@@ -46,6 +54,7 @@ function SetupLink({ href, text }: { href: string; text: string }) {
 export default function AboutPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-6">
+      {IS_STATIC_SITE ? <AddComponentPanel /> : <CheckerHome />}
 
       <section className="space-y-3">
         <h2 className="text-2xl font-bold text-cg-blue">About Common Ground</h2>

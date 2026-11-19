@@ -523,16 +523,16 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
               </p>
               <p className="text-xs text-gray-500">
                 {recentRepositories.length > 0
-                  ? "Pick a repository from history to prefill the checker."
+                  ? "Pick a component that was checked before to prefill the checker."
                   : "Try one of these example repositories to get started quickly."}
               </p>
             </div>
             {recentRepositories.length > 0 ? (
               <Link
-                href="/history"
+                href="/components"
                 className="text-xs font-medium text-cg-lightblue hover:underline"
               >
-                View history
+                View components
               </Link>
             ) : null}
           </div>

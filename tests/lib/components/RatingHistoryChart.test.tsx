@@ -25,7 +25,7 @@ const runs = [
   { id: "b", checkedAt: "2026-02-01T12:00:00Z", rating: 3, passed: true },
 ];
 
-const hrefFor = (id: string) => `/history/owner/repo/${id}`;
+const hrefFor = (id: string) => `/components/owner/repo/${id}`;
 
 describe("RatingHistoryChart scaling", () => {
   afterEach(() => cleanup());
@@ -133,9 +133,9 @@ describe("RatingHistoryChart rendering", () => {
 
     const links = Array.from(svg?.querySelectorAll("a") ?? []);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
-      "/history/owner/repo/a",
-      "/history/owner/repo/b",
-      "/history/owner/repo/c",
+      "/components/owner/repo/a",
+      "/components/owner/repo/b",
+      "/components/owner/repo/c",
     ]);
     expect(links[0].getAttribute("aria-label")).toContain("rating 1.9, does not pass");
     expect(links[2].getAttribute("aria-label")).toContain("rating 4.2, passes");
@@ -148,7 +148,7 @@ describe("RatingHistoryChart rendering", () => {
     const svg = container.querySelector("svg");
     const current = svg?.querySelectorAll("a[aria-current='page']");
     expect(current).toHaveLength(1);
-    expect(current?.[0].getAttribute("href")).toBe("/history/owner/repo/b");
+    expect(current?.[0].getAttribute("href")).toBe("/components/owner/repo/b");
     const radii = Array.from(svg?.querySelectorAll("a") ?? []).map((link) =>
       link.querySelectorAll("circle")[2].getAttribute("r")
     );

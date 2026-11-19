@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import SiteNav from "@/components/SiteNav";
 import { NAV_LINKS } from "@/lib/navigation";
 import "./globals.css";
 
@@ -19,17 +19,17 @@ export default function RootLayout({
     <html lang="nl">
       <body className="min-h-screen flex flex-col">
         <header className="bg-cg-blue text-white shadow-md">
-          <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center gap-3 sm:gap-4">
             <Image
               src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icons/common-ground-full-logo.svg`}
               alt="Common Ground logo"
               width={180}
               height={52}
-              className="h-12 w-auto"
+              className="h-10 sm:h-12 w-auto shrink-0"
               priority
             />
             <div>
-              <h1 className="text-xl font-bold leading-tight">
+              <h1 className="text-lg sm:text-xl font-bold leading-tight">
                 Common Ground Component Checker
               </h1>
               <p className="text-xs text-blue-200">
@@ -37,29 +37,15 @@ export default function RootLayout({
               </p>
             </div>
           </div>
-          {/* Shallow, right-aligned navigation menu */}
-          <nav className="border-b border-blue-900 bg-cg-blue">
-            <div className="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-end gap-x-4 text-sm">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-white hover:text-cg-lightblue transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
+          <SiteNav links={NAV_LINKS} />
         </header>
 
         <main className="flex-1">{children}</main>
 
         <footer className="bg-cg-blue text-blue-200 text-xs py-4">
-          <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between gap-2">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between gap-2">
             <span>
-              Common Ground Component Checker — built for the Dutch open-source gov
-              community
+              Common Ground Component Checker, built for the Dutch open-source government community
             </span>
             <a
               href="https://commonground.nl"

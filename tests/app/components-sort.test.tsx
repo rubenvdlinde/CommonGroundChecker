@@ -13,7 +13,7 @@ vi.mock("@/lib/basisset", async (importOriginal) => ({
   loadBasisset,
 }));
 
-import HistoryHomePage from "@/app/history/page";
+import HistoryHomePage from "@/app/components/page";
 import { sortRepositories } from "@/components/HistoryPageClient";
 
 function repository(name: string, score: number, rating: number | null, checkedAt = "2026-11-11T10:00:00Z"): RepoSummary {

@@ -1,4 +1,4 @@
-/** Where the organisation lists come from, shown on every organisation page. */
+/** Where the lists of users come from, shown on every Users page. */
 export default function OrganisationsSourceNote() {
   return (
     <p className="text-sm text-gray-600">

@@ -106,10 +106,10 @@ describe("History filter", () => {
 
   it("puts the filter in the URL next to the search and the sort", () => {
     expect(buildHistoryHref({ q: "zaak", sort: "rating", direction: "desc", status: "maintained", basisset: true })).toBe(
-      "/history?sort=rating&direction=desc&q=zaak&status=maintained&basisset=1"
+      "/components?sort=rating&direction=desc&q=zaak&status=maintained&basisset=1"
     );
     expect(buildHistoryHref({ sort: "date", direction: "asc", status: null, basisset: false })).toBe(
-      "/history?sort=date&direction=asc"
+      "/components?sort=date&direction=asc"
     );
   });
 

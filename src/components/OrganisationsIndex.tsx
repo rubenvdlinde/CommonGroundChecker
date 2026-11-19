@@ -16,9 +16,9 @@ export default function OrganisationsIndex({ organisations, query }: Organisatio
 
   return (
     <div className="space-y-4">
-      <form role="search" method="get" action="/organisations" onSubmit={(event) => event.preventDefault()}>
+      <form role="search" method="get" action="/users" onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="organisation-search" className="block text-xs font-semibold text-gray-700 mb-1">
-          Search organisations
+          Search users
         </label>
         <input
           id="organisation-search"
@@ -40,7 +40,7 @@ export default function OrganisationsIndex({ organisations, query }: Organisatio
       {shown.length === 0 ? (
         <p className="text-sm text-gray-600">No organisation matches this search.</p>
       ) : (
-        <ul aria-label="Organisations" className="divide-y divide-gray-100 rounded-2xl border border-gray-200 bg-white">
+        <ul aria-label="Users" className="divide-y divide-gray-100 rounded-2xl border border-gray-200 bg-white">
           {shown.map((organisation) => (
             <li key={organisation.slug}>
               <Link

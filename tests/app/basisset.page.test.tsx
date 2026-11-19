@@ -39,7 +39,7 @@ describe("BasissetPage", () => {
     const rows = within(screen.getByRole("list", { name: "Basisset entries" })).getAllByRole("listitem", { hidden: false });
     const openZaak = screen.getByRole("list", { name: "In the checker for OpenZaak" });
     expect(openZaak.textContent).toContain("scanned version 1.31.2, newer than the basisset");
-    expect(within(openZaak).getByRole("link", { name: "open-zaak/open-zaak" }).getAttribute("href")).toBe("/history/open-zaak/open-zaak");
+    expect(within(openZaak).getByRole("link", { name: "open-zaak/open-zaak" }).getAttribute("href")).toBe("/components/open-zaak/open-zaak");
     expect(screen.getByRole("list", { name: "At another address for OpenRegister" }).textContent).toContain("ConductionNL/openregister");
     expect(rows.some((row) => row.textContent?.includes("OpenFormulieren") && row.textContent.includes("Next to basisset"))).toBe(true);
     expect(getRepositories).toHaveBeenCalledWith(50);
