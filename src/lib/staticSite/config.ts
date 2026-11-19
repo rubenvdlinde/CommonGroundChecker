@@ -48,6 +48,10 @@ export interface FollowedRepository {
   retired?: RetiredInfo;
   /** Who offers services on top of the component; contracts and SLAs are in config/slas.yml */
   providers?: ServiceProvider[];
+  /** Ids of config/functionalities.yml: what the component does */
+  functionalities?: string[];
+  /** True while the component owner has not confirmed the functionalities */
+  functionalitiesDraft?: boolean;
 }
 
 export interface RepositoriesConfig {
