@@ -27,7 +27,9 @@ describe("OrganisationsPage", () => {
 
     render(await OrganisationsPage({ searchParams: Promise.resolve({}) }));
 
-    const list = screen.getByRole("list", { name: "Organisations" });
+    expect(screen.getByRole("heading", { level: 2, name: "Users" })).toBeTruthy();
+    expect(screen.getByText(/The organisations that use a component, as the component declares under usedBy/)).toBeTruthy();
+    const list = screen.getByRole("list", { name: "Users" });
     const links = within(list).getAllByRole("link");
     expect(links.map((link) => link.getAttribute("href"))).toEqual(["/users/buren", "/users/utrecht"]);
     expect(links[0].textContent).toContain("1 component");
@@ -47,7 +49,7 @@ describe("OrganisationsPage", () => {
 
     render(await OrganisationsPage({ searchParams: Promise.resolve({ q: "bur" }) }));
 
-    expect(within(screen.getByRole("list", { name: "Organisations" })).getAllByRole("link")).toHaveLength(1);
+    expect(within(screen.getByRole("list", { name: "Users" })).getAllByRole("link")).toHaveLength(1);
     expect(screen.getByText("1 of 2 organisations")).toBeTruthy();
 
     fireEvent.change(screen.getByLabelText("Search users"), { target: { value: "rotterdam" } });

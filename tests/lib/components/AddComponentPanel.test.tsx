@@ -31,8 +31,8 @@ describe("AddComponentPanel", () => {
     expect(form).toMatch(/^name: Request a scan/m);
   });
 
-  it("has a one-line form for the History index", () => {
+  it("has a one-line form for the Components index", () => {
     render(<AddComponentPanel compact />);
-    expect(screen.getByRole("link", { name: "Add it to the component list" }).getAttribute("href")).toBe("/");
+    expect(screen.getByRole("link", { name: "Add it to the component list" }).getAttribute("href")).toBe("/add-component");
   });
 });

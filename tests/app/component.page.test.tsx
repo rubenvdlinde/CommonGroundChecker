@@ -110,7 +110,7 @@ describe("RepoHistoryPage", () => {
 
     expect(screen.getByText("Follow this repository (admin)")).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Criteria results for this run" })).toBeTruthy();
-    expect(screen.getByRole("link", { name: "Run new check" }).getAttribute("href")).toBe("/");
+    expect(screen.getByRole("link", { name: "Run new check" }).getAttribute("href")).toBe("/about#check");
     expect(screen.getByRole("link", { name: "Search another component" }).getAttribute("href")).toBe("/components");
   });
 
