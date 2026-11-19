@@ -1,4 +1,5 @@
 import { dataSource, type RepositoryExtras, type StaticAnalysisExtras } from "@/lib/dataSource";
+import { readReusedFrom } from "@/lib/scanModeText";
 import { parseMeasurements, parseMetrics } from "@/lib/measurements";
 import { countIssues } from "@/lib/issues";
 import { isRating, type Ratings } from "@/lib/ratings";
@@ -43,6 +44,13 @@ export interface SelectedRun extends RunSummary {
   endorsement: Endorsement;
   /** The checklist version the run was measured against; null for runs from before the checklist had versions */
   checklistVersion: string | null;
+  /** The branch or tag that was scanned, its kind and commit; null for runs from before refs were stored */
+  scannedRef: string | null;
+  scannedRefKind: string | null;
+  scannedCommit: string | null;
+  /** `full` or `partial`; null for runs from before scan modes were stored */
+  scanMode: string | null;
+  scanDurationSeconds: number | null;
 }
 
 export interface RepositoryRun {
@@ -54,6 +62,8 @@ export interface RepositoryRun {
     followed: boolean;
     checkIntervalHours: number | null;
     nextCheckAt: string | null;
+    /** The branch or tag followed scans use; null for the default branch */
+    scanRef: string | null;
     /** When an admin retired the repository, or null */
     retiredAt: string | null;
     retiredReason: string | null;
@@ -126,6 +136,7 @@ export function normalizeResults(raw: unknown): CheckResult[] {
         publiccode: (item.id === "publiccode" && readPublicCodeData(item.publiccode)) || undefined,
         usage: item.id === USAGE_CHECK_ID ? readUsageData(item.usage) : undefined,
         sla: parseSla(item.sla),
+        reusedFrom: readReusedFrom(item.reusedFrom),
       } satisfies CheckResult;
     });
 }
@@ -241,6 +252,11 @@ export async function loadRepositoryRun(
           aspectRatings: ratings[selectedIndex].aspectRatings,
           endorsement: ratings[selectedIndex].endorsement,
           checklistVersion: checklistVersionOf(analyses[selectedIndex]),
+          scannedRef: analyses[selectedIndex].scannedRef ?? null,
+          scannedRefKind: analyses[selectedIndex].scannedRefKind ?? null,
+          scannedCommit: analyses[selectedIndex].scannedCommit ?? null,
+          scanMode: analyses[selectedIndex].scanMode ?? null,
+          scanDurationSeconds: analyses[selectedIndex].scanDurationSeconds ?? null,
         };
 
   return {
@@ -254,6 +270,7 @@ export async function loadRepositoryRun(
         followed: repository.followed ?? false,
         checkIntervalHours: repository.checkIntervalHours ?? null,
         nextCheckAt: repository.nextCheckAt ?? null,
+        scanRef: repository.scanRef ?? null,
         retiredAt: repository.retiredAt ?? extras?.retired?.on ?? null,
         retiredReason: repository.retiredReason ?? extras?.retired?.reason ?? null,
       },

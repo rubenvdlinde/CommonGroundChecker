@@ -57,7 +57,7 @@ describe("buildLatestFile", () => {
       version: "1.31.2",
       scannedRef: "main",
       scannedRefKind: "default-branch",
-      checklistVersion: null,
+      checklistVersion: "2026.1",
       declaredUsers: ["Gemeente Utrecht", "Gemeente Den Haag"],
       declaredUserCount: 2,
       maintained: true,
@@ -73,6 +73,30 @@ describe("buildLatestFile", () => {
       null
     );
     expect(latest.analysis).toMatchObject({ scannedRef: "v1.31.2", scannedRefKind: "release", scannedCommit: "abc", checklistVersion: "2026.1" });
+  });
+
+  it("keeps how the scan ran, so the next run can reuse the code checks", () => {
+    const latest = buildLatestFile(
+      input({
+        report: {
+          ...report(),
+          scanMode: "partial",
+          scanModeReason: "the code did not change",
+          toolFingerprint: "sha256:tools",
+          inputsFingerprint: "sha256:inputs",
+        },
+      }),
+      null
+    );
+    expect(latest.analysis).toMatchObject({
+      scanMode: "partial",
+      scanModeReason: "the code did not change",
+      toolFingerprint: "sha256:tools",
+      inputsFingerprint: "sha256:inputs",
+      durationSeconds: 12.3,
+    });
+    expect(appendToHistory(null, latest, null).analyses[0]).toMatchObject({ scanMode: "partial", durationSeconds: 12.3 });
+    expect(buildLatestFile(input(), null).analysis).toMatchObject({ scanMode: null, toolFingerprint: null });
   });
 
   it("is not Maintained without a valid SLA, and keeps the creation time of the previous file", () => {

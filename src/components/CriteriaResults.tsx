@@ -77,6 +77,7 @@ export default function CriteriaResults({ results, categoryRatings }: CriteriaRe
                       metrics={result.metrics}
                       sla={result.sla}
                       mandatoryFrom={result.mandatoryFrom}
+                      reusedFrom={result.reusedFrom}
                     />
                   ))}
                 </div>

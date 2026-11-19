@@ -66,5 +66,24 @@ export const $CheckResult = {
             type: 'boolean',
             description: `True when the criterion does not apply to this component. It then counts in no score, rating or verdict.`,
         },
+        reusedFrom: {
+            description: `Set when a scan of an unchanged commit copied this result from the analysis that measured it`,
+            properties: {
+                analysisId: {
+                    type: 'string',
+                    isRequired: true,
+                    isNullable: true,
+                },
+                checkedAt: {
+                    type: 'string',
+                    isRequired: true,
+                    format: 'date-time',
+                },
+                commit: {
+                    type: 'string',
+                    isRequired: true,
+                },
+            },
+        },
     },
 } as const;

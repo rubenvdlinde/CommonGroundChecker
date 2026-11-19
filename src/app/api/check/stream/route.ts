@@ -2,6 +2,8 @@
 import { declaredUsersOf } from "@/lib/maintained";
 import { countIssues } from "@/lib/issues";
 import { readSlaLabelsOption } from "@/lib/maintenanceTerms";
+import { fetchPreviousAnalysis, scanFieldsOf } from "@/lib/previousAnalysis";
+import { normalizeRequestedRef } from "@/lib/scanRef";
 import { getSupportedProviders, resolveRepositoryContext } from "@/lib/providers";
 import type { CheckReport } from "@/lib/types";
 import type { CheckResult as ApiCheckResult } from "@/generated/openapi-client/models/CheckResult";
@@ -52,6 +54,9 @@ function toApiCheckResult(result: import("@/lib/types").CheckResult): ApiCheckRe
 const formatSseEvent = (payload: ProgressEvent) =>
   `data: ${JSON.stringify(payload)}\n\n`;
 
+const INVALID_REF_ERROR =
+  'Invalid ref: expected an empty value (the default branch), "latest-release", or a branch or tag name.';
+
 export const runtime = "nodejs";
 
 export async function OPTIONS() {
@@ -75,6 +80,8 @@ export async function POST(request: Request) {
   const dockerLocations = normalizeLocations(body?.dockerLocations);
   const apiSpecificationLocations = normalizeLocations(body?.apiSpecificationLocations);
   const isRegister = body?.isRegister === true;
+  const ref = normalizeRequestedRef(body?.ref);
+  const full = body?.full === true;
 
   const encoder = new TextEncoder();
 
@@ -105,6 +112,12 @@ export async function POST(request: Request) {
         return;
       }
 
+      if (ref === undefined) {
+        send({ step: "Error", pct: 0, error: INVALID_REF_ERROR });
+        finish();
+        return;
+      }
+
       try {
         send({ step: "Validating repository URL…", pct: 5 });
 
@@ -117,6 +130,9 @@ export async function POST(request: Request) {
             apiSpecificationLocations,
             isRegister,
             slaLabels: readSlaLabelsOption(body?.slaLabels),
+            ref,
+            full,
+            previousAnalysis: full ? null : await fetchPreviousAnalysis(repoUrl),
           },
           (step, pct) => send({ step, pct })
         );
@@ -148,12 +164,16 @@ export async function POST(request: Request) {
             scoringConfigId: report.scoringConfigId,
             checkedAt: report.checkedAt,
             version: toApiString(report.repoMeta.version) ?? null,
+            scannedRef: report.scannedRef,
+            scannedRefKind: report.scannedRefKind,
+            scannedCommit: report.scannedCommit,
             score: report.score,
             rating: report.rating,
             categoryRatings: report.categoryRatings,
             aspectRatings: report.aspectRatings,
             endorsement: report.endorsement,
             checklistVersion: report.checklistVersion,
+            ...scanFieldsOf(report),
             issueCounts: countIssues(report.results, report.rating, report.endorsement),
             declaredUsers: declaredUsersOf(report.results),
             results: report.results.map(toApiCheckResult),

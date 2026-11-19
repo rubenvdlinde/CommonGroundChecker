@@ -1,6 +1,6 @@
 "use client";
 
-import type { CheckStatus, ConfidenceLevel, InformativeMetric, RequirementLevel, SlaSummary, StarRating } from "@/lib/types";
+import type { CheckStatus, ConfidenceLevel, InformativeMetric, RequirementLevel, ReusedFrom, SlaSummary, StarRating } from "@/lib/types";
 import MetricTable from "@/components/MetricTable";
 import SlaTable from "@/components/SlaTable";
 import { formatStars } from "@/lib/stars";
@@ -23,6 +23,7 @@ import {
   transitionNotice,
 } from "@/lib/criteria";
 import { PUBLICCODE_GUIDE_CHECK_IDS, PUBLICCODE_PROFILE_PATH } from "@/lib/publiccodeProfile";
+import { reusedNote } from "@/lib/scanModeText";
 
 interface ResultCardProps {
   id: string;
@@ -39,6 +40,8 @@ interface ResultCardProps {
   sla?: SlaSummary;
   /** The date a mandatory criterion in its transition period becomes mandatory */
   mandatoryFrom?: string;
+  /** Set when the result was copied from an earlier scan of the same commit */
+  reusedFrom?: ReusedFrom;
 }
 
 const REQUIREMENT_CONFIG: Record<
@@ -107,6 +110,7 @@ export default function ResultCard({
   metrics,
   sla,
   mandatoryFrom,
+  reusedFrom,
 }: ResultCardProps) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -176,6 +180,14 @@ export default function ResultCard({
             {confidence} confidence
           </span>
         )}
+        {reusedFrom && (
+          <span
+            className="text-xs px-2 py-0.5 rounded-full border border-gray-300 text-gray-600 bg-white/70"
+            title={reusedNote(reusedFrom)}
+          >
+            reused
+          </span>
+        )}
         {open ? (
           <ChevronUp className="w-4 h-4 text-gray-500" />
         ) : (
@@ -187,6 +199,7 @@ export default function ResultCard({
         <div className="px-5 pb-5 space-y-3 border-t border-gray-200 pt-3">
           <p className="text-sm text-gray-600 italic">{description}</p>
           <p className={`text-sm font-medium ${text}`}>{message}</p>
+          {reusedFrom && <p className="text-xs text-gray-500">{reusedNote(reusedFrom)}</p>}
 
           {metrics && metrics.length > 0 && <MetricTable caption={`${title}: measured values`} metrics={metrics} />}
 

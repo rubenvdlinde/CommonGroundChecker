@@ -1,5 +1,7 @@
 // Shared types across checkers and UI
 
+import type { ScanRefKind } from "./scanRef";
+
 export type CheckStatus = "pass" | "fail" | "warn" | "info";
 export type RequirementLevel = "mandatory" | "recommended" | "informative";
 export type ConfidenceLevel = "high" | "medium" | "low";
@@ -49,7 +51,20 @@ export interface CheckResult {
   metrics?: InformativeMetric[];
   /** Issue response and fix times against the proposed SLA terms; informative */
   sla?: SlaSummary;
+  /** Set when a scan of an unchanged commit copied this result from the analysis that measured it */
+  reusedFrom?: ReusedFrom;
 }
+
+/** The analysis a reused result was measured in. */
+export interface ReusedFrom {
+  /** Id of that analysis, or null when the store gave none */
+  analysisId: string | null;
+  checkedAt: string;
+  commit: string;
+}
+
+/** `full` when every check ran; `partial` when the code checks were reused. */
+export type ScanMode = "full" | "partial";
 
 /** The kind of evidence a usage source gives. */
 export type UsageSourceKind = "declared" | "downloads" | "containers" | "ecosystem";
@@ -332,6 +347,22 @@ export interface CheckReport {
   aspectRatings: Record<string, AspectRating>;
   endorsement: Endorsement;
   results: CheckResult[];
+  /** Branch or tag name that was scanned. */
+  scannedRef: string;
+  scannedRefKind: ScanRefKind;
+  /** Commit SHA that was scanned, or null when the provider did not return one. */
+  scannedCommit: string | null;
+  /** Set when the requested ref could not be used, e.g. no release to scan. */
+  scanRefWarning?: string;
+  scanMode?: ScanMode;
+  /** Why the scan was full or partial, for example "the commit changed" */
+  scanModeReason?: string;
+  /** Seconds from the start of the scan until its results were complete */
+  scanDurationSeconds?: number;
+  /** Hash of the checker's own version and its pinned tool versions */
+  toolFingerprint?: string;
+  /** Hash of the scan settings the code checks depend on */
+  inputsFingerprint?: string;
   repoMeta: {
     description: string | null;
     language: string | null;

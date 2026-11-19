@@ -147,7 +147,8 @@ export async function checkComplexity(
   averageThreshold: number,
   maxCcnThreshold: number,
   localRepoPath?: string,
-  cloneUrl?: string
+  cloneUrl?: string,
+  cloneRef?: string
 ): Promise<CheckResult> {
   const lizard = await detectLizardCommand();
 
@@ -179,7 +180,14 @@ export async function checkComplexity(
     if (!localRepoPath) {
       const clone = await runCommand(
         "git",
-        ["clone", "--depth", "1", effectiveCloneUrl, repoDir],
+        [
+          "clone",
+          "--depth",
+          "1",
+          ...(cloneRef ? ["--branch", cloneRef] : []),
+          effectiveCloneUrl,
+          repoDir,
+        ],
         { GIT_LFS_SKIP_SMUDGE: "1" }
       );
 

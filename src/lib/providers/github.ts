@@ -1,8 +1,11 @@
 import {
+  getCommitSha as getGitHubCommitSha,
   getFileContent as getGitHubFileContent,
   getRepoMeta as getGitHubRepoMeta,
   getRepoTree as getGitHubRepoTree,
   getRepoVersion as getGitHubRepoVersion,
+  listReleases as listGitHubReleases,
+  listTags as listGitHubTags,
   parseGitHubTreeUrl,
   parseGitHubUrl,
 } from "../github";
@@ -31,9 +34,19 @@ export const GitHubRepositoryProvider: RepositoryProvider = {
   getRepoTree: async (context: RepoContext, branch: string) =>
     getGitHubRepoTree(context.owner, context.repo, branch),
   getFileContent: async (context: RepoContext, path: string) =>
-    getGitHubFileContent(context.owner, context.repo, path),
+    getGitHubFileContent(
+      context.owner,
+      context.repo,
+      path,
+      context.ref ?? context.defaultBranch
+    ),
   getRepoVersion: async (context: RepoContext) =>
     getGitHubRepoVersion(context.owner, context.repo),
+  getCommitSha: async (context: RepoContext, ref: string) =>
+    getGitHubCommitSha(context.owner, context.repo, ref),
+  listReleases: async (context: RepoContext) =>
+    listGitHubReleases(context.owner, context.repo),
+  listTags: async (context: RepoContext) => listGitHubTags(context.owner, context.repo),
   getCloneUrl: (context: RepoContext) =>
     `https://github.com/${context.projectPath}.git`,
   getRawFileUrl: (context: RepoContext, branch: string, path: string) =>

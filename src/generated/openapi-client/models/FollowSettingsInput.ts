@@ -8,5 +8,9 @@ export type FollowSettingsInput = {
      * 24 (daily), 168 (weekly) or 720 (monthly). Defaults to the stored interval, or 168 when following for the first time
      */
     checkIntervalHours?: number;
+    /**
+     * The branch or tag scheduled scans use: null for the released version (the tag of the publiccode.yml softwareVersion, else the latest release), "default-branch", "latest-release", or a branch or tag name
+     */
+    scanRef?: string | null;
 };
 

@@ -136,6 +136,7 @@ async function main(argv: string[]): Promise<number> {
   const scoringConfig = scoringConfigFromPayload(scoringPayload ?? {});
   const report = await runChecksOnContext(createLocalContext(local), {
     localRepoPath: checkout,
+    ref: "default-branch",
     scoringConfig,
     isRegister: args.register,
     apiSpecificationLocations: args.apiSpecs,

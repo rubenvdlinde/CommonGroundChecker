@@ -73,6 +73,7 @@ export function toRepoHistory(entry: IndexEntry, latest: LatestFile, history: Hi
       metadata: repository.metadata as RepoHistory["repository"]["metadata"],
       followed: entry.followed,
       checkIntervalHours: entry.checkIntervalHours,
+      scanRef: repository.scanRef,
       lastCheckedAt: repository.lastCheckedAt,
       nextCheckAt: null as unknown as string,
       createdAt: repository.createdAt,

@@ -179,6 +179,12 @@ export function createLocalProvider(checkout: LocalCheckout): RepositoryProvider
     getRepoTree: async () => listCheckoutTree(checkout.dir),
     getFileContent: async (_context: RepoContext, filePath: string) => readCheckoutFile(checkout.dir, filePath),
     getRepoVersion: async () => localVersion(checkout.dir),
+    getCommitSha: async (_context: RepoContext, ref: string) => {
+      const sha = (await git(checkout.dir, ["rev-parse", "--verify", "--quiet", `${ref}^{commit}`]))?.trim();
+      return sha && /^[0-9a-f]{40}$/i.test(sha) ? sha : null;
+    },
+    listReleases: async () => [],
+    listTags: async () => ((await git(checkout.dir, ["tag", "--merged", "HEAD"])) ?? "").split(/\r?\n/).filter(Boolean),
     getCloneUrl: () => checkout.dir,
     getRawFileUrl: (_context: RepoContext, branch: string, filePath: string) =>
       checkout.host === "github"

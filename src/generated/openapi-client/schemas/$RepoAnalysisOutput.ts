@@ -35,6 +35,21 @@ export const $RepoAnalysisOutput = {
             type: 'number',
             description: `Organisations under usedBy at this analysis, or null when it did not record them`,
         },
+        scannedRef: {
+            type: 'string',
+            description: `The branch or tag name that was scanned, for example development or v1.2.0`,
+            isNullable: true,
+        },
+        scannedRefKind: {
+            type: 'string',
+            description: `Why the scanned ref was chosen: declared-version (the tag of the publiccode.yml softwareVersion), release (the newest stable release), tag (the newest stable semver tag), branch (named in the request), default-branch (asked for), or default-branch-fallback (no release found)`,
+            isNullable: true,
+        },
+        scannedCommit: {
+            type: 'string',
+            description: `The commit SHA that was scanned`,
+            isNullable: true,
+        },
         score: {
             type: 'number',
             isRequired: true,
@@ -53,6 +68,20 @@ export const $RepoAnalysisOutput = {
         },
         checklistVersion: {
             type: 'ChecklistVersion',
+        },
+        scanMode: {
+            type: 'ScanMode',
+        },
+        scanDurationSeconds: {
+            type: 'number',
+            description: `How long the scan took, in seconds`,
+            isNullable: true,
+        },
+        toolFingerprint: {
+            type: 'Fingerprint',
+        },
+        inputsFingerprint: {
+            type: 'Fingerprint',
         },
         issueCounts: {
             type: 'IssueCounts',

@@ -3,6 +3,8 @@ import CategoryRatings from "@/components/CategoryRatings";
 import CriteriaResults from "@/components/CriteriaResults";
 import DropsCard from "@/components/DropsCard";
 import FollowControl from "@/components/FollowControl";
+import ScannedRef from "@/components/ScannedRef";
+import ScanModeLine from "@/components/ScanModeLine";
 import IssueBlocks from "@/components/IssueBlocks";
 import LifecycleSection, { type RepositoryLifecycle } from "@/components/LifecycleSection";
 import MaintainedSection from "@/components/MaintainedSection";
@@ -160,8 +162,15 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
           </h3>
           <p className="text-xs text-gray-500">
             Checked at {new Date(selected.checkedAt).toLocaleString("nl-NL")}
+            {selected.scannedRef ? " · " : null}
+            <ScannedRef scannedRef={selected.scannedRef} kind={selected.scannedRefKind} commit={selected.scannedCommit} />
           </p>
           <p className="text-xs text-gray-500">{checklistVersionLabel(selected.checklistVersion)}</p>
+          <ScanModeLine
+            scanMode={selected.scanMode}
+            scanDurationSeconds={selected.scanDurationSeconds}
+            results={selected.results}
+          />
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <RatingSummary rating={selected.rating} endorsement={selected.endorsement} score={selected.score} />
             <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
@@ -213,6 +222,7 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
           repoId={repository.id}
           initialFollowed={repository.followed}
           initialCheckIntervalHours={repository.checkIntervalHours}
+          initialScanRef={repository.scanRef}
           initialNextCheckAt={repository.nextCheckAt}
         />
       )}
