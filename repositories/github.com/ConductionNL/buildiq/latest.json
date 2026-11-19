@@ -1,0 +1,2315 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/ConductionNL/buildiq",
+  "repoUrl": "https://github.com/ConductionNL/buildiq",
+  "host": "github.com",
+  "owner": "ConductionNL",
+  "name": "buildiq",
+  "metadata": {
+   "description": "Citizen-developer app builder for Nextcloud — compose data-driven apps from registers and schemas without writing code.",
+   "language": "PHP",
+   "stars": 1,
+   "forks": 0,
+   "defaultBranch": "main",
+   "topics": [],
+   "license": "European Union Public License 1.2",
+   "version": "v0.7.0",
+   "versionEvidence": {
+    "source": "release",
+    "detail": "latest release tag: v0.7.0"
+   },
+   "displayName": "Buildiq",
+   "shortDescription": "Bouwprojectbeheer en omgevingsadministratie voor Nextcloud.",
+   "logoUrl": null,
+   "developmentStatus": "beta",
+   "maintenanceType": "community",
+   "maintainers": [
+    "Conduction B.V."
+   ]
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T13:52:51.442Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T13:52:51.442Z",
+  "updatedAt": "2026-11-19T13:52:51.442Z",
+  "basisset": false,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T13-52-51-442Z",
+  "repoId": "github.com/ConductionNL/buildiq",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T13:52:51.442Z",
+  "createdAt": "2026-11-19T13:52:51.442Z",
+  "version": "v0.7.0",
+  "checklistVersion": null,
+  "scannedRef": "main",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 60,
+  "rating": 3.2,
+  "categoryRatings": {
+   "Governance": 3.9,
+   "Security": 1.8,
+   "Architecture": 4.3,
+   "Software Quality": 3.1,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 4.3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 5.5,
+    "found": 5,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 4.3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 2.9
+   },
+   "modifiability": {
+    "rating": 3.3
+   },
+   "testability": {
+    "rating": 1.7
+   },
+   "modularity": {
+    "rating": 3.4
+   },
+   "reusability": {
+    "rating": 2.9
+   },
+   "testing": {
+    "rating": 4.3
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 0,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: Docker support",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
+    "Maintainability below 4 stars (2.74)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 5,
+   "warnings": 7
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 87,000 lines of code, 7,632 functions, 7,592 files analyzed.",
+    "evidence": [
+     ".claude/skills/opsx-apply-loop/scripts/apply-loop-check.sh",
+     ".claude/skills/report-out/evals/workspace/iteration-1/grade_programmatic.py",
+     ".claude/skills/review-pr/scripts/resolve-threads.py",
+     ".claude/skills/skill-creator/eval-viewer/generate_review.py",
+     ".claude/skills/skill-creator/scripts/__init__.py",
+     ".claude/skills/skill-creator/scripts/aggregate_benchmark.py",
+     ".claude/skills/skill-creator/scripts/generate_report.py",
+     ".claude/skills/skill-creator/scripts/improve_description.py",
+     ".claude/skills/skill-creator/scripts/package_skill.py",
+     ".claude/skills/skill-creator/scripts/quick_validate.py",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 87,000",
+     "Function count: 7,632",
+     "Files analyzed: 7,592"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: GitHub metadata (SPDX: EUPL-1.2).",
+    "evidence": [
+     "LICENSE"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (EUPL-1.2).",
+    "evidence": [
+     "EUPL-1.2"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "medium",
+    "message": "Probable copyright owner detected: Conduction b.v. (confidence: medium).",
+    "evidence": [
+     "composer.json: Conduction b.v."
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root.",
+    "status": "warn",
+    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "evidence": [
+     "publiccode.yml"
+    ],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "publiccode": {
+     "publiccodeYmlVersion": "0.4",
+     "name": "Buildiq",
+     "applicationSuite": null,
+     "url": "https://github.com/ConductionNL/buildiq",
+     "landingURL": null,
+     "isBasedOn": [],
+     "softwareVersion": "0.3.7",
+     "releaseDate": "2026-05-26",
+     "logo": null,
+     "platforms": [
+      "nextcloud"
+     ],
+     "categories": [
+      "project-management",
+      "it-service-management"
+     ],
+     "usedBy": [],
+     "roadmap": null,
+     "developmentStatus": "beta",
+     "softwareType": "standalone/other",
+     "intendedAudience": {
+      "countries": [],
+      "unsupportedCountries": [],
+      "scope": []
+     },
+     "descriptions": [
+      {
+       "language": "en",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Construction project management and built environment administration for Nextcloud.",
+       "longDescription": "Buildiq is a project management and administration application for the built environment, built on Nextcloud and Open Register. It supports construction project management, permit tracking, and built-environment administration for municipalities and construction organisations. Buildiq integrates with Dutch government standards and open data sources for the built environment.",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Construction project management",
+        "Permit tracking and administration",
+        "Built environment data management",
+        "Integration with Dutch government open data"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      },
+      {
+       "language": "nl",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Bouwprojectbeheer en omgevingsadministratie voor Nextcloud.",
+       "longDescription": "Buildiq is een projectbeheers- en administratietoepassing voor de gebouwde omgeving, gebouwd op Nextcloud en Open Register. Het ondersteunt bouwprojectbeheer, vergunningenbewaking en omgevingsadministratie voor gemeenten en bouworganisaties. Buildiq integreert met Nederlandse overheidsstandaarden en open databronnen voor de gebouwde omgeving.",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Bouwprojectbeheer",
+        "Vergunningenbewaking en -administratie",
+        "Databeheer gebouwde omgeving",
+        "Integratie met open data van de Nederlandse overheid"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      }
+     ],
+     "legal": {
+      "license": "EUPL-1.2",
+      "mainCopyrightOwner": "Conduction B.V.",
+      "repoOwner": "Conduction B.V.",
+      "authorsFile": null
+     },
+     "maintenance": {
+      "type": "community",
+      "contractors": [],
+      "contacts": [
+       {
+        "name": "Conduction B.V.",
+        "email": "info@conduction.nl",
+        "phone": null,
+        "affiliation": "Conduction B.V."
+       }
+      ]
+     },
+     "localisation": {
+      "localisationReady": true,
+      "availableLanguages": [
+       "nl",
+       "en"
+      ]
+     },
+     "dependsOn": {
+      "open": [],
+      "proprietary": [],
+      "hardware": []
+     },
+     "organisation": null,
+     "fundedBy": []
+    },
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
+    "evidence": [
+     "publiccode.yml"
+    ],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and optionally a docker-compose file should be present.",
+    "status": "fail",
+    "message": "No Dockerfile or docker-compose file found. Common Ground components must be containerisable.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/branch-protection.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/documentation.yml",
+     ".github/workflows/exporter-e2e.yml",
+     ".github/workflows/issue-triage.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     ".claude/skills/opsx-annotate/evals/README.md",
+     ".claude/skills/opsx-coverage-scan/evals/README.md",
+     ".claude/skills/sync-docs/evals/README.md",
+     ".claude/skills/test-app/evals/fixtures/sample-app/README.md",
+     "README.md",
+     "docs/.docusaurus",
+     "docs/.docusaurus/DONT-EDIT-THIS-FOLDER",
+     "docs/.docusaurus/client-manifest.json"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.md",
+    "evidence": [
+     "changelog.md"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "lib/Resources/template/tests/Unit",
+     "lib/Resources/template/tests/Unit/AppTemplateTest.php",
+     "lib/Resources/template/tests/bootstrap-unit.php",
+     "lib/Resources/template/tests/bootstrap.php",
+     "lib/Resources/template/tests/integration",
+     "lib/Resources/template/tests/integration/README.md",
+     "lib/Resources/template/tests/integration/app-template.postman_collection.json",
+     "lib/Resources/template/tests/unit",
+     "lib/Resources/template/tests/unit/Controller",
+     "lib/Resources/template/tests/unit/Controller/SettingsControllerTest.php"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "warn",
+    "message": "No coverage report file was found. Add coverage output such as coverage/coverage-summary.json, coverage.xml, or lcov.info.",
+    "evidence": [],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "fail",
+    "message": "Lizard analysis ran. Avg CCN 2.18 (threshold: 15); Max CCN 112.00 (threshold: 30). Threshold exceeded: MaxCCN 112.00 > 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
+     "Average CCN: 2.18 (threshold: 15)",
+     "Max CCN: 112.00 (threshold: 30)",
+     "3      1     18      1      13 matchingErrors@129-141@/tmp/cgchecker-repo-L2myXk/repo/src/composables/useManifestValidator.js",
+     "3      2     24      1       3 errorFor@186-188@/tmp/cgchecker-repo-L2myXk/repo/src/composables/useManifestValidator.js",
+     "3      2     21      1       3 errorFor@126-128@/tmp/cgchecker-repo-L2myXk/repo/src/composables/useDocudeskDocument.js",
+     "3      1     23      2       3 setError@212-214@/tmp/cgchecker-repo-L2myXk/repo/src/composables/useDocudeskDocument.js",
+     "4      1     15      1       4 setError@299-302@/tmp/cgchecker-repo-L2myXk/repo/src/modals/CloneTemplateDialog.vue",
+     "9      6     52      1       9 normaliseError@18-26@/tmp/cgchecker-repo-L2myXk/repo/src/services/copilot.js"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "warn",
+    "starRating": 3,
+    "rating": 2.74,
+    "aspectRatings": {
+     "analysability": 2.91,
+     "modifiability": 3.31,
+     "testability": 1.68,
+     "modularity": 3.39,
+     "reusability": 2.85
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "3.2%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP",
+        "value": "8.8%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python",
+        "value": "1.2%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue",
+        "value": "9.7%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "57.5%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "27.9%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "10.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "PHP, more than 15 lines",
+        "value": "79.4%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 30 lines",
+        "value": "44.3%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 60 lines",
+        "value": "10.9%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, more than 15 lines",
+        "value": "89.2%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, more than 30 lines",
+        "value": "72.8%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, more than 60 lines",
+        "value": "44.1%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, more than 15 lines",
+        "value": "33.0%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, more than 30 lines",
+        "value": "12.9%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, more than 60 lines",
+        "value": "0.6%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "51.6%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "23.4%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "8.1%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 5",
+        "value": "52.9%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 10",
+        "value": "9.9%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "PHP, complexity above 25",
+        "value": "0.8%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Python, complexity above 5",
+        "value": "84.9%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, complexity above 10",
+        "value": "52.9%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, complexity above 25",
+        "value": "13.1%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, complexity above 5",
+        "value": "23.4%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Vue, complexity above 10",
+        "value": "5.9%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Vue, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "11.7%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, 3 or more parameters",
+        "value": "30.7%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, 5 or more parameters",
+        "value": "10.4%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, 7 or more parameters",
+        "value": "3.1%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, 3 or more parameters",
+        "value": "42.3%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, 5 or more parameters",
+        "value": "21.2%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, 7 or more parameters",
+        "value": "14.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, 3 or more parameters",
+        "value": "2.3%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP, fan-in above 10",
+        "value": "4.0%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 20",
+        "value": "1.2%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "47.8%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       },
+       {
+        "label": "Python",
+        "value": "100.0%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "0.0833",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       },
+       {
+        "label": "Python",
+        "value": "0",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 2.65 to 2.83 (3 of 5 stars) over 374 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★☆☆ 3.1 (javascript 4.6, php 3.0, python 5.2, vue 2.8)",
+     "Unit size: ★★★☆☆ 2.7 (javascript 2.9, php 1.8, python 1.0, vue 4.6)",
+     "Unit complexity: ★★☆☆☆ 1.8 (javascript 1.2, php 1.2, python 0.7, vue 3.1)",
+     "Unit interfacing: ★★★☆☆ 3.0 (javascript 4.6, php 1.4, python 1.3, vue 5.3)",
+     "Module coupling: ★★★★★ 5.0 (php 5.0, python 5.5)",
+     "Component independence: ★★☆☆☆ 1.6 (php 1.1, python 5.5)",
+     "Component entanglement: ★★★★☆ 3.6 (php 3.4, python 5.5)",
+     "Lever: unit complexity in vue, about 1384 lines to fix for half a star",
+     "Lever: module coupling in php, about 944 lines to fix for half a star",
+     "Lever: duplication in php, about 1297 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (80 findings across 762 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Dynamic code execution: .claude/skills/skill-creator/scripts/rotate_workspace.py",
+     "Dynamic code execution: lib/AppInfo/Application.php",
+     "Dynamic code execution: lib/Controller/AutomationsController.php",
+     "Dynamic code execution: lib/Mcp/Handler/ListAppsHandler.php",
+     "Dynamic code execution: lib/Repair/MigrateToVersionedModel.php",
+     "Dynamic code execution: lib/Service/AppNavigationService.php",
+     "Dynamic code execution: lib/Service/AutomationCompilerService.php",
+     "Dynamic code execution: lib/Service/AutomationWriteService.php",
+     "Dynamic code execution: lib/Service/ConditionActionExecutor.php",
+     "Dynamic code execution: lib/Service/DocumentGenerationService.php",
+     "Dynamic code execution: lib/Service/ExportJobService.php",
+     "Dynamic code execution: lib/Service/RuleActionDispatcher.php",
+     "Dynamic code execution: src/components/applicationDetail/ApplicationDetailDashboard.vue",
+     "Dynamic code execution: src/components/applicationDetail/ApplicationDetailHeader.vue",
+     "Dynamic code execution: src/composables/useRegisterPicker.js",
+     "Dynamic code execution: src/dialogs/SaveAsTemplateDialog.vue",
+     "Dynamic code execution: src/dialogs/SaveBlockDialog.vue",
+     "Dynamic code execution: src/services/templateCapture.js",
+     "Dynamic code execution: tests/Integration/PublishRollbackTest.php",
+     "Dynamic code execution: tests/Unit/AppInfo/RoutesTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/RuleExecutionLogCleanupTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/RunExportJobTest.php",
+     "Dynamic code execution: tests/Unit/Command/PublishTemplatesTest.php",
+     "Dynamic code execution: tests/Unit/Command/SeedHelloWorldFixtureTest.php",
+     "Dynamic code execution: tests/Unit/Controller/AgentsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ApplicationPublishControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ApplicationVersionsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ApplicationsControllerDiffVersionsTest.php",
+     "Dynamic code execution: tests/Unit/Controller/AutomationsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CreateFromTemplateTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DashboardControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ExportsControllerTest.php",
+     "Possible hardcoded secret: tests/Unit/Controller/GeneratedDocumentControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/StoreControllerTest.php",
+     "Dynamic code execution: tests/Unit/Listener/ApprovalOutcomeListenerTest.php",
+     "Dynamic code execution: tests/Unit/Listener/AutomationApprovalTriggerListenerTest.php",
+     "Dynamic code execution: tests/Unit/Mcp/BuildiqToolProviderTest.php",
+     "Dynamic code execution: tests/Unit/Mcp/Handler/WriteHandlerValidationTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateRegisterSlugTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateSchemaApplicationIdTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateToVersionedModelTest.php",
+     "Dynamic code execution: tests/Unit/Repair/RenameAgentSchemaSlugTest.php",
+     "Dynamic code execution: tests/Unit/Repair/SeedApplicationTemplatesTest.php",
+     "Dynamic code execution: tests/Unit/Service/AgentRunLoggerTest.php",
+     "Dynamic code execution: tests/Unit/Service/AppChannelApplierTest.php",
+     "Dynamic code execution: tests/Unit/Service/AppNavigationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/AppOverrideServiceLayeredTest.php",
+     "Dynamic code execution: tests/Unit/Service/AppOverrideServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ApplicationCreationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ApplicationDeletionServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ApplicationVersionServiceAutomationCloneTest.php",
+     "Dynamic code execution: tests/Unit/Service/ApplicationVersionServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/AutomationCompilerServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/AutomationWriteServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ConditionActionExecutorTest.php",
+     "Dynamic code execution: tests/Unit/Service/CopilotServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DecisionTableEvaluatorTest.php",
+     "Dynamic code execution: tests/Unit/Service/DocumentGenerationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ExportJobServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ExportServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/FlowAndAgentExportBundlerTest.php",
+     "Dynamic code execution: tests/Unit/Service/FlowSeedServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/GitHubCatalogServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/IconServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/JobOwnerImpersonatorTest.php",
+     "Dynamic code execution: tests/Unit/Service/ManifestResolverServicePermissionFilterTest.php",
+     "Dynamic code execution: tests/Unit/Service/ManifestResolverServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ObjectSchemaSlugResolverTest.php",
+     "Dynamic code execution: tests/Unit/Service/RuleActionDispatcherTest.php",
+     "Dynamic code execution: tests/Unit/Service/RuleEngineServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/TemplateSeedServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/VersionPromotionServiceTest.php",
+     "Dynamic code execution: tests/bootstrap.php",
+     "Unsafe HTML injection: tests/components/recorderTargetResolver.spec.js",
+     "Dynamic code execution: tests/composables/useApplicationVersion.spec.js",
+     "Dynamic code execution: tests/composables/useLivePreview.spec.js",
+     "Dynamic code execution: tests/unit/Controller/ApplicationsControllerDiffTest.php",
+     "Dynamic code execution: tests/unit/Controller/ApplicationsControllerTest.php",
+     "Dynamic code execution: tests/unit/Controller/SetupControllerDemoDataTest.php",
+     "Dynamic code execution: tests/unit/Repair/PopulateApplicationPermissionsTest.php"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "warn",
+    "message": "No API specification could be resolved for ADR linting. Provide an API specification URL/path.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v0.7.0\" follows semantic versioning.",
+    "evidence": [
+     "v0.7.0"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX); Process layer (orchestration / BFF); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "evidence": [
+     "Found path segment \"frontend\" in .claude/openspec/architecture/adr-004-frontend.md",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour/with_skill",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour/with_skill/run-1",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour/with_skill/run-1/grading.json",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour/with_skill/run-1/timing.json",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour/without_skill",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour/without_skill/run-1",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour/without_skill/run-1/grading.json",
+     "Found path segment \"ui\" in .claude/skills/opsx-onboard/evals/workspace/iteration-1/eval-guided-tour/without_skill/run-1/timing.json",
+     "Found path segment \"ui\" in .claude/skills/skill-creator/scripts/quick_validate.py",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/SKILL.md",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/evals.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/grading.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n/with_skill",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n/with_skill/run-1",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n/with_skill/run-1/grading.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n/with_skill/run-1/timing.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n/without_skill",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n/without_skill/run-1",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n/without_skill/run-1/grading.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-i18n/without_skill/run-1/timing.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue/with_skill",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue/with_skill/run-1",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue/with_skill/run-1/grading.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue/with_skill/run-1/timing.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue/without_skill",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue/without_skill/run-1",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue/without_skill/run-1/grading.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-implement-vue/without_skill/run-1/timing.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack/with_skill",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack/with_skill/run-1",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack/with_skill/run-1/grading.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack/with_skill/run-1/timing.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack/without_skill",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack/without_skill/run-1",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack/without_skill/run-1/grading.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/evals/workspace/iteration-1/eval-webpack/without_skill/run-1/timing.json",
+     "Found path segment \"frontend\" in .claude/skills/team-frontend/learnings.md",
+     "Found path segment \"ui\" in buildiq-compose.yaml",
+     "Found path segment \"ui\" in docs/.docusaurus/docusaurus-plugin-content-docs/default/p/docs-category-admin-guide-e8c.json",
+     "Found path segment \"ui\" in docs/.docusaurus/docusaurus-plugin-content-docs/default/p/docs-category-user-guide-846.json",
+     "Found path segment \"ui\" in docs/.docusaurus/docusaurus-plugin-content-docs/default/site-integrator-guide-md-832.json",
+     "Found path segment \"ui\" in docs/.docusaurus/docusaurus-plugin-content-docs/default/site-openbuild-rbac-md-6eb.json",
+     "Found path segment \"ui\" in docs/.docusaurus/docusaurus-plugin-content-docs/default/site-openbuild-runtime-md-536.json",
+     "Found path segment \"ui\" in docs/build",
+     "Found path segment \"ui\" in docs/build/assets",
+     "Found path segment \"ui\" in docs/build/assets/css",
+     "Found path segment \"ui\" in docs/build/assets/css/styles.740d720e.css",
+     "Found path segment \"ui\" in docs/build/assets/files",
+     "Found path segment \"ui\" in docs/build/assets/files/Application-cf715a9b980004dc0b93a577a85fccdf.php",
+     "Found path segment \"ui\" in docs/build/assets/files/ApplicationsController-51b021c43dd63e080fc291e88e44514d.php",
+     "Found path segment \"ui\" in docs/build/assets/files/BuilderHost-0cf79ddd7ecce1e2a83b0d2aa7f2207c.vue",
+     "Found path segment \"ui\" in docs/build/assets/files/manifest-32f8077f823629419f0ce31db5ce1874.json",
+     "Found path segment \"ui\" in docs/build/assets/files/openbuild_register-0de59e513f7bf6b9ae78655319cde6ff.json",
+     "Found path segment \"ui\" in docs/build/assets/files/routes-950275b1c16bb42a14f1872214ab6d62.php",
+     "Found path segment \"ui\" in docs/build/assets/images",
+     "Found path segment \"ui\" in docs/build/assets/images/01-first-launch-01-8521c3f2a35281d5ff9618e259d7ed9f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/01-first-launch-02-8521c3f2a35281d5ff9618e259d7ed9f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/01-first-launch-03-8521c3f2a35281d5ff9618e259d7ed9f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/01-first-launch-04-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/01-rbac-01-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/01-rbac-02-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/01-rbac-03-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/01-rbac-04-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/01-rbac-05-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-create-from-template-01-23b84a32a533f7862e063cfba86b991f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-create-from-template-02-23b84a32a533f7862e063cfba86b991f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-create-from-template-03-23b84a32a533f7862e063cfba86b991f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-create-from-template-04-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-create-from-template-05-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-template-catalogue-01-23b84a32a533f7862e063cfba86b991f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-template-catalogue-02-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-template-catalogue-03-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-template-catalogue-04-23b84a32a533f7862e063cfba86b991f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/02-template-catalogue-05-23b84a32a533f7862e063cfba86b991f.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-admin-settings-01-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-admin-settings-02-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-admin-settings-03-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-admin-settings-04-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-admin-settings-05-94f692a82b7cd86622fcae1e36e23b2c.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-design-schema-01-fb6a5ea42fdc3279ceab376350e027d2.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-design-schema-02-dde299a0a6a3ee2b9e7605f09485f4a1.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-design-schema-03-dde299a0a6a3ee2b9e7605f09485f4a1.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-design-schema-04-dde299a0a6a3ee2b9e7605f09485f4a1.png",
+     "Found path segment \"ui\" in docs/build/assets/images/03-design-schema-05-dde299a0a6a3ee2b9e7605f09485f4a1.png",
+     "Found path segment \"ui\" in docs/build/assets/images/04-design-page-01-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/04-design-page-02-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/04-design-page-03-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/04-design-page-04-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/04-design-page-05-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/05-connect-data-01-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/05-connect-data-02-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/05-connect-data-03-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/05-connect-data-04-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/05-connect-data-05-877c7410f2000413d493e1f544da743d.png",
+     "Found path segment \"ui\" in docs/build/assets/images/06-preview-app-01-ee3645075c087f0814d101767c138ecf.png",
+     "Found path segment \"ui\" in docs/build/assets/images/06-preview-app-02-ee3645075c087f0814d101767c138ecf.png",
+     "Found path segment \"ui\" in docs/build/assets/images/06-preview-app-03-ee3645075c087f0814d101767c138ecf.png",
+     "Found path segment \"ui\" in docs/build/assets/images/06-preview-app-04-ee3645075c087f0814d101767c138ecf.png",
+     "Found path segment \"ui\" in docs/build/assets/images/06-preview-app-05-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/07-version-snapshots-01-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/07-version-snapshots-02-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/07-version-snapshots-03-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/07-version-snapshots-04-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/07-version-snapshots-05-83a61c5b893e3cd20af3373f969ad3c3.png",
+     "Found path segment \"ui\" in docs/build/assets/images/08-export-app-01-e1db690270c7f7278c9510d8b6c0ce58.png",
+     "Found path segment \"ui\" in docs/build/assets/images/08-export-app-02-c07c71a695c73401a291806af7ffff79.png",
+     "Found path segment \"ui\" in docs/build/assets/images/08-export-app-03-474c6b0ee1b845636f7a0c629154fa7a.png",
+     "Found path segment \"ui\" in docs/build/assets/images/08-export-app-04-474c6b0ee1b845636f7a0c629154fa7a.png",
+     "Found path segment \"ui\" in docs/build/assets/images/08-export-app-05-474c6b0ee1b845636f7a0c629154fa7a.png",
+     "Found path segment \"ui\" in docs/build/assets/js",
+     "Found path segment \"ui\" in docs/build/assets/js/08d1b72e.40c24ede.js",
+     "Found path segment \"ui\" in docs/build/assets/js/11b43341.71f34228.js",
+     "Found path segment \"ui\" in docs/build/assets/js/36f4eb15.8607a88e.js",
+     "Found path segment \"ui\" in docs/build/assets/js/536bad4a.53167de3.js",
+     "Found path segment \"ui\" in docs/build/assets/js/55d11d86.4225334b.js",
+     "Found path segment \"ui\" in docs/build/assets/js/6ebc08aa.5c526b58.js",
+     "Found path segment \"ui\" in docs/build/assets/js/724a0b1a.cb4a7ea2.js",
+     "Found path segment \"ui\" in docs/build/assets/js/7ca9b633.57f8879e.js",
+     "Found path segment \"ui\" in docs/build/assets/js/8007.42191389.js",
+     "Found path segment \"ui\" in docs/build/assets/js/8aec9aab.404a1a47.js",
+     "Found path segment \"ui\" in docs/build/assets/js/9c60e451.387e169f.js",
+     "Found path segment \"ui\" in docs/build/assets/js/afa3ca50.19dcf88d.js",
+     "Found path segment \"ui\" in docs/build/assets/js/cb02ec7f.456697d8.js",
+     "Found path segment \"ui\" in docs/build/assets/js/d3963936.5d0c9159.js",
+     "Found path segment \"ui\" in docs/build/assets/js/d43a21c9.a2c208af.js",
+     "Found path segment \"ui\" in docs/build/assets/js/eb3d7fb5.fdc4a49b.js",
+     "Found path segment \"ui\" in docs/build/assets/js/ec6d3eb8.aad75a70.js",
+     "Found path segment \"ui\" in docs/build/assets/js/ee40a5e8.b76c00a0.js",
+     "Found path segment \"ui\" in docs/build/assets/js/fe9572d3.0366c519.js",
+     "Found path segment \"ui\" in docs/build/assets/js/main.9ed3e618.js",
+     "Found path segment \"ui\" in docs/build/assets/js/main.9ed3e618.js.LICENSE.txt",
+     "Found path segment \"ui\" in docs/build/assets/js/runtime~main.7da6317d.js",
+     "Found path segment \"ui\" in docs/build/docs",
+     "Found path segment \"ui\" in docs/build/docs/template-store",
+     "Found path segment \"ui\" in docs/build/docs/template-store/index.html",
+     "Found path segment \"ui\" in docs/integrator-guide.md",
+     "Found path segment \"ui\" in docs/openbuild-rbac.md",
+     "Found path segment \"ui\" in docs/openbuild-runtime.md",
+     "Found path segment \"ui\" in docs/static/img/og-buildiq.png",
+     "Found path segment \"ui\" in docs/user-guide",
+     "Found path segment \"ui\" in docs/user-guide/index.md",
+     "Found path segment \"ui\" in lib/Mcp/BuildiqToolProvider.php",
+     "Found path segment \"ui\" in lib/Mcp/Handler/UpsertMenuItemHandler.php",
+     "Found path segment \"ui\" in lib/Service/Copilot/CopilotPromptBuilder.php",
+     "Found path segment \"ui\" in lib/Settings/buildiq_mock_register.json",
+     "Found path segment \"ui\" in lib/Settings/openbuild_register.json",
+     "Found path segment \"frontend\" in openspec/changes/adopt-shared-menu-pipeline/specs/frontend-foundation",
+     "Found path segment \"frontend\" in openspec/changes/adopt-shared-menu-pipeline/specs/frontend-foundation/spec.md",
+     "Found path segment \"ui\" in openspec/changes/app-delta-override/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/app-delta-override/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/app-delta-override/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/app-delta-override/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/apply-v2-channels/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/apply-v2-channels/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-bootstrap-openbuild/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app/README.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-export-to-real-app/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/specs/openbuild-page-designer",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/specs/openbuild-page-designer/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-page-editor/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/specs/openbuild-schema-designer",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/specs/openbuild-schema-designer/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-schema-editor/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-templates-marketplace",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-templates-marketplace/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-templates-marketplace/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-templates-marketplace/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-templates-marketplace/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-templates-marketplace/specs/openbuild-template-catalogue",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-templates-marketplace/specs/openbuild-template-catalogue/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-templates-marketplace/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/specs/openbuild-version-snapshots",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/specs/openbuild-version-snapshots/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-12-openbuild-versioning/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-creation-wizard",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-creation-wizard/apply-notes.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-creation-wizard/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-creation-wizard/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-creation-wizard/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-creation-wizard/specs/application-creation-wizard",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-creation-wizard/specs/application-creation-wizard/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-creation-wizard/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/apply-notes.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/specs/application-detail-overview",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/specs/application-detail-overview/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/specs/application-insights",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/specs/application-insights/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-app-detail-overview/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/apply-notes.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs/app-icon-management",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs/app-icon-management/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs/app-nav-entries",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs/app-nav-entries/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-nextcloud-nav/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-promotion",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-promotion/apply-notes.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-promotion/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-promotion/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-promotion/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-promotion/specs/version-promotion",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-promotion/specs/version-promotion/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-promotion/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/README.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/apply-notes.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/specs/version-routing",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/specs/version-routing/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-version-routing/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs/application-versions",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs/application-versions/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs/green-field-migration",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs/green-field-migration/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs/openbuild-version-snapshots",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/specs/openbuild-version-snapshots/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-17-openbuild-versioning-model/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-openbuild-notifications",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-openbuild-notifications/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-openbuild-notifications/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-openbuild-notifications/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-openbuild-notifications/specs/notifications",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-openbuild-notifications/specs/notifications/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-openbuild-notifications/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-schema-designer-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-schema-designer-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-schema-designer-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-schema-designer-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-schema-designer-ui/specs/schema-designer-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-schema-designer-ui/specs/schema-designer-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-schema-designer-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-application-detail-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-application-detail-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-application-detail-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-application-detail-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-application-detail-ui/specs/application-detail-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-application-detail-ui/specs/application-detail-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-application-detail-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-creation-wizard-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-creation-wizard-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-creation-wizard-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-creation-wizard-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-creation-wizard-ui/specs/creation-wizard-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-creation-wizard-ui/specs/creation-wizard-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-creation-wizard-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-exporter-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-exporter-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-exporter-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-exporter-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-exporter-ui/specs/exporter-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-exporter-ui/specs/exporter-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-exporter-ui/tasks.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-frontend-foundation",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-frontend-foundation/design.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-frontend-foundation/proposal.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-frontend-foundation/specs",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-frontend-foundation/specs/frontend-foundation",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-frontend-foundation/specs/frontend-foundation/spec.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-frontend-foundation/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-page-designer-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-page-designer-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-page-designer-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-page-designer-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-page-designer-ui/specs/page-designer-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-page-designer-ui/specs/page-designer-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-page-designer-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-template-catalogue-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-template-catalogue-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-template-catalogue-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-template-catalogue-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-template-catalogue-ui/specs/template-catalogue-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-template-catalogue-ui/specs/template-catalogue-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-template-catalogue-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-version-routing-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-version-routing-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-version-routing-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-version-routing-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-version-routing-ui/specs/version-routing-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-version-routing-ui/specs/version-routing-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-26-version-routing-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/context-brief.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/hydra.json",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-exporter/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/context-brief.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/hydra.json",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/specs/openbuild-page-designer",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/specs/openbuild-page-designer/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-page-designer/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/specs/openbuild-rbac",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/specs/openbuild-rbac/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openbuild-rbac/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/specs/openbuild-remote-template-store",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/specs/openbuild-remote-template-store/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/specs/template-catalogue-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/specs/template-catalogue-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-openbuild-remote-template-store/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-unify-apps-with-app-type/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-20-unify-apps-with-app-type/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-26-version-lifecycle-and-switcher/specs/version-lifecycle-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-26-version-lifecycle-and-switcher/specs/version-lifecycle-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-26-version-lifecycle-and-switcher/specs/version-routing-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-26-version-lifecycle-and-switcher/specs/version-routing-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-openbuild-data-import-wizard",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-openbuild-data-import-wizard/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-openbuild-data-import-wizard/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-openbuild-data-import-wizard/specs/data-import-wizard",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-openbuild-data-import-wizard/specs/data-import-wizard/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-openbuild-data-import-wizard/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-11-builder-undo-redo",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-11-builder-undo-redo/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-11-builder-undo-redo/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-11-builder-undo-redo/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-11-builder-undo-redo/specs/builder-undo-redo",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-11-builder-undo-redo/specs/builder-undo-redo/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-11-builder-undo-redo/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-component-blocks/specs/openbuild-template-catalogue",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-component-blocks/specs/openbuild-template-catalogue/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-runtime-group-scoped-access/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-24-runtime-group-scoped-access/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-bundle-agents-slug-not-numeric-id/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-bundle-agents-slug-not-numeric-id/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-fix-broker-error-detail-swallowed/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-fix-broker-error-detail-swallowed/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-surface-hermiq-credential-scope-requirement",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-surface-hermiq-credential-scope-requirement/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-surface-hermiq-credential-scope-requirement/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-surface-hermiq-credential-scope-requirement/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-surface-hermiq-credential-scope-requirement/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-surface-hermiq-credential-scope-requirement/specs/app-channel-application",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-surface-hermiq-credential-scope-requirement/specs/app-channel-application/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-08-19-surface-hermiq-credential-scope-requirement/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-annotate-openbuild",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-annotate-openbuild/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-annotate-openbuild/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-app-icon-management-uuid",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-app-icon-management-uuid/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-app-icon-management-uuid/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-app-icon-management-uuid/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-app-icon-management-uuid/specs/app-icon-management",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-app-icon-management-uuid/specs/app-icon-management/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-app-icon-management-uuid/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-openbuild-runtime-mcp",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-openbuild-runtime-mcp/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-openbuild-runtime-mcp/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-openbuild-runtime-mcp/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-openbuild-runtime-mcp/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-openbuild-runtime-mcp/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/retrofit-2026-05-24-openbuild-runtime-mcp/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/buildiq-consumes-shared-dmn",
+     "Found path segment \"ui\" in openspec/changes/buildiq-consumes-shared-dmn/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/buildiq-consumes-shared-dmn/specs",
+     "Found path segment \"ui\" in openspec/changes/buildiq-consumes-shared-dmn/specs/business-rules-engine",
+     "Found path segment \"ui\" in openspec/changes/buildiq-consumes-shared-dmn/specs/business-rules-engine/spec.md",
+     "Found path segment \"ui\" in openspec/changes/buildiq-consumes-shared-dmn/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/data-registers-runtime/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/data-registers-runtime/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/changes/data-registers-runtime/specs/page-designer-ui",
+     "Found path segment \"ui\" in openspec/changes/data-registers-runtime/specs/page-designer-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/data-registers-schema-declaration/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/data-registers-schema-declaration/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/export-github-broker/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/export-github-broker/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/design.md",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/plan.json",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/specs",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/specs/app-nav-entries",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/specs/app-nav-entries/spec.md",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/fix-builder-nav-route-and-identity/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/github-app-repo-format/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/changes/github-app-repo-format/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/changes/github-app-sync/specs/application-detail-ui",
+     "Found path segment \"ui\" in openspec/changes/github-app-sync/specs/application-detail-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/github-shop-catalogue/specs/template-catalogue-ui",
+     "Found path segment \"ui\" in openspec/changes/github-shop-catalogue/specs/template-catalogue-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/harden-rules-authz-and-audit-parity/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/harden-rules-authz-and-audit-parity/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/changes/harden-rules-authz-and-audit-parity/specs/openbuild-rbac",
+     "Found path segment \"ui\" in openspec/changes/harden-rules-authz-and-audit-parity/specs/openbuild-rbac/spec.md",
+     "Found path segment \"ui\" in openspec/changes/harden-xss-dos-csrf/specs/openbuild-template-catalogue",
+     "Found path segment \"ui\" in openspec/changes/harden-xss-dos-csrf/specs/openbuild-template-catalogue/spec.md",
+     "Found path segment \"ui\" in openspec/changes/layered-versioned-app-deltas/specs/application-delta-layers-ui",
+     "Found path segment \"ui\" in openspec/changes/layered-versioned-app-deltas/specs/application-delta-layers-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/layered-versioned-app-deltas/specs/openbuild-rbac",
+     "Found path segment \"ui\" in openspec/changes/layered-versioned-app-deltas/specs/openbuild-rbac/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/design.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/specs/admin-settings-owner-gating",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/specs/admin-settings-owner-gating/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/specs/manifest-admin-settings",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/specs/manifest-admin-settings/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-admin-settings-abstraction/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-app-binds-flows-and-agents",
+     "Found path segment \"ui\" in openspec/changes/openbuild-app-binds-flows-and-agents/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-app-binds-flows-and-agents/design.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-app-binds-flows-and-agents/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-app-binds-flows-and-agents/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-app-binds-flows-and-agents/specs/app-composition-bindings",
+     "Found path segment \"ui\" in openspec/changes/openbuild-app-binds-flows-and-agents/specs/app-composition-bindings/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-app-binds-flows-and-agents/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/design.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/specs/connector-widget-runtime",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/specs/connector-widget-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/specs/openconnector-api-sources",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/specs/openconnector-api-sources/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-connector-widget-runtime/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-export-csrf-hardening",
+     "Found path segment \"ui\" in openspec/changes/openbuild-export-csrf-hardening/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-export-csrf-hardening/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-export-csrf-hardening/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-export-csrf-hardening/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/changes/openbuild-export-csrf-hardening/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-export-csrf-hardening/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/design.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/specs/app-composition-bindings",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/specs/app-composition-bindings/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/specs/app-export-completeness",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/specs/app-export-completeness/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-exports-flows-and-agents/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-first-time-setup",
+     "Found path segment \"ui\" in openspec/changes/openbuild-first-time-setup/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-first-time-setup/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-first-time-setup/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-first-time-setup/specs/openbuild-first-time-setup",
+     "Found path segment \"ui\" in openspec/changes/openbuild-first-time-setup/specs/openbuild-first-time-setup/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-first-time-setup/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-icon-button-accessible-names",
+     "Found path segment \"ui\" in openspec/changes/openbuild-icon-button-accessible-names/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-icon-button-accessible-names/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-icon-button-accessible-names/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-icon-button-accessible-names/specs/openbuild-schema-designer",
+     "Found path segment \"ui\" in openspec/changes/openbuild-icon-button-accessible-names/specs/openbuild-schema-designer/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-icon-button-accessible-names/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/design.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/specs/app-override-persistence",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/specs/app-override-persistence/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/specs/openbuild-capability",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/specs/openbuild-capability/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-inline-edit-persistence/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/design.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/specs/ai-copilot",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/specs/ai-copilot/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/specs/openbuild-mcp-surface",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/specs/openbuild-mcp-surface/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-mcp-adoption/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nc-color-variables",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nc-color-variables/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nc-color-variables/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nc-color-variables/specs",
+     "Found path segment \"frontend\" in openspec/changes/openbuild-nc-color-variables/specs/frontend-foundation",
+     "Found path segment \"frontend\" in openspec/changes/openbuild-nc-color-variables/specs/frontend-foundation/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nc-color-variables/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nl-locale-parity",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nl-locale-parity/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nl-locale-parity/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nl-locale-parity/specs",
+     "Found path segment \"frontend\" in openspec/changes/openbuild-nl-locale-parity/specs/frontend-foundation",
+     "Found path segment \"frontend\" in openspec/changes/openbuild-nl-locale-parity/specs/frontend-foundation/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-nl-locale-parity/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-prod-build-bundle-hygiene",
+     "Found path segment \"ui\" in openspec/changes/openbuild-prod-build-bundle-hygiene/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-prod-build-bundle-hygiene/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-prod-build-bundle-hygiene/specs",
+     "Found path segment \"frontend\" in openspec/changes/openbuild-prod-build-bundle-hygiene/specs/frontend-foundation",
+     "Found path segment \"frontend\" in openspec/changes/openbuild-prod-build-bundle-hygiene/specs/frontend-foundation/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-prod-build-bundle-hygiene/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-walkthrough-editor",
+     "Found path segment \"ui\" in openspec/changes/openbuild-walkthrough-editor/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/openbuild-walkthrough-editor/design.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-walkthrough-editor/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-walkthrough-editor/specs",
+     "Found path segment \"ui\" in openspec/changes/openbuild-walkthrough-editor/specs/openbuild-walkthrough-editor",
+     "Found path segment \"ui\" in openspec/changes/openbuild-walkthrough-editor/specs/openbuild-walkthrough-editor/spec.md",
+     "Found path segment \"ui\" in openspec/changes/openbuild-walkthrough-editor/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/page-designer-live-preview-pane/specs/openbuild-page-designer",
+     "Found path segment \"ui\" in openspec/changes/page-designer-live-preview-pane/specs/openbuild-page-designer/spec.md",
+     "Found path segment \"ui\" in openspec/changes/schedules-editor/specs/openbuild-schedules-authoring",
+     "Found path segment \"ui\" in openspec/changes/schedules-editor/specs/openbuild-schedules-authoring/spec.md",
+     "Found path segment \"ui\" in openspec/specs/application-detail-ui",
+     "Found path segment \"ui\" in openspec/specs/application-detail-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/builder-undo-redo",
+     "Found path segment \"ui\" in openspec/specs/builder-undo-redo/spec.md",
+     "Found path segment \"ui\" in openspec/specs/creation-wizard-ui",
+     "Found path segment \"ui\" in openspec/specs/creation-wizard-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/exporter-ui",
+     "Found path segment \"ui\" in openspec/specs/exporter-ui/spec.md",
+     "Found path segment \"frontend\" in openspec/specs/frontend-foundation",
+     "Found path segment \"frontend\" in openspec/specs/frontend-foundation/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-application-register",
+     "Found path segment \"ui\" in openspec/specs/openbuild-application-register/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-exporter",
+     "Found path segment \"ui\" in openspec/specs/openbuild-exporter/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-page-designer",
+     "Found path segment \"ui\" in openspec/specs/openbuild-page-designer/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-rbac",
+     "Found path segment \"ui\" in openspec/specs/openbuild-rbac/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-remote-template-store",
+     "Found path segment \"ui\" in openspec/specs/openbuild-remote-template-store/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-runtime",
+     "Found path segment \"ui\" in openspec/specs/openbuild-runtime/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-schema-designer",
+     "Found path segment \"ui\" in openspec/specs/openbuild-schema-designer/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-template-catalogue",
+     "Found path segment \"ui\" in openspec/specs/openbuild-template-catalogue/spec.md",
+     "Found path segment \"ui\" in openspec/specs/openbuild-version-snapshots",
+     "Found path segment \"ui\" in openspec/specs/openbuild-version-snapshots/spec.md",
+     "Found path segment \"ui\" in openspec/specs/page-designer-ui",
+     "Found path segment \"ui\" in openspec/specs/page-designer-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/schema-designer-ui",
+     "Found path segment \"ui\" in openspec/specs/schema-designer-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/template-catalogue-ui",
+     "Found path segment \"ui\" in openspec/specs/template-catalogue-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/version-lifecycle-ui",
+     "Found path segment \"ui\" in openspec/specs/version-lifecycle-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/version-routing-ui",
+     "Found path segment \"ui\" in openspec/specs/version-routing-ui/spec.md",
+     "Found path segment \"ui\" in scripts/build-l10n-js.js",
+     "Found path segment \"ui\" in src/builder.js",
+     "Found path segment \"ui\" in src/components/page-editor/fields/ActionBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/ColumnBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/FieldValidationBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/FormFieldBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/LayoutItemBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/SettingsSectionBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/SidebarSectionBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/SidebarTabBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/VisibleWhenBuilder.vue",
+     "Found path segment \"ui\" in src/components/page-editor/fields/WidgetBuilder.vue",
+     "Found path segment \"ui\" in src/views/BuilderHost.vue",
+     "Found path segment \"ui\" in templates/builder.php",
+     "Found path segment \"ui\" in test-scenarios/TS-001-agent-drives-openbuild-action-menu.md",
+     "Found path segment \"ui\" in tests/Unit/BuildiqTest.php",
+     "Found path segment \"ui\" in tests/Unit/Mcp/BuildiqToolProviderTest.php",
+     "Found path segment \"ui\" in tests/Unit/Service/Copilot/CopilotPromptBuilderTest.php",
+     "Found path segment \"ui\" in tests/components/page-editor/FieldValidationBuilder.spec.js",
+     "Found path segment \"ui\" in tests/components/page-editor/FormFieldBuilder.logic.spec.js",
+     "Found path segment \"ui\" in tests/components/page-editor/SettingsSectionBuilder.spec.js",
+     "Found path segment \"ui\" in tests/components/page-editor/VisibleWhenBuilder.spec.js",
+     "Found path segment \"ui\" in tests/e2e/bootstrap-buildiq.e2e.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/builder-host.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/builder-undo-redo.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/buildiq-rbac.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/buildiq-runtime.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/buildiq-schema-designer.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/buildiq-template-catalogue.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/page-designer-ui.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/version-lifecycle-ui.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/visual/buildiq.visual.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/visual/buildiq.visual.spec.ts-snapshots",
+     "Found path segment \"ui\" in tests/e2e/visual/buildiq.visual.spec.ts-snapshots/dashboard-visual-linux.png",
+     "Found path segment \"ui\" in tests/e2e/workflows/build-workflow.spec.ts",
+     "Found path segment \"ui\" in tests/integration/buildiq-api-contract.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-app-creation-wizard.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-app-detail-overview.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-application-versions.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-automation-approval-steps.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-component-blocks.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-docudesk-documents.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-export-to-real-app.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-icon-endpoints.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-nldesign-theme.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-page-editor.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-rbac.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-schema-editor.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-templates-marketplace.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-version-promotion.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-version-routing.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq-versioning.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/buildiq.postman_collection.json",
+     "Found path segment \"ui\" in tests/integration/quarantine/buildiq-version-diff.postman_collection.json",
+     "Found path segment \"ui\" in tests/router/buildVersionedRoute.spec.js",
+     "Found path segment \"ui\" in tests/views/BuilderHost.spec.js",
+     "Found path segment \"ui\" in tests/views/manifestBuild.regression.spec.js",
+     "Found \"frontend\" in repository metadata and docs",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/.gitkeep",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-rbac-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-rbac-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-rbac-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-rbac-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-rbac-05.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-template-catalogue-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-template-catalogue-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-template-catalogue-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-template-catalogue-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-template-catalogue-05.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-05.png",
+     "Found path segment \"admin\" in docs/tutorials/admin/01-rbac.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/02-template-catalogue.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/03-admin-settings.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json",
+     "Found path segment \"service\" in lib/Resources/template/lib/Service/FlowSeedService.php",
+     "Found path segment \"service\" in lib/Resources/template/lib/Service/SettingsService.php",
+     "Found path segment \"service\" in lib/Service/AgentChannelProvisioner.php",
+     "Found path segment \"service\" in lib/Service/AgentRunLogger.php",
+     "Found path segment \"service\" in lib/Service/AppChannelApplier.php",
+     "Found path segment \"service\" in lib/Service/AppNavigationService.php",
+     "Found path segment \"service\" in lib/Service/AppOverrideDeltaValidator.php",
+     "Found path segment \"service\" in lib/Service/AppOverrideService.php",
+     "Found path segment \"service\" in lib/Service/AppRepoParser.php",
+     "Found path segment \"service\" in lib/Service/AppRepoPayloadSafety.php",
+     "Found path segment \"service\" in lib/Service/AppRepoSerializer.php",
+     "Found path segment \"service\" in lib/Service/ApplicationCreationService.php",
+     "Found path segment \"service\" in lib/Service/ApplicationDeletionService.php",
+     "Found path segment \"service\" in lib/Service/ApplicationInsightsService.php",
+     "Found path segment \"service\" in lib/Service/ApplicationVersionService.php",
+     "Found path segment \"service\" in lib/Service/AutomationCompilerService.php",
+     "Found path segment \"service\" in lib/Service/AutomationWriteService.php",
+     "Found path segment \"service\" in lib/Service/ChannelApplyReport.php",
+     "Found path segment \"service\" in lib/Service/ConditionActionExecutor.php",
+     "Found path segment \"service\" in lib/Service/ContainerLocator.php",
+     "Found path segment \"service\" in lib/Service/Copilot",
+     "Found path segment \"service\" in lib/Service/Copilot/CopilotPlanValidator.php",
+     "Found path segment \"service\" in lib/Service/Copilot/CopilotPromptBuilder.php",
+     "Found path segment \"service\" in lib/Service/CopilotService.php",
+     "Found path segment \"service\" in lib/Service/Credential",
+     "Found path segment \"service\" in lib/Service/Credential/VirtualAppCredentialRegistrar.php",
+     "Found path segment \"service\" in lib/Service/DataRegisterExportBundler.php",
+     "Found path segment \"service\" in lib/Service/DataRegisterProvisioner.php",
+     "Found path segment \"service\" in lib/Service/DecisionTableEvaluator.php",
+     "Found path segment \"service\" in lib/Service/DemoDataService.php",
+     "Found path segment \"service\" in lib/Service/DocumentGenerationService.php",
+     "Found path segment \"service\" in lib/Service/ExportJobService.php",
+     "Found path segment \"service\" in lib/Service/ExportService.php",
+     "Found path segment \"service\" in lib/Service/ExportTreeFiles.php",
+     "Found path segment \"service\" in lib/Service/ExpressionEvaluator.php",
+     "Found path segment \"service\" in lib/Service/FeelParser.php",
+     "Found path segment \"service\" in lib/Service/FlowAgentChannelCollector.php",
+     "Found path segment \"service\" in lib/Service/FlowAndAgentExportBundler.php",
+     "Found path segment \"service\" in lib/Service/FlowChannelProvisioner.php",
+     "Found path segment \"service\" in lib/Service/GitHubAppSyncService.php",
+     "Found path segment \"service\" in lib/Service/GitHubCatalogService.php",
+     "Found path segment \"service\" in lib/Service/GitHubPushService.php",
+     "Found path segment \"service\" in lib/Service/IconService.php",
+     "Found path segment \"service\" in lib/Service/JobOwnerImpersonator.php",
+     "Found path segment \"service\" in lib/Service/ListenerSlugContract.php",
+     "Found path segment \"service\" in lib/Service/ManifestResolverService.php",
+     "Found path segment \"service\" in lib/Service/ObjectSchemaSlugResolver.php",
+     "Found path segment \"service\" in lib/Service/PermissionResolver.php",
+     "Found path segment \"service\" in lib/Service/PlaceholderResolver.php",
+     "Found path segment \"service\" in lib/Service/RuleActionDispatcher.php",
+     "Found path segment \"service\" in lib/Service/RuleEngineService.php",
+     "Found path segment \"service\" in lib/Service/RuleImpactAnalysisService.php",
+     "Found path segment \"service\" in lib/Service/RuleSetCacheManager.php",
+     "Found path segment \"service\" in lib/Service/RuleSetVersioningService.php",
+     "Found path segment \"service\" in lib/Service/SettingsService.php",
+     "Found path segment \"service\" in lib/Service/SkillChannelDelegate.php",
+     "Found path segment \"service\" in lib/Service/SlugValidator.php",
+     "Found path segment \"service\" in lib/Service/TemplateRepoSerializer.php",
+     "Found path segment \"service\" in lib/Service/TemplateSeedService.php",
+     "Found path segment \"service\" in lib/Service/VersionPromotionService.php",
+     "Found path segment \"services\" in src/services/automationMatrix.js",
+     "Found path segment \"services\" in src/services/blockCapture.js",
+     "Found path segment \"services\" in src/services/blockExport.js",
+     "Found path segment \"services\" in src/services/blockInsert.js",
+     "Found path segment \"services\" in src/services/connectorCache.js",
+     "Found path segment \"services\" in src/services/copilot.js",
+     "Found path segment \"services\" in src/services/externalFormProvisioningService.js",
+     "Found path segment \"services\" in src/services/manifestDependencies.js",
+     "Found path segment \"services\" in src/services/manifestValidation",
+     "Found path segment \"services\" in src/services/manifestValidation/connectorDataSource.js",
+     "Found path segment \"services\" in src/services/manifestValidation/documentAttachments.js",
+     "Found path segment \"services\" in src/services/manifestValidation/externalForms.js",
+     "Found path segment \"services\" in src/services/manifestValidation/formLogic.js",
+     "Found path segment \"services\" in src/services/manifestValidation/schedules.js",
+     "Found path segment \"services\" in src/services/manifestValidation/workflowAttachments.js",
+     "Found path segment \"services\" in src/services/procestLinks.js",
+     "Found path segment \"services\" in src/services/selectors.js",
+     "Found path segment \"services\" in src/services/templateCapture.js",
+     "Found path segment \"service\" in tests/Unit/Service/AgentRunLoggerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AppChannelApplierTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AppNavigationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AppOverrideServiceLayeredTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AppOverrideServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AppRepoFlowAgentChannelTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AppRepoFormatV2Test.php",
+     "Found path segment \"service\" in tests/Unit/Service/AppRepoSerializerTemplateTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ApplicationCreationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ApplicationDeletionServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ApplicationInsightsServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ApplicationVersionServiceAutomationCloneTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ApplicationVersionServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AutomationCompilerServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AutomationWriteServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ChannelApplyReportTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConditionActionExecutorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Copilot",
+     "Found path segment \"service\" in tests/Unit/Service/Copilot/CopilotPromptBuilderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CopilotPlanValidatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CopilotServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Credential",
+     "Found path segment \"service\" in tests/Unit/Service/Credential/VirtualAppCredentialRegistrarTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DecisionTableEvaluatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DemoDataServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DocumentGenerationNoDocudeskImportTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DocumentGenerationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ExportJobServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ExportServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ExportTreeFilesTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ExpressionEvaluatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/FeelParserTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/FlowAndAgentExportBundlerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/FlowSeedServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/GitHubCatalogServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/GitHubPushServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/IconServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/JobOwnerImpersonatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ManifestResolverServicePermissionFilterTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ManifestResolverServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ObjectSchemaSlugResolverTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/PermissionResolverUserScopeTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/PlaceholderResolverTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/PrincipalMatcherTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RegisterFragmentMergeTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RuleActionDispatcherTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RuleEngineServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RuleImpactAnalysisServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RuleSetVersioningServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SlugValidatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/TemplateSeedServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/VersionPromotionServiceTest.php",
+     "Found path segment \"services\" in tests/services/automationMatrix.spec.js",
+     "Found path segment \"services\" in tests/services/connectorCache.spec.js",
+     "Found path segment \"services\" in tests/services/connectorDataSourceValidation.spec.js",
+     "Found path segment \"services\" in tests/services/documentAttachmentsValidation.spec.js",
+     "Found path segment \"services\" in tests/services/externalFormProvisioningService.spec.js",
+     "Found path segment \"services\" in tests/services/externalFormsValidation.spec.js",
+     "Found path segment \"services\" in tests/services/formLogicValidation.spec.js",
+     "Found path segment \"services\" in tests/services/manifestDependencies.spec.js",
+     "Found path segment \"services\" in tests/services/procestLinks.spec.js",
+     "Found path segment \"services\" in tests/services/schedulesValidation.spec.js",
+     "Found path segment \"services\" in tests/services/selectors.spec.js",
+     "Found path segment \"services\" in tests/services/workflowAttachmentsValidation.spec.js",
+     "Found \"service\" in repository metadata and docs",
+     "Found path segment \"integration\" in lib/Resources/template/tests/integration/README.md",
+     "Found path segment \"integration\" in lib/Resources/template/tests/integration/app-template.postman_collection.json",
+     "Found path segment \"integration\" in tests/Integration/ExporterEndToEndTest.php",
+     "Found path segment \"integration\" in tests/Integration/PublishRollbackTest.php",
+     "Found path segment \"integration\" in tests/integration/README-newman.md",
+     "Found path segment \"integration\" in tests/integration/README.md",
+     "Found path segment \"integration\" in tests/integration/buildiq-api-contract.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-app-creation-wizard.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-app-detail-overview.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-application-versions.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-automation-approval-steps.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-component-blocks.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-docudesk-documents.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-export-to-real-app.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-icon-endpoints.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-nldesign-theme.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-page-editor.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-rbac.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-schema-editor.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-templates-marketplace.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-version-promotion.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-version-routing.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq-versioning.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/buildiq.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/quarantine",
+     "Found path segment \"integration\" in tests/integration/quarantine/README.md",
+     "Found path segment \"integration\" in tests/integration/quarantine/buildiq-version-diff.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/run-newman.sh",
+     "Found \"integration\" in repository metadata and docs",
+     "Found \"process\" in repository metadata and docs",
+     "Found \"register\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources. Shown for information; never rated or compared.",
+    "evidence": [
+     "Nextcloud App Store buildiq: 0 ratings given (2026-11-19)",
+     "GitHub releases: 879 release file downloads, 269 releases with files (2026-11-19)",
+     "GitHub ConductionNL/buildiq: 1 stars, 0 forks, 0 watchers (2026-11-19)",
+     "GitHub commits ConductionNL/buildiq: 7 contributors, 6 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "nextcloud-appstore",
+       "kind": "downloads",
+       "source": "Nextcloud App Store",
+       "subject": "buildiq",
+       "url": "https://apps.nextcloud.com/apps/buildiq",
+       "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "ratings given",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "github-releases",
+       "kind": "downloads",
+       "source": "GitHub releases",
+       "subject": null,
+       "url": "https://github.com/ConductionNL/buildiq/releases",
+       "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "release file downloads",
+         "value": 879
+        },
+        {
+         "label": "releases with files",
+         "value": 269
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "ConductionNL/buildiq",
+       "url": "https://github.com/ConductionNL/buildiq",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 1
+        },
+        {
+         "label": "forks",
+         "value": 0
+        },
+        {
+         "label": "watchers",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "ConductionNL/buildiq",
+       "url": "https://github.com/ConductionNL/buildiq/graphs/contributors",
+       "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 7
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 6
+        },
+        {
+         "label": "from other organisations",
+         "value": 0
+        },
+        {
+         "label": "unknown",
+         "value": 1
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 12.7
+ },
+ "slas": []
+}

@@ -1,0 +1,1142 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/maykinmedia/open-vtb",
+  "repoUrl": "https://github.com/maykinmedia/open-vtb",
+  "host": "github.com",
+  "owner": "maykinmedia",
+  "name": "open-vtb",
+  "metadata": {
+   "description": "Open Verzoeken, Taken en Berichten",
+   "language": "Python",
+   "stars": 3,
+   "forks": 1,
+   "defaultBranch": "main",
+   "topics": [],
+   "license": "Other",
+   "version": "v0.2.0",
+   "versionEvidence": {
+    "source": "tag",
+    "detail": "best matching git tag: v0.2.0"
+   },
+   "displayName": null,
+   "shortDescription": null,
+   "logoUrl": null,
+   "developmentStatus": null,
+   "maintenanceType": null,
+   "maintainers": []
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T14:00:31.398Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T14:00:31.398Z",
+  "updatedAt": "2026-11-19T14:00:31.398Z",
+  "basisset": true,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T14-00-31-398Z",
+  "repoId": "github.com/maykinmedia/open-vtb",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T14:00:31.398Z",
+  "createdAt": "2026-11-19T14:00:31.398Z",
+  "version": "v0.2.0",
+  "checklistVersion": null,
+  "scannedRef": "main",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 63,
+  "rating": 3.1,
+  "categoryRatings": {
+   "Governance": 3.6,
+   "Security": 1.8,
+   "Architecture": 3,
+   "Software Quality": 4.3,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 5.5,
+    "found": 5,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 4
+   },
+   "modifiability": {
+    "rating": 4.5
+   },
+   "testability": {
+    "rating": 3.8
+   },
+   "modularity": {
+    "rating": 3.7
+   },
+   "reusability": {
+    "rating": 4
+   },
+   "testing": {
+    "rating": 5.5
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 1,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: publiccode.yml Metadata File",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: API Design Rules",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "No publiccode.yml was found, so there is no maintenance contract."
+   ]
+  },
+  "issueCounts": {
+   "errors": 5,
+   "warnings": 3
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 10,883 lines of code, 513 functions, 513 files analyzed.",
+    "evidence": [
+     "bin/bump-my-version.sh",
+     "bin/celery_beat.sh",
+     "bin/celery_flower.sh",
+     "bin/celery_worker.sh",
+     "bin/check_changed_files.sh",
+     "bin/compile_dependencies.sh",
+     "bin/docker_start.sh",
+     "bin/generate_admin_index_fixture.sh",
+     "bin/generate_api_schema.sh",
+     "bin/generate_demo_data.sh",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 10,883",
+     "Function count: 513",
+     "Files analyzed: 513"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: LICENSE file content (SPDX: NOASSERTION).",
+    "evidence": [
+     "LICENSE.md"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (NOASSERTION).",
+    "evidence": [
+     "NOASSERTION"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "high",
+    "message": "Probable copyright owners detected: Maykin, Maykin {% now \"Y\" %, README.EN.rst, README.rst and 2 more (confidence: high).",
+    "evidence": [
+     "README.rst: Maykin",
+     "package.json: Maykin",
+     "LICENSE.md: Maykin {% now \"Y\" %",
+     "pyproject.toml: README.EN.rst",
+     "pyproject.toml: README.rst",
+     "pyproject.toml: src/openvtb/conf/locale/en/LC_MESSAGES/django.po",
+     "pyproject.toml: src/openvtb/conf/locale/nl/LC_MESSAGES/django.po"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root, containing machine-readable metadata per the publiccode.yml standard.",
+    "status": "fail",
+    "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
+    "evidence": [],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "No publiccode.yml was found, so there is no maintenance contract.",
+    "evidence": [],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "pass",
+    "message": "Dockerfile and docker-compose file(s) found.",
+    "evidence": [
+     "Dockerfile",
+     "docker-compose.yml"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/ci.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/codeql-analysis.yml",
+     ".github/workflows/macos.yml",
+     ".github/workflows/oaf-check.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.rst",
+     "docker/observability/README.md",
+     "docs/Makefile",
+     "docs/_static",
+     "docs/_static/theme_overrides.css",
+     "docs/changelog.rst",
+     "docs/check_sphinx.py",
+     "docs/conf.py"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.rst, docs/changelog.rst",
+    "evidence": [
+     "changelog.rst",
+     "docs/changelog.rst"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "src/openvtb/accounts/tests/__init__.py",
+     "src/openvtb/accounts/tests/factories.py",
+     "src/openvtb/accounts/tests/files",
+     "src/openvtb/accounts/tests/files/vcr_cassettes",
+     "src/openvtb/accounts/tests/files/vcr_cassettes/OIDCFlowTests",
+     "src/openvtb/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_duplicate_email_unique_constraint_violated.yaml",
+     "src/openvtb/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_happy_flow.yaml",
+     "src/openvtb/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_happy_flow_existing_user.yaml",
+     "src/openvtb/accounts/tests/test_auth.py",
+     "src/openvtb/accounts/tests/test_createinitialsuperuser.py"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "pass",
+    "message": "Code coverage badge reports 95.00%, which meets the 80% threshold.",
+    "evidence": [
+     "README coverage badge: 95.00%"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "pass",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.55 <= 15 and Max CCN 13.00 <= 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Average CCN: 1.55 (threshold: 15)",
+     "Max CCN: 13.00 (threshold: 30)",
+     "28      1    177      4      41 test_cloud_event_client_error_retry@121-161@/tmp/cgchecker-repo-7CNbmk/repo/src/openvtb/components/berichten/api/tests/test_cloudevents.py",
+     "30      1    199      4      42 test_cloud_event_client_error_retry@231-272@/tmp/cgchecker-repo-7CNbmk/repo/src/openvtb/components/taken/api/tests/test_cloudevents.py",
+     "12      1    112      3      18 assertErrorResponse@16-33@/tmp/cgchecker-repo-7CNbmk/repo/src/openvtb/tests/api_strategy/test_error_format.py",
+     "17      1     58      1      17 test_400_error@35-51@/tmp/cgchecker-repo-7CNbmk/repo/src/openvtb/tests/api_strategy/test_error_format.py",
+     "10      1     33      1      10 test_401_error@53-62@/tmp/cgchecker-repo-7CNbmk/repo/src/openvtb/tests/api_strategy/test_error_format.py",
+     "10      1     33      1      10 test_403_error@64-73@/tmp/cgchecker-repo-7CNbmk/repo/src/openvtb/tests/api_strategy/test_error_format.py",
+     "10      1     33      1      10 test_404_error@75-84@/tmp/cgchecker-repo-7CNbmk/repo/src/openvtb/tests/api_strategy/test_error_format.py"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "pass",
+    "starRating": 4,
+    "rating": 4,
+    "aspectRatings": {
+     "analysability": 3.98,
+     "modifiability": 4.5,
+     "testability": 3.81,
+     "modularity": 3.72,
+     "reusability": 4.03
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python",
+        "value": "6.7%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, more than 15 lines",
+        "value": "33.5%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, more than 30 lines",
+        "value": "6.2%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, more than 60 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, complexity above 5",
+        "value": "13.3%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, complexity above 10",
+        "value": "3.7%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, 3 or more parameters",
+        "value": "15.6%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python, fan-in above 10",
+        "value": "0.3%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "91.5%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "0.1316",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 3.99 to 4.01 (4 of 5 stars) over 107 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★☆☆ 3.4 (javascript 5.5, python 3.4)",
+     "Unit size: ★★★★★ 4.6 (javascript 5.5, python 4.6)",
+     "Unit complexity: ★★★★★ 4.7 (javascript 5.5, python 4.7)",
+     "Unit interfacing: ★★★☆☆ 3.5 (javascript 5.5, python 3.4)",
+     "Module coupling: ★★★★★ 5.5 (python 5.5)",
+     "Component independence: ★★★☆☆ 3.0 (python 3.0)",
+     "Component entanglement: ★★★☆☆ 2.8 (python 2.8)",
+     "Lever: component independence in python, about 140 lines to fix for half a star",
+     "Lever: duplication in python, about 90 lines to fix for half a star",
+     "Lever: unit size in python, about 225 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (5 findings across 157 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Possible hardcoded secret: src/openvtb/accounts/tests/factories.py",
+     "Possible hardcoded secret: src/openvtb/components/berichten/api/tests/test_auth.py",
+     "Possible hardcoded secret: src/openvtb/components/taken/api/tests/test_auth.py",
+     "Possible hardcoded secret: src/openvtb/components/verzoeken/api/tests/test_auth.py",
+     "Dynamic code execution: src/openvtb/jstests/components/dummy/dummy.spec.js"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "fail",
+    "message": "API Design Rules violations found across 3 specification(s): 43 issue(s).",
+    "evidence": [
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./berichttypen/{uuid}.delete (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./berichttypen/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /berichten/api/v1 \"/berichten/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/berichten/openapi.yaml)",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_ExterneTaakPolymorphicSerializer @ components.schemas.Base_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/PaginatedURLTaakListResponseList @ components.schemas.PaginatedURLTaakListResponseList (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/PatchedURLTaakPartialUpdateRequest @ components.schemas.PatchedURLTaakPartialUpdateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaak @ components.schemas.URLTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakCreateRequest @ components.schemas.URLTaakCreateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakCreateResponse @ components.schemas.URLTaakCreateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakListResponse @ components.schemas.URLTaakListResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakPartialUpdateResponse @ components.schemas.URLTaakPartialUpdateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakRetrieveResponse @ components.schemas.URLTaakRetrieveResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakUpdateRequest @ components.schemas.URLTaakUpdateRequest (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/URLTaakUpdateResponse @ components.schemas.URLTaakUpdateResponse (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/betaaltaak_ExterneTaakPolymorphicSerializer @ components.schemas.betaaltaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_BetaalTaak @ components.schemas.details_BetaalTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_FormulierTaak @ components.schemas.details_FormulierTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/details_URLTaak @ components.schemas.details_URLTaak (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/formuliertaak_ExterneTaakPolymorphicSerializer @ components.schemas.formuliertaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/urltaak_ExterneTaakPolymorphicSerializer @ components.schemas.urltaak_ExterneTaakPolymorphicSerializer (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /taken/api/v1 \"/taken/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/taken/openapi.yaml)",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.get.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.put.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.patch.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./verzoektypen/{verzoektypeUuid}/versies/{verzoektypeVersie}.delete.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/GeoJSONGeometry @ components.schemas.GeoJSONGeometry (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /verzoeken/api/v1 \"/verzoeken/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-vtb/main/src/openvtb/components/verzoeken/openapi.yaml)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v0.2.0\" follows semantic versioning.",
+    "evidence": [
+     "v0.2.0"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "evidence": [
+     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
+     "Found path segment \"ui\" in build.js",
+     "Found path segment \"ui\" in requirements",
+     "Found path segment \"ui\" in requirements/base.in",
+     "Found path segment \"ui\" in requirements/base.txt",
+     "Found path segment \"ui\" in requirements/ci.txt",
+     "Found path segment \"ui\" in requirements/dev.in",
+     "Found path segment \"ui\" in requirements/dev.txt",
+     "Found path segment \"ui\" in requirements/docs.in",
+     "Found path segment \"ui\" in requirements/production.txt",
+     "Found path segment \"ui\" in requirements/staging.txt",
+     "Found path segment \"ui\" in requirements/test-tools.in",
+     "Found path segment \"ui\" in requirements/test.txt",
+     "Found \"ui\" in repository metadata and docs",
+     "Found path segment \"admin\" in src/openvtb/scss/admin/_admin_theme.scss",
+     "Found path segment \"admin\" in src/openvtb/scss/admin/_app_overrides.scss",
+     "Found path segment \"admin\" in src/openvtb/scss/admin/_vars.scss",
+     "Found path segment \"admin\" in src/openvtb/scss/admin/admin_overrides.scss",
+     "Found path segment \"admin\" in src/openvtb/scss/admin/themes",
+     "Found path segment \"admin\" in src/openvtb/scss/admin/themes/_dark.scss",
+     "Found path segment \"admin\" in src/openvtb/scss/admin/themes/_light.scss",
+     "Found path segment \"admin\" in src/openvtb/static/img/admin/calendar-alt-regular.svg",
+     "Found path segment \"admin\" in src/openvtb/static/img/admin/clock-regular.svg",
+     "Found path segment \"admin\" in src/openvtb/static/img/admin/edit-regular.svg",
+     "Found path segment \"admin\" in src/openvtb/static/img/admin/plus-square-regular.svg",
+     "Found path segment \"admin\" in src/openvtb/static/img/admin/trash-alt-regular.svg",
+     "Found path segment \"admin\" in src/openvtb/templates/admin/base_site.html",
+     "Found path segment \"admin\" in src/openvtb/templates/admin/login.html",
+     "Found path segment \"admin\" in src/openvtb/templates/admin/verzoeken",
+     "Found path segment \"admin\" in src/openvtb/templates/admin/verzoeken/verzoektype",
+     "Found path segment \"admin\" in src/openvtb/templates/admin/verzoeken/verzoektype/object_history.html",
+     "Found path segment \"admin\" in src/openvtb/templates/admin/verzoeken/verzoektype/submit_line.html",
+     "Found path segment \"admin\" in src/openvtb/templates/hijack/contrib/admin/button.html",
+     "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
+     "Found \"register\" in repository metadata and docs",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/__init__.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/filters.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/schema.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/serializers.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/__init__.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_get.yaml",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_invalid_token.yaml",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_client_credentials_token.yaml",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_oidc_create_user_false.yaml",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_username_password.yaml",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_auth.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_bericht.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_berichttype.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_cloudevents.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/tests/test_filters.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/urls.py",
+     "Found path segment \"api\" in src/openvtb/components/berichten/api/viewsets.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/__init__.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/filters.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/schema.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/serializers.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/__init__.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_get.yaml",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_invalid_token.yaml",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_client_credentials_token.yaml",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_oidc_create_user_false.yaml",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_username_password.yaml",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_auth.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_betaaltaak.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_cloudevents.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_externetaak.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_externetaak_validators.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_filters.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_formuliertaak.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/tests/test_urltaak.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/urls.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/utils.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/validators.py",
+     "Found path segment \"api\" in src/openvtb/components/taken/api/viewsets.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/__init__.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/filters.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/schema.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/serializers.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/__init__.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_get.yaml",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_invalid_token.yaml",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_client_credentials_token.yaml",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_oidc_create_user_false.yaml",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/files/vcr_cassettes/TestApiOidcAuthentication/test_valid_token_username_password.yaml",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_auth.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_filters.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_verzoek.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_verzoek_validators.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_verzoektype.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/tests/test_verzoektypeversion.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/urls.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/utils.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/validators.py",
+     "Found path segment \"api\" in src/openvtb/components/verzoeken/api/viewsets.py",
+     "Found \"api\" in repository metadata and docs",
+     "Found \"workflow\" in repository metadata and docs",
+     "Found \"zaak\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
+    "evidence": [
+     "npm Open VTB: not measured: HTTP 405 (2026-11-19)",
+     "Docker Hub maykinmedia/open-vtb: 7,285 pulls in total (2026-11-19)",
+     "GitHub maykinmedia/open-vtb: 3 stars, 1 forks, 0 watchers (2026-11-19)",
+     "GitHub commits maykinmedia/open-vtb: 6 contributors, 5 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "npm",
+       "kind": "downloads",
+       "source": "npm",
+       "subject": "Open VTB",
+       "url": "https://www.npmjs.com/package/Open VTB",
+       "caveat": "Counts every download of the package, including CI builds and mirrors, not installations.",
+       "measuredAt": "2026-11-19",
+       "figures": [],
+       "notMeasured": "HTTP 405"
+      },
+      {
+       "id": "dockerhub:maykinmedia/open-vtb",
+       "kind": "containers",
+       "source": "Docker Hub",
+       "subject": "maykinmedia/open-vtb",
+       "url": "https://hub.docker.com/r/maykinmedia/open-vtb",
+       "caveat": "Counts every pull since the image was published, including CI pulls and automatic updates.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "pulls in total",
+         "value": 7285
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "maykinmedia/open-vtb",
+       "url": "https://github.com/maykinmedia/open-vtb",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 3
+        },
+        {
+         "label": "forks",
+         "value": 1
+        },
+        {
+         "label": "watchers",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "maykinmedia/open-vtb",
+       "url": "https://github.com/maykinmedia/open-vtb/graphs/contributors",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 6
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 5
+        },
+        {
+         "label": "from other organisations",
+         "value": 0
+        },
+        {
+         "label": "unknown",
+         "value": 1
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 9.7
+ },
+ "slas": []
+}

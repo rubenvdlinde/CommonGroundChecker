@@ -1,0 +1,1264 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/maykinmedia/open-object",
+  "repoUrl": "https://github.com/maykinmedia/open-object",
+  "host": "github.com",
+  "owner": "maykinmedia",
+  "name": "open-object",
+  "metadata": {
+   "description": "API and admin interface to manage Objects and Objecttypes. An object can be anything whether its a monument, report, tree or a permit.",
+   "language": "Python",
+   "stars": 8,
+   "forks": 16,
+   "defaultBranch": "master",
+   "topics": [
+    "api",
+    "commonground",
+    "vng"
+   ],
+   "license": "Other",
+   "version": "v4.3.0",
+   "versionEvidence": {
+    "source": "tag",
+    "detail": "best matching git tag: v4.3.0"
+   },
+   "displayName": "Open Object",
+   "shortDescription": "API voor het beheren van objecttypen en objecten",
+   "logoUrl": "https://github.com/maykinmedia/open-object/blob/master/docs/logo.png",
+   "developmentStatus": "beta",
+   "maintenanceType": "contract",
+   "maintainers": [
+    "Joeri Bekker"
+   ]
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T14:00:06.327Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T14:00:06.327Z",
+  "updatedAt": "2026-11-19T14:00:06.327Z",
+  "basisset": true,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T14-00-06-327Z",
+  "repoId": "github.com/maykinmedia/open-object",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T14:00:06.327Z",
+  "createdAt": "2026-11-19T14:00:06.327Z",
+  "version": "v4.3.0",
+  "checklistVersion": null,
+  "scannedRef": "master",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 65,
+  "rating": 3,
+  "categoryRatings": {
+   "Governance": 3.9,
+   "Security": 1.8,
+   "Architecture": 3,
+   "Software Quality": 3.6,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 4.3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 5.5,
+    "found": 5,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 4.3
+   },
+   "modifiability": {
+    "rating": 4
+   },
+   "testability": {
+    "rating": 1.8
+   },
+   "modularity": {
+    "rating": 2.7
+   },
+   "reusability": {
+    "rating": 3.1
+   },
+   "testing": {
+    "rating": 5.5
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 1,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: API Design Rules",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "No valid maintenance contract: Maykin has no end date (until).",
+    "Maintainability below 4 stars (3.04)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 4,
+   "warnings": 5
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 10,936 lines of code, 819 functions, 819 files analyzed.",
+    "evidence": [
+     "bin/bump-my-version.sh",
+     "bin/celery_flower.sh",
+     "bin/celery_worker.sh",
+     "bin/celery_worker_liveness_probe.sh",
+     "bin/compile_dependencies.sh",
+     "bin/docker_push.sh",
+     "bin/docker_start.sh",
+     "bin/dump_data.sh",
+     "bin/generate_admin_index_fixture.sh",
+     "bin/generate_demo_fixture.sh",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 10,936",
+     "Function count: 819",
+     "Files analyzed: 819"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: LICENSE file content (SPDX: NOASSERTION).",
+    "evidence": [
+     "LICENSE.md"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (NOASSERTION).",
+    "evidence": [
+     "NOASSERTION"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "high",
+    "message": "Probable copyright owners detected: Maykin, README.NL.rst, README.rst (confidence: high).",
+    "evidence": [
+     "LICENSE.md: Maykin",
+     "README.rst: Maykin",
+     "package.json: Maykin",
+     "pyproject.toml: README.NL.rst",
+     "pyproject.toml: README.rst"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root.",
+    "status": "warn",
+    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "evidence": [
+     "publiccode.yaml"
+    ],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "publiccode": {
+     "publiccodeYmlVersion": "0.2",
+     "name": "Open Object",
+     "applicationSuite": null,
+     "url": "http://github.com/maykinmedia/open-object.git",
+     "landingURL": null,
+     "isBasedOn": [],
+     "softwareVersion": "4.3.0",
+     "releaseDate": "2026-10-05",
+     "logo": "https://github.com/maykinmedia/open-object/blob/master/docs/logo.png",
+     "platforms": [
+      "web",
+      "linux",
+      "windows",
+      "mac"
+     ],
+     "categories": [
+      "data-collection",
+      "it-development"
+     ],
+     "usedBy": [],
+     "roadmap": null,
+     "developmentStatus": "beta",
+     "softwareType": "standalone/backend",
+     "intendedAudience": {
+      "countries": [
+       "nl"
+      ],
+      "unsupportedCountries": [],
+      "scope": [
+       "government"
+      ]
+     },
+     "descriptions": [
+      {
+       "language": "nl",
+       "localisedName": null,
+       "genericName": "API component",
+       "shortDescription": "API voor het beheren van objecttypen en objecten",
+       "longDescription": "Open Object heeft als doel om uiteenlopende typen objecten op een dynamische wijze te standaardiseren en om te voorkomen dat voor elk (eenvoudig) object een volledige API wordt opgezet. instanties van objecten kunnen eenvouding worden geregistreerd en ontsloten in een gestandaardiseerd formaat. De Objecten API kan door elke organisatie ingezet worden om de voor haar interessante objecten te beheren. Ook kan een organisatie er voor kiezen een Objecten API in te zetten voor Open Data, waarbij de geregistreerde objecten publiekelijk toegankelijk zijn.",
+       "documentation": "https://open-object.readthedocs.io/",
+       "apiDocumentation": "https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml",
+       "features": [
+        "Objecten API",
+        "Minimalistische objecten beheerinterface"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      },
+      {
+       "language": "en",
+       "localisedName": null,
+       "genericName": "API component",
+       "shortDescription": "API to manage objecttypes and objects",
+       "longDescription": "Open Object aims to standardize various types of objects in an accessible way and without the need to create a whole new API for each (simple) object. Instances of these object types can be made available in a standardized format. It can be used by any organization to manage relevant objects. An organization can also choose to use it to expose objects to the public as *Open Data*.",
+       "documentation": "https://open-object.readthedocs.io/",
+       "apiDocumentation": "https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml",
+       "features": [
+        "Objects API",
+        "Minimalistic object management interface"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      }
+     ],
+     "legal": {
+      "license": "EUPL-1.2",
+      "mainCopyrightOwner": "Maykin",
+      "repoOwner": "Maykin",
+      "authorsFile": null
+     },
+     "maintenance": {
+      "type": "contract",
+      "contractors": [
+       {
+        "name": "Maykin",
+        "until": null,
+        "email": "info@maykin.nl",
+        "website": "https://www.maykin.nl/"
+       }
+      ],
+      "contacts": [
+       {
+        "name": "Joeri Bekker",
+        "email": null,
+        "phone": null,
+        "affiliation": "Maykin"
+       }
+      ]
+     },
+     "localisation": {
+      "localisationReady": false,
+      "availableLanguages": [
+       "nl",
+       "en"
+      ]
+     },
+     "dependsOn": {
+      "open": [
+       {
+        "name": "PostgreSQL",
+        "versionMin": "14.0",
+        "versionMax": null,
+        "version": null,
+        "optional": false
+       },
+       {
+        "name": "PostGIS",
+        "versionMin": "3.2",
+        "versionMax": null,
+        "version": null,
+        "optional": false
+       },
+       {
+        "name": "Kubernetes",
+        "versionMin": "1.12",
+        "versionMax": null,
+        "version": null,
+        "optional": true
+       },
+       {
+        "name": "Docker",
+        "versionMin": "18.0",
+        "versionMax": null,
+        "version": null,
+        "optional": true
+       }
+      ],
+      "proprietary": [],
+      "hardware": []
+     },
+     "organisation": null,
+     "fundedBy": []
+    },
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "No valid maintenance contract: Maykin has no end date (until).",
+    "evidence": [
+     "Maykin: has no end date (until)"
+    ],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "pass",
+    "message": "Dockerfile and docker-compose file(s) found.",
+    "evidence": [
+     "Dockerfile",
+     "docker-compose.yml"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/bin-check.yml",
+     ".github/workflows/ci.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/codeql-analysis.yml",
+     ".github/workflows/oaf-check.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.rst",
+     "docker/observability/README.md",
+     "docs/Makefile",
+     "docs/_static",
+     "docs/_static/theme_overrides.css",
+     "docs/_static/uml",
+     "docs/_static/uml/.gitkeep",
+     "docs/admin"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.rst, docs/changelog.rst",
+    "evidence": [
+     "changelog.rst",
+     "docs/changelog.rst"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "performance_test/tests/test_objects_list.py",
+     "src/objects/accounts/tests/__init__.py",
+     "src/objects/accounts/tests/factories.py",
+     "src/objects/accounts/tests/files",
+     "src/objects/accounts/tests/files/vcr_cassettes",
+     "src/objects/accounts/tests/files/vcr_cassettes/OIDCFlowTests",
+     "src/objects/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_duplicate_email_unique_constraint_violated.yaml",
+     "src/objects/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_happy_flow.yaml",
+     "src/objects/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_happy_flow_existing_user.yaml",
+     "src/objects/accounts/tests/test_2fa.py"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "pass",
+    "message": "Code coverage badge reports 87.00%, which meets the 80% threshold.",
+    "evidence": [
+     "README coverage badge: 87.00%"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "pass",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.75 <= 15 and Max CCN 12.00 <= 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Average CCN: 1.75 (threshold: 15)",
+     "Max CCN: 12.00 (threshold: 30)",
+     "1      1      7      0       1 (anonymous)@9-9@/tmp/cgchecker-repo-gr64zg/repo/src/objects/js/components/forms/error-list.js",
+     "8      2     56      1       9 ErrorList@4-12@/tmp/cgchecker-repo-gr64zg/repo/src/objects/js/components/forms/error-list.js",
+     "4      1     34      1       4 test_command_fails_if_http_error@128-131@/tmp/cgchecker-repo-gr64zg/repo/src/objects/core/tests/test_import_objecttypes.py",
+     "2      1     11      1       2 test_import_upload_list_of_files.report_error@221-222@/tmp/cgchecker-repo-gr64zg/repo/src/objects/core/tests/test_export_import.py",
+     "14      7     94      1      16 _flatten_drf_error@153-168@/tmp/cgchecker-repo-gr64zg/repo/src/objects/core/import_export.py",
+     "12      2     66      2      17 jsonpath_database_error_handler@9-25@/tmp/cgchecker-repo-gr64zg/repo/src/objects/utils/views.py",
+     "15      1     82      2      19 test_filter_db_error@1214-1232@/tmp/cgchecker-repo-gr64zg/repo/src/objects/tests/v2/test_filters.py"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "warn",
+    "starRating": 3,
+    "rating": 3.045,
+    "aspectRatings": {
+     "analysability": 4.28,
+     "modifiability": 3.99,
+     "testability": 1.84,
+     "modularity": 2.68,
+     "reusability": 3.14
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python",
+        "value": "1.9%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "30.6%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "10.1%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, more than 15 lines",
+        "value": "49.5%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, more than 30 lines",
+        "value": "19.9%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Python, more than 60 lines",
+        "value": "3.1%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, complexity above 5",
+        "value": "32.3%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Python, complexity above 10",
+        "value": "4.5%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Python, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "6.3%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "1.5%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, 3 or more parameters",
+        "value": "19.0%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Python, 5 or more parameters",
+        "value": "2.4%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python, fan-in above 10",
+        "value": "6.3%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "68.5%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "0.2241",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 2.91 to 3.18 (3 of 5 stars) over 112 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★★★ 5.0 (javascript 5.5, python 5.0)",
+     "Unit size: ★★★★☆ 3.6 (javascript 4.7, python 3.4)",
+     "Unit complexity: ★★☆☆☆ 2.3 (javascript 5.5, python 1.8)",
+     "Unit interfacing: ★★★☆☆ 2.7 (javascript 4.9, python 2.4)",
+     "Module coupling: ★★★★★ 4.7 (python 4.7)",
+     "Component independence: ★☆☆☆☆ 1.4 (python 1.4)",
+     "Component entanglement: ★★☆☆☆ 2.0 (python 2.0)",
+     "Lever: unit complexity in python, about 109 lines to fix for half a star",
+     "Lever: unit size in python, about 198 lines to fix for half a star",
+     "Lever: component independence in python, about 788 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (7 findings across 216 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Possible hardcoded secret: src/objects/accounts/tests/factories.py",
+     "Possible hardcoded secret: src/objects/accounts/tests/test_metrics.py",
+     "Dynamic code execution: src/objects/js/components/admin/search-toggle.js",
+     "Dynamic code execution: src/objects/jstests/components/dummy/dummy.spec.js",
+     "Possible hardcoded secret: src/objects/setup_configuration/tests/test_token_auth_config.py",
+     "Possible hardcoded secret: src/objects/token/tests/test_migrations.py",
+     "Possible hardcoded secret: src/objects/token/tests/test_objecttype_authentication.py"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "fail",
+    "message": "API Design Rules violations found across 1 specification(s): 9 issue(s).",
+    "evidence": [
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes.get (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes.post (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.get (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.put (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.patch (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./objecttypes/{uuid}.delete (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/GeoJSONGeometry @ components.schemas.GeoJSONGeometry (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /api/v2 \"/api/v2\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-object/master/src/objects/api/v2/openapi.yaml)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.rst"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v4.3.0\" follows semantic versioning.",
+    "evidence": [
+     "v4.3.0"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "evidence": [
+     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
+     "Found path segment \"ui\" in build.js",
+     "Found path segment \"ui\" in docs/api/_assets/object-and-objecttypes-quickstart.postman_environment.json",
+     "Found path segment \"ui\" in docs/installation/prerequisites.rst",
+     "Found path segment \"ui\" in docs/installation/quickstart.rst",
+     "Found path segment \"ui\" in requirements",
+     "Found path segment \"ui\" in requirements/base.in",
+     "Found path segment \"ui\" in requirements/base.txt",
+     "Found path segment \"ui\" in requirements/ci.txt",
+     "Found path segment \"ui\" in requirements/dev.in",
+     "Found path segment \"ui\" in requirements/dev.txt",
+     "Found path segment \"ui\" in requirements/docs.in",
+     "Found path segment \"ui\" in requirements/performance-tests.in",
+     "Found path segment \"ui\" in requirements/production.txt",
+     "Found path segment \"ui\" in requirements/staging.txt",
+     "Found path segment \"ui\" in requirements/test-tools.in",
+     "Found path segment \"ui\" in requirements/test.txt",
+     "Found path segment \"ui\" in requirements/type-checking.in",
+     "Found path segment \"ui\" in requirements/type-checking.txt",
+     "Found path segment \"ui\" in src/objects/core/migrations/0012_objectrecord_uuid.py",
+     "Found path segment \"ui\" in src/objects/core/migrations/0013_generate_record_uuids.py",
+     "Found path segment \"ui\" in src/objects/core/tests/files/objecttypes_invalid_uuid.yaml",
+     "Found \"ui\" in repository metadata and docs",
+     "Found path segment \"admin\" in docs/admin/_assets",
+     "Found path segment \"admin\" in docs/admin/_assets/img",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authentication_objects_add.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authentication_objects_main.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_main_objecttype.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_main_permission.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_main_service.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_objecttype.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_permission.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_permission_fields.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/authorization_objects_permissions.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/notifications_admin_config.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/notifications_admin_index.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/notifications_admin_index_2.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/notifications_service_add.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/object_create.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/object_create_record.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/object_main.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_create_meta.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_create_version.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_export_import.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_history.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_main.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_new_version.png",
+     "Found path segment \"admin\" in docs/admin/_assets/img/objecttype_publish.png",
+     "Found path segment \"admin\" in docs/admin/authentication.rst",
+     "Found path segment \"admin\" in docs/admin/authorization.rst",
+     "Found path segment \"admin\" in docs/admin/index.rst",
+     "Found path segment \"admin\" in docs/admin/notifications.rst",
+     "Found path segment \"admin\" in docs/admin/object.rst",
+     "Found path segment \"admin\" in docs/admin/objecttype.rst",
+     "Found path segment \"admin\" in src/objects/js/components/admin/permissions",
+     "Found path segment \"admin\" in src/objects/js/components/admin/permissions/auth-fields.js",
+     "Found path segment \"admin\" in src/objects/js/components/admin/permissions/index.js",
+     "Found path segment \"admin\" in src/objects/js/components/admin/permissions/permission-form.js",
+     "Found path segment \"admin\" in src/objects/js/components/admin/search-toggle.js",
+     "Found path segment \"admin\" in src/objects/scss/admin/_admin_theme.scss",
+     "Found path segment \"admin\" in src/objects/scss/admin/_app_overrides.scss",
+     "Found path segment \"admin\" in src/objects/scss/admin/_vars.scss",
+     "Found path segment \"admin\" in src/objects/scss/admin/admin_overrides.scss",
+     "Found path segment \"admin\" in src/objects/scss/admin/components",
+     "Found path segment \"admin\" in src/objects/scss/admin/components/_all.scss",
+     "Found path segment \"admin\" in src/objects/scss/admin/components/_permission-fields.scss",
+     "Found path segment \"admin\" in src/objects/scss/admin/themes",
+     "Found path segment \"admin\" in src/objects/scss/admin/themes/_dark.scss",
+     "Found path segment \"admin\" in src/objects/scss/admin/themes/_light.scss",
+     "Found path segment \"admin\" in src/objects/static/img/admin/calendar-alt-regular.svg",
+     "Found path segment \"admin\" in src/objects/static/img/admin/clock-regular.svg",
+     "Found path segment \"admin\" in src/objects/static/img/admin/edit-regular.svg",
+     "Found path segment \"admin\" in src/objects/static/img/admin/plus-square-regular.svg",
+     "Found path segment \"admin\" in src/objects/static/img/admin/trash-alt-regular.svg",
+     "Found path segment \"admin\" in src/objects/templates/admin/base_site.html",
+     "Found path segment \"admin\" in src/objects/templates/admin/core",
+     "Found path segment \"admin\" in src/objects/templates/admin/core/object_change_list.html",
+     "Found path segment \"admin\" in src/objects/templates/admin/core/objecttype",
+     "Found path segment \"admin\" in src/objects/templates/admin/core/objecttype/object_history.html",
+     "Found path segment \"admin\" in src/objects/templates/admin/core/objecttype/object_import_form.html",
+     "Found path segment \"admin\" in src/objects/templates/admin/core/objecttype/object_list.html",
+     "Found path segment \"admin\" in src/objects/templates/admin/core/objecttype/submit_line.html",
+     "Found path segment \"admin\" in src/objects/templates/admin/edit_inline",
+     "Found path segment \"admin\" in src/objects/templates/admin/edit_inline/tabular_add_and_edit.html",
+     "Found path segment \"admin\" in src/objects/templates/admin/token",
+     "Found path segment \"admin\" in src/objects/templates/admin/token/permission",
+     "Found path segment \"admin\" in src/objects/templates/admin/token/permission/change_form.html",
+     "Found path segment \"admin\" in src/objects/tests/admin/__init__.py",
+     "Found path segment \"admin\" in src/objects/tests/admin/test_objecttype_admin.py",
+     "Found path segment \"admin\" in src/objects/tests/admin/test_token_permissions.py",
+     "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
+     "Found \"postgres\" in repository metadata and docs",
+     "Found path segment \"api\" in docs/api/_assets",
+     "Found path segment \"api\" in docs/api/_assets/object-and-objecttypes-quickstart.postman_environment.json",
+     "Found path segment \"api\" in docs/api/_assets/objects-api.postman_collection.json",
+     "Found path segment \"api\" in docs/api/_assets/objecttypes-api.postman_collection.json",
+     "Found path segment \"api\" in docs/api/compliancy",
+     "Found path segment \"api\" in docs/api/compliancy/api-strategy.rst",
+     "Found path segment \"api\" in docs/api/compliancy/vng.rst",
+     "Found path segment \"api\" in docs/api/index.rst",
+     "Found path segment \"api\" in docs/api/postman.rst",
+     "Found path segment \"api\" in docs/api/usage.rst",
+     "Found path segment \"api\" in src/objects/api/__init__.py",
+     "Found path segment \"api\" in src/objects/api/constants.py",
+     "Found path segment \"api\" in src/objects/api/fields.py",
+     "Found path segment \"api\" in src/objects/api/filter_backends.py",
+     "Found path segment \"api\" in src/objects/api/kanalen.py",
+     "Found path segment \"api\" in src/objects/api/metrics.py",
+     "Found path segment \"api\" in src/objects/api/mixins.py",
+     "Found path segment \"api\" in src/objects/api/serializers.py",
+     "Found path segment \"api\" in src/objects/api/tests",
+     "Found path segment \"api\" in src/objects/api/tests/__init__.py",
+     "Found path segment \"api\" in src/objects/api/tests/test_utils.py",
+     "Found path segment \"api\" in src/objects/api/urls.py",
+     "Found path segment \"api\" in src/objects/api/utils.py",
+     "Found path segment \"api\" in src/objects/api/v2",
+     "Found path segment \"api\" in src/objects/api/v2/__init__.py",
+     "Found path segment \"api\" in src/objects/api/v2/filters.py",
+     "Found path segment \"api\" in src/objects/api/v2/openapi.yaml",
+     "Found path segment \"api\" in src/objects/api/v2/urls.py",
+     "Found path segment \"api\" in src/objects/api/v2/views.py",
+     "Found path segment \"api\" in src/objects/api/validators.py",
+     "Found \"api\" in repository metadata and docs",
+     "Found \"workflow\" in repository metadata and docs",
+     "Found \"zaak\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
+    "evidence": [
+     "npm Open Object: not measured: HTTP 405 (2026-11-19)",
+     "Docker Hub maykinmedia/open-object: 19,430 pulls in total (2026-11-19)",
+     "GitHub maykinmedia/open-object: 8 stars, 16 forks, 5 watchers (2026-11-19)",
+     "GitHub commits maykinmedia/open-object: 11 contributors, 8 from the owning organisation, 0 from other organisations, 3 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "npm",
+       "kind": "downloads",
+       "source": "npm",
+       "subject": "Open Object",
+       "url": "https://www.npmjs.com/package/Open Object",
+       "caveat": "Counts every download of the package, including CI builds and mirrors, not installations.",
+       "measuredAt": "2026-11-19",
+       "figures": [],
+       "notMeasured": "HTTP 405"
+      },
+      {
+       "id": "dockerhub:maykinmedia/open-object",
+       "kind": "containers",
+       "source": "Docker Hub",
+       "subject": "maykinmedia/open-object",
+       "url": "https://hub.docker.com/r/maykinmedia/open-object",
+       "caveat": "Counts every pull since the image was published, including CI pulls and automatic updates.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "pulls in total",
+         "value": 19430
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "maykinmedia/open-object",
+       "url": "https://github.com/maykinmedia/open-object",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 8
+        },
+        {
+         "label": "forks",
+         "value": 16
+        },
+        {
+         "label": "watchers",
+         "value": 5
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "maykinmedia/open-object",
+       "url": "https://github.com/maykinmedia/open-object/graphs/contributors",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 11
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 8
+        },
+        {
+         "label": "from other organisations",
+         "value": 0
+        },
+        {
+         "label": "unknown",
+         "value": 3
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 8.9
+ },
+ "slas": []
+}

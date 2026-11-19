@@ -1,0 +1,1323 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/ConductionNL/larpinq",
+  "repoUrl": "https://github.com/ConductionNL/larpinq",
+  "host": "github.com",
+  "owner": "ConductionNL",
+  "name": "larpinq",
+  "metadata": {
+   "description": "The next cloud Larping app",
+   "language": "JavaScript",
+   "stars": 3,
+   "forks": 1,
+   "defaultBranch": "main",
+   "topics": [],
+   "license": "European Union Public License 1.2",
+   "version": "v0.3.0",
+   "versionEvidence": {
+    "source": "release",
+    "detail": "latest release tag: v0.3.0"
+   },
+   "displayName": "Larpinq",
+   "shortDescription": "Live action role-playing (LARP) evenement- en karakterbeheer voor Nextcloud.",
+   "logoUrl": null,
+   "developmentStatus": "beta",
+   "maintenanceType": "community",
+   "maintainers": [
+    "Conduction B.V."
+   ]
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T13:54:43.734Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T13:54:43.734Z",
+  "updatedAt": "2026-11-19T13:54:43.734Z",
+  "basisset": false,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T13-54-43-734Z",
+  "repoId": "github.com/ConductionNL/larpinq",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T13:54:43.734Z",
+  "createdAt": "2026-11-19T13:54:43.734Z",
+  "version": "v0.3.0",
+  "checklistVersion": null,
+  "scannedRef": "main",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 57,
+  "rating": 2.9,
+  "categoryRatings": {
+   "Governance": 3.6,
+   "Security": 1.8,
+   "Architecture": 3,
+   "Software Quality": 3.3,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 4.3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 4,
+    "found": 4,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 3.7
+   },
+   "modifiability": {
+    "rating": 4
+   },
+   "testability": {
+    "rating": 1.6
+   },
+   "modularity": {
+    "rating": 3.4
+   },
+   "reusability": {
+    "rating": 2.7
+   },
+   "testing": {
+    "rating": 4.3
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 0,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: Docker support",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: API Design Rules",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
+    "Maintainability below 4 stars (2.93)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 6,
+   "warnings": 7
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 13,445 lines of code, 1,198 functions, 1,190 files analyzed.",
+    "evidence": [
+     ".php-cs-fixer.dist.php",
+     "appinfo/routes.php",
+     "docs/docusaurus.config.js",
+     "docs/sidebars.js",
+     "docs/src/components/HomepageFeatures/index.js",
+     "docs/src/pages/index.js",
+     "eslint.config.mjs",
+     "l10n/be.js",
+     "l10n/bg.js",
+     "l10n/bs.js",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 13,445",
+     "Function count: 1,198",
+     "Files analyzed: 1,190"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: GitHub metadata (SPDX: EUPL-1.2).",
+    "evidence": [
+     "LICENSE"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (EUPL-1.2).",
+    "evidence": [
+     "EUPL-1.2"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "medium",
+    "message": "Probable copyright owners detected: Conduction b.v., Remko Huisman, Ruben van der Linde (confidence: medium).",
+    "evidence": [
+     "composer.json: Conduction b.v.",
+     "composer.json: Remko Huisman",
+     "composer.json: Ruben van der Linde"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root.",
+    "status": "warn",
+    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "evidence": [
+     "publiccode.yml"
+    ],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "publiccode": {
+     "publiccodeYmlVersion": "0.4",
+     "name": "Larpinq",
+     "applicationSuite": null,
+     "url": "https://github.com/ConductionNL/larpinq",
+     "landingURL": null,
+     "isBasedOn": [],
+     "softwareVersion": "0.1.21",
+     "releaseDate": "2026-05-26",
+     "logo": null,
+     "platforms": [
+      "nextcloud"
+     ],
+     "categories": [
+      "collaboration",
+      "event-management"
+     ],
+     "usedBy": [],
+     "roadmap": null,
+     "developmentStatus": "beta",
+     "softwareType": "standalone/other",
+     "intendedAudience": {
+      "countries": [],
+      "unsupportedCountries": [],
+      "scope": []
+     },
+     "descriptions": [
+      {
+       "language": "en",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Live action role-playing (LARP) event and character management for Nextcloud.",
+       "longDescription": "Larpinq provides comprehensive management tools for live action role-playing (LARP) communities and events. It supports character creation and management, event organisation, player registration, skill and item tracking, and community administration. Built on Nextcloud and Open Register, it offers a collaborative platform for LARP groups of all sizes.",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Character creation and management",
+        "Event organisation and player registration",
+        "Skill and item tracking",
+        "Community administration"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      },
+      {
+       "language": "nl",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Live action role-playing (LARP) evenement- en karakterbeheer voor Nextcloud.",
+       "longDescription": "Larpinq biedt uitgebreide beheertools voor live action role-playing (LARP) gemeenschappen en evenementen. Het ondersteunt het aanmaken en beheren van karakters, evenementorganisatie, spelersregistratie, vaardigheids- en itembeheer, en gemeenschapsadministratie. Gebouwd op Nextcloud en Open Register biedt het een collaboratief platform voor LARP-groepen van elke omvang.",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Karakter aanmaken en beheren",
+        "Evenementorganisatie en spelersregistratie",
+        "Vaardigheids- en itembeheer",
+        "Gemeenschapsadministratie"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      }
+     ],
+     "legal": {
+      "license": "EUPL-1.2",
+      "mainCopyrightOwner": "Conduction B.V.",
+      "repoOwner": "Conduction B.V.",
+      "authorsFile": null
+     },
+     "maintenance": {
+      "type": "community",
+      "contractors": [],
+      "contacts": [
+       {
+        "name": "Conduction B.V.",
+        "email": "info@conduction.nl",
+        "phone": null,
+        "affiliation": "Conduction B.V."
+       }
+      ]
+     },
+     "localisation": {
+      "localisationReady": true,
+      "availableLanguages": [
+       "nl",
+       "en"
+      ]
+     },
+     "dependsOn": {
+      "open": [],
+      "proprietary": [],
+      "hardware": []
+     },
+     "organisation": null,
+     "fundedBy": []
+    },
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "publiccode.yml declares maintenance.type community: there is no maintenance contract.",
+    "evidence": [
+     "publiccode.yml"
+    ],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "fail",
+    "message": "Docker-compose file found but no Dockerfile detected. A Dockerfile is required.",
+    "evidence": [
+     "docker-compose.yml"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/branch-protection.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/documentation.yml",
+     ".github/workflows/issue-triage.yml",
+     ".github/workflows/merge-hygiene.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.md",
+     "docs/FEATURES.md",
+     "docs/Installation",
+     "docs/Installation/demo-environment.md",
+     "docs/README.md",
+     "docs/Schema",
+     "docs/Schema/Character.json",
+     "docs/Schema/Condition.json"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "warn",
+    "message": "No changelog file was found. Add a CHANGELOG.md, NEWS.md, or equivalent to document release history.",
+    "evidence": [],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "tests/.coverage-baseline.json",
+     "tests/bootstrap.php",
+     "tests/coverage-ratchet.sh",
+     "tests/e2e",
+     "tests/e2e/.gitignore",
+     "tests/e2e/_base-url.ts",
+     "tests/e2e/_nav.ts",
+     "tests/e2e/app-chrome.spec.ts",
+     "tests/e2e/ci-seed.sh",
+     "tests/e2e/docs-screenshots.spec.ts"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "warn",
+    "message": "No coverage report file was found. Add coverage output such as coverage/coverage-summary.json, coverage.xml, or lcov.info.",
+    "evidence": [],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "fail",
+    "message": "Lizard analysis ran. Avg CCN 2.12 (threshold: 15); Max CCN 41.00 (threshold: 30). Threshold exceeded: MaxCCN 41.00 > 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
+     "Average CCN: 2.12 (threshold: 15)",
+     "Max CCN: 41.00 (threshold: 30)",
+     "2      1      9      1       2 getError@15-16@/tmp/cgchecker-repo-wSpZLm/repo/src/store/modules/settings.js",
+     "3      1     14      1       3 ObjectCreatingEvent::setErrors@47-49@/tmp/cgchecker-repo-wSpZLm/repo/tests/unit/Listener/CharacterRequirementListenerTest.php",
+     "3      1     11      0       3 ObjectCreatingEvent::getErrors@51-53@/tmp/cgchecker-repo-wSpZLm/repo/tests/unit/Listener/CharacterRequirementListenerTest.php",
+     "3      1     14      1       3 ObjectUpdatingEvent::setErrors@85-87@/tmp/cgchecker-repo-wSpZLm/repo/tests/unit/Listener/CharacterRequirementListenerTest.php",
+     "3      1     11      0       3 ObjectUpdatingEvent::getErrors@89-91@/tmp/cgchecker-repo-wSpZLm/repo/tests/unit/Listener/CharacterRequirementListenerTest.php",
+     "6      1     45      1       9 trackLarpErrors@69-77@/tmp/cgchecker-repo-wSpZLm/repo/tests/e2e/spec-coverage/settings-roadmap.spec.ts"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "warn",
+    "starRating": 3,
+    "rating": 2.9349999999999996,
+    "aspectRatings": {
+     "analysability": 3.69,
+     "modifiability": 4.02,
+     "testability": 1.63,
+     "modularity": 3.37,
+     "reusability": 2.72
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "2.0%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP",
+        "value": "2.0%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue",
+        "value": "1.7%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "60.7%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "33.5%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "10.3%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "PHP, more than 15 lines",
+        "value": "68.2%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 30 lines",
+        "value": "25.8%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "PHP, more than 60 lines",
+        "value": "5.2%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, more than 15 lines",
+        "value": "51.5%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Vue, more than 30 lines",
+        "value": "23.4%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Vue, more than 60 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "54.2%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "23.3%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, complexity above 5",
+        "value": "31.8%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, complexity above 10",
+        "value": "2.7%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, complexity above 5",
+        "value": "22.2%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Vue, complexity above 10",
+        "value": "8.8%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Vue, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "6.5%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, 3 or more parameters",
+        "value": "21.1%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, 5 or more parameters",
+        "value": "5.6%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, 7 or more parameters",
+        "value": "1.4%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Vue, 3 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP, fan-in above 10",
+        "value": "2.3%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "65.2%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "0.0714",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": 4
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 2.78 to 3.09 (3 of 5 stars) over 60 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★★★ 4.9 (javascript 4.9, php 4.9, vue 5.0)",
+     "Unit size: ★★☆☆☆ 2.4 (javascript 2.6, php 2.3, vue 3.3)",
+     "Unit complexity: ★★☆☆☆ 1.9 (javascript 1.2, php 1.9, vue 3.1)",
+     "Unit interfacing: ★★★☆☆ 3.0 (javascript 5.0, php 2.1, vue 5.5)",
+     "Module coupling: ★★★★★ 5.2 (php 5.2)",
+     "Component independence: ★☆☆☆☆ 1.3 (php 1.3)",
+     "Component entanglement: ★★★★☆ 3.6 (php 3.6)",
+     "Lever: component independence in php, about 506 lines to fix for half a star",
+     "Lever: unit complexity in php, about 140 lines to fix for half a star",
+     "Lever: unit size in php, about 349 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (25 findings across 176 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Dynamic code execution: lib/AppInfo/Application.php",
+     "Dynamic code execution: lib/Repair/MigrateUserPreferences.php",
+     "Dynamic code execution: lib/Service/EventRosterService.php",
+     "Dynamic code execution: lib/Service/RegisterObjectFetcher.php",
+     "Dynamic code execution: tests/bootstrap.php",
+     "Dynamic code execution: tests/e2e/workflows/fixtures.ts",
+     "Dynamic code execution: tests/integration/EffectChainIntegrationTest.php",
+     "Dynamic code execution: tests/unit/AppInfo/ApplicationRegisterTest.php",
+     "Dynamic code execution: tests/unit/AppInfo/CanonicalSettingsRouteContractTest.php",
+     "Dynamic code execution: tests/unit/Controller/CharactersControllerTest.php",
+     "Dynamic code execution: tests/unit/Controller/EventsControllerAttendanceTest.php",
+     "Dynamic code execution: tests/unit/Controller/EventsControllerTest.php",
+     "Dynamic code execution: tests/unit/Controller/SettingsControllerCsrfPostureTest.php",
+     "Dynamic code execution: tests/unit/Listener/CharacterRequirementListenerTest.php",
+     "Dynamic code execution: tests/unit/Repair/MigrateAppConfigKeysTest.php",
+     "Dynamic code execution: tests/unit/Repair/MigrateRegisterSlugTest.php",
+     "Dynamic code execution: tests/unit/Repair/MigrateSchemaApplicationIdTest.php",
+     "Dynamic code execution: tests/unit/Repair/MigrateUserPreferencesTest.php",
+     "Dynamic code execution: tests/unit/Service/CharacterServiceTest.php",
+     "Dynamic code execution: tests/unit/Service/CharacterServiceXpAwardTest.php",
+     "Dynamic code execution: tests/unit/Service/GameMechanicsTest.php",
+     "Dynamic code execution: tests/unit/Service/RegisterObjectFetcherTest.php",
+     "Dynamic code execution: tests/unit/Service/SettingsServiceTest.php",
+     "Dynamic code execution: tests/unit/Service/SkillRequirementServiceTest.php",
+     "Possible hardcoded secret: tests/vitest/settingsStore.spec.js"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "fail",
+    "message": "API Design Rules violations found across 1 specification(s): 7 issue(s).",
+    "evidence": [
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/larpinq/main/openapi.json",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/ConductionNL/larpinq/main/openapi.json)",
+     "HINT [info-contact] Info object must have \"contact\" object. @ info (https://raw.githubusercontent.com/ConductionNL/larpinq/main/openapi.json)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/OCSMeta @ components.schemas.OCSMeta (https://raw.githubusercontent.com/ConductionNL/larpinq/main/openapi.json)",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/ConductionNL/larpinq/main/openapi.json)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./ocs/v2.php/apps/dsonextcloud/api.get (https://raw.githubusercontent.com/ConductionNL/larpinq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/dsonextcloud/api.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/larpinq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/dsonextcloud/api.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/larpinq/main/openapi.json)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v0.3.0\" follows semantic versioning.",
+    "evidence": [
+     "v0.3.0"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX); Process layer (orchestration / BFF); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "evidence": [
+     "Found path segment \"ui\" in docs/styleguide.md",
+     "Found path segment \"ui\" in lib/Listener/CharacterRequirementListener.php",
+     "Found path segment \"portal\" in lib/Portal/PortalContributionProvider.php",
+     "Found path segment \"ui\" in lib/Service/SettingsMapBuilder.php",
+     "Found path segment \"ui\" in lib/Service/SkillRequirementChecker.php",
+     "Found path segment \"ui\" in lib/Service/SkillRequirementService.php",
+     "Found path segment \"ui\" in openspec/architecture/adr-001-integrate-dont-build.md",
+     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui",
+     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/adopt-live-updates-ui/tasks.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/retrofit-2026-05-25-larpingapp-frontend",
+     "Found path segment \"frontend\" in openspec/changes/archive/retrofit-2026-05-25-larpingapp-frontend/proposal.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/retrofit-2026-05-25-larpingapp-frontend/specs",
+     "Found path segment \"frontend\" in openspec/changes/archive/retrofit-2026-05-25-larpingapp-frontend/specs/dashboard-analytics-widgets",
+     "Found path segment \"frontend\" in openspec/changes/archive/retrofit-2026-05-25-larpingapp-frontend/specs/dashboard-analytics-widgets/spec.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/retrofit-2026-05-25-larpingapp-frontend/specs/settings-management-ui",
+     "Found path segment \"frontend\" in openspec/changes/archive/retrofit-2026-05-25-larpingapp-frontend/specs/settings-management-ui/spec.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/retrofit-2026-05-25-larpingapp-frontend/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/specs/rpg-system",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/specs/rpg-system/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/specs/skill-requirement-enforcement",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/specs/skill-requirement-enforcement/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/skill-requirement-enforcement/tasks.md",
+     "Found path segment \"frontend\" in openspec/changes/larpinq-pdf-frontend-download-action",
+     "Found path segment \"frontend\" in openspec/changes/larpinq-pdf-frontend-download-action/.openspec.yaml",
+     "Found path segment \"frontend\" in openspec/changes/larpinq-pdf-frontend-download-action/proposal.md",
+     "Found path segment \"frontend\" in openspec/changes/larpinq-pdf-frontend-download-action/specs",
+     "Found path segment \"frontend\" in openspec/changes/larpinq-pdf-frontend-download-action/specs/pdf-export",
+     "Found path segment \"frontend\" in openspec/changes/larpinq-pdf-frontend-download-action/specs/pdf-export/spec.md",
+     "Found path segment \"frontend\" in openspec/changes/larpinq-pdf-frontend-download-action/tasks.md",
+     "Found path segment \"ui\" in openspec/specs/settings-management-ui",
+     "Found path segment \"ui\" in openspec/specs/settings-management-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/skill-requirement-enforcement",
+     "Found path segment \"ui\" in openspec/specs/skill-requirement-enforcement/spec.md",
+     "Found path segment \"ui\" in scripts/build-l10n-js.js",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/skill-requirement-enforcement.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/spa-ui.spec.ts",
+     "Found path segment \"ui\" in tests/unit/Listener/CharacterRequirementListenerTest.php",
+     "Found path segment \"portal\" in tests/unit/Portal/PortalContributionProviderTest.php",
+     "Found path segment \"ui\" in tests/unit/Service/SettingsMapBuilderTest.php",
+     "Found path segment \"ui\" in tests/unit/Service/SkillRequirementServiceTest.php",
+     "Found \"frontend\" in repository metadata and docs",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/.gitkeep",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-game-system-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-game-system-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-game-system-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-game-system-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-game-system-05.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-approve-players-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-approve-players-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-approve-players-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-approve-players-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-approve-players-05.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-05.png",
+     "Found path segment \"admin\" in docs/tutorials/admin/01-configure-game-system.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/02-approve-players.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/03-admin-settings.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json",
+     "Found path segment \"service\" in lib/Service/CharacterService.php",
+     "Found path segment \"service\" in lib/Service/ConfigFileLoaderService.php",
+     "Found path segment \"service\" in lib/Service/DemoDataService.php",
+     "Found path segment \"service\" in lib/Service/DocuDeskPdfRenderer.php",
+     "Found path segment \"service\" in lib/Service/EffectApplier.php",
+     "Found path segment \"service\" in lib/Service/EventRosterService.php",
+     "Found path segment \"service\" in lib/Service/IdListNormaliser.php",
+     "Found path segment \"service\" in lib/Service/RegisterObjectFetcher.php",
+     "Found path segment \"service\" in lib/Service/SettingsLoadService.php",
+     "Found path segment \"service\" in lib/Service/SettingsMapBuilder.php",
+     "Found path segment \"service\" in lib/Service/SettingsService.php",
+     "Found path segment \"service\" in lib/Service/SkillRequirementChecker.php",
+     "Found path segment \"service\" in lib/Service/SkillRequirementService.php",
+     "Found path segment \"services\" in src/services/graphql.js",
+     "Found path segment \"service\" in tests/unit/Service/CharacterServiceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/CharacterServiceXpAwardTest.php",
+     "Found path segment \"service\" in tests/unit/Service/ConfigFileLoaderServiceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/DemoDataServiceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/DocuDeskPdfRendererTest.php",
+     "Found path segment \"service\" in tests/unit/Service/GameMechanicsTest.php",
+     "Found path segment \"service\" in tests/unit/Service/RegisterFragmentMergeTest.php",
+     "Found path segment \"service\" in tests/unit/Service/RegisterObjectFetcherTest.php",
+     "Found path segment \"service\" in tests/unit/Service/SettingSchemaTest.php",
+     "Found path segment \"service\" in tests/unit/Service/SettingsMapBuilderTest.php",
+     "Found path segment \"service\" in tests/unit/Service/SettingsServiceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/SkillRequirementServiceTest.php",
+     "Found \"service\" in repository metadata and docs",
+     "Found path segment \"integration\" in tests/integration/EffectChainIntegrationTest.php",
+     "Found path segment \"integration\" in tests/integration/README-newman.md",
+     "Found path segment \"integration\" in tests/integration/larpinq.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/run-newman.sh",
+     "Found \"workflow\" in repository metadata and docs",
+     "Found \"database\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources. Shown for information; never rated or compared.",
+    "evidence": [
+     "Nextcloud App Store larpinq: 0 ratings given (2026-11-19)",
+     "GitHub releases: 4,721 release file downloads, 376 releases with files (2026-11-19)",
+     "GitHub ConductionNL/larpinq: 3 stars, 1 forks, 3 watchers (2026-11-19)",
+     "GitHub commits ConductionNL/larpinq: 15 contributors, 10 from the owning organisation, 2 from other organisations, 3 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "nextcloud-appstore",
+       "kind": "downloads",
+       "source": "Nextcloud App Store",
+       "subject": "larpinq",
+       "url": "https://apps.nextcloud.com/apps/larpinq",
+       "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "ratings given",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "github-releases",
+       "kind": "downloads",
+       "source": "GitHub releases",
+       "subject": null,
+       "url": "https://github.com/ConductionNL/larpinq/releases",
+       "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "release file downloads",
+         "value": 4721
+        },
+        {
+         "label": "releases with files",
+         "value": 376
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "ConductionNL/larpinq",
+       "url": "https://github.com/ConductionNL/larpinq",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 3
+        },
+        {
+         "label": "forks",
+         "value": 1
+        },
+        {
+         "label": "watchers",
+         "value": 3
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "ConductionNL/larpinq",
+       "url": "https://github.com/ConductionNL/larpinq/graphs/contributors",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 15
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 10
+        },
+        {
+         "label": "from other organisations",
+         "value": 2
+        },
+        {
+         "label": "unknown",
+         "value": 3
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 8.6
+ },
+ "slas": []
+}

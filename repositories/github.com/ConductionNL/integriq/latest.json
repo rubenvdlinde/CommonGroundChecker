@@ -1,0 +1,2082 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/ConductionNL/integriq",
+  "repoUrl": "https://github.com/ConductionNL/integriq",
+  "host": "github.com",
+  "owner": "ConductionNL",
+  "name": "integriq",
+  "metadata": {
+   "description": "Provides gateway and service bus functionality like mapping, translation and synchronisation of data",
+   "language": "PHP",
+   "stars": 9,
+   "forks": 6,
+   "defaultBranch": "main",
+   "topics": [],
+   "license": "European Union Public License 1.2",
+   "version": "v0.4.4",
+   "versionEvidence": {
+    "source": "release",
+    "detail": "latest release tag: v0.4.4"
+   },
+   "displayName": "Open Connector",
+   "shortDescription": "Gateway en servicebus voor Nextcloud: synchroniseer databronnen, verstuur cloud events en vertaal API-aanroepen.",
+   "logoUrl": null,
+   "developmentStatus": "stable",
+   "maintenanceType": "internal",
+   "maintainers": [
+    "Conduction Development Team"
+   ]
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T13:54:13.624Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T13:54:13.624Z",
+  "updatedAt": "2026-11-19T13:54:13.624Z",
+  "basisset": false,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T13-54-13-624Z",
+  "repoId": "github.com/ConductionNL/integriq",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T13:54:13.624Z",
+  "createdAt": "2026-11-19T13:54:13.624Z",
+  "version": "v0.4.4",
+  "checklistVersion": null,
+  "scannedRef": "main",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 58,
+  "rating": 2.8,
+  "categoryRatings": {
+   "Governance": 3.9,
+   "Security": 1.8,
+   "Architecture": 3,
+   "Software Quality": 2.5,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 4.3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 5.5,
+    "found": 5,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 2.4
+   },
+   "modifiability": {
+    "rating": 2
+   },
+   "testability": {
+    "rating": 1.3
+   },
+   "modularity": {
+    "rating": 2
+   },
+   "reusability": {
+    "rating": 1.9
+   },
+   "testing": {
+    "rating": 5.5
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 0,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: Docker support",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: API Design Rules",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "publiccode.yml declares maintenance.type internal: there is no maintenance contract.",
+    "Maintainability below 4 stars (1.85)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 6,
+   "warnings": 5
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 59,802 lines of code, 5,166 functions, 5,165 files analyzed.",
+    "evidence": [
+     ".php-cs-fixer.dist.php",
+     "appinfo/routes.php",
+     "docker/init-ubuntu.sh",
+     "docs/docusaurus.config.js",
+     "docs/sidebars.js",
+     "docs/src/components/HomepageFeatures/index.js",
+     "docs/src/pages/index.js",
+     "eslint.config.mjs",
+     "examples/other-app-integration.php",
+     "jest.config.js",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 59,802",
+     "Function count: 5,166",
+     "Files analyzed: 5,165"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: GitHub metadata (SPDX: EUPL-1.2).",
+    "evidence": [
+     "LICENSE"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (EUPL-1.2).",
+    "evidence": [
+     "EUPL-1.2"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "medium",
+    "message": "Probable copyright owner detected: Conduction b.v. (confidence: medium).",
+    "evidence": [
+     "composer.json: Conduction b.v."
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root.",
+    "status": "warn",
+    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "evidence": [
+     "publiccode.yml"
+    ],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "publiccode": {
+     "publiccodeYmlVersion": "0.4",
+     "name": "Open Connector",
+     "applicationSuite": null,
+     "url": "https://github.com/ConductionNL/integriq",
+     "landingURL": null,
+     "isBasedOn": [],
+     "softwareVersion": "0.2.10",
+     "releaseDate": "2026-05-26",
+     "logo": null,
+     "platforms": [
+      "nextcloud"
+     ],
+     "categories": [
+      "data-collection"
+     ],
+     "usedBy": [],
+     "roadmap": null,
+     "developmentStatus": "stable",
+     "softwareType": "softwareAddon",
+     "intendedAudience": {
+      "countries": [],
+      "unsupportedCountries": [],
+      "scope": []
+     },
+     "descriptions": [
+      {
+       "language": "en",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Gateway and service bus for Nextcloud: synchronise data sources, send cloud events, and map API calls.",
+       "longDescription": "Integriq brings gateway and service bus functionality to Nextcloud. It provides an ESB-framework for working together in an open data ecosystem: synchronise external data sources, emit cloud events, and translate API calls through configurable mappings.",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Data source synchronisation",
+        "Cloud event publishing",
+        "API mapping and translation"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      },
+      {
+       "language": "nl",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Gateway en servicebus voor Nextcloud: synchroniseer databronnen, verstuur cloud events en vertaal API-aanroepen.",
+       "longDescription": "Integriq biedt gateway- en servicebusfunctionaliteit voor Nextcloud. Het levert een ESB-raamwerk voor samenwerking in een open data-ecosysteem: synchroniseer externe databronnen, publiceer cloud events en vertaal API-aanroepen via configureerbare mappings.",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Synchronisatie van databronnen",
+        "Publiceren van cloud events",
+        "API-mapping en -vertaling"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      }
+     ],
+     "legal": {
+      "license": "EUPL-1.2",
+      "mainCopyrightOwner": "Conduction B.V.",
+      "repoOwner": "ConductionNL",
+      "authorsFile": null
+     },
+     "maintenance": {
+      "type": "internal",
+      "contractors": [],
+      "contacts": [
+       {
+        "name": "Conduction Development Team",
+        "email": "info@conduction.nl",
+        "phone": null,
+        "affiliation": "Conduction B.V."
+       }
+      ]
+     },
+     "localisation": {
+      "localisationReady": true,
+      "availableLanguages": [
+       "en",
+       "nl"
+      ]
+     },
+     "dependsOn": {
+      "open": [
+       {
+        "name": "OpenRegister",
+        "versionMin": null,
+        "versionMax": null,
+        "version": null,
+        "optional": null
+       }
+      ],
+      "proprietary": [],
+      "hardware": []
+     },
+     "organisation": null,
+     "fundedBy": []
+    },
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "publiccode.yml declares maintenance.type internal: there is no maintenance contract.",
+    "evidence": [
+     "publiccode.yml"
+    ],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "fail",
+    "message": "Docker-compose file found but no Dockerfile detected. A Dockerfile is required.",
+    "evidence": [
+     "docker-compose.yml"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/branch-protection.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/documentation.yml",
+     ".github/workflows/issue-triage.yml",
+     ".github/workflows/l10n.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.md",
+     "configuration/README.md",
+     "configurations/README.md",
+     "configurations/decidesk-ris-import/README.md",
+     "docs/.gitignore",
+     "docs/DEEPLINKING_AND_SPOT.md",
+     "docs/GOVERNMENT-FEATURES.md",
+     "docs/Installation"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.md",
+    "evidence": [
+     "changelog.md"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "jest.config.js",
+     "tests/.coverage-baseline.json",
+     "tests/Helpers",
+     "tests/Helpers/ArrayCache.php",
+     "tests/Helpers/MigrationSimulatingObjectService.php",
+     "tests/Helpers/NestedWriteOnlyRenderBoundaryObjectService.php",
+     "tests/Helpers/ObjectServiceMockBuilder.php",
+     "tests/Helpers/RecordingLogger.php",
+     "tests/Helpers/RenderBoundarySimulatingObjectService.php",
+     "tests/Integration"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "pass",
+    "message": "Code coverage badge reports 80.00%, which meets the 80% threshold.",
+    "evidence": [
+     "README coverage badge: 80.00%"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "fail",
+    "message": "Lizard analysis ran. Avg CCN 1.60 (threshold: 15); Max CCN 48.00 (threshold: 30). Threshold exceeded: MaxCCN 48.00 > 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
+     "Average CCN: 1.60 (threshold: 15)",
+     "Max CCN: 48.00 (threshold: 30)",
+     "3      1     11      0       3 onErrorSelectId@74-76@/tmp/cgchecker-repo-Ned5E2/repo/src/modals/v2/SynchronizationNodeEditor.vue",
+     "13      1     54      0      13 onErrorOptions@79-91@/tmp/cgchecker-repo-Ned5E2/repo/src/modals/v2/SynchronizationNodeEditor.vue",
+     "5      2     24      0       6 selectedOnError@94-99@/tmp/cgchecker-repo-Ned5E2/repo/src/modals/v2/SynchronizationNodeEditor.vue",
+     "11      4     53      0      11 nameError@160-170@/tmp/cgchecker-repo-Ned5E2/repo/src/modals/v2/SynchronizationEditorModal.vue",
+     "11      4     53      0      11 nameError@133-143@/tmp/cgchecker-repo-Ned5E2/repo/src/modals/v2/MappingEditorModal.vue",
+     "12      5     88      0      22 validationErrorRows@163-184@/tmp/cgchecker-repo-Ned5E2/repo/src/components/mapping/MappingResultPanel.vue"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "fail",
+    "starRating": 2,
+    "rating": 1.855,
+    "aspectRatings": {
+     "analysability": 2.36,
+     "modifiability": 1.98,
+     "testability": 1.28,
+     "modularity": 1.98,
+     "reusability": 1.86
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "2.4%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP",
+        "value": "9.4%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Vue",
+        "value": "11.0%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "72.5%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "49.0%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "16.6%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 15 lines",
+        "value": "78.4%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 30 lines",
+        "value": "48.2%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 60 lines",
+        "value": "18.2%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Vue, more than 15 lines",
+        "value": "40.3%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Vue, more than 30 lines",
+        "value": "14.7%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, more than 60 lines",
+        "value": "4.6%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "65.6%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "43.1%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "15.8%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 5",
+        "value": "44.2%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 10",
+        "value": "16.9%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 25",
+        "value": "4.9%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, complexity above 5",
+        "value": "20.6%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Vue, complexity above 10",
+        "value": "5.2%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Vue, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "10.3%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "3.8%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, 3 or more parameters",
+        "value": "36.6%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, 5 or more parameters",
+        "value": "14.3%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, 7 or more parameters",
+        "value": "7.7%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, 3 or more parameters",
+        "value": "0.8%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP, fan-in above 10",
+        "value": "16.5%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, fan-in above 20",
+        "value": "2.7%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "39.5%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "0.0764",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 1.82 to 1.89 (2 of 5 stars) over 511 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★☆☆ 2.9 (javascript 4.8, php 2.9, vue 2.6)",
+     "Unit size: ★★☆☆☆ 1.8 (javascript 1.5, php 1.6, vue 4.1)",
+     "Unit complexity: ★★☆☆☆ 1.6 (javascript 1.0, php 1.4, vue 3.5)",
+     "Unit interfacing: ★★☆☆☆ 1.9 (javascript 3.2, php 1.4, vue 5.4)",
+     "Module coupling: ★☆☆☆☆ 1.5 (php 1.5)",
+     "Component independence: ★☆☆☆☆ 1.0 (php 1.0)",
+     "Component entanglement: ★★★☆☆ 3.5 (php 3.5)",
+     "Lever: duplication in php, about 2335 lines to fix for half a star",
+     "Lever: unit complexity in vue",
+     "Lever: duplication in vue, about 1777 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (205 findings across 1065 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Dynamic code execution: lib/AppInfo/Application.php",
+     "Dynamic code execution: lib/Command/DedupeContracts.php",
+     "Dynamic code execution: lib/Flow/ApplyMappingNode.php",
+     "Dynamic code execution: lib/Flow/ContractCommitNode.php",
+     "Dynamic code execution: lib/Flow/ContractMatchNode.php",
+     "Dynamic code execution: lib/Flow/ContractSweepNode.php",
+     "Dynamic code execution: lib/Flow/FetchFileNode.php",
+     "Dynamic code execution: lib/Flow/FlowTemplate.php",
+     "Dynamic code execution: lib/Flow/SourceCallNode.php",
+     "Dynamic code execution: lib/Flow/SourcePaginateNode.php",
+     "Dynamic code execution: lib/Flow/SynchronizationRunNode.php",
+     "Dynamic code execution: lib/Repair/MaterializeCatalogItems.php",
+     "Dynamic code execution: lib/Repair/MigrateStoredJobClasses.php",
+     "Dynamic code execution: lib/Repair/MigrateUserPreferences.php",
+     "Dynamic code execution: lib/Service/Adapter/DocumentCms/SharePointOnlineAdapter.php",
+     "Dynamic code execution: lib/Service/Adapter/EndpointWorkspace/AzureVirtualDesktopAdapter.php",
+     "Dynamic code execution: lib/Service/Adapter/Saas/Microsoft365Adapter.php",
+     "Dynamic code execution: lib/Service/ApprovalService.php",
+     "Dynamic code execution: lib/Service/AuthorizationService.php",
+     "Dynamic code execution: lib/Service/BrokeredCallService.php",
+     "Dynamic code execution: lib/Service/CallService.php",
+     "Dynamic code execution: lib/Service/ConfigurationHandlers/EndpointHandler.php",
+     "Dynamic code execution: lib/Service/ConfigurationHandlers/MappingHandler.php",
+     "Dynamic code execution: lib/Service/ConfigurationHandlers/SynchronizationHandler.php",
+     "Dynamic code execution: lib/Service/ConfigurationImportPreviewService.php",
+     "Dynamic code execution: lib/Service/ConfigurationService.php",
+     "Possible hardcoded secret: lib/Service/DSOSignatureVerifierService.php",
+     "Dynamic code execution: lib/Service/EndpointCacheService.php",
+     "Dynamic code execution: lib/Service/EndpointService.php",
+     "Dynamic code execution: lib/Service/Helper/FlowToken.php",
+     "Dynamic code execution: lib/Service/IBabsConnectorService.php",
+     "Dynamic code execution: lib/Service/Integration/SynchronizationContractProvider.php",
+     "Dynamic code execution: lib/Service/MappingService.php",
+     "Dynamic code execution: lib/Service/NotificatiesSubscriberService.php",
+     "Dynamic code execution: lib/Service/OpenFormulieren/FormFieldMapper.php",
+     "Dynamic code execution: lib/Service/RuleService.php",
+     "Dynamic code execution: lib/Service/SOAPService.php",
+     "Dynamic code execution: lib/Service/SoftwareCatalogueService.php",
+     "Dynamic code execution: lib/Service/StorageService.php",
+     "Dynamic code execution: lib/Service/SynchronizationContractLogService.php",
+     "Dynamic code execution: lib/Service/SynchronizationLogService.php",
+     "Dynamic code execution: lib/Service/SynchronizationService.php",
+     "Dynamic code execution: src/modals/Endpoint/EditEndpoint.vue",
+     "Dynamic code execution: src/views/Operations/DeadLettersPage.vue",
+     "Dynamic code execution: src/views/Rule/actionForms/FetchFileForm.vue",
+     "Dynamic code execution: tests/Integration/EndoflifeDateLiveSyncTest.php",
+     "Dynamic code execution: tests/Integration/ExecutionTraceIntegrationTest.php",
+     "Dynamic code execution: tests/Integration/FlowRunnerIntegrationTest.php",
+     "Dynamic code execution: tests/Integration/FlowRunnerSynchronizationGuardsTest.php",
+     "Dynamic code execution: tests/Integration/Forms/FormsOutboundMappingIntegrationTest.php",
+     "Dynamic code execution: tests/Integration/Forms/FormsSyncIntegrationTest.php",
+     "Dynamic code execution: tests/Integration/NextcloudEventDeliveryTest.php",
+     "Dynamic code execution: tests/Integration/NotificatiesCallbackTest.php",
+     "Dynamic code execution: tests/Unit/AppInfo/ApplicationStorageMigratedTest.php",
+     "Dynamic code execution: tests/Unit/AppInfo/ApplicationWorkflowEngineOperationsTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/DeferredViewCascadeJobTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/StaleRunSweepJobTest.php",
+     "Possible hardcoded secret: tests/Unit/Command/AuthenticationConfigTest.php",
+     "Dynamic code execution: tests/Unit/Command/MigrateInlineSecretsTest.php",
+     "Dynamic code execution: tests/Unit/Connectors/PdokConnectorTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ApprovalsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CatalogControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DSOControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DatasourceControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/EventsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/FlowsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/MappingsControllerSaveObjectTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PdokControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ProductSubscriptionsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SetupControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SyncDeadLetterControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SynchronizationContractsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SynchronizationsControllerDeleteLogTest.php",
+     "Dynamic code execution: tests/Unit/Controller/UserControllerTest.php",
+     "Dynamic code execution: tests/Unit/EventListener/NextcloudCalendarEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/EventListener/NextcloudFileEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/EventListener/NextcloudFileTagEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/EventListener/NextcloudFormsEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/EventListener/NextcloudTablesEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/EventListener/ViewDeletedEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/Flow/ApplyMappingNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/ApprovalRequestNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/ContractCommitNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/ContractMatchNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/ContractSweepNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/EventEmitNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/FetchFileNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/FlowNodeListenerTest.php",
+     "Dynamic code execution: tests/Unit/Flow/SourceCallNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/SourcePaginateNodeTest.php",
+     "Dynamic code execution: tests/Unit/Flow/SynchronizationRunNodeTest.php",
+     "Dynamic code execution: tests/Unit/Http/XMLResponseTest.php",
+     "Dynamic code execution: tests/Unit/Observability/IntegriqMetricsProviderTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MaterializeCatalogItemsTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateAppConfigKeysTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateFlowStepsToGraphTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateLegacyStorageTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateRegisterSlugTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateSchemaApplicationIdTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateStoredJobClassesTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MigrateUserPreferencesTest.php",
+     "Dynamic code execution: tests/Unit/Repair/RecordInlineSecretMigrationStatusTest.php",
+     "Dynamic code execution: tests/Unit/Repair/RemoveMigratedSourceSecretFieldsTest.php",
+     "Dynamic code execution: tests/Unit/Repair/RemoveRetiredCronJobsTest.php",
+     "Dynamic code execution: tests/Unit/Rule/CompositeFanoutRuleTest.php",
+     "Dynamic code execution: tests/Unit/Service/Adapter/AbstractCategoryAdapterProviderTest.php",
+     "Dynamic code execution: tests/Unit/Service/ApprovalServiceSharedTaskTest.php",
+     "Dynamic code execution: tests/Unit/Service/ApprovalServiceSubscriptionTest.php",
+     "Dynamic code execution: tests/Unit/Service/ApprovalServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/AuthenticationServiceTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/AuthenticationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/BankfeedSyncServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/BrokeredCallServiceTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/BrokeredCallServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/CallServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/CardfeedSyncServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ConfigurationImportPreviewServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ConfigurationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DSOSignatureVerifierServiceTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/DSOSignatureVerifierServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Datasource/DashboardDatasourceServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DsoIngestServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/EndoflifeDateSyncTest.php",
+     "Dynamic code execution: tests/Unit/Service/EndpointServiceConsumerScopeTest.php",
+     "Dynamic code execution: tests/Unit/Service/EndpointServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/EndpointServiceTierPolicyTest.php",
+     "Dynamic code execution: tests/Unit/Service/EudiCredentialOfferServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/EudiIssuerKeyServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/EudiStatusListServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/EventServiceDeliverySeamTest.php",
+     "Dynamic code execution: tests/Unit/Service/EventServiceNextcloudEventTest.php",
+     "Dynamic code execution: tests/Unit/Service/EventServiceNotificatiesActionTest.php",
+     "Dynamic code execution: tests/Unit/Service/EventServiceTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/EventServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ExecutionTraceServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/FlowGraphMigrationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/FlowRunnerServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/FlowStepsToGraphTranslatorTest.php",
+     "Dynamic code execution: tests/Unit/Service/Forms/FormsSyncAdapterTest.php",
+     "Dynamic code execution: tests/Unit/Service/FscCallServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/IBabsConnectorServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/IwmoIjwSyncServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/JobServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/JobToFlowGeneratorTest.php",
+     "Dynamic code execution: tests/Unit/Service/JsonLogicFilterDialectTest.php",
+     "Dynamic code execution: tests/Unit/Service/KissSyncServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/LegacyMigratorPlatformTest.php",
+     "Dynamic code execution: tests/Unit/Service/LegacyToRegisterMigratorTest.php",
+     "Dynamic code execution: tests/Unit/Service/Lti/LtiAgsServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Lti/LtiIdentityLinkServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Lti/LtiJwksResolverServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Lti/LtiKeyServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Lti/LtiLaunchServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Lti/LtiRegistrationResolverServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Mtls/MtlsTransportServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/NotificatiesSubscriberServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/OpenFormulierenIntakeServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/PaymentIntentServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/PeppolTransmissionServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/PromotionServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Psd2/RestPsd2AggregatorProviderTest.php",
+     "Dynamic code execution: tests/Unit/Service/RuleToFlowGeneratorTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/Security/AuthenticationConfigAuditorTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/Security/AuthenticationConfigRemoverTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/Security/InlineSecretMigrationExecutorTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/Security/InlineSecretMigrationPlannerTest.php",
+     "Dynamic code execution: tests/Unit/Service/Security/RawSourceResolverTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsServiceDialectTest.php",
+     "Dynamic code execution: tests/Unit/Service/Sms/RestNotifyNlProviderTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/Sms/RestNotifyNlProviderTest.php",
+     "Dynamic code execution: tests/Unit/Service/SourceMappingServiceShimTest.php",
+     "Dynamic code execution: tests/Unit/Service/SourceMappingServiceTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/StufZkn/StufZknAcknowledgementBuilderTest.php",
+     "Dynamic code execution: tests/Unit/Service/StufZknSyncServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SyncItemDeadLetterServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationContractIdentityTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationContractLogServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationContractServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationFlowGeneratorTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationItemIsolationTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationLogServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationScalarItemCoercionTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceAdHocSourceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceApprovalGateTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceCleanupTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceDeletionPathTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceDeletionRatioGuardTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceFetchCompletenessTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceFindRuleTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceIncrementalCursorTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceIncrementalDeletionGuardTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceOriginIdMatchingTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServicePersistContractFallbackTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceResetCursorTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SynchronizationUnparseableBodyTest.php",
+     "Dynamic code execution: tests/Unit/Service/Tables/TablesSyncAdapterTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/WebhookSignatureServiceTest.php",
+     "Possible hardcoded secret: tests/e2e/api-direct/user-management.spec.ts",
+     "Possible hardcoded secret: tests/e2e/spec-coverage/flow-orchestration.spec.ts",
+     "Possible hardcoded secret: tests/e2e/spec-coverage/user-management.spec.ts",
+     "Dynamic code execution: tests/stubs/OCA/OpenRegister/Service/Flow/FlowConcurrency.php",
+     "Dynamic code execution: tests/stubs/OCA/OpenRegister/Service/ObjectService.php",
+     "Possible hardcoded secret: tests/vitest/buildAuthenticationConfiguration.spec.js",
+     "Dynamic code execution: tests/vitest/editorModalSlotContract.spec.js"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "fail",
+    "message": "API Design Rules violations found across 1 specification(s): 7 issue(s).",
+    "evidence": [
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/integriq/main/openapi.json",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/ConductionNL/integriq/main/openapi.json)",
+     "HINT [info-contact] Info object must have \"contact\" object. @ info (https://raw.githubusercontent.com/ConductionNL/integriq/main/openapi.json)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/OCSMeta @ components.schemas.OCSMeta (https://raw.githubusercontent.com/ConductionNL/integriq/main/openapi.json)",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/ConductionNL/integriq/main/openapi.json)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./ocs/v2.php/apps/integriq/api.get (https://raw.githubusercontent.com/ConductionNL/integriq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/integriq/api.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/integriq/api.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/integriq/main/openapi.json)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v0.4.4\" follows semantic versioning.",
+    "evidence": [
+     "v0.4.4"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX); Data layer (data store / register); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "evidence": [
+     "Found path segment \"ui\" in configurations/decidesk-ris-import/mappings/Mapping-iBabs Besluit to Decision-v0.0.1.json",
+     "Found path segment \"ui\" in configurations/decidesk-ris-import/synchronizations/ibabs-besluiten-to-decidesk-decisions.json",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo/mappings",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo/mappings/xxllnc-suite-to-publications.json",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo/rules",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo/rules/write-xxllnc-suite-files.json",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo/sources",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo/sources/xxllnc-suite.json",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo/synchronizations",
+     "Found path segment \"ui\" in configurations/xxllnc-suite-woo/synchronizations/xxllnc-suite-to-publications.json",
+     "Found path segment \"ui\" in docs/developers/styleguide.md",
+     "Found path segment \"ui\" in docs/l10n-ui-translation.md",
+     "Found path segment \"ui\" in docs/user-api-quick-reference.md",
+     "Found path segment \"ui\" in lib/Controller/UiController.php",
+     "Found path segment \"ui\" in lib/Service/Mtls/MtlsTransportOptionsBuilder.php",
+     "Found path segment \"ui\" in lib/Service/StUFXMLBuilder.php",
+     "Found path segment \"ui\" in lib/Service/StufZkn/StufZknAcknowledgementBuilder.php",
+     "Found path segment \"ui\" in openspec/architecture/adr-010-per-resource-ui-triad-index-modal-sidebar.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-app-shell-and-logs-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-app-shell-and-logs-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-app-shell-and-logs-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-app-shell-and-logs-ui/specs/app-shell-and-logs-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-app-shell-and-logs-ui/specs/app-shell-and-logs-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-app-shell-and-logs-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-endpoint-job-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-endpoint-job-editor-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-endpoint-job-editor-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-endpoint-job-editor-ui/specs/endpoint-job-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-endpoint-job-editor-ui/specs/endpoint-job-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-endpoint-job-editor-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-mapping-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-mapping-editor-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-mapping-editor-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-mapping-editor-ui/specs/mapping-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-mapping-editor-ui/specs/mapping-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-mapping-editor-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-rule-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-rule-editor-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-rule-editor-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-rule-editor-ui/specs/rule-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-rule-editor-ui/specs/rule-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-rule-editor-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-sync-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-sync-editor-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-sync-editor-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-sync-editor-ui/specs/sync-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-sync-editor-ui/specs/sync-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-05-31-retrofit-2026-05-25-sync-editor-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-dso-omgevingsloket/builds",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-dso-omgevingsloket/builds/build.json",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-dso-omgevingsloket/pipeline-logs/build.jsonl.gz",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openconnector-adopt-or-abstractions/builds",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openconnector-adopt-or-abstractions/builds/build.json",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openconnector-adopt-or-abstractions/builds/pr-description.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openconnector-adopt-or-abstractions/pipeline-logs/build.jsonl.gz",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/.openspec.yaml",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/README.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/contract.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/design.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/discovery.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/migration.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/proposal.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/specs",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/specs/openconnector-frontend-vue-rewrite",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/specs/openconnector-frontend-vue-rewrite/spec.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/tasks.md",
+     "Found path segment \"frontend\" in openspec/changes/archive/2026-06-14-openconnector-frontend-vue-rewrite/test-plan.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openconnector-legacy-quality-cleanup/builds",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openconnector-legacy-quality-cleanup/builds/build.json",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-openconnector-legacy-quality-cleanup/pipeline-logs/build.jsonl.gz",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-licence-and-or-requirement-honesty",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-licence-and-or-requirement-honesty/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-licence-and-or-requirement-honesty/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-licence-and-or-requirement-honesty/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-licence-and-or-requirement-honesty/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-licence-and-or-requirement-honesty/specs/app-distribution-metadata",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-licence-and-or-requirement-honesty/specs/app-distribution-metadata/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-07-licence-and-or-requirement-honesty/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/context-brief.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/contract.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/discovery.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/migration.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/specs/configuration-export-import",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/specs/configuration-export-import/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/specs/connector-catalog",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/specs/connector-catalog/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/specs/openconnector-app-manifest",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/specs/openconnector-app-manifest/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-14-connector-catalog-ui/test-plan.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-adopt-live-updates-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-adopt-live-updates-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-adopt-live-updates-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-adopt-live-updates-ui/specs/realtime-updates",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-adopt-live-updates-ui/specs/realtime-updates/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-adopt-live-updates-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-nextcloud-forms-connector/specs/sync-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-nextcloud-forms-connector/specs/sync-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/context-brief.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/dead-letter-replay",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/dead-letter-replay/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/http-call-engine",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/http-call-engine/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/job-scheduling",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/job-scheduling/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/prometheus-metrics",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/prometheus-metrics/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/synchronization-engine",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/specs/synchronization-engine/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-retry-and-circuit-breaker-policies/test-plan.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-tables-bridge/specs/sync-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-15-tables-bridge/specs/sync-editor-ui/spec.md",
+     "Found path segment \"frontend\" in openspec/changes/frontend-bundle-dead-deps-cleanup",
+     "Found path segment \"frontend\" in openspec/changes/frontend-bundle-dead-deps-cleanup/.openspec.yaml",
+     "Found path segment \"frontend\" in openspec/changes/frontend-bundle-dead-deps-cleanup/proposal.md",
+     "Found path segment \"frontend\" in openspec/changes/frontend-bundle-dead-deps-cleanup/specs",
+     "Found path segment \"frontend\" in openspec/changes/frontend-bundle-dead-deps-cleanup/specs/openconnector-frontend-vue-rewrite",
+     "Found path segment \"frontend\" in openspec/changes/frontend-bundle-dead-deps-cleanup/specs/openconnector-frontend-vue-rewrite/spec.md",
+     "Found path segment \"frontend\" in openspec/changes/frontend-bundle-dead-deps-cleanup/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/job-logs-filtering-and-columns/specs/app-shell-and-logs-ui",
+     "Found path segment \"ui\" in openspec/changes/job-logs-filtering-and-columns/specs/app-shell-and-logs-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/remove-orphaned-logindex-wrapper/specs/app-shell-and-logs-ui",
+     "Found path segment \"ui\" in openspec/changes/remove-orphaned-logindex-wrapper/specs/app-shell-and-logs-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/restore-job-form-fields/specs/endpoint-job-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/restore-job-form-fields/specs/endpoint-job-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/restore-rule-editor-modal/specs/rule-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/restore-rule-editor-modal/specs/rule-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/changes/rule-editor-a11y-i18n-hardening/specs/rule-editor-ui",
+     "Found path segment \"ui\" in openspec/changes/rule-editor-a11y-i18n-hardening/specs/rule-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/app-shell-and-logs-ui",
+     "Found path segment \"ui\" in openspec/specs/app-shell-and-logs-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/endpoint-job-editor-ui",
+     "Found path segment \"ui\" in openspec/specs/endpoint-job-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/mapping-editor-ui",
+     "Found path segment \"ui\" in openspec/specs/mapping-editor-ui/spec.md",
+     "Found path segment \"frontend\" in openspec/specs/openconnector-frontend-vue-rewrite",
+     "Found path segment \"frontend\" in openspec/specs/openconnector-frontend-vue-rewrite/spec.md",
+     "Found path segment \"ui\" in openspec/specs/rule-editor-ui",
+     "Found path segment \"ui\" in openspec/specs/rule-editor-ui/spec.md",
+     "Found path segment \"ui\" in openspec/specs/sync-editor-ui",
+     "Found path segment \"ui\" in openspec/specs/sync-editor-ui/spec.md",
+     "Found path segment \"ui\" in scripts/build-l10n-js.js",
+     "Found path segment \"ui\" in src/components/CircuitBreakerBadge.vue",
+     "Found path segment \"ui\" in src/modals/Rule/buildAuthenticationConfiguration.js",
+     "Found path segment \"ui\" in tests/Helpers/ObjectServiceMockBuilder.php",
+     "Found path segment \"ui\" in tests/Unit/Controller/UiControllerTest.php",
+     "Found path segment \"ui\" in tests/Unit/Service/Mtls/MtlsTransportOptionsBuilderTest.php",
+     "Found path segment \"ui\" in tests/Unit/Service/StUFXMLBuilderTest.php",
+     "Found path segment \"ui\" in tests/Unit/Service/StufZkn/StufZknAcknowledgementBuilderTest.php",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/configuration-import-export-ui.spec.ts",
+     "Found path segment \"ui\" in tests/e2e/spec-coverage/dead-letters-ui.spec.ts",
+     "Found path segment \"ui\" in tests/fixtures/pdok/fixture-stadhuisplein-tilburg.json",
+     "Found path segment \"ui\" in tests/stubs/Doctrine/DBAL/Query/Expression/ExpressionBuilder.php",
+     "Found path segment \"ui\" in tests/vitest/buildAuthenticationConfiguration.spec.js",
+     "Found \"frontend\" in repository metadata and docs",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/.gitkeep",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-import-configuration-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-import-configuration-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-import-configuration-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-import-configuration-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-schedule-job-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-schedule-job-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-schedule-job-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-schedule-job-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-schedule-job-05.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-review-logs-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-review-logs-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-review-logs-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-review-logs-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-review-logs-05.png",
+     "Found path segment \"admin\" in docs/tutorials/admin/01-import-configuration.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/02-schedule-job.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/03-review-logs.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json",
+     "Found path segment \"admin\" in src/views/admin/ActionAuthMatrix.vue",
+     "Found path segment \"admin\" in src/views/admin/AdminSettings.vue",
+     "Found path segment \"admin\" in src/views/admin/DsoPkiSettings.vue",
+     "Found path segment \"service\" in lib/Service/ActionAuthService.php",
+     "Found path segment \"service\" in lib/Service/Adapter",
+     "Found path segment \"service\" in lib/Service/Adapter/AbstractCategoryAdapterProvider.php",
+     "Found path segment \"service\" in lib/Service/Adapter/DataInfra",
+     "Found path segment \"service\" in lib/Service/Adapter/DataInfra/S3Adapter.php",
+     "Found path segment \"service\" in lib/Service/Adapter/DocumentCms",
+     "Found path segment \"service\" in lib/Service/Adapter/DocumentCms/SharePointOnlineAdapter.php",
+     "Found path segment \"service\" in lib/Service/Adapter/EndpointWorkspace",
+     "Found path segment \"service\" in lib/Service/Adapter/EndpointWorkspace/AzureVirtualDesktopAdapter.php",
+     "Found path segment \"service\" in lib/Service/Adapter/Saas",
+     "Found path segment \"service\" in lib/Service/Adapter/Saas/Microsoft365Adapter.php",
+     "Found path segment \"service\" in lib/Service/ApprovalService.php",
+     "Found path segment \"service\" in lib/Service/AuthenticationService.php",
+     "Found path segment \"service\" in lib/Service/AuthorizationService.php",
+     "Found path segment \"service\" in lib/Service/BankfeedSyncService.php",
+     "Found path segment \"service\" in lib/Service/BrokeredCallService.php",
+     "Found path segment \"service\" in lib/Service/CallService.php",
+     "Found path segment \"service\" in lib/Service/Cardfeed",
+     "Found path segment \"service\" in lib/Service/Cardfeed/CardfeedProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/Cardfeed/LogCardfeedProvider.php",
+     "Found path segment \"service\" in lib/Service/Cardfeed/RestCardfeedProvider.php",
+     "Found path segment \"service\" in lib/Service/CardfeedSyncService.php",
+     "Found path segment \"service\" in lib/Service/CatalogRegistryService.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationHandlers",
+     "Found path segment \"service\" in lib/Service/ConfigurationHandlers/ConfigurationHandlerInterface.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationHandlers/EndpointHandler.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationHandlers/JobHandler.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationHandlers/MappingHandler.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationHandlers/RuleHandler.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationHandlers/SourceHandler.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationHandlers/SynchronizationHandler.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationImportPreviewService.php",
+     "Found path segment \"service\" in lib/Service/ConfigurationService.php",
+     "Found path segment \"service\" in lib/Service/ConsumerScopeService.php",
+     "Found path segment \"service\" in lib/Service/DSOAdapterService.php",
+     "Found path segment \"service\" in lib/Service/DSOParserService.php",
+     "Found path segment \"service\" in lib/Service/DSOSamenwerkingService.php",
+     "Found path segment \"service\" in lib/Service/DSOSignatureVerifierService.php",
+     "Found path segment \"service\" in lib/Service/DSOStatusService.php",
+     "Found path segment \"service\" in lib/Service/Datasource",
+     "Found path segment \"service\" in lib/Service/Datasource/DashboardDatasourceService.php",
+     "Found path segment \"service\" in lib/Service/Datasource/JsonPathLiteEvaluator.php",
+     "Found path segment \"service\" in lib/Service/DemoDataService.php",
+     "Found path segment \"service\" in lib/Service/Dso",
+     "Found path segment \"service\" in lib/Service/Dso/DsoClient.php",
+     "Found path segment \"service\" in lib/Service/Dso/DsoConnectorProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/Dso/DsoRequestTranslator.php",
+     "Found path segment \"service\" in lib/Service/Dso/LogDsoConnectorProvider.php",
+     "Found path segment \"service\" in lib/Service/DsoIngestService.php",
+     "Found path segment \"service\" in lib/Service/EndpointCacheService.php",
+     "Found path segment \"service\" in lib/Service/EndpointService.php",
+     "Found path segment \"service\" in lib/Service/EngineSignalService.php",
+     "Found path segment \"service\" in lib/Service/EnvironmentService.php",
+     "Found path segment \"service\" in lib/Service/EudiCredentialOfferService.php",
+     "Found path segment \"service\" in lib/Service/EudiIssuerKeyService.php",
+     "Found path segment \"service\" in lib/Service/EudiStatusListService.php",
+     "Found path segment \"service\" in lib/Service/EventService.php",
+     "Found path segment \"service\" in lib/Service/ExecutionTraceService.php",
+     "Found path segment \"service\" in lib/Service/FlowGraphMigrationService.php",
+     "Found path segment \"service\" in lib/Service/FlowRunnerService.php",
+     "Found path segment \"service\" in lib/Service/FlowStepsToGraphTranslator.php",
+     "Found path segment \"service\" in lib/Service/Forms",
+     "Found path segment \"service\" in lib/Service/Forms/FormsAnswerResolver.php",
+     "Found path segment \"service\" in lib/Service/Forms/FormsClientInterface.php",
+     "Found path segment \"service\" in lib/Service/Forms/FormsOcsClient.php",
+     "Found path segment \"service\" in lib/Service/Forms/FormsSyncAdapter.php",
+     "Found path segment \"service\" in lib/Service/Fsc",
+     "Found path segment \"service\" in lib/Service/Fsc/FscConnectivityProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/Fsc/FscDirectoryClient.php",
+     "Found path segment \"service\" in lib/Service/Fsc/LogFscConnectivityProvider.php",
+     "Found path segment \"service\" in lib/Service/FscCallService.php",
+     "Found path segment \"service\" in lib/Service/Helper",
+     "Found path segment \"service\" in lib/Service/Helper/ExecutionTraceContext.php",
+     "Found path segment \"service\" in lib/Service/Helper/FlowToken.php",
+     "Found path segment \"service\" in lib/Service/Helper/SyncRefResolver.php",
+     "Found path segment \"service\" in lib/Service/IBabsConnectorService.php",
+     "Found path segment \"service\" in lib/Service/Integration",
+     "Found path segment \"service\" in lib/Service/Integration/SynchronizationContractProvider.php",
+     "Found path segment \"service\" in lib/Service/IwmoIjw",
+     "Found path segment \"service\" in lib/Service/IwmoIjw/IStandardsClient.php",
+     "Found path segment \"service\" in lib/Service/IwmoIjw/InboundReturnTranslator.php",
+     "Found path segment \"service\" in lib/Service/IwmoIjw/IwmoIjwProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/IwmoIjw/LogIwmoIjwProvider.php",
+     "Found path segment \"service\" in lib/Service/IwmoIjw/OutboundMessageTranslator.php",
+     "Found path segment \"service\" in lib/Service/IwmoIjwSyncService.php",
+     "Found path segment \"service\" in lib/Service/JobIntervalCron.php",
+     "Found path segment \"service\" in lib/Service/JobService.php",
+     "Found path segment \"service\" in lib/Service/JobToFlowGenerator.php",
+     "Found path segment \"service\" in lib/Service/Kiss",
+     "Found path segment \"service\" in lib/Service/Kiss/KlantinteractiesClient.php",
+     "Found path segment \"service\" in lib/Service/Kiss/KlantinteractiesProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/Kiss/LogKlantinteractiesProvider.php",
+     "Found path segment \"service\" in lib/Service/KissSyncService.php",
+     "Found path segment \"service\" in lib/Service/Lti",
+     "Found path segment \"service\" in lib/Service/Lti/LtiAgsService.php",
+     "Found path segment \"service\" in lib/Service/Lti/LtiIdentityLinkService.php",
+     "Found path segment \"service\" in lib/Service/Lti/LtiJwksResolverService.php",
+     "Found path segment \"service\" in lib/Service/Lti/LtiKeyService.php",
+     "Found path segment \"service\" in lib/Service/Lti/LtiLaunchService.php",
+     "Found path segment \"service\" in lib/Service/Lti/LtiNrpsService.php",
+     "Found path segment \"service\" in lib/Service/Lti/LtiRegistrationResolverService.php",
+     "Found path segment \"service\" in lib/Service/MappingService.php",
+     "Found path segment \"service\" in lib/Service/Migration",
+     "Found path segment \"service\" in lib/Service/Migration/LegacyToRegisterMigrator.php",
+     "Found path segment \"service\" in lib/Service/MigrationEntityReader.php",
+     "Found path segment \"service\" in lib/Service/MigrationSubject.php",
+     "Found path segment \"service\" in lib/Service/Mtls",
+     "Found path segment \"service\" in lib/Service/Mtls/MtlsCertificateBundle.php",
+     "Found path segment \"service\" in lib/Service/Mtls/MtlsConfigResolver.php",
+     "Found path segment \"service\" in lib/Service/Mtls/MtlsMaterializedFiles.php",
+     "Found path segment \"service\" in lib/Service/Mtls/MtlsTransportOptionsBuilder.php",
+     "Found path segment \"service\" in lib/Service/Mtls/MtlsTransportService.php",
+     "Found path segment \"service\" in lib/Service/NotificatiesSubscriberService.php",
+     "Found path segment \"service\" in lib/Service/NotuBizConnectorService.php",
+     "Found path segment \"service\" in lib/Service/ObjectService.php",
+     "Found path segment \"service\" in lib/Service/OpenFormulieren",
+     "Found path segment \"service\" in lib/Service/OpenFormulieren/FormFieldMapper.php",
+     "Found path segment \"service\" in lib/Service/OpenFormulierenIntakeService.php",
+     "Found path segment \"service\" in lib/Service/OrganisationBridgeService.php",
+     "Found path segment \"service\" in lib/Service/Payment",
+     "Found path segment \"service\" in lib/Service/Payment/LogPaymentProvider.php",
+     "Found path segment \"service\" in lib/Service/Payment/MolliePaymentProvider.php",
+     "Found path segment \"service\" in lib/Service/Payment/PaymentProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/PaymentIntentService.php",
+     "Found path segment \"service\" in lib/Service/Peppol",
+     "Found path segment \"service\" in lib/Service/Peppol/LogPeppolAccessPointProvider.php",
+     "Found path segment \"service\" in lib/Service/Peppol/PeppolAccessPointProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/Peppol/RestPeppolAccessPointProvider.php",
+     "Found path segment \"service\" in lib/Service/PeppolOutboundConsumer.php",
+     "Found path segment \"service\" in lib/Service/PeppolTransmissionService.php",
+     "Found path segment \"service\" in lib/Service/PromotionService.php",
+     "Found path segment \"service\" in lib/Service/Psd2",
+     "Found path segment \"service\" in lib/Service/Psd2/LogPsd2AggregatorProvider.php",
+     "Found path segment \"service\" in lib/Service/Psd2/Psd2AggregatorProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/Psd2/RestPsd2AggregatorProvider.php",
+     "Found path segment \"service\" in lib/Service/RateLimit",
+     "Found path segment \"service\" in lib/Service/RateLimit/InboundRateLimitService.php",
+     "Found path segment \"service\" in lib/Service/RateLimit/RateLimitDecision.php",
+     "Found path segment \"service\" in lib/Service/RuleConditionTranslator.php",
+     "Found path segment \"service\" in lib/Service/RuleEndpointScope.php",
+     "Found path segment \"service\" in lib/Service/RuleService.php",
+     "Found path segment \"service\" in lib/Service/RuleToFlowGenerator.php",
+     "Found path segment \"service\" in lib/Service/SOAPService.php",
+     "Found path segment \"service\" in lib/Service/Scope",
+     "Found path segment \"service\" in lib/Service/Scope/IpMatcher.php",
+     "Found path segment \"service\" in lib/Service/Scope/ReverseDnsResolver.php",
+     "Found path segment \"service\" in lib/Service/SearchService.php",
+     "Found path segment \"service\" in lib/Service/Security",
+     "Found path segment \"service\" in lib/Service/Security/AuthenticationConfigAuditor.php",
+     "Found path segment \"service\" in lib/Service/Security/AuthenticationConfigRemover.php",
+     "Found path segment \"service\" in lib/Service/Security/InlineSecretMigrationExecutor.php",
+     "Found path segment \"service\" in lib/Service/Security/InlineSecretMigrationPlanner.php",
+     "Found path segment \"service\" in lib/Service/Security/RawSourceResolver.php",
+     "Found path segment \"service\" in lib/Service/Security/SensitiveFieldRegistry.php",
+     "Found path segment \"service\" in lib/Service/SecurityService.php",
+     "Found path segment \"service\" in lib/Service/SettingsService.php",
+     "Found path segment \"service\" in lib/Service/Sms",
+     "Found path segment \"service\" in lib/Service/Sms/DeliveryResult.php",
+     "Found path segment \"service\" in lib/Service/Sms/LogSmsProvider.php",
+     "Found path segment \"service\" in lib/Service/Sms/PhoneNumberValidator.php",
+     "Found path segment \"service\" in lib/Service/Sms/RestNotifyNlProvider.php",
+     "Found path segment \"service\" in lib/Service/Sms/SmsProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/SmsDispatchService.php",
+     "Found path segment \"service\" in lib/Service/SoftwareCatalogueService.php",
+     "Found path segment \"service\" in lib/Service/SourceMappingService.php",
+     "Found path segment \"service\" in lib/Service/StUFBGService.php",
+     "Found path segment \"service\" in lib/Service/StUFFieldMapper.php",
+     "Found path segment \"service\" in lib/Service/StUFXMLBuilder.php",
+     "Found path segment \"service\" in lib/Service/StUFZKNService.php",
+     "Found path segment \"service\" in lib/Service/StorageService.php",
+     "Found path segment \"service\" in lib/Service/Stuf",
+     "Found path segment \"service\" in lib/Service/Stuf/StufLiteralLeakGuard.php",
+     "Found path segment \"service\" in lib/Service/Stuf/StufXmlParser.php",
+     "Found path segment \"service\" in lib/Service/StufZkn",
+     "Found path segment \"service\" in lib/Service/StufZkn/InboundMessageTranslator.php",
+     "Found path segment \"service\" in lib/Service/StufZkn/LogStufZknProvider.php",
+     "Found path segment \"service\" in lib/Service/StufZkn/OutboundNotificationTranslator.php",
+     "Found path segment \"service\" in lib/Service/StufZkn/StufZknAcknowledgementBuilder.php",
+     "Found path segment \"service\" in lib/Service/StufZkn/StufZknClient.php",
+     "Found path segment \"service\" in lib/Service/StufZkn/StufZknNamespaces.php",
+     "Found path segment \"service\" in lib/Service/StufZkn/StufZknProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/StufZknSyncService.php",
+     "Found path segment \"service\" in lib/Service/SyncItemDeadLetterService.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationActionRules.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationContractLogService.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationContractService.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationFlowGenerator.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationLogService.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationRunLog.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationRunProgressService.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationSemanticRefusals.php",
+     "Found path segment \"service\" in lib/Service/SynchronizationService.php",
+     "Found path segment \"service\" in lib/Service/Tables",
+     "Found path segment \"service\" in lib/Service/Tables/TablesClientInterface.php",
+     "Found path segment \"service\" in lib/Service/Tables/TablesColumnCoercer.php",
+     "Found path segment \"service\" in lib/Service/Tables/TablesOcsClient.php",
+     "Found path segment \"service\" in lib/Service/Tables/TablesSyncAdapter.php",
+     "Found path segment \"service\" in lib/Service/UserService.php",
+     "Found path segment \"service\" in lib/Service/WebhookSignatureService.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/AbstractZgwResourceTranslator.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/CaseTranslator.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/CaseTypeTranslator.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/DecisionTranslator.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/InformatieObjectTranslator.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/ResultTranslator.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/RolTranslator.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/StatusTranslator.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersion/ZgwResourceTranslatorInterface.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersionNegotiationService.php",
+     "Found path segment \"service\" in lib/Service/ZgwVersionTranslationService.php",
+     "Found path segment \"service\" in tests/Unit/Service/Adapter",
+     "Found path segment \"service\" in tests/Unit/Service/Adapter/AbstractCategoryAdapterProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Adapter/AzureVirtualDesktopAdapterTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Adapter/Microsoft365AdapterTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Adapter/S3AdapterTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Adapter/SharePointOnlineAdapterTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ApprovalServiceSharedTaskTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ApprovalServiceSubscriptionTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ApprovalServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AuthenticationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AuthorizationServiceApiKeyTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AuthorizationServiceNcSessionTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/BankfeedSyncServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/BrokeredCallServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CallServiceBrokeredAsyncTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CallServiceEndpointPathTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CallServiceRateLimitEntityTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CallServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Cardfeed",
+     "Found path segment \"service\" in tests/Unit/Service/Cardfeed/LogCardfeedProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Cardfeed/RestCardfeedProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CardfeedSyncServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CatalogRegistryServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationHandlers",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationHandlers/EndpointHandlerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationHandlers/JobHandlerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationHandlers/MappingHandlerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationHandlers/RuleHandlerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationHandlers/SourceHandlerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationHandlers/SynchronizationHandlerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationImportPreviewServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConfigurationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ConsumerScopeServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DSOAdapterServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DSOParserServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DSOSamenwerkingServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DSOSignatureVerifierServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DSOStatusServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Datasource",
+     "Found path segment \"service\" in tests/Unit/Service/Datasource/DashboardDatasourceServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Datasource/JsonPathLiteEvaluatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DemoDataServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Dso",
+     "Found path segment \"service\" in tests/Unit/Service/Dso/DsoClientTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Dso/DsoRequestTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Dso/LogDsoConnectorProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DsoIngestServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EndoflifeDateMappingTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EndoflifeDateSyncTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EndpointServiceConsumerScopeTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EndpointServiceNcSessionRuleTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EndpointServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EndpointServiceTierPolicyTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EngineSignalServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EnvironmentServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EudiCredentialOfferServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EudiIssuerKeyServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EudiStatusListServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EventRetryCeilingTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EventServiceDeliverySeamTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EventServiceNextcloudEventTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EventServiceNotificatiesActionTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EventServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ExecutionTraceServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/FlowGraphMigrationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/FlowRunnerServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/FlowStepsToGraphTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Forms",
+     "Found path segment \"service\" in tests/Unit/Service/Forms/FormsAnswerResolverTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Forms/FormsOcsClientTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Forms/FormsSyncAdapterTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Fsc",
+     "Found path segment \"service\" in tests/Unit/Service/Fsc/FscDirectoryClientTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Fsc/LogFscConnectivityProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/FscCallServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Helper",
+     "Found path segment \"service\" in tests/Unit/Service/Helper/ExecutionTraceContextTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Helper/SyncRefResolverTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/IBabsConnectorServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/IwmoIjw",
+     "Found path segment \"service\" in tests/Unit/Service/IwmoIjw/IStandardsClientTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/IwmoIjw/InboundReturnTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/IwmoIjw/LogIwmoIjwProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/IwmoIjw/OutboundMessageTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/IwmoIjwSyncServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/JobServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/JobToFlowGeneratorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/JsonLogicFilterDialectTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Kiss",
+     "Found path segment \"service\" in tests/Unit/Service/Kiss/KlantinteractiesClientTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Kiss/LogKlantinteractiesProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/KissSyncServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/LegacyMigratorPlatformTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/LegacyToRegisterMigratorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Lti",
+     "Found path segment \"service\" in tests/Unit/Service/Lti/LtiAgsServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Lti/LtiIdentityLinkServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Lti/LtiJwksResolverServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Lti/LtiKeyServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Lti/LtiLaunchServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Lti/LtiNrpsServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Lti/LtiRegistrationResolverServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/MappingServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Mtls",
+     "Found path segment \"service\" in tests/Unit/Service/Mtls/MtlsCertificateFixture.php",
+     "Found path segment \"service\" in tests/Unit/Service/Mtls/MtlsConfigResolverTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Mtls/MtlsTransportOptionsBuilderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Mtls/MtlsTransportServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/NotificatiesSubscriberServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/NotuBizConnectorServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/OpenFormulieren",
+     "Found path segment \"service\" in tests/Unit/Service/OpenFormulieren/FormFieldMapperTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/OpenFormulierenIntakeServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/OrganisationBridgeServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Payment",
+     "Found path segment \"service\" in tests/Unit/Service/Payment/LogPaymentProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Payment/MolliePaymentProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/PaymentIntentServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Peppol",
+     "Found path segment \"service\" in tests/Unit/Service/Peppol/LogPeppolAccessPointProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Peppol/RestPeppolAccessPointProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/PeppolTransmissionServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/PromotionServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Psd2",
+     "Found path segment \"service\" in tests/Unit/Service/Psd2/LogPsd2AggregatorProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Psd2/RestPsd2AggregatorProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RateLimit",
+     "Found path segment \"service\" in tests/Unit/Service/RateLimit/InboundRateLimitServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RuleServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RuleToFlowGeneratorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Security",
+     "Found path segment \"service\" in tests/Unit/Service/Security/AuthenticationConfigAuditorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Security/AuthenticationConfigRemoverTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Security/InlineSecretMigrationExecutorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Security/InlineSecretMigrationPlannerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Security/RawSourceResolverTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Security/SensitiveFieldRegistryTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceDialectTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Sms",
+     "Found path segment \"service\" in tests/Unit/Service/Sms/LogSmsProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Sms/PhoneNumberValidatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Sms/RestNotifyNlProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SmsDispatchServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SourceMappingServiceShimTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SourceMappingServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SourceRawReadContractTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StUFBGServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StUFFieldMapperTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StUFXMLBuilderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StUFZKNServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Stuf",
+     "Found path segment \"service\" in tests/Unit/Service/Stuf/StufLiteralLeakGuardTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Stuf/StufXmlParserTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StufZkn",
+     "Found path segment \"service\" in tests/Unit/Service/StufZkn/InboundMessageTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StufZkn/LogStufZknProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StufZkn/OutboundNotificationTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StufZkn/StufZknAcknowledgementBuilderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StufZkn/StufZknClientTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/StufZknSyncServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SyncItemDeadLetterServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationBodyTotalPageCountTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationChainGuardTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationContractIdentityTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationContractLogServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationContractProviderTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationContractServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationFlowGeneratorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationItemIsolationTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationLogServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationOffsetPaginationTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationResourceLimitsTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationScalarItemCoercionTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceAdHocSourceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceApprovalGateTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceCleanupTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceContentDispositionTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceDeletionPathTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceDeletionRatioGuardTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceFetchCompletenessTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceFindRuleTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceIncrementalCursorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceIncrementalDeletionGuardTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceOriginIdMatchingTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServicePersistContractFallbackTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceResetCursorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceTestRunContractEmbedTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceTestRunNoWriteTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationServiceTimestampComparisonTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SynchronizationUnparseableBodyTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Tables",
+     "Found path segment \"service\" in tests/Unit/Service/Tables/TablesColumnCoercerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Tables/TablesOcsClientTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Tables/TablesSyncAdapterTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/WebhookSignatureServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersion",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersion/CaseTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersion/CaseTypeTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersion/DecisionTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersion/InformatieObjectTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersion/ResultTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersion/RolTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersion/StatusTranslatorTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersionNegotiationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/ZgwVersionTranslationServiceTest.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/AppHost/Service/GenericActionAuthService.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Credential",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Credential/CredentialAccessDeniedException.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Credential/CredentialBrokerService.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Credential/CredentialUpstreamException.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Deferral",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Deferral/DeferredListenerContext.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Deferral/ListenerDeferralService.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/FileService.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/FlowConcurrency.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/FlowItems.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/FlowNodeRegistry.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/FlowNodeResumeState.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/FlowResumeState.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/FlowStop.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/FlowSuspension.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/IFlowNode.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/IFlowNodeConfigForm.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/IFlowNodeConfigKeys.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/IFlowNodeLogActions.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Flow/RegisterFlowNodesEvent.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Handoff",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Handoff/HandoffService.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Integration",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Integration/AbstractIntegrationProvider.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Integration/IntegrationProvider.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Integration/IntegrationRegistry.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/ObjectService.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/OrganisationService.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/RegisterResolverService.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/SystemOperationContext.php",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Task",
+     "Found path segment \"service\" in tests/stubs/OCA/OpenRegister/Service/Task/TaskService.php",
+     "Found \"service\" in repository metadata and docs",
+     "Found path segment \"integration\" in lib/Service/Integration/SynchronizationContractProvider.php",
+     "Found path segment \"integration\" in src/integration/SyncedFromTab.vue",
+     "Found path segment \"integration\" in tests/Integration/EndoflifeDateLiveSyncTest.php",
+     "Found path segment \"integration\" in tests/Integration/ExecutionTraceIntegrationTest.php",
+     "Found path segment \"integration\" in tests/Integration/FlowRunnerIntegrationTest.php",
+     "Found path segment \"integration\" in tests/Integration/FlowRunnerSynchronizationGuardsTest.php",
+     "Found path segment \"integration\" in tests/Integration/Forms",
+     "Found path segment \"integration\" in tests/Integration/Forms/FormsOutboundMappingIntegrationTest.php",
+     "Found path segment \"integration\" in tests/Integration/Forms/FormsSyncIntegrationTest.php",
+     "Found path segment \"integration\" in tests/Integration/NextcloudEventDeliveryTest.php",
+     "Found path segment \"integration\" in tests/Integration/NotificatiesCallbackTest.php",
+     "Found path segment \"integration\" in tests/Integration/Tables",
+     "Found path segment \"integration\" in tests/Integration/Tables/TablesBridgeIntegrationTest.php",
+     "Found path segment \"integration\" in tests/integration/README-newman.md",
+     "Found path segment \"integration\" in tests/integration/integriq.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/run-newman.sh",
+     "Found path segment \"integration\" in tests/stubs/OCA/OpenRegister/Service/Integration/AbstractIntegrationProvider.php",
+     "Found path segment \"integration\" in tests/stubs/OCA/OpenRegister/Service/Integration/IntegrationProvider.php",
+     "Found path segment \"integration\" in tests/stubs/OCA/OpenRegister/Service/Integration/IntegrationRegistry.php",
+     "Found \"integration\" in repository metadata and docs",
+     "Found path segment \"db\" in tests/stubs/OCA/Forms/Db/Form.php",
+     "Found path segment \"db\" in tests/stubs/OCA/Forms/Db/Submission.php",
+     "Found path segment \"db\" in tests/stubs/OCA/OpenRegister/Db/Mapping.php",
+     "Found path segment \"db\" in tests/stubs/OCA/OpenRegister/Db/ObjectEntity.php",
+     "Found path segment \"db\" in tests/stubs/OCA/OpenRegister/Db/RegisterMapper.php",
+     "Found path segment \"db\" in tests/stubs/OCA/OpenRegister/Db/SchemaMapper.php",
+     "Found path segment \"db\" in tests/stubs/OCA/OpenRegister/Db/Task.php",
+     "Found \"database\" in repository metadata and docs",
+     "Found \"process\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources. Shown for information; never rated or compared.",
+    "evidence": [
+     "Nextcloud App Store integriq: 0 ratings given (2026-11-19)",
+     "GitHub releases: 2,068 release file downloads, 500 most recent releases with files (2026-11-19)",
+     "GitHub ConductionNL/integriq: 9 stars, 6 forks, 3 watchers (2026-11-19)",
+     "GitHub commits ConductionNL/integriq: 15 contributors, 10 from the owning organisation, 2 from other organisations, 3 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "nextcloud-appstore",
+       "kind": "downloads",
+       "source": "Nextcloud App Store",
+       "subject": "integriq",
+       "url": "https://apps.nextcloud.com/apps/integriq",
+       "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "ratings given",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "github-releases",
+       "kind": "downloads",
+       "source": "GitHub releases",
+       "subject": null,
+       "url": "https://github.com/ConductionNL/integriq/releases",
+       "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "release file downloads",
+         "value": 2068
+        },
+        {
+         "label": "most recent releases with files",
+         "value": 500
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "ConductionNL/integriq",
+       "url": "https://github.com/ConductionNL/integriq",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 9
+        },
+        {
+         "label": "forks",
+         "value": 6
+        },
+        {
+         "label": "watchers",
+         "value": 3
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "ConductionNL/integriq",
+       "url": "https://github.com/ConductionNL/integriq/graphs/contributors",
+       "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 15
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 10
+        },
+        {
+         "label": "from other organisations",
+         "value": 2
+        },
+        {
+         "label": "unknown",
+         "value": 3
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 14.8
+ },
+ "slas": []
+}

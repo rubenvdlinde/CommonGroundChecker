@@ -1,0 +1,1133 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/maykinmedia/open-klant",
+  "repoUrl": "https://github.com/maykinmedia/open-klant",
+  "host": "github.com",
+  "owner": "maykinmedia",
+  "name": "open-klant",
+  "metadata": {
+   "description": "APIs to manage client (klant) information and contact details.",
+   "language": "Python",
+   "stars": 7,
+   "forks": 5,
+   "defaultBranch": "master",
+   "topics": [
+    "api",
+    "commonground",
+    "vng"
+   ],
+   "license": "Other",
+   "version": "v2.19.2",
+   "versionEvidence": {
+    "source": "tag",
+    "detail": "best matching git tag: v2.19.2"
+   },
+   "displayName": null,
+   "shortDescription": null,
+   "logoUrl": null,
+   "developmentStatus": null,
+   "maintenanceType": null,
+   "maintainers": []
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T13:59:57.462Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T13:59:57.462Z",
+  "updatedAt": "2026-11-19T13:59:57.462Z",
+  "basisset": true,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T13-59-57-462Z",
+  "repoId": "github.com/maykinmedia/open-klant",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T13:59:57.462Z",
+  "createdAt": "2026-11-19T13:59:57.462Z",
+  "version": "v2.19.2",
+  "checklistVersion": null,
+  "scannedRef": "master",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 61,
+  "rating": 2.9,
+  "categoryRatings": {
+   "Governance": 3.6,
+   "Security": 1.8,
+   "Architecture": 3,
+   "Software Quality": 3,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 5.5,
+    "found": 5,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 2.6
+   },
+   "modifiability": {
+    "rating": 2.8
+   },
+   "testability": {
+    "rating": 1.9
+   },
+   "modularity": {
+    "rating": 3
+   },
+   "reusability": {
+    "rating": 2.3
+   },
+   "testing": {
+    "rating": 5.5
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 1,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: publiccode.yml Metadata File",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: API Design Rules",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "No publiccode.yml was found, so there is no maintenance contract.",
+    "Maintainability below 4 stars (2.48)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 6,
+   "warnings": 4
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 23,615 lines of code, 1,169 functions, 1,164 files analyzed.",
+    "evidence": [
+     "bin/bump-my-version.sh",
+     "bin/celery_flower.sh",
+     "bin/celery_worker.sh",
+     "bin/check_changed_files.sh",
+     "bin/compile_dependencies.sh",
+     "bin/docker_push.sh",
+     "bin/docker_start.sh",
+     "bin/dump_data.sh",
+     "bin/generate_admin_index_fixture.sh",
+     "bin/generate_demo_data.sh",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 23,615",
+     "Function count: 1,169",
+     "Files analyzed: 1,164"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: LICENSE file content (SPDX: NOASSERTION).",
+    "evidence": [
+     "LICENSE.md"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (NOASSERTION).",
+    "evidence": [
+     "NOASSERTION"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "high",
+    "message": "Probable copyright owners detected: Maykin, Maykin B.V., README.rst (confidence: high).",
+    "evidence": [
+     "LICENSE.md: Maykin",
+     "package.json: Maykin",
+     "README.rst: Maykin B.V.",
+     "pyproject.toml: README.rst"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root, containing machine-readable metadata per the publiccode.yml standard.",
+    "status": "fail",
+    "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
+    "evidence": [],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "No publiccode.yml was found, so there is no maintenance contract.",
+    "evidence": [],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "pass",
+    "message": "Dockerfile and docker-compose file(s) found.",
+    "evidence": [
+     "Dockerfile",
+     "docker-compose.yml",
+     "migration/docker-compose.yml"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/bin-check.yml",
+     ".github/workflows/ci.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/codeql-analysis.yml",
+     ".github/workflows/oaf-check.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.rst",
+     "docker/observability/README.md",
+     "docker/setup_configuration/Readme.md",
+     "docs/Makefile",
+     "docs/OpenKlant2SIM.drawio-v2.png",
+     "docs/_static",
+     "docs/_static/theme_overrides.css",
+     "docs/_static/uml"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.rst, docs/changelog.rst",
+    "evidence": [
+     "changelog.rst",
+     "docs/changelog.rst"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "src/openklant/accounts/tests/__init__.py",
+     "src/openklant/accounts/tests/factories.py",
+     "src/openklant/accounts/tests/files",
+     "src/openklant/accounts/tests/files/vcr_cassettes",
+     "src/openklant/accounts/tests/files/vcr_cassettes/OIDCFlowTests",
+     "src/openklant/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_duplicate_email_unique_constraint_violated.yaml",
+     "src/openklant/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_happy_flow.yaml",
+     "src/openklant/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_happy_flow_existing_user.yaml",
+     "src/openklant/accounts/tests/test_admin.py",
+     "src/openklant/accounts/tests/test_createinitialsuperuser.py"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "pass",
+    "message": "Code coverage badge reports 98.00%, which meets the 80% threshold.",
+    "evidence": [
+     "README coverage badge: 98.00%"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "fail",
+    "message": "Lizard analysis ran. Avg CCN 1.80 (threshold: 15); Max CCN 37.00 (threshold: 30). Threshold exceeded: MaxCCN 37.00 > 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
+     "Average CCN: 1.80 (threshold: 15)",
+     "Max CCN: 37.00 (threshold: 30)",
+     "11      1     87      1      17 test_missing_service_raises_error@86-102@/tmp/cgchecker-repo-HHCHR0/repo/src/openklant/config/tests/test_admin.py",
+     "20      1    119      1      29 test_missing_kanalen_tabel_code_raises_error@104-132@/tmp/cgchecker-repo-HHCHR0/repo/src/openklant/config/tests/test_admin.py",
+     "21      1    123      1      27 test_request_error_from_referentielijsten_raises_error@134-160@/tmp/cgchecker-repo-HHCHR0/repo/src/openklant/config/tests/test_admin.py",
+     "25      1    144      1      34 test_existing_klantcontacten_with_invalid_kanalen_raises_error@162-195@/tmp/cgchecker-repo-HHCHR0/repo/src/openklant/config/tests/test_admin.py",
+     "24      6    115      2      34 _prevent_protected_error_for_self_contained_identificatoren@296-329@/tmp/cgchecker-repo-HHCHR0/repo/src/openklant/management/commands/delete_klantcontacten_not_related_to_zaken.py",
+     "16      1     85      1      20 test_error_flow_missing_service@38-57@/tmp/cgchecker-repo-HHCHR0/repo/src/openklant/setup_configuration/tests/test_client_config_step.py"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "fail",
+    "starRating": 2,
+    "rating": 2.48,
+    "aspectRatings": {
+     "analysability": 2.6,
+     "modifiability": 2.79,
+     "testability": 1.92,
+     "modularity": 2.95,
+     "reusability": 2.3
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python",
+        "value": "9.9%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, more than 15 lines",
+        "value": "51.4%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, more than 30 lines",
+        "value": "33.1%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, more than 60 lines",
+        "value": "16.6%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, complexity above 5",
+        "value": "34.8%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, complexity above 10",
+        "value": "15.3%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, complexity above 25",
+        "value": "3.5%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, 3 or more parameters",
+        "value": "20.7%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Python, 5 or more parameters",
+        "value": "3.1%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Python, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python, fan-in above 10",
+        "value": "8.4%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Python, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "87.3%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "0.1591",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 2.45 to 2.51 (2 of 5 stars) over 145 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★☆☆ 2.8 (javascript 5.5, python 2.8)",
+     "Unit size: ★★☆☆☆ 2.4 (javascript 5.5, python 2.4)",
+     "Unit complexity: ★☆☆☆☆ 1.5 (javascript 5.5, python 1.5)",
+     "Unit interfacing: ★★☆☆☆ 2.2 (javascript 5.5, python 2.2)",
+     "Module coupling: ★★★★☆ 4.1 (python 4.1)",
+     "Component independence: ★★☆☆☆ 2.3 (python 2.3)",
+     "Component entanglement: ★★☆☆☆ 2.4 (python 2.4)",
+     "Lever: unit complexity in python, about 150 lines to fix for half a star",
+     "Lever: unit size in python, about 155 lines to fix for half a star",
+     "Lever: duplication in python, about 365 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (5 findings across 266 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Possible hardcoded secret: src/openklant/accounts/tests/factories.py",
+     "Possible hardcoded secret: src/openklant/accounts/tests/test_metrics.py",
+     "Possible hardcoded secret: src/openklant/components/token/tests/test_migrations.py",
+     "Dynamic code execution: src/openklant/jstests/components/dummy/dummy.spec.js",
+     "Possible hardcoded secret: src/openklant/setup_configuration/tests/test_token_auth_config.py"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "fail",
+    "message": "API Design Rules violations found across 2 specification(s): 23 issue(s).",
+    "evidence": [
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/contactgegevens/openapi.yaml",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/contactgegevens/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /contactgegevens/api/v1 \"/contactgegevens/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/contactgegevens/openapi.yaml)",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./maak-klantcontact.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_ActorSerializer @ components.schemas.Base_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_PartijSerializer @ components.schemas.Base_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedBetrokkeneList (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedDigitaalAdresList (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedKlantcontactList (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedPartijList (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_GeautomatiseerdeActor @ components.schemas.actor_identificatie_GeautomatiseerdeActor (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_Medewerker @ components.schemas.actor_identificatie_Medewerker (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_OrganisatorischeEenheid @ components.schemas.actor_identificatie_OrganisatorischeEenheid (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/contactpersoon_PartijSerializer @ components.schemas.contactpersoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/geautomatiseerde_actor_ActorSerializer @ components.schemas.geautomatiseerde_actor_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/medewerker_ActorSerializer @ components.schemas.medewerker_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatie_PartijSerializer @ components.schemas.organisatie_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatorische_eenheid_ActorSerializer @ components.schemas.organisatorische_eenheid_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Contactpersoon @ components.schemas.partij_identificatie_Contactpersoon (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Organisatie @ components.schemas.partij_identificatie_Organisatie (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Persoon @ components.schemas.partij_identificatie_Persoon (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/persoon_PartijSerializer @ components.schemas.persoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /klantinteracties/api/v1 \"/klantinteracties/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/master/src/openklant/components/klantinteracties/openapi.yaml)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v2.19.2\" follows semantic versioning.",
+    "evidence": [
+     "v2.19.2"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "evidence": [
+     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
+     "Found path segment \"ui\" in build.js",
+     "Found path segment \"ui\" in docs/installation/prerequisites.rst",
+     "Found path segment \"ui\" in requirements",
+     "Found path segment \"ui\" in requirements/base.in",
+     "Found path segment \"ui\" in requirements/base.txt",
+     "Found path segment \"ui\" in requirements/ci.in",
+     "Found path segment \"ui\" in requirements/ci.txt",
+     "Found path segment \"ui\" in requirements/dev.in",
+     "Found path segment \"ui\" in requirements/dev.txt",
+     "Found path segment \"ui\" in requirements/docs.in",
+     "Found path segment \"ui\" in requirements/production.txt",
+     "Found path segment \"ui\" in requirements/test-tools.in",
+     "Found path segment \"ui\" in requirements/type-checking.in",
+     "Found path segment \"ui\" in requirements/type-checking.txt",
+     "Found path segment \"ui\" in src/openklant/components/contactgegevens/migrations/0005_alter_organisatie_adres_nummeraanduiding_id_and_more.py",
+     "Found path segment \"ui\" in src/openklant/components/klantinteracties/migrations/0027_alter_betrokkene_bezoekadres_nummeraanduiding_id_and_more.py",
+     "Found path segment \"ui\" in src/openklant/components/klantinteracties/migrations/0029_betrokkene_bezoekadres_huisnummer_and_more.py",
+     "Found \"ui\" in repository metadata and docs",
+     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/__init__.py",
+     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/actoren.py",
+     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/digitaal_adres.py",
+     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/internetaken.py",
+     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/klantcontacten.py",
+     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/partijen.py",
+     "Found path segment \"admin\" in src/openklant/components/klantinteracties/admin/rekeningnummers.py",
+     "Found path segment \"admin\" in src/openklant/scss/admin/_admin_theme.scss",
+     "Found path segment \"admin\" in src/openklant/scss/admin/_app_overrides.scss",
+     "Found path segment \"admin\" in src/openklant/scss/admin/_tooltip.scss",
+     "Found path segment \"admin\" in src/openklant/scss/admin/admin_overrides.scss",
+     "Found path segment \"admin\" in src/openklant/scss/admin/themes",
+     "Found path segment \"admin\" in src/openklant/scss/admin/themes/_dark.scss",
+     "Found path segment \"admin\" in src/openklant/scss/admin/themes/_light.scss",
+     "Found path segment \"admin\" in src/openklant/static/img/admin/calendar-alt-regular.svg",
+     "Found path segment \"admin\" in src/openklant/static/img/admin/clock-regular.svg",
+     "Found path segment \"admin\" in src/openklant/static/img/admin/edit-regular.svg",
+     "Found path segment \"admin\" in src/openklant/static/img/admin/plus-square-regular.svg",
+     "Found path segment \"admin\" in src/openklant/static/img/admin/trash-alt-regular.svg",
+     "Found path segment \"admin\" in src/openklant/templates/admin/base_site.html",
+     "Found path segment \"admin\" in src/openklant/templates/admin/base_site__admintools.html",
+     "Found path segment \"admin\" in src/openklant/templates/admin/login.html",
+     "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
+     "Found \"register\" in repository metadata and docs",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/__init__.py",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/schema.py",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/serializers.py",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/tests",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/tests/__init__.py",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/tests/factories.py",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/tests/test_apis.py",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/urls.py",
+     "Found path segment \"api\" in src/openklant/components/contactgegevens/api/viewset.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/__init__.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/filterset",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/filterset/__init__.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/filterset/actoren.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/filterset/digitaal_adres.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/filterset/internetaken.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/filterset/klantcontacten.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/filterset/partijen.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/polymorphism.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/schema.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/__init__.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/actoren.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/constants.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/digitaal_adres.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/internetaken.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/klantcontacten.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/partijen.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/serializers/rekeningnummers.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/__init__.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/factories.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_invalid_kanaal.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_expired_due_to_past_eind.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_not_yet_valid_due_to_future_begin.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_valid_begin_in_past_no_end.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_valid_no_begin_with_future_end.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_valid_open_ended_eind.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_kanaal_valid_within_geldigheid_window.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_patch_with_invalid_kanaal.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_patch_with_valid_kanaal.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_put_with_invalid_kanaal.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_put_with_valid_kanaal.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_referentielijsten_returns_empty_list.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/files/vcr_cassettes/KanaalValidatorAPITestCase/test_valid_kanaal.yaml",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/__init__.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/test_categorie.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/test_partij.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/test_partij_identificator.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/partijen/test_vertegenwoordigden.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_actoren.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_cloudevents.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_digitaal_adres.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_expand.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_filters.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_internetaken.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_kanaal_referentielijsten.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_klantcontacten.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_notifications.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_rekeningnummers.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/tests/test_validators.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/urls.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/validators.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets/__init__.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets/actoren.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets/digitaal_adres.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets/internetaken.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets/klantcontacten.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets/partijen.py",
+     "Found path segment \"api\" in src/openklant/components/klantinteracties/api/viewsets/rekeningnummers.py",
+     "Found \"api\" in repository metadata and docs",
+     "Found \"workflow\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
+    "evidence": [
+     "npm Open Klant: not measured: HTTP 405 (2026-11-19)",
+     "Docker Hub maykinmedia/open-klant: 214,028 pulls in total (2026-11-19)",
+     "GitHub maykinmedia/open-klant: 7 stars, 5 forks, 5 watchers (2026-11-19)",
+     "GitHub commits maykinmedia/open-klant: 9 contributors, 7 from the owning organisation, 1 from other organisations, 1 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "npm",
+       "kind": "downloads",
+       "source": "npm",
+       "subject": "Open Klant",
+       "url": "https://www.npmjs.com/package/Open Klant",
+       "caveat": "Counts every download of the package, including CI builds and mirrors, not installations.",
+       "measuredAt": "2026-11-19",
+       "figures": [],
+       "notMeasured": "HTTP 405"
+      },
+      {
+       "id": "dockerhub:maykinmedia/open-klant",
+       "kind": "containers",
+       "source": "Docker Hub",
+       "subject": "maykinmedia/open-klant",
+       "url": "https://hub.docker.com/r/maykinmedia/open-klant",
+       "caveat": "Counts every pull since the image was published, including CI pulls and automatic updates.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "pulls in total",
+         "value": 214028
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "maykinmedia/open-klant",
+       "url": "https://github.com/maykinmedia/open-klant",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 7
+        },
+        {
+         "label": "forks",
+         "value": 5
+        },
+        {
+         "label": "watchers",
+         "value": 5
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "maykinmedia/open-klant",
+       "url": "https://github.com/maykinmedia/open-klant/graphs/contributors",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 9
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 7
+        },
+        {
+         "label": "from other organisations",
+         "value": 1
+        },
+        {
+         "label": "unknown",
+         "value": 1
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 7.8
+ },
+ "slas": []
+}

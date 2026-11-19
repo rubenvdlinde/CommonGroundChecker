@@ -1,0 +1,1301 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/maykinmedia/open-beheer",
+  "repoUrl": "https://github.com/maykinmedia/open-beheer",
+  "host": "github.com",
+  "owner": "maykinmedia",
+  "name": "open-beheer",
+  "metadata": {
+   "description": "Functioneel beheer voor/over alle registraties heen \"like a silo - but not a silo\"",
+   "language": "Python",
+   "stars": 2,
+   "forks": 1,
+   "defaultBranch": "main",
+   "topics": [],
+   "license": "Other",
+   "version": "v0.9.1",
+   "versionEvidence": {
+    "source": "tag",
+    "detail": "best matching git tag: v0.9.1"
+   },
+   "displayName": null,
+   "shortDescription": null,
+   "logoUrl": null,
+   "developmentStatus": null,
+   "maintenanceType": null,
+   "maintainers": []
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T13:59:38.677Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T13:59:38.677Z",
+  "updatedAt": "2026-11-19T13:59:38.677Z",
+  "basisset": true,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T13-59-38-677Z",
+  "repoId": "github.com/maykinmedia/open-beheer",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T13:59:38.677Z",
+  "createdAt": "2026-11-19T13:59:38.677Z",
+  "version": "v0.9.1",
+  "checklistVersion": null,
+  "scannedRef": "main",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 65,
+  "rating": 3,
+  "categoryRatings": {
+   "Governance": 3.6,
+   "Security": 1.8,
+   "Architecture": 4.3,
+   "Software Quality": 2.6,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 5.5,
+    "found": 5,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 4.3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 2.2
+   },
+   "modifiability": {
+    "rating": 2
+   },
+   "testability": {
+    "rating": 2.2
+   },
+   "modularity": {
+    "rating": 1.5
+   },
+   "reusability": {
+    "rating": 3.2
+   },
+   "testing": {
+    "rating": 4.3
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 1,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: publiccode.yml Metadata File",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "No publiccode.yml was found, so there is no maintenance contract.",
+    "Maintainability below 4 stars (2.16)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 4,
+   "warnings": 6
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 12,493 lines of code, 1,004 functions, 1,000 files analyzed.",
+    "evidence": [
+     "backend/bin/celery_beat.sh",
+     "backend/bin/celery_flower.sh",
+     "backend/bin/celery_worker.sh",
+     "backend/bin/compile_dependencies.sh",
+     "backend/bin/docker_start.sh",
+     "backend/bin/flake8_summary.py",
+     "backend/bin/generate_types.sh",
+     "backend/bin/live2staging.sh",
+     "backend/bin/live2staging_settings.sh",
+     "backend/bin/setup_e2e.sh",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 12,493",
+     "Function count: 1,004",
+     "Files analyzed: 1,000"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: LICENSE file content (SPDX: NOASSERTION).",
+    "evidence": [
+     "LICENSE.md"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (NOASSERTION).",
+    "evidence": [
+     "NOASSERTION"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "high",
+    "message": "Probable copyright owners detected: \"the Stakeholders\" (see: STAKEHOLDERS.md, `\"the Stakeholders\"`_, README.rst (confidence: high).",
+    "evidence": [
+     "LICENSE.md: \"the Stakeholders\" (see: STAKEHOLDERS.md",
+     "README.rst: `\"the Stakeholders\"`_",
+     "pyproject.toml: README.rst"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root, containing machine-readable metadata per the publiccode.yml standard.",
+    "status": "fail",
+    "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
+    "evidence": [],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "No publiccode.yml was found, so there is no maintenance contract.",
+    "evidence": [],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "pass",
+    "message": "Dockerfile and docker-compose file(s) found.",
+    "evidence": [
+     "Dockerfile",
+     "backend/docker-services/keycloak/docker-compose.yaml",
+     "backend/docker-services/objecttypen/docker-compose.yml",
+     "backend/docker-services/openzaak/docker-compose.yaml",
+     "docker-compose.yml"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 4 file(s).",
+    "evidence": [
+     ".github/workflows/build-image.yml",
+     ".github/workflows/ci.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/codeql-analysis.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.rst",
+     "backend/docker-services/keycloak/Readme.md",
+     "backend/docker-services/openzaak/Readme.md",
+     "backend/log/README.rst",
+     "ci/README.md",
+     "docs/Makefile",
+     "docs/_static",
+     "docs/_static/theme_overrides.css"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.rst",
+    "evidence": [
+     "changelog.rst"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "backend/pytest.ini",
+     "backend/src/openbeheer/accounts/tests/__init__.py",
+     "backend/src/openbeheer/accounts/tests/factories.py",
+     "backend/src/openbeheer/accounts/tests/test_createinitialsuperuser.py",
+     "backend/src/openbeheer/accounts/tests/test_endpoints.py",
+     "backend/src/openbeheer/accounts/tests/test_hijacking.py",
+     "backend/src/openbeheer/accounts/tests/test_password_reset_view.py",
+     "backend/src/openbeheer/accounts/tests/test_permission_limit.py",
+     "backend/src/openbeheer/accounts/tests/test_user_manager.py",
+     "backend/src/openbeheer/api/tests/__init__.py"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "warn",
+    "message": "No coverage report file was found. Add coverage output such as coverage/coverage-summary.json, coverage.xml, or lcov.info.",
+    "evidence": [],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "pass",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.95 <= 15 and Max CCN 21.00 <= 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
+     "Average CCN: 1.95 (threshold: 15)",
+     "Max CCN: 21.00 (threshold: 30)",
+     "5      2     20      0       7 useEffect@95-101@/tmp/cgchecker-repo-sRb28P/repo/frontend/src/hooks/useErrors.ts",
+     "5      2     20      0       7 (anonymous)@108-114@/tmp/cgchecker-repo-sRb28P/repo/frontend/src/hooks/useErrors.ts",
+     "5      2     20      0       7 (anonymous)@121-127@/tmp/cgchecker-repo-sRb28P/repo/frontend/src/hooks/useErrors.ts",
+     "7      2     32      0       7 (anonymous)@129-135@/tmp/cgchecker-repo-sRb28P/repo/frontend/src/hooks/useErrors.ts",
+     "8      2     52      0       8 (anonymous)@167-174@/tmp/cgchecker-repo-sRb28P/repo/frontend/src/hooks/useErrors.ts",
+     "4      1     16      0      16 (anonymous)@161-176@/tmp/cgchecker-repo-sRb28P/repo/frontend/src/hooks/useErrors.ts"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "fail",
+    "starRating": 2,
+    "rating": 2.16,
+    "aspectRatings": {
+     "analysability": 2.16,
+     "modifiability": 2.02,
+     "testability": 2.23,
+     "modularity": 1.51,
+     "reusability": 3.19
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "24.0%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript",
+        "value": "35.3%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 1
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "Python, more than 15 lines",
+        "value": "54.3%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, more than 30 lines",
+        "value": "20.1%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Python, more than 60 lines",
+        "value": "5.1%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, more than 15 lines",
+        "value": "58.8%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, more than 30 lines",
+        "value": "29.3%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, more than 60 lines",
+        "value": "6.8%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "Python, complexity above 5",
+        "value": "23.9%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, complexity above 10",
+        "value": "9.0%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, complexity above 5",
+        "value": "19.2%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "TypeScript, complexity above 10",
+        "value": "1.7%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "Python, 3 or more parameters",
+        "value": "42.8%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, 5 or more parameters",
+        "value": "4.7%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 3 or more parameters",
+        "value": "3.5%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python, fan-in above 10",
+        "value": "41.1%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, fan-in above 20",
+        "value": "35.4%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Python, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "39.5%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "0.1721",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 2.10 to 2.22 (2 of 5 stars) over 266 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★☆☆☆☆ 1.4 (python 1.5, typescript 1.3)",
+     "Unit size: ★★★☆☆ 2.9 (python 3.1, typescript 2.8)",
+     "Unit complexity: ★★★☆☆ 3.5 (python 3.0, typescript 3.8)",
+     "Unit interfacing: ★★★☆☆ 3.5 (python 1.3, typescript 5.2)",
+     "Module coupling: ★☆☆☆☆ 1.2 (python 1.2)",
+     "Component independence: ★☆☆☆☆ 1.0 (python 1.0)",
+     "Component entanglement: ★★☆☆☆ 2.4 (python 2.4)",
+     "Lever: unit complexity in python, about 179 lines to fix for half a star",
+     "Lever: unit size in typescript, about 457 lines to fix for half a star",
+     "Lever: unit complexity in typescript, about 238 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (19 findings across 302 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Possible hardcoded secret: backend/src/openbeheer/api/tests/test_authentication_endpoints.py",
+     "Possible hardcoded secret: backend/src/openbeheer/besluittypen/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/catalogi/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/eigenschappen/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/health_checks/tests/test_management.py",
+     "Possible hardcoded secret: backend/src/openbeheer/health_checks/tests/test_service_checks.py",
+     "Possible hardcoded secret: backend/src/openbeheer/health_checks/tests/test_utils.py",
+     "Possible hardcoded secret: backend/src/openbeheer/informatieobjecttypen/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/resultaattypen/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/roltypen/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/services/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/statustypen/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/utils/gherkin_e2e.py",
+     "Possible hardcoded secret: backend/src/openbeheer/zaakobjecttypen/tests/test_views.py",
+     "Possible hardcoded secret: backend/src/openbeheer/zaaktype/tests/test_zaaktype_detail.py",
+     "Possible hardcoded secret: backend/src/openbeheer/zaaktype/tests/test_zaaktype_list_endpoint.py",
+     "Possible hardcoded secret: backend/src/openbeheer/zaaktype/tests/test_zaaktype_publish.py",
+     "Possible hardcoded secret: backend/src/openbeheer/zaaktypeinformatieobjecttypen/tests/test_views.py",
+     "Dynamic code execution: frontend/public/mockServiceWorker.js"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "warn",
+    "message": "No API specification could be resolved for ADR linting. Provide an API specification URL/path.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.rst"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v0.9.1\" follows semantic versioning.",
+    "evidence": [
+     "v0.9.1"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "evidence": [
+     "Found path segment \"ui\" in .github/workflows/build-image.yml",
+     "Found path segment \"ui\" in backend/requirements",
+     "Found path segment \"ui\" in backend/requirements/base.in",
+     "Found path segment \"ui\" in backend/requirements/base.txt",
+     "Found path segment \"ui\" in backend/requirements/ci.txt",
+     "Found path segment \"ui\" in backend/requirements/dev.in",
+     "Found path segment \"ui\" in backend/requirements/dev.txt",
+     "Found path segment \"ui\" in backend/requirements/production.txt",
+     "Found path segment \"ui\" in backend/requirements/test-tools.in",
+     "Found path segment \"ui\" in backend/requirements/test.txt",
+     "Found path segment \"ui\" in backend/requirements/type-checking.in",
+     "Found path segment \"ui\" in backend/requirements/type-checking.txt",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/__init__.py",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/api",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/api/__init__.py",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/api/views.py",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/__init__.py",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeDetailViewTest",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeDetailViewTest/test_delete_besluittype.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeDetailViewTest/test_not_authenticated.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeDetailViewTest/test_patch_besluittype.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeDetailViewTest/test_put_besluittype.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeDetailViewTest/test_retrieve_besluittype.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeListViewTests",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeListViewTests/test_create.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeListViewTests/test_not_authenticated.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/files/vcr_cassettes/BesluitTypeListViewTests/test_retrieve_besluittypen.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/tests/test_views.py",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/types.py",
+     "Found path segment \"ui\" in backend/src/openbeheer/besluittypen/urls.py",
+     "Found path segment \"ui\" in backend/src/openbeheer/zaaktype/tests/files/vcr_cassettes/ZaakTypeCreateViewTest/test_create_zaaktype_with_multiple_related_besluitttype.yaml",
+     "Found path segment \"ui\" in backend/src/openbeheer/zaaktype/tests/files/vcr_cassettes/ZaakTypeCreateViewTest/test_create_zaaktype_with_new_and_existing_besluitttypen.yaml",
+     "Found path segment \"frontend\" in frontend",
+     "Found path segment \"frontend\" in frontend/.editorconfig",
+     "Found path segment \"frontend\" in frontend/.gitignore",
+     "Found path segment \"frontend\" in frontend/.husky",
+     "Found path segment \"frontend\" in frontend/.husky/commit-msg",
+     "Found path segment \"frontend\" in frontend/.husky/pre-commit",
+     "Found path segment \"frontend\" in frontend/.nvmrc",
+     "Found path segment \"frontend\" in frontend/.prettierignore",
+     "Found path segment \"frontend\" in frontend/.prettierrc",
+     "Found path segment \"frontend\" in frontend/.storybook",
+     "Found path segment \"frontend\" in frontend/.storybook/main.ts",
+     "Found path segment \"frontend\" in frontend/.storybook/preview-body.html",
+     "Found path segment \"frontend\" in frontend/.storybook/preview.ts",
+     "Found path segment \"frontend\" in frontend/.storybook/vitest.setup.ts",
+     "Found path segment \"frontend\" in frontend/README.md",
+     "Found path segment \"frontend\" in frontend/bin",
+     "Found path segment \"frontend\" in frontend/bin/create_component.sh",
+     "Found path segment \"frontend\" in frontend/bin/create_page.sh",
+     "Found path segment \"frontend\" in frontend/bin/link_conflicting_devdependencies.sh",
+     "Found path segment \"frontend\" in frontend/commitlint.config.ts",
+     "Found path segment \"frontend\" in frontend/eslint.config.js",
+     "Found path segment \"frontend\" in frontend/index.html",
+     "Found path segment \"frontend\" in frontend/package-lock.json",
+     "Found path segment \"frontend\" in frontend/package.json",
+     "Found path segment \"frontend\" in frontend/public",
+     "Found path segment \"frontend\" in frontend/public/.gitkeep",
+     "Found path segment \"frontend\" in frontend/public/mockServiceWorker.js",
+     "Found path segment \"frontend\" in frontend/rules",
+     "Found path segment \"frontend\" in frontend/rules/py-endpoint.yaml",
+     "Found path segment \"frontend\" in frontend/rules/ts-endpoint.yaml",
+     "Found path segment \"frontend\" in frontend/sgconfig.yml",
+     "Found path segment \"frontend\" in frontend/src",
+     "Found path segment \"frontend\" in frontend/src/App.test.tsx",
+     "Found path segment \"frontend\" in frontend/src/App.tsx",
+     "Found path segment \"frontend\" in frontend/src/api",
+     "Found path segment \"frontend\" in frontend/src/api/auth.ts",
+     "Found path segment \"frontend\" in frontend/src/api/catalogi.ts",
+     "Found path segment \"frontend\" in frontend/src/api/index.ts",
+     "Found path segment \"frontend\" in frontend/src/api/request.ts",
+     "Found path segment \"frontend\" in frontend/src/api/selectielijst.ts",
+     "Found path segment \"frontend\" in frontend/src/api/service.ts",
+     "Found path segment \"frontend\" in frontend/src/api/types.d.ts",
+     "Found path segment \"frontend\" in frontend/src/api/zaaktype.ts",
+     "Found path segment \"frontend\" in frontend/src/components",
+     "Found path segment \"frontend\" in frontend/src/components/VersionSelector",
+     "Found path segment \"frontend\" in frontend/src/components/VersionSelector/VersionSelector.css",
+     "Found path segment \"frontend\" in frontend/src/components/VersionSelector/VersionSelector.stories.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/VersionSelector/VersionSelector.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/VersionSelector/index.ts",
+     "Found path segment \"frontend\" in frontend/src/components/archiveform",
+     "Found path segment \"frontend\" in frontend/src/components/archiveform/ArchiveForm.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/archiveform/index.ts",
+     "Found path segment \"frontend\" in frontend/src/components/index.ts",
+     "Found path segment \"frontend\" in frontend/src/components/profile",
+     "Found path segment \"frontend\" in frontend/src/components/profile/Profile.stories.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/profile/Profile.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/profile/index.ts",
+     "Found path segment \"frontend\" in frontend/src/components/related",
+     "Found path segment \"frontend\" in frontend/src/components/related/RelatedObject.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/related/RelatedObjectBadge.css",
+     "Found path segment \"frontend\" in frontend/src/components/related/RelatedObjectBadge.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/related/RelatedObjectDataGrid.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/related/index.ts",
+     "Found path segment \"frontend\" in frontend/src/components/zaaktypefilter",
+     "Found path segment \"frontend\" in frontend/src/components/zaaktypefilter/ZaaktypeFilter.stories.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/zaaktypefilter/ZaaktypeFilter.tsx",
+     "Found path segment \"frontend\" in frontend/src/components/zaaktypefilter/index.ts",
+     "Found path segment \"frontend\" in frontend/src/components/zaaktypefilter/zaaktypeFilter.css",
+     "Found path segment \"frontend\" in frontend/src/fixtures",
+     "Found path segment \"frontend\" in frontend/src/fixtures/catalogi.ts",
+     "Found path segment \"frontend\" in frontend/src/fixtures/index.ts",
+     "Found path segment \"frontend\" in frontend/src/fixtures/service.ts",
+     "Found path segment \"frontend\" in frontend/src/fixtures/template.ts",
+     "Found path segment \"frontend\" in frontend/src/fixtures/user.ts",
+     "Found path segment \"frontend\" in frontend/src/fixtures/versions.ts",
+     "Found path segment \"frontend\" in frontend/src/fixtures/zaaktype.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks",
+     "Found path segment \"frontend\" in frontend/src/hooks/index.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useBreadcrumbItems.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useCatalogi.test.tsx",
+     "Found path segment \"frontend\" in frontend/src/hooks/useCatalogi.tsx",
+     "Found path segment \"frontend\" in frontend/src/hooks/useChildRoutes.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useCombinedSearchParams.test.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useCombinedSearchParams.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useCurrentMatch.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useDebounce.tsx",
+     "Found path segment \"frontend\" in frontend/src/hooks/useErrors.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useHashParam.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useService.test.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useService.ts",
+     "Found path segment \"frontend\" in frontend/src/hooks/useSubmitAction.test.tsx",
+     "Found path segment \"frontend\" in frontend/src/hooks/useSubmitAction.tsx",
+     "Found path segment \"frontend\" in frontend/src/lib",
+     "Found path segment \"frontend\" in frontend/src/lib/date",
+     "Found path segment \"frontend\" in frontend/src/lib/date/date.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/date/index.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/fieldsets",
+     "Found path segment \"frontend\" in frontend/src/lib/fieldsets/fieldsets.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/fieldsets/index.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/format",
+     "Found path segment \"frontend\" in frontend/src/lib/format/error.test.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/format/error.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/format/index.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/format/string.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/format/user.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/format/zaaktype.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/index.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/resultaattype",
+     "Found path segment \"frontend\" in frontend/src/lib/resultaattype/archive.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/resultaattype/index.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/utils",
+     "Found path segment \"frontend\" in frontend/src/lib/utils/index.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/utils/type-helpers.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/zaaktype",
+     "Found path segment \"frontend\" in frontend/src/lib/zaaktype/index.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/zaaktype/zaaktypeCreate.ts",
+     "Found path segment \"frontend\" in frontend/src/lib/zaaktype/zaaktypeVersion.ts",
+     "Found path segment \"frontend\" in frontend/src/loaders",
+     "Found path segment \"frontend\" in frontend/src/loaders/loginRequired.loader.test.ts",
+     "Found path segment \"frontend\" in frontend/src/loaders/loginRequired.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/main.css",
+     "Found path segment \"frontend\" in frontend/src/main.test.ts",
+     "Found path segment \"frontend\" in frontend/src/main.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages",
+     "Found path segment \"frontend\" in frontend/src/pages/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttype",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttype/InformatieObjectType.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttype/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttype/informatieobjecttype.action.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttype/informatieobjecttype.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttypecreate",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttypecreate/InformatieObjectTypeCreatePage.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttypecreate/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttypecreate/informatieobjecttype.action.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttypen",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttypen/InformatieObjectTypenPage.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttypen/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/informatieobjecttypen/informatieobjecttype.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/login",
+     "Found path segment \"frontend\" in frontend/src/pages/login/Login.stories.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/login/Login.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/login/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/login/login.action.test.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/login/login.action.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/login/login.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/logout",
+     "Found path segment \"frontend\" in frontend/src/pages/logout/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/logout/logout.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/service",
+     "Found path segment \"frontend\" in frontend/src/pages/service/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/service/service.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/Zaaktype.stories.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/Zaaktype.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/zaaktypetabs",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/zaaktypetabs/ZaaktypeAttributeGridTab.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/zaaktypetabs/ZaaktypeDataGridTab.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/zaaktypetabs/ZaaktypeTabs.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/zaaktypetabs/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/zaaktypetoolbar",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/zaaktypetoolbar/ZaaktypeToolbar.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/components/zaaktypetoolbar/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/tabs",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/tabs/algemeen.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/tabs/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/tabs/overzicht.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/tabs/types.d.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/zaaktype.action.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/zaaktype.css",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktype/zaaktype.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypecreate",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypecreate/ZaaktypeCreate.action.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypecreate/ZaaktypeCreate.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypecreate/ZaaktypeCreate.stories.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypecreate/ZaaktypeCreate.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypecreate/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypen",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypen/Zaaktypen.stories.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypen/Zaaktypen.tsx",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypen/index.ts",
+     "Found path segment \"frontend\" in frontend/src/pages/zaaktypen/zaaktypen.loader.ts",
+     "Found path segment \"frontend\" in frontend/src/routes.tsx",
+     "Found path segment \"frontend\" in frontend/src/types",
+     "Found path segment \"frontend\" in frontend/src/types/api.d.ts",
+     "Found path segment \"frontend\" in frontend/src/types/apiOverrides.ts",
+     "Found path segment \"frontend\" in frontend/src/types/expand.d.ts",
+     "Found path segment \"frontend\" in frontend/src/types/index.ts",
+     "Found path segment \"frontend\" in frontend/src/types/selectielijst.d.ts",
+     "Found path segment \"frontend\" in frontend/src/types/user.d.ts",
+     "Found path segment \"frontend\" in frontend/src/types/zaaktype.d.ts",
+     "Found path segment \"frontend\" in frontend/src/views",
+     "Found path segment \"frontend\" in frontend/src/views/CreateView",
+     "Found path segment \"frontend\" in frontend/src/views/CreateView/CreateView.tsx",
+     "Found path segment \"frontend\" in frontend/src/views/CreateView/createview.styles.css",
+     "Found path segment \"frontend\" in frontend/src/views/CreateView/index.ts",
+     "Found path segment \"frontend\" in frontend/src/views/ListView",
+     "Found path segment \"frontend\" in frontend/src/views/ListView/ListView.tsx",
+     "Found path segment \"frontend\" in frontend/src/views/ListView/index.ts",
+     "Found path segment \"frontend\" in frontend/src/views/index.ts",
+     "Found path segment \"frontend\" in frontend/src/vite-env.d.ts",
+     "Found path segment \"frontend\" in frontend/tsconfig.app.json",
+     "Found path segment \"frontend\" in frontend/tsconfig.json",
+     "Found path segment \"frontend\" in frontend/tsconfig.node.json",
+     "Found path segment \"frontend\" in frontend/typedoc.json",
+     "Found path segment \"frontend\" in frontend/vite.config.ts",
+     "Found path segment \"frontend\" in frontend/vitest.config.ts",
+     "Found path segment \"frontend\" in frontend/vitest.shims.d.ts",
+     "Found path segment \"frontend\" in frontend/vitest.workspace.ts",
+     "Found \"frontend\" in repository metadata and docs",
+     "Found path segment \"admin\" in backend/src/openbeheer/static/img/admin/calendar-alt-regular.svg",
+     "Found path segment \"admin\" in backend/src/openbeheer/static/img/admin/clock-regular.svg",
+     "Found path segment \"admin\" in backend/src/openbeheer/static/img/admin/edit-regular.svg",
+     "Found path segment \"admin\" in backend/src/openbeheer/static/img/admin/plus-square-regular.svg",
+     "Found path segment \"admin\" in backend/src/openbeheer/static/img/admin/trash-alt-regular.svg",
+     "Found path segment \"admin\" in backend/src/openbeheer/templates/admin/base_site.html",
+     "Found path segment \"admin\" in backend/src/openbeheer/templates/hijack/contrib/admin/button.html",
+     "Found path segment \"api\" in backend/src/openbeheer/accounts/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/accounts/api/serializers.py",
+     "Found path segment \"api\" in backend/src/openbeheer/accounts/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/apps.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/authentication",
+     "Found path segment \"api\" in backend/src/openbeheer/api/authentication/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/authentication/authentication.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/authentication/serializers.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/authentication/urls.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/authentication/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/drf_spectacular",
+     "Found path segment \"api\" in backend/src/openbeheer/api/drf_spectacular/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/drf_spectacular/schema.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/exception_handler.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/tests",
+     "Found path segment \"api\" in backend/src/openbeheer/api/tests/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/tests/test_api_schema.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/tests/test_authentication_endpoints.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/tests/test_exception_handler.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/urls.py",
+     "Found path segment \"api\" in backend/src/openbeheer/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/besluittypen/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/besluittypen/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/catalogi/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/catalogi/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/config/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/config/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/eigenschappen/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/eigenschappen/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/health_checks/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/health_checks/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/informatieobjecttypen/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/informatieobjecttypen/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/resultaattypen/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/resultaattypen/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/resultaten/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/resultaten/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/roltypen/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/roltypen/api/views.py",
+     "Found path segment \"services\" in backend/src/openbeheer/services/__init__.py",
+     "Found path segment \"services\" in backend/src/openbeheer/services/api",
+     "Found path segment \"services\" in backend/src/openbeheer/services/api/__init__.py",
+     "Found path segment \"services\" in backend/src/openbeheer/services/api/views.py",
+     "Found path segment \"services\" in backend/src/openbeheer/services/tests",
+     "Found path segment \"services\" in backend/src/openbeheer/services/tests/__init__.py",
+     "Found path segment \"services\" in backend/src/openbeheer/services/tests/test_views.py",
+     "Found path segment \"services\" in backend/src/openbeheer/services/urls.py",
+     "Found path segment \"api\" in backend/src/openbeheer/statustypen/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/statustypen/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/zaakobjecttypen/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/zaakobjecttypen/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/zaaktype/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/zaaktype/api/views.py",
+     "Found path segment \"api\" in backend/src/openbeheer/zaaktypeinformatieobjecttypen/api/__init__.py",
+     "Found path segment \"api\" in backend/src/openbeheer/zaaktypeinformatieobjecttypen/api/views.py",
+     "Found path segment \"api\" in frontend/src/api/auth.ts",
+     "Found path segment \"api\" in frontend/src/api/catalogi.ts",
+     "Found path segment \"api\" in frontend/src/api/index.ts",
+     "Found path segment \"api\" in frontend/src/api/request.ts",
+     "Found path segment \"api\" in frontend/src/api/selectielijst.ts",
+     "Found path segment \"api\" in frontend/src/api/service.ts",
+     "Found path segment \"api\" in frontend/src/api/types.d.ts",
+     "Found path segment \"api\" in frontend/src/api/zaaktype.ts",
+     "Found path segment \"service\" in frontend/src/pages/service/index.ts",
+     "Found path segment \"service\" in frontend/src/pages/service/service.loader.ts",
+     "Found \"service\" in repository metadata and docs",
+     "Found \"process\" in repository metadata and docs",
+     "Found \"zgw\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 3 sources. Shown for information; never rated or compared.",
+    "evidence": [
+     "Docker Hub maykinmedia/open-beheer: 4,968 pulls in total (2026-11-19)",
+     "GitHub maykinmedia/open-beheer: 2 stars, 1 forks, 3 watchers (2026-11-19)",
+     "GitHub commits maykinmedia/open-beheer: 3 contributors, 2 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "dockerhub:maykinmedia/open-beheer",
+       "kind": "containers",
+       "source": "Docker Hub",
+       "subject": "maykinmedia/open-beheer",
+       "url": "https://hub.docker.com/r/maykinmedia/open-beheer",
+       "caveat": "Counts every pull since the image was published, including CI pulls and automatic updates.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "pulls in total",
+         "value": 4968
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "maykinmedia/open-beheer",
+       "url": "https://github.com/maykinmedia/open-beheer",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 2
+        },
+        {
+         "label": "forks",
+         "value": 1
+        },
+        {
+         "label": "watchers",
+         "value": 3
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "maykinmedia/open-beheer",
+       "url": "https://github.com/maykinmedia/open-beheer/graphs/contributors",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 3
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 2
+        },
+        {
+         "label": "from other organisations",
+         "value": 0
+        },
+        {
+         "label": "unknown",
+         "value": 1
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 5.4
+ },
+ "slas": []
+}

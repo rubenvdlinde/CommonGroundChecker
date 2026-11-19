@@ -1,0 +1,1565 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/ConductionNL/versioniq",
+  "repoUrl": "https://github.com/ConductionNL/versioniq",
+  "host": "github.com",
+  "owner": "ConductionNL",
+  "name": "versioniq",
+  "metadata": {
+   "description": "Nextcloud app to install any earlier or newer version of already installed app",
+   "language": "PHP",
+   "stars": 0,
+   "forks": 1,
+   "defaultBranch": "main",
+   "topics": [],
+   "license": "European Union Public License 1.2",
+   "version": "v1.6.7",
+   "versionEvidence": {
+    "source": "release",
+    "detail": "latest release tag: v1.6.7"
+   },
+   "displayName": null,
+   "shortDescription": null,
+   "logoUrl": null,
+   "developmentStatus": null,
+   "maintenanceType": null,
+   "maintainers": []
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T13:58:47.423Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T13:58:47.423Z",
+  "updatedAt": "2026-11-19T13:58:47.423Z",
+  "basisset": false,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T13-58-47-423Z",
+  "repoId": "github.com/ConductionNL/versioniq",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T13:58:47.423Z",
+  "createdAt": "2026-11-19T13:58:47.423Z",
+  "version": "v1.6.7",
+  "checklistVersion": null,
+  "scannedRef": "main",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 53,
+  "rating": 2.8,
+  "categoryRatings": {
+   "Governance": 3.3,
+   "Security": 1.8,
+   "Architecture": 3,
+   "Software Quality": 3,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 1.8
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 5.5,
+    "found": 5,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 3.3
+   },
+   "modifiability": {
+    "rating": 3.5
+   },
+   "testability": {
+    "rating": 1.3
+   },
+   "modularity": {
+    "rating": 3.6
+   },
+   "reusability": {
+    "rating": 2
+   },
+   "testing": {
+    "rating": 4.3
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 0,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: publiccode.yml Metadata File",
+    "Mandatory criterion fails: Docker support",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: API Design Rules",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "No publiccode.yml was found, so there is no maintenance contract.",
+    "Maintainability below 4 stars (2.52)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 7,
+   "warnings": 6
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 23,905 lines of code, 2,027 functions, 2,005 files analyzed.",
+    "evidence": [
+     ".php-cs-fixer.dist.php",
+     "docs/docusaurus.config.js",
+     "docs/scripts/validate-ai-baseline.mjs",
+     "docs/sidebars.js",
+     "docs/src/pages/index.js",
+     "eslint.config.mjs",
+     "l10n/en.js",
+     "l10n/nl.js",
+     "lib/AppInfo/Application.php",
+     "lib/BackgroundJob/AdvisoryRefreshJob.php",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 23,905",
+     "Function count: 2,027",
+     "Files analyzed: 2,005"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: GitHub metadata (SPDX: EUPL-1.2).",
+    "evidence": [
+     "LICENSE"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (EUPL-1.2).",
+    "evidence": [
+     "EUPL-1.2"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "warn",
+    "confidence": "low",
+    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: ConductionNL (confidence: low).",
+    "evidence": [
+     "repository owner metadata: ConductionNL"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root, containing machine-readable metadata per the publiccode.yml standard.",
+    "status": "fail",
+    "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
+    "evidence": [],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "No publiccode.yml was found, so there is no maintenance contract.",
+    "evidence": [],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and optionally a docker-compose file should be present.",
+    "status": "fail",
+    "message": "No Dockerfile or docker-compose file found. Common Ground components must be containerisable.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/branch-protection.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/documentation.yml",
+     ".github/workflows/issue-triage.yml",
+     ".github/workflows/merge-hygiene.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.md",
+     "docs/Installation",
+     "docs/Installation/demo-environment.md",
+     "docs/cli.md",
+     "docs/docusaurus.config.js",
+     "docs/e2e.md",
+     "docs/features.json",
+     "docs/intro.md"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.md",
+    "evidence": [
+     "changelog.md"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "src/components/CachePanel.spec.ts",
+     "src/components/ChangelogRangePanel.spec.ts",
+     "src/components/DiscoverPanel.spec.ts",
+     "src/components/IntegrationsPanel.spec.ts",
+     "src/components/PinDriftBanner.spec.ts",
+     "src/components/PolicySelector.spec.ts",
+     "src/components/TokensPanel.spec.ts",
+     "src/components/VersionChangelog.spec.ts",
+     "src/utils/autoUpdateWindow.spec.ts",
+     "src/utils/changelog.spec.ts"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "warn",
+    "message": "No coverage report file was found. Add coverage output such as coverage/coverage-summary.json, coverage.xml, or lcov.info.",
+    "evidence": [],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "fail",
+    "message": "Lizard analysis ran. Avg CCN 2.48 (threshold: 15); Max CCN 76.00 (threshold: 30). Threshold exceeded: MaxCCN 76.00 > 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
+     "Average CCN: 2.48 (threshold: 15)",
+     "Max CCN: 76.00 (threshold: 30)",
+     "3      1     25      1       3 dismissProviderError@111-113@/tmp/cgchecker-repo-YmDiQN/repo/src/components/DiscoverPanel.vue",
+     "17      1    119      0      19 ListVersionsTest::testSelfManagedAppErrorEnvelopeExitsNonZero@89-107@/tmp/cgchecker-repo-YmDiQN/repo/tests/unit/Command/ListVersionsTest.php",
+     "8      1     78      0       9 DiscoveryAggregatorTest::testProviderErrorPropagatesToResultEnvelope@147-155@/tmp/cgchecker-repo-YmDiQN/repo/tests/unit/Service/Discovery/DiscoveryAggregatorTest.php",
+     "7      1     69      0       8 GithubSearchDiscoveryTest::testRateLimitReturnsErrorEnvelope@94-101@/tmp/cgchecker-repo-YmDiQN/repo/tests/unit/Service/Discovery/GithubSearchDiscoveryTest.php",
+     "19      1    148      0      22 SourceBindingStoreTest::testGetLogsWarningWhenInvalidShaEntriesAreDropped@268-289@/tmp/cgchecker-repo-YmDiQN/repo/tests/unit/Service/Source/SourceBindingStoreTest.php",
+     "6      1     69      0       8 ForgeReleaseSourceConnectionReportTest::testNoAnswerReportsError@127-134@/tmp/cgchecker-repo-YmDiQN/repo/tests/unit/Service/Source/ForgeReleaseSourceConnectionReportTest.php"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "warn",
+    "starRating": 3,
+    "rating": 2.515,
+    "aspectRatings": {
+     "analysability": 3.25,
+     "modifiability": 3.47,
+     "testability": 1.26,
+     "modularity": 3.61,
+     "reusability": 2.01
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "12.7%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP",
+        "value": "5.6%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "TypeScript",
+        "value": "2.6%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue",
+        "value": "2.7%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "86.2%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "65.5%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, more than 15 lines",
+        "value": "63.5%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 30 lines",
+        "value": "34.5%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "PHP, more than 60 lines",
+        "value": "14.1%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, more than 15 lines",
+        "value": "51.6%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, more than 30 lines",
+        "value": "33.9%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, more than 60 lines",
+        "value": "33.9%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, more than 15 lines",
+        "value": "53.4%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Vue, more than 30 lines",
+        "value": "30.4%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Vue, more than 60 lines",
+        "value": "5.9%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "65.5%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, complexity above 5",
+        "value": "53.9%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 10",
+        "value": "27.9%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 25",
+        "value": "11.5%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript, complexity above 5",
+        "value": "47.9%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript, complexity above 10",
+        "value": "33.9%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, complexity above 5",
+        "value": "41.0%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, complexity above 10",
+        "value": "18.2%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, complexity above 25",
+        "value": "5.9%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "20.7%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, 3 or more parameters",
+        "value": "32.3%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, 5 or more parameters",
+        "value": "12.8%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, 7 or more parameters",
+        "value": "7.5%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript, 3 or more parameters",
+        "value": "10.2%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 3 or more parameters",
+        "value": "4.5%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 5 or more parameters",
+        "value": "2.3%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 7 or more parameters",
+        "value": "2.3%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 1
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP, fan-in above 10",
+        "value": "2.2%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 20",
+        "value": "0.3%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "60.2%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "0.0435",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": 4
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 2.31 to 2.72 (3 of 5 stars) over 112 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★★☆ 4.0 (javascript 2.4, php 3.6, typescript 4.8, vue 4.7)",
+     "Unit size: ★★★☆☆ 2.5 (javascript 1.2, php 2.5, typescript 1.4, vue 2.9)",
+     "Unit complexity: ★☆☆☆☆ 1.2 (javascript 1.0, php 1.2, typescript 1.3, vue 1.4)",
+     "Unit interfacing: ★★☆☆☆ 1.5 (javascript 2.2, php 1.4, typescript 4.7, vue 1.5)",
+     "Module coupling: ★★★★★ 5.2 (php 5.2)",
+     "Component independence: ★☆☆☆☆ 1.3 (php 1.3)",
+     "Component entanglement: ★★★★☆ 4.3 (php 4.3)",
+     "Lever: unit complexity in vue, about 403 lines to fix for half a star",
+     "Lever: unit size in php, about 733 lines to fix for half a star",
+     "Lever: duplication in php, about 169 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (47 findings across 241 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Possible hardcoded secret: lib/Db/Pat.php",
+     "Dynamic code execution: lib/Repair/MigrateUserPreferences.php",
+     "Dynamic code execution: lib/Service/Advisory/BranchAwareRange.php",
+     "Dynamic code execution: lib/Service/Discovery/DiscoveryAggregator.php",
+     "Dynamic code execution: lib/Service/Discovery/GithubPrivateDiscovery.php",
+     "Dynamic code execution: lib/Service/ExternalReleaseInstallerService.php",
+     "Dynamic code execution: lib/Service/InstallerService.php",
+     "Dynamic code execution: lib/Service/Pat/PatResolver.php",
+     "Dynamic code execution: tests/bootstrap-unit-only.php",
+     "Possible hardcoded secret: tests/e2e/jobs.spec.ts",
+     "Possible hardcoded secret: tests/e2e/pat-management.spec.ts",
+     "Possible hardcoded secret: tests/e2e/pat-validation.spec.ts",
+     "Dynamic code execution: tests/unit/BackgroundJob/AutoUpdateJobTest.php",
+     "Dynamic code execution: tests/unit/BackgroundJob/PatExpiryWarningJobTest.php",
+     "Dynamic code execution: tests/unit/BackgroundJob/PinReconcileJobTest.php",
+     "Dynamic code execution: tests/unit/BackgroundJob/PruneAuditJobTest.php",
+     "Dynamic code execution: tests/unit/Command/InstallVersionTest.php",
+     "Dynamic code execution: tests/unit/Controller/ApiConnectionReportTest.php",
+     "Dynamic code execution: tests/unit/Controller/ApiTest.php",
+     "Dynamic code execution: tests/unit/Repair/MigrateSchemaApplicationIdTest.php",
+     "Dynamic code execution: tests/unit/Repair/RemoveRetiredCronJobsTest.php",
+     "Dynamic code execution: tests/unit/Service/Advisory/AdvisoryDigestNotifierTest.php",
+     "Dynamic code execution: tests/unit/Service/Advisory/AdvisoryNotifierTest.php",
+     "Dynamic code execution: tests/unit/Service/Advisory/AdvisorySettingsStoreTest.php",
+     "Dynamic code execution: tests/unit/Service/Advisory/BranchAwareRangeTest.php",
+     "Dynamic code execution: tests/unit/Service/Advisory/NextcloudAdvisoryFeedConnectionReportTest.php",
+     "Dynamic code execution: tests/unit/Service/Audit/AuditLoggerTest.php",
+     "Dynamic code execution: tests/unit/Service/AutoUpdate/AttemptLedgerTest.php",
+     "Dynamic code execution: tests/unit/Service/AutoUpdate/AutoUpdateNotifierTest.php",
+     "Dynamic code execution: tests/unit/Service/Cache/FakeAppData.php",
+     "Dynamic code execution: tests/unit/Service/Cache/FakeSimpleFolder.php",
+     "Dynamic code execution: tests/unit/Service/Connection/ConnectionReportServiceTest.php",
+     "Dynamic code execution: tests/unit/Service/Installer/ChildProcessFinalizerTest.php",
+     "Dynamic code execution: tests/unit/Service/Installer/InstallFinalizerGoldenTest.php",
+     "Dynamic code execution: tests/unit/Service/InstallerAuditHookTest.php",
+     "Dynamic code execution: tests/unit/Service/InstallerServiceTrustedPatternTest.php",
+     "Dynamic code execution: tests/unit/Service/Lkg/LkgStoreTest.php",
+     "Dynamic code execution: tests/unit/Service/Pat/PatManagerTest.php",
+     "Possible hardcoded secret: tests/unit/Service/Pat/PatManagerTest.php",
+     "Dynamic code execution: tests/unit/Service/Pin/PinDriftHandlerTest.php",
+     "Dynamic code execution: tests/unit/Service/Pin/PinStoreTest.php",
+     "Dynamic code execution: tests/unit/Service/Policy/PolicyStoreTest.php",
+     "Dynamic code execution: tests/unit/Service/Source/AppStoreSourceConnectionReportTest.php",
+     "Dynamic code execution: tests/unit/Service/Source/AppStoreSourceTest.php",
+     "Dynamic code execution: tests/unit/Service/Source/ForgeReleaseSourceConnectionReportTest.php",
+     "Dynamic code execution: tests/unit/Service/Source/ForgeReleaseSourceTest.php",
+     "Dynamic code execution: tests/unit/Service/Source/SourceBindingStoreTest.php"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "fail",
+    "message": "API Design Rules violations found across 2 specification(s): 134 issue(s).",
+    "evidence": [
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [info-contact] Info object must have \"contact\" object. @ info (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/OCSMeta @ components.schemas.OCSMeta (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/admin-check.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/admin-check.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/admin-check.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/admin-check.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/apps.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/apps.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/apps.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/apps.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/advisories.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/advisories.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/advisories.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/advisories.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/update-channel.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/update-channel.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/update-channel.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/update-channel.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/sources.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/sources.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/sources.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/sources.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/binding.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/binding.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/binding.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/binding.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/bind.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/bind.post.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/bind.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/bind.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/source/{appId}/bind.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.post.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.post.responses.422.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.delete.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.delete.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/trusted-sources.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions/{version}/install.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions/{version}/install.post.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions/{version}/install.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions/{version}/install.post.responses.500.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/versions/{version}/install.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/pins.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/pins.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pins.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pins.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.put.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.put.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.put.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.put.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.delete.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/pin.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/policies.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/policies.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/policies.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/policies.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.put.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.put.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.put.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.put.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.delete.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/app/{appId}/policy.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/auto-update/settings.put.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/auto-update/settings.put.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/auto-update/settings.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/auto-update/settings.put.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/auto-update/settings.put.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.put.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.put.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.put.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/advisory/settings.put.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/pats.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/pats.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/pats.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/pats.post.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.patch.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.patch.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.patch.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.patch.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.patch.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.delete.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.delete.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/{id}.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/discover.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/discover.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/discover.get.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/discover.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/discover.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/pats/deeplink.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/pats/deeplink.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/deeplink.get.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/deeplink.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/pats/deeplink.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/audit.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/audit.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/audit.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/audit.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/cache.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/cache.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/cache.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/cache.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/versioniq/api/cache.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/versioniq/api/cache.delete.responses.200 (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/cache.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./ocs/v2.php/apps/versioniq/api/cache.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/main/openapi.json)",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/versioniq/main/.github/workflows/openapi.yml",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "ERROR [unrecognized-format] The provided document does not match any of the registered formats [OpenAPI 2.0 (Swagger), OpenAPI 3.x, OpenAPI 3.0.x, OpenAPI 3.1.x, OpenAPI 3.2.x] (https://raw.githubusercontent.com/ConductionNL/versioniq/main/.github/workflows/openapi.yml)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v1.6.7\" follows semantic versioning.",
+    "evidence": [
+     "v1.6.7"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Data layer (data store / register); Service layer (back-end microservice); Interaction layer (frontend / portal). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer.",
+    "evidence": [
+     "Found path segment \"db\" in lib/Db/AuditEntry.php",
+     "Found path segment \"db\" in lib/Db/AuditEntryMapper.php",
+     "Found path segment \"db\" in lib/Db/Pat.php",
+     "Found path segment \"db\" in lib/Db/PatMapper.php",
+     "Found path segment \"db\" in tests/unit/Db/PatTest.php",
+     "Found path segment \"service\" in lib/Service/Advisory",
+     "Found path segment \"service\" in lib/Service/Advisory/AdvisoryDigestNotifier.php",
+     "Found path segment \"service\" in lib/Service/Advisory/AdvisoryNotifier.php",
+     "Found path segment \"service\" in lib/Service/Advisory/AdvisoryPackageMap.php",
+     "Found path segment \"service\" in lib/Service/Advisory/AdvisoryResultStore.php",
+     "Found path segment \"service\" in lib/Service/Advisory/AdvisoryService.php",
+     "Found path segment \"service\" in lib/Service/Advisory/AdvisorySettingsStore.php",
+     "Found path segment \"service\" in lib/Service/Advisory/AdvisorySourceInterface.php",
+     "Found path segment \"service\" in lib/Service/Advisory/BranchAwareRange.php",
+     "Found path segment \"service\" in lib/Service/Advisory/NextcloudAdvisoryFeed.php",
+     "Found path segment \"service\" in lib/Service/Advisory/ServerVersionProvider.php",
+     "Found path segment \"service\" in lib/Service/Audit",
+     "Found path segment \"service\" in lib/Service/Audit/AuditLogger.php",
+     "Found path segment \"service\" in lib/Service/AutoUpdate",
+     "Found path segment \"service\" in lib/Service/AutoUpdate/AttemptLedger.php",
+     "Found path segment \"service\" in lib/Service/AutoUpdate/AutoUpdateNotifier.php",
+     "Found path segment \"service\" in lib/Service/AutoUpdate/AutoUpdateSettingsStore.php",
+     "Found path segment \"service\" in lib/Service/AutoUpdate/AutoUpdateWindow.php",
+     "Found path segment \"service\" in lib/Service/AutoUpdate/CandidateSelector.php",
+     "Found path segment \"service\" in lib/Service/Cache",
+     "Found path segment \"service\" in lib/Service/Cache/ArtifactCache.php",
+     "Found path segment \"service\" in lib/Service/Connection",
+     "Found path segment \"service\" in lib/Service/Connection/ConnectionReportService.php",
+     "Found path segment \"service\" in lib/Service/Discovery",
+     "Found path segment \"service\" in lib/Service/Discovery/AppStoreDiscovery.php",
+     "Found path segment \"service\" in lib/Service/Discovery/DiscoveryAggregator.php",
+     "Found path segment \"service\" in lib/Service/Discovery/DiscoveryHit.php",
+     "Found path segment \"service\" in lib/Service/Discovery/DiscoveryProviderInterface.php",
+     "Found path segment \"service\" in lib/Service/Discovery/DiscoveryResult.php",
+     "Found path segment \"service\" in lib/Service/Discovery/GithubPrivateDiscovery.php",
+     "Found path segment \"service\" in lib/Service/Discovery/GithubSearchDiscovery.php",
+     "Found path segment \"service\" in lib/Service/ExternalReleaseInstallerService.php",
+     "Found path segment \"service\" in lib/Service/Installer",
+     "Found path segment \"service\" in lib/Service/Installer/ChildProcessFinalizer.php",
+     "Found path segment \"service\" in lib/Service/Installer/EnvironmentCheck.php",
+     "Found path segment \"service\" in lib/Service/Installer/FailureClassifier.php",
+     "Found path segment \"service\" in lib/Service/Installer/InstallFailure.php",
+     "Found path segment \"service\" in lib/Service/Installer/InstallFinalizer.php",
+     "Found path segment \"service\" in lib/Service/Installer/MigrationDiffer.php",
+     "Found path segment \"service\" in lib/Service/Installer/ServerAccess.php",
+     "Found path segment \"service\" in lib/Service/Installer/ShaMismatchException.php",
+     "Found path segment \"service\" in lib/Service/InstallerService.php",
+     "Found path segment \"service\" in lib/Service/Lkg",
+     "Found path segment \"service\" in lib/Service/Lkg/Lkg.php",
+     "Found path segment \"service\" in lib/Service/Lkg/LkgStore.php",
+     "Found path segment \"service\" in lib/Service/Pat",
+     "Found path segment \"service\" in lib/Service/Pat/PatDeeplinkBuilder.php",
+     "Found path segment \"service\" in lib/Service/Pat/PatExpiryEvaluator.php",
+     "Found path segment \"service\" in lib/Service/Pat/PatExpiryNotifier.php",
+     "Found path segment \"service\" in lib/Service/Pat/PatManager.php",
+     "Found path segment \"service\" in lib/Service/Pat/PatResolver.php",
+     "Found path segment \"service\" in lib/Service/Pat/PatValidator.php",
+     "Found path segment \"service\" in lib/Service/Pat/ValidationResult.php",
+     "Found path segment \"service\" in lib/Service/Pin",
+     "Found path segment \"service\" in lib/Service/Pin/Pin.php",
+     "Found path segment \"service\" in lib/Service/Pin/PinDriftHandler.php",
+     "Found path segment \"service\" in lib/Service/Pin/PinStore.php",
+     "Found path segment \"service\" in lib/Service/Policy",
+     "Found path segment \"service\" in lib/Service/Policy/Policy.php",
+     "Found path segment \"service\" in lib/Service/Policy/PolicyStore.php",
+     "Found path segment \"service\" in lib/Service/SelectedReleaseInstallerService.php",
+     "Found path segment \"service\" in lib/Service/Settings",
+     "Found path segment \"service\" in lib/Service/Settings/ConfigStores.php",
+     "Found path segment \"service\" in lib/Service/Source",
+     "Found path segment \"service\" in lib/Service/Source/AppStoreSource.php",
+     "Found path segment \"service\" in lib/Service/Source/Forge.php",
+     "Found path segment \"service\" in lib/Service/Source/ForgeRegistry.php",
+     "Found path segment \"service\" in lib/Service/Source/ForgeReleaseSource.php",
+     "Found path segment \"service\" in lib/Service/Source/SourceBinding.php",
+     "Found path segment \"service\" in lib/Service/Source/SourceBindingStore.php",
+     "Found path segment \"service\" in lib/Service/Source/SourceInterface.php",
+     "Found path segment \"service\" in lib/Service/Source/SourceRegistry.php",
+     "Found path segment \"service\" in lib/Service/Source/TrustedSourceList.php",
+     "Found path segment \"service\" in lib/Service/Source/UntrustedSourceException.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/AdvisoryDigestNotifierTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/AdvisoryNotifierTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/AdvisoryPackageMapTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/AdvisoryResultStoreTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/AdvisoryServiceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/AdvisorySettingsStoreTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/BranchAwareRangeTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/NextcloudAdvisoryFeedConnectionReportTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Advisory/NextcloudAdvisoryFeedTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Audit",
+     "Found path segment \"service\" in tests/unit/Service/Audit/AuditLoggerTest.php",
+     "Found path segment \"service\" in tests/unit/Service/AutoUpdate",
+     "Found path segment \"service\" in tests/unit/Service/AutoUpdate/AttemptLedgerTest.php",
+     "Found path segment \"service\" in tests/unit/Service/AutoUpdate/AutoUpdateNotifierTest.php",
+     "Found path segment \"service\" in tests/unit/Service/AutoUpdate/AutoUpdateSettingsStoreTest.php",
+     "Found path segment \"service\" in tests/unit/Service/AutoUpdate/AutoUpdateWindowTest.php",
+     "Found path segment \"service\" in tests/unit/Service/AutoUpdate/CandidateSelectorTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Cache",
+     "Found path segment \"service\" in tests/unit/Service/Cache/ArtifactCacheTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Cache/FakeAppData.php",
+     "Found path segment \"service\" in tests/unit/Service/Cache/FakeSimpleFile.php",
+     "Found path segment \"service\" in tests/unit/Service/Cache/FakeSimpleFolder.php",
+     "Found path segment \"service\" in tests/unit/Service/Connection",
+     "Found path segment \"service\" in tests/unit/Service/Connection/ConnectionReportServiceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Discovery",
+     "Found path segment \"service\" in tests/unit/Service/Discovery/AppStoreDiscoveryTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Discovery/DiscoveryAggregatorTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Discovery/GithubPrivateDiscoveryTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Discovery/GithubSearchDiscoveryTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Installer",
+     "Found path segment \"service\" in tests/unit/Service/Installer/ChildProcessFinalizerTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Installer/EnvironmentCheckTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Installer/FailureClassifierTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Installer/InstallFinalizerGoldenTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Installer/InstallerGoldenSupport.php",
+     "Found path segment \"service\" in tests/unit/Service/Installer/MigrationDifferTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Installer/fixtures",
+     "Found path segment \"service\" in tests/unit/Service/Installer/fixtures/install-finalizer.golden.json",
+     "Found path segment \"service\" in tests/unit/Service/InstallerAuditHookTest.php",
+     "Found path segment \"service\" in tests/unit/Service/InstallerRecoveryTest.php",
+     "Found path segment \"service\" in tests/unit/Service/InstallerServiceCacheTest.php",
+     "Found path segment \"service\" in tests/unit/Service/InstallerServiceChangelogTest.php",
+     "Found path segment \"service\" in tests/unit/Service/InstallerServiceShaPinningTest.php",
+     "Found path segment \"service\" in tests/unit/Service/InstallerServiceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/InstallerServiceTrustedPatternTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Lkg",
+     "Found path segment \"service\" in tests/unit/Service/Lkg/LkgStoreTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Lkg/LkgTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pat",
+     "Found path segment \"service\" in tests/unit/Service/Pat/PatDeeplinkBuilderTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pat/PatExpiryEvaluatorTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pat/PatExpiryNotifierTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pat/PatManagerTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pat/PatResolverTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pat/PatValidatorTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pin",
+     "Found path segment \"service\" in tests/unit/Service/Pin/PinDriftHandlerTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pin/PinStoreTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Pin/PinTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Policy",
+     "Found path segment \"service\" in tests/unit/Service/Policy/PolicyStoreTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Policy/PolicyTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source",
+     "Found path segment \"service\" in tests/unit/Service/Source/AppStoreSourceConnectionReportTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source/AppStoreSourceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source/ForgeRegistryTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source/ForgeReleaseSourceConnectionReportTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source/ForgeReleaseSourceTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source/SourceBindingStoreTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source/SourceBindingTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source/SourceRegistryTest.php",
+     "Found path segment \"service\" in tests/unit/Service/Source/TrustedSourceListTest.php",
+     "Found \"server\" in repository metadata and docs",
+     "Found path segment \"ui\" in lib/Service/Pat/PatDeeplinkBuilder.php",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/plan.json",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/specs/external-sources",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/specs/external-sources/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/specs/pat-management",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/specs/pat-management/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/specs/version-management",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/specs/version-management/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-06-14-surface-external-sources-ui/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-add-discovery-search-ui",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-add-discovery-search-ui/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-add-discovery-search-ui/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-add-discovery-search-ui/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-add-discovery-search-ui/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-add-discovery-search-ui/specs/app-discovery",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-add-discovery-search-ui/specs/app-discovery/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-07-23-add-discovery-search-ui/tasks.md",
+     "Found path segment \"ui\" in scripts/build-l10n-js.cjs",
+     "Found path segment \"ui\" in tests/e2e/fixtures/forge/build-artifacts.sh",
+     "Found path segment \"ui\" in tests/unit/Service/Pat/PatDeeplinkBuilderTest.php",
+     "Found \"next\" in repository metadata and docs",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/.gitkeep",
+     "Found path segment \"admin\" in docs/tutorials/admin/01-admin-settings.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/02-rollback.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/03-github-source.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources. Shown for information; never rated or compared.",
+    "evidence": [
+     "Nextcloud App Store versioniq: 0 ratings given (2026-11-19)",
+     "GitHub releases: 848 release file downloads, 115 releases with files (2026-11-19)",
+     "GitHub ConductionNL/versioniq: 0 stars, 1 forks, 0 watchers (2026-11-19)",
+     "GitHub commits ConductionNL/versioniq: 16 contributors, 6 from the owning organisation, 6 from other organisations, 4 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "nextcloud-appstore",
+       "kind": "downloads",
+       "source": "Nextcloud App Store",
+       "subject": "versioniq",
+       "url": "https://apps.nextcloud.com/apps/versioniq",
+       "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "ratings given",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "github-releases",
+       "kind": "downloads",
+       "source": "GitHub releases",
+       "subject": null,
+       "url": "https://github.com/ConductionNL/versioniq/releases",
+       "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "release file downloads",
+         "value": 848
+        },
+        {
+         "label": "releases with files",
+         "value": 115
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "ConductionNL/versioniq",
+       "url": "https://github.com/ConductionNL/versioniq",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 0
+        },
+        {
+         "label": "forks",
+         "value": 1
+        },
+        {
+         "label": "watchers",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "ConductionNL/versioniq",
+       "url": "https://github.com/ConductionNL/versioniq/graphs/contributors",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 16
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 6
+        },
+        {
+         "label": "from other organisations",
+         "value": 6
+        },
+        {
+         "label": "unknown",
+         "value": 4
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 6.9
+ },
+ "slas": []
+}

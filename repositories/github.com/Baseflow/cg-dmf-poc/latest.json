@@ -1,0 +1,1344 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/Baseflow/cg-dmf-poc",
+  "repoUrl": "https://github.com/Baseflow/cg-dmf-poc",
+  "host": "github.com",
+  "owner": "Baseflow",
+  "name": "cg-dmf-poc",
+  "metadata": {
+   "description": null,
+   "language": "Kotlin",
+   "stars": 1,
+   "forks": 0,
+   "defaultBranch": "develop",
+   "topics": [
+    "commonground",
+    "documenten",
+    "drc",
+    "wopi",
+    "zgw"
+   ],
+   "license": "Other",
+   "version": "v1.1.1",
+   "versionEvidence": {
+    "source": "release",
+    "detail": "latest release tag: v1.1.1"
+   },
+   "displayName": null,
+   "shortDescription": null,
+   "logoUrl": null,
+   "developmentStatus": null,
+   "maintenanceType": null,
+   "maintainers": []
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T13:52:36.057Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T13:52:36.057Z",
+  "updatedAt": "2026-11-19T13:52:36.057Z",
+  "basisset": true,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T13-52-36-057Z",
+  "repoId": "github.com/Baseflow/cg-dmf-poc",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T13:52:36.057Z",
+  "createdAt": "2026-11-19T13:52:36.057Z",
+  "version": "v1.1.1",
+  "checklistVersion": null,
+  "scannedRef": "develop",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 69,
+  "rating": 3.3,
+  "categoryRatings": {
+   "Governance": 3.3,
+   "Security": 1.8,
+   "Architecture": 4.3,
+   "Software Quality": 3.6,
+   "Deployment & Operations": 4.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 4,
+    "found": 4,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 4.3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 2.7
+   },
+   "modifiability": {
+    "rating": 3.1
+   },
+   "testability": {
+    "rating": 3.8
+   },
+   "modularity": {
+    "rating": null
+   },
+   "reusability": {
+    "rating": 4
+   },
+   "testing": {
+    "rating": 4.3
+   },
+   "containerisation": {
+    "rating": 3,
+    "found": 2,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: publiccode.yml Metadata File",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "No publiccode.yml was found, so there is no maintenance contract.",
+    "Maintainability below 4 stars (3.35)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 3,
+   "warnings": 7
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 6,407 lines of code, 617 functions, 612 files analyzed.",
+    "evidence": [
+     "build.gradle.kts",
+     "docs/wopi/wopi_test.js",
+     "frontend/admin-portal/__tests__/app/instellingen/api-koppelingen/actions.test.ts",
+     "frontend/admin-portal/__tests__/app/instellingen/api-koppelingen/api-koppelingen-list.test.tsx",
+     "frontend/admin-portal/__tests__/app/instellingen/applicaties/actions.test.ts",
+     "frontend/admin-portal/__tests__/app/instellingen/applicaties/application-list.test.tsx",
+     "frontend/admin-portal/__tests__/app/instellingen/dmf/actions.test.ts",
+     "frontend/admin-portal/__tests__/app/instellingen/dmf/dmf-settings-form.test.tsx",
+     "frontend/admin-portal/__tests__/app/instellingen/repositories/actions.test.ts",
+     "frontend/admin-portal/__tests__/app/instellingen/repositories/repository-list.test.tsx",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 6,407",
+     "Function count: 617",
+     "Files analyzed: 612"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: LICENSE file content (SPDX: NOASSERTION).",
+    "evidence": [
+     "LICENSE.md"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (NOASSERTION).",
+    "evidence": [
+     "NOASSERTION"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "high",
+    "message": "Probable copyright owner detected: Gemeente Utrecht (confidence: high).",
+    "evidence": [
+     "README.md: Gemeente Utrecht"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root, containing machine-readable metadata per the publiccode.yml standard.",
+    "status": "fail",
+    "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
+    "evidence": [],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "No publiccode.yml was found, so there is no maintenance contract.",
+    "evidence": [],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "pass",
+    "message": "Dockerfile and docker-compose file(s) found.",
+    "evidence": [
+     "Dockerfile",
+     "frontend/admin-portal/Dockerfile",
+     "docker-compose.yml",
+     "frontend/admin-portal/docker-compose.yml",
+     "(Helm chart)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/BUILD_AND_DEPLOY_BACKEND.yml",
+     ".github/workflows/BUILD_AND_DEPLOY_FRONTEND.yml",
+     ".github/workflows/FRONTEND_TEST.yml",
+     ".github/workflows/HELM_LINT.yml",
+     ".github/workflows/INTEGRATION_TEST.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.md",
+     "docs/DATABASE.md",
+     "docs/configuratie.md",
+     "docs/dmf-componenten.mermaid",
+     "docs/documenten-1.5.0.yaml",
+     "docs/documenten-1.6.0.yaml",
+     "docs/documenten-1.7.0-rc.yaml",
+     "docs/handleiding.md"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: release_notes.md, helm/cg-dmf/changelog.md",
+    "evidence": [
+     "release_notes.md",
+     "helm/cg-dmf/changelog.md"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "frontend/admin-portal/__tests__/app",
+     "frontend/admin-portal/__tests__/app/instellingen",
+     "frontend/admin-portal/__tests__/app/instellingen/api-koppelingen",
+     "frontend/admin-portal/__tests__/app/instellingen/api-koppelingen/actions.test.ts",
+     "frontend/admin-portal/__tests__/app/instellingen/api-koppelingen/api-koppelingen-list.test.tsx",
+     "frontend/admin-portal/__tests__/app/instellingen/applicaties",
+     "frontend/admin-portal/__tests__/app/instellingen/applicaties/actions.test.ts",
+     "frontend/admin-portal/__tests__/app/instellingen/applicaties/application-list.test.tsx",
+     "frontend/admin-portal/__tests__/app/instellingen/dmf",
+     "frontend/admin-portal/__tests__/app/instellingen/dmf/actions.test.ts"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "warn",
+    "message": "No coverage report file was found. Add coverage output such as coverage/coverage-summary.json, coverage.xml, or lcov.info.",
+    "evidence": [],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "pass",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.68 <= 15 and Max CCN 20.00 <= 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
+     "Average CCN: 1.68 (threshold: 15)",
+     "Max CCN: 20.00 (threshold: 30)",
+     "9      2     35      1       9 Error@5-13@/tmp/cgchecker-repo-EIbZYv/repo/frontend/admin-portal/app/(main)/instellingen/dmf/error.tsx",
+     "33      5    110      1      62 FieldError@176-237@/tmp/cgchecker-repo-EIbZYv/repo/frontend/admin-portal/components/ui/field.tsx",
+     "5      2     20      0       5 (anonymous)@9-13@/tmp/cgchecker-repo-EIbZYv/repo/frontend/admin-portal/components/auth-error-handler.tsx",
+     "5      1     29      0      11 AuthErrorHandler@6-16@/tmp/cgchecker-repo-EIbZYv/repo/frontend/admin-portal/components/auth-error-handler.tsx",
+     "17      3     44      1      17 RouteError@5-21@/tmp/cgchecker-repo-EIbZYv/repo/frontend/admin-portal/components/route-error.tsx",
+     "4      1     16      1       4 constructor@5-8@/tmp/cgchecker-repo-EIbZYv/repo/frontend/admin-portal/lib/errors.ts"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "warn",
+    "starRating": 3,
+    "rating": 3.355,
+    "aspectRatings": {
+     "analysability": 2.69,
+     "modifiability": 3.09,
+     "testability": 3.75,
+     "modularity": null,
+     "reusability": 4.04
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "3.9%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "TypeScript",
+        "value": "14.5%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "46.3%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "27.6%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "22.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "TypeScript, more than 15 lines",
+        "value": "54.1%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, more than 30 lines",
+        "value": "24.3%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, more than 60 lines",
+        "value": "7.8%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "36.3%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "26.6%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, complexity above 5",
+        "value": "15.6%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, complexity above 10",
+        "value": "5.8%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "TypeScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "13.8%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "4.1%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 3 or more parameters",
+        "value": "1.2%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 3.31 to 3.40 (3 of 5 stars) over 113 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★☆☆☆ 2.4 (javascript 4.3, typescript 2.2)",
+     "Unit size: ★★★☆☆ 3.0 (javascript 1.8, typescript 3.1)",
+     "Unit complexity: ★★★★☆ 3.8 (javascript 1.4, typescript 4.0)",
+     "Unit interfacing: ★★★★★ 5.1 (javascript 3.0, typescript 5.4)",
+     "Lever: duplication in typescript, about 413 lines to fix for half a star",
+     "Lever: unit complexity in typescript, about 96 lines to fix for half a star",
+     "Lever: unit size in typescript, about 404 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (9 findings across 135 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Possible hardcoded secret: frontend/admin-portal/__tests__/app/instellingen/api-koppelingen/actions.test.ts",
+     "Possible hardcoded secret: frontend/admin-portal/__tests__/app/instellingen/applicaties/actions.test.ts",
+     "Possible hardcoded secret: frontend/admin-portal/__tests__/app/instellingen/dmf/actions.test.ts",
+     "Possible hardcoded secret: frontend/admin-portal/__tests__/app/instellingen/repositories/actions.test.ts",
+     "Possible hardcoded secret: frontend/admin-portal/__tests__/lib/backend.test.ts",
+     "Unsafe HTML injection: frontend/admin-portal/components/ui/chart.tsx",
+     "Possible hardcoded secret: frontend/admin-portal/lib/routes.ts",
+     "Dynamic code execution: k6/perf.js",
+     "Dynamic code execution: k6/seed.js"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "warn",
+    "message": "No API specification could be resolved for ADR linting. Provide an API specification URL/path.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "warn",
+    "message": "No Code of Conduct file found. Add CODE_OF_CONDUCT.md to clarify community behavior standards.",
+    "evidence": [],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v1.1.1\" follows semantic versioning.",
+    "evidence": [
+     "v1.1.1"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "evidence": [
+     "Found path segment \"ui\" in .bruno/CG-DMF/WOPI/09 Issue token - invalid UUID (expect 400).bru",
+     "Found path segment \"ui\" in .bruno/data/Choorstraat_0291_Huisnummerbesluit_HS20906769_(Geanonimiseerd).pdf",
+     "Found path segment \"ui\" in .bruno/data/Choorstraat_0291_huisnummerbesluit bijlage_(Geanonimiseerd).pdf",
+     "Found path segment \"ui\" in .github/workflows/BUILD_AND_DEPLOY_BACKEND.yml",
+     "Found path segment \"frontend\" in .github/workflows/BUILD_AND_DEPLOY_FRONTEND.yml",
+     "Found path segment \"frontend\" in .github/workflows/FRONTEND_TEST.yml",
+     "Found path segment \"ui\" in .run/DMF-PoC [build].run.xml",
+     "Found path segment \"ui\" in build.gradle.kts",
+     "Found path segment \"frontend\" in frontend",
+     "Found path segment \"frontend\" in frontend/.license-checker-rc.json",
+     "Found path segment \"frontend\" in frontend/admin-portal",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/SKILL.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/agents",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/agents/openai.yml",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/assets",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/assets/shadcn-small.png",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/assets/shadcn.png",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/cli.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/customization.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/evals",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/evals/evals.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/mcp.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/rules",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/rules/base-vs-radix.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/rules/composition.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/rules/forms.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/rules/icons.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.agents/skills/shadcn/rules/styling.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/.claude",
+     "Found path segment \"frontend\" in frontend/admin-portal/.claude/settings.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/.dockerignore",
+     "Found path segment \"frontend\" in frontend/admin-portal/.env.local.example",
+     "Found path segment \"frontend\" in frontend/admin-portal/.gitignore",
+     "Found path segment \"frontend\" in frontend/admin-portal/.license-checker-rc.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/.mcp.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/.prettierignore",
+     "Found path segment \"frontend\" in frontend/admin-portal/.prettierrc",
+     "Found path segment \"frontend\" in frontend/admin-portal/CLAUDE.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/Dockerfile",
+     "Found path segment \"frontend\" in frontend/admin-portal/README.md",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/api-koppelingen",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/api-koppelingen/actions.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/api-koppelingen/api-koppelingen-list.test.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/applicaties",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/applicaties/actions.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/applicaties/application-list.test.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/dmf",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/dmf/actions.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/dmf/dmf-settings-form.test.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/repositories",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/repositories/actions.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/app/instellingen/repositories/repository-list.test.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/components",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/components/dynamic-breadcrumb.test.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/components/secret-cell.test.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/components/settings-table.test.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/components/ui",
+     "Found path segment \"ui\" in frontend/admin-portal/__tests__/components/ui/drawer-form-footer.test.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/hooks",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/hooks/use-copy.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/hooks/use-delete-state.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/hooks/use-drawer-state.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/hooks/use-mobile.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/lib",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/lib/backend.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/__tests__/lib/utils.test.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/actions.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui-swagger",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui-swagger/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui-swagger/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui-swagger/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui-swagger/swagger-ui-reference-client.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui-swagger/swagger-ui-reference.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui/api-reference-client.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui/api-reference.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/openapi-ui/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/zgw-token",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/zgw-token/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-api/zgw-token/zgw-token-generator.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-verkenner",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/documenten-verkenner/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/api-koppelingen",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/api-koppelingen/actions.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/api-koppelingen/api-koppelingen-list.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/api-koppelingen/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/api-koppelingen/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/api-koppelingen/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/applicaties",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/applicaties/actions.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/applicaties/application-list.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/applicaties/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/applicaties/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/applicaties/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/dmf",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/dmf/actions.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/dmf/dmf-settings-form.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/dmf/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/dmf/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/dmf/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/repositories",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/repositories/actions.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/repositories/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/repositories/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/repositories/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/instellingen/repositories/repository-list.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/layout.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/wopi",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/wopi/openapi-ui",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/wopi/openapi-ui/api-reference.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/wopi/openapi-ui/error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/wopi/openapi-ui/loading.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/(main)/wopi/openapi-ui/page.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/api",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/api/[...path]",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/api/[...path]/route.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/api/auth",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/api/auth/[...nextauth]",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/api/auth/[...nextauth]/route.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/api/openapi-spec",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/api/openapi-spec/route.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/docs",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/docs/[[...path]]",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/docs/[[...path]]/route.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/favicon.ico",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/globals.css",
+     "Found path segment \"frontend\" in frontend/admin-portal/app/layout.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/auth.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/components.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/components",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/.gitkeep",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/app-sidebar.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/auth-error-handler.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/copyable-cell.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/discard-changes-dialog.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/dynamic-breadcrumb.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/icons.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/nav-user.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/openapi-loading-skeleton.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/route-error.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/secret-cell.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/session-provider.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/settings-table.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/theme-provider.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/components/ui",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/alert-dialog.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/avatar.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/badge.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/breadcrumb.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/button.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/card.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/chart.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/checkbox.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/dialog.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/drawer-form-footer.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/drawer.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/dropdown-menu.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/field.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/input.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/label.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/radio-group.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/responsive-drawer.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/secret-input.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/select.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/separator.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/sheet.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/sidebar.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/skeleton.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/sonner.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/table.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/tabs.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/toggle-group.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/toggle.tsx",
+     "Found path segment \"ui\" in frontend/admin-portal/components/ui/tooltip.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/docker-compose.yml",
+     "Found path segment \"frontend\" in frontend/admin-portal/eslint.config.mjs",
+     "Found path segment \"frontend\" in frontend/admin-portal/hooks",
+     "Found path segment \"frontend\" in frontend/admin-portal/hooks/.gitkeep",
+     "Found path segment \"frontend\" in frontend/admin-portal/hooks/use-copy.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/hooks/use-delete-state.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/hooks/use-drawer-state.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/hooks/use-mobile.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/lib",
+     "Found path segment \"frontend\" in frontend/admin-portal/lib/.gitkeep",
+     "Found path segment \"frontend\" in frontend/admin-portal/lib/backend.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/lib/errors.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/lib/format.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/lib/navigation.tsx",
+     "Found path segment \"frontend\" in frontend/admin-portal/lib/routes.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/lib/utils.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/next.config.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/opencode.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/package-lock.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/package.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/postcss.config.mjs",
+     "Found path segment \"frontend\" in frontend/admin-portal/public",
+     "Found path segment \"frontend\" in frontend/admin-portal/public/.gitkeep",
+     "Found path segment \"frontend\" in frontend/admin-portal/public/silent-check-sso.html",
+     "Found path segment \"frontend\" in frontend/admin-portal/skills-lock.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/tsconfig.json",
+     "Found path segment \"frontend\" in frontend/admin-portal/types",
+     "Found path segment \"frontend\" in frontend/admin-portal/types/css.d.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/types/next-auth.d.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/vitest.config.ts",
+     "Found path segment \"frontend\" in frontend/admin-portal/vitest.setup.ts",
+     "Found path segment \"frontend\" in frontend/docs-viewer",
+     "Found path segment \"frontend\" in frontend/docs-viewer/_README.md",
+     "Found path segment \"frontend\" in frontend/docs-viewer/_sidebar.md",
+     "Found path segment \"frontend\" in frontend/docs-viewer/vue.css",
+     "Found path segment \"frontend\" in frontend/package-lock.json",
+     "Found path segment \"frontend\" in frontend/package.json",
+     "Found path segment \"frontend\" in frontend/swagger-ui",
+     "Found path segment \"frontend\" in frontend/swagger-ui/documenten-api.html",
+     "Found path segment \"frontend\" in frontend/swagger-ui/wopi-api.html",
+     "Found path segment \"ui\" in src/main/kotlin/shared/api/ApiUrlBuilder.kt",
+     "Found path segment \"ui\" in src/main/kotlin/shared/api/ResourceUuidParser.kt",
+     "Found path segment \"web\" in src/main/kotlin/wopi/web/WopiWebModule.kt",
+     "Found path segment \"web\" in src/main/kotlin/wopi/web/WopiWebRoutes.kt",
+     "Found path segment \"web\" in src/main/kotlin/wopi/web/pages",
+     "Found path segment \"web\" in src/main/kotlin/wopi/web/pages/WopiHostPage.kt",
+     "Found path segment \"web\" in src/test/kotlin/wopi/web/WopiWebRoutesTest.kt",
+     "Found \"portal\" in repository metadata and docs",
+     "Found path segment \"admin\" in .bruno/CG-DMF/Admin/folder.bru",
+     "Found path segment \"admin\" in .bruno/CG-DMF/Admin/get-default-storage-repository.bru",
+     "Found path segment \"admin\" in .bruno/CG-DMF/Admin/get-storage-repository.bru",
+     "Found path segment \"admin\" in .bruno/CG-DMF/Admin/list-storage-repositories-forbidden.bru",
+     "Found path segment \"admin\" in .bruno/CG-DMF/Admin/list-storage-repositories.bru",
+     "Found path segment \"admin\" in .bruno/CG-DMF/Admin/set-default-storage-repository.bru",
+     "Found path segment \"data\" in .bruno/data/413927.128 insp rap werfkelder choorstraat 10 r1.0 - totaal.pdf",
+     "Found path segment \"data\" in .bruno/data/413927.128-HER-Werfkelders Utrecht 3.0 Choorstraat 10.pdf",
+     "Found path segment \"data\" in .bruno/data/413927.128-RAP-Bureaustudie Choorstraat 10 2.0 - getekend.pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat 10-12-2020-RAP001 WA ().pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat 2-20 - Kelders - Choorstraat met riolering (003)-corrupted.pdf-ad",
+     "Found path segment \"data\" in .bruno/data/Choorstraat 2-20 - Kelders - Choorstraat met riolering (003).pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat 2-20 - Kelders - Choorstraat met riolering (003).pdf-aa",
+     "Found path segment \"data\" in .bruno/data/Choorstraat 2-20 - Kelders - Choorstraat met riolering (003).pdf-ab",
+     "Found path segment \"data\" in .bruno/data/Choorstraat 2-20 - Kelders - Choorstraat met riolering (003).pdf-ac",
+     "Found path segment \"data\" in .bruno/data/Choorstraat 2-20 - Kelders - Choorstraat met riolering (003).pdf-ad",
+     "Found path segment \"data\" in .bruno/data/Choorstraat-noord_0291_bouwtekening Choorstraat 2-20 - Kelders - Choorstraat met riolering (003).pdf.pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat_0290_WK Choorstraat 10-12-2020-RAP002 (Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat_0291_Capaciteitsbepaling_413927.128-HER_(Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat_0291_Huisnummerbesluit_HS20906769_(Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat_0291_Verificatieberekening Choorstraat 8 (Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat_0291_bouwtekening Choorstraat 2-20 - Kelders - Choorstraat met riolering (003).pdf_(Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/Choorstraat_0291_huisnummerbesluit bijlage_(Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/Rapport spoor 2 - 20210831 Definitieve expertbeoordeling historische kelders Utrecht Spoor 2_(Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/Rapport spoor 4 - 125319-21-009.884-rapc01-Rapportage Hemelwaterafvoer Choorstraat 8-16_(Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/WK Choorstraat 10-12-2020-RAP002.pdf",
+     "Found path segment \"data\" in .bruno/data/WORD_Wonders_of_Nature_Pexels_2_pages.docx",
+     "Found path segment \"data\" in .bruno/data/Zadelstraat_0043_Inspectierapport_Inventarisatie en overzicht oorzaken van schades aan kelders (Geanonimiseerd).pdf",
+     "Found path segment \"data\" in .bruno/data/Zadelstraat_0284_Definitieve expertbeoordeling historische kelders Utrecht Spoor 2 (Geanonimiseerd).pdf",
+     "Found path segment \"db\" in src/main/resources/db/migration",
+     "Found path segment \"db\" in src/main/resources/db/migration/B25__Baseline.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U10__Remove_pgcrypto_dependency.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U11__Drift_correction.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U12__Add_eio_versions_index.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U13__Trefwoorden_separate_table.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U14__Trefwoorden_many_to_many.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U15__Add_bestands_repository.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U16__EncryptBlobStorageSecrets.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U17__Add_evt_trefwoord_version_index.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U18__Oidc_provider_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U19__Application_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U20__Blob_storage_repository_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U21__Dmf_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U22__Zgw_api_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U23__Consolidate_blob_storage_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U24__Add_inhoud_is_vervallen.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U26__Api_connection_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U27__Drop_oidc_provider_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U28__Add_readonly_to_application_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U29__Unique_client_id_in_application_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U2__Create_oio_records.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U30__DmfSettings_keyvalue.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U31__Fix_date_only_columns_in_eio_versions.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U32__Update_bestandsdelen_defaults.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U33__Add_readonly_to_blob_storage_repository_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U3__Add_informatieobject_type_to_eio_versions.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U4__File_Location.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U5__AuditTrails.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U6__ChangeWijzigingenToJson.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U7__BlobStorageRepositories.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U8__BlobStorageRepositoryDefault.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/U9__Create_bestandsdelen.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V10__Remove_pgcrypto_dependency.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V11__Drift_correction.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V12__Add_eio_versions_index.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V13__Trefwoorden_separate_table.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V14__Trefwoorden_many_to_many.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V15__Add_bestands_repository.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V16__EncryptBlobStorageSecrets.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V17__Add_evt_trefwoord_version_index.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V18__Oidc_providers_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V19__Application_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V1__Create_tables.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V20__Blob_storage_repository_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V21__Dmf_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V22__Zgw_api_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V23__Consolidate_blob_storage_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V24__Add_inhoud_is_vervallen.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V25__DriftCheck.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V26__Api_connection_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V27__Drop_oidc_provider_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V28__Add_readonly_to_application_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V29__Unique_client_id_in_application_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V2__Create_oio_records.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V30__DmfSettings_keyvalue.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V31__Fix_date_only_columns_in_eio_versions.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V32__Update_bestandsdelen_defaults.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V33__Add_readonly_to_blob_storage_repository_settings.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V3__Add_informatieobject_type_to_eio_versions.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V4__File_Location.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V5__AuditTrails.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V6__ChangeWijzigingenToJson.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V7__BlobStorageRepositories.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V8__BlobStorageRepositoryDefault.sql",
+     "Found path segment \"db\" in src/main/resources/db/migration/V9__Create_bestandsdelen.sql",
+     "Found path segment \"db\" in src/test/resources/db/repair-test-migration",
+     "Found path segment \"db\" in src/test/resources/db/repair-test-migration/V1__Create_test_table.sql",
+     "Found path segment \"db\" in src/test/resources/db/undo-test-migration",
+     "Found path segment \"db\" in src/test/resources/db/undo-test-migration/V1__Create_items_table.sql",
+     "Found path segment \"db\" in src/test/resources/db/undo-test-migration/V2__Add_items_name_column.sql",
+     "Found \"database\" in repository metadata and docs",
+     "Found path segment \"api\" in frontend/admin-portal/app/api/[...path]",
+     "Found path segment \"api\" in frontend/admin-portal/app/api/[...path]/route.ts",
+     "Found path segment \"api\" in frontend/admin-portal/app/api/auth",
+     "Found path segment \"api\" in frontend/admin-portal/app/api/auth/[...nextauth]",
+     "Found path segment \"api\" in frontend/admin-portal/app/api/auth/[...nextauth]/route.ts",
+     "Found path segment \"api\" in frontend/admin-portal/app/api/openapi-spec",
+     "Found path segment \"api\" in frontend/admin-portal/app/api/openapi-spec/route.ts",
+     "Found path segment \"api\" in src/main/kotlin/documenten/api/DocumentenApiModule.kt",
+     "Found path segment \"api\" in src/main/kotlin/documenten/api/routes",
+     "Found path segment \"api\" in src/main/kotlin/documenten/api/routes/AuditTrailRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/documenten/api/routes/BestandsDelenRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/documenten/api/routes/DocumentenApiRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/documenten/api/routes/EnkelvoudigInformatieObjectenRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/documenten/api/routes/ObjectInformatieObjectenRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/infra/api/HealthRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/infra/api/OpenApiModule.kt",
+     "Found path segment \"api\" in src/main/kotlin/infra/api/models",
+     "Found path segment \"api\" in src/main/kotlin/infra/api/models/DocumentenOpenApiSpecification.kt",
+     "Found path segment \"api\" in src/main/kotlin/infra/api/models/OpenApiSpecification.kt",
+     "Found path segment \"api\" in src/main/kotlin/infra/api/models/WopiOpenApiSpecification.kt",
+     "Found path segment \"api\" in src/main/kotlin/settings/api/SettingsRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/settings/api/routes",
+     "Found path segment \"api\" in src/main/kotlin/settings/api/routes/ApiConnectionSettingsRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/settings/api/routes/ApplicationSettingsRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/settings/api/routes/BlobStorageRepositorySettingsRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/settings/api/routes/DmfSettingsRoutes.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/ApiConstants.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/ApiUrlBuilder.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/JsonConfig.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/ResourceUuidParser.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware/ApiConditionalHeaders.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware/ApiVersionHeader.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware/AuditContext.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware/AuditTrailPlugin.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware/ForbiddenException.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware/GlobalExceptionHandler.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware/NotificationPlugin.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/middleware/UnauthorizedException.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/ApiRequest.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/ApiResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/AuditTrailResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/EnkelvoudigInformatieObjectModels.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/ObjectInformatieObjectModels.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/PaginatedResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/ProblemDetailsResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/ResourceSegment.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/UploadResultaat.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/settings",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/settings/ApiConnectionSettingModels.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/settings/ApplicationSettingModels.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/settings/BlobStorageRepositorySettingModels.kt",
+     "Found path segment \"api\" in src/main/kotlin/shared/api/models/settings/DmfSettingModels.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/ApplicationCredentialRegistrar.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/AuditTrailService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/AzureBlobStorageProvider.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/BestandsDeelService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/BestandsDeelSettingsInitializer.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/BlobStorageProvider.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/BlobStorageRegistrar.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/CatalogusService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/DmfSettingsService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/EnkelvoudigInformatieObjectService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/HealthCheckService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/IntegrityCalculationService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/NotificatiesMigrator.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/NotificationService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/ObjectInformatieObjectService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/OpenZaakMigrator.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/S3BlobStorageProvider.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/StorageObjectNotFoundException.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/StorageService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/WopiSlatService.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/models",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/models/DeleteResult.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/models/LockModels.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/models/OIOModels.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/models/QueryEnkelvoudidigeInformatieObjectenFilter.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/models/QueryObjectInformatieObjectenFilter.kt",
+     "Found path segment \"services\" in src/main/kotlin/shared/services/models/SlatPayload.kt",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/WopiModule.kt",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/models",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/models/CheckContainerInfoResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/models/CheckFileInfoResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/models/PutRelativeFileResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/models/RenameFileResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/models/WopiLockModels.kt",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/models/WopiTokenResponse.kt",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/routes",
+     "Found path segment \"api\" in src/main/kotlin/wopi/api/routes/WopiApiRoutes.kt",
+     "Found path segment \"services\" in src/main/kotlin/wopi/services/WopiDocumentService.kt",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/middleware",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/middleware/ApiConditionalHeadersProviderUnitTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/routes",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/routes/BestandsDelenRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/routes/BlobStorageRepositoryRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/routes/EnkelvoudigInformatieObjectenRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/routes/GlobalExceptionHandlerTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/routes/HealthRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/routes/ObjectInformatieObjectenRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/documenten/api/routes/TestBase.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/ApplicationCredentialRegistrarTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/AuditTrailServiceTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/BestandsDeelServiceTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/CatalogusServiceTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/EnkelvoudigInformatieObjectFilterTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/EnkelvoudigInformatieObjectServiceResolveExpandTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/EnkelvoudigInformatieObjectServiceTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/IntegrityCalculationServiceTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/NotificatiesMigratorTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/NotificationServiceTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/ObjectInformatieObjectServiceTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/OpenZaakMigratorTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/StorageServiceTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/services/WopiSlatServiceTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/settings/api/AdminRoleCheckTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/settings/api/routes",
+     "Found path segment \"api\" in src/test/kotlin/settings/api/routes/ApiConnectionSettingsRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/settings/api/routes/ApplicationSettingsRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/settings/api/routes/BlobStorageRepositorySettingsRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/settings/api/routes/DmfSettingsRoutesTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/settings/api/routes/SettingsTestBase.kt",
+     "Found path segment \"services\" in src/test/kotlin/shared/services/BlobStorageRegistrarTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/wopi/api/routes",
+     "Found path segment \"api\" in src/test/kotlin/wopi/api/routes/CheckFileInfoOperationTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/wopi/api/routes/GetFileOperationTest.kt",
+     "Found path segment \"api\" in src/test/kotlin/wopi/api/routes/LockOperationTest.kt",
+     "Found path segment \"services\" in src/test/kotlin/wopi/services/WopiDocumentServiceTest.kt",
+     "Found \"api\" in repository metadata and docs",
+     "Found \"workflow\" in repository metadata and docs",
+     "Found \"zgw\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "pass",
+    "message": "Helm chart detected for this component.",
+    "evidence": [
+     "helm/cg-dmf/Chart.yaml"
+    ],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 2 sources. Shown for information; never rated or compared.",
+    "evidence": [
+     "GitHub Baseflow/cg-dmf-poc: 1 stars, 0 forks, 0 watchers (2026-11-19)",
+     "GitHub commits Baseflow/cg-dmf-poc: 14 contributors, 6 from the owning organisation, 2 from other organisations, 6 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "Baseflow/cg-dmf-poc",
+       "url": "https://github.com/Baseflow/cg-dmf-poc",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 1
+        },
+        {
+         "label": "forks",
+         "value": 0
+        },
+        {
+         "label": "watchers",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "Baseflow/cg-dmf-poc",
+       "url": "https://github.com/Baseflow/cg-dmf-poc/graphs/contributors",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (baseflow.com) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 14
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 6
+        },
+        {
+         "label": "from other organisations",
+         "value": 2
+        },
+        {
+         "label": "unknown",
+         "value": 6
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 7.6
+ },
+ "slas": []
+}

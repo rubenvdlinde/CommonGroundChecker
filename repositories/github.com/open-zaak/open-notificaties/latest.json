@@ -1,0 +1,1231 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/open-zaak/open-notificaties",
+  "repoUrl": "https://github.com/open-zaak/open-notificaties",
+  "host": "github.com",
+  "owner": "open-zaak",
+  "name": "open-notificaties",
+  "metadata": {
+   "description": "API to receive and distribute notifications to subscribed webhooks.",
+   "language": "Python",
+   "stars": 2,
+   "forks": 10,
+   "defaultBranch": "main",
+   "topics": [
+    "api",
+    "commonground",
+    "vng"
+   ],
+   "license": "Other",
+   "version": "v1.17.0",
+   "versionEvidence": {
+    "source": "tag",
+    "detail": "best matching git tag: v1.17.0"
+   },
+   "displayName": "Open Notificaties",
+   "shortDescription": "API voor het routeren van notificaties",
+   "logoUrl": "https://raw.githubusercontent.com/open-zaak/open-notificaties/main/docs/logo.svg",
+   "developmentStatus": "beta",
+   "maintenanceType": "contract",
+   "maintainers": [
+    "Joeri Bekker",
+    "Sergei Maertens"
+   ]
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T14:01:09.221Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T14:01:09.221Z",
+  "updatedAt": "2026-11-19T14:01:09.221Z",
+  "basisset": true,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T14-01-09-221Z",
+  "repoId": "github.com/open-zaak/open-notificaties",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T14:01:09.221Z",
+  "createdAt": "2026-11-19T14:01:09.221Z",
+  "version": "v1.17.0",
+  "checklistVersion": null,
+  "scannedRef": "main",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 60,
+  "rating": 3.1,
+  "categoryRatings": {
+   "Governance": 2.7,
+   "Security": 3,
+   "Architecture": 3,
+   "Software Quality": 3.5,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 3
+   },
+   "ownership": {
+    "rating": 4.3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 3,
+    "found": 3,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 3
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 4.1
+   },
+   "modifiability": {
+    "rating": 3.7
+   },
+   "testability": {
+    "rating": 2.6
+   },
+   "modularity": {
+    "rating": 2.2
+   },
+   "reusability": {
+    "rating": 2.7
+   },
+   "testing": {
+    "rating": 5.5
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 1,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: API Design Rules",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "No valid maintenance contract: Maykin ended on 2020-12-31.",
+    "Maintainability below 4 stars (3.00)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 3,
+   "warnings": 10
+  },
+  "declaredUsers": [
+   "Gemeente Utrecht",
+   "Gemeente Súdwest-Fryslân",
+   "Gemeente Buren"
+  ],
+  "declaredUserCount": 3,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 6,430 lines of code, 360 functions, 360 files analyzed.",
+    "evidence": [
+     "Gulpfile.js",
+     "bin/bump-my-version.sh",
+     "bin/celery_beat.sh",
+     "bin/celery_flower.sh",
+     "bin/celery_worker.sh",
+     "bin/celery_worker_liveness_probe.sh",
+     "bin/compile_dependencies.sh",
+     "bin/docker_push.sh",
+     "bin/docker_start.sh",
+     "bin/generate_admin_index_fixture.sh",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 6,430",
+     "Function count: 360",
+     "Files analyzed: 360"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "warn",
+    "message": "A LICENSE file is present (detected: \"Other\") but it could not be confirmed as an OSI-approved license. Please verify manually.",
+    "evidence": [],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "warn",
+    "message": "No EUPL license detected. This criterion is advisory; an OSI-approved license can still pass the license requirement.",
+    "evidence": [
+     "NOASSERTION"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "medium",
+    "message": "Probable copyright owners detected: Maykin, README.rst (confidence: medium).",
+    "evidence": [
+     "package.json: Maykin",
+     "pyproject.toml: README.rst"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root.",
+    "status": "warn",
+    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "evidence": [
+     "publiccode.yaml"
+    ],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "publiccode": {
+     "publiccodeYmlVersion": "0.2",
+     "name": "Open Notificaties",
+     "applicationSuite": null,
+     "url": "https://github.com/open-zaak/open-notificaties.git",
+     "landingURL": null,
+     "isBasedOn": [
+      "https://github.com/VNG-Realisatie/gemma-zaken"
+     ],
+     "softwareVersion": "1.17.0",
+     "releaseDate": "2026-10-02",
+     "logo": "https://raw.githubusercontent.com/open-zaak/open-notificaties/main/docs/logo.svg",
+     "platforms": [
+      "web",
+      "linux",
+      "windows",
+      "mac"
+     ],
+     "categories": [
+      "communications",
+      "it-development",
+      "it-service-management"
+     ],
+     "usedBy": [
+      "Gemeente Utrecht",
+      "Gemeente Súdwest-Fryslân",
+      "Gemeente Buren"
+     ],
+     "roadmap": null,
+     "developmentStatus": "beta",
+     "softwareType": "standalone/backend",
+     "intendedAudience": {
+      "countries": [
+       "nl"
+      ],
+      "unsupportedCountries": [],
+      "scope": [
+       "government"
+      ]
+     },
+     "descriptions": [
+      {
+       "language": "nl",
+       "localisedName": null,
+       "genericName": "API component",
+       "shortDescription": "API voor het routeren van notificaties",
+       "longDescription": "**Open Notificaties** is een modern en open source component voor het routeren van berichten tussen componenten, systemen en applicaties. Het implementeert de [gestandaardiseerde VNG Notificaties API](https://vng-realisatie.github.io/gemma-zaken/standaard/notificaties/).\nDit component is afhankelijk van een [Autorisaties API](https://vng-realisatie.github.io/gemma-zaken/standaard/autorisaties/) voor regelen van autorisaties en kan o.a. gebruikt worden in combinatie met de [API's voor Zaakgericht werken](https://www.vngrealisatie.nl/ondersteuningsmiddelen/zaakgericht-werken) zoals geimplementeerd in [Open Zaak](https://github.com/open-zaak/open-zaak).",
+       "documentation": "https://open-notificaties.readthedocs.io/",
+       "apiDocumentation": "https://www.vngrealisatie.nl/producten/api-standaarden-zaakgericht-werken",
+       "features": [
+        "Notificaties API 1.0"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      },
+      {
+       "language": "en",
+       "localisedName": null,
+       "genericName": "API component",
+       "shortDescription": "API for routing notifications",
+       "longDescription": "**Open Notificaties** is a modern and open source component for routing notifications between components, systems en applications. It implements the [VNG API standard for the \"Notificaties\" API](https://vng-realisatie.github.io/gemma-zaken/standaard/notificaties/).\nThis component depends on an [Autorisaties API](https://vng-realisatie.github.io/gemma-zaken/standaard/autorisaties/) to manage authorizations and can be used, for example, in combination with the [API's for Zaakgericht werken](https://www.vngrealisatie.nl/ondersteuningsmiddelen/zaakgericht-werken) as implemented in [Open Zaak](https://github.com/open-zaak/open-zaak).",
+       "documentation": "https://open-notificaties.readthedocs.io/",
+       "apiDocumentation": "https://www.vngrealisatie.nl/producten/api-standaarden-zaakgericht-werken",
+       "features": [
+        "Notificaties API 1.0"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      }
+     ],
+     "legal": {
+      "license": "EUPL-1.2",
+      "mainCopyrightOwner": "Dimpact",
+      "repoOwner": "Maykin",
+      "authorsFile": null
+     },
+     "maintenance": {
+      "type": "contract",
+      "contractors": [
+       {
+        "name": "Maykin",
+        "until": "2020-12-31",
+        "email": "info@maykin.nl",
+        "website": "https://www.maykin.nl/"
+       }
+      ],
+      "contacts": [
+       {
+        "name": "Joeri Bekker",
+        "email": null,
+        "phone": null,
+        "affiliation": "Maykin"
+       },
+       {
+        "name": "Sergei Maertens",
+        "email": null,
+        "phone": null,
+        "affiliation": "Maykin"
+       }
+      ]
+     },
+     "localisation": {
+      "localisationReady": true,
+      "availableLanguages": [
+       "nl",
+       "en"
+      ]
+     },
+     "dependsOn": {
+      "open": [
+       {
+        "name": "PostgreSQL",
+        "versionMin": "14.0",
+        "versionMax": null,
+        "version": null,
+        "optional": true
+       },
+       {
+        "name": "Kubernetes",
+        "versionMin": "1.12",
+        "versionMax": null,
+        "version": null,
+        "optional": true
+       },
+       {
+        "name": "Docker",
+        "versionMin": "18.0",
+        "versionMax": null,
+        "version": null,
+        "optional": true
+       },
+       {
+        "name": "Redis",
+        "versionMin": "4.0",
+        "versionMax": null,
+        "version": null,
+        "optional": true
+       }
+      ],
+      "proprietary": [],
+      "hardware": []
+     },
+     "organisation": null,
+     "fundedBy": []
+    },
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "No valid maintenance contract: Maykin ended on 2020-12-31.",
+    "evidence": [
+     "Maykin: ended on 2020-12-31"
+    ],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "pass",
+    "message": "Dockerfile and docker-compose file(s) found.",
+    "evidence": [
+     "Dockerfile",
+     "docker/python-webhook/Dockerfile",
+     "docker-compose.yml"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/ci.yml",
+     ".github/workflows/code_quality.yml",
+     ".github/workflows/codeql-analysis.yml",
+     ".github/workflows/oaf-check.yml",
+     ".github/workflows/oas.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.rst",
+     "certs/README.md",
+     "docker/observability/README.md",
+     "docs/Makefile",
+     "docs/_static",
+     "docs/_static/theme_overrides.css",
+     "docs/_static/uml",
+     "docs/_static/uml/.gitkeep"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.rst, docs/changelog.rst",
+    "evidence": [
+     "changelog.rst",
+     "docs/changelog.rst"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "src/nrc/accounts/tests/__init__.py",
+     "src/nrc/accounts/tests/factories.py",
+     "src/nrc/accounts/tests/files",
+     "src/nrc/accounts/tests/files/vcr_cassettes",
+     "src/nrc/accounts/tests/files/vcr_cassettes/OIDCFlowTests",
+     "src/nrc/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_duplicate_email_unique_constraint_violated.yaml",
+     "src/nrc/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_happy_flow.yaml",
+     "src/nrc/accounts/tests/files/vcr_cassettes/OIDCFlowTests/test_happy_flow_existing_user.yaml",
+     "src/nrc/accounts/tests/test_2fa.py",
+     "src/nrc/accounts/tests/test_admin.py"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "pass",
+    "message": "Code coverage badge reports 94.00%, which meets the 80% threshold.",
+    "evidence": [
+     "README coverage badge: 94.00%"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "pass",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.80 <= 15 and Max CCN 13.00 <= 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Average CCN: 1.80 (threshold: 15)",
+     "Max CCN: 13.00 (threshold: 30)",
+     "12      1    112      3      18 assertErrorResponse@48-65@/tmp/cgchecker-repo-sGFhTk/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "17      1     58      1      17 test_400_error@67-83@/tmp/cgchecker-repo-sGFhTk/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_401_error@85-94@/tmp/cgchecker-repo-sGFhTk/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_403_error@96-105@/tmp/cgchecker-repo-sGFhTk/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_404_error@107-116@/tmp/cgchecker-repo-sGFhTk/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_405_error@118-127@/tmp/cgchecker-repo-sGFhTk/repo/src/nrc/api/tests/test_dso_api_strategy.py",
+     "10      1     33      1      10 test_406_error@129-138@/tmp/cgchecker-repo-sGFhTk/repo/src/nrc/api/tests/test_dso_api_strategy.py"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "warn",
+    "starRating": 3,
+    "rating": 3,
+    "aspectRatings": {
+     "analysability": 4.14,
+     "modifiability": 3.71,
+     "testability": 2.6,
+     "modularity": 2.23,
+     "reusability": 2.7
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python",
+        "value": "1.8%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, more than 15 lines",
+        "value": "51.4%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, more than 30 lines",
+        "value": "23.6%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Python, more than 60 lines",
+        "value": "8.6%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, complexity above 5",
+        "value": "22.4%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, complexity above 10",
+        "value": "3.8%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, complexity above 25",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, 3 or more parameters",
+        "value": "21.7%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Python, 5 or more parameters",
+        "value": "0.9%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python, fan-in above 10",
+        "value": "10.3%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Python, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Python, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "82.7%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "Python",
+        "value": "0.24",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 2.92 to 3.08 (3 of 5 stars) over 74 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★★★ 5.0 (javascript 5.5, python 5.0)",
+     "Unit size: ★★★☆☆ 3.3 (javascript 5.5, python 3.3)",
+     "Unit complexity: ★★★☆☆ 3.3 (javascript 5.5, python 3.3)",
+     "Unit interfacing: ★★☆☆☆ 2.1 (javascript 5.5, python 2.0)",
+     "Module coupling: ★★★☆☆ 2.9 (python 2.9)",
+     "Component independence: ★★☆☆☆ 1.9 (python 1.9)",
+     "Component entanglement: ★★☆☆☆ 1.9 (python 1.9)",
+     "Lever: component independence in python, about 201 lines to fix for half a star",
+     "Lever: module coupling in python, about 19 lines to fix for half a star",
+     "Lever: unit complexity in python, about 45 lines to fix for half a star"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "warn",
+    "message": "Potential OWASP secure coding issues were detected (3 findings across 138 scanned source files).",
+    "evidence": [
+     "Possible hardcoded secret: src/nrc/accounts/tests/factories.py",
+     "Possible hardcoded secret: src/nrc/accounts/tests/test_metrics.py",
+     "Possible hardcoded secret: src/nrc/api/tests/test_tasks.py"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "fail",
+    "message": "API Design Rules violations found across 1 specification(s): 17 issue(s).",
+    "evidence": [
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"(notificaties.consumeren | notificaties.publiceren)\" must be listed among scopes. @ paths./abonnement.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"(notificaties.consumeren | notificaties.publiceren)\" must be listed among scopes. @ paths./abonnement/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.consumeren\" must be listed among scopes. @ paths./abonnement/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./cloudevents.post (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./cloudevents.post.tags.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./cloudevents.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"(notificaties.publiceren | notificaties.consumeren)\" must be listed among scopes. @ paths./kanaal.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"(notificaties.publiceren | notificaties.consumeren)\" must be listed among scopes. @ paths./kanaal/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./kanaal/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [oas3-operation-security-defined] \"notificaties.publiceren\" must be listed among scopes. @ paths./notificaties.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)",
+     "ERROR [servers-use-https] Server URL /api/v1 \"/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/open-zaak/open-notificaties/main/src/openapi.yaml)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "docs/development/contributing.rst"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "warn",
+    "message": "No Code of Conduct file found. Add CODE_OF_CONDUCT.md to clarify community behavior standards.",
+    "evidence": [],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "warn",
+    "message": "No SECURITY.md file found. Add one to document responsible vulnerability disclosure and supported versions.",
+    "evidence": [],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v1.17.0\" follows semantic versioning.",
+    "evidence": [
+     "v1.17.0"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Data layer (data store / register); Service layer (back-end microservice); Process layer (orchestration / BFF); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "evidence": [
+     "Found path segment \"ui\" in .github/workflows/quick-start.yml",
+     "Found path segment \"ui\" in build.js",
+     "Found path segment \"ui\" in docs/installation/prerequisites.rst",
+     "Found path segment \"ui\" in requirements",
+     "Found path segment \"ui\" in requirements/base.in",
+     "Found path segment \"ui\" in requirements/base.txt",
+     "Found path segment \"ui\" in requirements/ci.txt",
+     "Found path segment \"ui\" in requirements/dev.in",
+     "Found path segment \"ui\" in requirements/dev.txt",
+     "Found path segment \"ui\" in requirements/docs.in",
+     "Found path segment \"ui\" in requirements/production.txt",
+     "Found path segment \"ui\" in requirements/test-tools.in",
+     "Found path segment \"ui\" in requirements/type-checking.in",
+     "Found path segment \"ui\" in requirements/type-checking.txt",
+     "Found \"ui\" in repository metadata and docs",
+     "Found path segment \"admin\" in src/nrc/sass/admin/_admin_theme.scss",
+     "Found path segment \"admin\" in src/nrc/sass/admin/_app_overrides.scss",
+     "Found path segment \"admin\" in src/nrc/sass/admin/_vars.scss",
+     "Found path segment \"admin\" in src/nrc/sass/admin/admin_overrides.scss",
+     "Found path segment \"admin\" in src/nrc/sass/admin/themes",
+     "Found path segment \"admin\" in src/nrc/sass/admin/themes/_dark.scss",
+     "Found path segment \"admin\" in src/nrc/sass/admin/themes/_light.scss",
+     "Found path segment \"admin\" in src/nrc/static/img/admin/calendar-alt-regular.svg",
+     "Found path segment \"admin\" in src/nrc/static/img/admin/clock-regular.svg",
+     "Found path segment \"admin\" in src/nrc/static/img/admin/edit-regular.svg",
+     "Found path segment \"admin\" in src/nrc/static/img/admin/plus-square-regular.svg",
+     "Found path segment \"admin\" in src/nrc/static/img/admin/trash-alt-regular.svg",
+     "Found path segment \"admin\" in src/nrc/templates/admin/base_site.html",
+     "Found path segment \"admin\" in src/nrc/templates/admin/datamodel",
+     "Found path segment \"admin\" in src/nrc/templates/admin/datamodel/abonnement",
+     "Found path segment \"admin\" in src/nrc/templates/admin/datamodel/abonnement/change_list.html",
+     "Found path segment \"admin\" in src/nrc/templates/admin/index.html",
+     "Found path segment \"admin\" in src/nrc/templates/admin/login.html",
+     "Found path segment \"admin\" in src/nrc/tests/admin/__init__.py",
+     "Found path segment \"admin\" in src/nrc/tests/admin/test_abonnement.py",
+     "Found path segment \"admin\" in src/nrc/tests/admin/test_cloudevents.py",
+     "Found path segment \"admin\" in src/nrc/tests/admin/test_notifications.py",
+     "Found path segment \"data\" in docker/keycloak/data/test-realm.json",
+     "Found \"postgres\" in repository metadata and docs",
+     "Found path segment \"api\" in docs/api/experimental.rst",
+     "Found path segment \"api\" in docs/api/index.rst",
+     "Found path segment \"api\" in src/nrc/api/__init__.py",
+     "Found path segment \"api\" in src/nrc/api/admin.py",
+     "Found path segment \"api\" in src/nrc/api/fields.py",
+     "Found path segment \"api\" in src/nrc/api/filters.py",
+     "Found path segment \"api\" in src/nrc/api/metrics.py",
+     "Found path segment \"api\" in src/nrc/api/scopes.py",
+     "Found path segment \"api\" in src/nrc/api/serializers.py",
+     "Found path segment \"api\" in src/nrc/api/tasks.py",
+     "Found path segment \"api\" in src/nrc/api/tests",
+     "Found path segment \"api\" in src/nrc/api/tests/__init__.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_abonnement.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_auth.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_cloud_event.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_dso_api_strategy.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_kanaal.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_metrics.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_notificatie.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_queries.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_scheduling.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_tasks.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_urls.py",
+     "Found path segment \"api\" in src/nrc/api/tests/test_validation.py",
+     "Found path segment \"api\" in src/nrc/api/tests/views.py",
+     "Found path segment \"api\" in src/nrc/api/types.py",
+     "Found path segment \"api\" in src/nrc/api/urls.py",
+     "Found path segment \"api\" in src/nrc/api/utils.py",
+     "Found path segment \"api\" in src/nrc/api/validators.py",
+     "Found path segment \"api\" in src/nrc/api/viewsets.py",
+     "Found \"service\" in repository metadata and docs",
+     "Found \"workflow\" in repository metadata and docs",
+     "Found \"zaak\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources. Shown for information; never rated or compared.",
+    "evidence": [
+     "publiccode.yml usedBy: 3 organisations named (2026-11-19)",
+     "Docker Hub openzaak/open-notificaties: 754,781 pulls in total (2026-11-19)",
+     "GitHub open-zaak/open-notificaties: 2 stars, 10 forks, 0 watchers (2026-11-19)",
+     "GitHub commits open-zaak/open-notificaties: 8 contributors, 7 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "publiccode-usedby",
+       "kind": "declared",
+       "source": "publiccode.yml usedBy",
+       "subject": null,
+       "url": null,
+       "measuredAt": "2026-11-19",
+       "caveat": "Self-declared by the maintainers and not verified.",
+       "figures": [
+        {
+         "label": "organisations named",
+         "value": 3
+        }
+       ],
+       "names": [
+        "Gemeente Utrecht",
+        "Gemeente Súdwest-Fryslân",
+        "Gemeente Buren"
+       ]
+      },
+      {
+       "id": "dockerhub:openzaak/open-notificaties",
+       "kind": "containers",
+       "source": "Docker Hub",
+       "subject": "openzaak/open-notificaties",
+       "url": "https://hub.docker.com/r/openzaak/open-notificaties",
+       "caveat": "Counts every pull since the image was published, including CI pulls and automatic updates.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "pulls in total",
+         "value": 754781
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "open-zaak/open-notificaties",
+       "url": "https://github.com/open-zaak/open-notificaties",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 2
+        },
+        {
+         "label": "forks",
+         "value": 10
+        },
+        {
+         "label": "watchers",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "open-zaak/open-notificaties",
+       "url": "https://github.com/open-zaak/open-notificaties/graphs/contributors",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 8
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 7
+        },
+        {
+         "label": "from other organisations",
+         "value": 0
+        },
+        {
+         "label": "unknown",
+         "value": 1
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 4.7
+ },
+ "slas": []
+}
