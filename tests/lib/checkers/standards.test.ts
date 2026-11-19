@@ -51,9 +51,9 @@ describe("checkStandards", () => {
       `Declared: Zaken API 1.5.1 (${ZAKEN_151})`,
       `Declared: Besluiten API 1.1.0 (${BESLUITEN_110})`,
       "Not in the registry: https://example.org/my-standard/1.0",
-      "Declared and found: Zaken API 1.5.1 in src/openzaak/components/zaken/openapi.yaml",
+      "Declared and found: Zaken API 1.5.1 in src/openzaak/components/zaken/openapi.yaml (by title)",
       "Declared, not found in the repository: Besluiten API 1.1.0",
-      "Found in the repository, not declared: Catalogi API 1.3.1 in src/openzaak/components/catalogi/openapi.json",
+      "Found in the repository, not declared: Catalogi API 1.3.1 in src/openzaak/components/catalogi/openapi.json (by title)",
     ]);
   });
 
@@ -75,13 +75,23 @@ describe("checkStandards", () => {
     const files = { "spec/zrc.yaml": ZAKEN_SPEC };
     const result = await checkStandards(contextWith(files), Object.keys(files), ["/spec/zrc.yaml", "https://example.org/x.yaml"]);
     expect(result.message).toContain("No publiccode.yml found, so no standards are declared.");
-    expect(result.evidence).toEqual(["Found in the repository, not declared: Zaken API 1.5.1 in spec/zrc.yaml"]);
+    expect(result.evidence).toEqual(["Found in the repository, not declared: Zaken API 1.5.1 in spec/zrc.yaml (by title)"]);
   });
 
   it("lists each standard and version once, however many copies of a specification the repository has", async () => {
     const files = { "a/openapi.yaml": ZAKEN_SPEC, "b/openapi.yaml": ZAKEN_SPEC, "c/openapi.yaml": "not: [valid" };
     const result = await checkStandards(contextWith(files), Object.keys(files));
-    expect(result.evidence).toEqual(["Found in the repository, not declared: Zaken API 1.5.1 in a/openapi.yaml"]);
+    expect(result.evidence).toEqual(["Found in the repository, not declared: Zaken API 1.5.1 in a/openapi.yaml (by title)"]);
+  });
+
+  it("finds a renamed implementation by its paths, as in Open Notificaties", async () => {
+    const files = {
+      "publiccode.yaml": `supports:\n  - id: "https://vng-realisatie.github.io/gemma-zaken/standaard/notificaties/redoc-1.1.0.html"\n`,
+      "src/openapi.yaml":
+        "openapi: 3.0.3\ninfo:\n  title: Open Notificaties API\n  version: 1.1.0\npaths:\n  /abonnement: {}\n  /kanaal: {}\n  /kanaal/{uuid}: {}\n  /notificaties: {}\n",
+    };
+    const result = await checkStandards(contextWith(files), Object.keys(files));
+    expect(result.evidence).toContain("Declared and found: Notificaties API 1.1.0 in src/openapi.yaml (by paths)");
   });
 
   it("does not count the Common Ground layer as a standard", async () => {

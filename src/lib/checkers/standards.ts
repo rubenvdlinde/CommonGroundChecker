@@ -34,7 +34,7 @@ function parseYaml(content: string | null): unknown {
 }
 
 function foundLabel(found: FoundStandard): string {
-  return `${found.family.name} ${found.version ?? "(no version)"} in ${found.file}`;
+  return `${found.family.name} ${found.version ?? "(no version)"} in ${found.file} (by ${found.method})`;
 }
 
 async function readFoundStandards(
@@ -52,9 +52,10 @@ async function readFoundStandards(
 
   const found: FoundStandard[] = [];
   for (const file of files) {
-    const match = matchOpenApiDocument(parseYaml(await context.provider.getFileContent(context, file)), file);
-    if (match && !found.some((other) => other.family.id === match.family.id && other.version === match.version)) {
-      found.push(match);
+    for (const match of matchOpenApiDocument(parseYaml(await context.provider.getFileContent(context, file)), file)) {
+      if (!found.some((other) => other.family.id === match.family.id && other.version === match.version)) {
+        found.push(match);
+      }
     }
   }
   return found;

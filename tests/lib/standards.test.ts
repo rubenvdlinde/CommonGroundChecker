@@ -5,6 +5,7 @@ import {
   crossCheckStandards,
   describeDeclaredStandard,
   matchOpenApiDocument,
+  openApiResources,
   readSupportsIds,
   resolveSupportsId,
   standardUri,
@@ -110,30 +111,72 @@ describe("readSupportsIds", () => {
 
 describe("matchOpenApiDocument", () => {
   it("matches the official info.title, ignoring case, and keeps the version", () => {
-    expect(matchOpenApiDocument({ info: { title: "zaken api", version: "1.5.1" } }, "api/zrc.yaml")).toMatchObject({
-      family: { id: "zgw-zaken" },
-      version: "1.5.1",
-      file: "api/zrc.yaml",
-    });
-    expect(matchOpenApiDocument({ info: { title: "BRP API Personen", version: 2 } }, "spec.yaml")).toMatchObject({
-      family: { id: "brp-personen" },
-      version: "2",
-    });
+    expect(matchOpenApiDocument({ info: { title: "zaken api", version: "1.5.1" } }, "api/zrc.yaml")).toMatchObject([
+      { family: { id: "zgw-zaken" }, version: "1.5.1", file: "api/zrc.yaml", method: "title" },
+    ]);
+    expect(matchOpenApiDocument({ info: { title: "BRP API Personen", version: 2 } }, "spec.yaml")).toMatchObject([
+      { family: { id: "brp-personen" }, version: "2", method: "title" },
+    ]);
   });
 
-  it("returns null for another API or a document without info", () => {
-    expect(matchOpenApiDocument({ info: { title: "OpenRegister API", version: "1.0.0" } }, "a.yaml")).toBeNull();
-    expect(matchOpenApiDocument({ openapi: "3.0.0" }, "a.yaml")).toBeNull();
-    expect(matchOpenApiDocument("text", "a.yaml")).toBeNull();
+  it("matches a renamed specification by the standard's top-level resources", () => {
+    const openNotificaties = {
+      info: { title: "Open Notificaties API", version: "1.1.0" },
+      paths: { "/abonnement": {}, "/abonnement/{uuid}": {}, "/kanaal": {}, "/kanaal/{uuid}": {}, "/notificaties": {} },
+    };
+    expect(matchOpenApiDocument(openNotificaties, "src/openapi.yaml")).toMatchObject([
+      { family: { id: "zgw-notificaties" }, version: "1.1.0", method: "paths" },
+    ]);
+  });
+
+  it("reads resources after a version segment, and not from nested paths", () => {
+    const zaken = {
+      info: { title: "Zaken", version: "1.3.0" },
+      paths: {
+        "/api/v1/zaken": {},
+        "/api/v1/statussen": {},
+        "/api/v1/resultaten": {},
+        "/api/v1/zaken/{zaak_uuid}/besluiten": {},
+        "/api/v1/zaakinformatieobjecten": {},
+      },
+    };
+    expect(matchOpenApiDocument(zaken, "a.yaml").map((found) => found.family.id)).toEqual(["zgw-zaken"]);
+  });
+
+  it("finds every standard a combined specification implements", () => {
+    const combined = {
+      info: { title: "Gateway" },
+      paths: { "/zaken": {}, "/statussen": {}, "/resultaten": {}, "/catalogussen": {}, "/zaaktypen/{uuid}": {}, "/zaaktypen": {} },
+    };
+    expect(matchOpenApiDocument(combined, "a.yaml").map((found) => [found.family.id, found.version])).toEqual([
+      ["zgw-zaken", null],
+      ["zgw-catalogi", null],
+    ]);
+  });
+
+  it("finds nothing in another API or a document that is not a specification", () => {
+    expect(matchOpenApiDocument({ info: { title: "OpenRegister API" }, paths: { "/zaken": {} } }, "a.yaml")).toEqual([]);
+    expect(matchOpenApiDocument({ openapi: "3.0.0" }, "a.yaml")).toEqual([]);
+    expect(matchOpenApiDocument("text", "a.yaml")).toEqual([]);
   });
 
   it("keeps a document without a version as found without one", () => {
-    expect(matchOpenApiDocument({ info: { title: "Objects API" } }, "a.yaml")?.version).toBeNull();
+    expect(matchOpenApiDocument({ info: { title: "Objects API" } }, "a.yaml")[0]?.version).toBeNull();
+  });
+});
+
+describe("openApiResources", () => {
+  it("takes the first segment after the last version segment, else the first, and skips parameters", () => {
+    expect([...openApiResources({ "/api/v1/zaken/{uuid}": {}, "/kanaal": {}, "/{id}": {}, "/": {} })]).toEqual([
+      "zaken",
+      "kanaal",
+    ]);
+    expect(openApiResources(null).size).toBe(0);
   });
 });
 
 describe("crossCheckStandards", () => {
-  const found = (id: string, version: string, file: string) => ({ family: family(id), version, file });
+  const found = (id: string, version: string, file: string) => ({ family: family(id), version, file, method: "title" as const });
 
   it("sorts declared and found standards into the three groups", () => {
     const declared = [

@@ -240,7 +240,7 @@ const STANDARDS_TO_AGREE: Array<{ name: string; group?: string; note: string; so
 
 /** Where the URIs come from, shown below the standards table. */
 export const STANDARD_NOTES = [
-  "ZGW APIs: VNG Realisatie publishes one documentation page per version, redoc-{version}.html. The OpenAPI files of these versions have info.title equal to the API name and info.version equal to the version.",
+  "ZGW APIs: VNG Realisatie publishes one documentation page per version, redoc-{version}.html. The OpenAPI files of these versions have info.title equal to the API name and info.version equal to the version. An implementation that renames its specification, such as Open Notificaties, is recognised by the API's top-level resources instead, for example kanaal and notificaties for the Notificaties API. Those resources are in every published version.",
   "NL API Design Rules and Digikoppeling: Logius publishes each version under its own path. Digikoppeling has no overall version since 2018, so each part is a standard of its own.",
   "StUF: the id is the XML namespace of StUF 03.01 from stuf0301.xsd. It identifies the version, but is not a web page.",
   "The checker recognises BRP API Personen, the Objects API and the Objecttypes API in OpenAPI files by their info.title, even though their URI is still to agree.",

@@ -163,7 +163,8 @@ export default function PubliccodeProfilePage() {
         </Code>
         <p className="text-gray-700">
           The Supported standards criterion lists what you declare and compares it with the OpenAPI files in the
-          repository, by their info.title and info.version. It reports declared and found, declared but not found in
+          repository. It recognises a file by its info.title, or else by the top-level resources of the standard,
+          and takes the version from info.version. Each match says which way it was found. It reports declared and found, declared but not found in
           the repository, and found in the repository but not declared. It is informative: it has no stars and does
           not count in a rating or in the verdict.
         </p>

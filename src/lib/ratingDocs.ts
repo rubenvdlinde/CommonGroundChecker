@@ -645,7 +645,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
           {
             checkId: "standards",
             name: "Supported standards",
-            tool: "publiccode.yml supports, compared with the info.title and info.version of the OpenAPI files",
+            tool: "publiccode.yml supports, compared with the OpenAPI files by their info.title or their top-level resources, and their info.version",
           },
         ],
         rating: [

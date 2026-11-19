@@ -27,6 +27,11 @@ export interface StandardFamily {
   versions: string[];
   /** `info.title` of the official OpenAPI specification, to recognise it in a repository */
   openApiTitles?: string[];
+  /**
+   * Top-level resources every official OpenAPI file of the standard has, checked against each
+   * published version; recognises an implementation that gives its specification another title.
+   */
+  openApiResources?: string[];
   source: StandardSource;
 }
 
@@ -35,7 +40,7 @@ const ZGW_SOURCE: StandardSource = {
   url: "https://vng-realisatie.github.io/gemma-zaken/standaard/",
 };
 
-function zgw(id: string, name: string, path: string, versions: string[]): StandardFamily {
+function zgw(id: string, name: string, path: string, versions: string[], resources: string[]): StandardFamily {
   return {
     id,
     name,
@@ -43,6 +48,7 @@ function zgw(id: string, name: string, path: string, versions: string[]): Standa
     uriTemplate: `https://vng-realisatie.github.io/gemma-zaken/standaard/${path}/redoc-{version}.html`,
     versions,
     openApiTitles: [name],
+    openApiResources: resources,
     source: ZGW_SOURCE,
   };
 }
@@ -67,17 +73,19 @@ export const STANDARD_FAMILIES: StandardFamily[] = [
   zgw("zgw-zaken", "Zaken API", "zaken", [
     "1.0.0", "1.0.1", "1.0.2", "1.1.0", "1.2.0", "1.3.0", "1.3.1", "1.4.0", "1.4.1", "1.5.0", "1.5.1", "1.6.0",
     "1.7.0", "1.8.0",
-  ]),
+  ], ["zaken", "statussen", "resultaten"]),
   zgw("zgw-documenten", "Documenten API", "documenten", [
     "1.0.0", "1.0.1", "1.1.0", "1.1.1", "1.2.0", "1.3.0", "1.3.1", "1.3.2", "1.4.0", "1.4.1", "1.5.0", "1.6.0",
     "1.7.0", "1.8.0",
-  ]),
+  ], ["enkelvoudiginformatieobjecten", "gebruiksrechten"]),
   zgw("zgw-catalogi", "Catalogi API", "catalogi", [
     "1.0.0", "1.0.1", "1.1.0", "1.2.0", "1.3.0", "1.3.1", "1.3.2", "1.3.3", "1.4.0",
+  ], ["catalogussen", "zaaktypen"]),
+  zgw("zgw-besluiten", "Besluiten API", "besluiten", ["1.0.0", "1.0.1", "1.0.2", "1.1.0"], [
+    "besluiten", "besluitinformatieobjecten",
   ]),
-  zgw("zgw-besluiten", "Besluiten API", "besluiten", ["1.0.0", "1.0.1", "1.0.2", "1.1.0"]),
-  zgw("zgw-notificaties", "Notificaties API", "notificaties", ["1.0.0", "1.0.1", "1.1.0"]),
-  zgw("zgw-autorisaties", "Autorisaties API", "autorisaties", ["1.0.0", "1.0.1", "1.1.0"]),
+  zgw("zgw-notificaties", "Notificaties API", "notificaties", ["1.0.0", "1.0.1", "1.1.0"], ["kanaal", "notificaties"]),
+  zgw("zgw-autorisaties", "Autorisaties API", "autorisaties", ["1.0.0", "1.0.1", "1.1.0"], ["applicaties"]),
   {
     id: "api-design-rules",
     name: "NL API Design Rules",
@@ -231,24 +239,55 @@ export function describeDeclaredStandard(declared: DeclaredStandard): string {
 /** An API specification found in the repository that implements a standard in the registry. */
 export interface FoundStandard {
   family: StandardFamily;
+  /** `info.version` of the file; for a specification matched by its paths, the implementation may number it its own way */
   version: string | null;
   file: string;
+  /** Matched by the official `info.title`, or by the standard's top-level resources */
+  method: "title" | "paths";
 }
 
-/** The standard an OpenAPI document implements, by its `info.title` and `info.version`. */
-export function matchOpenApiDocument(parsed: unknown, file: string): FoundStandard | null {
-  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
-  const info = (parsed as Record<string, unknown>).info;
-  if (!info || typeof info !== "object" || Array.isArray(info)) return null;
-  const { title, version } = info as Record<string, unknown>;
-  if (typeof title !== "string") return null;
-  const wanted = title.trim().toLowerCase();
-  const family = STANDARD_FAMILIES.find((candidate) =>
+/**
+ * The top-level resources of an OpenAPI document: the first path segment after a version
+ * segment such as `v1`, else the first segment. `/api/v1/zaken/{uuid}` gives `zaken`.
+ */
+export function openApiResources(paths: unknown): Set<string> {
+  const resources = new Set<string>();
+  if (!paths || typeof paths !== "object" || Array.isArray(paths)) return resources;
+  for (const path of Object.keys(paths)) {
+    const segments = path.split("/").filter(Boolean);
+    const versionAt = segments.map((segment) => /^v\d+$/i.test(segment)).lastIndexOf(true);
+    const resource = segments[versionAt + 1];
+    if (resource && !resource.startsWith("{")) resources.add(resource.toLowerCase());
+  }
+  return resources;
+}
+
+/**
+ * The standards an OpenAPI document implements: the one whose official `info.title` it has,
+ * else every standard whose top-level resources it has. The version is `info.version`.
+ */
+export function matchOpenApiDocument(parsed: unknown, file: string): FoundStandard[] {
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return [];
+  const document = parsed as Record<string, unknown>;
+  const info = document.info && typeof document.info === "object" && !Array.isArray(document.info)
+    ? (document.info as Record<string, unknown>)
+    : {};
+  const versionText =
+    typeof info.version === "string" || typeof info.version === "number" ? String(info.version).trim() : "";
+  const version = versionText || null;
+
+  const wanted = typeof info.title === "string" ? info.title.trim().toLowerCase() : "";
+  const byTitle = STANDARD_FAMILIES.find((candidate) =>
     (candidate.openApiTitles ?? []).some((known) => known.toLowerCase() === wanted)
   );
-  if (!family) return null;
-  const versionText = typeof version === "string" || typeof version === "number" ? String(version).trim() : "";
-  return { family, version: versionText || null, file };
+  if (byTitle) return [{ family: byTitle, version, file, method: "title" }];
+
+  const resources = openApiResources(document.paths);
+  return STANDARD_FAMILIES.filter(
+    (candidate) =>
+      (candidate.openApiResources ?? []).length > 0 &&
+      (candidate.openApiResources ?? []).every((resource) => resources.has(resource))
+  ).map((family) => ({ family, version, file, method: "paths" as const }));
 }
 
 export interface StandardsCrossCheck {

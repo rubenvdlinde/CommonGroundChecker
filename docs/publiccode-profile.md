@@ -29,7 +29,7 @@ supports:
   - id: "alias:gdpr"
 ```
 
-The **Supported standards** criterion lists what you declare and compares it with the OpenAPI files in the repository, by their `info.title` and `info.version`. It reports declared and found, declared but not found in the repository, and found in the repository but not declared. It is informative: it has no stars and does not count in a rating or in the verdict.
+The **Supported standards** criterion lists what you declare and compares it with the OpenAPI files in the repository. It recognises a file by its `info.title`, or else by the top-level resources of the standard, and takes the version from `info.version`. Each match says which way it was found. It reports declared and found, declared but not found in the repository, and found in the repository but not declared. It is informative: it has no stars and does not count in a rating or in the verdict.
 
 ### Known standards
 
@@ -57,7 +57,7 @@ Replace `{version}` in the `supports` id with one of the versions. Every URI was
 
 Notes on the sources:
 
-- ZGW APIs: VNG Realisatie publishes one documentation page per version, redoc-{version}.html. The OpenAPI files of these versions have info.title equal to the API name and info.version equal to the version.
+- ZGW APIs: VNG Realisatie publishes one documentation page per version, redoc-{version}.html. The OpenAPI files of these versions have info.title equal to the API name and info.version equal to the version. An implementation that renames its specification, such as Open Notificaties, is recognised by the API's top-level resources instead, for example kanaal and notificaties for the Notificaties API. Those resources are in every published version.
 - NL API Design Rules and Digikoppeling: Logius publishes each version under its own path. Digikoppeling has no overall version since 2018, so each part is a standard of its own.
 - StUF: the id is the XML namespace of StUF 03.01 from stuf0301.xsd. It identifies the version, but is not a web page.
 - The checker recognises BRP API Personen, the Objects API and the Objecttypes API in OpenAPI files by their info.title, even though their URI is still to agree.
