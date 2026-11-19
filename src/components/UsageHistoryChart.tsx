@@ -25,7 +25,7 @@ const PLOT_RIGHT = CHART_WIDTH - PADDING.right;
 const PLOT_TOP = PADDING.top;
 const PLOT_BOTTOM = CHART_HEIGHT - PADDING.bottom;
 
-/** The top of the count axis: the highest count or the minimum for Approved, whichever is larger. */
+/** The top of the count axis: the highest count or the minimum for Maintained, whichever is larger. */
 export function axisMax(counts: number[], minUsers: number): number {
   return Math.max(minUsers, ...counts, 1);
 }
@@ -96,7 +96,7 @@ export default function UsageHistoryChart({ analyses, minUsers }: UsageHistoryCh
   const last = points[points.length - 1];
   const description = `Users declared in publiccode.yml in ${points.length} scans from ${formatDay(first.checkedAt)} to ${formatDay(
     last.checkedAt
-  )}. Latest: ${last.declared}. Approved asks for ${minUsers}.`;
+  )}. Latest: ${last.declared}. Maintained asks for ${minUsers}.`;
   const linePath = points
     .map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)},${point.y.toFixed(1)}`)
     .join(" ");

@@ -3,7 +3,7 @@ import EndorsementChip from "@/components/EndorsementChip";
 import OrganisationsSourceNote from "@/components/OrganisationsSourceNote";
 import RatingBadge from "@/components/RatingBadge";
 import { getOrganisation } from "@/lib/apiClient";
-import { computeApproval, developmentStatusOf, minUsers } from "@/lib/approval";
+import { computeMaintained, developmentStatusOf, minUsers } from "@/lib/maintained";
 import { componentCountLabel } from "@/lib/organisations";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import type { OrganisationDetail } from "@/generated/openapi-client";
@@ -73,7 +73,7 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
         {components.map((component, index) => {
           const analysis = component.latestAnalysis!;
           const { rating, endorsement } = ratings[index];
-          const approval = computeApproval({
+          const level = computeMaintained({
             endorsement,
             developmentStatus: developmentStatusOf(analysis.results),
             declaredUserCount: analysis.declaredUserCount ?? null,
@@ -100,12 +100,12 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
                 <EndorsementChip endorsement={endorsement} />
                 <span
                   className={`inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border ${
-                    approval.approved
+                    level.maintained
                       ? "border-green-300 text-green-700 bg-green-50"
                       : "border-gray-300 text-gray-600 bg-gray-50"
                   }`}
                 >
-                  {approval.approved ? "Approved" : "Not approved"}
+                  {level.maintained ? "Approved" : "Not approved"}
                 </span>
               </div>
             </li>

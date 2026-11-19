@@ -202,11 +202,12 @@ export function computeRatings(
 
 /**
  * A component is suitable for Common Ground when no mandatory criterion fails,
- * its overall rating is at least 2.5, it is maintained, and its estimated
- * maintainability is at least 4 stars (3.5). The verdict is advice for a
- * buyer, not a condition for being listed. The reasons name each failing
+ * its overall rating is at least 2.5, it has a valid maintenance contract, and
+ * its estimated maintainability is at least 4 stars (3.5). It is the threshold
+ * the Common Ground programme uses to decide whether to adopt a component as
+ * supported, not a condition for being listed. The reasons name each failing
  * mandatory criterion, a rating that is too low, in the words of the
- * Maintained criterion why there is no valid maintenance contract, and a
+ * Maintenance contract criterion why there is no valid contract, and a
  * maintainability below 4 stars or not measured. A scan without the
  * maintenance criterion is not judged on it.
  */

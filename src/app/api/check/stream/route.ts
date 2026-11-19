@@ -1,5 +1,5 @@
 ﻿import { runChecks } from "@/lib/checkers";
-import { declaredUsersOf } from "@/lib/approval";
+import { declaredUsersOf } from "@/lib/maintained";
 import { countIssues } from "@/lib/issues";
 import { getSupportedProviders, resolveRepositoryContext } from "@/lib/providers";
 import type { CheckReport } from "@/lib/types";

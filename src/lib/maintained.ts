@@ -1,6 +1,6 @@
 import type { CheckResult, Endorsement } from "./types";
 
-/** The proposed minimum of users declared in publiccode.yml for Approved; `MIN_USERS` overrides it. */
+/** The proposed minimum of users declared in publiccode.yml for Maintained; `MIN_USERS` overrides it. */
 export const DEFAULT_MIN_USERS = 2;
 
 /** `MIN_USERS` as a whole number of at least 1, else the default. */
@@ -24,7 +24,7 @@ export function developmentStatusOf(results: unknown): string | null {
   return null;
 }
 
-export interface ApprovalSla {
+export interface MaintainedSla {
   party: string;
   maintainer: string;
   startsOn: string;
@@ -34,43 +34,43 @@ export interface ApprovalSla {
 }
 
 /** An SLA is valid up to and including its `until` day, the same rule as a maintenance contract in publiccode.yml. */
-export function isSlaValid(sla: Pick<ApprovalSla, "until">, today: string): boolean {
+export function isSlaValid(sla: Pick<MaintainedSla, "until">, today: string): boolean {
   return sla.until >= today;
 }
 
-export interface Approval {
-  /** Approved: suitable for Common Ground, stable, enough users declared in publiccode.yml and a valid SLA */
-  approved: boolean;
-  /** Why the component is not approved, in the order of the conditions */
+export interface MaintainedLevelResult {
+  /** Maintained: suitable for Common Ground, stable, enough users declared in publiccode.yml and a valid SLA */
+  maintained: boolean;
+  /** Why the component is not Maintained, in the order of the conditions */
   reasons: string[];
   /** The valid SLA that ends last, or null */
-  sla: ApprovalSla | null;
+  sla: MaintainedSla | null;
 }
 
-export interface ApprovalInput {
+export interface MaintainedInput {
   endorsement: Endorsement;
   /** `developmentStatus` of the scanned publiccode.yml; null when it is not declared */
   developmentStatus: string | null;
   /** Organisations under `usedBy` in the scanned publiccode.yml; null when the scan did not record them */
   declaredUserCount: number | null;
-  slas: ApprovalSla[];
+  slas: MaintainedSla[];
   minUsers: number;
   /** Today as YYYY-MM-DD */
   today: string;
 }
 
 /**
- * Approved is the level above Suitable for Common Ground: the component is
+ * Maintained is the level above Suitable for Common Ground: the component is
  * suitable, its publiccode.yml declares `developmentStatus: stable` and at
  * least `minUsers` organisations under `usedBy`, and an SLA is valid. Usage
  * counts only here, never in a rating.
  */
-export function computeApproval(input: ApprovalInput): Approval {
+export function computeMaintained(input: MaintainedInput): MaintainedLevelResult {
   const reasons: string[] = [];
   if (!input.endorsement.passed) reasons.push("Not yet suitable for Common Ground");
   if (input.developmentStatus?.toLowerCase() !== "stable") {
     reasons.push(
-      `development status is ${input.developmentStatus ?? "not declared"}, only stable components can be approved`
+      `development status is ${input.developmentStatus ?? "not declared"}, only a stable component can be Maintained`
     );
   }
 
@@ -85,5 +85,5 @@ export function computeApproval(input: ApprovalInput): Approval {
   if (byEnd.length === 0) reasons.push("No SLA");
   else if (!sla) reasons.push(`SLA expired on ${byEnd[0].until}`);
 
-  return { approved: reasons.length === 0, reasons, sla };
+  return { maintained: reasons.length === 0, reasons, sla };
 }
