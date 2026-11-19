@@ -44,7 +44,7 @@ export default function RootLayout({
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="inline-flex items-center min-h-[44px] text-white hover:text-cg-lightblue transition-colors"
+                  className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-white hover:text-cg-lightblue transition-colors"
                 >
                   {link.label}
                 </Link>
