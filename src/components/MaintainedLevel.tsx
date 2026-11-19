@@ -1,8 +1,8 @@
-import type { Approval } from "@/lib/approval";
+import type { MaintainedLevelResult } from "@/lib/maintained";
 import type { Endorsement } from "@/lib/types";
 
-interface ApprovalLevelProps {
-  approval: Approval;
+interface MaintainedLevelProps {
+  level: MaintainedLevelResult;
   endorsement: Endorsement;
   minUsers: number;
 }
@@ -44,23 +44,23 @@ function LevelRow({
   );
 }
 
-/** The two levels, Approved above Suitable for Common Ground, with the reasons a level is not reached. */
-export default function ApprovalLevel({ approval, endorsement, minUsers }: ApprovalLevelProps) {
+/** The two levels, Maintained above Suitable for Common Ground, with the reasons a level is not reached. */
+export default function MaintainedLevel({ level, endorsement, minUsers }: MaintainedLevelProps) {
   return (
     <ol aria-label="Levels" className="space-y-2">
       <LevelRow
-        title="Approved"
-        reached={approval.approved}
+        title="Maintained"
+        reached={level.maintained}
         detail={`Suitable for Common Ground, stable, used by at least ${minUsers} organisations declared in publiccode.yml and maintained under a valid SLA.${
-          approval.sla ? ` SLA: ${approval.sla.party} with ${approval.sla.maintainer}, until ${approval.sla.until}.` : ""
+          level.sla ? ` SLA: ${level.sla.party} with ${level.sla.maintainer}, until ${level.sla.until}.` : ""
         }`}
-        reasons={approval.reasons}
-        reasonsLabel="Why it is not approved"
+        reasons={level.reasons}
+        reasonsLabel="Why it is not yet Maintained"
       />
       <LevelRow
         title="Suitable for Common Ground"
         reached={endorsement.passed}
-        detail="The checker finds that the component meets the technical conditions. Advice to buyers, not a condition to be listed."
+        detail="The checker finds that the component meets the technical conditions. This is the threshold the Common Ground programme uses to decide whether to adopt a component as supported. It is not a condition for being listed."
         reasons={endorsement.reasons}
         reasonsLabel="Why it is not yet suitable"
       />

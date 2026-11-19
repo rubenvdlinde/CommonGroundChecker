@@ -26,7 +26,7 @@ describe("buildUsagePoints", () => {
 });
 
 describe("axisMax", () => {
-  it("reaches at least the minimum for Approved", () => {
+  it("reaches at least the minimum for Maintained", () => {
     expect(axisMax([1], 2)).toBe(2);
     expect(axisMax([8, 3], 2)).toBe(8);
     expect(axisMax([0], 0)).toBe(1);
@@ -40,7 +40,7 @@ describe("UsageHistoryChart", () => {
     render(<UsageHistoryChart analyses={analyses} minUsers={2} />);
 
     expect(screen.getByText("Users declared in publiccode.yml over time")).toBeTruthy();
-    expect(screen.getByText(/Latest: 8. Approved asks for 2./)).toBeTruthy();
+    expect(screen.getByText(/Latest: 8. Maintained asks for 2./)).toBeTruthy();
     expect(screen.getByText("proposed minimum 2")).toBeTruthy();
     expect(screen.getAllByRole("row")).toHaveLength(3);
   });

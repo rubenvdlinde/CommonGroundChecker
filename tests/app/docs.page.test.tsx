@@ -94,13 +94,13 @@ describe("RatingGuidePage", () => {
     expect(screen.getByText(/not a SIG rating and not a certification/)).toBeTruthy();
   });
 
-  it("explains Approved as the level above suitable, with usage never rated", () => {
+  it("explains Maintained as the level above suitable, with usage never rated", () => {
     render(<RatingGuidePage />);
 
-    const approved = screen.getByText("A component is approved").closest("li");
-    expect(approved?.textContent).toContain("declares the development status stable and at least 2 organisations under usedBy, and an SLA is valid");
-    expect(approved?.textContent).toContain("The minimum is a proposal");
-    expect(approved?.textContent).toContain("never gives stars and never counts in a rating");
+    const maintained = screen.getByText("A component is Maintained").closest("li");
+    expect(maintained?.textContent).toContain("declares the development status stable and at least 2 organisations under usedBy, and an SLA is valid");
+    expect(maintained?.textContent).toContain("The minimum is a proposal");
+    expect(maintained?.textContent).toContain("never gives stars and never counts in a rating");
   });
 
   it("calls suitable for Common Ground the programme's threshold, not advice and not a listing condition", () => {

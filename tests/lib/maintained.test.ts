@@ -1,19 +1,19 @@
 import { describe, expect, it } from "vitest";
 import {
-  computeApproval,
+  computeMaintained,
   declaredUsersOf,
   developmentStatusOf,
   DEFAULT_MIN_USERS,
   isSlaValid,
   minUsers,
-  type ApprovalInput,
-} from "@/lib/approval";
+  type MaintainedInput,
+} from "@/lib/maintained";
 import type { CheckResult } from "@/lib/types";
 
 const today = "2026-11-19";
 const validSla = { party: "VNG", maintainer: "Maykin Media", startsOn: "2026-01-01", until: "2027-12-31" };
 
-function input(overrides: Partial<ApprovalInput> = {}): ApprovalInput {
+function input(overrides: Partial<MaintainedInput> = {}): MaintainedInput {
   return {
     endorsement: { passed: true, reasons: [] },
     developmentStatus: "stable",
@@ -76,56 +76,56 @@ describe("isSlaValid", () => {
   });
 });
 
-describe("computeApproval", () => {
-  it("approves a suitable component with enough declared users and a valid SLA", () => {
-    expect(computeApproval(input())).toEqual({ approved: true, reasons: [], sla: validSla });
+describe("computeMaintained", () => {
+  it("reaches Maintained for a suitable component with enough declared users and a valid SLA", () => {
+    expect(computeMaintained(input())).toEqual({ maintained: true, reasons: [], sla: validSla });
   });
 
-  it("is not approved when the component is not suitable", () => {
-    const approval = computeApproval(input({ endorsement: { passed: false, reasons: ["Overall rating below 2.5"] } }));
-    expect(approval.approved).toBe(false);
-    expect(approval.reasons).toEqual(["Not yet suitable for Common Ground"]);
+  it("is not Maintained when the component is not suitable", () => {
+    const level = computeMaintained(input({ endorsement: { passed: false, reasons: ["Overall rating below 2.5"] } }));
+    expect(level.maintained).toBe(false);
+    expect(level.reasons).toEqual(["Not yet suitable for Common Ground"]);
   });
 
-  it("approves a stable component, whatever the case of the value", () => {
-    expect(computeApproval(input({ developmentStatus: "Stable" })).approved).toBe(true);
+  it("reaches Maintained for a stable component, whatever the case of the value", () => {
+    expect(computeMaintained(input({ developmentStatus: "Stable" })).maintained).toBe(true);
   });
 
-  it.each(["beta", "development", "concept", "obsolete"])("does not approve a %s component", (status) => {
-    const approval = computeApproval(input({ developmentStatus: status }));
-    expect(approval.approved).toBe(false);
-    expect(approval.reasons).toEqual([`development status is ${status}, only stable components can be approved`]);
+  it.each(["beta", "development", "concept", "obsolete"])("does not reach Maintained for a %s component", (status) => {
+    const level = computeMaintained(input({ developmentStatus: status }));
+    expect(level.maintained).toBe(false);
+    expect(level.reasons).toEqual([`development status is ${status}, only a stable component can be Maintained`]);
   });
 
-  it("does not approve when publiccode.yml declares no development status", () => {
-    expect(computeApproval(input({ developmentStatus: null })).reasons).toEqual([
-      "development status is not declared, only stable components can be approved",
+  it("does not reach Maintained when publiccode.yml declares no development status", () => {
+    expect(computeMaintained(input({ developmentStatus: null })).reasons).toEqual([
+      "development status is not declared, only a stable component can be Maintained",
     ]);
   });
 
   it("names the users declared in publiccode.yml against the minimum", () => {
-    expect(computeApproval(input({ declaredUserCount: 1 })).reasons).toEqual(["1 of 2 users declared in publiccode.yml"]);
-    expect(computeApproval(input({ declaredUserCount: 2, minUsers: 3 })).reasons).toEqual([
+    expect(computeMaintained(input({ declaredUserCount: 1 })).reasons).toEqual(["1 of 2 users declared in publiccode.yml"]);
+    expect(computeMaintained(input({ declaredUserCount: 2, minUsers: 3 })).reasons).toEqual([
       "2 of 3 users declared in publiccode.yml",
     ]);
   });
 
-  it("approves with more declared users than the minimum", () => {
-    expect(computeApproval(input({ declaredUserCount: 5 })).approved).toBe(true);
+  it("reaches Maintained with more declared users than the minimum", () => {
+    expect(computeMaintained(input({ declaredUserCount: 5 })).maintained).toBe(true);
   });
 
   it("says when the users were not counted", () => {
-    expect(computeApproval(input({ declaredUserCount: null })).reasons).toEqual([
+    expect(computeMaintained(input({ declaredUserCount: null })).reasons).toEqual([
       "Users not counted yet: the latest scan did not record usedBy",
     ]);
   });
 
   it("says when there is no SLA", () => {
-    expect(computeApproval(input({ slas: [] })).reasons).toEqual(["No SLA"]);
+    expect(computeMaintained(input({ slas: [] })).reasons).toEqual(["No SLA"]);
   });
 
   it("names the latest end date when every SLA expired", () => {
-    const approval = computeApproval(
+    const level = computeMaintained(
       input({
         slas: [
           { ...validSla, until: "2025-06-30" },
@@ -133,23 +133,23 @@ describe("computeApproval", () => {
         ],
       })
     );
-    expect(approval.reasons).toEqual(["SLA expired on 2026-11-18"]);
-    expect(approval.sla).toBeNull();
+    expect(level.reasons).toEqual(["SLA expired on 2026-11-18"]);
+    expect(level.sla).toBeNull();
   });
 
   it("uses a valid SLA next to an expired one", () => {
-    const approval = computeApproval(input({ slas: [{ ...validSla, until: "2025-01-01" }, validSla] }));
-    expect(approval.approved).toBe(true);
-    expect(approval.sla).toEqual(validSla);
+    const level = computeMaintained(input({ slas: [{ ...validSla, until: "2025-01-01" }, validSla] }));
+    expect(level.maintained).toBe(true);
+    expect(level.sla).toEqual(validSla);
   });
 
   it("lists every missing condition in order", () => {
-    const approval = computeApproval(
+    const level = computeMaintained(
       input({ endorsement: { passed: false, reasons: [] }, developmentStatus: "beta", declaredUserCount: 0, slas: [] })
     );
-    expect(approval.reasons).toEqual([
+    expect(level.reasons).toEqual([
       "Not yet suitable for Common Ground",
-      "development status is beta, only stable components can be approved",
+      "development status is beta, only a stable component can be Maintained",
       "0 of 2 users declared in publiccode.yml",
       "No SLA",
     ]);

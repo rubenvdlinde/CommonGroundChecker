@@ -37,7 +37,7 @@ describe("RepoHistoryPage", () => {
     expect(screen.getByRole("img", { name: "Overall rating 0.5 of 5.5, 1 star" })).toBeTruthy();
   });
 
-  it("shows Approved above Suitable with the reasons, and the users over time", async () => {
+  it("shows Maintained above Suitable with the reasons, and the users over time", async () => {
     process.env.MIN_USERS = "3";
     getAdminScoring.mockRejectedValue(new Error("offline"));
     getRepoHistory.mockResolvedValue({
@@ -57,11 +57,11 @@ describe("RepoHistoryPage", () => {
 
     expect(getRepositoryUsage).toHaveBeenCalledWith("repo-id");
     const levels = screen.getByRole("list", { name: "Levels" });
-    expect(levels.textContent?.indexOf("Approved")).toBeLessThan(levels.textContent?.indexOf("Suitable for Common Ground") ?? 0);
-    const reasons = screen.getByRole("list", { name: "Why it is not approved" });
+    expect(levels.textContent?.indexOf("Maintained")).toBeLessThan(levels.textContent?.indexOf("Suitable for Common Ground") ?? 0);
+    const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
     expect(reasons.textContent).toContain("1 of 3 users declared in publiccode.yml");
     expect(reasons.textContent).toContain("No SLA");
-    expect(reasons.textContent).toContain("development status is beta, only stable components can be approved");
+    expect(reasons.textContent).toContain("development status is beta, only a stable component can be Maintained");
     expect(screen.getByText("Users declared in publiccode.yml over time")).toBeTruthy();
   });
 
@@ -76,6 +76,6 @@ describe("RepoHistoryPage", () => {
     render(await RepoHistoryPage({ params: Promise.resolve({ owner: "org", repo: "repo" }) }));
 
     expect(screen.getByText("Usage could not be loaded from the backend.")).toBeTruthy();
-    expect(screen.getByRole("list", { name: "Why it is not approved" }).textContent).toContain("Not yet suitable");
+    expect(screen.getByRole("list", { name: "Why it is not yet Maintained" }).textContent).toContain("Not yet suitable");
   });
 });

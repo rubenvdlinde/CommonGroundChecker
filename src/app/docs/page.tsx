@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { minUsers } from "@/lib/approval";
+import { minUsers } from "@/lib/maintained";
 import { RATING_DOCS } from "@/lib/ratingDocs";
 
 export const metadata: Metadata = {
@@ -77,7 +77,7 @@ export default function RatingGuidePage() {
             is still listed.
           </li>
           <li>
-            <strong>A component is approved</strong>, the level above suitable, when it is suitable for Common
+            <strong>A component is Maintained</strong>, the level above suitable, when it is suitable for Common
             Ground, its publiccode.yml declares the development status stable and at least{" "}
             {minUsers()} organisations under usedBy, and an SLA is valid. The usedBy list is self-declared by the
             maintainers and not verified. An SLA is valid up to and including its end date. The minimum is a

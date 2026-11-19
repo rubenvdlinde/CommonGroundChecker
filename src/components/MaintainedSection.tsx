@@ -1,12 +1,12 @@
 "use client";
 
 import { useId, useState } from "react";
-import ApprovalLevel from "@/components/ApprovalLevel";
+import MaintainedLevel from "@/components/MaintainedLevel";
 import { deleteSla, postSla, type UsageStatus } from "@/lib/apiClient";
-import { computeApproval } from "@/lib/approval";
+import { computeMaintained } from "@/lib/maintained";
 import type { Endorsement } from "@/lib/types";
 
-interface ApprovalSectionProps {
+interface MaintainedSectionProps {
   repoId: string;
   endorsement: Endorsement;
   /** `developmentStatus` of the latest scanned publiccode.yml, or null */
@@ -39,14 +39,14 @@ function usageSummary(usage: UsageStatus | null): string {
   return `${declared} ${declared === 1 ? "organisation" : "organisations"} named under usedBy in publiccode.yml.`;
 }
 
-export default function ApprovalSection({
+export default function MaintainedSection({
   repoId,
   endorsement,
   developmentStatus,
   initialUsage,
   minUsers,
   today,
-}: ApprovalSectionProps) {
+}: MaintainedSectionProps) {
   const idPrefix = useId();
   const [usage, setUsage] = useState(initialUsage);
   const [adminToken, setAdminToken] = useState("");
@@ -54,7 +54,7 @@ export default function ApprovalSection({
   const [message, setMessage] = useState<{ kind: "success" | "error"; text: string } | null>(null);
   const [sla, setSla] = useState({ party: "VNG", maintainer: "", startsOn: today, until: "", link: "" });
 
-  const approval = computeApproval({
+  const level = computeMaintained({
     endorsement,
     developmentStatus,
     declaredUserCount: usage ? usage.declaredUserCount ?? null : null,
@@ -92,11 +92,12 @@ export default function ApprovalSection({
 
   return (
     <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
-      <h3 className="text-lg font-semibold text-gray-800">Approval</h3>
-      <ApprovalLevel approval={approval} endorsement={endorsement} minUsers={minUsers} />
+      <h3 className="text-lg font-semibold text-gray-800">Level</h3>
+      <MaintainedLevel level={level} endorsement={endorsement} minUsers={minUsers} />
       <p className="text-xs text-gray-500">
         The minimum of {minUsers} users declared in publiccode.yml is a proposal: a component with one user is not yet a
-        shared component. Who approves, and what happens when a maintainer misses the SLA, needs a governance decision.
+        shared component. Who decides that a component is Maintained, and what happens when a maintainer misses the SLA,
+        needs a governance decision.
         Usage counts only here. It never gives stars and never counts in a rating.
       </p>
 

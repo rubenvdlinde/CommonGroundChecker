@@ -3,7 +3,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 
-import ApprovalSection from "@/components/ApprovalSection";
+import MaintainedSection from "@/components/MaintainedSection";
 import { deleteSla, postSla, type UsageStatus } from "@/lib/apiClient";
 
 vi.mock("@/lib/apiClient", () => ({
@@ -36,9 +36,9 @@ const sla = {
 
 const twoUsers = { declaredUsers: ["Gemeente Utrecht", "Gemeente Den Haag"], declaredUserCount: 2 };
 
-function renderSection(overrides: Partial<Parameters<typeof ApprovalSection>[0]> = {}) {
+function renderSection(overrides: Partial<Parameters<typeof MaintainedSection>[0]> = {}) {
   return render(
-    <ApprovalSection
+    <MaintainedSection
       repoId="repo-id"
       endorsement={suitable}
       developmentStatus="stable"
@@ -50,24 +50,29 @@ function renderSection(overrides: Partial<Parameters<typeof ApprovalSection>[0]>
   );
 }
 
-function approvedRow() {
+function maintainedRow() {
   return within(screen.getByRole("list", { name: "Levels" })).getAllByRole("listitem")[0];
 }
 
-describe("ApprovalSection", () => {
+describe("MaintainedSection", () => {
   beforeEach(() => vi.clearAllMocks());
   afterEach(() => cleanup());
 
-  it("shows Approved above Suitable, with the reasons Approved is not reached", () => {
+  it("shows Maintained above Suitable, with the reasons Maintained is not reached", () => {
     renderSection();
 
     const levels = within(screen.getByRole("list", { name: "Levels" })).getAllByRole("listitem");
-    expect(levels[0].textContent).toContain("Approved");
+    expect(levels[0].textContent).toContain("Maintained");
     expect(levels[0].textContent).toContain("Not reached");
     expect(levels[0].textContent).toContain("at least 2 organisations declared in publiccode.yml");
     expect(levels[levels.length - 1].textContent).toContain("Suitable for Common Ground");
     expect(levels[levels.length - 1].textContent).toContain("Reached");
-    const reasons = screen.getByRole("list", { name: "Why it is not approved" });
+    expect(levels[levels.length - 1].textContent).toContain(
+      "the threshold the Common Ground programme uses to decide whether to adopt a component as supported"
+    );
+    expect(levels[levels.length - 1].textContent).not.toMatch(/advice/i);
+    expect(screen.getByRole("heading", { level: 3, name: "Level" })).toBeTruthy();
+    const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
     expect(reasons.textContent).toContain("1 of 2 users declared in publiccode.yml");
     expect(reasons.textContent).toContain("No SLA");
     expect(screen.getByText(/The minimum of 2 users declared in publiccode.yml is a proposal/)).toBeTruthy();
@@ -83,25 +88,25 @@ describe("ApprovalSection", () => {
     expect(screen.queryByText(/confirm/i)).toBeNull();
   });
 
-  it("reaches Approved with enough declared users and a valid SLA", () => {
+  it("reaches Maintained with enough declared users and a valid SLA", () => {
     renderSection({ initialUsage: { ...twoUsers, slas: [sla] } });
 
-    expect(approvedRow().textContent).toContain("Reached");
-    expect(approvedRow().textContent).toContain("SLA: VNG with Maykin Media, until 2027-12-31.");
-    expect(screen.queryByRole("list", { name: "Why it is not approved" })).toBeNull();
+    expect(maintainedRow().textContent).toContain("Reached");
+    expect(maintainedRow().textContent).toContain("SLA: VNG with Maykin Media, until 2027-12-31.");
+    expect(screen.queryByRole("list", { name: "Why it is not yet Maintained" })).toBeNull();
   });
 
-  it("does not reach Approved for a component that is not stable", () => {
+  it("does not reach Maintained for a component that is not stable", () => {
     renderSection({ developmentStatus: "beta", initialUsage: { ...twoUsers, slas: [sla] } });
 
-    const reasons = screen.getByRole("list", { name: "Why it is not approved" });
-    expect(reasons.textContent).toBe("development status is beta, only stable components can be approved");
+    const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
+    expect(reasons.textContent).toBe("development status is beta, only a stable component can be Maintained");
   });
 
   it("names the end date of an expired SLA", () => {
     renderSection({ initialUsage: { ...twoUsers, slas: [{ ...sla, until: "2026-06-30" }] } });
 
-    expect(screen.getByRole("list", { name: "Why it is not approved" }).textContent).toBe("SLA expired on 2026-06-30");
+    expect(screen.getByRole("list", { name: "Why it is not yet Maintained" }).textContent).toBe("SLA expired on 2026-06-30");
     expect(screen.getByRole("list", { name: "SLAs" }).textContent).toContain("expired");
   });
 
@@ -111,7 +116,7 @@ describe("ApprovalSection", () => {
     expect(screen.getByRole("list", { name: "Why it is not yet suitable" }).textContent).toContain(
       "Overall rating below 2.5"
     );
-    expect(screen.getByRole("list", { name: "Why it is not approved" }).textContent).toContain(
+    expect(screen.getByRole("list", { name: "Why it is not yet Maintained" }).textContent).toContain(
       "Not yet suitable for Common Ground"
     );
   });
@@ -134,7 +139,7 @@ describe("ApprovalSection", () => {
       "secret"
     );
     expect(screen.getByRole("list", { name: "SLAs" }).textContent).toContain("VNG with Maykin Media");
-    expect(approvedRow().textContent).toContain("Reached");
+    expect(maintainedRow().textContent).toContain("Reached");
   });
 
   it("removes an SLA", async () => {
@@ -174,7 +179,7 @@ describe("ApprovalSection", () => {
     });
 
     expect(screen.getByText(/did not record the users in publiccode.yml/)).toBeTruthy();
-    expect(screen.getByRole("list", { name: "Why it is not approved" }).textContent).toContain(
+    expect(screen.getByRole("list", { name: "Why it is not yet Maintained" }).textContent).toContain(
       "Users not counted yet"
     );
   });

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import ApprovalSection from "@/components/ApprovalSection";
+import MaintainedSection from "@/components/MaintainedSection";
 import FollowControl from "@/components/FollowControl";
 import RepoMeta from "@/components/RepoMeta";
 import RatingBadge from "@/components/RatingBadge";
 import UsageHistoryChart from "@/components/UsageHistoryChart";
 import { getRepoHistory, getRepositoryUsage } from "@/lib/apiClient";
-import { developmentStatusOf, minUsers } from "@/lib/approval";
+import { developmentStatusOf, minUsers } from "@/lib/maintained";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import type { CheckReport } from "@/lib/types";
 import type { RepoMeta as RepoMetaType } from "@/generated/openapi-client";
@@ -159,7 +159,7 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
 
       <RepoMeta owner={repository.owner} repo={repository.name} repoMeta={repoMeta} />
 
-      <ApprovalSection
+      <MaintainedSection
         repoId={repository.id}
         endorsement={ratings[0]?.endorsement ?? { passed: false, reasons: ["Not scanned yet"] }}
         developmentStatus={developmentStatusOf(analyses[0]?.results ?? [])}
