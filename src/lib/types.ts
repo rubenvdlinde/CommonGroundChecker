@@ -1,5 +1,7 @@
 // Shared types across checkers and UI
 
+import type { ScanRefKind } from "./scanRef";
+
 export type CheckStatus = "pass" | "fail" | "warn" | "info";
 export type RequirementLevel = "mandatory" | "recommended" | "informative";
 export type ConfidenceLevel = "high" | "medium" | "low";
@@ -244,6 +246,13 @@ export interface CheckReport {
   aspectRatings: Record<string, AspectRating>;
   endorsement: Endorsement;
   results: CheckResult[];
+  /** Branch or tag name that was scanned. */
+  scannedRef: string;
+  scannedRefKind: ScanRefKind;
+  /** Commit SHA that was scanned, or null when the provider did not return one. */
+  scannedCommit: string | null;
+  /** Set when the requested ref could not be used, e.g. no release to scan. */
+  scanRefWarning?: string;
   repoMeta: {
     description: string | null;
     language: string | null;

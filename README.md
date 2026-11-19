@@ -274,6 +274,18 @@ A repository's history page has a collapsed **Follow this repository (admin)** s
 
 Each repository on the History index is a card: its name with the latest overall rating right behind it, the repository, description and URL, and on the right the number of analyses and the last and next check. Its footer shows whether the latest run **Passed** or **Failed**, the number of failures (the entries of the run's errors block, including an overall rating below 2.5) and of warnings, **Followed**, and the version. The check routes store those counts with each analysis as `issueCounts`. A run stored before endorsements existed shows no status; a run with an endorsement but without stored counts takes its failures from the endorsement's reasons.
 
+### Choosing the branch or release to scan
+
+By default a check scans the released version, chosen in this order:
+
+1. the tag that matches the `softwareVersion` in publiccode.yml on the default branch (with or without a leading `v`);
+2. otherwise the newest stable release (drafts, pre-releases and `-rc`-style tags are skipped), and without a release the newest stable semver tag;
+3. otherwise the default branch, and the result carries a warning saying no release was found.
+
+`POST /api/check` and `/api/check/stream` accept an optional `ref` to choose otherwise: `default-branch` scans the default branch, `latest-release` skips step 1, and a branch or tag name such as `development` scans that ref. A branch or tag that does not exist is refused with `400`. The checker form has an optional **Branch or tag to scan** field, and the follow section has a **What to scan** setting (released version, default branch, latest release, or a branch or tag) that scheduled rescans use.
+
+The tree, every file read, the clone used by the code tools and the API rules all read the same commit. Each result records `scannedRef`, `scannedRefKind` (why that ref was chosen: `declared-version`, `release`, `tag`, `branch`, `default-branch` or `default-branch-fallback`) and `scannedCommit`, and the result and history pages show it, for example "Scanned: declared version v1.2.2 @ abc1234", "Scanned: latest release v1.2.0 @ abc1234" or "Scanned: main (default branch, no release found)".
+
 ### ADR Spectral ruleset source (Admin)
 
 On the **Admin** page, the field **"Spectral ruleset source"** controls which ruleset is used for the **NL API Design Rules** check.

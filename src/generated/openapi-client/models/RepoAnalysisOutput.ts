@@ -19,6 +19,18 @@ export type RepoAnalysisOutput = {
      * Organisations under usedBy at this analysis, or null when it did not record them
      */
     declaredUserCount?: number;
+    /**
+     * The branch or tag name that was scanned, for example development or v1.2.0
+     */
+    scannedRef?: string | null;
+    /**
+     * Why the scanned ref was chosen: declared-version (the tag of the publiccode.yml softwareVersion), release (the newest stable release), tag (the newest stable semver tag), branch (named in the request), default-branch (asked for), or default-branch-fallback (no release found)
+     */
+    scannedRefKind?: string | null;
+    /**
+     * The commit SHA that was scanned
+     */
+    scannedCommit?: string | null;
     score: number;
     rating?: Rating;
     categoryRatings?: CategoryRatings;

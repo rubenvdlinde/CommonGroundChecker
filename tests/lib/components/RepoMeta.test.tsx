@@ -45,6 +45,7 @@ const baseSummary: RepoSummary = {
   maintainers: [],
   followed: false,
   checkIntervalHours: 168,
+  scanRef: null,
   lastCheckedAt: "2026-11-11T00:00:00Z",
   nextCheckAt: "2026-11-18T00:00:00Z",
   updatedAt: "2026-11-11T00:00:00Z",

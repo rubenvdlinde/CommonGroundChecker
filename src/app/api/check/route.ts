@@ -1,6 +1,7 @@
 ﻿import { runChecks } from "@/lib/checkers";
 import { declaredUsersOf } from "@/lib/maintained";
 import { countIssues } from "@/lib/issues";
+import { normalizeRequestedRef, ScanRefError } from "@/lib/scanRef";
 import { getSupportedProviders, resolveRepositoryContext } from "@/lib/providers";
 import type { CheckResult as ApiCheckResult } from "@/generated/openapi-client/models/CheckResult";
 import {
@@ -39,6 +40,9 @@ function toApiCheckResult(result: import("@/lib/types").CheckResult): ApiCheckRe
   };
 }
 
+const INVALID_REF_ERROR =
+  'Invalid ref: expected an empty value (the default branch), "latest-release", or a branch or tag name.';
+
 export const runtime = "nodejs";
 
 export async function OPTIONS() {
@@ -57,6 +61,7 @@ export async function POST(request: Request) {
     const dockerLocations = normalizeLocations(body?.dockerLocations);
     const apiSpecificationLocations = normalizeLocations(body?.apiSpecificationLocations);
     const isRegister = body?.isRegister === true;
+    const ref = normalizeRequestedRef(body?.ref);
 
     if (!repoUrl) {
       return new Response(
@@ -81,12 +86,20 @@ export async function POST(request: Request) {
       );
     }
 
+    if (ref === undefined) {
+      return new Response(JSON.stringify({ error: INVALID_REF_ERROR }), {
+        status: 400,
+        headers: { ...corsHeaders, "content-type": "application/json" },
+      });
+    }
+
     const report = await runChecks(repoUrl, {
       helmChartLocations,
       documentationLocations,
       dockerLocations,
       apiSpecificationLocations,
       isRegister,
+      ref,
     });
 
     const repositoryMetadata: RepoMetadata = {
@@ -115,6 +128,9 @@ export async function POST(request: Request) {
         scoringConfigId: report.scoringConfigId,
         checkedAt: report.checkedAt,
         version: toApiString(report.repoMeta.version) ?? null,
+        scannedRef: report.scannedRef,
+        scannedRefKind: report.scannedRefKind,
+        scannedCommit: report.scannedCommit,
         score: report.score,
         rating: report.rating,
         categoryRatings: report.categoryRatings,
@@ -144,7 +160,8 @@ export async function POST(request: Request) {
     const isRateLimited = /rate limit exceeded|api rate limit exceeded/i.test(
       message
     );
-    const status = isRateLimited ? 429 : isNotFound ? 404 : 500;
+    const status =
+      err instanceof ScanRefError ? 400 : isRateLimited ? 429 : isNotFound ? 404 : 500;
     const errorMessage = isRateLimited
       ? "API rate limit reached. Add GITHUB_TOKEN or GITLAB_TOKEN in .env for higher limits, then restart the app."
       : isNotFound

@@ -35,6 +35,7 @@ import {
 } from "./config";
 import { statusToStars } from "../stars";
 import { computeEndorsement, computeRatings } from "../ratings";
+import { resolveScanRef } from "../scanRef";
 import { CATEGORY_WEIGHTS, RESULT_CATEGORY_BY_ID, type CriteriaCategory } from "../criteria";
 import { mkdtemp, rm } from "node:fs/promises";
 import os from "node:os";
@@ -94,6 +95,8 @@ export interface RunChecksOptions {
   localRepoPath?: string;
   /** Use this scoring configuration instead of the one served by the API */
   scoringConfig?: ActiveScoringConfig;
+  /** Branch or tag to scan, or `latest-release`; the default branch when unset. */
+  ref?: string | null;
 }
 
 export async function runChecks(
@@ -118,10 +121,13 @@ export async function runChecksOnContext(
   const meta = await provider.getRepoMeta(context);
   context.defaultBranch = String(meta.default_branch ?? "main");
 
-  // Fetch file tree and version in parallel using the real default branch
+  const scanned = await resolveScanRef(context, context.defaultBranch, options?.ref ?? null);
+  // The commit pins the tree and every file read to one snapshot of the ref.
+  context.ref = scanned.commit ?? scanned.ref;
+
   onProgress?.("Loading repository file tree...", 30);
   const [tree, versionInfo] = await Promise.all([
-    provider.getRepoTree(context, context.defaultBranch),
+    provider.getRepoTree(context, context.ref),
     provider.getRepoVersion(context),
   ]);
 
@@ -142,7 +148,7 @@ export async function runChecksOnContext(
       localRepoPath = path.join(tempRoot, "repo");
       const clone = await runCommand(
         "git",
-        ["clone", "--depth", "1", cloneUrl, localRepoPath],
+        ["clone", "--depth", "1", "--branch", scanned.ref, cloneUrl, localRepoPath],
         { GIT_LFS_SKIP_SMUDGE: "1" }
       );
 
@@ -186,17 +192,18 @@ export async function runChecksOnContext(
     scoringConfig.complexityThreshold,
     scoringConfig.complexityMaxCcnThreshold,
     localRepoPath,
-    cloneUrl
+    cloneUrl,
+    scanned.ref
   );
   const maintainabilityPromise = checkMaintainability(localRepoPath);
-  const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
+  const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl, scanned.ref);
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
     owner,
     repo,
     context.projectPath,
     context.provider.id,
-    context.defaultBranch,
+    context.ref,
     tree,
     options?.apiSpecificationLocations ?? [],
     scoringConfig.spectralRulesetSource
@@ -406,6 +413,10 @@ export async function runChecksOnContext(
     aspectRatings,
     endorsement,
     results: resultsWithStars,
+    scannedRef: scanned.ref,
+    scannedRefKind: scanned.kind,
+    scannedCommit: scanned.commit,
+    ...(scanned.warning ? { scanRefWarning: scanned.warning } : {}),
     repoMeta: {
       description: meta.description ?? null,
       language: meta.language ?? null,

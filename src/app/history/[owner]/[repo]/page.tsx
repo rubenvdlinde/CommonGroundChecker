@@ -210,6 +210,7 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
           repoId={repository.id}
           initialFollowed={repository.followed ?? false}
           initialCheckIntervalHours={repository.checkIntervalHours ?? null}
+          initialScanRef={repository.scanRef ?? null}
           initialNextCheckAt={repository.nextCheckAt ?? null}
         />
       )}

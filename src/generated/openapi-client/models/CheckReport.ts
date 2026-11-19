@@ -20,6 +20,22 @@ export type CheckReport = {
     aspectRatings?: AspectRatings;
     endorsement?: Endorsement;
     results: Array<CheckResult>;
+    /**
+     * The branch or tag name that was scanned
+     */
+    scannedRef: string;
+    /**
+     * Why the scanned ref was chosen: declared-version (the tag of the publiccode.yml softwareVersion), release (the newest stable release), tag (the newest stable semver tag), branch (named in the request), default-branch (asked for), or default-branch-fallback (no release found)
+     */
+    scannedRefKind: string;
+    /**
+     * The commit SHA that was scanned
+     */
+    scannedCommit: string | null;
+    /**
+     * Set when no released version was found and the default branch was scanned instead
+     */
+    scanRefWarning?: string;
     repoMeta: RepoMeta;
 };
 

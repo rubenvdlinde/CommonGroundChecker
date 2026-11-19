@@ -3,11 +3,14 @@ import type {
   RepoContext,
   RepoIdentifier,
   RepositoryProvider,
+  RepositoryRelease,
   RepoVersionResult,
 } from "./types";
 import { encodePathSegments } from "./paths";
 
 const BASE = "https://gitlab.com/api/v4";
+/** Most tag pages read; repositories with nightly tags can have thousands. */
+const MAX_TAG_PAGES = 10;
 const MANIFEST_CANDIDATES = ["package.json", "pyproject.toml", "Chart.yaml"];
 
 function headers() {
@@ -111,7 +114,7 @@ export const GitLabRepositoryProvider: RepositoryProvider = {
     return paths;
   },
   getFileContent: async (context: RepoContext, path: string) => {
-    const branch = context.defaultBranch ?? "main";
+    const branch = context.ref ?? context.defaultBranch ?? "main";
     return getGitLabFileContent(context.projectPath, path, branch);
   },
   getRepoVersion: async (context: RepoContext) => {
@@ -219,6 +222,46 @@ export const GitLabRepositoryProvider: RepositoryProvider = {
         detail: "No release, tag, or manifest version found",
       },
     };
+  },
+  getCommitSha: async (context: RepoContext, ref: string) => {
+    const project = encodeProjectPath(context.projectPath);
+    const res = await fetch(
+      `${BASE}/projects/${project}/repository/commits/${encodeURIComponent(ref)}`,
+      { headers: headers() }
+    );
+    if (res.status === 404) return null;
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`GitLab API ${res.status}: ${body.slice(0, 200)}`);
+    }
+    const data = (await res.json()) as { id?: unknown };
+    return typeof data.id === "string" ? data.id : null;
+  },
+  listReleases: async (context: RepoContext): Promise<RepositoryRelease[]> => {
+    const project = encodeProjectPath(context.projectPath);
+    const data = await glFetch(`/projects/${project}/releases?per_page=100`);
+    if (!Array.isArray(data)) return [];
+    return data.map((entry: Record<string, unknown>) => ({
+      tag: typeof entry.tag_name === "string" ? entry.tag_name.trim() : "",
+      draft: false,
+      prerelease: entry.upcoming_release === true,
+      publishedAt: typeof entry.released_at === "string" ? entry.released_at : null,
+    }));
+  },
+  listTags: async (context: RepoContext) => {
+    const project = encodeProjectPath(context.projectPath);
+    const names: string[] = [];
+    for (let page = 1; page <= MAX_TAG_PAGES; page += 1) {
+      const data = await glFetch(
+        `/projects/${project}/repository/tags?per_page=100&page=${page}`
+      );
+      if (!Array.isArray(data)) break;
+      for (const entry of data as Array<{ name?: unknown }>) {
+        if (typeof entry.name === "string" && entry.name) names.push(entry.name);
+      }
+      if (data.length < 100) break;
+    }
+    return names;
   },
   getCloneUrl: (context: RepoContext) =>
     `https://gitlab.com/${context.projectPath}.git`,

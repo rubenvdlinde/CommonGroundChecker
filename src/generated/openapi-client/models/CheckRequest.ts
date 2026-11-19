@@ -9,5 +9,9 @@ export type CheckRequest = {
     dockerLocations?: Array<string>;
     apiSpecificationLocations?: Array<string>;
     isRegister?: boolean;
+    /**
+     * The branch or tag to scan. Empty scans the released version: the tag of the publiccode.yml softwareVersion, else the newest stable release or semver tag, else the default branch with a warning. "default-branch" scans the default branch, "latest-release" the newest stable release
+     */
+    ref?: string;
 };
 

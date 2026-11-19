@@ -13,7 +13,8 @@ interface CheckerFormProps {
     documentationLocations: string[],
     dockerLocations: string[],
     apiSpecificationLocations: string[],
-    isRegister: boolean
+    isRegister: boolean,
+    ref: string
   ) => void;
   loading: boolean;
 }
@@ -138,6 +139,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
   const [dockerSomewhereElse, setDockerSomewhereElse] = useState(false);
   const [dockerUrl, setDockerUrl] = useState("");
   const [isRegister, setIsRegister] = useState(false);
+  const [scanRef, setScanRef] = useState("");
   const [apiSpecificationSomewhereElse, setApiSpecificationSomewhereElse] =
     useState(false);
   const [apiSpecificationLocationsInput, setApiSpecificationLocationsInput] =
@@ -153,6 +155,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
     setIsRegister(false);
     setApiSpecificationSomewhereElse(false);
     setApiSpecificationLocationsInput("");
+    setScanRef("");
   }
 
   async function applyRepositoryPrefill(repository: RecentRepository) {
@@ -194,6 +197,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
     const apiSpecificationLocationsText = apiSpecificationLocations.join("\n");
 
     setValue(repository.repoUrl);
+    setScanRef(repository.scanRef ?? "");
 
     setHelmSomewhereElse(Boolean(helmLocation));
     setHelmChartUrl(helmLocation);
@@ -286,7 +290,8 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
       parsedDocumentationLocations,
       parsedDockerLocations,
       parsedApiSpecificationLocations,
-      isRegister
+      isRegister,
+      scanRef.trim()
     );
   }
 
@@ -327,6 +332,21 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
               "Analyze component"
             )}
           </button>
+        </div>
+
+        <div>
+          <label htmlFor="scan-ref" className="block text-xs text-gray-500 mb-1">
+            Branch or tag to scan (optional; empty scans the released version: the tag of the publiccode.yml softwareVersion, else the latest release; default-branch scans the default branch)
+          </label>
+          <input
+            id="scan-ref"
+            type="text"
+            value={scanRef}
+            onChange={(e) => setScanRef(e.target.value)}
+            placeholder="development, v1.2.0, latest-release or default-branch"
+            className="min-h-[44px] lg:min-h-0 w-full sm:w-80 px-4 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-cg-lightblue focus:border-transparent disabled:opacity-60"
+            disabled={loading}
+          />
         </div>
 
         <div className="space-y-3">

@@ -15,6 +15,7 @@ import { isRating } from "@/lib/ratings";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import { USAGE_CHECK_ID, readUsageData } from "@/lib/usage";
 import type { CheckReport, CheckResult, StarRating } from "@/lib/types";
+import ScannedRef from "@/components/ScannedRef";
 import type { RepoMeta } from "@/generated/openapi-client";
 import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "@/lib/criteria";
 
@@ -184,6 +185,12 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
         </p>
         <p className="text-xs text-gray-500">
           Checked at {new Date(analysis.checkedAt).toLocaleString("nl-NL")}
+          {analysis.scannedRef ? " — " : null}
+          <ScannedRef
+            scannedRef={analysis.scannedRef}
+            kind={analysis.scannedRefKind}
+            commit={analysis.scannedCommit}
+          />
         </p>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
           <RatingSummary rating={rating} endorsement={endorsement} score={analysis.score} />

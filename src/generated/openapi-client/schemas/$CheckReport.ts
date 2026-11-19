@@ -48,6 +48,26 @@ export const $CheckReport = {
             },
             isRequired: true,
         },
+        scannedRef: {
+            type: 'string',
+            description: `The branch or tag name that was scanned`,
+            isRequired: true,
+        },
+        scannedRefKind: {
+            type: 'string',
+            description: `Why the scanned ref was chosen: declared-version (the tag of the publiccode.yml softwareVersion), release (the newest stable release), tag (the newest stable semver tag), branch (named in the request), default-branch (asked for), or default-branch-fallback (no release found)`,
+            isRequired: true,
+        },
+        scannedCommit: {
+            type: 'string',
+            description: `The commit SHA that was scanned`,
+            isRequired: true,
+            isNullable: true,
+        },
+        scanRefWarning: {
+            type: 'string',
+            description: `Set when no released version was found and the default branch was scanned instead`,
+        },
         repoMeta: {
             type: 'RepoMeta',
             isRequired: true,

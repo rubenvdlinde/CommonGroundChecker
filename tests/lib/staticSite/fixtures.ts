@@ -22,6 +22,9 @@ export function report(overrides: Partial<CheckReport> = {}): CheckReport {
     categoryRatings: { Security: 3.2, Maintainability: 3.4 },
     aspectRatings: {},
     endorsement: { passed: true, reasons: [] },
+    scannedRef: "main",
+    scannedRefKind: "default-branch",
+    scannedCommit: null,
     results: [publiccodeResult(["Gemeente Utrecht", "Gemeente Den Haag"]), result("license", "pass"), result("sbom", "warn")],
     repoMeta: {
       description: "Zaakregistratiecomponent",
