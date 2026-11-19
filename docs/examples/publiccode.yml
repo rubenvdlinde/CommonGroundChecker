@@ -1,0 +1,87 @@
+# A complete publiccode.yml for a fictional Common Ground component.
+# It is explained field by field in docs/publiccode-profile.md.
+publiccodeYmlVersion: "0.8"
+
+name: Voorbeeldzaken
+url: "https://github.com/example-org/voorbeeldzaken"
+landingURL: "https://voorbeeldzaken.example.org"
+
+softwareVersion: "2.4.0"
+releaseDate: "2026-10-01"
+developmentStatus: stable
+softwareType: standalone/backend
+
+platforms:
+  - web
+categories:
+  - workflow-management
+  - document-management
+
+organisation:
+  name: Gemeente Voorbeeld
+  uri: "https://www.example.org"
+
+usedBy:
+  - Gemeente Voorbeeld
+  - Gemeente Proefstad
+
+supports:
+  - id: "https://commonground.nl/cms/view/54476261/5-lagen-model#service"
+  - id: "https://vng-realisatie.github.io/gemma-zaken/standaard/zaken/redoc-1.5.1.html"
+  - id: "https://vng-realisatie.github.io/gemma-zaken/standaard/catalogi/redoc-1.3.3.html"
+  - id: "https://vng-realisatie.github.io/gemma-zaken/standaard/notificaties/redoc-1.0.1.html"
+  - id: "https://gitdocumentatie.logius.nl/publicatie/api/adr/2.1.0/"
+  - id: "alias:gdpr"
+
+intendedAudience:
+  countries:
+    - NL
+
+description:
+  nl:
+    shortDescription: Registreert zaken van een gemeente via de Zaken API.
+    longDescription: >
+      Voorbeeldzaken is een fictief Common Ground-component dat zaken van een
+      gemeente registreert. Andere componenten lezen en wijzigen die zaken via
+      de Zaken API en de Catalogi API, en krijgen een bericht via de
+      Notificaties API. Installeer het met de Helm-chart op Artifact Hub:
+      https://artifacthub.io/packages/helm/example-org/voorbeeldzaken
+    documentation: "https://docs.voorbeeldzaken.example.org"
+    apiDocumentation: "https://docs.voorbeeldzaken.example.org/api"
+    features:
+      - Zaken registreren en bijwerken
+      - Zaaktypen uit een catalogus gebruiken
+      - Berichten sturen bij elke wijziging
+  en:
+    shortDescription: Registers the cases of a municipality through the Zaken API.
+    longDescription: >
+      Voorbeeldzaken is a fictional Common Ground component that registers the
+      cases of a municipality. Other components read and change those cases
+      through the Zaken API and the Catalogi API, and get a message through the
+      Notificaties API. Install it with the Helm chart on Artifact Hub:
+      https://artifacthub.io/packages/helm/example-org/voorbeeldzaken
+    features:
+      - Register and update cases
+      - Use case types from a catalogue
+      - Send a message on every change
+
+legal:
+  license: EUPL-1.2
+  mainCopyrightOwner: Gemeente Voorbeeld
+
+maintenance:
+  type: contract
+  contractors:
+    - name: Voorbeeld Software B.V.
+      until: "2027-12-31"
+      email: support@example.org
+      website: "https://www.example.org"
+  contacts:
+    - name: Jan Jansen
+      email: jan.jansen@example.org
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - nl
+    - en

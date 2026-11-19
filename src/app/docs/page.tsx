@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RATING_DOCS } from "@/lib/ratingDocs";
+import { PUBLICCODE_PROFILE_PATH } from "@/lib/publiccodeProfile";
 
 export const metadata: Metadata = {
   title: "Rating guide | Common Ground Component Checker",
@@ -39,6 +40,19 @@ export default function RatingGuidePage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="for-maintainers" className="space-y-3">
+        <h2 id="for-maintainers" className="text-2xl font-bold text-cg-blue">
+          For maintainers
+        </h2>
+        <p className="text-gray-700">
+          <Link href={PUBLICCODE_PROFILE_PATH} className="font-semibold text-cg-lightblue hover:underline">
+            The Common Ground profile for publiccode.yml
+          </Link>{" "}
+          explains how to fill publiccode.yml so the checker can read it: the release, the maintenance contract, the
+          users, the Common Ground layer and the standards and versions the component supports.
+        </p>
       </section>
 
       <section aria-labelledby="how-ratings-work" className="space-y-3">

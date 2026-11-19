@@ -33,6 +33,7 @@ The rating guide at `/docs` ("Rating guide" in the site navigation) explains per
 | 7 | **API-first / OpenAPI spec** — machine-readable OpenAPI or Swagger spec present | Mandatory | [API Design Rules](https://commonground.nl/cms/view/54476259/api-designrules) |
 | 8 | **NL API Design Rules (ADR) validation** — OpenAPI / API design is validated against the configured Spectral ruleset | Mandatory | [API Design Rules](https://commonground.nl/cms/view/54476259/api-designrules) |
 | 9 | **5-Layer Architecture** — component belongs to a recognised Common Ground layer | Recommended | [5-lagen model](https://commonground.nl/cms/view/54476261/5-lagen-model) |
+| 9a | **Supported standards**: the standards and versions publiccode.yml declares under `supports`, compared with the OpenAPI files in the repository | Informative | [publiccode.yml supports](https://publiccodeyml.github.io/v0/schema.core.html#key-supports) |
 
 A component can declare its layer in `publiccode.yml` with a `supports` entry. The declaration takes precedence over the heuristics on paths and text. The layer is one of `interaction`, `process`, `integration`, `service` or `data` (the Dutch names are accepted too):
 
@@ -40,6 +41,8 @@ A component can declare its layer in `publiccode.yml` with a `supports` entry. T
 supports:
   - id: https://commonground.nl/cms/view/54476261/5-lagen-model#data
 ```
+
+A component declares a standard and its version the same way, with the official URI of that version as the `id`. `docs/publiccode-profile.md` (also in the rating guide at `/docs/publiccode-profile`) explains every `publiccode.yml` field the checker reads, lists the known standards and gives a complete example.
 
 ### Security
 
