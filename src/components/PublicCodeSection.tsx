@@ -211,7 +211,7 @@ export default function PublicCodeSection({ data }: PublicCodeSectionProps) {
           <summary className="cursor-pointer text-sm font-semibold text-gray-700">
             Description ({description.language || "no language"})
           </summary>
-          <div className="mt-3 space-y-3 text-sm text-gray-800">
+          <div className="mt-3 space-y-3 text-sm text-gray-800 [overflow-wrap:anywhere]">
             {(description.localisedName || description.genericName) && (
               <p className="font-semibold">
                 {[description.localisedName, description.genericName].filter(Boolean).join(", ")}

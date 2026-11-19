@@ -75,6 +75,19 @@ describe("PublicCodeSection", () => {
     expect(screen.getByRole("img", { name: "Screenshot 1" }).getAttribute("src")).toBe("https://example.org/shot.png");
   });
 
+  it("lets long words and links in a description wrap", () => {
+    render(
+      <PublicCodeSection
+        data={data({
+          description: { nl: { longDescription: "Zie https://example.org/a/very/long/path/that/does/not/fit" } },
+        })}
+      />
+    );
+
+    const body = screen.getByText(/very\/long\/path/).parentElement;
+    expect(body?.className).toContain("[overflow-wrap:anywhere]");
+  });
+
   it("leaves out fields the file does not declare", () => {
     render(<PublicCodeSection data={data({ name: "Minimal" })} />);
 
