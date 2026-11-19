@@ -12,6 +12,9 @@ import type {
   RepoMetadata,
   RepoSummary,
   ScoringConfigResponse,
+  SlaInput,
+  UsageStatus,
+  UserConfirmationInput,
 } from "@/generated/openapi-client";
 
 const remoteApiBaseUrl = process.env.URL?.replace(/\/$/, "") ?? "";
@@ -37,6 +40,9 @@ export type {
   RepoAnalysisOutput,
   RepoHistoryResponse,
   ScoringConfigResponse,
+  SlaInput,
+  UsageStatus,
+  UserConfirmationInput,
 };
 
 interface StreamOptions {
@@ -139,6 +145,61 @@ export async function putRepositoryFollow(
   logApiRequest("local", "PUT", `/api/repositories/${encodeURIComponent(repoId)}/follow`, settings);
   const client = new ApiClient({ BASE: "", TOKEN: adminToken });
   return client.default.putApiRepositoriesFollow(repoId, settings);
+}
+
+export async function getRepositoryUsage(repoId: string): Promise<UsageStatus> {
+  const client = clientForRemoteCalls();
+  const clientName = isServer ? "remote" : "local";
+  logApiRequest(clientName, "GET", `/api/repositories/${encodeURIComponent(repoId)}/usage`);
+  return client.default.getApiRepositoriesUsage(repoId);
+}
+
+/**
+ * Removes a confirmation or SLA through the local proxy, which takes the id as a
+ * query parameter. Throws an error with the `status` and `body` of a failed reply.
+ */
+async function deleteThroughProxy(path: string, id: string, adminToken: string): Promise<UsageStatus> {
+  const url = `${path}?id=${encodeURIComponent(id)}`;
+  logApiRequest("local", "DELETE", url);
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: { Accept: "application/json", Authorization: `Bearer ${adminToken}` },
+  });
+  const body: unknown = await response.json().catch(() => null);
+  if (!response.ok) {
+    throw Object.assign(new Error(`Request failed with status ${response.status}`), { status: response.status, body });
+  }
+  return body as UsageStatus;
+}
+
+function adminClient(adminToken: string) {
+  return new ApiClient({ BASE: "", TOKEN: adminToken }).default;
+}
+
+export async function postUserConfirmation(
+  repoId: string,
+  confirmation: UserConfirmationInput,
+  adminToken: string
+): Promise<UsageStatus> {
+  logApiRequest("local", "POST", `/api/repositories/${encodeURIComponent(repoId)}/usage/confirmations`, confirmation);
+  return adminClient(adminToken).postApiRepositoriesUsageConfirmations(repoId, confirmation);
+}
+
+export async function deleteUserConfirmation(
+  repoId: string,
+  confirmationId: string,
+  adminToken: string
+): Promise<UsageStatus> {
+  return deleteThroughProxy(`/api/repositories/${encodeURIComponent(repoId)}/usage/confirmations`, confirmationId, adminToken);
+}
+
+export async function postSla(repoId: string, sla: SlaInput, adminToken: string): Promise<UsageStatus> {
+  logApiRequest("local", "POST", `/api/repositories/${encodeURIComponent(repoId)}/usage/slas`, sla);
+  return adminClient(adminToken).postApiRepositoriesUsageSlas(repoId, sla);
+}
+
+export async function deleteSla(repoId: string, slaId: string, adminToken: string): Promise<UsageStatus> {
+  return deleteThroughProxy(`/api/repositories/${encodeURIComponent(repoId)}/usage/slas`, slaId, adminToken);
 }
 
 export async function postCheck(request: CheckRequest) {

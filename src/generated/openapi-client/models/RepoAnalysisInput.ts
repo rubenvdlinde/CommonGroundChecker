@@ -12,6 +12,10 @@ export type RepoAnalysisInput = {
     scoringConfigId?: string | null;
     checkedAt: string;
     version?: string | null;
+    /**
+     * The organisations under usedBy in publiccode.yml. Leave out when the scan did not read them
+     */
+    declaredUsers?: Array<string>;
     score: number;
     rating?: Rating;
     categoryRatings?: CategoryRatings;

@@ -1,4 +1,5 @@
 ﻿import { runChecks } from "@/lib/checkers";
+import { declaredUsersOf } from "@/lib/approval";
 import { countIssues } from "@/lib/issues";
 import { getSupportedProviders, resolveRepositoryContext } from "@/lib/providers";
 import type { CheckReport } from "@/lib/types";
@@ -151,6 +152,7 @@ export async function POST(request: Request) {
             aspectRatings: report.aspectRatings,
             endorsement: report.endorsement,
             issueCounts: countIssues(report.results, report.rating, report.endorsement),
+            declaredUsers: declaredUsersOf(report.results),
             results: report.results.map(toApiCheckResult),
           };
 

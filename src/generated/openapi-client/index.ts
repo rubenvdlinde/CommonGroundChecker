@@ -29,6 +29,11 @@ export { RepoMeta } from './models/RepoMeta';
 export type { RepoMetadata } from './models/RepoMetadata';
 export type { RepoSummary } from './models/RepoSummary';
 export type { ScoringConfigResponse } from './models/ScoringConfigResponse';
+export type { Sla } from './models/Sla';
+export type { SlaInput } from './models/SlaInput';
+export type { UsageStatus } from './models/UsageStatus';
+export type { UserConfirmation } from './models/UserConfirmation';
+export { UserConfirmationInput } from './models/UserConfirmationInput';
 
 export { $AspectRating } from './schemas/$AspectRating';
 export { $AspectRatings } from './schemas/$AspectRatings';
@@ -49,5 +54,10 @@ export { $RepoMeta } from './schemas/$RepoMeta';
 export { $RepoMetadata } from './schemas/$RepoMetadata';
 export { $RepoSummary } from './schemas/$RepoSummary';
 export { $ScoringConfigResponse } from './schemas/$ScoringConfigResponse';
+export { $Sla } from './schemas/$Sla';
+export { $SlaInput } from './schemas/$SlaInput';
+export { $UsageStatus } from './schemas/$UsageStatus';
+export { $UserConfirmation } from './schemas/$UserConfirmation';
+export { $UserConfirmationInput } from './schemas/$UserConfirmationInput';
 
 export { DefaultService } from './services/DefaultService';

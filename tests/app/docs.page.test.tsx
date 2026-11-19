@@ -93,6 +93,15 @@ describe("RatingGuidePage", () => {
     expect(screen.getByRole("heading", { level: 2, name: "How ratings work" })).toBeTruthy();
     expect(screen.getByText(/not a SIG rating and not a certification/)).toBeTruthy();
   });
+
+  it("explains Approved as the level above suitable, with usage never rated", () => {
+    render(<RatingGuidePage />);
+
+    const approved = screen.getByText("A component is approved").closest("li");
+    expect(approved?.textContent).toContain("at least 2 organisations confirmed they use it, and an SLA is valid");
+    expect(approved?.textContent).toContain("The minimum is a proposal");
+    expect(approved?.textContent).toContain("never gives stars and never counts in a rating");
+  });
 });
 
 describe("CategoryDocPage", () => {

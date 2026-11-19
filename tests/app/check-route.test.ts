@@ -86,4 +86,28 @@ describe("check routes", () => {
       expect.objectContaining({ issueCounts: { errors: 2, warnings: 2 } })
     );
   });
+
+  it("sends the usedBy organisations of publiccode.yml from both routes", async () => {
+    runChecks.mockResolvedValue({
+      ...report,
+      results: [
+        ...report.results.filter((item) => item.id !== "publiccode"),
+        { ...result("publiccode", "mandatory", "pass"), publiccode: { usedBy: ["Utrecht", "Den Haag"] } },
+      ],
+    });
+
+    await POST(request("http://localhost/api/check"));
+    await (await POST_STREAM(request("http://localhost/api/check/stream"))).text();
+
+    for (const call of postRepositoryAnalysis.mock.calls) {
+      expect(call[1]).toMatchObject({ declaredUsers: ["Utrecht", "Den Haag"] });
+    }
+    expect(postRepositoryAnalysis).toHaveBeenCalledTimes(2);
+  });
+
+  it("sends an empty list when there is no publiccode.yml", async () => {
+    await POST(request("http://localhost/api/check"));
+
+    expect(postRepositoryAnalysis).toHaveBeenCalledWith("repo-id", expect.objectContaining({ declaredUsers: [] }));
+  });
 });

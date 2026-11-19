@@ -326,6 +326,362 @@
         }
       }
     },
+    "/api/repositories/{repoId}/usage": {
+      "get": {
+        "summary": "Declared and confirmed users and the SLAs of a repository",
+        "description": "Declared users come from the latest analysis. Confirmed users are the declared organisations with a confirmation recorded by an admin.",
+        "parameters": [
+          {
+            "name": "repoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usage status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Repository not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/repositories/{repoId}/usage/confirmations": {
+      "post": {
+        "summary": "Record that an organisation confirmed it uses the component",
+        "description": "Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.",
+        "security": [
+          {
+            "adminToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "repoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserConfirmationInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Confirmation recorded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid confirmation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid admin token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Repository not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The organisation is already confirmed for this repository",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Admin actions are disabled because ADMIN_TOKEN is not configured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/repositories/{repoId}/usage/confirmations/{confirmationId}": {
+      "delete": {
+        "summary": "Remove a confirmation",
+        "description": "Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.",
+        "security": [
+          {
+            "adminToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "repoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "confirmationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Confirmation removed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid admin token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Confirmation not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Admin actions are disabled because ADMIN_TOKEN is not configured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/repositories/{repoId}/usage/slas": {
+      "post": {
+        "summary": "Record an SLA for a repository",
+        "description": "Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.",
+        "security": [
+          {
+            "adminToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "repoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlaInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "SLA recorded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid SLA",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid admin token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Repository not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Admin actions are disabled because ADMIN_TOKEN is not configured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/repositories/{repoId}/usage/slas/{slaId}": {
+      "delete": {
+        "summary": "Remove an SLA",
+        "description": "Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.",
+        "security": [
+          {
+            "adminToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "repoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SLA removed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid admin token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SLA not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Admin actions are disabled because ADMIN_TOKEN is not configured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/repo-history": {
       "get": {
         "summary": "Return analysis history for a repository",
@@ -944,6 +1300,13 @@
               "null"
             ]
           },
+          "declaredUsers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The organisations under usedBy in publiccode.yml. Leave out when the scan did not read them"
+          },
           "score": {
             "type": "integer"
           },
@@ -999,6 +1362,26 @@
               "string",
               "null"
             ]
+          },
+          "declaredUsers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "declaredUserCount": {
+            "type": [
+              "integer",
+              null
+            ],
+            "description": "Organisations under usedBy at this analysis, or null when it did not record them"
+          },
+          "confirmedUserCount": {
+            "type": [
+              "integer",
+              null
+            ],
+            "description": "Declared organisations with a confirmation at the time of this analysis"
           },
           "score": {
             "type": "integer"
@@ -1464,6 +1847,186 @@
           "score",
           "results",
           "repoMeta"
+        ]
+      },
+      "UserConfirmationInput": {
+        "type": "object",
+        "properties": {
+          "organisation": {
+            "type": "string",
+            "description": "The organisation as named under usedBy in publiccode.yml; matched case-insensitively and trimmed"
+          },
+          "confirmedOn": {
+            "type": "string",
+            "format": "date"
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "description": "Link to the written confirmation or the register entry"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "written-confirmation",
+              "register-entry"
+            ]
+          }
+        },
+        "required": [
+          "organisation",
+          "confirmedOn",
+          "source",
+          "method"
+        ]
+      },
+      "SlaInput": {
+        "type": "object",
+        "properties": {
+          "party": {
+            "type": "string",
+            "description": "Who agreed the SLA, for example VNG"
+          },
+          "maintainer": {
+            "type": "string"
+          },
+          "startsOn": {
+            "type": "string",
+            "format": "date"
+          },
+          "until": {
+            "type": "string",
+            "format": "date",
+            "description": "Last day the SLA applies"
+          },
+          "link": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "uri"
+          }
+        },
+        "required": [
+          "party",
+          "maintainer",
+          "startsOn",
+          "until"
+        ]
+      },
+      "UserConfirmation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "organisation": {
+            "type": "string"
+          },
+          "confirmedOn": {
+            "type": "string",
+            "format": "date"
+          },
+          "source": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "declared": {
+            "type": "boolean",
+            "description": "Whether the latest analysis declares this organisation under usedBy; only declared organisations count as confirmed users"
+          }
+        },
+        "required": [
+          "id",
+          "organisation",
+          "confirmedOn",
+          "source",
+          "method",
+          "declared"
+        ]
+      },
+      "Sla": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "party": {
+            "type": "string"
+          },
+          "maintainer": {
+            "type": "string"
+          },
+          "startsOn": {
+            "type": "string",
+            "format": "date"
+          },
+          "until": {
+            "type": "string",
+            "format": "date"
+          },
+          "link": {
+            "type": [
+              "string",
+              null
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "party",
+          "maintainer",
+          "startsOn",
+          "until",
+          "link"
+        ]
+      },
+      "UsageStatus": {
+        "type": "object",
+        "properties": {
+          "declaredUsers": {
+            "type": [
+              "array",
+              null
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "Organisations under usedBy in the latest analysis, or null when it did not record them"
+          },
+          "declaredUserCount": {
+            "type": [
+              "integer",
+              null
+            ]
+          },
+          "confirmedUserCount": {
+            "type": [
+              "integer",
+              null
+            ]
+          },
+          "confirmations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserConfirmation"
+            }
+          },
+          "slas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Sla"
+            }
+          }
+        },
+        "required": [
+          "declaredUsers",
+          "declaredUserCount",
+          "confirmedUserCount",
+          "confirmations",
+          "slas"
         ]
       }
     }

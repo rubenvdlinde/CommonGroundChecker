@@ -1,8 +1,11 @@
 import Link from "next/link";
+import ApprovalSection from "@/components/ApprovalSection";
 import FollowControl from "@/components/FollowControl";
 import RepoMeta from "@/components/RepoMeta";
 import RatingBadge from "@/components/RatingBadge";
-import { getRepoHistory } from "@/lib/apiClient";
+import UsageHistoryChart from "@/components/UsageHistoryChart";
+import { getRepoHistory, getRepositoryUsage } from "@/lib/apiClient";
+import { minConfirmedUsers } from "@/lib/approval";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import type { CheckReport } from "@/lib/types";
 import type { RepoMeta as RepoMetaType } from "@/generated/openapi-client";
@@ -117,6 +120,13 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
   const repoMeta = normalizeRepoMeta(repository.metadata);
   const analyses = repositoryResponse?.analyses ?? [];
   const ratings = await loadStoredRatings(analyses);
+  let usage = null;
+  try {
+    usage = await getRepositoryUsage(repository.id);
+  } catch {
+    usage = null;
+  }
+  const minimumConfirmedUsers = minConfirmedUsers();
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
@@ -148,6 +158,19 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
       </div>
 
       <RepoMeta owner={repository.owner} repo={repository.name} repoMeta={repoMeta} />
+
+      <ApprovalSection
+        repoId={repository.id}
+        endorsement={ratings[0]?.endorsement ?? { passed: false, reasons: ["Not scanned yet"] }}
+        initialUsage={usage}
+        minConfirmedUsers={minimumConfirmedUsers}
+        today={new Date().toISOString().slice(0, 10)}
+      />
+
+      <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
+        <h3 className="text-lg font-semibold text-gray-800">Users over time</h3>
+        <UsageHistoryChart analyses={analyses} minConfirmedUsers={minimumConfirmedUsers} />
+      </section>
 
       <FollowControl
         repoId={repository.id}

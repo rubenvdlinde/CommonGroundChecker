@@ -12,6 +12,9 @@ import type { RepoHistoryResponse } from '../models/RepoHistoryResponse';
 import type { RepoMetadata } from '../models/RepoMetadata';
 import type { RepoSummary } from '../models/RepoSummary';
 import type { ScoringConfigResponse } from '../models/ScoringConfigResponse';
+import type { SlaInput } from '../models/SlaInput';
+import type { UsageStatus } from '../models/UsageStatus';
+import type { UserConfirmationInput } from '../models/UserConfirmationInput';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class DefaultService {
@@ -155,6 +158,136 @@ export class DefaultService {
                 400: `Invalid follow settings`,
                 401: `Missing or invalid admin token`,
                 404: `Repository not found`,
+                503: `Admin actions are disabled because ADMIN_TOKEN is not configured`,
+            },
+        });
+    }
+    /**
+     * Declared and confirmed users and the SLAs of a repository
+     * Declared users come from the latest analysis. Confirmed users are the declared organisations with a confirmation recorded by an admin.
+     * @param repoId
+     * @returns UsageStatus Usage status
+     * @throws ApiError
+     */
+    public getApiRepositoriesUsage(
+        repoId: string,
+    ): CancelablePromise<UsageStatus> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/repositories/{repoId}/usage',
+            path: {
+                'repoId': repoId,
+            },
+            errors: {
+                404: `Repository not found`,
+            },
+        });
+    }
+    /**
+     * Record that an organisation confirmed it uses the component
+     * Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.
+     * @param repoId
+     * @param requestBody
+     * @returns UsageStatus Confirmation recorded
+     * @throws ApiError
+     */
+    public postApiRepositoriesUsageConfirmations(
+        repoId: string,
+        requestBody: UserConfirmationInput,
+    ): CancelablePromise<UsageStatus> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/repositories/{repoId}/usage/confirmations',
+            path: {
+                'repoId': repoId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Invalid confirmation`,
+                401: `Missing or invalid admin token`,
+                404: `Repository not found`,
+                409: `The organisation is already confirmed for this repository`,
+                503: `Admin actions are disabled because ADMIN_TOKEN is not configured`,
+            },
+        });
+    }
+    /**
+     * Remove a confirmation
+     * Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.
+     * @param repoId
+     * @param confirmationId
+     * @returns UsageStatus Confirmation removed
+     * @throws ApiError
+     */
+    public deleteApiRepositoriesUsageConfirmations(
+        repoId: string,
+        confirmationId: string,
+    ): CancelablePromise<UsageStatus> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/repositories/{repoId}/usage/confirmations/{confirmationId}',
+            path: {
+                'repoId': repoId,
+                'confirmationId': confirmationId,
+            },
+            errors: {
+                401: `Missing or invalid admin token`,
+                404: `Confirmation not found`,
+                503: `Admin actions are disabled because ADMIN_TOKEN is not configured`,
+            },
+        });
+    }
+    /**
+     * Record an SLA for a repository
+     * Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.
+     * @param repoId
+     * @param requestBody
+     * @returns UsageStatus SLA recorded
+     * @throws ApiError
+     */
+    public postApiRepositoriesUsageSlas(
+        repoId: string,
+        requestBody: SlaInput,
+    ): CancelablePromise<UsageStatus> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/repositories/{repoId}/usage/slas',
+            path: {
+                'repoId': repoId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Invalid SLA`,
+                401: `Missing or invalid admin token`,
+                404: `Repository not found`,
+                503: `Admin actions are disabled because ADMIN_TOKEN is not configured`,
+            },
+        });
+    }
+    /**
+     * Remove an SLA
+     * Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.
+     * @param repoId
+     * @param slaId
+     * @returns UsageStatus SLA removed
+     * @throws ApiError
+     */
+    public deleteApiRepositoriesUsageSlas(
+        repoId: string,
+        slaId: string,
+    ): CancelablePromise<UsageStatus> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/repositories/{repoId}/usage/slas/{slaId}',
+            path: {
+                'repoId': repoId,
+                'slaId': slaId,
+            },
+            errors: {
+                401: `Missing or invalid admin token`,
+                404: `SLA not found`,
                 503: `Admin actions are disabled because ADMIN_TOKEN is not configured`,
             },
         });

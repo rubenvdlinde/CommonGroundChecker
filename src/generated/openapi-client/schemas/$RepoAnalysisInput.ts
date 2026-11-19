@@ -17,6 +17,12 @@ export const $RepoAnalysisInput = {
             type: 'string',
             isNullable: true,
         },
+        declaredUsers: {
+            type: 'array',
+            contains: {
+                type: 'string',
+            },
+        },
         score: {
             type: 'number',
             isRequired: true,

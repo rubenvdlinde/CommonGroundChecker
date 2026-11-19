@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { minConfirmedUsers } from "@/lib/approval";
 import { RATING_DOCS } from "@/lib/ratingDocs";
 
 export const metadata: Metadata = {
@@ -72,6 +73,14 @@ export default function RatingGuidePage() {
             maintainability rating, for example because no source code in a supported language was found, is not
             yet suitable. The maintainability rating is an estimate that is not calibrated against real audits. The
             verdict is advice for a buyer: a component that is not yet suitable is still listed.
+          </li>
+          <li>
+            <strong>A component is approved</strong>, the level above suitable, when it is suitable for Common
+            Ground, at least {minConfirmedUsers()} organisations confirmed they use it, and an SLA is valid. An organisation counts
+            when publiccode.yml names it under usedBy and an admin recorded its written confirmation or a register
+            entry. An SLA is valid up to and including its end date. The minimum is a proposal: a component with
+            one user is not yet a shared component. The checker counts usage only here: it never gives stars and
+            never counts in a rating.
           </li>
         </ul>
         <p className="text-gray-700">

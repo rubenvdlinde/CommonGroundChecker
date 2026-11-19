@@ -14,6 +14,15 @@ export type RepoAnalysisOutput = {
     scoringConfigId?: string | null;
     checkedAt: string;
     version?: string | null;
+    declaredUsers?: Array<string>;
+    /**
+     * Organisations under usedBy at this analysis, or null when it did not record them
+     */
+    declaredUserCount?: number;
+    /**
+     * Declared organisations with a confirmation at the time of this analysis
+     */
+    confirmedUserCount?: number;
     score: number;
     rating?: Rating;
     categoryRatings?: CategoryRatings;
