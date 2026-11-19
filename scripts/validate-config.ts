@@ -1,5 +1,6 @@
 /**
- * Checks the component list and the SLAs, for the pull request check.
+ * Checks the component list, the SLAs and the functionalities components
+ * name, for the pull request check.
  *
  *   npm run --silent config:check -- [--base FILE] [--offline]
  *
@@ -79,15 +80,17 @@ async function main(argv: string[]): Promise<number> {
 
   let repositories: unknown;
   let slas: unknown;
+  let functionalities: unknown;
   try {
     repositories = readYaml(path.join(ROOT, "config/repositories.yml"));
     slas = readYaml(path.join(ROOT, "config/slas.yml"));
+    functionalities = readYaml(path.join(ROOT, "config/functionalities.yml"));
   } catch (error) {
     process.stderr.write(`config:check: ${(error as Error).message}\n`);
     return 2;
   }
 
-  const findings = checkConfig(repositories, slas);
+  const findings = checkConfig(repositories, slas, functionalities);
   if (!findings.some((finding) => finding.level === "error") && !offline) {
     let base: RepositoriesConfig | null = null;
     if (baseFile) {

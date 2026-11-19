@@ -17,14 +17,24 @@
 #   providers   organisations that offer services on top of the component:
 #               name, services (maintenance, support, hosting, implementation, training),
 #               url, contact (a general address, no personal data), since (YYYY-MM-DD)
+#   functionalities
+#               what the component does, as ids from config/functionalities.yml (the
+#               GEMMA application services); see /functionalities in the site
+#   functionalitiesDraft
+#               true while the component owner has not confirmed the functionalities
 #
 # Seeded on 2026-11-19 from the repositories the preview instance had stored. The
 # basisset marks come from vcg-basisset data/components.json version 0.3.1.
+# The functionalities were seeded on 2026-11-20 from each component's README and
+# publiccode.yml. They are a draft until the component owners confirm them.
 
 repositories:
   - url: https://github.com/Baseflow/cg-dmf-poc
     basisset: true
   - url: https://github.com/ConductionNL/anonymiq
+    functionalitiesDraft: true
+    functionalities:
+      - oninterpreteerbaar-maken-van-niet-openbare-informatie-weglakken
   - url: https://github.com/ConductionNL/buildiq
   - url: https://github.com/ConductionNL/decidiq
   - url: https://github.com/ConductionNL/dossiq
@@ -37,9 +47,19 @@ repositories:
   - url: https://github.com/ConductionNL/launchpad
   - url: https://github.com/ConductionNL/learniq
   - url: https://github.com/ConductionNL/opencatalogi
+    functionalitiesDraft: true
+    functionalities:
+      - openbaar-toegankelijk-publiceren-van-informatie
+      - beantwoorden-van-zoekvragen
+      - registreren-en-delen-van-servicebeschrijvingen
   - url: https://github.com/ConductionNL/openregister
     basisset: true
     # The basisset lists the Codeberg mirror, https://codeberg.org/conduction/openregister.
+    functionalitiesDraft: true
+    functionalities:
+      - registreren-en-delen-van-basisgegevens
+      - distribueren-en-synchroniseren-van-gegevens
+      - beantwoorden-van-zoekvragen
   - url: https://github.com/ConductionNL/pipelinq
   - url: https://github.com/ConductionNL/planninq
   - url: https://github.com/ConductionNL/portaliq
@@ -53,6 +73,9 @@ repositories:
     basisset: false  # in vcg-basisset components.json, but outside the basisset
   - url: https://github.com/GPP-Woo/GPP-publicatiebank
     basisset: true
+    functionalitiesDraft: true
+    functionalities:
+      - openbaar-toegankelijk-publiceren-van-informatie
   - url: https://github.com/infonl/dimpact-zaakafhandelcomponent
     basisset: false  # in vcg-basisset components.json, but outside the basisset
   - url: https://github.com/Interne-Taak-Afhandeling/ITA
@@ -61,20 +84,32 @@ repositories:
     basisset: false  # in vcg-basisset components.json, but outside the basisset
   - url: https://github.com/maykinmedia/open-archiefbeheer
     basisset: false  # in vcg-basisset components.json, but outside the basisset
+    functionalitiesDraft: true
+    functionalities:
+      - archiveren-van-informatieobjecten
   - url: https://github.com/maykinmedia/open-beheer
     basisset: true
   - url: https://github.com/maykinmedia/open-inwoner
     basisset: false  # in vcg-basisset components.json, but outside the basisset
   - url: https://github.com/maykinmedia/open-klant
     basisset: true
+    functionalitiesDraft: true
+    functionalities:
+      - beheren-van-klantcontacten
   - url: https://github.com/maykinmedia/open-object
     basisset: true
+    functionalitiesDraft: true
+    functionalities:
+      - registreren-en-delen-van-basisgegevens
   - url: https://github.com/maykinmedia/open-organisatie
     basisset: true
   - url: https://github.com/maykinmedia/open-plan
     basisset: true
   - url: https://github.com/maykinmedia/open-product
     basisset: true
+    functionalitiesDraft: true
+    functionalities:
+      - beheren-van-producten-en-diensten
   - url: https://github.com/maykinmedia/open-vtb
     basisset: true
   - url: https://github.com/maykinmedia/referentielijsten
@@ -83,18 +118,38 @@ repositories:
     basisset: false  # in vcg-basisset components.json, but outside the basisset
   - url: https://github.com/open-formulieren/open-forms
     basisset: false  # in vcg-basisset components.json, but outside the basisset
+    functionalitiesDraft: true
+    functionalities:
+      - beheren-van-e-formulieren
+      - aanvragen-van-producten-en-diensten
   - url: https://github.com/open-zaak/open-notificaties
     basisset: true
+    functionalitiesDraft: true
+    functionalities:
+      - inwinnen-en-routeren-van-notificaties
   - url: https://github.com/open-zaak/open-zaak
     basisset: true
+    functionalitiesDraft: true
+    functionalities:
+      - registreren-en-delen-van-zaken
+      - registreren-en-delen-van-documenten
+      - registreren-en-delen-van-zaaktypen
+      - registreren-en-delen-van-identiteiten-en-autorisaties
   - url: https://github.com/open-zaak/vng-selectielijst
     basisset: true
   - url: https://github.com/OpenWebconcept/plugin-openpub-base
     basisset: true
   - url: https://github.com/OpenWebconcept/plugin-pdc-base
     basisset: true
+    functionalitiesDraft: true
+    functionalities:
+      - beheren-van-producten-en-diensten
+      - publiceren-gemeentelijke-producten-en-diensten
   - url: https://github.com/operaton/operaton
     basisset: true
+    functionalitiesDraft: true
+    functionalities:
+      - aanmaken-en-geautomatiseerd-uitvoeren-processen
   - url: https://github.com/operaton/operaton-modeler
     basisset: true
   - url: https://github.com/wearefrank/zaakbrug

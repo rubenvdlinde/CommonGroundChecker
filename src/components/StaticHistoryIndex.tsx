@@ -20,7 +20,12 @@ export function readHistoryParams(params: { get(name: string): string | null }):
     sort: sort === "score" || sort === "date" ? sort : "rating",
     direction: params.get("direction") === "asc" ? "asc" : "desc",
     query: normalizeSearchQuery(params.get("q") ?? undefined),
-    filter: parseHistoryFilter(params.get("status") ?? undefined, params.get("basisset") ?? undefined),
+    filter: parseHistoryFilter(
+      params.get("status") ?? undefined,
+      params.get("basisset") ?? undefined,
+      params.get("functionality") ?? undefined,
+      params.get("standard") ?? undefined
+    ),
   };
 }
 
@@ -31,14 +36,22 @@ interface StaticHistoryIndexProps {
   minUsers?: number;
   /** The build day as YYYY-MM-DD */
   today?: string;
+  /** Names of the functionalities the components list, by id */
+  functionalityNames?: Record<string, string>;
 }
 
 /**
  * The Components index of the static site. Every repository is in the page;
- * search, sort and the status filter run in the browser on the same URL
+ * search, sort and the filters run in the browser on the same URL
  * parameters as the server's Components index.
  */
-export default function StaticHistoryIndex({ repositories, basisset = null, minUsers, today }: StaticHistoryIndexProps) {
+export default function StaticHistoryIndex({
+  repositories,
+  basisset = null,
+  minUsers,
+  today,
+  functionalityNames,
+}: StaticHistoryIndexProps) {
   const { sort, direction, query, filter } = readHistoryParams(useSearchParams());
   const matching = useMemo(
     () => repositories.filter((repository) => matchesRepositorySearch(repository as Parameters<typeof matchesRepositorySearch>[0], query)),
@@ -52,6 +65,9 @@ export default function StaticHistoryIndex({ repositories, basisset = null, minU
       repositories={matching}
       status={filter.status}
       basissetOnly={filter.basisset}
+      functionality={filter.functionality ?? null}
+      standard={filter.standard ?? null}
+      functionalityNames={functionalityNames}
       basisset={basisset}
       minUsers={minUsers}
       today={today}

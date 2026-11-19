@@ -10,8 +10,10 @@ import RatingBadge from "@/components/RatingBadge";
 import RepoLogo from "@/components/RepoLogo";
 import RunStatus, { runStatus } from "@/components/RunStatus";
 import { buildHistoryHref, normalizeSearchQuery, SEARCH_DEBOUNCE_MS } from "@/lib/historySearch";
+import { compareHref } from "@/lib/compare";
+import { STANDARD_FILTER_OPTIONS } from "@/lib/componentStandards";
 import { isRating } from "@/lib/ratings";
-import { componentHref } from "@/lib/routes";
+import { componentHref, FUNCTIONALITIES_PATH } from "@/lib/routes";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import type { Basisset } from "@/lib/basisset";
 import { buildHistoryIndex, matchesFilter, statusCounts } from "@/lib/historyIndex";
@@ -36,7 +38,34 @@ interface HistoryPageClientProps {
   minUsers?: number;
   /** Today as YYYY-MM-DD */
   today?: string;
+  /** The functionality to show, or null for any */
+  functionality?: string | null;
+  /** The standard to show, or null for any */
+  standard?: string | null;
+  /** Names of the functionalities the components list, by id */
+  functionalityNames?: Record<string, string>;
 }
+
+/** Two components can be compared at a time. */
+const MAX_SELECTED = 2;
+
+/** The options of a filter select: the values the entries have, with how many entries have each. */
+export function filterOptions(
+  values: Array<string[] | null>,
+  names: Record<string, string>,
+  selected: string | null
+): Array<{ id: string; name: string; count: number }> {
+  const counts = new Map<string, number>();
+  for (const list of values) for (const id of new Set(list ?? [])) counts.set(id, (counts.get(id) ?? 0) + 1);
+  if (selected && !counts.has(selected)) counts.set(selected, 0);
+  return [...counts.entries()]
+    .map(([id, count]) => ({ id, name: names[id] ?? id, count }))
+    .sort((a, b) => a.name.localeCompare(b.name, "nl", { sensitivity: "base" }));
+}
+
+const STANDARD_NAMES: Record<string, string> = Object.fromEntries(
+  STANDARD_FILTER_OPTIONS.map((option) => [option.id, option.name])
+);
 
 function sortValue(repository: RepoSummary, sortKey: SortKey): number | null {
   const latest = repository.latestAnalysis as { checkedAt: string; score: number; rating?: unknown } | null;
@@ -76,9 +105,15 @@ const ACTIVE_CHIP_CLASS = "border-cg-lightblue text-cg-blue bg-cg-lightblue/10";
 const IDLE_CHIP_CLASS = "border-gray-300 text-gray-600 bg-white hover:border-cg-lightblue hover:text-cg-blue";
 
 /** "status Maintained in the basisset", for the line that counts the matches. */
-function filterLabel(status: LifecycleStatus | null, basissetOnly: boolean): string {
+export function filterLabel(
+  status: LifecycleStatus | null,
+  basissetOnly: boolean,
+  names: { functionality?: string | null; standard?: string | null } = {}
+): string {
   const parts = [status ? `status ${LIFECYCLE_SHORT_LABELS[status]}` : "any status"];
   if (basissetOnly) parts.push("in the basisset");
+  if (names.functionality) parts.push(`that list “${names.functionality}”`);
+  if (names.standard) parts.push(`${names.functionality ? "and " : ""}that support ${names.standard}`);
   return parts.join(" ");
 }
 
@@ -102,8 +137,12 @@ export default function HistoryPageClient({
   basisset = null,
   minUsers = DEFAULT_MIN_USERS,
   today = new Date().toISOString().slice(0, 10),
+  functionality = null,
+  standard = null,
+  functionalityNames = {},
 }: HistoryPageClientProps) {
   const router = useRouter();
+  const [selected, setSelected] = useState<string[]>([]);
   const [searchValue, setSearchValue] = useState(query);
   const requestedQuery = useRef(query);
 
@@ -113,18 +152,53 @@ export default function HistoryPageClient({
   );
   const counts = useMemo(() => statusCounts(entries, basissetOnly), [entries, basissetOnly]);
   const sortedRepositories = useMemo(
-    () => sortRepositories(entries.filter((entry) => matchesFilter(entry, { status, basisset: basissetOnly })), sort, direction),
-    [entries, status, basissetOnly, sort, direction]
+    () =>
+      sortRepositories(
+        entries.filter((entry) => matchesFilter(entry, { status, basisset: basissetOnly, functionality, standard })),
+        sort,
+        direction
+      ),
+    [entries, status, basissetOnly, functionality, standard, sort, direction]
   );
-  const filtered = status !== null || basissetOnly;
-  const hrefWith = (options: { q?: string; sort?: SortKey; direction?: SortDirection; status?: LifecycleStatus | null; basisset?: boolean }) =>
+  const functionalityOptions = useMemo(
+    () => filterOptions(entries.map((entry) => entry.functionalities), functionalityNames, functionality),
+    [entries, functionalityNames, functionality]
+  );
+  const standardOptions = useMemo(
+    () => filterOptions(entries.map((entry) => entry.standards), STANDARD_NAMES, standard),
+    [entries, standard]
+  );
+  const filtered = status !== null || basissetOnly || functionality !== null || standard !== null;
+  const hrefWith = (options: {
+    q?: string;
+    sort?: SortKey;
+    direction?: SortDirection;
+    status?: LifecycleStatus | null;
+    basisset?: boolean;
+    functionality?: string | null;
+    standard?: string | null;
+  }) =>
     buildHistoryHref({
       q: options.q ?? query,
       sort: options.sort ?? sort,
       direction: options.direction ?? direction,
       status: options.status === undefined ? status : options.status,
       basisset: options.basisset ?? basissetOnly,
+      functionality: options.functionality === undefined ? functionality : options.functionality,
+      standard: options.standard === undefined ? standard : options.standard,
     });
+  const filterText = filterLabel(status, basissetOnly, {
+    functionality: functionality ? (functionalityNames[functionality] ?? functionality) : null,
+    standard: standard ? (STANDARD_NAMES[standard] ?? standard) : null,
+  });
+  const toggleSelected = (key: string) =>
+    setSelected((current) =>
+      current.includes(key) ? current.filter((item) => item !== key) : [...current, key].slice(-MAX_SELECTED)
+    );
+  const selectedKeys = selected.map((key) => {
+    const slash = key.lastIndexOf("/");
+    return { owner: key.slice(0, slash), repo: key.slice(slash + 1) };
+  });
 
   // A query that this component did not request came from navigation, so the input follows it.
   useEffect(() => {
@@ -140,16 +214,20 @@ export default function HistoryPageClient({
 
     const timer = setTimeout(() => {
       requestedQuery.current = term;
-      router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly }), { scroll: false });
+      router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly, functionality, standard }), {
+        scroll: false,
+      });
     }, SEARCH_DEBOUNCE_MS);
     return () => clearTimeout(timer);
-  }, [searchValue, sort, direction, status, basissetOnly, router]);
+  }, [searchValue, sort, direction, status, basissetOnly, functionality, standard, router]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const term = normalizeSearchQuery(searchValue);
     requestedQuery.current = term;
-    router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly }), { scroll: false });
+    router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly, functionality, standard }), {
+        scroll: false,
+      });
   }
 
   return (
@@ -185,6 +263,8 @@ export default function HistoryPageClient({
           <input type="hidden" name="direction" value={direction} />
           {status && <input type="hidden" name="status" value={status} />}
           {basissetOnly && <input type="hidden" name="basisset" value="1" />}
+          {functionality && <input type="hidden" name="functionality" value={functionality} />}
+          {standard && <input type="hidden" name="standard" value={standard} />}
           <button
             type="submit"
             className="rounded-lg border border-cg-lightblue bg-cg-lightblue/10 px-3 py-1.5 text-sm font-semibold text-cg-blue hover:bg-cg-lightblue/20"
@@ -201,7 +281,7 @@ export default function HistoryPageClient({
                 key={`${option.sort}-${option.direction}`}
                 href={hrefWith({ sort: option.sort, direction: option.direction })}
                 aria-current={isActive ? "true" : undefined}
-                className={`inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border transition-colors ${
+                className={`inline-flex items-center min-h-[44px] sm:min-h-0 text-xs font-semibold px-2 py-0.5 rounded-full border transition-colors ${
                   isActive
                     ? "border-cg-lightblue text-cg-blue bg-cg-lightblue/10"
                     : "border-gray-300 text-gray-600 bg-white hover:border-cg-lightblue hover:text-cg-blue"
@@ -242,6 +322,38 @@ export default function HistoryPageClient({
             About the basisset
           </Link>
         </div>
+        <div role="group" aria-label="Filter by functionality and standard" className="flex flex-wrap items-end gap-3 pt-1">
+          <FilterSelect
+            id="filter-functionality"
+            label="Functionality"
+            anyLabel="Any functionality"
+            value={functionality}
+            options={functionalityOptions}
+            onChange={(value) => router.push(hrefWith({ functionality: value }), { scroll: false })}
+          />
+          <FilterSelect
+            id="filter-standard"
+            label="Standard"
+            anyLabel="Any standard"
+            value={standard}
+            options={standardOptions}
+            onChange={(value) => router.push(hrefWith({ standard: value }), { scroll: false })}
+          />
+          {(functionality || standard) && (
+            <Link
+              href={hrefWith({ functionality: null, standard: null })}
+              className="inline-flex items-center min-h-[44px] text-xs font-semibold text-cg-lightblue hover:underline"
+            >
+              Clear these filters
+            </Link>
+          )}
+          <Link
+            href={FUNCTIONALITIES_PATH}
+            className="inline-flex items-center min-h-[44px] text-xs text-cg-lightblue hover:underline"
+          >
+            Functionalities and overlap
+          </Link>
+        </div>
         <div className="pt-2">
           <a
             href={IS_STATIC_SITE ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/index.json` : "/api/repositories/export"}
@@ -260,21 +372,52 @@ export default function HistoryPageClient({
 
       <section
         aria-label="Repositories"
-        className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
+        className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6"
       >
         {(query || filtered) && !error && sortedRepositories.length > 0 && (
           <p role="status" className="text-xs text-gray-500 mb-3">
             {sortedRepositories.length} {sortedRepositories.length === 1 ? "repository matches" : "repositories match"}
             {query ? ` “${query}”` : ""}
-            {filtered ? ` with ${filterLabel(status, basissetOnly)}` : ""}.
+            {filtered ? ` with ${filterText}` : ""}.
           </p>
+        )}
+        {sortedRepositories.length > 1 && !error && (
+          <div
+            aria-live="polite"
+            className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600"
+          >
+            <span>
+              {selected.length === 0
+                ? "Select two components to compare them."
+                : selected.length === 1
+                  ? `${selected[0]} selected. Select one more to compare.`
+                  : `${selected[0]} and ${selected[1]} selected.`}
+            </span>
+            {selected.length === MAX_SELECTED && (
+              <Link
+                href={compareHref(selectedKeys[0], selectedKeys[1])}
+                className="inline-flex items-center min-h-[44px] sm:min-h-[32px] rounded-full border border-cg-lightblue bg-cg-lightblue/10 px-3 font-semibold text-cg-blue hover:bg-cg-lightblue/20"
+              >
+                Compare these two
+              </Link>
+            )}
+            {selected.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setSelected([])}
+                className="inline-flex items-center min-h-[44px] sm:min-h-[32px] px-2 text-cg-lightblue hover:underline"
+              >
+                Clear selection
+              </button>
+            )}
+          </div>
         )}
         {error ? (
           <p className="text-sm text-red-500">{error}</p>
         ) : sortedRepositories.length === 0 ? (
           <p role="status" className="text-sm text-gray-500">
             {filtered && entries.length > 0
-              ? `No repositories${query ? ` match “${query}”` : ""} with ${filterLabel(status, basissetOnly)}.`
+              ? `No repositories${query ? ` match “${query}”` : ""} with ${filterText}.`
               : query
               ? `No repositories match “${query}”.`
               : "No repositories analyzed yet."}
@@ -287,79 +430,126 @@ export default function HistoryPageClient({
               const displayName = repository.displayName ?? fullName;
               const status = runStatus(latest);
 
+              const key = fullName;
+              const isSelected = selected.includes(key);
               return (
-                <Link
-                  key={repository.id}
-                  href={componentHref(repository.owner, repository.name)}
-                  className="block border border-gray-200 rounded-xl px-4 py-3 hover:border-cg-lightblue hover:bg-gray-50 transition-colors"
-                >
-                  <div className="flex items-start justify-between gap-3 flex-wrap">
-                    <div className="flex min-w-0 items-start gap-3">
-                      <RepoLogo logoUrl={repository.logoUrl ?? null} name={displayName} size={40} />
-                      <div className="min-w-0 [overflow-wrap:anywhere]">
-                        <p className="flex flex-wrap items-baseline gap-x-2 font-semibold text-gray-800">
-                          <span>{displayName}</span>
-                          {latest && isRating(latest.rating) && <RatingBadge rating={latest.rating} />}
-                        </p>
-                        <p className="mt-1 flex flex-wrap items-center gap-2">
-                          <LifecycleChip status={repository.lifecycle.status} />
-                          {repository.basisset.entries.length > 0 && (
-                            <BasissetChip inBasisset={repository.basisset.entries.some((entry) => entry.inBasisset)} />
+                <div key={repository.id} className="flex items-stretch gap-2">
+                  <label
+                    className="flex shrink-0 cursor-pointer items-start justify-center min-w-[44px] pt-4"
+                    title={`Select ${displayName} to compare`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => toggleSelected(key)}
+                      className="h-5 w-5 accent-cg-blue"
+                    />
+                    <span className="sr-only">Select {displayName} to compare</span>
+                  </label>
+                  <Link
+                    href={componentHref(repository.owner, repository.name)}
+                    className="block min-w-0 flex-1 border border-gray-200 rounded-xl px-4 py-3 hover:border-cg-lightblue hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="flex items-start justify-between gap-3 flex-wrap">
+                      <div className="flex min-w-0 items-start gap-3">
+                        <RepoLogo logoUrl={repository.logoUrl ?? null} name={displayName} size={40} />
+                        <div className="min-w-0 [overflow-wrap:anywhere]">
+                          <p className="flex flex-wrap items-baseline gap-x-2 font-semibold text-gray-800">
+                            <span>{displayName}</span>
+                            {latest && isRating(latest.rating) && <RatingBadge rating={latest.rating} />}
+                          </p>
+                          <p className="mt-1 flex flex-wrap items-center gap-2">
+                            <LifecycleChip status={repository.lifecycle.status} />
+                            {repository.basisset.entries.length > 0 && (
+                              <BasissetChip inBasisset={repository.basisset.entries.some((entry) => entry.inBasisset)} />
+                            )}
+                          </p>
+                          {repository.lifecycle.note && (
+                            <p className="text-xs text-amber-900">{repository.lifecycle.note}</p>
                           )}
-                        </p>
-                        {repository.lifecycle.note && (
-                          <p className="text-xs text-amber-900">{repository.lifecycle.note}</p>
+                          {repository.displayName && (
+                            <p className="text-xs text-gray-600">{fullName}</p>
+                          )}
+                          {repository.shortDescription && (
+                            <p className="text-sm text-gray-600">{repository.shortDescription}</p>
+                          )}
+                          <p className="break-all text-xs text-gray-500">{repository.repoUrl}</p>
+                        </div>
+                      </div>
+                      <div className="text-right text-xs text-gray-500">
+                        <p>{repository.analysisCount} analyses</p>
+                        {(repository.openDropCount ?? 0) > 0 && (
+                          <p className={(repository.overdueDropCount ?? 0) > 0 ? "font-semibold text-red-700" : "text-amber-800"}>
+                            {repository.openDropCount} open {repository.openDropCount === 1 ? "drop" : "drops"}
+                            {(repository.overdueDropCount ?? 0) > 0 && `, ${repository.overdueDropCount} overdue`}
+                          </p>
                         )}
-                        {repository.displayName && (
-                          <p className="text-xs text-gray-600">{fullName}</p>
+                        {latest && (
+                          <p>
+                            Last: {new Date(latest.checkedAt).toLocaleString("nl-NL")}
+                          </p>
                         )}
-                        {repository.shortDescription && (
-                          <p className="text-sm text-gray-600">{repository.shortDescription}</p>
+                        {repository.followed && repository.nextCheckAt && (
+                          <p>
+                            Next check: {new Date(repository.nextCheckAt).toLocaleString("nl-NL")}
+                          </p>
                         )}
-                        <p className="text-xs text-gray-500">{repository.repoUrl}</p>
                       </div>
                     </div>
-                    <div className="text-right text-xs text-gray-500">
-                      <p>{repository.analysisCount} analyses</p>
-                      {(repository.openDropCount ?? 0) > 0 && (
-                        <p className={(repository.overdueDropCount ?? 0) > 0 ? "font-semibold text-red-700" : "text-amber-800"}>
-                          {repository.openDropCount} open {repository.openDropCount === 1 ? "drop" : "drops"}
-                          {(repository.overdueDropCount ?? 0) > 0 && `, ${repository.overdueDropCount} overdue`}
-                        </p>
-                      )}
-                      {latest && (
-                        <p>
-                          Last: {new Date(latest.checkedAt).toLocaleString("nl-NL")}
-                        </p>
-                      )}
-                      {repository.followed && repository.nextCheckAt && (
-                        <p>
-                          Next check: {new Date(repository.nextCheckAt).toLocaleString("nl-NL")}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  {(latest || repository.followed) && (
-                    <div className="mt-2 flex flex-wrap items-center gap-2">
-                      {status && <RunStatus status={status} />}
-                      {repository.followed && (
-                        <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-green-300 text-green-800 bg-green-50">
-                          Followed
-                        </span>
-                      )}
-                      {latest && (
-                        <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
-                          Version: unknown
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </Link>
+                    {(latest || repository.followed) && (
+                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                        {status && <RunStatus status={status} />}
+                        {repository.followed && (
+                          <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-green-300 text-green-800 bg-green-50">
+                            Followed
+                          </span>
+                        )}
+                        {latest && (
+                          <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
+                            Version: unknown
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </Link>
+                </div>
               );
             })}
           </div>
         )}
       </section>
+    </div>
+  );
+}
+
+interface FilterSelectProps {
+  id: string;
+  label: string;
+  anyLabel: string;
+  value: string | null;
+  options: Array<{ id: string; name: string; count: number }>;
+  onChange(value: string | null): void;
+}
+
+function FilterSelect({ id, label, anyLabel, value, options, onChange }: FilterSelectProps) {
+  return (
+    <div className="flex min-w-0 max-w-full flex-col gap-1">
+      <label htmlFor={id} className="text-xs font-semibold text-gray-700">
+        {label}
+      </label>
+      <select
+        id={id}
+        value={value ?? ""}
+        onChange={(event) => onChange(event.target.value || null)}
+        className="min-h-[44px] sm:min-h-[36px] w-72 max-w-full rounded-lg border border-gray-300 bg-white px-2 text-sm text-gray-800 focus:border-cg-lightblue focus:outline-none focus:ring-2 focus:ring-cg-lightblue/40"
+      >
+        <option value="">{anyLabel}</option>
+        {options.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.name} ({option.count})
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

@@ -5,6 +5,8 @@
 export const COMPONENTS_PATH = "/components";
 export const USERS_PATH = "/users";
 export const PROVIDERS_PATH = "/providers";
+export const COMPARE_PATH = "/compare";
+export const FUNCTIONALITIES_PATH = "/functionalities";
 /** The static site explains here how to add a component; the server has the check form on About. */
 export const ADD_COMPONENT_PATH = "/add-component";
 
@@ -16,6 +18,10 @@ export function componentHref(owner: string, repo: string, analysisId?: string):
 
 export function userHref(slug: string): string {
   return `${USERS_PATH}/${encodeURIComponent(slug)}`;
+}
+
+export function functionalityHref(id: string): string {
+  return `${FUNCTIONALITIES_PATH}/${encodeURIComponent(id)}`;
 }
 
 export function providerHref(slug: string): string {

@@ -4,7 +4,7 @@ import { matchesRepositorySearch } from "@/lib/historySearch";
 
 describe("readHistoryParams", () => {
   it("reads sort, direction and search from the URL with the server's defaults", () => {
-    const noFilter = { status: null, basisset: false };
+    const noFilter = { status: null, basisset: false, functionality: null, standard: null };
     expect(readHistoryParams(new URLSearchParams(""))).toEqual({ sort: "rating", direction: "desc", query: "", filter: noFilter });
     expect(readHistoryParams(new URLSearchParams("sort=score&direction=asc&q=%20zaak%20"))).toEqual({
       sort: "score",
@@ -24,7 +24,15 @@ describe("readHistoryParams", () => {
     expect(readHistoryParams(new URLSearchParams("status=maintained&basisset=1")).filter).toEqual({
       status: "maintained",
       basisset: true,
+      functionality: null,
+      standard: null,
     });
+  });
+
+  it("reads the functionality and the standard from the URL", () => {
+    expect(
+      readHistoryParams(new URLSearchParams("functionality=registreren-en-delen-van-zaken&standard=zgw-zaken")).filter
+    ).toEqual({ status: null, basisset: false, functionality: "registreren-en-delen-van-zaken", standard: "zgw-zaken" });
   });
 });
 

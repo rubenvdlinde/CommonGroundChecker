@@ -22,6 +22,14 @@ export interface RetiredInfo {
 export const PROVIDER_SERVICES = ["maintenance", "support", "hosting", "implementation", "training"] as const;
 export type ProviderService = (typeof PROVIDER_SERVICES)[number];
 
+export const SERVICE_LABELS: Record<ProviderService, string> = {
+  maintenance: "Maintenance",
+  support: "Support",
+  hosting: "Hosting",
+  implementation: "Implementation",
+  training: "Training",
+};
+
 /** An organisation that offers services on top of a component. It adds itself by pull request. */
 export interface ServiceProvider {
   name: string;
@@ -48,6 +56,10 @@ export interface FollowedRepository {
   retired?: RetiredInfo;
   /** Who offers services on top of the component; contracts and SLAs are in config/slas.yml */
   providers?: ServiceProvider[];
+  /** Ids of config/functionalities.yml: what the component does */
+  functionalities?: string[];
+  /** True while the component owner has not confirmed the functionalities */
+  functionalitiesDraft?: boolean;
 }
 
 export interface RepositoriesConfig {

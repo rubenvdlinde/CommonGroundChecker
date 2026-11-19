@@ -80,6 +80,8 @@ describe("RepoHistoryPage", () => {
     expect(screen.getByText("Org Repo")).toBeTruthy();
     expect(screen.getByText("Status: stable")).toBeTruthy();
     expect(screen.getByText("Followed")).toBeTruthy();
+    expect(screen.getByRole("region", { name: "Functionalities and standards" })).toBeTruthy();
+    expect(screen.getByText(/None listed yet/)).toBeTruthy();
 
     const summary = screen.getByRole("region", { name: "Latest run" });
     expect(within(summary).getByRole("img", { name: "Overall rating 3.4 of 5.5, 3 stars" })).toBeTruthy();

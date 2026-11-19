@@ -10,6 +10,10 @@ interface HistoryHrefOptions {
   status?: string | null;
   /** Only components in the Common Ground basisset */
   basisset?: boolean;
+  /** Only components that list this functionality */
+  functionality?: string | null;
+  /** Only components that declare or implement this standard */
+  standard?: string | null;
 }
 
 /** Trims a search term taken from the URL or the search input. */
@@ -18,13 +22,15 @@ export function normalizeSearchQuery(value: string | string[] | undefined): stri
   return typeof raw === "string" ? raw.trim() : "";
 }
 
-/** Builds the Components index URL, keeping the sort options, the search term and the status filter together. */
-export function buildHistoryHref({ q, sort, direction, status, basisset }: HistoryHrefOptions): string {
+/** Builds the Components index URL, keeping the sort options, the search term and the filters together. */
+export function buildHistoryHref({ q, sort, direction, status, basisset, functionality, standard }: HistoryHrefOptions): string {
   const params = new URLSearchParams({ sort, direction });
   const term = normalizeSearchQuery(q);
   if (term) params.set("q", term);
   if (status) params.set("status", status);
   if (basisset) params.set("basisset", "1");
+  if (functionality) params.set("functionality", functionality);
+  if (standard) params.set("standard", standard);
   return `${COMPONENTS_PATH}?${params.toString()}`;
 }
 

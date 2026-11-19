@@ -15,6 +15,7 @@ import {
   type RepositoriesConfig,
   type SlasConfig,
 } from "./config";
+import { readTaxonomy, taxonomyProblems } from "../functionalities/taxonomy";
 
 export interface Finding {
   level: "error" | "warning";
@@ -42,12 +43,25 @@ function isDay(value: string): boolean {
   return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
 }
 
-/** Findings that need no network. */
-export function checkConfig(repositories: unknown, slas: unknown): Finding[] {
+/**
+ * Findings that need no network. With the parsed config/functionalities.yml,
+ * every functionality a component names must be in it; without it they are not checked.
+ */
+export function checkConfig(repositories: unknown, slas: unknown, functionalities?: unknown): Finding[] {
   const findings: Finding[] = [];
   if (!validateRepositories(repositories)) findings.push(...schemaFindings("config/repositories.yml", validateRepositories.errors));
   if (!validateSlas(slas)) findings.push(...schemaFindings("config/slas.yml", validateSlas.errors));
+  const taxonomy = functionalities === undefined ? null : readTaxonomy(functionalities);
+  if (taxonomy) {
+    if (taxonomy.functionalities.length === 0) {
+      findings.push({ level: "error", subject: "config/functionalities.yml", message: "Lists no functionalities." });
+    }
+    for (const problem of taxonomyProblems(taxonomy)) {
+      findings.push({ level: "error", subject: "config/functionalities.yml", message: problem });
+    }
+  }
   if (findings.length > 0) return findings;
+  const known = taxonomy ? new Set(taxonomy.functionalities.map((functionality) => functionality.id)) : null;
 
   const repoConfig = repositories as RepositoriesConfig;
   const slaConfig = slas as SlasConfig;
@@ -64,6 +78,14 @@ export function checkConfig(repositories: unknown, slas: unknown): Finding[] {
     }
     for (const day of [entry.retired?.on, ...(entry.providers ?? []).map((provider) => provider.since)]) {
       if (day && !isDay(day)) findings.push({ level: "error", subject: entry.url, message: `${day} is not a date.` });
+    }
+    for (const id of known ? entry.functionalities ?? [] : []) {
+      if (!known?.has(id)) {
+        findings.push({ level: "error", subject: entry.url, message: `Functionality ${id} is not in config/functionalities.yml.` });
+      }
+    }
+    if (entry.functionalitiesDraft && !(entry.functionalities ?? []).length) {
+      findings.push({ level: "warning", subject: entry.url, message: "functionalitiesDraft is set, but no functionalities are listed." });
     }
     const providerNames = (entry.providers ?? []).map((provider) => provider.name.trim().toLowerCase());
     if (new Set(providerNames).size !== providerNames.length) {

@@ -67,6 +67,16 @@
             "reason": { "type": "string", "minLength": 1 }
           }
         },
+        "functionalities": {
+          "description": "What the component does, as ids of config/functionalities.yml (the GEMMA application services).",
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "uniqueItems": true
+        },
+        "functionalitiesDraft": {
+          "description": "True while the component owner has not confirmed the functionalities.",
+          "type": "boolean"
+        },
         "providers": {
           "description": "Organisations that offer services on top of the component. Contracts and SLAs go in config/slas.yml.",
           "type": "array",

@@ -98,10 +98,66 @@ describe("toHistoryIndexEntry", () => {
 
 describe("History filter", () => {
   it("reads the status and basisset from the URL, ignoring an unknown status", () => {
-    expect(parseHistoryFilter("Maintained", "1")).toEqual({ status: "maintained", basisset: true });
-    expect(parseHistoryFilter("approved", undefined)).toEqual({ status: null, basisset: false });
-    expect(parseHistoryFilter(undefined, "true")).toEqual({ status: null, basisset: true });
-    expect(parseHistoryFilter(undefined, "0")).toEqual({ status: null, basisset: false });
+    expect(parseHistoryFilter("Maintained", "1")).toMatchObject({ status: "maintained", basisset: true });
+    expect(parseHistoryFilter("approved", undefined)).toMatchObject({ status: null, basisset: false });
+    expect(parseHistoryFilter(undefined, "true")).toMatchObject({ status: null, basisset: true });
+    expect(parseHistoryFilter(undefined, "0")).toMatchObject({ status: null, basisset: false });
+  });
+
+  it("reads the functionality and the standard from the URL, ignoring what is not an id", () => {
+    expect(parseHistoryFilter(undefined, undefined, " Registreren-en-delen-van-zaken ", "zgw-zaken")).toEqual({
+      status: null,
+      basisset: false,
+      functionality: "registreren-en-delen-van-zaken",
+      standard: "zgw-zaken",
+    });
+    expect(parseHistoryFilter(undefined, undefined, "<script>", "zgw zaken")).toMatchObject({
+      functionality: null,
+      standard: null,
+    });
+    expect(parseHistoryFilter(undefined, undefined)).toMatchObject({ functionality: null, standard: null });
+  });
+
+  it("puts the functionality and the standard in the URL with the other filters", () => {
+    expect(
+      buildHistoryHref({
+        q: "open",
+        sort: "rating",
+        direction: "desc",
+        status: "suitable",
+        basisset: true,
+        functionality: "beheren-van-zaken",
+        standard: "zgw-zaken",
+      })
+    ).toBe("/components?sort=rating&direction=desc&q=open&status=suitable&basisset=1&functionality=beheren-van-zaken&standard=zgw-zaken");
+  });
+
+  it("filters on functionality and standard, combined with the status", () => {
+    const entries = buildHistoryIndex(
+      [
+        {
+          ...repositories[0],
+          functionalities: ["registreren-en-delen-van-zaken"],
+          latestAnalysis: {
+            ...(repositories[0].latestAnalysis as object),
+            standardsEvidence: ["Found in the repository, not declared: Zaken API 1.5.1 in src/openapi.yaml (by title)"],
+          },
+        } as (typeof repositories)[number],
+        ...repositories.slice(1),
+      ],
+      options
+    );
+    expect(entries[0].functionalities).toEqual(["registreren-en-delen-van-zaken"]);
+    expect(entries[0].standards).toEqual(["zgw-zaken"]);
+    expect(entries[1].standards).toBeNull();
+    const names = (filter: Parameters<typeof matchesFilter>[1]) =>
+      entries.filter((entry) => matchesFilter(entry, filter)).map((entry) => entry.name);
+    expect(names({ status: null, basisset: false, functionality: "registreren-en-delen-van-zaken" })).toEqual([entries[0].name]);
+    expect(names({ status: null, basisset: false, standard: "zgw-zaken" })).toEqual([entries[0].name]);
+    expect(names({ status: null, basisset: false, standard: "zgw-documenten" })).toEqual([]);
+    expect(
+      names({ status: entries[0].lifecycle.status, basisset: false, functionality: "registreren-en-delen-van-zaken", standard: "zgw-zaken" })
+    ).toEqual([entries[0].name]);
   });
 
   it("puts the filter in the URL next to the search and the sort", () => {

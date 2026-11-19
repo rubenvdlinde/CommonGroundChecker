@@ -14,14 +14,9 @@ import {
   type ServiceProvider,
 } from "@/lib/staticSite/config";
 import { componentHref } from "@/lib/routes";
+import type { CompareProvider } from "@/lib/compareSide";
 
-export const SERVICE_LABELS: Record<ProviderService, string> = {
-  maintenance: "Maintenance",
-  support: "Support",
-  hosting: "Hosting",
-  implementation: "Implementation",
-  training: "Training",
-};
+export { SERVICE_LABELS } from "@/lib/staticSite/config";
 
 /** One component a provider serves, with the services it offers for that component. */
 export interface ProvidedComponent {
@@ -169,4 +164,16 @@ export function contactHref(contact: string): string | null {
   if (/^https?:\/\//.test(contact)) return contact;
   if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact)) return `mailto:${contact}`;
   return null;
+}
+
+/** The providers of each component, by owner/repo, for the compare page. */
+export function providersByComponent(providers: ProviderSummary[]): Record<string, CompareProvider[]> {
+  const result: Record<string, CompareProvider[]> = {};
+  for (const provider of providers) {
+    for (const component of provider.components) {
+      const key = `${component.owner}/${component.repo}`;
+      (result[key] ??= []).push({ name: provider.name, slug: provider.slug, services: component.services });
+    }
+  }
+  return result;
 }
