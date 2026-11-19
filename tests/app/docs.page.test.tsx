@@ -102,6 +102,15 @@ describe("RatingGuidePage", () => {
     expect(approved?.textContent).toContain("The minimum is a proposal");
     expect(approved?.textContent).toContain("never gives stars and never counts in a rating");
   });
+
+  it("calls suitable for Common Ground the programme's threshold, not advice and not a listing condition", () => {
+    render(<RatingGuidePage />);
+
+    const text = document.body.textContent ?? "";
+    expect(text).toMatch(/threshold the Common Ground programme uses to decide whether to adopt\s+a component as supported/);
+    expect(text).toMatch(/It is not a condition for being listed/);
+    expect(text).not.toMatch(/advice/i);
+  });
 });
 
 describe("CategoryDocPage", () => {

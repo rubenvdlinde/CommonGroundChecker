@@ -183,7 +183,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "EUPL License": "eupllicense",
   "Copyright / IP owner": "copyrightowner",
   "publiccode.yml": "publiccode",
-  Maintained: "maintenance",
+  "Maintenance contract": "maintenance",
   "Docker support": "docker",
   "Available Docker image": "dockerimage",
   "OpenAPI / API-first": "openapi",
@@ -273,7 +273,7 @@ const CRITERIA_OVERVIEW = [
   },
   {
     icon: "🛠️",
-    label: "Maintained",
+    label: "Maintenance contract",
     category: "Governance" as CriteriaCategory,
     desc: "A valid maintenance contract",
     tooltip:

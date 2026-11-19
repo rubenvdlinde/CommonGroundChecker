@@ -23,7 +23,8 @@ describe("judgeMaintenance", () => {
     const result = judgeMaintenance(contract({ name: "Acme", until: "2027-06-30" }), "publiccode.yml", TODAY);
 
     expect(result.status).toBe("pass");
-    expect(result.message).toBe("Maintained under contract by Acme until 2027-06-30.");
+    expect(result.title).toBe("Maintenance contract");
+    expect(result.message).toBe("Maintenance contract with Acme until 2027-06-30.");
     expect(result.evidence).toEqual(["Acme: valid until 2027-06-30"]);
   });
 
@@ -40,7 +41,7 @@ describe("judgeMaintenance", () => {
 
     expect(result.status).toBe("pass");
     expect(result.message).toBe(
-      "Maintained under contract by Beta until 2027-01-01. 1 other contractor entry is not valid; see the evidence."
+      "Maintenance contract with Beta until 2027-01-01. 1 other contractor entry is not valid; see the evidence."
     );
     expect(result.evidence).toEqual(["Acme: ended on 2024-12-31", "Beta: valid until 2027-01-01"]);
   });
@@ -133,7 +134,7 @@ describe("checkMaintenance", () => {
     const result = await checkMaintenance(contextWith(yaml), ["README.md", "publiccode.yml"], today);
 
     expect(result.status).toBe("pass");
-    expect(result.message).toBe("Maintained under contract by Acme until 2027-01-31.");
+    expect(result.message).toBe("Maintenance contract with Acme until 2027-01-31.");
   });
 
   it("fails without a publiccode.yml", async () => {

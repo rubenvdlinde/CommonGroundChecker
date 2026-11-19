@@ -5,7 +5,7 @@ import { findPubliccodeFile } from "./publiccode";
 
 const BASE_RESULT = {
   id: "maintenance",
-  title: "Maintained",
+  title: "Maintenance contract",
   description:
     "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
   referenceUrl: "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
@@ -109,7 +109,7 @@ export function judgeMaintenance(publiccode: unknown, file: string, today: strin
   const invalid = checks.length - valid.length;
   return result(
     "pass",
-    `Maintained under contract by ${contracts}.` +
+    `Maintenance contract with ${contracts}.` +
       (invalid > 0 ? ` ${invalid} other contractor ${invalid === 1 ? "entry is" : "entries are"} not valid; see the evidence.` : ""),
     evidence
   );

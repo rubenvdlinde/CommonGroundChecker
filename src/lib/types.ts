@@ -213,7 +213,7 @@ export interface AspectRating {
 }
 
 export interface Endorsement {
-  /** Suitable for Common Ground: no mandatory criterion fails, the overall rating is at least 2.5, the component is maintained and its estimated maintainability is at least 4 stars */
+  /** Suitable for Common Ground: no mandatory criterion fails, the overall rating is at least 2.5, the component has a valid maintenance contract and its estimated maintainability is at least 4 stars */
   passed: boolean;
   reasons: string[];
 }
