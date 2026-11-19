@@ -19,7 +19,7 @@ describe("PubliccodeProfilePage", () => {
       expect(within(section!).getByRole("heading", { level: 3, name: field.keys })).toBeTruthy();
     }
     expect(within(document.getElementById("maintenance")!).getByText("Needed for Suitable")).toBeTruthy();
-    expect(within(document.getElementById("used-by")!).getByText("Needed for Approved (proposed), proposed")).toBeTruthy();
+    expect(within(document.getElementById("used-by")!).getByText("Needed for Maintained (proposed), proposed")).toBeTruthy();
   });
 
   it("lists the known standards with their supports id, and the ones whose URI is to agree", () => {

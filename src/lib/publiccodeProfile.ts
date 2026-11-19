@@ -18,16 +18,16 @@ export const REFERENCE_PARSER = {
 };
 
 export type FieldRequirement =
-  /** A mandatory criterion fails without it, so the component is not suitable for Common Ground */
+  /** A mandatory criterion or the Suitable for Common Ground threshold depends on it */
   | "suitable"
-  /** Needed for the proposed Approved level */
-  | "approved"
+  /** Needed for the proposed Maintained level */
+  | "maintained"
   /** Shown or compared, but no rating or verdict depends on it */
   | "informative";
 
 export const REQUIREMENT_LABELS: Record<FieldRequirement, string> = {
   suitable: "Needed for Suitable",
-  approved: "Needed for Approved (proposed)",
+  maintained: "Needed for Maintained (proposed)",
   informative: "Informative",
 };
 
@@ -76,6 +76,7 @@ export const PROFILE_FIELDS: ProfileField[] = [
       "softwareVersion is the latest stable release. It must match a release tag, with or without a leading v: 2.4.0 matches the tag 2.4.0 or v2.4.0.",
       "releaseDate is the date of that release, as YYYY-MM-DD.",
       "The checker scans the tag that matches softwareVersion. Without a match it scans the newest stable release, and else the default branch with a warning.",
+      "The basisset of the Common Ground standard (code.overheid.nl/CommonGround/vcg-basisset) lists each component with a version. softwareVersion is the version the checker compares with it.",
     ],
     example: 'softwareVersion: "2.4.0"\nreleaseDate: "2026-10-01"',
     usedBy: "The choice of the version that is measured (#68). The checker reads it from the file in the root.",
@@ -89,8 +90,8 @@ export const PROFILE_FIELDS: ProfileField[] = [
       "One of concept, development, beta, stable or obsolete. Use stable only for a release that is ready for production.",
     ],
     example: "developmentStatus: stable",
-    usedBy: "The Approved level: only a stable component can be approved.",
-    requirement: "approved",
+    usedBy: "The Maintained level: only a stable component can reach it.",
+    requirement: "maintained",
     status: "proposed",
   },
   {
@@ -103,19 +104,21 @@ export const PROFILE_FIELDS: ProfileField[] = [
     ],
     example:
       'maintenance:\n  type: contract\n  contractors:\n    - name: Voorbeeld Software B.V.\n      until: "2027-12-31"\n      email: support@example.org',
-    usedBy: "The Maintained criterion (#55). The verdict Suitable for Common Ground requires a valid contract (#56).",
+    usedBy:
+      "The Maintenance contract criterion (#55). Suitable for Common Ground, the threshold the programme uses to decide whether to adopt a component as supported, requires a valid contract (#56).",
     requirement: "suitable",
   },
   {
     id: "used-by",
     keys: "usedBy",
     what: [
-      "The names of the organisations that use the component in production.",
+      "The names of the organisations that use the component in production. Name at least one: the Maintained level asks that the component is proven in use by one or more municipalities.",
       "The publiccode.yml standard marks usedBy as deprecated from 0.8 on and names no replacement key. The proposal behind it moves usage to the catalogue level. The reference parser warns, but still accepts the file. The checker reads it until there is a replacement.",
     ],
     example: "usedBy:\n  - Gemeente Voorbeeld\n  - Gemeente Proefstad",
-    usedBy: "The Approved level counts at least two users. The usage overview and the organisation pages list them.",
-    requirement: "approved",
+    usedBy:
+      "The Maintained level needs at least one organisation, together with Suitable for Common Ground, developmentStatus stable and a valid SLA with a maintainer on the VNG model contract. The usage overview and the organisation pages list them.",
+    requirement: "maintained",
     status: "proposed",
   },
   {

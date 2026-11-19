@@ -129,8 +129,10 @@ export default function PubliccodeProfilePage() {
         </p>
         <p className="text-gray-700">
           Each field below says what to put there, gives an example, and names the criterion that reads it.{" "}
-          <strong>Needed for Suitable</strong> means a mandatory criterion or the verdict Suitable for Common Ground
-          depends on it. <strong>Needed for Approved (proposed)</strong> belongs to the proposed Approved level.{" "}
+          <strong>Needed for Suitable</strong> means a mandatory criterion or Suitable for Common Ground depends on
+          it. Suitable for Common Ground is the threshold the programme uses to decide whether to adopt a component
+          as supported. <strong>Needed for Maintained (proposed)</strong> belongs to the proposed Maintained level,
+          which also needs a valid SLA with a maintainer on the VNG model contract.{" "}
           <strong>Informative</strong> is shown or compared, but no rating or verdict depends on it. A field marked
           in development or proposed is read by a part of the checker that is not released yet.
         </p>

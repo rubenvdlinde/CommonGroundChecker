@@ -67,6 +67,16 @@ describe("the profile's fields", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
+  it("follow the current levels: Maintained needs one user, softwareVersion is compared with the basisset", () => {
+    const text = (id: string) => PROFILE_FIELDS.find((field) => field.id === id)?.what.join(" ") ?? "";
+    const reader = (id: string) => PROFILE_FIELDS.find((field) => field.id === id)?.usedBy ?? "";
+    expect(text("used-by")).toContain("Name at least one");
+    expect(reader("used-by")).toContain("valid SLA with a maintainer on the VNG model contract");
+    expect(reader("maintenance")).toContain("Maintenance contract criterion");
+    expect(text("software-version")).toContain("code.overheid.nl/CommonGround/vcg-basisset");
+    expect(PROFILE_FIELDS.map((field) => field.usedBy).join(" ")).not.toMatch(/Approved/);
+  });
+
   it("say which file names the checker accepts and which to use", () => {
     const file = PROFILE_FIELDS.find((field) => field.id === "file");
     expect(file?.what.join(" ")).toContain("accepts publiccode.yml and publiccode.yaml");

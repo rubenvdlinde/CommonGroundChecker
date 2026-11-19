@@ -6,8 +6,8 @@ The profile uses only keys of the [publiccode.yml standard](https://publiccodeym
 
 Each field below says what to put there, gives an example, and names the criterion that reads it.
 
-- **Needed for Suitable**: a mandatory criterion or the verdict Suitable for Common Ground depends on it.
-- **Needed for Approved (proposed)**: it belongs to the proposed Approved level.
+- **Needed for Suitable**: a mandatory criterion or Suitable for Common Ground depends on it. Suitable for Common Ground is the threshold the programme uses to decide whether to adopt a component as supported.
+- **Needed for Maintained (proposed)**: it belongs to the proposed Maintained level, which also needs a valid SLA with a maintainer on the VNG model contract.
 - **Informative**: it is shown or compared, but no rating or verdict depends on it.
 
 A field marked *in development* or *proposed* is read by a part of the checker that is not released yet.
@@ -102,6 +102,7 @@ Informative, in development.
 - softwareVersion is the latest stable release. It must match a release tag, with or without a leading v: 2.4.0 matches the tag 2.4.0 or v2.4.0.
 - releaseDate is the date of that release, as YYYY-MM-DD.
 - The checker scans the tag that matches softwareVersion. Without a match it scans the newest stable release, and else the default branch with a warning.
+- The basisset of the Common Ground standard (code.overheid.nl/CommonGround/vcg-basisset) lists each component with a version. softwareVersion is the version the checker compares with it.
 
 ```yaml
 softwareVersion: "2.4.0"
@@ -112,7 +113,7 @@ Read by: The choice of the version that is measured (#68). The checker reads it 
 
 ### developmentStatus
 
-Needed for Approved (proposed), proposed.
+Needed for Maintained (proposed), proposed.
 
 - One of concept, development, beta, stable or obsolete. Use stable only for a release that is ready for production.
 
@@ -120,7 +121,7 @@ Needed for Approved (proposed), proposed.
 developmentStatus: stable
 ```
 
-Read by: The Approved level: only a stable component can be approved.
+Read by: The Maintained level: only a stable component can reach it.
 
 ### maintenance
 
@@ -139,13 +140,13 @@ maintenance:
       email: support@example.org
 ```
 
-Read by: The Maintained criterion (#55). The verdict Suitable for Common Ground requires a valid contract (#56).
+Read by: The Maintenance contract criterion (#55). Suitable for Common Ground, the threshold the programme uses to decide whether to adopt a component as supported, requires a valid contract (#56).
 
 ### usedBy
 
-Needed for Approved (proposed), proposed.
+Needed for Maintained (proposed), proposed.
 
-- The names of the organisations that use the component in production.
+- The names of the organisations that use the component in production. Name at least one: the Maintained level asks that the component is proven in use by one or more municipalities.
 - The publiccode.yml standard marks usedBy as deprecated from 0.8 on and names no replacement key. The proposal behind it moves usage to the catalogue level. The reference parser warns, but still accepts the file. The checker reads it until there is a replacement.
 
 ```yaml
@@ -154,7 +155,7 @@ usedBy:
   - Gemeente Proefstad
 ```
 
-Read by: The Approved level counts at least two users. The usage overview and the organisation pages list them.
+Read by: The Maintained level needs at least one organisation, together with Suitable for Common Ground, developmentStatus stable and a valid SLA with a maintainer on the VNG model contract. The usage overview and the organisation pages list them.
 
 ### supports (Common Ground layer)
 
