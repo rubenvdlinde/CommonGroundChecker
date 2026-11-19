@@ -4,7 +4,7 @@ import type { Endorsement } from "@/lib/types";
 interface ApprovalLevelProps {
   approval: Approval;
   endorsement: Endorsement;
-  minConfirmedUsers: number;
+  minUsers: number;
 }
 
 function LevelRow({
@@ -45,13 +45,13 @@ function LevelRow({
 }
 
 /** The two levels, Approved above Suitable for Common Ground, with the reasons a level is not reached. */
-export default function ApprovalLevel({ approval, endorsement, minConfirmedUsers }: ApprovalLevelProps) {
+export default function ApprovalLevel({ approval, endorsement, minUsers }: ApprovalLevelProps) {
   return (
     <ol aria-label="Levels" className="space-y-2">
       <LevelRow
         title="Approved"
         reached={approval.approved}
-        detail={`Suitable for Common Ground, stable, used by at least ${minConfirmedUsers} confirmed organisations and maintained under a valid SLA.${
+        detail={`Suitable for Common Ground, stable, used by at least ${minUsers} organisations declared in publiccode.yml and maintained under a valid SLA.${
           approval.sla ? ` SLA: ${approval.sla.party} with ${approval.sla.maintainer}, until ${approval.sla.until}.` : ""
         }`}
         reasons={approval.reasons}

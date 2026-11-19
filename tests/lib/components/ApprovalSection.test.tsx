@@ -4,24 +4,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 
 import ApprovalSection from "@/components/ApprovalSection";
-import {
-  deleteSla,
-  deleteUserConfirmation,
-  postSla,
-  postUserConfirmation,
-  type UsageStatus,
-} from "@/lib/apiClient";
+import { deleteSla, postSla, type UsageStatus } from "@/lib/apiClient";
 
 vi.mock("@/lib/apiClient", () => ({
-  postUserConfirmation: vi.fn(),
-  deleteUserConfirmation: vi.fn(),
   postSla: vi.fn(),
   deleteSla: vi.fn(),
 }));
 
 const mocked = {
-  postUserConfirmation: postUserConfirmation as unknown as ReturnType<typeof vi.fn>,
-  deleteUserConfirmation: deleteUserConfirmation as unknown as ReturnType<typeof vi.fn>,
   postSla: postSla as unknown as ReturnType<typeof vi.fn>,
   deleteSla: deleteSla as unknown as ReturnType<typeof vi.fn>,
 };
@@ -30,31 +20,21 @@ const suitable = { passed: true, reasons: [] };
 const today = "2026-11-19";
 
 const usage = {
-  declaredUsers: ["Utrecht", "Den Haag", "Tilburg"],
-  declaredUserCount: 3,
-  confirmedUserCount: 1,
-  confirmations: [
-    {
-      id: "c1",
-      organisation: "Utrecht",
-      confirmedOn: "2026-11-01",
-      source: "https://example.org/letter",
-      method: "written-confirmation",
-      declared: true,
-    },
-    {
-      id: "c2",
-      organisation: "Amsterdam",
-      confirmedOn: "2026-11-02",
-      source: "https://example.org/register",
-      method: "register-entry",
-      declared: false,
-    },
-  ],
+  declaredUsers: ["Gemeente Utrecht"],
+  declaredUserCount: 1,
   slas: [],
 };
 
-const sla = { id: "s1", party: "VNG", maintainer: "Maykin Media", startsOn: "2026-01-01", until: "2027-12-31", link: "https://example.org/sla" };
+const sla = {
+  id: "s1",
+  party: "VNG",
+  maintainer: "Maykin Media",
+  startsOn: "2026-01-01",
+  until: "2027-12-31",
+  link: "https://example.org/sla",
+};
+
+const twoUsers = { declaredUsers: ["Gemeente Utrecht", "Gemeente Den Haag"], declaredUserCount: 2 };
 
 function renderSection(overrides: Partial<Parameters<typeof ApprovalSection>[0]> = {}) {
   return render(
@@ -63,11 +43,15 @@ function renderSection(overrides: Partial<Parameters<typeof ApprovalSection>[0]>
       endorsement={suitable}
       developmentStatus="stable"
       initialUsage={usage}
-      minConfirmedUsers={2}
+      minUsers={2}
       today={today}
       {...overrides}
     />
   );
+}
+
+function approvedRow() {
+  return within(screen.getByRole("list", { name: "Levels" })).getAllByRole("listitem")[0];
 }
 
 describe("ApprovalSection", () => {
@@ -80,47 +64,44 @@ describe("ApprovalSection", () => {
     const levels = within(screen.getByRole("list", { name: "Levels" })).getAllByRole("listitem");
     expect(levels[0].textContent).toContain("Approved");
     expect(levels[0].textContent).toContain("Not reached");
+    expect(levels[0].textContent).toContain("at least 2 organisations declared in publiccode.yml");
     expect(levels[levels.length - 1].textContent).toContain("Suitable for Common Ground");
     expect(levels[levels.length - 1].textContent).toContain("Reached");
     const reasons = screen.getByRole("list", { name: "Why it is not approved" });
-    expect(reasons.textContent).toContain("1 of 2 confirmed users");
+    expect(reasons.textContent).toContain("1 of 2 users declared in publiccode.yml");
     expect(reasons.textContent).toContain("No SLA");
-    expect(screen.getByText(/is a proposal/)).toBeTruthy();
+    expect(screen.getByText(/The minimum of 2 users declared in publiccode.yml is a proposal/)).toBeTruthy();
     expect(screen.getByText(/never gives stars/)).toBeTruthy();
   });
 
-  it("shows the counts and marks a confirmation that usedBy does not name", () => {
+  it("lists the declared users as self-declared", () => {
     renderSection();
 
-    expect(screen.getByText("3 organisations named under usedBy in publiccode.yml, 1 confirmed.")).toBeTruthy();
-    const confirmed = screen.getByRole("list", { name: "Confirmed users" });
-    expect(confirmed.textContent).toContain("Written confirmation, 2026-11-01");
-    expect(confirmed.textContent).toContain("Amsterdam");
-    expect(confirmed.textContent).toContain("not named under usedBy, so not counted");
+    expect(screen.getByText("1 organisation named under usedBy in publiccode.yml.")).toBeTruthy();
+    expect(screen.getByRole("list", { name: "Declared users" }).textContent).toBe("Gemeente Utrecht");
+    expect(screen.getByText(/self-declared/)).toBeTruthy();
+    expect(screen.queryByText(/confirm/i)).toBeNull();
   });
 
-  it("reaches Approved with enough confirmed users and a valid SLA", () => {
-    renderSection({ initialUsage: { ...usage, confirmedUserCount: 2, slas: [sla] } });
+  it("reaches Approved with enough declared users and a valid SLA", () => {
+    renderSection({ initialUsage: { ...twoUsers, slas: [sla] } });
 
-    const approved = within(screen.getByRole("list", { name: "Levels" })).getAllByRole("listitem")[0];
-    expect(approved.textContent).toContain("Reached");
-    expect(approved.textContent).toContain("SLA: VNG with Maykin Media, until 2027-12-31.");
+    expect(approvedRow().textContent).toContain("Reached");
+    expect(approvedRow().textContent).toContain("SLA: VNG with Maykin Media, until 2027-12-31.");
     expect(screen.queryByRole("list", { name: "Why it is not approved" })).toBeNull();
   });
 
   it("does not reach Approved for a component that is not stable", () => {
-    renderSection({ developmentStatus: "beta", initialUsage: { ...usage, confirmedUserCount: 2, slas: [sla] } });
+    renderSection({ developmentStatus: "beta", initialUsage: { ...twoUsers, slas: [sla] } });
 
     const reasons = screen.getByRole("list", { name: "Why it is not approved" });
     expect(reasons.textContent).toBe("development status is beta, only stable components can be approved");
   });
 
   it("names the end date of an expired SLA", () => {
-    renderSection({ initialUsage: { ...usage, confirmedUserCount: 2, slas: [{ ...sla, until: "2026-06-30" }] } });
+    renderSection({ initialUsage: { ...twoUsers, slas: [{ ...sla, until: "2026-06-30" }] } });
 
-    expect(screen.getByRole("list", { name: "Why it is not approved" }).textContent).toContain(
-      "SLA expired on 2026-06-30"
-    );
+    expect(screen.getByRole("list", { name: "Why it is not approved" }).textContent).toBe("SLA expired on 2026-06-30");
     expect(screen.getByRole("list", { name: "SLAs" }).textContent).toContain("expired");
   });
 
@@ -135,60 +116,9 @@ describe("ApprovalSection", () => {
     );
   });
 
-  it("adds a confirmation with the admin token and updates the level", async () => {
-    mocked.postUserConfirmation.mockResolvedValueOnce({ ...usage, confirmedUserCount: 2, slas: [sla] });
-    renderSection();
-
-    fireEvent.change(screen.getByLabelText("Admin token"), { target: { value: "secret" } });
-    fireEvent.change(screen.getByLabelText("Organisation"), { target: { value: "Den Haag" } });
-    fireEvent.change(screen.getByLabelText("Method"), { target: { value: "register-entry" } });
-    fireEvent.change(screen.getByLabelText("Source link"), { target: { value: "https://example.org/den-haag" } });
-    fireEvent.click(screen.getByRole("button", { name: "Add confirmation" }));
-
-    await waitFor(() => {
-      expect(screen.getByRole("status").textContent).toBe("Confirmation of Den Haag saved.");
-    });
-    expect(mocked.postUserConfirmation).toHaveBeenCalledWith(
-      "repo-id",
-      {
-        organisation: "Den Haag",
-        confirmedOn: today,
-        source: "https://example.org/den-haag",
-        method: "register-entry",
-      },
-      "secret"
-    );
-    expect(within(screen.getByRole("list", { name: "Levels" })).getAllByRole("listitem")[0].textContent).toContain(
-      "Reached"
-    );
-    expect((screen.getByLabelText("Organisation") as HTMLInputElement).value).toBe("");
-  });
-
-  it("offers the declared organisations as suggestions", () => {
-    const { container } = renderSection();
-    const options = Array.from(container.querySelectorAll("datalist option")).map((option) =>
-      option.getAttribute("value")
-    );
-    expect(options).toEqual(["Utrecht", "Den Haag", "Tilburg"]);
-  });
-
-  it("removes a confirmation", async () => {
-    mocked.deleteUserConfirmation.mockResolvedValueOnce({ ...usage, confirmations: [usage.confirmations[0]] });
-    renderSection();
-
-    fireEvent.change(screen.getByLabelText("Admin token"), { target: { value: "secret" } });
-    fireEvent.click(screen.getByRole("button", { name: "Remove confirmation of Amsterdam" }));
-
-    await waitFor(() => {
-      expect(screen.getByRole("status").textContent).toBe("Confirmation of Amsterdam removed.");
-    });
-    expect(mocked.deleteUserConfirmation).toHaveBeenCalledWith("repo-id", "c2", "secret");
-    expect(screen.queryByText("Amsterdam")).toBeNull();
-  });
-
-  it("adds an SLA and leaves out an empty link", async () => {
-    mocked.postSla.mockResolvedValueOnce({ ...usage, slas: [sla] });
-    renderSection();
+  it("adds an SLA with the admin token, leaves out an empty link and updates the level", async () => {
+    mocked.postSla.mockResolvedValueOnce({ ...twoUsers, slas: [sla] });
+    renderSection({ initialUsage: { ...twoUsers, slas: [] } });
 
     fireEvent.change(screen.getByLabelText("Admin token"), { target: { value: "secret" } });
     fireEvent.change(screen.getByLabelText("Maintainer"), { target: { value: "Maykin Media" } });
@@ -204,31 +134,34 @@ describe("ApprovalSection", () => {
       "secret"
     );
     expect(screen.getByRole("list", { name: "SLAs" }).textContent).toContain("VNG with Maykin Media");
+    expect(approvedRow().textContent).toContain("Reached");
   });
 
   it("removes an SLA", async () => {
     mocked.deleteSla.mockResolvedValueOnce({ ...usage, slas: [] });
     renderSection({ initialUsage: { ...usage, slas: [sla] } });
 
+    fireEvent.change(screen.getByLabelText("Admin token"), { target: { value: "secret" } });
     fireEvent.click(screen.getByRole("button", { name: "Remove SLA of VNG with Maykin Media until 2027-12-31" }));
 
     await waitFor(() => {
       expect(screen.getByRole("status").textContent).toBe("SLA removed.");
     });
+    expect(mocked.deleteSla).toHaveBeenCalledWith("repo-id", "s1", "secret");
     expect(screen.getByText("No SLA recorded.")).toBeTruthy();
   });
 
   it.each([
     [{ status: 401 }, "The admin token is not valid."],
     [{ status: 503 }, "Admin actions are disabled on the backend (ADMIN_TOKEN is not configured)."],
-    [{ status: 409, body: { error: "Utrecht is already confirmed for this repository." } }, "Utrecht is already confirmed for this repository."],
+    [{ status: 400, body: { error: "Invalid until: the SLA ends before it starts." } }, "Invalid until: the SLA ends before it starts."],
   ])("shows the backend error %o", async (error, text) => {
-    mocked.postUserConfirmation.mockRejectedValueOnce(Object.assign(new Error("failed"), error));
+    mocked.postSla.mockRejectedValueOnce(Object.assign(new Error("failed"), error));
     renderSection();
 
-    fireEvent.change(screen.getByLabelText("Organisation"), { target: { value: "Utrecht" } });
-    fireEvent.change(screen.getByLabelText("Source link"), { target: { value: "https://example.org/x" } });
-    fireEvent.click(screen.getByRole("button", { name: "Add confirmation" }));
+    fireEvent.change(screen.getByLabelText("Maintainer"), { target: { value: "Maykin Media" } });
+    fireEvent.change(screen.getByLabelText("Until"), { target: { value: "2025-01-01" } });
+    fireEvent.click(screen.getByRole("button", { name: "Add SLA" }));
 
     await waitFor(() => {
       expect(screen.getByRole("status").textContent).toBe(text);
@@ -237,17 +170,18 @@ describe("ApprovalSection", () => {
 
   it("says when the latest scan did not count the users", () => {
     renderSection({
-      initialUsage: {
-        ...usage,
-        declaredUsers: null,
-        declaredUserCount: null,
-        confirmedUserCount: null,
-      } as unknown as UsageStatus,
+      initialUsage: { ...usage, declaredUsers: null, declaredUserCount: null } as unknown as UsageStatus,
     });
 
     expect(screen.getByText(/did not record the users in publiccode.yml/)).toBeTruthy();
     expect(screen.getByRole("list", { name: "Why it is not approved" }).textContent).toContain(
-      "Confirmed users not counted yet"
+      "Users not counted yet"
     );
+  });
+
+  it("says when the usage could not be loaded", () => {
+    renderSection({ initialUsage: null });
+
+    expect(screen.getByText("Usage could not be loaded from the backend.")).toBeTruthy();
   });
 });

@@ -35,10 +35,6 @@ export const $RepoAnalysisOutput = {
             type: 'number',
             description: `Organisations under usedBy at this analysis, or null when it did not record them`,
         },
-        confirmedUserCount: {
-            type: 'number',
-            description: `Declared organisations with a confirmation at the time of this analysis`,
-        },
         score: {
             type: 'number',
             isRequired: true,

@@ -1,9 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  DELETE as DELETE_CONFIRMATION,
-  POST as POST_CONFIRMATION,
-} from "@/app/api/repositories/[repoId]/usage/confirmations/route";
 import { DELETE as DELETE_SLA, POST as POST_SLA } from "@/app/api/repositories/[repoId]/usage/slas/route";
 
 const originalFetch = globalThis.fetch;
@@ -28,39 +24,17 @@ describe("Repository usage proxy routes", () => {
     vi.restoreAllMocks();
   });
 
-  it("forwards a confirmation with the admin bearer token", async () => {
-    backendReply(201, { confirmedUserCount: 1 });
-    const confirmation = { organisation: "Utrecht", confirmedOn: "2026-11-19", source: "https://x", method: "register-entry" };
-
-    const response = await POST_CONFIRMATION(
-      new Request("http://localhost/api/repositories/repo-id/usage/confirmations", {
-        method: "POST",
-        headers: { authorization: "Bearer admin" },
-        body: JSON.stringify(confirmation),
-      }),
-      { params: Promise.resolve({ repoId: "repo-id" }) }
-    );
-
-    expect(response.status).toBe(201);
-    const [url, init] = fetchMock().mock.calls[0] as [string, RequestInit];
-    expect(url).toMatch(/\/api\/repositories\/repo-id\/usage\/confirmations$/);
-    expect(init.method).toBe("POST");
-    expect((init.headers as Record<string, string>).Authorization).toBe("Bearer admin");
-    expect(JSON.parse(init.body as string)).toEqual(confirmation);
-  });
-
-  it("forwards the removal of a confirmation without a body and passes the status through", async () => {
+  it("passes the backend status through and leaves out a missing token", async () => {
     backendReply(401, { error: "Missing or invalid admin token." });
 
-    const response = await DELETE_CONFIRMATION(
-      new Request("http://localhost/api/repositories/repo-id/usage/confirmations?id=c%2F1", { method: "DELETE" }),
+    const response = await DELETE_SLA(
+      new Request("http://localhost/api/repositories/repo-id/usage/slas?id=s%2F1", { method: "DELETE" }),
       { params: Promise.resolve({ repoId: "repo-id" }) }
     );
 
     expect(response.status).toBe(401);
     const [url, init] = fetchMock().mock.calls[0] as [string, RequestInit];
-    expect(url).toMatch(/\/usage\/confirmations\/c%2F1$/);
-    expect(init.method).toBe("DELETE");
+    expect(url).toMatch(/\/usage\/slas\/s%2F1$/);
     expect(init.body).toBeUndefined();
     expect((init.headers as Record<string, string>).Authorization).toBeUndefined();
   });
@@ -86,6 +60,9 @@ describe("Repository usage proxy routes", () => {
     );
 
     expect(removed.status).toBe(200);
+    const [, postInit] = fetchMock().mock.calls[0] as [string, RequestInit];
+    expect((postInit.headers as Record<string, string>).Authorization).toBe("Bearer admin");
+    expect(JSON.parse(postInit.body as string)).toEqual({ party: "VNG" });
     const urls = fetchMock().mock.calls.map((call) => (call as [string])[0]);
     expect(urls[0]).toMatch(/\/usage\/slas$/);
     expect(urls[1]).toMatch(/\/usage\/slas\/s1$/);

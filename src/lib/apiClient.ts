@@ -14,7 +14,6 @@ import type {
   ScoringConfigResponse,
   SlaInput,
   UsageStatus,
-  UserConfirmationInput,
 } from "@/generated/openapi-client";
 
 const remoteApiBaseUrl = process.env.URL?.replace(/\/$/, "") ?? "";
@@ -42,7 +41,6 @@ export type {
   ScoringConfigResponse,
   SlaInput,
   UsageStatus,
-  UserConfirmationInput,
 };
 
 interface StreamOptions {
@@ -155,7 +153,7 @@ export async function getRepositoryUsage(repoId: string): Promise<UsageStatus> {
 }
 
 /**
- * Removes a confirmation or SLA through the local proxy, which takes the id as a
+ * Removes an SLA through the local proxy, which takes the id as a
  * query parameter. Throws an error with the `status` and `body` of a failed reply.
  */
 async function deleteThroughProxy(path: string, id: string, adminToken: string): Promise<UsageStatus> {
@@ -174,23 +172,6 @@ async function deleteThroughProxy(path: string, id: string, adminToken: string):
 
 function adminClient(adminToken: string) {
   return new ApiClient({ BASE: "", TOKEN: adminToken }).default;
-}
-
-export async function postUserConfirmation(
-  repoId: string,
-  confirmation: UserConfirmationInput,
-  adminToken: string
-): Promise<UsageStatus> {
-  logApiRequest("local", "POST", `/api/repositories/${encodeURIComponent(repoId)}/usage/confirmations`, confirmation);
-  return adminClient(adminToken).postApiRepositoriesUsageConfirmations(repoId, confirmation);
-}
-
-export async function deleteUserConfirmation(
-  repoId: string,
-  confirmationId: string,
-  adminToken: string
-): Promise<UsageStatus> {
-  return deleteThroughProxy(`/api/repositories/${encodeURIComponent(repoId)}/usage/confirmations`, confirmationId, adminToken);
 }
 
 export async function postSla(repoId: string, sla: SlaInput, adminToken: string): Promise<UsageStatus> {

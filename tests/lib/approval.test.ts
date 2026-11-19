@@ -3,9 +3,9 @@ import {
   computeApproval,
   declaredUsersOf,
   developmentStatusOf,
-  DEFAULT_MIN_CONFIRMED_USERS,
+  DEFAULT_MIN_USERS,
   isSlaValid,
-  minConfirmedUsers,
+  minUsers,
   type ApprovalInput,
 } from "@/lib/approval";
 import type { CheckResult } from "@/lib/types";
@@ -17,28 +17,28 @@ function input(overrides: Partial<ApprovalInput> = {}): ApprovalInput {
   return {
     endorsement: { passed: true, reasons: [] },
     developmentStatus: "stable",
-    confirmedUserCount: 2,
+    declaredUserCount: 2,
     slas: [validSla],
-    minConfirmedUsers: 2,
+    minUsers: 2,
     today,
     ...overrides,
   };
 }
 
-describe("minConfirmedUsers", () => {
+describe("minUsers", () => {
   it("defaults to 2", () => {
-    expect(DEFAULT_MIN_CONFIRMED_USERS).toBe(2);
-    expect(minConfirmedUsers(undefined)).toBe(2);
-    expect(minConfirmedUsers("")).toBe(2);
+    expect(DEFAULT_MIN_USERS).toBe(2);
+    expect(minUsers(undefined)).toBe(2);
+    expect(minUsers("")).toBe(2);
   });
 
   it("reads a whole number of at least 1", () => {
-    expect(minConfirmedUsers(" 3 ")).toBe(3);
-    expect(minConfirmedUsers("1")).toBe(1);
+    expect(minUsers(" 3 ")).toBe(3);
+    expect(minUsers("1")).toBe(1);
   });
 
   it.each(["0", "-1", "2.5", "two"])("falls back to the default for %s", (value) => {
-    expect(minConfirmedUsers(value)).toBe(2);
+    expect(minUsers(value)).toBe(2);
   });
 });
 
@@ -77,7 +77,7 @@ describe("isSlaValid", () => {
 });
 
 describe("computeApproval", () => {
-  it("approves a suitable component with enough confirmed users and a valid SLA", () => {
+  it("approves a suitable component with enough declared users and a valid SLA", () => {
     expect(computeApproval(input())).toEqual({ approved: true, reasons: [], sla: validSla });
   });
 
@@ -103,20 +103,20 @@ describe("computeApproval", () => {
     ]);
   });
 
-  it("names the confirmed users against the minimum", () => {
-    expect(computeApproval(input({ confirmedUserCount: 1 })).reasons).toEqual(["1 of 2 confirmed users"]);
-    expect(computeApproval(input({ confirmedUserCount: 2, minConfirmedUsers: 3 })).reasons).toEqual([
-      "2 of 3 confirmed users",
+  it("names the users declared in publiccode.yml against the minimum", () => {
+    expect(computeApproval(input({ declaredUserCount: 1 })).reasons).toEqual(["1 of 2 users declared in publiccode.yml"]);
+    expect(computeApproval(input({ declaredUserCount: 2, minUsers: 3 })).reasons).toEqual([
+      "2 of 3 users declared in publiccode.yml",
     ]);
   });
 
-  it("approves with more confirmed users than the minimum", () => {
-    expect(computeApproval(input({ confirmedUserCount: 5 })).approved).toBe(true);
+  it("approves with more declared users than the minimum", () => {
+    expect(computeApproval(input({ declaredUserCount: 5 })).approved).toBe(true);
   });
 
   it("says when the users were not counted", () => {
-    expect(computeApproval(input({ confirmedUserCount: null })).reasons).toEqual([
-      "Confirmed users not counted yet: the latest scan did not record usedBy",
+    expect(computeApproval(input({ declaredUserCount: null })).reasons).toEqual([
+      "Users not counted yet: the latest scan did not record usedBy",
     ]);
   });
 
@@ -145,12 +145,12 @@ describe("computeApproval", () => {
 
   it("lists every missing condition in order", () => {
     const approval = computeApproval(
-      input({ endorsement: { passed: false, reasons: [] }, developmentStatus: "beta", confirmedUserCount: 0, slas: [] })
+      input({ endorsement: { passed: false, reasons: [] }, developmentStatus: "beta", declaredUserCount: 0, slas: [] })
     );
     expect(approval.reasons).toEqual([
       "Not yet suitable for Common Ground",
       "development status is beta, only stable components can be approved",
-      "0 of 2 confirmed users",
+      "0 of 2 users declared in publiccode.yml",
       "No SLA",
     ]);
   });

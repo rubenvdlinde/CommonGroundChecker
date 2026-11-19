@@ -13,7 +13,7 @@ import RepoHistoryPage from "@/app/history/[owner]/[repo]/page";
 describe("RepoHistoryPage", () => {
   afterEach(() => {
     cleanup();
-    delete process.env.MIN_CONFIRMED_USERS;
+    delete process.env.MIN_USERS;
   });
 
   it("shows each analysis's overall rating, computed for older analyses", async () => {
@@ -38,20 +38,18 @@ describe("RepoHistoryPage", () => {
   });
 
   it("shows Approved above Suitable with the reasons, and the users over time", async () => {
-    process.env.MIN_CONFIRMED_USERS = "3";
+    process.env.MIN_USERS = "3";
     getAdminScoring.mockRejectedValue(new Error("offline"));
     getRepoHistory.mockResolvedValue({
       repository: { id: "repo-id", owner: "org", name: "repo", metadata: { topics: [], stars: 0, forks: 0 } },
       analyses: [
-        { id: "b", checkedAt: "2026-11-11T10:00:00Z", score: 71, rating: 3.4, endorsement: { passed: true, reasons: [] }, results: [{ id: "publiccode", status: "pass", requirementLevel: "mandatory", publiccode: { developmentStatus: "beta" } }], declaredUserCount: 4, confirmedUserCount: 1 },
-        { id: "a", checkedAt: "2026-11-01T10:00:00Z", score: 70, rating: 3.4, endorsement: { passed: true, reasons: [] }, results: [], declaredUserCount: 3, confirmedUserCount: 0 },
+        { id: "b", checkedAt: "2026-11-11T10:00:00Z", score: 71, rating: 3.4, endorsement: { passed: true, reasons: [] }, results: [{ id: "publiccode", status: "pass", requirementLevel: "mandatory", publiccode: { developmentStatus: "beta" } }], declaredUserCount: 1 },
+        { id: "a", checkedAt: "2026-11-01T10:00:00Z", score: 70, rating: 3.4, endorsement: { passed: true, reasons: [] }, results: [], declaredUserCount: 0 },
       ],
     });
     getRepositoryUsage.mockResolvedValue({
-      declaredUsers: ["A", "B", "C", "D"],
-      declaredUserCount: 4,
-      confirmedUserCount: 1,
-      confirmations: [],
+      declaredUsers: ["A"],
+      declaredUserCount: 1,
       slas: [],
     });
 
@@ -61,10 +59,10 @@ describe("RepoHistoryPage", () => {
     const levels = screen.getByRole("list", { name: "Levels" });
     expect(levels.textContent?.indexOf("Approved")).toBeLessThan(levels.textContent?.indexOf("Suitable for Common Ground") ?? 0);
     const reasons = screen.getByRole("list", { name: "Why it is not approved" });
-    expect(reasons.textContent).toContain("1 of 3 confirmed users");
+    expect(reasons.textContent).toContain("1 of 3 users declared in publiccode.yml");
     expect(reasons.textContent).toContain("No SLA");
     expect(reasons.textContent).toContain("development status is beta, only stable components can be approved");
-    expect(screen.getByText("Declared and confirmed users over time")).toBeTruthy();
+    expect(screen.getByText("Users declared in publiccode.yml over time")).toBeTruthy();
   });
 
   it("still renders when the usage cannot be loaded", async () => {

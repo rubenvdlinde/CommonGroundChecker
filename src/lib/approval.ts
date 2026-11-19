@@ -1,12 +1,12 @@
 import type { CheckResult, Endorsement } from "./types";
 
-/** The proposed minimum of confirmed users for Approved; `MIN_CONFIRMED_USERS` overrides it. */
-export const DEFAULT_MIN_CONFIRMED_USERS = 2;
+/** The proposed minimum of users declared in publiccode.yml for Approved; `MIN_USERS` overrides it. */
+export const DEFAULT_MIN_USERS = 2;
 
-/** `MIN_CONFIRMED_USERS` as a whole number of at least 1, else the default. */
-export function minConfirmedUsers(value: string | undefined = process.env.MIN_CONFIRMED_USERS): number {
+/** `MIN_USERS` as a whole number of at least 1, else the default. */
+export function minUsers(value: string | undefined = process.env.MIN_USERS): number {
   const parsed = Number(value?.trim());
-  return value?.trim() && Number.isInteger(parsed) && parsed >= 1 ? parsed : DEFAULT_MIN_CONFIRMED_USERS;
+  return value?.trim() && Number.isInteger(parsed) && parsed >= 1 ? parsed : DEFAULT_MIN_USERS;
 }
 
 /** The organisations under `usedBy` in the scanned publiccode.yml; empty when it has none. */
@@ -39,7 +39,7 @@ export function isSlaValid(sla: Pick<ApprovalSla, "until">, today: string): bool
 }
 
 export interface Approval {
-  /** Approved: suitable for Common Ground, stable, enough confirmed users and a valid SLA */
+  /** Approved: suitable for Common Ground, stable, enough users declared in publiccode.yml and a valid SLA */
   approved: boolean;
   /** Why the component is not approved, in the order of the conditions */
   reasons: string[];
@@ -51,19 +51,19 @@ export interface ApprovalInput {
   endorsement: Endorsement;
   /** `developmentStatus` of the scanned publiccode.yml; null when it is not declared */
   developmentStatus: string | null;
-  /** Declared users with a confirmation; null when the latest scan did not record usedBy */
-  confirmedUserCount: number | null;
+  /** Organisations under `usedBy` in the scanned publiccode.yml; null when the scan did not record them */
+  declaredUserCount: number | null;
   slas: ApprovalSla[];
-  minConfirmedUsers: number;
+  minUsers: number;
   /** Today as YYYY-MM-DD */
   today: string;
 }
 
 /**
  * Approved is the level above Suitable for Common Ground: the component is
- * suitable, its publiccode.yml declares `developmentStatus: stable`, at
- * least `minConfirmedUsers` declared organisations confirmed
- * they use it, and an SLA is valid. Usage counts only here, never in a rating.
+ * suitable, its publiccode.yml declares `developmentStatus: stable` and at
+ * least `minUsers` organisations under `usedBy`, and an SLA is valid. Usage
+ * counts only here, never in a rating.
  */
 export function computeApproval(input: ApprovalInput): Approval {
   const reasons: string[] = [];
@@ -74,10 +74,10 @@ export function computeApproval(input: ApprovalInput): Approval {
     );
   }
 
-  if (input.confirmedUserCount === null) {
-    reasons.push("Confirmed users not counted yet: the latest scan did not record usedBy");
-  } else if (input.confirmedUserCount < input.minConfirmedUsers) {
-    reasons.push(`${input.confirmedUserCount} of ${input.minConfirmedUsers} confirmed users`);
+  if (input.declaredUserCount === null) {
+    reasons.push("Users not counted yet: the latest scan did not record usedBy");
+  } else if (input.declaredUserCount < input.minUsers) {
+    reasons.push(`${input.declaredUserCount} of ${input.minUsers} users declared in publiccode.yml`);
   }
 
   const byEnd = [...input.slas].sort((a, b) => b.until.localeCompare(a.until));

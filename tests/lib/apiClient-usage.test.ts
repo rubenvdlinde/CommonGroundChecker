@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { deleteSla, deleteUserConfirmation } from "@/lib/apiClient";
+import { deleteSla } from "@/lib/apiClient";
 
 const originalFetch = globalThis.fetch;
 
@@ -8,7 +8,7 @@ function fetchMock() {
   return globalThis.fetch as unknown as ReturnType<typeof vi.fn>;
 }
 
-describe("usage admin removals", () => {
+describe("SLA removal", () => {
   beforeEach(() => {
     vi.stubGlobal("fetch", vi.fn());
     vi.spyOn(console, "log").mockImplementation(() => undefined);
@@ -19,14 +19,14 @@ describe("usage admin removals", () => {
     vi.restoreAllMocks();
   });
 
-  it("removes a confirmation through the proxy with the id as a query parameter and the token", async () => {
-    fetchMock().mockResolvedValueOnce(new Response(JSON.stringify({ confirmations: [] }), { status: 200 }));
+  it("removes an SLA through the proxy with the id as a query parameter and the token", async () => {
+    fetchMock().mockResolvedValueOnce(new Response(JSON.stringify({ slas: [] }), { status: 200 }));
 
-    const status = await deleteUserConfirmation("repo id", "c/1", "secret");
+    const status = await deleteSla("repo id", "s/1", "secret");
 
-    expect(status).toEqual({ confirmations: [] });
+    expect(status).toEqual({ slas: [] });
     const [url, init] = fetchMock().mock.calls[0] as [string, RequestInit];
-    expect(url).toBe("/api/repositories/repo%20id/usage/confirmations?id=c%2F1");
+    expect(url).toBe("/api/repositories/repo%20id/usage/slas?id=s%2F1");
     expect(init.method).toBe("DELETE");
     expect((init.headers as Record<string, string>).Authorization).toBe("Bearer secret");
   });

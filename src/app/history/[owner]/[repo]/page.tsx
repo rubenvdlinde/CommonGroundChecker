@@ -5,7 +5,7 @@ import RepoMeta from "@/components/RepoMeta";
 import RatingBadge from "@/components/RatingBadge";
 import UsageHistoryChart from "@/components/UsageHistoryChart";
 import { getRepoHistory, getRepositoryUsage } from "@/lib/apiClient";
-import { developmentStatusOf, minConfirmedUsers } from "@/lib/approval";
+import { developmentStatusOf, minUsers } from "@/lib/approval";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import type { CheckReport } from "@/lib/types";
 import type { RepoMeta as RepoMetaType } from "@/generated/openapi-client";
@@ -126,7 +126,7 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
   } catch {
     usage = null;
   }
-  const minimumConfirmedUsers = minConfirmedUsers();
+  const minimumUsers = minUsers();
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
@@ -164,13 +164,13 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
         endorsement={ratings[0]?.endorsement ?? { passed: false, reasons: ["Not scanned yet"] }}
         developmentStatus={developmentStatusOf(analyses[0]?.results ?? [])}
         initialUsage={usage}
-        minConfirmedUsers={minimumConfirmedUsers}
+        minUsers={minimumUsers}
         today={new Date().toISOString().slice(0, 10)}
       />
 
       <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">Users over time</h3>
-        <UsageHistoryChart analyses={analyses} minConfirmedUsers={minimumConfirmedUsers} />
+        <UsageHistoryChart analyses={analyses} minUsers={minimumUsers} />
       </section>
 
       <FollowControl

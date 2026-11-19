@@ -13,17 +13,6 @@ export const $UsageStatus = {
             type: 'number',
             isRequired: true,
         },
-        confirmedUserCount: {
-            type: 'number',
-            isRequired: true,
-        },
-        confirmations: {
-            type: 'array',
-            contains: {
-                type: 'UserConfirmation',
-            },
-            isRequired: true,
-        },
         slas: {
             type: 'array',
             contains: {
