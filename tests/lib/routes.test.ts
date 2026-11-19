@@ -10,9 +10,9 @@ import { organisationHref } from "@/lib/organisations";
 import { repositoryRunHref } from "@/lib/repositoryRun";
 import { buildHistoryHref } from "@/lib/historySearch";
 
-type Redirect = { source: string; destination: string; permanent: boolean };
+type NextConfig = import("next").NextConfig;
 
-async function loadNextConfig(dataSource?: string): Promise<{ redirects?: () => Promise<Redirect[]>; output?: string }> {
+async function loadNextConfig(dataSource?: string): Promise<NextConfig> {
   vi.resetModules();
   if (dataSource) vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", dataSource);
   return (await import("../../next.config.js")).default;

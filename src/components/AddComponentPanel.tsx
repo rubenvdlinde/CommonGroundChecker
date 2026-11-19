@@ -54,7 +54,7 @@ export default function AddComponentPanel({ compact = false }: { compact?: boole
         <li>Open the pull request. A check tests the entry: the repository must be public, and it should have a publiccode.yml.</li>
         <li>
           After the merge, the component is scanned in the next nightly run, or sooner when a maintainer starts the
-          workflow by hand. Its page then appears under History.
+          workflow by hand. Its page then appears under Components.
         </li>
       </ol>
       <div className="space-y-1">

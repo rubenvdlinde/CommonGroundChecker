@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useState } from "react";
+import { useId, useState } from "react";
 import { isActiveNavLink, type NavLink } from "@/lib/navigation";
 
 const LINK_CLASS =
@@ -15,12 +15,11 @@ const LINK_CLASS =
  */
 export default function SiteNav({ links }: { links: ReadonlyArray<NavLink> }) {
   const pathname = usePathname() ?? "/";
-  const [open, setOpen] = useState(false);
+  // The menu is open on the page it was opened on, so it is closed again after any navigation.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
+  const setOpen = (value: boolean) => setOpenOn(value ? pathname : null);
   const listId = useId();
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   const items = links.map((link) => {
     const active = isActiveNavLink(link.href, pathname);
@@ -47,7 +46,7 @@ export default function SiteNav({ links }: { links: ReadonlyArray<NavLink> }) {
             type="button"
             aria-expanded={open}
             aria-controls={listId}
-            onClick={() => setOpen((value) => !value)}
+            onClick={() => setOpen(!open)}
             className="inline-flex items-center min-h-[44px] min-w-[44px] gap-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <span aria-hidden="true">{open ? "✕" : "☰"}</span>

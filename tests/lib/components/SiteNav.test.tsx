@@ -56,6 +56,17 @@ describe("SiteNav", () => {
     expect(button.getAttribute("aria-expanded")).toBe("false");
   });
 
+  it("closes the menu after any navigation, also with the back button", () => {
+    pathname.current = "/";
+    const { rerender } = render(<SiteNav links={STATIC_NAV_LINKS} />);
+    fireEvent.click(screen.getByRole("button", { name: /Menu/ }));
+    expect(menuList().hidden).toBe(false);
+
+    pathname.current = "/about";
+    rerender(<SiteNav links={STATIC_NAV_LINKS} />);
+    expect(menuList().hidden).toBe(true);
+  });
+
   it("gives every link and the menu button a target of at least 44 pixels", () => {
     pathname.current = "/";
     render(<SiteNav links={SERVER_NAV_LINKS} />);

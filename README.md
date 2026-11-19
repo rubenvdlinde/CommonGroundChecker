@@ -184,9 +184,12 @@ The scan uses `.gitleaks.toml` and runs with `--redact` so findings are masked i
 The application is built as a single Next.js service with clear layers:
 
 1. **Presentation layer (React pages/components)**
-	- Main checker UI (`/`)
-	- Admin scoring UI (`/admin`)
-	- History UI (`/history` and one page per repository: `/history/<owner>/<repo>` shows the latest run in full, `/history/<owner>/<repo>/<analysisId>` the same page for an older run; both graph the overall rating (0.5 to 5.5, pass line at 2.5) of every stored run and list every run with its rating, pass or fail, errors and warnings)
+	- Components, the home page (`/` and `/components`, with one page per component: `/components/<owner>/<repo>` shows the latest run in full, `/components/<owner>/<repo>/<analysisId>` the same page for an older run; both graph the overall rating (0.5 to 5.5, pass line at 2.5) of every stored run and list every run with its rating, pass or fail, errors and warnings)
+	- Users (`/users` and `/users/<slug>`): the organisations that use a component, as components declare them under `usedBy` in publiccode.yml
+	- Providers (`/providers` and `/providers/<slug>`): who offers maintenance, support, hosting, implementation or training for which component, from the `providers` field of `config/repositories.yml`, read when the site is built
+	- About (`/about`), with the check form on a server and "Add your component" on the static site (also at `/add-component`)
+	- Admin scoring UI (`/admin`, server only)
+	- The navigation shows Components, Users, Providers, Rating guide and About, plus Admin on a server. The old paths `/history/...` and `/organisations/...` redirect to `/components/...` and `/users/...`: on a server through `redirects` in `next.config.js`, in the static export through small redirect pages
 
 2. **API layer (Next.js route handlers under `/api`)**
 	- Validates input, orchestrates checks, persists results, and serves history/config data.
@@ -280,9 +283,9 @@ These local Next.js endpoints either run the checker or proxy storage and config
 
 ### Following a repository (Admin)
 
-A repository's history page has a collapsed **Follow this repository (admin)** section. An admin chooses whether to follow the repository and how often it is rescanned (daily, weekly or monthly), and confirms with the backend's admin token (the backend's `ADMIN_TOKEN` environment variable). The token is sent with that one request and is not stored. The History index marks followed repositories with a **Followed** badge and shows their next check.
+A component page has a collapsed **Follow this repository (admin)** section. An admin chooses whether to follow the repository and how often it is rescanned (daily, weekly or monthly), and confirms with the backend's admin token (the backend's `ADMIN_TOKEN` environment variable). The token is sent with that one request and is not stored. The Components index marks followed repositories with a **Followed** badge and shows their next check.
 
-Each repository on the History index is a card: its name with the latest overall rating right behind it, the repository, description and URL, and on the right the number of analyses and the last and next check. Its footer shows whether the latest run **Passed** or **Failed**, the number of failures (the entries of the run's errors block, including an overall rating below 2.5) and of warnings, **Followed**, and the version. The check routes store those counts with each analysis as `issueCounts`. A run stored before endorsements existed shows no status; a run with an endorsement but without stored counts takes its failures from the endorsement's reasons.
+Each repository on the Components index is a card: its name with the latest overall rating right behind it, the repository, description and URL, and on the right the number of analyses and the last and next check. Its footer shows whether the latest run **Passed** or **Failed**, the number of failures (the entries of the run's errors block, including an overall rating below 2.5) and of warnings, **Followed**, and the version. The check routes store those counts with each analysis as `issueCounts`. A run stored before endorsements existed shows no status; a run with an endorsement but without stored counts takes its failures from the endorsement's reasons.
 
 ### ADR Spectral ruleset source (Admin)
 
@@ -307,7 +310,7 @@ On the **Admin** page, the field **"Spectral ruleset source"** controls which ru
 3. Checker orchestrator runs criteria (parallel where possible).
 4. Weighted score is computed using the selected/persisted scoring config.
 5. Result + evidence is stored through the remote API and returned to UI.
-6. History/admin pages query internal APIs to show prior runs and config snapshots.
+6. Components and admin pages query internal APIs to show prior runs and config snapshots.
 
 ## Scoring
 
@@ -378,7 +381,7 @@ The PDF export lists every aspect with its rating.
 
 These results are informative. They give no stars and do not count towards the verdict. Every term and target below is a proposal until a governance decision sets it; the backend's scoring configuration holds the values in effect.
 
-- **Drops.** The backend compares each stored run with the previous run of the same kind of version. A criterion that goes from pass to fail, a rating that loses a star, or the lost verdict is a drop, with a fix-by date. The repository page lists the open drops, overdue first; the History index shows how many are open and overdue.
+- **Drops.** The backend compares each stored run with the previous run of the same kind of version. A criterion that goes from pass to fail, a rating that loses a star, or the lost verdict is a drop, with a fix-by date. The repository page lists the open drops, overdue first; the Components index shows how many are open and overdue.
 - **KPI targets.** The project health metrics (CHAOSS) show a proposed target and whether the value meets it.
 - **SLA times for issues.** With a `GITHUB_TOKEN`, project health measures the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without the Dutch national public holidays; Bevrijdingsdag counts every year, as in the cao Rijk). Response is the first comment by an owner, member or collaborator, or the first label set by someone other than the author; bots do not count. A fix is dated by the first stable release after the pull request or commit that closed the issue, or by closing the issue as completed when no closing change is known; the result says how many of each.
 

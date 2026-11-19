@@ -63,7 +63,7 @@ export default async function HistoryHomePage({ searchParams }: HistoryHomePageP
   try {
     repositories = await dataSource().listRepositories({ limit: 50, q: searchQuery });
   } catch (err) {
-    error = err instanceof Error ? err.message : "Unable to connect to repository history API.";
+    error = err instanceof Error ? err.message : "Unable to connect to the components API.";
   }
   const basisset = await basissetLoad;
 

@@ -397,7 +397,7 @@ export function buildIndexEntry(source: IndexSource, now: Date): IndexEntry {
   };
 }
 
-/** Repositories in the order of the History index default: name, case-insensitive. */
+/** Repositories in the order of the Components index default: name, case-insensitive. */
 export function buildIndexFile(entries: IndexEntry[], checkerVersion: string, now: Date): IndexFile {
   return {
     schemaVersion: DATA_SCHEMA_VERSION,

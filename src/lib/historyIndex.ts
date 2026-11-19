@@ -12,7 +12,7 @@ import { isRating } from "./ratings";
 import type { Endorsement } from "./types";
 
 /**
- * One repository on the History index, in a JSON-serialisable shape: the
+ * One repository on the Components index, in a JSON-serialisable shape: the
  * backend's summary with its Common Ground status, its basisset match, and
  * the rating, verdict and version of the latest analysis.
  */
@@ -66,7 +66,7 @@ function slasOf(value: unknown): MaintainedSla[] {
   });
 }
 
-/** The History index entry of one repository. */
+/** The Components index entry of one repository. */
 export function toHistoryIndexEntry(repository: RepoSummary, options: HistoryIndexOptions): HistoryIndexEntry {
   const summary = repository as RepoSummary & Record<string, unknown>;
   const latest = asObject(repository.latestAnalysis);
@@ -105,7 +105,7 @@ export function buildHistoryIndex(repositories: RepoSummary[], options: HistoryI
   return repositories.map((repository) => toHistoryIndexEntry(repository, options));
 }
 
-/** The status filter of the History index: one status or every status, and whether only basisset components show. */
+/** The status filter of the Components index: one status or every status, and whether only basisset components show. */
 export interface HistoryFilter {
   status: LifecycleStatus | null;
   basisset: boolean;

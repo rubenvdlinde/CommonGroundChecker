@@ -155,7 +155,7 @@ usedBy:
   - Gemeente Proefstad
 ```
 
-Read by: The Maintained level needs at least one organisation, together with Suitable for Common Ground, developmentStatus stable and a valid SLA with a maintainer on the VNG model contract. The usage overview and the organisation pages list them.
+Read by: The Maintained level needs at least one organisation, together with Suitable for Common Ground, developmentStatus stable and a valid SLA with a maintainer on the VNG model contract. The usage overview and the Users pages list them.
 
 ### supports (Common Ground layer)
 

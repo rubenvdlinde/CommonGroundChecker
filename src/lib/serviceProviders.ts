@@ -148,7 +148,7 @@ export function readRepositoriesConfig(raw: unknown): RepositoriesConfig {
 }
 
 /** config/repositories.yml, or the file CGC_REPOSITORIES_FILE names. */
-export function repositoriesFile(env: NodeJS.ProcessEnv = process.env): string {
+export function repositoriesFile(env: Record<string, string | undefined> = process.env): string {
   return path.resolve(env.CGC_REPOSITORIES_FILE || "config/repositories.yml");
 }
 
