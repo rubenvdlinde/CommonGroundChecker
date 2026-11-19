@@ -466,7 +466,7 @@ describe("computeEndorsement", () => {
     expect(endorsement.reasons).toEqual(["Mandatory criterion fails: tests", "Overall rating below 2.5"]);
   });
 
-  it("is suitable when the component is maintained", () => {
+  it("is suitable when the component has a valid maintenance contract", () => {
     expect(computeEndorsement([result("maintenance", "pass"), maintainable], 4, config())).toEqual({ passed: true, reasons: [] });
   });
 
@@ -494,12 +494,12 @@ describe("computeEndorsement", () => {
 
   it("names a mandatory maintenance criterion that fails once", () => {
     const endorsement = computeEndorsement(
-      [result("maintenance", "fail", { title: "Maintained" }), maintainable],
+      [result("maintenance", "fail", { title: "Maintenance contract" }), maintainable],
       4,
       config({ maintenance: mandatory })
     );
 
-    expect(endorsement.reasons).toEqual(["Mandatory criterion fails: Maintained"]);
+    expect(endorsement.reasons).toEqual(["Mandatory criterion fails: Maintenance contract"]);
   });
 
   it("does not judge maintenance for a scan made before the criterion existed", () => {

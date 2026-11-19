@@ -530,7 +530,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         criteria: [
           {
             checkId: "maintenance",
-            name: "Maintained",
+            name: "Maintenance contract",
             tool: "the maintenance section of publiccode.yml: passes only on a contract with a named contractor whose end date has not passed, and says what is missing or invalid otherwise",
           },
         ],
