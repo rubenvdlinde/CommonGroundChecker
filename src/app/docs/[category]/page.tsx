@@ -8,6 +8,7 @@ import {
   findCategoryDoc,
   type RatingAspectDoc,
 } from "@/lib/ratingDocs";
+import { TOOLS_DOC_HREF, TOOLS_DOC_LINKED_FROM } from "@/lib/toolsDocs";
 
 interface CategoryDocPageProps {
   params: Promise<{ category: string }>;
@@ -140,6 +141,15 @@ export default async function CategoryDocPage({ params }: CategoryDocPageProps) 
         </p>
         <h1 className="text-3xl font-bold text-cg-blue">{category.title}</h1>
         <p className="text-gray-700">{category.summary}</p>
+        {TOOLS_DOC_LINKED_FROM.includes(category.slug) && (
+          <p className="text-gray-700">
+            Which tools measure each property, and where the checker deviates from the SIG/TÜV NORD model, is on{" "}
+            <Link href={TOOLS_DOC_HREF} className="text-cg-lightblue hover:underline">
+              Tools and models
+            </Link>
+            .
+          </p>
+        )}
         <nav aria-label={`Aspects of ${category.title}`}>
           <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {category.aspects.map((aspect) => (
