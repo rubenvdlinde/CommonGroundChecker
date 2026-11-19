@@ -93,52 +93,56 @@ export default function ResultCard({
   return (
     <div className={`rounded-xl border ${border} ${bg} overflow-hidden`}>
       <button
-        className="w-full flex items-center gap-3 px-5 py-4 text-left"
+        className="w-full flex items-start sm:items-center gap-3 px-4 sm:px-5 py-4 text-left"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
       >
         <Icon className={`w-5 h-5 shrink-0 ${text}`} />
-        <span className="flex-1 flex items-center gap-2">
-          <span className="font-semibold text-gray-800">{title}</span>
-          {description && (
-            <span className="relative group/tooltip inline-flex items-center">
-              <Info className="w-3.5 h-3.5 text-gray-400 hover:text-gray-600 cursor-default" />
-              <span
-                role="tooltip"
-                className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-50
-                           w-64 rounded-lg bg-gray-900 text-white text-xs px-3 py-2 shadow-lg
-                           opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-150"
-              >
-                {description}
-                <span className="absolute left-1/2 -translate-x-1/2 top-full border-4 border-transparent border-t-gray-900" />
+        <span className="flex-1 min-w-0 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <span className="flex-1 min-w-0 flex items-center gap-2">
+            <span className="font-semibold text-gray-800 break-words">{title}</span>
+            {description && (
+              <span className="relative group/tooltip inline-flex items-center">
+                <Info className="w-3.5 h-3.5 text-gray-400 hover:text-gray-600 cursor-default" />
+                <span
+                  role="tooltip"
+                  className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-50
+                             w-64 max-w-[calc(100vw-4rem)] rounded-lg bg-gray-900 text-white text-xs px-3 py-2 shadow-lg
+                             opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-150"
+                >
+                  {description}
+                  <span className="absolute left-1/2 -translate-x-1/2 top-full border-4 border-transparent border-t-gray-900" />
+                </span>
               </span>
-            </span>
-          )}
-        </span>
-        <span
-          className={`text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full ${text} border ${border}`}
-        >
-          {label}
-        </span>
-        <span
-          className={`text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border ${req.className}`}
-        >
-          {req.label}
-        </span>
-        {confidence && (
-          <span className="text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border border-blue-300 text-blue-700 bg-blue-50">
-            {confidence} confidence
+            )}
           </span>
-        )}
+          <span className="flex flex-wrap items-center gap-2">
+            <span
+              className={`text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full ${text} border ${border}`}
+            >
+              {label}
+            </span>
+            <span
+              className={`text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border ${req.className}`}
+            >
+              {req.label}
+            </span>
+            {confidence && (
+              <span className="text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border border-blue-300 text-blue-700 bg-blue-50">
+                {confidence} confidence
+              </span>
+            )}
+          </span>
+        </span>
         {open ? (
-          <ChevronUp className="w-4 h-4 text-gray-500" />
+          <ChevronUp className="w-4 h-4 shrink-0 text-gray-500" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-gray-500" />
+          <ChevronDown className="w-4 h-4 shrink-0 text-gray-500" />
         )}
       </button>
 
       {open && (
-        <div className="px-5 pb-5 space-y-3 border-t border-gray-200 pt-3">
+        <div className="px-4 sm:px-5 pb-5 space-y-3 border-t border-gray-200 pt-3">
           <p className="text-sm text-gray-600 italic">{description}</p>
           <p className={`text-sm font-medium ${text}`}>{message}</p>
 
@@ -151,7 +155,7 @@ export default function ResultCard({
                 {evidence.map((e, index) => (
                   <li
                     key={`${e}-${index}`}
-                    className="text-xs font-mono bg-white/60 rounded px-2 py-1 text-gray-700"
+                    className="text-xs font-mono bg-white/60 rounded px-2 py-1 text-gray-700 break-words"
                   >
                     {e}
                   </li>
@@ -165,7 +169,7 @@ export default function ResultCard({
               href={referenceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-cg-lightblue hover:underline"
+              className="tap-target inline-flex items-center gap-1 text-xs text-cg-lightblue hover:underline"
             >
               <ExternalLink className="w-3 h-3" />
               Reference / Standard

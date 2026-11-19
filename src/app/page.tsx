@@ -374,7 +374,7 @@ function Disclaimer() {
         <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-yellow-600" />
         <div className="flex-1">
           <button
-            className="float-right text-xs text-yellow-700 underline hover:text-yellow-900"
+            className="tap-target float-right -my-3 -mr-2 inline-flex min-w-[44px] items-center justify-center text-xs text-yellow-700 underline hover:text-yellow-900"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
           >
@@ -532,12 +532,12 @@ export default function HomePage() {
                           key={c.label}
                           className="group relative rounded-3xl border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
                         >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-center gap-3">
+                          <div className="flex flex-col-reverse items-start gap-2 sm:flex-row sm:justify-between sm:gap-3">
+                            <div className="flex min-w-0 items-center gap-3">
                               <span className="rounded-2xl bg-gray-100 p-2 text-lg">
                                 {c.icon}
                               </span>
-                              <div>
+                              <div className="min-w-0">
                                 <p className="font-semibold text-gray-900">{c.label}</p>
                                 <p className="text-[11px] text-gray-500 mt-1">{c.desc}</p>
                                 {c.extra && (
@@ -548,7 +548,7 @@ export default function HomePage() {
                               </div>
                             </div>
                             <span
-                              className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${getRequirementBadgeClass(
+                              className={`inline-flex shrink-0 items-center rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${getRequirementBadgeClass(
                                 requirementLevel
                               )}`}
                             >
@@ -557,7 +557,7 @@ export default function HomePage() {
                           </div>
                           <span
                             role="tooltip"
-                            className="pointer-events-none absolute left-1/2 top-full z-40 mt-2 hidden w-72 rounded-lg bg-gray-900 px-3 py-2 text-xs text-white shadow-lg group-hover:block"
+                            className="pointer-events-none absolute inset-x-4 top-full z-40 mt-2 hidden sm:inset-x-auto sm:left-1/2 sm:w-72 rounded-lg bg-gray-900 px-3 py-2 text-xs text-white shadow-lg group-hover:block"
                           >
                             {c.tooltip}
                           </span>
@@ -572,7 +572,7 @@ export default function HomePage() {
         </section>
 
         {/* Form */}
-        <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+        <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6">
           <CheckerForm onSubmit={handleCheck} loading={loading} />
         </section>
 
@@ -611,16 +611,16 @@ export default function HomePage() {
         {report && !loading && (
           <section className="space-y-6">
             {/* Summary header */}
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                 <ScoreBadge score={report.score} />
-                <div className="flex-1 space-y-3">
+                <div className="flex-1 min-w-0 w-full space-y-3">
                   <RepoMeta
                     owner={report.owner}
                     repo={report.repo}
                     repoMeta={report.repoMeta}
                   />
-                  <div className="flex gap-4 text-sm">
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
                     <span className="text-green-600 font-semibold">
                       ✓ {passCount} passed
                     </span>
@@ -640,14 +640,14 @@ export default function HomePage() {
                     {new Date(report.checkedAt).toLocaleString("nl-NL")} —
                     Branch: {report.repoMeta.defaultBranch}
                   </p>
-                  <div className="flex items-center gap-4 text-xs">
+                  <div className="flex flex-wrap items-center gap-x-4 text-xs">
                     <Link
                       href={`/history/${encodeURIComponent(report.owner)}/${encodeURIComponent(report.repo)}`}
-                      className="text-cg-lightblue hover:underline"
+                      className="tap-target inline-flex items-center text-cg-lightblue hover:underline"
                     >
                       View repository history
                     </Link>
-                    <Link href="/history" className="text-cg-lightblue hover:underline">
+                    <Link href="/history" className="tap-target inline-flex items-center text-cg-lightblue hover:underline">
                       Search history
                     </Link>
                     <button
@@ -661,7 +661,7 @@ export default function HomePage() {
                         }
                       }}
                       disabled={exportingPdf}
-                      className="text-cg-lightblue hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="tap-target inline-flex items-center text-cg-lightblue hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {exportingPdf ? "Exporting PDF…" : "Export analysis as PDF"}
                     </button>

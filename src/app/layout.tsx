@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ResponsiveNav from "@/components/ResponsiveNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -8,6 +9,9 @@ export const metadata: Metadata = {
   description:
     "Automatically verify whether a software component complies with the Common Ground principles of Dutch municipalities.",
 };
+
+const NAV_LINK_CLASS =
+  "tap-target inline-flex items-center px-2 sm:py-2 text-white hover:text-cg-lightblue transition-colors";
 
 export default function RootLayout({
   children,
@@ -18,17 +22,17 @@ export default function RootLayout({
     <html lang="nl">
       <body className="min-h-screen flex flex-col">
         <header className="bg-cg-blue text-white shadow-md">
-          <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3 sm:gap-4">
             <Image
               src="/icons/common-ground-full-logo.svg"
               alt="Common Ground logo"
               width={180}
               height={52}
-              className="h-12 w-auto"
+              className="h-9 sm:h-12 w-auto shrink-0"
               priority
             />
-            <div>
-              <h1 className="text-xl font-bold leading-tight">
+            <div className="min-w-0">
+              <h1 className="text-base sm:text-xl font-bold leading-tight">
                 Common Ground Component Checker
               </h1>
               <p className="text-xs text-blue-200">
@@ -36,29 +40,26 @@ export default function RootLayout({
               </p>
             </div>
           </div>
-          {/* Shallow, right-aligned navigation menu */}
-          <nav className="border-b border-blue-900 bg-cg-blue">
-            <div className="max-w-5xl mx-auto px-6 flex items-center justify-end gap-4 py-2 text-sm">
-              <Link href="/" className="text-white hover:text-cg-lightblue transition-colors">
-                Checker
-              </Link>
-              <Link href="/history" className="text-white hover:text-cg-lightblue transition-colors">
-                History
-              </Link>
-              <Link href="/admin" className="text-white hover:text-cg-lightblue transition-colors">
-                Admin
-              </Link>
-              <Link href="/about" className="text-white hover:text-cg-lightblue transition-colors">
-                About
-              </Link>
-            </div>
-          </nav>
+          <ResponsiveNav>
+            <Link href="/" className={NAV_LINK_CLASS}>
+              Checker
+            </Link>
+            <Link href="/history" className={NAV_LINK_CLASS}>
+              History
+            </Link>
+            <Link href="/admin" className={NAV_LINK_CLASS}>
+              Admin
+            </Link>
+            <Link href="/about" className={NAV_LINK_CLASS}>
+              About
+            </Link>
+          </ResponsiveNav>
         </header>
 
         <main className="flex-1">{children}</main>
 
         <footer className="bg-cg-blue text-blue-200 text-xs py-4">
-          <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between gap-2">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between gap-2">
             <span>
               Common Ground Component Checker — built for the Dutch open-source gov
               community
@@ -67,7 +68,7 @@ export default function RootLayout({
               href="https://commonground.nl"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-white"
+              className="tap-target inline-flex items-center self-start underline hover:text-white"
             >
               commonground.nl
             </a>

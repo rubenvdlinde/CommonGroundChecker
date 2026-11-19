@@ -18,12 +18,12 @@ export default function RepoMeta({ owner, repo, repoMeta }: RepoMetaProps) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-5 space-y-3">
       <div className="flex items-start justify-between gap-2 flex-wrap">
-        <div>
+        <div className="min-w-0">
           <a
             href={`https://github.com/${owner}/${repo}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-lg font-bold text-cg-lightblue hover:underline"
+            className="tap-target inline-flex items-center text-lg font-bold text-cg-lightblue hover:underline break-words"
           >
             {owner}/{repo}
           </a>

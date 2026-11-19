@@ -65,7 +65,7 @@ export default function HistoryPageClient({
   );
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-6">
       <section className="space-y-2">
         <h2 className="text-2xl font-bold text-cg-blue">Analyzed Repositories</h2>
         <p className="text-gray-600">
@@ -79,7 +79,7 @@ export default function HistoryPageClient({
               <Link
                 key={`${option.sort}-${option.direction}`}
                 href={`/history?sort=${option.sort}&direction=${option.direction}`}
-                className={`inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border transition-colors ${
+                className={`tap-target inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full border transition-colors ${
                   isActive
                     ? "border-cg-lightblue text-cg-blue bg-cg-lightblue/10"
                     : "border-gray-300 text-gray-600 bg-white hover:border-cg-lightblue hover:text-cg-blue"
@@ -93,7 +93,7 @@ export default function HistoryPageClient({
         <div className="pt-2">
           <a
             href="/api/repositories/export"
-            className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-cg-lightblue text-cg-blue bg-cg-lightblue/10 hover:border-cg-blue hover:bg-cg-lightblue/20"
+            className="tap-target inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full border border-cg-lightblue text-cg-blue bg-cg-lightblue/10 hover:border-cg-blue hover:bg-cg-lightblue/20"
           >
             Download CSV
           </a>
@@ -103,7 +103,7 @@ export default function HistoryPageClient({
         </p>
       </section>
 
-      <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+      <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6">
         {error ? (
           <p className="text-sm text-red-500">{error}</p>
         ) : sortedRepositories.length === 0 ? (
@@ -120,13 +120,13 @@ export default function HistoryPageClient({
                   className="block border border-gray-200 rounded-xl px-4 py-3 hover:border-cg-lightblue hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-3 flex-wrap">
-                    <div>
-                      <p className="font-semibold text-gray-800">
+                    <div className="min-w-0">
+                      <p className="font-semibold text-gray-800 break-words">
                         {repository.owner}/{repository.name}
                       </p>
-                      <p className="text-xs text-gray-500">{repository.repoUrl}</p>
+                      <p className="text-xs text-gray-500 break-all">{repository.repoUrl}</p>
                     </div>
-                    <div className="text-right text-xs text-gray-500">
+                    <div className="sm:text-right text-xs text-gray-500">
                       <p>{repository.analysisCount} analyses</p>
                       {latest && (
                         <p>
@@ -136,11 +136,11 @@ export default function HistoryPageClient({
                     </div>
                   </div>
                   {latest && (
-                    <div className="mt-2">
+                    <div className="mt-2 flex flex-wrap gap-2">
                       <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-gray-300 text-gray-700 bg-white">
                         Latest score: {latest.score}
                       </span>
-                      <span className="inline-flex ml-2 text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
+                      <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
                         Version: unknown
                       </span>
                     </div>
