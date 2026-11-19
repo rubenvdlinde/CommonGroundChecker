@@ -30,6 +30,7 @@ import {
   stateName,
 } from "@/lib/aboutDocs";
 import { PATH_DOC_HREF, PATH_SECTIONS, RESPONSE_AND_FIX_TIMES, SLA_TERMS } from "@/lib/pathDocs";
+import { BASISSET_PAGE_HREF, MEASURING_STICK_INTRO, MEASURING_STICK_PARTS } from "@/lib/measuringStickDocs";
 
 function allText(): string[] {
   return [
@@ -324,6 +325,7 @@ describe("AboutPage", () => {
     expect(screen.getByText("Author: Hugo W.L. ter Doest")).toBeTruthy();
     expect(screen.getByRole("link", { name: "View source on GitHub" })).toBeTruthy();
     expect(Array.from(container.querySelectorAll("section[id]"), (section) => section.id)).toEqual([
+      "measuring-stick",
       "setup",
       "checklist-sources",
       "adoption",
@@ -456,5 +458,101 @@ describe("AboutPage", () => {
     expect(within(section).getByRole("link", { name: "The explanation of the Common Ground proposal (PDF)" }).getAttribute("href")).toBe(
       ALV_EXPLANATION_URL
     );
+  });
+});
+
+function measuringStickText(): string[] {
+  return [
+    MEASURING_STICK_INTRO,
+    ...MEASURING_STICK_PARTS.flatMap((part) => [
+      part.title,
+      ...part.paragraphs,
+      ...(part.items ?? []).map((item) => item.text),
+      ...(part.closing ?? []),
+      ...(part.links ?? []).map((link) => link.text),
+    ]),
+  ];
+}
+
+describe("measuring stick docs data", () => {
+  it("covers the six points in order", () => {
+    expect(MEASURING_STICK_PARTS.map((part) => part.id)).toEqual([
+      "problem",
+      "grounds",
+      "mapping",
+      "comparing",
+      "maintenance",
+      "development",
+    ]);
+  });
+
+  it("states the two ALV wishes and the missing framework", () => {
+    const text = MEASURING_STICK_PARTS[0].paragraphs.join(" ");
+    expect(text).toMatch(/taken into maintenance by the programme.*duplication between components is removed/);
+    expect(text).toMatch(/That framework is missing, so the choices are not made/);
+    expect(text).toMatch(/finger pointing, assumptions and judgements/);
+  });
+
+  it("says the checker gives grounds and VNG decides", () => {
+    const text = MEASURING_STICK_PARTS[1].paragraphs.join(" ");
+    expect(text).toMatch(/Nobody can pitch a component/);
+    expect(text).toMatch(/It does not decide\. VNG, as regievoerder, decides/);
+  });
+
+  it("marks the comparison page and the functionality map and filters as in development, standards not", () => {
+    const part = (id: string) => MEASURING_STICK_PARTS.find((candidate) => candidate.id === id)!;
+    expect(part("comparing").status).toEqual({ kind: "in-development" });
+    expect(part("comparing").paragraphs.join(" ")).toMatch(/right to exist/);
+    expect(part("mapping").items!.map((item) => item.status?.kind ?? null)).toEqual([null, "in-development", "in-development"]);
+  });
+
+  it("links maintenance and further development to the setup and the basisset instead of repeating them", () => {
+    const hrefs = (id: string) => MEASURING_STICK_PARTS.find((part) => part.id === id)!.links!.map((link) => link.href);
+    expect(hrefs("maintenance")).toEqual(["#setup-maintenance", "#setup-levels"]);
+    expect(hrefs("development")).toEqual([BASISSET_PAGE_HREF, "#setup-levels"]);
+    const setupIds = new Set(SETUP_POINTS.map((point) => `#setup-${point.id}`));
+    for (const part of MEASURING_STICK_PARTS) {
+      for (const link of part.links ?? []) {
+        if (link.href.startsWith("#setup-")) expect(setupIds.has(link.href), link.href).toBe(true);
+      }
+    }
+  });
+
+  it("uses no dashes, no Title Case headings and no plan or approval wording", () => {
+    for (const text of measuringStickText()) {
+      expect(text, text).not.toMatch(/[–—]|--/);
+      expect(text, text).not.toMatch(/\bplan\b|\bapprov/i);
+    }
+    for (const part of MEASURING_STICK_PARTS) {
+      const words = part.title.split(" ").slice(1);
+      expect(words.filter((word) => /^[A-Z][a-z]/.test(word) && !["Common", "Ground", "Maintained"].includes(word)), part.title).toEqual([]);
+    }
+  });
+});
+
+describe("AboutPage measuring stick", () => {
+  afterEach(() => cleanup());
+
+  it("shows the six parts, with badges for what is in development", () => {
+    render(<AboutPage />);
+
+    const section = document.getElementById("measuring-stick")!;
+    expect(within(section).getByRole("heading", { level: 2, name: "A measuring stick for choices" })).toBeTruthy();
+    const headings = within(section).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent);
+    expect(headings).toEqual([
+      "The problem: choices without grounds",
+      "What the checker adds: grounds for a decision",
+      "Mapping standards and functionality",
+      "Comparing components In development",
+      "What maintenance means Proposed",
+      "Further development: a partial answer",
+    ]);
+    expect(within(document.getElementById("measuring-stick-mapping")!).getAllByText("In development")).toHaveLength(2);
+    expect(within(section).getByRole("link", { name: "The basisset, next to what the checker measured" }).getAttribute("href")).toBe(
+      BASISSET_PAGE_HREF,
+    );
+    expect(within(section).getByRole("link", { name: "How a component enters the standard" }).getAttribute("href")).toBe("#adoption");
+    expect(document.getElementById("setup-maintenance")).toBeTruthy();
+    expect(document.getElementById("setup-levels")).toBeTruthy();
   });
 });

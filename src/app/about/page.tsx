@@ -26,6 +26,7 @@ import {
   stateName,
 } from "@/lib/aboutDocs";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
+import { MEASURING_STICK_INTRO, MEASURING_STICK_PARTS } from "@/lib/measuringStickDocs";
 import { PATH_DOC_HREF } from "@/lib/pathDocs";
 
 export const metadata: Metadata = {
@@ -80,6 +81,50 @@ export default function AboutPage() {
           The goal is to support better decision-making, highlight improvement areas,
           and make reusable public-sector software easier to evaluate over time.
         </p>
+      </section>
+
+      <section id="measuring-stick" aria-labelledby="measuring-stick-heading" className={CARD}>
+        <h2 id="measuring-stick-heading" className={H2}>
+          A measuring stick for choices
+        </h2>
+        <p className="text-gray-700">{MEASURING_STICK_INTRO}</p>
+        {MEASURING_STICK_PARTS.map((part) => (
+          <div key={part.id} id={`measuring-stick-${part.id}`} className="space-y-2 scroll-mt-6">
+            <h3 className="text-lg font-semibold text-gray-800">
+              {part.title}
+              <StatusBadge status={part.status} />
+            </h3>
+            {part.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-gray-700">
+                {paragraph}
+              </p>
+            ))}
+            {part.items && (
+              <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                {part.items.map((item) => (
+                  <li key={item.text}>
+                    {item.text}
+                    <StatusBadge status={item.status} />
+                  </li>
+                ))}
+              </ul>
+            )}
+            {part.closing?.map((paragraph) => (
+              <p key={paragraph} className="text-gray-700">
+                {paragraph}
+              </p>
+            ))}
+            {part.links && (
+              <ul aria-label={`Read more: ${part.title}`} className="space-y-1 text-sm">
+                {part.links.map((link) => (
+                  <li key={link.href}>
+                    <SetupLink {...link} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
       </section>
 
       <section id="setup" aria-labelledby="setup-heading" className={CARD}>
