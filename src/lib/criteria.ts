@@ -92,6 +92,11 @@ export function criterionAnchorId(id: string): string {
   return `criterion-${id}`;
 }
 
+/** Path of a criterion's page in the rating guide. */
+export function criterionDocHref(id: string): string {
+  return `/docs/criteria/${id}`;
+}
+
 /**
  * The version of the checklist: its criteria, requirement levels, thresholds
  * and weights. A change accepted through the change process gets a new

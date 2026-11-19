@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CHECKLIST_CHANGE_PROPOSAL_URL, CHECKLIST_VERSION } from "@/lib/criteria";
 import { RATING_DOCS } from "@/lib/ratingDocs";
 import { TOOLS_DOC_HREF } from "@/lib/toolsDocs";
+import { CRITERIA_DOC_HREF } from "@/lib/criterionDocs";
 import { PUBLICCODE_PROFILE_PATH } from "@/lib/publiccodeProfile";
 
 export const metadata: Metadata = {
@@ -42,6 +43,18 @@ export default function RatingGuidePage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="criteria" className="space-y-3">
+        <h2 id="criteria" className="text-2xl font-bold text-cg-blue">
+          Criteria
+        </h2>
+        <p className="text-gray-700">
+          <Link href={CRITERIA_DOC_HREF} className="text-cg-lightblue hover:underline">
+            Every criterion has its own page
+          </Link>
+          : what the checker looks at, why it matters, where it comes from, its level and how to pass it.
+        </p>
       </section>
 
       <section aria-labelledby="tools-and-models" className="space-y-3">

@@ -25,4 +25,14 @@ describe("ResultCard", () => {
     renderCard("docker");
     expect(screen.queryByRole("link", { name: "How to fill publiccode.yml for this criterion" })).toBeNull();
   });
+
+  it("links a criterion to its page in the rating guide", () => {
+    renderCard("docker");
+    expect(screen.getByRole("link", { name: "How this is checked" }).getAttribute("href")).toBe("/docs/criteria/docker");
+  });
+
+  it("does not link a result that has no criterion page", () => {
+    renderCard("unknown");
+    expect(screen.queryByRole("link", { name: "How this is checked" })).toBeNull();
+  });
 });

@@ -12,7 +12,14 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { criterionAnchorId, isInTransition, transitionNotice } from "@/lib/criteria";
+import Link from "next/link";
+import {
+  RESULT_ORDER_BY_ID,
+  criterionAnchorId,
+  criterionDocHref,
+  isInTransition,
+  transitionNotice,
+} from "@/lib/criteria";
 import { PUBLICCODE_GUIDE_CHECK_IDS, PUBLICCODE_PROFILE_PATH } from "@/lib/publiccodeProfile";
 
 interface ResultCardProps {
@@ -191,6 +198,12 @@ export default function ResultCard({
                 ))}
               </ul>
             </div>
+          )}
+
+          {RESULT_ORDER_BY_ID.includes(id) && (
+            <Link href={criterionDocHref(id)} className="block text-xs text-cg-lightblue hover:underline">
+              How this is checked
+            </Link>
           )}
 
           {PUBLICCODE_GUIDE_CHECK_IDS.includes(id) && (
