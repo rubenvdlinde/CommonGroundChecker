@@ -319,7 +319,7 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(26);
+    expect(report.results).toHaveLength(27);
     expect(report.results.find((result) => result.id === "maintainability")?.starRating).toBe(3);
     expect(report.results.find((result) => result.id === "semver")?.starRating).toBe(1);
     expect(report.results.find((result) => result.id === "tests")?.starRating).toBe(3);
