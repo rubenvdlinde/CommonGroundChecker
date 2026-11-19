@@ -14,6 +14,7 @@ import RepoMeta from "@/components/RepoMeta";
 import PublicCodeSection from "@/components/PublicCodeSection";
 import type { CheckReport } from "@/lib/types";
 import ScannedRef from "@/components/ScannedRef";
+import ScanModeLine from "@/components/ScanModeLine";
 import type { CriteriaCategory } from "@/lib/criteria";
 import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID, checklistVersionLabel } from "@/lib/criteria";
 import { getAdminScoring, streamCheck } from "@/lib/apiClient";
@@ -718,6 +719,11 @@ function CheckerHomePage() {
                     />
                   </p>
                   <p className="text-xs text-gray-400">{checklistVersionLabel(report.checklistVersion)}</p>
+                  <ScanModeLine
+                    scanMode={report.scanMode}
+                    scanDurationSeconds={report.scanDurationSeconds}
+                    results={report.results}
+                  />
                   <div className="flex items-center gap-4 text-xs">
                     <Link
                       href={`/history/${encodeURIComponent(report.owner)}/${encodeURIComponent(report.repo)}`}

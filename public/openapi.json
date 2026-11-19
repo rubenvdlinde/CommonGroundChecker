@@ -1103,6 +1103,10 @@
           "ref": {
             "type": "string",
             "description": "The branch or tag to scan. Empty scans the released version: the tag of the publiccode.yml softwareVersion, else the newest stable release or semver tag, else the default branch with a warning. \"default-branch\" scans the default branch, \"latest-release\" the newest stable release"
+          },
+          "full": {
+            "type": "boolean",
+            "description": "Run every check, also when the scanned commit did not change since the previous analysis"
           }
         },
         "required": [
@@ -1276,6 +1280,23 @@
           "checklistVersion": {
             "$ref": "#/components/schemas/ChecklistVersion"
           },
+          "scanMode": {
+            "$ref": "#/components/schemas/ScanMode"
+          },
+          "scanDurationSeconds": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "description": "How long the scan took, in seconds"
+          },
+          "toolFingerprint": {
+            "$ref": "#/components/schemas/Fingerprint"
+          },
+          "inputsFingerprint": {
+            "$ref": "#/components/schemas/Fingerprint"
+          },
           "issueCounts": {
             "$ref": "#/components/schemas/IssueCounts"
           },
@@ -1368,6 +1389,23 @@
           },
           "checklistVersion": {
             "$ref": "#/components/schemas/ChecklistVersion"
+          },
+          "scanMode": {
+            "$ref": "#/components/schemas/ScanMode"
+          },
+          "scanDurationSeconds": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "description": "How long the scan took, in seconds"
+          },
+          "toolFingerprint": {
+            "$ref": "#/components/schemas/Fingerprint"
+          },
+          "inputsFingerprint": {
+            "$ref": "#/components/schemas/Fingerprint"
           },
           "issueCounts": {
             "$ref": "#/components/schemas/IssueCounts"
@@ -1766,6 +1804,30 @@
             "type": "string",
             "format": "date",
             "description": "For a mandatory criterion in its transition period at the time of the check: the date it becomes mandatory. Until then a fail is a warning."
+          },
+          "reusedFrom": {
+            "type": "object",
+            "description": "Set when a scan of an unchanged commit copied this result from the analysis that measured it",
+            "properties": {
+              "analysisId": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "checkedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "commit": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "analysisId",
+              "checkedAt",
+              "commit"
+            ]
           }
         },
         "required": [
@@ -1841,6 +1903,27 @@
           "scanRefWarning": {
             "type": "string",
             "description": "Set when no released version was found and the default branch was scanned instead"
+          },
+          "scanMode": {
+            "$ref": "#/components/schemas/ScanMode"
+          },
+          "scanDurationSeconds": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "description": "How long the scan took, in seconds"
+          },
+          "toolFingerprint": {
+            "$ref": "#/components/schemas/Fingerprint"
+          },
+          "inputsFingerprint": {
+            "$ref": "#/components/schemas/Fingerprint"
+          },
+          "scanModeReason": {
+            "type": "string",
+            "description": "Why the scan was full or partial, for example \"the code changed\""
           },
           "repoMeta": {
             "$ref": "#/components/schemas/RepoMeta"
@@ -2161,6 +2244,22 @@
           "organisation",
           "components"
         ]
+      },
+      "ScanMode": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "pattern": "^(full|partial)$",
+        "description": "full when every check ran; partial when the commit, checklist version, tools and scan settings were unchanged, so the code checks were copied from an earlier analysis (each such result carries reusedFrom) and only the outside-world checks ran"
+      },
+      "Fingerprint": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "pattern": "^[0-9a-z:]{1,80}$",
+        "description": "A short hash, for example sha256:0123abcd"
       }
     }
   }

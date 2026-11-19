@@ -62,5 +62,24 @@ export const $CheckResult = {
             description: `For a mandatory criterion in its transition period at the time of the check: the date it becomes mandatory. Until then a fail is a warning.`,
             format: 'date',
         },
+        reusedFrom: {
+            description: `Set when a scan of an unchanged commit copied this result from the analysis that measured it`,
+            properties: {
+                analysisId: {
+                    type: 'string',
+                    isRequired: true,
+                    isNullable: true,
+                },
+                checkedAt: {
+                    type: 'string',
+                    isRequired: true,
+                    format: 'date-time',
+                },
+                commit: {
+                    type: 'string',
+                    isRequired: true,
+                },
+            },
+        },
     },
 } as const;

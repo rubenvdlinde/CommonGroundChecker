@@ -1,6 +1,7 @@
 ﻿import { runChecks } from "@/lib/checkers";
 import { declaredUsersOf } from "@/lib/maintained";
 import { countIssues } from "@/lib/issues";
+import { fetchPreviousAnalysis, scanFieldsOf } from "@/lib/previousAnalysis";
 import { normalizeRequestedRef } from "@/lib/scanRef";
 import { getSupportedProviders, resolveRepositoryContext } from "@/lib/providers";
 import type { CheckReport } from "@/lib/types";
@@ -79,6 +80,7 @@ export async function POST(request: Request) {
   const apiSpecificationLocations = normalizeLocations(body?.apiSpecificationLocations);
   const isRegister = body?.isRegister === true;
   const ref = normalizeRequestedRef(body?.ref);
+  const full = body?.full === true;
 
   const encoder = new TextEncoder();
 
@@ -127,6 +129,8 @@ export async function POST(request: Request) {
             apiSpecificationLocations,
             isRegister,
             ref,
+            full,
+            previousAnalysis: full ? null : await fetchPreviousAnalysis(repoUrl),
           },
           (step, pct) => send({ step, pct })
         );
@@ -167,6 +171,7 @@ export async function POST(request: Request) {
             aspectRatings: report.aspectRatings,
             endorsement: report.endorsement,
             checklistVersion: report.checklistVersion,
+            ...scanFieldsOf(report),
             issueCounts: countIssues(report.results, report.rating, report.endorsement),
             declaredUsers: declaredUsersOf(report.results),
             results: report.results.map(toApiCheckResult),

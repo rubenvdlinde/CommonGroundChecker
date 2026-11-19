@@ -16,6 +16,8 @@ import { loadStoredRatings } from "@/lib/storedRatings";
 import { USAGE_CHECK_ID, readUsageData } from "@/lib/usage";
 import type { CheckReport, CheckResult, StarRating } from "@/lib/types";
 import ScannedRef from "@/components/ScannedRef";
+import ScanModeLine from "@/components/ScanModeLine";
+import { readReusedFrom } from "@/lib/scanModeText";
 import type { RepoMeta } from "@/generated/openapi-client";
 import {
   CATEGORY_ORDER,
@@ -80,6 +82,7 @@ function normalizeResults(raw: unknown): CheckResult[] {
         publiccode: (item.id === "publiccode" && readPublicCodeData(item.publiccode)) || undefined,
         usage: item.id === USAGE_CHECK_ID ? readUsageData(item.usage) : undefined,
         mandatoryFrom: isMandatoryFromDate(item.mandatoryFrom) ? item.mandatoryFrom : undefined,
+        reusedFrom: readReusedFrom(item.reusedFrom),
       } satisfies CheckResult;
     });
 }
@@ -200,6 +203,11 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
           />
         </p>
         <p className="text-xs text-gray-500">{checklistVersionLabel(analysis.checklistVersion)}</p>
+        <ScanModeLine
+          scanMode={analysis.scanMode}
+          scanDurationSeconds={analysis.scanDurationSeconds ?? (analysis as { durationSeconds?: number | null }).durationSeconds}
+          results={results}
+        />
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
           <RatingSummary rating={rating} endorsement={endorsement} score={analysis.score} />
           <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
@@ -276,6 +284,7 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
                         referenceUrl={result.referenceUrl}
                         starRating={result.starRating ?? statusToStars(result.status)}
                         mandatoryFrom={result.mandatoryFrom}
+                        reusedFrom={result.reusedFrom}
                       />
                     ))}
                   </div>

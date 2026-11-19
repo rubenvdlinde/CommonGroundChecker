@@ -3,13 +3,17 @@
  * site's data files (see src/lib/staticSite/records.ts).
  *
  *   npm run --silent scan:static -- [--data DIR] [--only URL]... [--index-only]
- *       [--scoring FILE] [--concurrency N] [--timeout-minutes M]
+ *       [--scoring FILE] [--concurrency N] [--timeout-minutes M] [--full]
  *
  * --only scans just those repositories; the index still lists every one.
  * --index-only scans nothing and rebuilds data/index.json from the config
  * and the files already there, for a change of the config alone.
  * --scoring is a saved copy of GET /api/admin/scoring; without it the
  * default scoring configuration is used and no API is called.
+ * A repository whose scanned commit, checklist version, checker and scan
+ * settings did not change since its latest.json reuses the code checks from
+ * there and runs only the outside-world checks, unless the code checks are
+ * FULL_SCAN_INTERVAL_DAYS (default 7) days old. --full runs every check.
  * Retired repositories are not scanned. A failed scan keeps the previous
  * analysis and is reported in the index as `lastError`.
  * Exit codes: 0 done (also with failed scans), 1 every scan failed, 2 could not run.
@@ -29,13 +33,14 @@ export interface StaticScanArgs {
   data: string;
   only: string[];
   indexOnly: boolean;
+  full: boolean;
   scoring?: string;
   concurrency: number;
   timeoutMinutes: number;
 }
 
 export function parseStaticScanArgs(argv: string[]): StaticScanArgs {
-  const args: StaticScanArgs = { data: "data", only: [], indexOnly: false, concurrency: 1, timeoutMinutes: 45 };
+  const args: StaticScanArgs = { data: "data", only: [], indexOnly: false, full: false, concurrency: 1, timeoutMinutes: 45 };
   const value = (i: number, flag: string): string => {
     const v = argv[i + 1];
     if (v === undefined || v.startsWith("--")) throw new Error(`${flag} needs a value`);
@@ -54,6 +59,7 @@ export function parseStaticScanArgs(argv: string[]): StaticScanArgs {
     else if (a === "--concurrency") args.concurrency = positive(value(i++, a), a);
     else if (a === "--timeout-minutes") args.timeoutMinutes = positive(value(i++, a), a);
     else if (a === "--index-only") args.indexOnly = true;
+    else if (a === "--full") args.full = true;
     else throw new Error(`unknown argument ${a}`);
   }
   return args;
@@ -132,6 +138,7 @@ async function main(argv: string[]): Promise<number> {
   const { runChecks } = await import("../src/lib/checkers/index");
   const { scoringConfigFromPayload } = await import("../src/lib/checkers/config");
   const { minUsers } = await import("../src/lib/maintained");
+  const { toPreviousAnalysis } = await import("../src/lib/incremental");
   const scoringConfig = args.scoring
     ? scoringConfigFromPayload(JSON.parse(readFileSync(path.resolve(args.scoring), "utf-8")))
     : scoringConfigFromPayload({});
@@ -155,6 +162,7 @@ async function main(argv: string[]): Promise<number> {
       const dir = path.join(dataRoot, repositoryDataDir(repoPath));
       const started = Date.now();
       try {
+        const previous = await readJson<LatestFile>(path.join(dir, "latest.json"));
         const report = await withTimeout(
           runChecks(url, {
             helmChartLocations: entry.hints?.helm ?? [],
@@ -165,12 +173,13 @@ async function main(argv: string[]): Promise<number> {
             scoringConfig,
             // Read by checkers that resolve the scanned ref; ignored by those that scan the default branch.
             ...(entry.scanRef ? { ref: entry.scanRef } : {}),
+            full: args.full,
+            previousAnalysis: toPreviousAnalysis(previous?.analysis),
           } as Parameters<typeof runChecks>[1]),
           args.timeoutMinutes,
           `The scan of ${url}`
         );
         const durationSeconds = Math.round((Date.now() - started) / 100) / 10;
-        const previous = await readJson<LatestFile>(path.join(dir, "latest.json"));
         const history = await readJson<HistoryFile>(path.join(dir, "history.json"));
         const latest = records.buildLatestFile(
           {
@@ -189,7 +198,7 @@ async function main(argv: string[]): Promise<number> {
         await writeJson(path.join(dir, "history.json"), nextHistory);
         lastErrors.set(url.toLowerCase(), null);
         process.stdout.write(
-          `scanned ${url} in ${durationSeconds} s: score ${latest.analysis.score}, rating ${latest.analysis.rating ?? "none"}, ` +
+          `scanned ${url} in ${durationSeconds} s (${report.scanMode ?? "full"} scan, ${report.scanModeReason ?? "no reason given"}): score ${latest.analysis.score}, rating ${latest.analysis.rating ?? "none"}, ` +
             `${nextHistory.drops.filter((drop) => drop.resolvedAt === null).length} open drops\n`
         );
       } catch (error) {

@@ -36,6 +36,13 @@ import {
 import { statusToStars } from "../stars";
 import { computeEndorsement, computeRatings } from "../ratings";
 import { resolveScanRef } from "../scanRef";
+import { checkerFingerprint } from "../checkerFingerprint";
+import {
+  decideScanMode,
+  inputsFingerprint,
+  readFullScanIntervalDays,
+  type PreviousAnalysis,
+} from "../incremental";
 import {
   CATEGORY_WEIGHTS,
   CHECKLIST_VERSION,
@@ -106,6 +113,12 @@ export interface RunChecksOptions {
   ref?: string | null;
   /** The time the check runs at; decides which criteria are still in their transition period */
   now?: Date;
+  /** The previous completed analysis of this repository; its code checks are reused when the commit did not change */
+  previousAnalysis?: PreviousAnalysis | null;
+  /** Run every check, also when the commit did not change */
+  full?: boolean;
+  /** A full scan at least this often; FULL_SCAN_INTERVAL_DAYS or 7 when unset */
+  fullScanIntervalDays?: number;
 }
 
 export async function runChecks(
@@ -124,6 +137,7 @@ export async function runChecksOnContext(
   onProgress?: ProgressCallback,
 ): Promise<CheckReport> {
   const { provider, owner, repo } = context;
+  const startedAt = Date.now();
 
   // Fetch repo metadata first (needed to know default branch)
   onProgress?.("Fetching repository metadata...", 15);
@@ -146,94 +160,142 @@ export async function runChecksOnContext(
   const isRegister = options?.isRegister === true;
   const checkedAt = options?.now ?? new Date();
 
+  const toolFingerprint = checkerFingerprint().fingerprint;
+  const scanInputs = inputsFingerprint({
+    helmChartLocations: options?.helmChartLocations,
+    dockerLocations: options?.dockerLocations,
+    documentationLocations: options?.documentationLocations,
+    apiSpecificationLocations: options?.apiSpecificationLocations,
+    isRegister,
+    complexityThreshold: scoringConfig.complexityThreshold,
+    complexityMaxCcnThreshold: scoringConfig.complexityMaxCcnThreshold,
+  });
+  const decision = decideScanMode({
+    previous: options?.previousAnalysis ?? null,
+    commit: scanned.commit,
+    checklistVersion: CHECKLIST_VERSION,
+    toolFingerprint,
+    inputsFingerprint: scanInputs,
+    now: checkedAt,
+    fullScanIntervalDays: options?.fullScanIntervalDays ?? readFullScanIntervalDays(),
+    full: options?.full,
+  });
+  const { reused } = decision;
+  /** The reused result of a per-commit criterion, else the result of running its check. */
+  const measure = (id: string, run: () => CheckResult | Promise<CheckResult>): Promise<CheckResult> => {
+    const copy = reused.get(id);
+    return copy ? Promise.resolve(copy) : Promise.resolve().then(run);
+  };
+
   let tempRoot: string | undefined;
-  let localRepoPath: string | undefined;
+  let clonePromise: Promise<string | undefined> | null = null;
 
   try {
     const cloneUrl = provider.getCloneUrl(context);
-    if (options?.localRepoPath) {
-      localRepoPath = options.localRepoPath;
-    } else {
-      tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-repo-"));
-      localRepoPath = path.join(tempRoot, "repo");
-      const clone = await runCommand(
-        "git",
-        ["clone", "--depth", "1", "--branch", scanned.ref, cloneUrl, localRepoPath],
-        { GIT_LFS_SKIP_SMUDGE: "1" }
-      );
+    /** The checkout the code tools read, cloned on first use; a scan that reuses every code check never clones. */
+    const checkout = (): Promise<string | undefined> => {
+      clonePromise ??= (async () => {
+        if (options?.localRepoPath) return options.localRepoPath;
+        tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-repo-"));
+        const target = path.join(tempRoot, "repo");
+        const clone = await runCommand(
+          "git",
+          ["clone", "--depth", "1", "--branch", scanned.ref, cloneUrl, target],
+          { GIT_LFS_SKIP_SMUDGE: "1" }
+        );
+        return clone.code === 0 ? target : undefined;
+      })();
+      return clonePromise;
+    };
 
-      if (clone.code !== 0) {
-        localRepoPath = undefined;
-      }
+    if (decision.mode === "partial") {
+      onProgress?.("Code unchanged: reusing the code checks, running the outside-world checks...", 35);
     }
 
-    const openApiCheckPromise: Promise<CheckResult> = isRegister
-    ? checkOpenApi(context, tree, options?.apiSpecificationLocations ?? [])
-    : Promise.resolve({
-        id: "openapi",
-        title: "API-first / OpenAPI Specification",
-        description:
-          "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
-        status: "pass",
-        message:
-          "Component is not marked as a register; OpenAPI specification check is not required.",
-        evidence: [],
-        referenceUrl: "https://commonground.nl/cms/view/54476259/api-designrules",
-      });
+    const openApiCheckPromise = measure("openapi", () =>
+      isRegister
+        ? checkOpenApi(context, tree, options?.apiSpecificationLocations ?? [])
+        : {
+            id: "openapi",
+            title: "API-first / OpenAPI Specification",
+            description:
+              "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+            status: "pass",
+            message:
+              "Component is not marked as a register; OpenAPI specification check is not required.",
+            evidence: [],
+            referenceUrl: "https://commonground.nl/cms/view/54476259/api-designrules",
+          }
+    );
 
-  // Kick off network-dependent and slow checks immediately so they run concurrently
+  // Kick off network-dependent and slow checks immediately so they run concurrently.
+  // publiccode.yml is always read: the repository details and the usage check need it.
   const networkChecksPromise = Promise.all([
     openApiCheckPromise,
-    checkLicense(context, meta, tree),
-    checkCopyrightOwner(context, meta, tree),
+    measure("license", () => checkLicense(context, meta, tree)),
+    measure("copyrightowner", () => checkCopyrightOwner(context, meta, tree)),
     analysePublicCode(context, tree),
-    checkMaintenance(context, tree),
-    checkFiveLayer(context, tree, meta),
-    checkHelmChart(context, tree, options?.helmChartLocations ?? []),
+    measure("maintenance", () => checkMaintenance(context, tree)),
+    measure("fivelayer", () => checkFiveLayer(context, tree, meta)),
+    measure("helmchart", () => checkHelmChart(context, tree, options?.helmChartLocations ?? [])),
   ]);
   const usagePromise = networkChecksPromise.then(([, , , publiccodeAnalysis]) =>
-    checkUsage(context, meta, tree, publiccodeAnalysis.result.publiccode, {
-      dockerLocations: options?.dockerLocations,
-    })
+    measure(USAGE_CHECK_ID, () =>
+      checkUsage(context, meta, tree, publiccodeAnalysis.result.publiccode, {
+        dockerLocations: options?.dockerLocations,
+      })
+    )
   );
-  const complexityPromise = checkComplexity(
-    owner,
-    repo,
-    scoringConfig.complexityThreshold,
-    scoringConfig.complexityMaxCcnThreshold,
-    localRepoPath,
-    cloneUrl,
-    scanned.ref
+  const complexityPromise = measure("complexity", async () =>
+    checkComplexity(
+      owner,
+      repo,
+      scoringConfig.complexityThreshold,
+      scoringConfig.complexityMaxCcnThreshold,
+      await checkout(),
+      cloneUrl,
+      scanned.ref
+    )
   );
-  const maintainabilityPromise = checkMaintainability(localRepoPath);
-  const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl, scanned.ref);
-  const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
-  const adrValidatorPromise = checkAdrValidator(
-    owner,
-    repo,
-    context.projectPath,
-    context.provider.id,
-    context.ref,
-    tree,
-    options?.apiSpecificationLocations ?? [],
-    scoringConfig.spectralRulesetSource
+  const maintainabilityPromise = measure("maintainability", async () => checkMaintainability(await checkout()));
+  // Code metrics are merged into the source code result, so a reused source code result needs none.
+  const codeMetricsPromise: Promise<CheckResult | null> = reused.has("sourcecode")
+    ? Promise.resolve(null)
+    : checkout().then((localRepoPath) => checkCodeMetrics(owner, repo, localRepoPath, cloneUrl, scanned.ref));
+  const owaspSecureCodingPromise = measure("owaspsecurecoding", async () =>
+    checkOwaspSecureCoding(context, tree, await checkout())
+  );
+  const adrValidatorPromise = measure("adrvalidator", () =>
+    checkAdrValidator(
+      owner,
+      repo,
+      context.projectPath,
+      context.provider.id,
+      scanned.commit ?? scanned.ref,
+      tree,
+      options?.apiSpecificationLocations ?? [],
+      scoringConfig.spectralRulesetSource
+    )
   );
 
   // Instant checks — synchronous pure functions on the tree array
   onProgress?.("Running code structure checks...", 45);
-  let sourcecode = checkSourceCode(tree);
-  const docker = checkDocker(tree);
-  const dockerimage = checkDockerImage(options?.dockerLocations ?? []);
-  const cicd = checkCiConfig(tree);
-  const sbom = await checkSbom(context, tree);
-  const documentation = checkDocumentation(tree, options?.documentationLocations ?? []);
-  const changelog = checkChangelog(tree);
-  const tests = checkTests(tree);
-  const coverage = await checkCoverage(context, tree);
-  const contributing = checkContributing(tree);
-  const codeofconduct = checkCodeOfConduct(tree);
-  const security = checkSecurity(tree);
-  const semver = checkSemver(version);
+  const freshSourcecode = !reused.has("sourcecode");
+  let sourcecode = await measure("sourcecode", () => checkSourceCode(tree));
+  const docker = await measure("docker", () => checkDocker(tree));
+  const dockerimage = await measure("dockerimage", () => checkDockerImage(options?.dockerLocations ?? []));
+  const cicd = await measure("cicd", () => checkCiConfig(tree));
+  const sbom = await measure("sbom", () => checkSbom(context, tree));
+  const documentation = await measure("documentation", () =>
+    checkDocumentation(tree, options?.documentationLocations ?? [])
+  );
+  const changelog = await measure("changelog", () => checkChangelog(tree));
+  const tests = await measure("tests", () => checkTests(tree));
+  const coverage = await measure("coverage", () => checkCoverage(context, tree));
+  const contributing = await measure("contributing", () => checkContributing(tree));
+  const codeofconduct = await measure("codeofconduct", () => checkCodeOfConduct(tree));
+  const security = await measure("security", () => checkSecurity(tree));
+  const semver = await measure("semver", () => checkSemver(version));
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
@@ -246,10 +308,10 @@ export async function runChecksOnContext(
     adrValidatorPromise,
     usagePromise,
   ]);
-  const publiccode = publiccodeAnalysis.result;
+  const publiccode = reused.get("publiccode") ?? publiccodeAnalysis.result;
 
   // Always merge code metrics into Actual Source Code result if available
-  if (sourcecode && codemetrics) {
+  if (freshSourcecode && sourcecode && codemetrics) {
     const metricsMsg = codemetrics.message || "";
     let lines = null, funcs = null, files = null;
     const match = metricsMsg.match(/([\d,]+) lines of code, ([\d,]+) functions across ([\d,]+) files/);
@@ -274,7 +336,7 @@ export async function runChecksOnContext(
       ],
     };
   }
-  const eupllicense = checkEuplLicense(meta, license.message);
+  const eupllicense = await measure("eupllicense", () => checkEuplLicense(meta, license.message));
 
   onProgress?.("Calculating compliance score...", 90);
 
@@ -436,6 +498,11 @@ export async function runChecksOnContext(
     scannedRefKind: scanned.kind,
     scannedCommit: scanned.commit,
     ...(scanned.warning ? { scanRefWarning: scanned.warning } : {}),
+    scanMode: decision.mode,
+    scanModeReason: decision.reason,
+    scanDurationSeconds: Math.round((Date.now() - startedAt) / 100) / 10,
+    toolFingerprint,
+    inputsFingerprint: scanInputs,
     repoMeta: {
       description: meta.description ?? null,
       language: meta.language ?? null,

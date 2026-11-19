@@ -29,6 +29,14 @@ export type CheckResult = {
      * For a mandatory criterion in its transition period at the time of the check: the date it becomes mandatory. Until then a fail is a warning.
      */
     mandatoryFrom?: string;
+    /**
+     * Set when a scan of an unchanged commit copied this result from the analysis that measured it
+     */
+    reusedFrom?: {
+        analysisId: string | null;
+        checkedAt: string;
+        commit: string;
+    };
 };
 export namespace CheckResult {
     export enum requirementLevel {

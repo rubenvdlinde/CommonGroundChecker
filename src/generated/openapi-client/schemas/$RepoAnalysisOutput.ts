@@ -69,6 +69,20 @@ export const $RepoAnalysisOutput = {
         checklistVersion: {
             type: 'ChecklistVersion',
         },
+        scanMode: {
+            type: 'ScanMode',
+        },
+        scanDurationSeconds: {
+            type: 'number',
+            description: `How long the scan took, in seconds`,
+            isNullable: true,
+        },
+        toolFingerprint: {
+            type: 'Fingerprint',
+        },
+        inputsFingerprint: {
+            type: 'Fingerprint',
+        },
         issueCounts: {
             type: 'IssueCounts',
         },

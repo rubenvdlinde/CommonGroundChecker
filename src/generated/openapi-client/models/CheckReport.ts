@@ -6,8 +6,10 @@ import type { AspectRatings } from './AspectRatings';
 import type { CategoryRatings } from './CategoryRatings';
 import type { CheckResult } from './CheckResult';
 import type { Endorsement } from './Endorsement';
+import type { Fingerprint } from './Fingerprint';
 import type { Rating } from './Rating';
 import type { RepoMeta } from './RepoMeta';
+import type { ScanMode } from './ScanMode';
 export type CheckReport = {
     repoUrl: string;
     owner: string;
@@ -40,6 +42,17 @@ export type CheckReport = {
      * Set when no released version was found and the default branch was scanned instead
      */
     scanRefWarning?: string;
+    scanMode?: ScanMode;
+    /**
+     * How long the scan took, in seconds
+     */
+    scanDurationSeconds?: number | null;
+    toolFingerprint?: Fingerprint;
+    inputsFingerprint?: Fingerprint;
+    /**
+     * Why the scan was full or partial, for example "the code changed"
+     */
+    scanModeReason?: string;
     repoMeta: RepoMeta;
 };
 

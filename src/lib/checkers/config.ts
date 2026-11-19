@@ -74,6 +74,57 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   fivelayer: { weight: 1, requirementLevel: "mandatory" },
 };
 
+/**
+ * Whether a criterion gives the same answer for the same commit.
+ * `per-commit`: depends only on the code, the scan settings and the checker's
+ * tools, so a scan of an unchanged commit may copy it from the previous analysis.
+ * `per-run`: depends on the outside world (registries, advisories, releases,
+ * dates, other repositories), so every scan measures it again.
+ * A criterion without a class counts as per-run.
+ */
+export type CheckFreshness = "per-commit" | "per-run";
+
+export const CRITERION_FRESHNESS_BY_CHECK_ID: Record<string, CheckFreshness> = {
+  sourcecode: "per-commit",
+  openapi: "per-commit",
+  license: "per-commit",
+  eupllicense: "per-commit",
+  copyrightowner: "per-commit",
+  publiccode: "per-commit",
+  docker: "per-commit",
+  helmchart: "per-commit",
+  documentation: "per-commit",
+  changelog: "per-commit",
+  tests: "per-commit",
+  cicd: "per-commit",
+  complexity: "per-commit",
+  maintainability: "per-commit",
+  codemetrics: "per-commit",
+  owaspsecurecoding: "per-commit",
+  contributing: "per-commit",
+  codeofconduct: "per-commit",
+  security: "per-commit",
+  sbom: "per-commit",
+  fivelayer: "per-commit",
+  // Whether the image is still in its registry.
+  dockerimage: "per-run",
+  // Downloads, installs and declared users change without a commit.
+  usage: "per-run",
+  // The contract's `until` date is compared with today.
+  maintenance: "per-run",
+  // Reads coverage badges from codecov, coveralls or shields.
+  coverage: "per-run",
+  // The NL API Design Rules ruleset is fetched from a URL that can change.
+  adrvalidator: "per-run",
+  // The version comes from the release and tag resolution.
+  semver: "per-run",
+};
+
+/** The class of a criterion; per-run when it has none. */
+export function criterionFreshness(id: string): CheckFreshness {
+  return CRITERION_FRESHNESS_BY_CHECK_ID[id] ?? "per-run";
+}
+
 function clampWeight(value: number): number {
   if (!Number.isFinite(value)) return 0;
   return Math.max(0, Math.min(1, Math.round(value * 100) / 100));

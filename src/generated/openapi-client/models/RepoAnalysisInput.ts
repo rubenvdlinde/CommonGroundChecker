@@ -4,11 +4,13 @@
 /* eslint-disable */
 import type { AspectRatings } from './AspectRatings';
 import type { CategoryRatings } from './CategoryRatings';
-import type { CheckResult } from './CheckResult';
 import type { ChecklistVersion } from './ChecklistVersion';
+import type { CheckResult } from './CheckResult';
 import type { Endorsement } from './Endorsement';
+import type { Fingerprint } from './Fingerprint';
 import type { IssueCounts } from './IssueCounts';
 import type { Rating } from './Rating';
+import type { ScanMode } from './ScanMode';
 export type RepoAnalysisInput = {
     scoringConfigId?: string | null;
     checkedAt: string;
@@ -35,6 +37,13 @@ export type RepoAnalysisInput = {
     aspectRatings?: AspectRatings;
     endorsement?: Endorsement;
     checklistVersion?: ChecklistVersion;
+    scanMode?: ScanMode;
+    /**
+     * How long the scan took, in seconds
+     */
+    scanDurationSeconds?: number | null;
+    toolFingerprint?: Fingerprint;
+    inputsFingerprint?: Fingerprint;
     issueCounts?: IssueCounts;
     results: Array<CheckResult>;
 };

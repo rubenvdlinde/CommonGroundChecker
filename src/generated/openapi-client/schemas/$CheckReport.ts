@@ -72,6 +72,24 @@ export const $CheckReport = {
             type: 'string',
             description: `Set when no released version was found and the default branch was scanned instead`,
         },
+        scanMode: {
+            type: 'ScanMode',
+        },
+        scanDurationSeconds: {
+            type: 'number',
+            description: `How long the scan took, in seconds`,
+            isNullable: true,
+        },
+        toolFingerprint: {
+            type: 'Fingerprint',
+        },
+        inputsFingerprint: {
+            type: 'Fingerprint',
+        },
+        scanModeReason: {
+            type: 'string',
+            description: `Why the scan was full or partial, for example "the code changed"`,
+        },
         repoMeta: {
             type: 'RepoMeta',
             isRequired: true,
