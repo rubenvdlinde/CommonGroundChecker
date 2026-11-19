@@ -27,7 +27,7 @@ const usage = {
 
 const sla = {
   id: "s1",
-  party: "VNG",
+  party: "Gemeente Utrecht",
   maintainer: "Maykin Media",
   startsOn: "2026-01-01",
   until: "2027-12-31",
@@ -75,7 +75,8 @@ describe("MaintainedSection", () => {
     const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
     expect(reasons.textContent).toContain("1 of 2 users declared in publiccode.yml");
     expect(reasons.textContent).toContain("No SLA");
-    expect(screen.getByText(/The minimum of 2 users declared in publiccode.yml is a proposal/)).toBeTruthy();
+    expect(screen.getByText(/The minimum of 2 organisations declared in publiccode.yml follows the Common Ground standard/)).toBeTruthy();
+    expect(levels[0].textContent).toContain("a valid SLA with a maintainer, on the VNG model contract");
     expect(screen.getByText(/never gives stars/)).toBeTruthy();
   });
 
@@ -92,7 +93,7 @@ describe("MaintainedSection", () => {
     renderSection({ initialUsage: { ...twoUsers, slas: [sla] } });
 
     expect(maintainedRow().textContent).toContain("Reached");
-    expect(maintainedRow().textContent).toContain("SLA: VNG with Maykin Media, until 2027-12-31.");
+    expect(maintainedRow().textContent).toContain("SLA: Gemeente Utrecht with Maykin Media, until 2027-12-31.");
     expect(screen.queryByRole("list", { name: "Why it is not yet Maintained" })).toBeNull();
   });
 
@@ -126,6 +127,9 @@ describe("MaintainedSection", () => {
     renderSection({ initialUsage: { ...twoUsers, slas: [] } });
 
     fireEvent.change(screen.getByLabelText("Admin token"), { target: { value: "secret" } });
+    expect(screen.getByLabelText("Party").getAttribute("value")).toBe("");
+    expect(screen.getByText(/Who contracts the maintainer, usually a municipality, on the VNG model contract/)).toBeTruthy();
+    fireEvent.change(screen.getByLabelText("Party"), { target: { value: "Gemeente Utrecht" } });
     fireEvent.change(screen.getByLabelText("Maintainer"), { target: { value: "Maykin Media" } });
     fireEvent.change(screen.getByLabelText("Until"), { target: { value: "2027-12-31" } });
     fireEvent.click(screen.getByRole("button", { name: "Add SLA" }));
@@ -135,10 +139,10 @@ describe("MaintainedSection", () => {
     });
     expect(mocked.postSla).toHaveBeenCalledWith(
       "repo-id",
-      { party: "VNG", maintainer: "Maykin Media", startsOn: today, until: "2027-12-31", link: undefined },
+      { party: "Gemeente Utrecht", maintainer: "Maykin Media", startsOn: today, until: "2027-12-31", link: undefined },
       "secret"
     );
-    expect(screen.getByRole("list", { name: "SLAs" }).textContent).toContain("VNG with Maykin Media");
+    expect(screen.getByRole("list", { name: "SLAs" }).textContent).toContain("Gemeente Utrecht with Maykin Media");
     expect(maintainedRow().textContent).toContain("Reached");
   });
 
@@ -147,7 +151,7 @@ describe("MaintainedSection", () => {
     renderSection({ initialUsage: { ...usage, slas: [sla] } });
 
     fireEvent.change(screen.getByLabelText("Admin token"), { target: { value: "secret" } });
-    fireEvent.click(screen.getByRole("button", { name: "Remove SLA of VNG with Maykin Media until 2027-12-31" }));
+    fireEvent.click(screen.getByRole("button", { name: "Remove SLA of Gemeente Utrecht with Maykin Media until 2027-12-31" }));
 
     await waitFor(() => {
       expect(screen.getByRole("status").textContent).toBe("SLA removed.");
@@ -164,6 +168,7 @@ describe("MaintainedSection", () => {
     mocked.postSla.mockRejectedValueOnce(Object.assign(new Error("failed"), error));
     renderSection();
 
+    fireEvent.change(screen.getByLabelText("Party"), { target: { value: "Gemeente Utrecht" } });
     fireEvent.change(screen.getByLabelText("Maintainer"), { target: { value: "Maykin Media" } });
     fireEvent.change(screen.getByLabelText("Until"), { target: { value: "2025-01-01" } });
     fireEvent.click(screen.getByRole("button", { name: "Add SLA" }));

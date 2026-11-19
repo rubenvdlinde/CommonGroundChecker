@@ -1,7 +1,15 @@
 import type { CheckResult, Endorsement } from "./types";
 
-/** The proposed minimum of users declared in publiccode.yml for Maintained; `MIN_USERS` overrides it. */
-export const DEFAULT_MIN_USERS = 2;
+/**
+ * The minimum of users declared in publiccode.yml for Maintained: one, as the Common Ground standard asks a
+ * component proven in practice by one or more municipalities. `MIN_USERS` overrides it.
+ */
+export const DEFAULT_MIN_USERS = 1;
+
+/** "1 organisation" or "2 organisations". */
+export function organisationsLabel(count: number): string {
+  return `${count} ${count === 1 ? "organisation" : "organisations"}`;
+}
 
 /** `MIN_USERS` as a whole number of at least 1, else the default. */
 export function minUsers(value: string | undefined = process.env.MIN_USERS): number {

@@ -4,6 +4,7 @@ import {
   declaredUsersOf,
   developmentStatusOf,
   DEFAULT_MIN_USERS,
+  organisationsLabel,
   isSlaValid,
   minUsers,
   type MaintainedInput,
@@ -26,19 +27,26 @@ function input(overrides: Partial<MaintainedInput> = {}): MaintainedInput {
 }
 
 describe("minUsers", () => {
-  it("defaults to 2", () => {
-    expect(DEFAULT_MIN_USERS).toBe(2);
-    expect(minUsers(undefined)).toBe(2);
-    expect(minUsers("")).toBe(2);
+  it("defaults to 1, as the Common Ground standard asks", () => {
+    expect(DEFAULT_MIN_USERS).toBe(1);
+    expect(minUsers(undefined)).toBe(1);
+    expect(minUsers("")).toBe(1);
   });
 
   it("reads a whole number of at least 1", () => {
     expect(minUsers(" 3 ")).toBe(3);
-    expect(minUsers("1")).toBe(1);
+    expect(minUsers("2")).toBe(2);
   });
 
   it.each(["0", "-1", "2.5", "two"])("falls back to the default for %s", (value) => {
-    expect(minUsers(value)).toBe(2);
+    expect(minUsers(value)).toBe(1);
+  });
+});
+
+describe("organisationsLabel", () => {
+  it("counts one organisation and more organisations", () => {
+    expect(organisationsLabel(1)).toBe("1 organisation");
+    expect(organisationsLabel(2)).toBe("2 organisations");
   });
 });
 

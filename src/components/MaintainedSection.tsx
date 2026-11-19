@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import MaintainedLevel from "@/components/MaintainedLevel";
 import { deleteSla, postSla, type UsageStatus } from "@/lib/apiClient";
-import { computeMaintained } from "@/lib/maintained";
+import { computeMaintained, organisationsLabel } from "@/lib/maintained";
 import type { Endorsement } from "@/lib/types";
 
 interface MaintainedSectionProps {
@@ -52,7 +52,7 @@ export default function MaintainedSection({
   const [adminToken, setAdminToken] = useState("");
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<{ kind: "success" | "error"; text: string } | null>(null);
-  const [sla, setSla] = useState({ party: "VNG", maintainer: "", startsOn: today, until: "", link: "" });
+  const [sla, setSla] = useState({ party: "", maintainer: "", startsOn: today, until: "", link: "" });
 
   const level = computeMaintained({
     endorsement,
@@ -95,8 +95,8 @@ export default function MaintainedSection({
       <h3 className="text-lg font-semibold text-gray-800">Level</h3>
       <MaintainedLevel level={level} endorsement={endorsement} minUsers={minUsers} />
       <p className="text-xs text-gray-500">
-        The minimum of {minUsers} users declared in publiccode.yml is a proposal: a component with one user is not yet a
-        shared component. Who decides that a component is Maintained, and what happens when a maintainer misses the SLA,
+        The minimum of {organisationsLabel(minUsers)} declared in publiccode.yml follows the Common Ground standard put
+        to the VNG ALV: a component is proven in practice by one or more municipalities. Who decides that a component is Maintained, and what happens when a maintainer misses the SLA,
         needs a governance decision.
         Usage counts only here. It never gives stars and never counts in a rating.
       </p>
@@ -172,10 +172,14 @@ export default function MaintainedSection({
                 <input
                   id={`${idPrefix}-party`}
                   required
+                  aria-describedby={`${idPrefix}-party-help`}
                   value={sla.party}
                   onChange={(event) => setSla({ ...sla, party: event.target.value })}
                   className={inputClass}
                 />
+                <p id={`${idPrefix}-party-help`} className="text-xs text-gray-500">
+                  Who contracts the maintainer, usually a municipality, on the VNG model contract.
+                </p>
               </div>
               <div className="space-y-1">
                 <label htmlFor={`${idPrefix}-maintainer`} className={labelClass}>
