@@ -25,6 +25,23 @@ describe("GitLabRepositoryProvider", () => {
       })
     ).toBe("https://gitlab.com/group/subgroup/project.git");
   });
+
+  it("builds the raw file URL for a branch and path", () => {
+    expect(
+      GitLabRepositoryProvider.getRawFileUrl(
+        {
+          owner: "group",
+          repo: "project",
+          projectPath: "group/subgroup/project",
+          repoUrl: "https://gitlab.com/group/subgroup/project",
+          defaultBranch: "main",
+          provider: GitLabRepositoryProvider,
+        },
+        "feature/logo",
+        "docs/my logo.svg"
+      )
+    ).toBe("https://gitlab.com/group/subgroup/project/-/raw/feature/logo/docs/my%20logo.svg");
+  });
 });
 
 describe("provider registry", () => {

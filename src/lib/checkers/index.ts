@@ -3,7 +3,7 @@ import type { CheckReport, CheckResult } from "../types";
 import type { RepoContext } from "../providers/types";
 import { checkOpenApi } from "./openapi";
 import { checkLicense } from "./license";
-import { checkPublicCode } from "./publiccode";
+import { analysePublicCode } from "./publiccode";
 import { checkDocker } from "./docker";
 import { checkDockerImage } from "./dockerImage";
 import { checkCiConfig } from "./ciConfig";
@@ -152,7 +152,7 @@ export async function runChecks(
     openApiCheckPromise,
     checkLicense(context, meta, tree),
     checkCopyrightOwner(context, meta, tree),
-    checkPublicCode(context, tree),
+    analysePublicCode(context, tree),
     checkFiveLayer(context, tree, meta),
     checkHelmChart(context, tree, options?.helmChartLocations ?? []),
     checkProjectHealth(context, meta),
@@ -197,7 +197,7 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccode, fivelayer, helmchart, projecthealth], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, fivelayer, helmchart, projecthealth], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -205,6 +205,7 @@ export async function runChecks(
     owaspSecureCodingPromise,
     adrValidatorPromise,
   ]);
+  const publiccode = publiccodeAnalysis.result;
 
   // Always merge code metrics into Actual Source Code result if available
   if (sourcecode && codemetrics) {
@@ -392,6 +393,7 @@ export async function runChecks(
       license: meta.license?.name ?? null,
       version,
       versionEvidence: versionInfo.evidence,
+      ...publiccodeAnalysis.details,
     },
   };
   } finally {

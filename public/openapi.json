@@ -234,6 +234,89 @@
         }
       }
     },
+    "/api/repositories/{repoId}/follow": {
+      "put": {
+        "summary": "Follow or unfollow a repository for scheduled rescans",
+        "description": "Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. Disabled with 503 when the backend has no ADMIN_TOKEN configured.",
+        "security": [
+          {
+            "adminToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "repoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FollowSettingsInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Follow settings saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FollowSettings"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid follow settings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid admin token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Repository not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Admin actions are disabled because ADMIN_TOKEN is not configured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/repo-history": {
       "get": {
         "summary": "Return analysis history for a repository",
@@ -360,6 +443,13 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "adminToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "The backend's ADMIN_TOKEN environment variable"
+      }
+    },
     "schemas": {
       "ErrorResponse": {
         "type": "object",
@@ -370,6 +460,66 @@
         },
         "required": [
           "error"
+        ]
+      },
+      "FollowSettingsInput": {
+        "type": "object",
+        "properties": {
+          "followed": {
+            "type": "boolean"
+          },
+          "checkIntervalHours": {
+            "type": [
+              "integer",
+              null
+            ],
+            "description": "24 (daily), 168 (weekly) or 720 (monthly). Defaults to the stored interval, or 168 when following for the first time"
+          }
+        },
+        "required": [
+          "followed"
+        ]
+      },
+      "FollowSettings": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "followed": {
+            "type": "boolean",
+            "description": "Whether the repository is rescanned on a schedule"
+          },
+          "checkIntervalHours": {
+            "type": [
+              "integer",
+              null
+            ],
+            "description": "Hours between scheduled checks: 24 (daily), 168 (weekly) or 720 (monthly)"
+          },
+          "lastCheckedAt": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "When the latest analysis was stored"
+          },
+          "nextCheckAt": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "When the repository is next due for a scheduled check"
+          }
+        },
+        "required": [
+          "id",
+          "followed",
+          "checkIntervalHours",
+          "lastCheckedAt",
+          "nextCheckAt"
         ]
       },
       "RepoSummary": {
@@ -411,9 +561,78 @@
               "type": "string"
             }
           },
+          "displayName": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Software name from publiccode.yml (name)"
+          },
+          "shortDescription": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Short description from publiccode.yml: the Dutch one if present, else English, else the first available language"
+          },
+          "logoUrl": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Absolute http(s) URL of the logo from publiccode.yml (logo), resolved to the git host's raw URL when it is a repository path"
+          },
+          "developmentStatus": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Development status from publiccode.yml (developmentStatus)"
+          },
+          "maintenanceType": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Maintenance type from publiccode.yml (maintenance.type)"
+          },
+          "maintainers": {
+            "type": "array",
+            "description": "Maintainers from publiccode.yml: the names in maintenance.contacts, else the organisation names (maintenance.contractors, organisation)",
+            "items": {
+              "type": "string"
+            }
+          },
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "followed": {
+            "type": "boolean",
+            "description": "Whether the repository is rescanned on a schedule"
+          },
+          "checkIntervalHours": {
+            "type": [
+              "integer",
+              null
+            ],
+            "description": "Hours between scheduled checks: 24 (daily), 168 (weekly) or 720 (monthly)"
+          },
+          "lastCheckedAt": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "When the latest analysis was stored"
+          },
+          "nextCheckAt": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "When the repository is next due for a scheduled check"
           },
           "analysisCount": {
             "type": "integer"
@@ -455,7 +674,17 @@
           "dockerLocations",
           "apiSpecificationLocations",
           "documentationLocations",
+          "displayName",
+          "shortDescription",
+          "logoUrl",
+          "developmentStatus",
+          "maintenanceType",
+          "maintainers",
           "updatedAt",
+          "followed",
+          "checkIntervalHours",
+          "lastCheckedAt",
+          "nextCheckAt",
           "analysisCount",
           "latestAnalysis"
         ]
@@ -519,6 +748,33 @@
           },
           "documentationLocations": {
             "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Software name from publiccode.yml (name)"
+          },
+          "shortDescription": {
+            "type": "string",
+            "description": "Short description from publiccode.yml: the Dutch one if present, else English, else the first available language"
+          },
+          "logoUrl": {
+            "type": "string",
+            "description": "Absolute http(s) URL of the logo from publiccode.yml (logo), resolved to the git host's raw URL when it is a repository path"
+          },
+          "developmentStatus": {
+            "type": "string",
+            "description": "Development status from publiccode.yml (developmentStatus)"
+          },
+          "maintenanceType": {
+            "type": "string",
+            "description": "Maintenance type from publiccode.yml (maintenance.type)"
+          },
+          "maintainers": {
+            "type": "array",
+            "description": "Maintainers from publiccode.yml: the names in maintenance.contacts, else the organisation names (maintenance.contractors, organisation)",
             "items": {
               "type": "string"
             }
@@ -766,6 +1022,33 @@
               "metadata": {
                 "$ref": "#/components/schemas/RepoMeta"
               },
+              "followed": {
+                "type": "boolean",
+                "description": "Whether the repository is rescanned on a schedule"
+              },
+              "checkIntervalHours": {
+                "type": [
+                  "integer",
+                  null
+                ],
+                "description": "Hours between scheduled checks: 24 (daily), 168 (weekly) or 720 (monthly)"
+              },
+              "lastCheckedAt": {
+                "type": [
+                  "string",
+                  null
+                ],
+                "format": "date-time",
+                "description": "When the latest analysis was stored"
+              },
+              "nextCheckAt": {
+                "type": [
+                  "string",
+                  null
+                ],
+                "format": "date-time",
+                "description": "When the repository is next due for a scheduled check"
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -781,6 +1064,10 @@
               "owner",
               "name",
               "metadata",
+              "followed",
+              "checkIntervalHours",
+              "lastCheckedAt",
+              "nextCheckAt",
               "createdAt",
               "updatedAt"
             ]
@@ -946,6 +1233,48 @@
               "source",
               "detail"
             ]
+          },
+          "displayName": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Software name from publiccode.yml (name)"
+          },
+          "shortDescription": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Short description from publiccode.yml: the Dutch one if present, else English, else the first available language"
+          },
+          "logoUrl": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Absolute http(s) URL of the logo from publiccode.yml (logo), resolved to the git host's raw URL when it is a repository path"
+          },
+          "developmentStatus": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Development status from publiccode.yml (developmentStatus)"
+          },
+          "maintenanceType": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Maintenance type from publiccode.yml (maintenance.type)"
+          },
+          "maintainers": {
+            "type": "array",
+            "description": "Maintainers from publiccode.yml: the names in maintenance.contacts, else the organisation names (maintenance.contractors, organisation)",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -957,7 +1286,13 @@
           "topics",
           "license",
           "version",
-          "versionEvidence"
+          "versionEvidence",
+          "displayName",
+          "shortDescription",
+          "logoUrl",
+          "developmentStatus",
+          "maintenanceType",
+          "maintainers"
         ]
       },
       "CheckResult": {

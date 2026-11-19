@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import type { RepoSummary } from "@/generated/openapi-client";
 import RatingBadge from "@/components/RatingBadge";
+import RepoLogo from "@/components/RepoLogo";
 import { isRating } from "@/lib/ratings";
 
 type SortKey = "date" | "score";
@@ -114,6 +115,8 @@ export default function HistoryPageClient({
           <div className="space-y-3">
             {sortedRepositories.map((repository) => {
               const latest = repository.latestAnalysis as { checkedAt: string; score: number; rating?: unknown } | null;
+              const fullName = `${repository.owner}/${repository.name}`;
+              const displayName = repository.displayName ?? fullName;
 
               return (
                 <Link
@@ -122,17 +125,36 @@ export default function HistoryPageClient({
                   className="block border border-gray-200 rounded-xl px-4 py-3 hover:border-cg-lightblue hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-3 flex-wrap">
-                    <div>
-                      <p className="font-semibold text-gray-800">
-                        {repository.owner}/{repository.name}
-                      </p>
-                      <p className="text-xs text-gray-500">{repository.repoUrl}</p>
+                    <div className="flex items-start gap-3">
+                      <RepoLogo logoUrl={repository.logoUrl ?? null} name={displayName} size={40} />
+                      <div>
+                        <p className="font-semibold text-gray-800">
+                          {displayName}
+                          {repository.followed && (
+                            <span className="inline-flex ml-2 align-middle text-xs font-semibold px-2 py-0.5 rounded-full border border-green-300 text-green-800 bg-green-50">
+                              Followed
+                            </span>
+                          )}
+                        </p>
+                        {repository.displayName && (
+                          <p className="text-xs text-gray-600">{fullName}</p>
+                        )}
+                        {repository.shortDescription && (
+                          <p className="text-sm text-gray-600">{repository.shortDescription}</p>
+                        )}
+                        <p className="text-xs text-gray-500">{repository.repoUrl}</p>
+                      </div>
                     </div>
                     <div className="text-right text-xs text-gray-500">
                       <p>{repository.analysisCount} analyses</p>
                       {latest && (
                         <p>
                           Last: {new Date(latest.checkedAt).toLocaleString("nl-NL")}
+                        </p>
+                      )}
+                      {repository.followed && repository.nextCheckAt && (
+                        <p>
+                          Next check: {new Date(repository.nextCheckAt).toLocaleString("nl-NL")}
                         </p>
                       )}
                     </div>

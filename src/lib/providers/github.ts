@@ -12,6 +12,7 @@ import type {
   RepoIdentifier,
   RepositoryProvider,
 } from "./types";
+import { encodePathSegments } from "./paths";
 
 export const GitHubRepositoryProvider: RepositoryProvider = {
   id: "github",
@@ -35,6 +36,8 @@ export const GitHubRepositoryProvider: RepositoryProvider = {
     getGitHubRepoVersion(context.owner, context.repo),
   getCloneUrl: (context: RepoContext) =>
     `https://github.com/${context.projectPath}.git`,
+  getRawFileUrl: (context: RepoContext, branch: string, path: string) =>
+    `https://raw.githubusercontent.com/${context.projectPath}/${encodePathSegments(branch)}/${encodePathSegments(path)}`,
   parseRepoTreeUrl: (url: string): ParsedRepoTreeUrl | null => {
     const parsed = parseGitHubTreeUrl(url);
     if (!parsed) return null;

@@ -39,7 +39,7 @@ const mocks = vi.hoisted(() => ({
   getSupportedProviders: vi.fn(),
   checkOpenApi: vi.fn(),
   checkLicense: vi.fn(),
-  checkPublicCode: vi.fn(),
+  analysePublicCode: vi.fn(),
   checkCopyrightOwner: vi.fn(),
   checkDocker: vi.fn(),
   checkDockerImage: vi.fn(),
@@ -110,7 +110,7 @@ vi.mock("@/lib/providers", () => ({
 vi.mock("@/lib/checkers/openapi", () => ({ checkOpenApi: mocks.checkOpenApi }));
 vi.mock("@/lib/checkers/license", () => ({ checkLicense: mocks.checkLicense }));
 vi.mock("@/lib/checkers/copyrightOwner", () => ({ checkCopyrightOwner: mocks.checkCopyrightOwner }));
-vi.mock("@/lib/checkers/publiccode", () => ({ checkPublicCode: mocks.checkPublicCode }));
+vi.mock("@/lib/checkers/publiccode", () => ({ analysePublicCode: mocks.analysePublicCode }));
 vi.mock("@/lib/checkers/docker", () => ({ checkDocker: mocks.checkDocker }));
 vi.mock("@/lib/checkers/dockerImage", () => ({ checkDockerImage: mocks.checkDockerImage }));
 vi.mock("@/lib/checkers/ciConfig", () => ({ checkCiConfig: mocks.checkCiConfig }));
@@ -232,7 +232,17 @@ describe("runChecks", () => {
     mocks.checkLicense.mockResolvedValue(resultFor("license", "pass"));
     mocks.checkEuplLicense.mockReturnValue(resultFor("eupllicense", "warn"));
     mocks.checkCopyrightOwner.mockResolvedValue(resultFor("copyrightowner", "pass"));
-    mocks.checkPublicCode.mockResolvedValue(resultFor("publiccode", "pass"));
+    mocks.analysePublicCode.mockResolvedValue({
+      result: resultFor("publiccode", "pass"),
+      details: {
+        displayName: "Test Repo",
+        shortDescription: "Een testrepository",
+        logoUrl: "https://raw.githubusercontent.com/org/repo/main/logo.svg",
+        developmentStatus: "beta",
+        maintenanceType: "community",
+        maintainers: ["Test Team"],
+      },
+    });
     mocks.checkDocker.mockReturnValue(resultFor("docker", "pass"));
     mocks.checkDockerImage.mockReturnValue(resultFor("dockerimage", "pass"));
     mocks.checkCiConfig.mockReturnValue(resultFor("cicd", "pass"));
@@ -442,6 +452,21 @@ describe("runChecks", () => {
     });
 
     expect(report.score).toBe(50);
+  });
+
+  it("adds the publiccode.yml details to the report's repoMeta", async () => {
+    const report = await runChecks("https://github.com/org/repo");
+
+    expect(report.results.find((result) => result.id === "publiccode")?.status).toBe("pass");
+    expect(report.repoMeta).toMatchObject({
+      description: "Test repo",
+      displayName: "Test Repo",
+      shortDescription: "Een testrepository",
+      logoUrl: "https://raw.githubusercontent.com/org/repo/main/logo.svg",
+      developmentStatus: "beta",
+      maintenanceType: "community",
+      maintainers: ["Test Team"],
+    });
   });
 
   it("includes coverage in final report results", async () => {
