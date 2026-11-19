@@ -78,6 +78,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   codemetrics: { weight: 0, requirementLevel: "informative" },
   usage: { weight: 0, requirementLevel: "informative" },
   projecthealth: { weight: 0, requirementLevel: "informative" },
+  standards: { weight: 0, requirementLevel: "informative" },
   owaspsecurecoding: { weight: 1, requirementLevel: "mandatory" },
   adrvalidator: { weight: 1, requirementLevel: "mandatory" },
   contributing: { weight: 1, requirementLevel: "mandatory" },
@@ -86,6 +87,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   security: { weight: 1, requirementLevel: "mandatory" },
   semver: { weight: 1, requirementLevel: "mandatory" },
   sbom: { weight: 1, requirementLevel: "mandatory" },
+  artifacthub: { weight: 1, requirementLevel: "mandatory" },
   coverage: { weight: 1, requirementLevel: "mandatory" },
   fivelayer: { weight: 1, requirementLevel: "mandatory" },
 };

@@ -1,6 +1,6 @@
 import type { CheckResult, Endorsement } from "./types";
 import type { CriteriaCategory } from "./criteria";
-import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "./criteria";
+import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID, isInTransition } from "./criteria";
 import { PASSING_RATING } from "./ratings";
 
 export interface IssueEntry {
@@ -23,7 +23,8 @@ function resultSortIndex(result: CheckResult, category: CriteriaCategory): [numb
 
 /**
  * Splits results into errors (mandatory criteria that fail) and warnings
- * (recommended criteria that fail or warn, and mandatory criteria that warn).
+ * (recommended criteria that fail or warn, mandatory criteria that warn, and
+ * mandatory criteria in their transition period that fail).
  * Results with status `info`, informative criteria and results without a
  * category (which have no card in the result list) are left out. A result
  * without a requirement level counts as recommended, as in ResultCard.
@@ -45,10 +46,10 @@ export function splitIssues(results: CheckResult[]): IssueSplit {
     const level = entry.result.requirementLevel ?? "recommended";
     const { status } = entry.result;
 
-    if (level === "mandatory" && status === "fail") {
+    if (level === "mandatory" && status === "fail" && !isInTransition(entry.result)) {
       errors.push(entry);
     } else if (
-      (level === "mandatory" && status === "warn") ||
+      (level === "mandatory" && (status === "warn" || status === "fail")) ||
       (level === "recommended" && (status === "fail" || status === "warn"))
     ) {
       warnings.push(entry);

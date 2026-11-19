@@ -6,6 +6,7 @@ import { loadStoredRatings } from "@/lib/storedRatings";
 import { parseSla } from "@/lib/sla";
 import { USAGE_CHECK_ID, readUsageData } from "@/lib/usage";
 import { readPublicCodeData } from "@/lib/checkers/publiccode";
+import { isMandatoryFromDate } from "@/lib/criteria";
 import { developmentStatusOf, type MaintainedSla } from "@/lib/maintained";
 import { computeLifecycleStatus, openDropsOf, type LifecycleResult } from "@/lib/lifecycle";
 import type { CheckReport, CheckResult, Endorsement, StarRating } from "@/lib/types";
@@ -39,6 +40,8 @@ export interface SelectedRun extends RunSummary {
   categoryRatings: Ratings["categoryRatings"];
   aspectRatings: Ratings["aspectRatings"];
   endorsement: Endorsement;
+  /** The checklist version the run was measured against; null for runs from before the checklist had versions */
+  checklistVersion: string | null;
 }
 
 export interface RepositoryRun {
@@ -116,6 +119,7 @@ export function normalizeResults(raw: unknown): CheckResult[] {
             ? (item.starRating as StarRating)
             : undefined,
         rating: isRating(item.rating) ? item.rating : undefined,
+        mandatoryFrom: isMandatoryFromDate(item.mandatoryFrom) ? item.mandatoryFrom : undefined,
         measurements: parseMeasurements(item.measurements),
         metrics: parseMetrics(item.metrics),
         publiccode: (item.id === "publiccode" && readPublicCodeData(item.publiccode)) || undefined,
@@ -159,6 +163,11 @@ export function normalizeRepoMeta(raw: RepoMeta | undefined): CheckReport["repoM
     maintenanceType: meta.maintenanceType ?? null,
     maintainers: Array.isArray(meta.maintainers) ? meta.maintainers : [],
   };
+}
+
+function checklistVersionOf(analysis: unknown): string | null {
+  const value = (analysis as { checklistVersion?: unknown }).checklistVersion;
+  return typeof value === "string" && value.trim() ? value : null;
 }
 
 function checkedAtTime(checkedAt: string): number {
@@ -233,6 +242,7 @@ export async function loadRepositoryRun(
           categoryRatings: ratings[selectedIndex].categoryRatings,
           aspectRatings: ratings[selectedIndex].aspectRatings,
           endorsement: ratings[selectedIndex].endorsement,
+          checklistVersion: checklistVersionOf(analyses[selectedIndex]),
         };
 
   return {

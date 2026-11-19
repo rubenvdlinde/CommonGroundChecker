@@ -15,7 +15,7 @@ import {
 } from "@/lib/ratings";
 import { ratingToStars } from "@/lib/stars";
 import { ASPECT_MODEL, resolveCategory, type CategoryAspects } from "@/lib/aspects";
-import { CATEGORY_ORDER, CATEGORY_WEIGHTS } from "@/lib/criteria";
+import { CATEGORY_ORDER, CATEGORY_WEIGHTS, withTransition, type CriterionVersions } from "@/lib/criteria";
 import type { RequirementLevel } from "@/lib/types";
 
 function category(name: string): string {
@@ -77,6 +77,10 @@ describe("criterionRating", () => {
 
   it("does not rate a result that was not measured", () => {
     expect(criterionRating(result("license", "info", { starRating: 3 }))).toBeNull();
+  });
+
+  it("does not rate a criterion that does not apply, whatever its status", () => {
+    expect(criterionRating({ ...result("artifacthub", "fail"), notApplicable: true })).toBeNull();
   });
 });
 
@@ -632,6 +636,20 @@ describe("ratingsForStoredAnalysis", () => {
     expect(ratingsForStoredAnalysis(older, config()).endorsement.reasons).toContain(message);
   });
 
+  it("leaves a stored criterion that does not apply out of the recomputed ratings", () => {
+    const older = {
+      results: [
+        { id: "license", status: "pass" },
+        { id: "artifacthub", title: "Helm chart on Artifact Hub, images scanned", status: "fail", notApplicable: true },
+      ],
+    };
+
+    const ratings = ratingsForStoredAnalysis(older, config({ artifacthub: mandatory }));
+    expect(ratings.aspectRatings["container-images"]).toEqual({ rating: null });
+    expect(ratings.categoryRatings[SECURITY]).toBeNull();
+    expect(ratings.endorsement.reasons).not.toContain("Mandatory criterion fails: Helm chart on Artifact Hub, images scanned");
+  });
+
   it("keeps a stored null rating", () => {
     const unrated = { ...stored, rating: null, endorsement: { passed: false, reasons: ["No overall rating"] } };
 
@@ -669,5 +687,57 @@ describe("ratingsForStoredAnalysis", () => {
 
     expect(ratings.rating).toBeNull();
     expect(ratings.endorsement.passed).toBe(false);
+  });
+});
+
+describe("the transition period of a mandatory criterion", () => {
+  const maintainable = result("maintainability", "pass", { rating: 4.4, starRating: 4 });
+  const versions: CriterionVersions = {
+    license: { introducedIn: "2026.1", mandatoryFrom: "2027-03-01" },
+    maintenance: { introducedIn: "2026.1", mandatoryFrom: "2027-03-01" },
+  };
+  const before = new Date("2027-02-28T12:00:00Z");
+  const after = new Date("2027-03-01T00:00:00Z");
+
+  function failingLicence(now: Date): RatingInput {
+    return withTransition(
+      { ...result("license", "fail", { title: "Open source licence" }), requirementLevel: "mandatory" as const },
+      now,
+      versions
+    );
+  }
+
+  it("does not block the verdict before the date", () => {
+    expect(computeEndorsement([failingLicence(before), maintainable], 4, config())).toEqual({ passed: true, reasons: [] });
+  });
+
+  it("fails the verdict from the date on", () => {
+    expect(computeEndorsement([failingLicence(after), maintainable], 4, config())).toEqual({
+      passed: false,
+      reasons: ["Mandatory criterion fails: Open source licence"],
+    });
+  });
+
+  it("does not require a maintenance contract before the maintenance criterion's date", () => {
+    const maintenance = (now: Date) =>
+      withTransition(
+        { ...result("maintenance", "fail", { message: "No valid maintenance contract" }), requirementLevel: "mandatory" as const },
+        now,
+        versions
+      );
+
+    expect(computeEndorsement([maintenance(before), maintainable], 4, config())).toEqual({ passed: true, reasons: [] });
+    expect(computeEndorsement([maintenance(after), maintainable], 4, config())).toEqual({
+      passed: false,
+      reasons: ["Mandatory criterion fails: maintenance"],
+    });
+  });
+
+  it("keeps the transition of a stored analysis that is recomputed from its results", () => {
+    const reasons = (now: Date) =>
+      ratingsForStoredAnalysis({ results: [failingLicence(now), maintainable] }, config()).endorsement.reasons;
+
+    expect(reasons(before)).not.toContain("Mandatory criterion fails: Open source licence");
+    expect(reasons(after)).toContain("Mandatory criterion fails: Open source licence");
   });
 });

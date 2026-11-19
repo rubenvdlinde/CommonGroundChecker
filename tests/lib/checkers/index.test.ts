@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { CheckResult, RequirementLevel } from "@/lib/types";
 
 const ids = [
@@ -28,6 +28,7 @@ const ids = [
   "fivelayer",
   "helmchart",
   "projecthealth",
+  "artifacthub",
 ] as const;
 
 const mocks = vi.hoisted(() => ({
@@ -59,11 +60,13 @@ const mocks = vi.hoisted(() => ({
   checkFiveLayer: vi.fn(),
   checkHelmChart: vi.fn(),
   checkUsage: vi.fn(),
+  checkArtifactHub: vi.fn(),
   checkCodeMetrics: vi.fn(),
   checkOwaspSecureCoding: vi.fn(),
   checkEuplLicense: vi.fn(),
   checkAdrValidator: vi.fn(),
   checkProjectHealth: vi.fn(),
+  checkStandards: vi.fn(),
   getActiveScoringConfig: vi.fn(),
 }));
 
@@ -138,10 +141,12 @@ vi.mock("@/lib/checkers/fiveLayer", () => ({ checkFiveLayer: mocks.checkFiveLaye
 vi.mock("@/lib/checkers/helmchart", () => ({ checkHelmChart: mocks.checkHelmChart }));
 vi.mock("@/lib/checkers/usage", () => ({ checkUsage: mocks.checkUsage }));
 vi.mock("@/lib/checkers/projectHealth", () => ({ checkProjectHealth: mocks.checkProjectHealth }));
+vi.mock("@/lib/checkers/artifactHub", () => ({ checkArtifactHub: mocks.checkArtifactHub }));
+vi.mock("@/lib/checkers/standards", () => ({ checkStandards: mocks.checkStandards }));
 vi.mock("@/lib/checkers/config", () => ({ getActiveScoringConfig: mocks.getActiveScoringConfig }));
 
 import { runChecks } from "@/lib/checkers/index";
-import { CATEGORY_ORDER, CATEGORY_WEIGHTS } from "@/lib/criteria";
+import { CATEGORY_ORDER, CATEGORY_WEIGHTS, CHECKLIST_VERSION, CRITERION_VERSIONS } from "@/lib/criteria";
 import { resolveCategory } from "@/lib/aspects";
 
 function resultFor(id: string, status: CheckResult["status"]): CheckResult {
@@ -233,6 +238,7 @@ describe("runChecks", () => {
     });
 
     mocks.checkSourceCode.mockReturnValue(resultFor("sourcecode", "pass"));
+    mocks.checkStandards.mockResolvedValue(resultFor("standards", "info"));
     mocks.checkOpenApi.mockResolvedValue(resultFor("openapi", "pass"));
     mocks.checkLicense.mockResolvedValue(resultFor("license", "pass"));
     mocks.checkEuplLicense.mockReturnValue(resultFor("eupllicense", "warn"));
@@ -268,6 +274,30 @@ describe("runChecks", () => {
     mocks.checkHelmChart.mockResolvedValue(resultFor("helmchart", "pass"));
     mocks.checkUsage.mockResolvedValue({ ...resultFor("usage", "info"), usage: { sources: [] } });
     mocks.checkProjectHealth.mockResolvedValue(resultFor("projecthealth", "info"));
+    mocks.checkArtifactHub.mockResolvedValue(resultFor("artifacthub", "pass"));
+  });
+
+  it("adds the informative standards result without stars and leaves it out of the verdict", async () => {
+    const configById = criterionConfig(1, "mandatory");
+    configById.standards = { weight: 0, requirementLevel: "informative" };
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: null,
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { apiSpecificationLocations: ["api/openapi.yaml"] });
+
+    const standards = report.results.find((result) => result.id === "standards");
+    expect(standards).toMatchObject({ status: "info", requirementLevel: "informative" });
+    expect(standards?.starRating).toBeUndefined();
+    expect(mocks.checkStandards).toHaveBeenCalledWith(expect.anything(), ["src/main.ts", "README.md"], ["api/openapi.yaml"]);
+    expect(report.endorsement.reasons.join(" ")).not.toContain("standards");
   });
 
   it("applies weighted scoring and non-register OpenAPI bypass", async () => {
@@ -424,6 +454,121 @@ describe("runChecks", () => {
 
     expect(report.endorsement).toEqual({ passed: false, reasons: ["Mandatory criterion fails: Open source licence"] });
   });
+
+  describe("a mandatory criterion in its transition period", () => {
+    const original = CRITERION_VERSIONS.license;
+
+    beforeEach(() => {
+      CRITERION_VERSIONS.license = { introducedIn: "2026.1", mandatoryFrom: "2027-03-01" };
+      const configById = criterionConfig(0, "recommended");
+      configById.license = { weight: 1, requirementLevel: "mandatory" };
+      configById.sourcecode = { weight: 1, requirementLevel: "mandatory" };
+      mocks.checkLicense.mockResolvedValue({ ...resultFor("license", "fail"), title: "Open source licence" });
+      mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "pass"), starRating: 4, rating: 4.4 });
+      mocks.getActiveScoringConfig.mockResolvedValue({
+        id: "cfg-transition",
+        config: {
+          criterionConfigByCheckId: configById,
+          statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+          complexityThreshold: 12,
+          complexityMaxCcnThreshold: 20,
+          spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+        },
+      });
+    });
+
+    afterEach(() => {
+      CRITERION_VERSIONS.license = original;
+    });
+
+    it("records the checklist version the report was measured against", async () => {
+      const report = await runChecks("https://github.com/org/repo", { now: new Date("2027-02-01T00:00:00Z") });
+
+      expect(report.checklistVersion).toBe(CHECKLIST_VERSION);
+      expect(report.checkedAt).toBe("2027-02-01T00:00:00.000Z");
+    });
+
+    it("before the date, marks the fail as a transition and leaves it out of the mandatory set and the verdict", async () => {
+      const report = await runChecks("https://github.com/org/repo", { now: new Date("2027-02-28T23:59:59Z") });
+
+      const license = report.results.find((result) => result.id === "license");
+      expect(license?.status).toBe("fail");
+      expect(license?.mandatoryFrom).toBe("2027-03-01");
+      // Only sourcecode (Software Quality, pass) is left in the mandatory set.
+      expect(report.score).toBe(100);
+      expect(report.endorsement.reasons).not.toContain("Mandatory criterion fails: Open source licence");
+    });
+
+    it("from the date on, counts the fail normally", async () => {
+      const report = await runChecks("https://github.com/org/repo", { now: new Date("2027-03-01T00:00:00Z") });
+
+      const license = report.results.find((result) => result.id === "license");
+      expect(license).not.toHaveProperty("mandatoryFrom");
+      // Governance 0 (weight 0.2) and Software Quality 1 (weight 0.15): 0.15 / 0.35 = 43%.
+      expect(report.score).toBe(43);
+      expect(report.endorsement.reasons).toContain("Mandatory criterion fails: Open source licence");
+    });
+  });
+
+  it("passes the tree, the locations and the clock to the Artifact Hub check, which warns until 19 May 2027", async () => {
+    const configById = criterionConfig(1, "recommended");
+    configById.artifacthub = { weight: 1, requirementLevel: "mandatory" };
+    mocks.checkArtifactHub.mockResolvedValue({ ...resultFor("artifacthub", "fail"), title: "Helm chart on Artifact Hub, images scanned" });
+    mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "pass"), starRating: 4, rating: 4.4 });
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-artifacthub",
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+    const options = { dockerLocations: ["ghcr.io/org/repo"], helmChartLocations: ["charts/repo"] };
+
+    const before = await runChecks("https://github.com/org/repo", { ...options, now: new Date("2027-05-18T23:59:59Z") });
+    const after = await runChecks("https://github.com/org/repo", { ...options, now: new Date("2027-05-19T00:00:00Z") });
+
+    expect(mocks.checkArtifactHub).toHaveBeenCalledWith(expect.objectContaining({ repo: "repo" }), ["src/main.ts", "README.md"], {
+      dockerImage: resultFor("dockerimage", "pass"),
+      helmChart: resultFor("helmchart", "pass"),
+      helmChartLocations: ["charts/repo"],
+      now: new Date("2027-05-18T23:59:59Z"),
+    });
+    expect(before.results.find((result) => result.id === "artifacthub")?.mandatoryFrom).toBe("2027-05-19");
+    expect(before.endorsement.reasons).not.toContain("Mandatory criterion fails: Helm chart on Artifact Hub, images scanned");
+    expect(after.results.find((result) => result.id === "artifacthub")).not.toHaveProperty("mandatoryFrom");
+    expect(after.endorsement.reasons).toContain("Mandatory criterion fails: Helm chart on Artifact Hub, images scanned");
+  });
+
+  it.each(["2027-05-18T00:00:00Z", "2027-05-19T00:00:00Z"])(
+    "leaves a criterion that does not apply out of the score and the ratings, on %s",
+    async (now) => {
+      const configById = criterionConfig(0, "recommended");
+      configById.sourcecode = { weight: 1, requirementLevel: "mandatory" };
+      configById.artifacthub = { weight: 1, requirementLevel: "mandatory" };
+      mocks.checkArtifactHub.mockResolvedValue({ ...resultFor("artifacthub", "info"), notApplicable: true });
+      mocks.getActiveScoringConfig.mockResolvedValue({
+        id: "cfg-not-applicable",
+        config: {
+          criterionConfigByCheckId: configById,
+          statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+          complexityThreshold: 12,
+          complexityMaxCcnThreshold: 20,
+          spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+        },
+      });
+
+      const report = await runChecks("https://github.com/org/repo", { now: new Date(now) });
+
+      // Only sourcecode counts. Counted as an info result, it would make the score 69 from 19 May 2027.
+      expect(report.score).toBe(100);
+      expect(report.aspectRatings["container-images"]).toEqual({ rating: null });
+      expect(report.categoryRatings[resolveCategory("Security")!]).toBeNull();
+      expect(report.results.find((result) => result.id === "artifacthub")?.notApplicable).toBe(true);
+    }
+  );
 
   it("applies fixed category weights when aggregating mandatory criteria", async () => {
     const configById = criterionConfig(0, "recommended");

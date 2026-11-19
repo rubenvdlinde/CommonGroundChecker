@@ -8,6 +8,7 @@ import type {
   PublicCodeParty,
 } from "../types";
 import type { RepoContext } from "../providers/types";
+import { readSupportsIds } from "../standards";
 
 const REQUIRED_FIELDS = ["publiccodeYmlVersion", "name", "url", "legal"];
 const RECOMMENDED_FIELDS = ["description", "maintenance", "categories", "nl"];
@@ -164,6 +165,10 @@ export function readPublicCodeData(
     roadmap: text(parsed.roadmap),
     developmentStatus: text(parsed.developmentStatus),
     softwareType: text(parsed.softwareType),
+    // A stored shape keeps the ids as strings.
+    supports: (Array.isArray(parsed.supports) ? parsed.supports : []).every((item) => typeof item === "string")
+      ? texts(parsed.supports)
+      : readSupportsIds(parsed),
     intendedAudience: {
       countries: texts(audience.countries),
       unsupportedCountries: texts(audience.unsupportedCountries),

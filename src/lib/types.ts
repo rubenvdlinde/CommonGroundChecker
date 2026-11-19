@@ -34,6 +34,13 @@ export interface CheckResult {
   aspectRatings?: Record<string, number | null>;
   /** The measured values behind the check's rating, with the thresholds per star level */
   measurements?: MeasurementGroup[];
+  /**
+   * For a mandatory criterion in its transition period at the time of the check:
+   * the date (YYYY-MM-DD) it becomes mandatory. Until then a fail is a warning.
+   */
+  mandatoryFrom?: string;
+  /** True when the criterion does not apply to this component; it then counts in no score, rating or verdict */
+  notApplicable?: boolean;
   /** For the publiccode criterion: every field the repository's publiccode.yml declares */
   publiccode?: PublicCodeData;
   /** For the usage criterion: what each source says about who uses the component */
@@ -148,6 +155,8 @@ export interface PublicCodeData {
   roadmap: string | null;
   developmentStatus: string | null;
   softwareType: string | null;
+  /** The `id` of every `supports` entry: standards, regulations and the Common Ground layer */
+  supports: string[];
   intendedAudience: {
     countries: string[];
     unsupportedCountries: string[];
@@ -312,6 +321,8 @@ export interface CheckReport {
   repo: string;
   checkedAt: string;
   scoringConfigId: string | null;
+  /** The checklist version the analysis was measured against */
+  checklistVersion: string;
   score: number; // 0-100
   /** Overall rating from 0.5 to 5.5, or null when no criterion counts */
   rating: number | null;

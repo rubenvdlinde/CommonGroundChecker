@@ -153,6 +153,7 @@ export async function POST(request: Request) {
             categoryRatings: report.categoryRatings,
             aspectRatings: report.aspectRatings,
             endorsement: report.endorsement,
+            checklistVersion: report.checklistVersion,
             issueCounts: countIssues(report.results, report.rating, report.endorsement),
             declaredUsers: declaredUsersOf(report.results),
             results: report.results.map(toApiCheckResult),

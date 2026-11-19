@@ -13,6 +13,7 @@ import RatingSummary from "@/components/RatingSummary";
 import RepoMeta from "@/components/RepoMeta";
 import RunList from "@/components/RunList";
 import UsageHistoryChart from "@/components/UsageHistoryChart";
+import { checklistVersionLabel } from "@/lib/criteria";
 import { repositoryRunHref, type RepositoryRunResult } from "@/lib/repositoryRun";
 import type { UsageStatus } from "@/lib/apiClient";
 import { IS_STATIC_SITE, STATIC_SITE_LINKS } from "@/lib/dataSource/mode";
@@ -160,6 +161,7 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
           <p className="text-xs text-gray-500">
             Checked at {new Date(selected.checkedAt).toLocaleString("nl-NL")}
           </p>
+          <p className="text-xs text-gray-500">{checklistVersionLabel(selected.checklistVersion)}</p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <RatingSummary rating={selected.rating} endorsement={selected.endorsement} score={selected.score} />
             <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">

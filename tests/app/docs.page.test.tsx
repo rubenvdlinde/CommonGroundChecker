@@ -13,6 +13,7 @@ vi.mock("next/navigation", () => ({ notFound }));
 import RatingGuidePage from "@/app/docs/page";
 import CategoryDocPage, { generateStaticParams } from "@/app/docs/[category]/page";
 import { ALL_SOURCES, RATING_DOCS, aspectDocHref } from "@/lib/ratingDocs";
+import { CHECKLIST_CHANGE_PROPOSAL_URL, CHECKLIST_VERSION } from "@/lib/criteria";
 
 const EXPECTED_MODEL: Record<string, string[]> = {
   security: [
@@ -21,6 +22,7 @@ const EXPECTED_MODEL: Record<string, string[]> = {
     "dependency-activity",
     "dependency-licences",
     "dependency-management",
+    "container-images",
     "secrets",
     "secure-coding",
     "supply-chain",
@@ -28,7 +30,7 @@ const EXPECTED_MODEL: Record<string, string[]> = {
   maintainability: ["analysability", "modifiability", "testability", "modularity", "reusability", "testing"],
   governance: ["licensing", "ownership", "maintenance", "community-documents", "usage-and-ecosystem", "project-health"],
   "deployment-operations": ["containerisation", "release-management"],
-  architecture: ["api", "layering"],
+  architecture: ["api", "layering", "standards"],
 };
 
 async function renderCategory(slug: string) {
@@ -69,11 +71,12 @@ describe("rating docs data", () => {
     }
   });
 
-  it("only leaves layering, usage and project health out of the rating, and only usage is informative", () => {
+  it("only leaves layering, standards, usage and project health out of the rating, and only usage is informative", () => {
     const aspects = RATING_DOCS.flatMap((category) => category.aspects);
     expect(aspects.filter((a) => !a.counted).map((a) => a.id).sort()).toEqual([
       "layering",
       "project-health",
+      "standards",
       "usage-and-ecosystem",
     ]);
     expect(aspects.filter((a) => a.informative).map((a) => a.id)).toEqual(["usage-and-ecosystem"]);
@@ -106,6 +109,20 @@ describe("RatingGuidePage", () => {
     expect(maintained?.textContent).toContain("proven in practice by one or more municipalities");
     expect(maintained?.textContent).not.toContain("proposal");
     expect(maintained?.textContent).toContain("never gives stars and never counts in a rating");
+  });
+
+  it("explains the checklist versions and the transition period, and links the change proposal form", () => {
+    render(<RatingGuidePage />);
+
+    expect(screen.getByRole("heading", { level: 2, name: "The checklist and its versions" })).toBeTruthy();
+    expect(screen.getByText(new RegExp(`This is version ${CHECKLIST_VERSION.replace(".", "\\.")}\\.`))).toBeTruthy();
+    expect(screen.getByText(/Until that date a fail shows as a warning/)).toBeTruthy();
+    expect(screen.getByText(/decides within\s+the mandate of the ALV/)).toBeTruthy();
+    expect(screen.getByText(/College voor Dienstverleningszaken/)).toBeTruthy();
+    expect(document.body.textContent).not.toMatch(/The community decides|Forum Standaardisatie|management organisation/);
+    expect(screen.getByRole("link", { name: "Propose a change to the checklist" }).getAttribute("href")).toBe(
+      CHECKLIST_CHANGE_PROPOSAL_URL
+    );
   });
 
   it("calls suitable for Common Ground the programme's threshold, not advice and not a listing condition", () => {

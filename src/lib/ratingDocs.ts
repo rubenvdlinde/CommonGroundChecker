@@ -138,6 +138,15 @@ const SOURCES = {
     url: "https://github.com/ossf/scorecard/blob/main/docs/checks.md",
   },
   spdxSpecs: { title: "SPDX specifications", url: "https://spdx.dev/use/specifications/" },
+  artifactHubSecurity: {
+    title: "Artifact Hub, packages security report",
+    url: "https://artifacthub.io/docs/topics/security_report/",
+  },
+  artifactHubImages: {
+    title: "Artifact Hub Helm annotations, artifacthub.io/images",
+    url: "https://artifacthub.io/docs/topics/annotations/helm/",
+  },
+  trivy: { title: "Trivy", url: "https://trivy.dev/" },
   cyclonedx: { title: "CycloneDX specification", url: "https://cyclonedx.org/specification/overview/" },
   osiLicences: { title: "OSI approved licences", url: "https://opensource.org/licenses" },
   eupl: {
@@ -227,6 +236,10 @@ const SOURCES = {
     url: "https://github.com/Logius-standaarden/API-Design-Rules",
   },
   spectral: { title: "Spectral, the OpenAPI linter", url: "https://github.com/stoplightio/spectral" },
+  publiccodeSupports: {
+    title: "publiccode.yml standard, the supports key",
+    url: "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+  },
   fiveLayerModel: {
     title: "Common Ground five-layer model (GEMMA Online)",
     url: "https://www.gemmaonline.nl/wiki/Common_Ground_vijflaagsmodel",
@@ -418,6 +431,29 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         ]
       ),
       {
+        id: "container-images",
+        title: "Container images",
+        meaning:
+          "Known vulnerabilities in the container images a municipality runs when it installs the component's Helm chart. This covers the operating system packages and libraries inside the images, which the repository dependency scan does not see.",
+        criteria: [
+          {
+            checkId: "artifacthub",
+            name: "Helm chart on Artifact Hub, images scanned",
+            tool: "the Trivy security report that Artifact Hub publishes for the chart",
+          },
+        ],
+        rating: [
+          "Only for container components: a component that publishes a container image, found by the Docker image criterion, or that has a Helm chart. A Dockerfile alone, for development or tests, does not count. For a Nextcloud app or a library the criterion does not apply: it counts in no score, rating or verdict, and the repository dependency scan stays the check that counts.",
+          "The checker looks for the component's Helm package on Artifact Hub. A link to the package in the README or publiccode.yml counts first, then the repositoryID in artifacthub-repo.yml, then a package whose links point at the repository, then a package with the chart's name from the same owner. The result says how the package was matched.",
+          "Artifact Hub scans the images of every chart version with Trivy. It takes the images from a dry run of the chart with its default values, or from the artifacthub.io/images annotation in Chart.yaml. The latest version is scanned again every day.",
+          "Pass: the latest version has no critical vulnerabilities. The result shows the counts per severity per image, the date of the scan and the link to the package. Fail: no package on Artifact Hub, or at least one critical vulnerability.",
+          "Not measured, shown as a warning and never as a pass: the version is older than one year, it uses more than 15 images, the images are private or excluded, the scanner is switched off, or there is no report yet. Artifact Hub skips images over 4 GiB without saying so; the checker names every image that is missing from the report.",
+          "A pass rates 5.5, a warning 3 and a fail 0.5. The criterion is mandatory from 19 May 2027. Until then a fail is a warning and does not count against the verdict.",
+        ],
+        counted: true,
+        sources: [SOURCES.artifactHubSecurity, SOURCES.artifactHubImages, SOURCES.trivy],
+      },
+      {
         id: "secrets",
         title: "Secrets",
         meaning:
@@ -456,7 +492,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         ],
         rating: [
           "The OpenSSF Scorecard rates practices such as branch protection, code review, pinned dependencies and signed releases on a scale from 0 to 10. The checker maps the score to stars with its own bands: 9 or more is 5 stars, 7 or more is 4, 5 or more is 3, 3 or more is 2, and less is 1.",
-          "The SBOM criterion passes when the repository holds a software bill of materials in SPDX or CycloneDX format, and rates 5 for a pass and 1 for a fail.",
+          "The SBOM criterion passes when the repository holds a software bill of materials in SPDX or CycloneDX format, and rates 5 for a pass and 1 for a fail. It checks that the document is there, not what it lists.",
           "The aspect rating is the weighted mean of both criteria.",
         ],
         counted: true,
@@ -770,6 +806,25 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         ],
         counted: false,
         sources: [SOURCES.fiveLayerModel],
+      },
+      {
+        id: "standards",
+        title: "Standards",
+        meaning:
+          "Which Dutch government standards the component supports, and in which version, such as the ZGW APIs or the NL API Design Rules. A component declares them in publiccode.yml under supports, as the Common Ground profile for publiccode.yml describes.",
+        criteria: [
+          {
+            checkId: "standards",
+            name: "Supported standards",
+            tool: "publiccode.yml supports, compared with the OpenAPI files by their info.title or their top-level resources, and their info.version",
+          },
+        ],
+        rating: [
+          "The check lists the declared standards and versions, and names an entry that is not in its registry of known standards. It compares them with the OpenAPI files in the repository: declared and found, declared but not found, and found but not declared.",
+          "The result is informative. It has no stars and does not count in the Architecture rating or in the verdict.",
+        ],
+        counted: false,
+        sources: [SOURCES.publiccodeSupports, SOURCES.apiDesignRules],
       },
     ],
   },

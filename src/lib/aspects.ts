@@ -87,6 +87,11 @@ export const ASPECT_MODEL: CategoryAspects[] = [
       openSourceHealthAspect("dependency-activity", "Dependency activity", "activity"),
       openSourceHealthAspect("dependency-licences", "Dependency licences", "licence"),
       openSourceHealthAspect("dependency-management", "Dependency management", "management"),
+      {
+        id: "container-images",
+        title: "Container images",
+        source: { type: "criteria", checkIds: ["artifacthub"] },
+      },
       { id: "secrets", title: "Secrets", source: { type: "criteria", checkIds: ["secretscanning"] } },
       { id: "secure-coding", title: "Secure coding", source: { type: "criteria", checkIds: ["owaspsecurecoding"] } },
       {
@@ -101,6 +106,7 @@ export const ASPECT_MODEL: CategoryAspects[] = [
     aspects: [
       { id: "api", title: "API", source: { type: "criteria", checkIds: ["openapi", "adrvalidator"] } },
       { id: "layering", title: "Layering", source: { type: "criteria", checkIds: ["fivelayer"] }, weight: 0 },
+      { id: "standards", title: "Standards", source: { type: "criteria", checkIds: ["standards"] }, weight: 0 },
     ],
   },
   {

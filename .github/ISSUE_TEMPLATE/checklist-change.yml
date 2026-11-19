@@ -1,0 +1,68 @@
+name: Checklist change proposal
+description: Propose a change to the checklist the checker measures against.
+title: "Checklist change: "
+labels:
+  - checklist-change
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The checklist decides which components the checker calls suitable for Common Ground, so changes follow the change process of the Common Ground standard put to the VNG ALV. Anyone can propose a change here. VNG, as regievoerder, organises the input of municipalities and decides within the mandate of the ALV. A change outside the mandate goes to the ALV. The rating guide (/docs on the checker) explains the process and the current checklist version.
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: What changes
+      description: The kind of change you propose.
+      options:
+        - New criterion
+        - Different threshold
+        - Different weight
+        - Different requirement level (mandatory, recommended or informative)
+        - Removal of a criterion
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: criterion
+    attributes:
+      label: Criterion
+      description: The criterion the change is about, by name or id, for example "Maintained" or "maintenance". For a new criterion, a short name.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: The change
+      description: What the checklist says now, and what it should say. For a threshold or weight, give the old and the new value.
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why
+      description: Why the checklist should change. Link the standard, policy or source it is based on, if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: effect
+    attributes:
+      label: Expected effect on measured components
+      description: Which measured components would pass or fail differently, and how many. Link analyses from the checker where you can.
+    validations:
+      required: true
+  - type: textarea
+    id: transition
+    attributes:
+      label: Proposed transition period
+      description: |
+        For a new mandatory criterion or a stricter threshold: from which date it should count. Until that date a fail shows as a warning and does not block the verdict. Write "none" when the change makes nothing stricter.
+      placeholder: "For example: mandatory from 1 July 2027"
+    validations:
+      required: true
+  - type: input
+    id: proposer
+    attributes:
+      label: Organisation
+      description: The organisation you propose this for, if any.
+    validations:
+      required: false

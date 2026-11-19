@@ -25,6 +25,10 @@ export const $CheckReport = {
             type: 'string',
             isNullable: true,
         },
+        checklistVersion: {
+            type: 'string',
+            description: `The checklist version the analysis was measured against, for example 2026.1`,
+        },
         score: {
             type: 'number',
             isRequired: true,

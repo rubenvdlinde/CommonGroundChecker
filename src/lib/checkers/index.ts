@@ -10,6 +10,7 @@ import { checkCiConfig } from "./ciConfig";
 import { checkFiveLayer } from "./fiveLayer";
 import { checkHelmChart } from "./helmchart";
 import { checkSbom } from "./sbom";
+import { checkArtifactHub } from "./artifactHub";
 import { checkDocumentation } from "./documentation";
 import { checkChangelog } from "./changelog";
 import { checkMaintenance } from "./maintenance";
@@ -30,13 +31,21 @@ import { checkEuplLicense } from "./eupl";
 import { checkUsage } from "./usage";
 import { USAGE_CHECK_ID } from "../usage";
 import { checkProjectHealth } from "./projectHealth";
+import { checkStandards } from "./standards";
 import {
   getActiveScoringConfig,
   type ActiveScoringConfig,
 } from "./config";
 import { statusToStars } from "../stars";
 import { computeEndorsement, computeRatings } from "../ratings";
-import { CATEGORY_WEIGHTS, RESULT_CATEGORY_BY_ID, type CriteriaCategory } from "../criteria";
+import {
+  CATEGORY_WEIGHTS,
+  CHECKLIST_VERSION,
+  RESULT_CATEGORY_BY_ID,
+  upcomingMandatoryFrom,
+  withTransition,
+  type CriteriaCategory,
+} from "../criteria";
 import { mkdtemp, rm } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -97,6 +106,8 @@ export interface RunChecksOptions {
   scoringConfig?: ActiveScoringConfig;
   /** The repository's own labels for the SLA times, on top of GitHub's default labels */
   slaLabels?: Record<string, string> | null;
+  /** The time the check runs at; decides which criteria are still in their transition period */
+  now?: Date;
 }
 
 export async function runChecks(
@@ -132,6 +143,7 @@ export async function runChecksOnContext(
   const activeScoringConfig = options?.scoringConfig ?? await getActiveScoringConfig();
   const scoringConfig = activeScoringConfig.config;
   const isRegister = options?.isRegister === true;
+  const checkedAt = options?.now ?? new Date();
 
   let tempRoot: string | undefined;
   let localRepoPath: string | undefined;
@@ -168,6 +180,9 @@ export async function runChecksOnContext(
         referenceUrl: "https://commonground.nl/cms/view/54476259/api-designrules",
       });
 
+  const dockerimage = checkDockerImage(options?.dockerLocations ?? []);
+  const helmChartPromise = checkHelmChart(context, tree, options?.helmChartLocations ?? []);
+
   // Kick off network-dependent and slow checks immediately so they run concurrently
   const networkChecksPromise = Promise.all([
     openApiCheckPromise,
@@ -176,12 +191,13 @@ export async function runChecksOnContext(
     analysePublicCode(context, tree),
     checkMaintenance(context, tree),
     checkFiveLayer(context, tree, meta),
-    checkHelmChart(context, tree, options?.helmChartLocations ?? []),
+    helmChartPromise,
     checkProjectHealth(context, meta, new Date(), {
       kpiTargets: scoringConfig.kpiTargets,
       slaTerms: scoringConfig.slaTerms,
       slaLabels: options?.slaLabels,
     }),
+    checkStandards(context, tree, options?.apiSpecificationLocations ?? []),
   ]);
   const usagePromise = networkChecksPromise.then(([, , , publiccodeAnalysis]) =>
     checkUsage(context, meta, tree, publiccodeAnalysis.result.publiccode, {
@@ -198,6 +214,14 @@ export async function runChecksOnContext(
   );
   const maintainabilityPromise = checkMaintainability(localRepoPath);
   const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
+  const artifactHubPromise = helmChartPromise.then((helmChart) =>
+    checkArtifactHub(context, tree, {
+      dockerImage: dockerimage,
+      helmChart,
+      helmChartLocations: options?.helmChartLocations ?? [],
+      now: checkedAt,
+    })
+  );
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
     owner,
@@ -214,7 +238,6 @@ export async function runChecksOnContext(
   onProgress?.("Running code structure checks...", 45);
   let sourcecode = checkSourceCode(tree);
   const docker = checkDocker(tree);
-  const dockerimage = checkDockerImage(options?.dockerLocations ?? []);
   const cicd = checkCiConfig(tree);
   const sbom = await checkSbom(context, tree);
   const documentation = checkDocumentation(tree, options?.documentationLocations ?? []);
@@ -228,7 +251,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator, usage] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -236,6 +259,7 @@ export async function runChecksOnContext(
     owaspSecureCodingPromise,
     adrValidatorPromise,
     usagePromise,
+    artifactHubPromise,
   ]);
   const publiccode = publiccodeAnalysis.result;
 
@@ -281,6 +305,7 @@ export async function runChecksOnContext(
     dockerimage,
     cicd,
     sbom,
+    artifacthub,
     documentation,
     changelog,
     tests,
@@ -297,6 +322,7 @@ export async function runChecksOnContext(
     fivelayer,
     helmchart,
     projecthealth,
+    standards,
   ];
 
   const categoryAggregates = results.reduce(
@@ -304,7 +330,11 @@ export async function runChecksOnContext(
       const requirementLevel =
         scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
         "recommended";
-      if (requirementLevel !== "mandatory") {
+      if (
+        requirementLevel !== "mandatory" ||
+        result.notApplicable ||
+        upcomingMandatoryFrom({ id: result.id, requirementLevel }, checkedAt) !== null
+      ) {
         return acc;
       }
 
@@ -373,6 +403,7 @@ export async function runChecksOnContext(
     dockerimage,
     cicd,
     sbom,
+    artifacthub,
     documentation,
     changelog,
     tests,
@@ -390,12 +421,18 @@ export async function runChecksOnContext(
     helmchart,
     usage,
     projecthealth,
-  ].map((result) => ({
-    ...result,
-    requirementLevel:
-      scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
-      "recommended",
-  }));
+    standards,
+  ].map((result) =>
+    withTransition(
+      {
+        ...result,
+        requirementLevel:
+          scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
+          "recommended",
+      },
+      checkedAt
+    )
+  );
   // Rated before the status stars are filled in, so a criterion without a scale is rated from its status.
   const { rating, categoryRatings, aspectRatings } = computeRatings(resultsWithRequirementLevels, scoringConfig);
   const endorsement = computeEndorsement(resultsWithRequirementLevels, rating, scoringConfig);
@@ -410,8 +447,9 @@ export async function runChecksOnContext(
     repoUrl: context.repoUrl,
     owner,
     repo,
-    checkedAt: new Date().toISOString(),
+    checkedAt: checkedAt.toISOString(),
     scoringConfigId: activeScoringConfig.id,
+    checklistVersion: CHECKLIST_VERSION,
     score,
     rating,
     categoryRatings,

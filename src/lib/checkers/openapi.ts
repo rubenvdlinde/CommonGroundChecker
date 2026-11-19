@@ -20,6 +20,22 @@ const OPENAPI_PATTERNS = [
   ".openapi.yaml",
 ];
 
+/** The OpenAPI and Swagger files in the tree: known paths first, then any file named like one, as spelled in the tree. */
+export function findOpenApiFiles(tree: string[]): string[] {
+  const lowerTree = tree.map((p) => p.toLowerCase());
+  const found = OPENAPI_PATTERNS.filter((p) => lowerTree.includes(p));
+  const deepMatches = lowerTree.filter(
+    (p) =>
+      p.endsWith("/openapi.yaml") ||
+      p.endsWith("/openapi.yml") ||
+      p.endsWith("/openapi.json") ||
+      p.endsWith("/swagger.yaml") ||
+      p.endsWith("/swagger.yml") ||
+      p.endsWith("/swagger.json")
+  );
+  return [...new Set([...found, ...deepMatches])].map((p) => tree[lowerTree.indexOf(p)] ?? p);
+}
+
 export async function checkOpenApi(
   context: RepoContext,
   tree: string[],
@@ -75,21 +91,7 @@ export async function checkOpenApi(
     };
   }
 
-  // Check for exact known filenames
-  const found = OPENAPI_PATTERNS.filter((p) => lowerTree.includes(p));
-
-  // Also search for any file ending in openapi.yaml / swagger.json etc.
-  const deepMatches = lowerTree.filter(
-    (p) =>
-      p.endsWith("/openapi.yaml") ||
-      p.endsWith("/openapi.yml") ||
-      p.endsWith("/openapi.json") ||
-      p.endsWith("/swagger.yaml") ||
-      p.endsWith("/swagger.yml") ||
-      p.endsWith("/swagger.json")
-  );
-
-  const allFound = [...new Set([...found, ...deepMatches])];
+  const allFound = findOpenApiFiles(tree).map((p) => p.toLowerCase());
 
   if (allFound.length === 0) {
     return {

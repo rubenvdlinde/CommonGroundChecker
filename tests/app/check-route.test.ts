@@ -24,6 +24,7 @@ const report = {
   repo: "repo",
   checkedAt: "2026-11-12T10:00:00Z",
   scoringConfigId: null,
+  checklistVersion: "2026.1",
   score: 40,
   rating: 2.1,
   categoryRatings: {},
@@ -109,5 +110,15 @@ describe("check routes", () => {
     await POST(request("http://localhost/api/check"));
 
     expect(postRepositoryAnalysis).toHaveBeenCalledWith("repo-id", expect.objectContaining({ declaredUsers: [] }));
+  });
+
+  it("sends the checklist version the analysis was measured against, from both routes", async () => {
+    await POST(request("http://localhost/api/check"));
+    await (await POST_STREAM(request("http://localhost/api/check/stream"))).text();
+
+    expect(postRepositoryAnalysis).toHaveBeenCalledTimes(2);
+    for (const [, input] of postRepositoryAnalysis.mock.calls) {
+      expect(input).toEqual(expect.objectContaining({ checklistVersion: "2026.1" }));
+    }
   });
 });

@@ -14,7 +14,15 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { criterionAnchorId } from "@/lib/criteria";
+import Link from "next/link";
+import {
+  RESULT_ORDER_BY_ID,
+  criterionAnchorId,
+  criterionDocHref,
+  isInTransition,
+  transitionNotice,
+} from "@/lib/criteria";
+import { PUBLICCODE_GUIDE_CHECK_IDS, PUBLICCODE_PROFILE_PATH } from "@/lib/publiccodeProfile";
 
 interface ResultCardProps {
   id: string;
@@ -29,6 +37,8 @@ interface ResultCardProps {
   starRating?: StarRating;
   metrics?: InformativeMetric[];
   sla?: SlaSummary;
+  /** The date a mandatory criterion in its transition period becomes mandatory */
+  mandatoryFrom?: string;
 }
 
 const REQUIREMENT_CONFIG: Record<
@@ -96,6 +106,7 @@ export default function ResultCard({
   starRating,
   metrics,
   sla,
+  mandatoryFrom,
 }: ResultCardProps) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -111,8 +122,13 @@ export default function ResultCard({
     window.addEventListener("hashchange", openWhenTargeted);
     return () => window.removeEventListener("hashchange", openWhenTargeted);
   }, [anchorId]);
-  const { icon: Icon, bg, border, text, label } = STATUS_CONFIG[status];
-  const req = REQUIREMENT_CONFIG[requirementLevel ?? "recommended"];
+  const transition = isInTransition({ requirementLevel, mandatoryFrom }) ? mandatoryFrom : undefined;
+  // A mandatory criterion that fails in its transition period shows as a warning.
+  const shownStatus = transition && status === "fail" ? "warn" : status;
+  const { icon: Icon, bg, border, text, label } = STATUS_CONFIG[shownStatus];
+  const req = transition
+    ? { label: transitionNotice(transition), className: REQUIREMENT_CONFIG.recommended.className }
+    : REQUIREMENT_CONFIG[requirementLevel ?? "recommended"];
 
   return (
     <div id={anchorId} className={`rounded-xl border ${border} ${bg} overflow-hidden scroll-mt-4`}>
@@ -192,6 +208,18 @@ export default function ResultCard({
                 ))}
               </ul>
             </div>
+          )}
+
+          {RESULT_ORDER_BY_ID.includes(id) && (
+            <Link href={criterionDocHref(id)} className="block text-xs text-cg-lightblue hover:underline">
+              How this is checked
+            </Link>
+          )}
+
+          {PUBLICCODE_GUIDE_CHECK_IDS.includes(id) && (
+            <a href={PUBLICCODE_PROFILE_PATH} className="block text-xs text-cg-lightblue hover:underline">
+              How to fill publiccode.yml for this criterion
+            </a>
           )}
 
           {referenceUrl && (

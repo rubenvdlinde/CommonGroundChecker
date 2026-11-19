@@ -199,6 +199,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         explanation:
           "Haven is the Dutch government standard for Kubernetes deployments. Charts must include resource limits, liveness/readiness probes, a security context, and NetworkPolicy manifests.",
       },
+      {
+        id: "artifacthub",
+        label: "Helm chart on Artifact Hub, images scanned",
+        explanation:
+          "For container components only. The Helm chart is registered on Artifact Hub, and the Trivy report of its latest version has no critical vulnerabilities. Counted in Security. Mandatory from 19 May 2027; until then a fail is a warning.",
+      },
     ],
   },
 ] ;

@@ -70,9 +70,13 @@ export default function CriteriaResults({ results, categoryRatings }: CriteriaRe
                       message={result.message}
                       evidence={result.evidence}
                       referenceUrl={result.referenceUrl}
-                      starRating={result.starRating ?? statusToStars(result.status)}
+                      starRating={
+                        result.starRating ??
+                        (result.requirementLevel === "informative" ? undefined : statusToStars(result.status))
+                      }
                       metrics={result.metrics}
                       sla={result.sla}
+                      mandatoryFrom={result.mandatoryFrom}
                     />
                   ))}
                 </div>
