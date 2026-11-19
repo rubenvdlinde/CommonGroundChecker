@@ -113,6 +113,14 @@ describe("RatingGuidePage", () => {
     expect(text).toMatch(/It is not a condition for being listed/);
     expect(text).not.toMatch(/advice/i);
   });
+
+  it("says the checker does not certify and leaves a SIG certificate to the regievoerder", () => {
+    render(<RatingGuidePage />);
+
+    const text = document.body.textContent ?? "";
+    expect(text).toMatch(/4 stars is the level at which SIG and TÜViT certify maintainability\. The checker does not\s+certify/);
+    expect(text).toMatch(/up to VNG as\s+regievoerder\. The ALV papers do not ask for one\./);
+  });
 });
 
 describe("CategoryDocPage", () => {
