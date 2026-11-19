@@ -41,7 +41,7 @@ export default function ResponsiveNav({ children }: { children: React.ReactNode 
           onClick={(event) => {
             if ((event.target as HTMLElement).closest("a")) setOpen(false);
           }}
-          className={`${open ? "flex" : "hidden"} flex-col pb-2 sm:flex sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:pb-0`}
+          className={`${open ? "flex" : "hidden"} flex-col pb-2 sm:flex sm:flex-row sm:flex-wrap sm:-mr-2 sm:items-center sm:justify-end sm:pb-0`}
         >
           {children}
         </div>

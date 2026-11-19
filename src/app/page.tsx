@@ -374,7 +374,7 @@ function Disclaimer() {
         <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-yellow-600" />
         <div className="flex-1">
           <button
-            className="tap-target float-right -my-3 -mr-2 inline-flex min-w-[44px] items-center justify-center text-xs text-yellow-700 underline hover:text-yellow-900"
+            className="tap-target float-right -my-3 -mr-2 inline-flex min-w-[44px] items-center justify-center lg:my-0 lg:mr-0 lg:min-w-0 text-xs text-yellow-700 underline hover:text-yellow-900"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
           >
