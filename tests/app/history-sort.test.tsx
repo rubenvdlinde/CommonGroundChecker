@@ -7,6 +7,11 @@ import type { RepoSummary } from "@/generated/openapi-client";
 const getRepositories = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/apiClient", () => ({ getRepositories }));
 vi.mock("next/navigation", () => ({ useRouter: () => ({ replace: vi.fn(), push: vi.fn() }) }));
+const loadBasisset = vi.hoisted(() => vi.fn(async () => null));
+vi.mock("@/lib/basisset", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/basisset")>()),
+  loadBasisset,
+}));
 
 import HistoryHomePage from "@/app/history/page";
 import { sortRepositories } from "@/components/HistoryPageClient";

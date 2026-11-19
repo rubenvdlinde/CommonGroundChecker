@@ -8,9 +8,11 @@ interface RepoMetaProps {
   owner: string;
   repo: string;
   repoMeta: CheckReport["repoMeta"];
+  /** Shows the Followed badge when the repository is rescanned on a schedule */
+  followed?: boolean;
 }
 
-export default function RepoMeta({ owner, repo, repoMeta }: RepoMetaProps) {
+export default function RepoMeta({ owner, repo, repoMeta, followed = false }: RepoMetaProps) {
   const displayName = repoMeta.displayName ?? `${owner}/${repo}`;
   const summary = repoMeta.shortDescription ?? repoMeta.description;
   const maintainers = repoMeta.maintainers ?? [];
@@ -52,6 +54,11 @@ export default function RepoMeta({ owner, repo, repoMeta }: RepoMetaProps) {
         <span className="text-xs bg-purple-50 text-purple-700 border border-purple-200 rounded-full px-3 py-1 font-medium shrink-0">
           Version {repoMeta.version ?? "not found"}
         </span>
+        {followed && (
+          <span className="text-xs font-semibold px-3 py-1 rounded-full border border-green-300 text-green-800 bg-green-50 shrink-0">
+            Followed
+          </span>
+        )}
       </div>
 
       {(repoMeta.maintenanceType || maintainers.length > 0) && (

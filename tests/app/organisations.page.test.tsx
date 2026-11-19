@@ -135,11 +135,10 @@ describe("OrganisationPage", () => {
     );
     expect(within(rows[0]).getByRole("img", { name: "Overall rating 4.2 of 5.5, 4 stars" })).toBeTruthy();
     expect(rows[0].textContent).toContain("Suitable for Common Ground");
-    expect(rows[0].textContent).toContain("Maintained");
-    expect(rows[0].textContent).not.toContain("Not yet Maintained");
+    expect(rows[0].querySelector("[data-lifecycle-status]")?.textContent).toBe("Maintained");
     expect(rows[0].textContent).toContain("Scanned version: 3.0.0");
     expect(rows[1].textContent).toContain("Not yet suitable for Common Ground");
-    expect(rows[1].textContent).toContain("Not yet Maintained");
+    expect(rows[1].querySelector("[data-lifecycle-status]")?.textContent).toBe("Measured");
     expect(rows[1].textContent).toContain("Scanned version: main");
   });
 

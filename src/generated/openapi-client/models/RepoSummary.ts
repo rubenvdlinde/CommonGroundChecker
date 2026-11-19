@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { Sla } from './Sla';
 export type RepoSummary = {
     id: string;
     owner: string;
@@ -53,6 +54,30 @@ export type RepoSummary = {
      */
     nextCheckAt: string;
     analysisCount: number;
+    /**
+     * Drops not yet recovered
+     */
+    openDropCount?: number;
+    /**
+     * Open drops past their fix-by date
+     */
+    overdueDropCount?: number;
+    /**
+     * The earliest fix-by date of the open drops
+     */
+    nextFixBy?: string | null;
+    /**
+     * When an admin retired the repository; null when it is not retired
+     */
+    retiredAt?: string | null;
+    /**
+     * Why an admin retired the repository
+     */
+    retiredReason?: string | null;
+    /**
+     * Every SLA of the repository, the one that ends last first
+     */
+    slas?: Array<Sla>;
     latestAnalysis: any | null;
 };
 

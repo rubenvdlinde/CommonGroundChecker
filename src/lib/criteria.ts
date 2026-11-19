@@ -50,6 +50,7 @@ export const RESULT_ORDER_BY_ID: string[] = [
   "contributing",
   "codeofconduct",
   "security",
+  "projecthealth",
   "semver",
 ];
 
@@ -78,6 +79,7 @@ export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
   owaspsecurecoding: "Security",
   contributing: "Governance",
   codeofconduct: "Governance",
+  projecthealth: "Governance",
   security: "Security",
   semver: "Software Quality",
   fivelayer: "Architecture",

@@ -697,6 +697,89 @@
           }
         }
       }
+    },
+    "/api/repositories/{repoId}/retire": {
+      "put": {
+        "summary": "Retire a repository, or undo it",
+        "description": "Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. A retired repository keeps its history and is not rescanned on schedule until it is un-retired. Disabled with 503 when the backend has no ADMIN_TOKEN configured.",
+        "security": [
+          {
+            "adminToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "repoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetireInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Retirement saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetireState"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request: retired is not a boolean, or the reason is missing or longer than 500 characters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid admin token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Repository not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Admin actions are disabled because ADMIN_TOKEN is not configured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -918,8 +1001,67 @@
               },
               "endorsement": {
                 "$ref": "#/components/schemas/Endorsement"
+              },
+              "version": {
+                "type": [
+                  "string",
+                  null
+                ],
+                "description": "The version the analysis measured"
+              },
+              "declaredUserCount": {
+                "type": [
+                  "integer",
+                  null
+                ],
+                "description": "Organisations under usedBy in the scanned publiccode.yml; null when the analysis did not record them"
+              },
+              "developmentStatus": {
+                "type": [
+                  "string",
+                  null
+                ],
+                "description": "developmentStatus of the scanned publiccode.yml; null when the file or the field is missing"
               }
             }
+          },
+          "openDropCount": {
+            "type": "integer",
+            "description": "Drops not yet recovered"
+          },
+          "overdueDropCount": {
+            "type": "integer",
+            "description": "Open drops past their fix-by date"
+          },
+          "nextFixBy": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "The earliest fix-by date of the open drops"
+          },
+          "retiredAt": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "When an admin retired the repository; null when it is not retired"
+          },
+          "retiredReason": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Why an admin retired the repository"
+          },
+          "slas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Sla"
+            },
+            "description": "Every SLA of the repository, the one that ends last first"
           }
         },
         "required": [
@@ -1073,6 +1215,16 @@
           },
           "isRegister": {
             "type": "boolean"
+          },
+          "slaLabels": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "The repository's own labels for the SLA times, on top of GitHub's default labels: label name to blocking-bug, bug, question, documentation, feature-request, no-fix-term or ignore",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -1361,6 +1513,21 @@
               "updatedAt": {
                 "type": "string",
                 "format": "date-time"
+              },
+              "retiredAt": {
+                "type": [
+                  "string",
+                  null
+                ],
+                "format": "date-time",
+                "description": "When an admin retired the repository; null when it is not retired"
+              },
+              "retiredReason": {
+                "type": [
+                  "string",
+                  null
+                ],
+                "description": "Why an admin retired the repository"
               }
             },
             "required": [
@@ -1381,6 +1548,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RepoAnalysisOutput"
+            }
+          },
+          "drops": {
+            "type": "array",
+            "description": "The drops of the repository, newest first",
+            "items": {
+              "$ref": "#/components/schemas/MaintenanceDrop"
             }
           }
         },
@@ -1457,6 +1631,32 @@
           },
           "defaultSpectralRulesetSource": {
             "type": "string"
+          },
+          "fixTerms": {
+            "type": "object",
+            "description": "Days to recover a drop; proposals"
+          },
+          "kpiTargets": {
+            "type": "object",
+            "description": "Proposed target values per CHAOSS metric id: at least min, at most max",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "min": {
+                  "type": "number"
+                },
+                "max": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "slaTerms": {
+            "type": "object",
+            "description": "Proposed SLA response and fix terms per issue category, in working days",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         },
         "required": [
@@ -1969,6 +2169,35 @@
           "repoUrl": {
             "type": "string"
           },
+          "retiredAt": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "When an admin retired the repository; null when it is not retired"
+          },
+          "retiredReason": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Why an admin retired the repository"
+          },
+          "openDropCount": {
+            "type": "integer"
+          },
+          "overdueDropCount": {
+            "type": "integer"
+          },
+          "nextFixBy": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "The earliest fix-by date of the open drops"
+          },
           "slas": {
             "type": "array",
             "items": {
@@ -2035,6 +2264,149 @@
         "required": [
           "organisation",
           "components"
+        ]
+      },
+      "MaintenanceDrop": {
+        "type": "object",
+        "description": "A criterion, rating or verdict that got worse since the previous analysis of the same scanned ref kind",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "repoId": {
+            "type": "string"
+          },
+          "analysisId": {
+            "type": "string"
+          },
+          "previousAnalysisId": {
+            "type": "string"
+          },
+          "scannedRefKind": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "criterion",
+              "rating",
+              "verdict"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "description": "The criterion id, overall or a category name, or suitable"
+          },
+          "label": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "detectedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fixTermDays": {
+            "type": "integer"
+          },
+          "fixBy": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "resolvedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "resolvedAnalysisId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "overdue": {
+            "type": "boolean",
+            "description": "Open past its fix-by date"
+          }
+        },
+        "required": [
+          "id",
+          "repoId",
+          "analysisId",
+          "previousAnalysisId",
+          "scannedRefKind",
+          "kind",
+          "subject",
+          "label",
+          "from",
+          "to",
+          "detectedAt",
+          "fixTermDays",
+          "fixBy",
+          "resolvedAt",
+          "resolvedAnalysisId",
+          "overdue"
+        ]
+      },
+      "RetireInput": {
+        "type": "object",
+        "properties": {
+          "retired": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 500,
+            "description": "Required when retired is true"
+          }
+        },
+        "required": [
+          "retired"
+        ]
+      },
+      "RetireState": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "retiredAt": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time",
+            "description": "When an admin retired the repository; null when it is not retired"
+          },
+          "retiredReason": {
+            "type": [
+              "string",
+              null
+            ],
+            "description": "Why an admin retired the repository"
+          },
+          "nextCheckAt": {
+            "type": [
+              "string",
+              null
+            ],
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "retiredAt",
+          "retiredReason",
+          "nextCheckAt"
         ]
       }
     }

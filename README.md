@@ -176,7 +176,7 @@ The application is built as a single Next.js service with clear layers:
 1. **Presentation layer (React pages/components)**
 	- Main checker UI (`/`)
 	- Admin scoring UI (`/admin`)
-	- History UI (`/history` and repository detail pages)
+	- History UI (`/history` and one page per repository: `/history/<owner>/<repo>` shows the latest run in full, `/history/<owner>/<repo>/<analysisId>` the same page for an older run; both graph the overall rating (0.5 to 5.5, pass line at 2.5) of every stored run and list every run with its rating, pass or fail, errors and warnings)
 
 2. **API layer (Next.js route handlers under `/api`)**
 	- Validates input, orchestrates checks, persists results, and serves history/config data.
@@ -363,6 +363,24 @@ The live report and the stored analysis page show the rating of one component fr
 - **Other aspects:** one row per criterion with its status and stars, linking to its result card.
 
 The PDF export lists every aspect with its rating.
+
+## Maintenance made measurable
+
+These results are informative. They give no stars and do not count towards the verdict. Every term and target below is a proposal until a governance decision sets it; the backend's scoring configuration holds the values in effect.
+
+- **Drops.** The backend compares each stored run with the previous run of the same kind of version. A criterion that goes from pass to fail, a rating that loses a star, or the lost verdict is a drop, with a fix-by date. The repository page lists the open drops, overdue first; the History index shows how many are open and overdue.
+- **KPI targets.** The project health metrics (CHAOSS) show a proposed target and whether the value meets it.
+- **SLA times for issues.** With a `GITHUB_TOKEN`, project health measures the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without the Dutch national public holidays; Bevrijdingsdag counts every year, as in the cao Rijk). Response is the first comment by an owner, member or collaborator, or the first label set by someone other than the author; bots do not count. A fix is dated by the first stable release after the pull request or commit that closed the issue, or by closing the issue as completed when no closing change is known; the result says how many of each.
+
+| Category | How it is recognised | Respond within | Fix within |
+|---|---|---|---|
+| Critical or high vulnerability | Published GitHub security advisory | not measured | 7 or 30 days, from draft to publication |
+| Blocking bug | `blocker`, `critical` or `priority: critical`, only where a repository uses them | 2 | 10 |
+| Other bug | `bug`, or issue type Bug | 5 | the next stable release |
+| Question, documentation, feature request | `question`, `documentation`, `enhancement`, or issue type Feature or Task | 10 | no fix term |
+| Unclassified | no known label | 10 | no fix term |
+
+`duplicate`, `invalid` and `wontfix` keep the response term but have no fix term. A followed repository can add its own labels (`slaLabels` on the backend's follow route); scheduled scans pass them to `/api/check`. Unpublished advisories and Dependabot alerts need admin rights and are not measured.
 
 > **Note:** Automated analysis is indicative only. Architecture checks rely on heuristics. For official certification, contact [commonground.nl](https://commonground.nl).
 

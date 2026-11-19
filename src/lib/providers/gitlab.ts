@@ -10,7 +10,7 @@ import { encodePathSegments } from "./paths";
 const BASE = "https://gitlab.com/api/v4";
 const MANIFEST_CANDIDATES = ["package.json", "pyproject.toml", "Chart.yaml"];
 
-function headers() {
+export function gitlabHeaders() {
   const h: Record<string, string> = {
     Accept: "application/json",
   };
@@ -22,7 +22,7 @@ function headers() {
 
 async function glFetch(path: string) {
   const res = await fetch(`${BASE}${path}`, {
-    headers: headers(),
+    headers: gitlabHeaders(),
   });
   if (!res.ok) {
     const body = await res.text();

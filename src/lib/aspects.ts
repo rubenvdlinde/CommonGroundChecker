@@ -8,7 +8,7 @@ export type AspectSource =
   | { type: "document-count"; checkIds: string[] }
   /** A rating the check reports for this aspect in its `aspectRatings` */
   | { type: "check-aspect"; checkId: string; key: string }
-  /** Shown from the check's own data, never rated */
+  /** Shown from the check's own data, such as its sources or informative metrics, never rated */
   | { type: "informative"; checkId: string };
 
 export interface AspectDefinition {
@@ -69,6 +69,12 @@ export const ASPECT_MODEL: CategoryAspects[] = [
         id: "usage-and-ecosystem",
         title: "Usage and ecosystem",
         source: { type: "informative", checkId: "usage" },
+        weight: 0,
+      },
+      {
+        id: "project-health",
+        title: "Project health",
+        source: { type: "informative", checkId: "projecthealth" },
         weight: 0,
       },
     ],

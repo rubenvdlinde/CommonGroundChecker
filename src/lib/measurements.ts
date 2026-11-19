@@ -1,4 +1,4 @@
-import { STAR_LEVELS, type MeasurementGroup, type MeasurementRow, type StarLevel, type StarRating } from "./types";
+import { STAR_LEVELS, type InformativeMetric, type MeasurementGroup, type MeasurementRow, type StarLevel, type StarRating } from "./types";
 
 function isPlainObject(raw: unknown): raw is Record<string, unknown> {
   return !!raw && typeof raw === "object" && !Array.isArray(raw);
@@ -50,6 +50,26 @@ export function parseMeasurements(raw: unknown): MeasurementGroup[] | undefined 
   if (!Array.isArray(raw)) return undefined;
   const groups = raw.flatMap(parseGroup);
   return groups.length > 0 ? groups : undefined;
+}
+
+function parseMetric(raw: unknown): InformativeMetric[] {
+  if (!isPlainObject(raw)) return [];
+  const { id, name, referenceUrl, value, explanation, target } = raw;
+  if (typeof id !== "string" || typeof name !== "string" || typeof explanation !== "string") return [];
+  if (typeof referenceUrl !== "string" || !/^https:\/\//.test(referenceUrl)) return [];
+  if (value !== null && typeof value !== "string") return [];
+  const kpi =
+    isPlainObject(target) && typeof target.text === "string" && (typeof target.met === "boolean" || target.met === null)
+      ? { target: { text: target.text, met: target.met } }
+      : {};
+  return [{ id, name, referenceUrl, value, explanation, ...kpi }];
+}
+
+/** The informative metrics of a stored check result; malformed metrics are left out. */
+export function parseMetrics(raw: unknown): InformativeMetric[] | undefined {
+  if (!Array.isArray(raw)) return undefined;
+  const metrics = raw.flatMap(parseMetric);
+  return metrics.length > 0 ? metrics : undefined;
 }
 
 /** The measurement groups of a check that count in one of its aspects. */

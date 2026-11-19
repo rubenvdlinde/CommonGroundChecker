@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { MaintenanceDrop } from './MaintenanceDrop';
 import type { RepoAnalysisOutput } from './RepoAnalysisOutput';
 import type { RepoMeta } from './RepoMeta';
 export type RepoHistoryResponse = {
@@ -29,7 +30,19 @@ export type RepoHistoryResponse = {
         nextCheckAt: string;
         createdAt: string;
         updatedAt: string;
+        /**
+         * When an admin retired the repository; null when it is not retired
+         */
+        retiredAt?: string | null;
+        /**
+         * Why an admin retired the repository
+         */
+        retiredReason?: string | null;
     };
     analyses: Array<RepoAnalysisOutput>;
+    /**
+     * The drops of the repository, newest first
+     */
+    drops?: Array<MaintenanceDrop>;
 };
 
