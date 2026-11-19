@@ -5,6 +5,7 @@
 import type { AspectRatings } from './AspectRatings';
 import type { CategoryRatings } from './CategoryRatings';
 import type { CheckResult } from './CheckResult';
+import type { ChecklistVersion } from './ChecklistVersion';
 import type { Endorsement } from './Endorsement';
 import type { IssueCounts } from './IssueCounts';
 import type { Rating } from './Rating';
@@ -33,6 +34,7 @@ export type RepoAnalysisInput = {
     categoryRatings?: CategoryRatings;
     aspectRatings?: AspectRatings;
     endorsement?: Endorsement;
+    checklistVersion?: ChecklistVersion;
     issueCounts?: IssueCounts;
     results: Array<CheckResult>;
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import type { CheckResult, Endorsement } from "@/lib/types";
-import { criterionAnchorId } from "@/lib/criteria";
+import { criterionAnchorId, isInTransition, transitionNotice } from "@/lib/criteria";
 import { RATING_SUMMARY_ID, ratingIssue, splitIssues, type IssueEntry } from "@/lib/issues";
 import { AlertTriangle, XCircle } from "lucide-react";
 import type { MouseEvent } from "react";
@@ -103,6 +103,9 @@ function IssueBlock({ kind, entries, ratingError = null }: IssueBlockProps) {
                 <span className="sr-only">: go to the {result.title} result</span>
               </a>
               <span className="text-xs text-gray-600">{category}</span>
+              {result.mandatoryFrom && isInTransition(result) && (
+                <span className="text-xs font-semibold text-yellow-800">{transitionNotice(result.mandatoryFrom)}</span>
+              )}
             </div>
             <p className="mt-1 text-gray-700">{result.message}</p>
           </li>

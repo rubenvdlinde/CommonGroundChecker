@@ -940,6 +940,9 @@
               },
               "endorsement": {
                 "$ref": "#/components/schemas/Endorsement"
+              },
+              "checklistVersion": {
+                "$ref": "#/components/schemas/ChecklistVersion"
               }
             }
           }
@@ -1200,6 +1203,14 @@
           "warnings"
         ]
       },
+      "ChecklistVersion": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "pattern": "^[0-9A-Za-z][0-9A-Za-z.\\-]{0,31}$",
+        "description": "The checklist version the analysis was measured against, for example 2026.1; null for older analyses"
+      },
       "RepoAnalysisInput": {
         "type": "object",
         "properties": {
@@ -1261,6 +1272,9 @@
           },
           "endorsement": {
             "$ref": "#/components/schemas/Endorsement"
+          },
+          "checklistVersion": {
+            "$ref": "#/components/schemas/ChecklistVersion"
           },
           "issueCounts": {
             "$ref": "#/components/schemas/IssueCounts"
@@ -1351,6 +1365,9 @@
           },
           "endorsement": {
             "$ref": "#/components/schemas/Endorsement"
+          },
+          "checklistVersion": {
+            "$ref": "#/components/schemas/ChecklistVersion"
           },
           "issueCounts": {
             "$ref": "#/components/schemas/IssueCounts"
@@ -1744,6 +1761,11 @@
               "$ref": "#/components/schemas/Rating"
             },
             "description": "Ratings from 0.5 to 5.5 the check measures for aspects of the rating model, by key"
+          },
+          "mandatoryFrom": {
+            "type": "string",
+            "format": "date",
+            "description": "For a mandatory criterion in its transition period at the time of the check: the date it becomes mandatory. Until then a fail is a warning."
           }
         },
         "required": [
@@ -1775,6 +1797,10 @@
               "string",
               "null"
             ]
+          },
+          "checklistVersion": {
+            "type": "string",
+            "description": "The checklist version the analysis was measured against, for example 2026.1"
           },
           "score": {
             "type": "integer"

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { CheckResult, RequirementLevel } from "@/lib/types";
 
 const ids = [
@@ -138,7 +138,7 @@ vi.mock("@/lib/checkers/usage", () => ({ checkUsage: mocks.checkUsage }));
 vi.mock("@/lib/checkers/config", () => ({ getActiveScoringConfig: mocks.getActiveScoringConfig }));
 
 import { runChecks } from "@/lib/checkers/index";
-import { CATEGORY_ORDER, CATEGORY_WEIGHTS } from "@/lib/criteria";
+import { CATEGORY_ORDER, CATEGORY_WEIGHTS, CHECKLIST_VERSION, CRITERION_VERSIONS } from "@/lib/criteria";
 import { resolveCategory } from "@/lib/aspects";
 
 function resultFor(id: string, status: CheckResult["status"]): CheckResult {
@@ -490,6 +490,61 @@ describe("runChecks", () => {
     const report = await runChecks("https://github.com/org/repo", { isRegister: false });
 
     expect(report.endorsement).toEqual({ passed: false, reasons: ["Mandatory criterion fails: Open source licence"] });
+  });
+
+  describe("a mandatory criterion in its transition period", () => {
+    const original = CRITERION_VERSIONS.license;
+
+    beforeEach(() => {
+      CRITERION_VERSIONS.license = { introducedIn: "2026.1", mandatoryFrom: "2027-03-01" };
+      const configById = criterionConfig(0, "recommended");
+      configById.license = { weight: 1, requirementLevel: "mandatory" };
+      configById.sourcecode = { weight: 1, requirementLevel: "mandatory" };
+      mocks.checkLicense.mockResolvedValue({ ...resultFor("license", "fail"), title: "Open source licence" });
+      mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "pass"), starRating: 4, rating: 4.4 });
+      mocks.getActiveScoringConfig.mockResolvedValue({
+        id: "cfg-transition",
+        config: {
+          criterionConfigByCheckId: configById,
+          statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+          complexityThreshold: 12,
+          complexityMaxCcnThreshold: 20,
+          spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+        },
+      });
+    });
+
+    afterEach(() => {
+      CRITERION_VERSIONS.license = original;
+    });
+
+    it("records the checklist version the report was measured against", async () => {
+      const report = await runChecks("https://github.com/org/repo", { now: new Date("2027-02-01T00:00:00Z") });
+
+      expect(report.checklistVersion).toBe(CHECKLIST_VERSION);
+      expect(report.checkedAt).toBe("2027-02-01T00:00:00.000Z");
+    });
+
+    it("before the date, marks the fail as a transition and leaves it out of the mandatory set and the verdict", async () => {
+      const report = await runChecks("https://github.com/org/repo", { now: new Date("2027-02-28T23:59:59Z") });
+
+      const license = report.results.find((result) => result.id === "license");
+      expect(license?.status).toBe("fail");
+      expect(license?.mandatoryFrom).toBe("2027-03-01");
+      // Only sourcecode (Software Quality, pass) is left in the mandatory set.
+      expect(report.score).toBe(100);
+      expect(report.endorsement.reasons).not.toContain("Mandatory criterion fails: Open source licence");
+    });
+
+    it("from the date on, counts the fail normally", async () => {
+      const report = await runChecks("https://github.com/org/repo", { now: new Date("2027-03-01T00:00:00Z") });
+
+      const license = report.results.find((result) => result.id === "license");
+      expect(license).not.toHaveProperty("mandatoryFrom");
+      // Governance 0 (weight 0.2) and Software Quality 1 (weight 0.15): 0.15 / 0.35 = 43%.
+      expect(report.score).toBe(43);
+      expect(report.endorsement.reasons).toContain("Mandatory criterion fails: Open source licence");
+    });
   });
 
   it("applies fixed category weights when aggregating mandatory criteria", async () => {

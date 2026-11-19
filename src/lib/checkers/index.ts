@@ -36,7 +36,14 @@ import {
 import { statusToStars } from "../stars";
 import { computeEndorsement, computeRatings } from "../ratings";
 import { resolveScanRef } from "../scanRef";
-import { CATEGORY_WEIGHTS, RESULT_CATEGORY_BY_ID, type CriteriaCategory } from "../criteria";
+import {
+  CATEGORY_WEIGHTS,
+  CHECKLIST_VERSION,
+  RESULT_CATEGORY_BY_ID,
+  upcomingMandatoryFrom,
+  withTransition,
+  type CriteriaCategory,
+} from "../criteria";
 import { mkdtemp, rm } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -97,6 +104,8 @@ export interface RunChecksOptions {
   scoringConfig?: ActiveScoringConfig;
   /** Branch or tag to scan, or `latest-release`; the default branch when unset. */
   ref?: string | null;
+  /** The time the check runs at; decides which criteria are still in their transition period */
+  now?: Date;
 }
 
 export async function runChecks(
@@ -135,6 +144,7 @@ export async function runChecksOnContext(
   const activeScoringConfig = options?.scoringConfig ?? await getActiveScoringConfig();
   const scoringConfig = activeScoringConfig.config;
   const isRegister = options?.isRegister === true;
+  const checkedAt = options?.now ?? new Date();
 
   let tempRoot: string | undefined;
   let localRepoPath: string | undefined;
@@ -302,7 +312,10 @@ export async function runChecksOnContext(
       const requirementLevel =
         scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
         "recommended";
-      if (requirementLevel !== "mandatory") {
+      if (
+        requirementLevel !== "mandatory" ||
+        upcomingMandatoryFrom({ id: result.id, requirementLevel }, checkedAt) !== null
+      ) {
         return acc;
       }
 
@@ -387,12 +400,17 @@ export async function runChecksOnContext(
     fivelayer,
     helmchart,
     usage,
-  ].map((result) => ({
-    ...result,
-    requirementLevel:
-      scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
-      "recommended",
-  }));
+  ].map((result) =>
+    withTransition(
+      {
+        ...result,
+        requirementLevel:
+          scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel ??
+          "recommended",
+      },
+      checkedAt
+    )
+  );
   // Rated before the status stars are filled in, so a criterion without a scale is rated from its status.
   const { rating, categoryRatings, aspectRatings } = computeRatings(resultsWithRequirementLevels, scoringConfig);
   const endorsement = computeEndorsement(resultsWithRequirementLevels, rating, scoringConfig);
@@ -405,8 +423,9 @@ export async function runChecksOnContext(
     repoUrl: context.repoUrl,
     owner,
     repo,
-    checkedAt: new Date().toISOString(),
+    checkedAt: checkedAt.toISOString(),
     scoringConfigId: activeScoringConfig.id,
+    checklistVersion: CHECKLIST_VERSION,
     score,
     rating,
     categoryRatings,

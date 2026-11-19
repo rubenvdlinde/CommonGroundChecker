@@ -40,6 +40,11 @@ export interface CheckResult {
   publiccode?: PublicCodeData;
   /** For the usage criterion: what each source says about who uses the component */
   usage?: UsageData;
+  /**
+   * For a mandatory criterion in its transition period at the time of the check:
+   * the date (YYYY-MM-DD) it becomes mandatory. Until then a fail is a warning.
+   */
+  mandatoryFrom?: string;
 }
 
 /** The kind of evidence a usage source gives. */
@@ -237,6 +242,8 @@ export interface CheckReport {
   repo: string;
   checkedAt: string;
   scoringConfigId: string | null;
+  /** The checklist version the analysis was measured against */
+  checklistVersion: string;
   score: number; // 0-100
   /** Overall rating from 0.5 to 5.5, or null when no criterion counts */
   rating: number | null;

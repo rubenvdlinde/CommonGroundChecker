@@ -57,7 +57,7 @@ describe("buildLatestFile", () => {
       version: "1.31.2",
       scannedRef: "main",
       scannedRefKind: "default-branch",
-      checklistVersion: null,
+      checklistVersion: "2026.1",
       declaredUsers: ["Gemeente Utrecht", "Gemeente Den Haag"],
       declaredUserCount: 2,
       maintained: true,

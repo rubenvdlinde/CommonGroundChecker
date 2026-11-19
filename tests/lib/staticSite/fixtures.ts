@@ -17,6 +17,7 @@ export function report(overrides: Partial<CheckReport> = {}): CheckReport {
     repo: "open-zaak",
     checkedAt: "2026-11-19T02:00:00.000Z",
     scoringConfigId: null,
+    checklistVersion: "2026.1",
     score: 70,
     rating: 3.6,
     categoryRatings: { Security: 3.2, Maintainability: 3.4 },

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { minUsers, organisationsLabel } from "@/lib/maintained";
+import { CHECKLIST_CHANGE_PROPOSAL_URL, CHECKLIST_VERSION } from "@/lib/criteria";
 import { RATING_DOCS } from "@/lib/ratingDocs";
 
 export const metadata: Metadata = {
@@ -104,6 +105,51 @@ export default function RatingGuidePage() {
             How the static site works, and how to add your component
           </Link>
           .
+        </p>
+      </section>
+
+      <section aria-labelledby="checklist-versions" className="space-y-3">
+        <h2 id="checklist-versions" className="text-2xl font-bold text-cg-blue">
+          The checklist and its versions
+        </h2>
+        <p className="text-gray-700">
+          What the checker measures decides which components are called suitable for Common Ground. Buyers,
+          suppliers and municipalities rely on it, so the checklist works like a standard. It changes through the
+          change process of the Common Ground standard put to the VNG ALV of 11 December 2026.
+        </p>
+        <ul className="list-disc pl-6 space-y-2 text-gray-700">
+          <li>
+            <strong>Versions.</strong> The checklist has a version number. This is version {CHECKLIST_VERSION}. Every
+            analysis records the version it was measured against, and the run page shows it. Analyses from before
+            the checklist had versions show version unknown.
+          </li>
+          <li>
+            <strong>Transition period.</strong> A new mandatory criterion, or a stricter threshold, can get a date
+            from which it counts. Until that date a fail shows as a warning that says when it becomes mandatory. It
+            does not fail the mandatory items and does not block the verdict. A component that is suitable stays
+            suitable until the end of the transition period, so its maintainers have time to fix it.
+          </li>
+          <li>
+            <strong>Proposals.</strong> Anyone can propose a change: a new criterion, another threshold or weight, or
+            the removal of a criterion. A proposal says what changes, why, what it does to the components that were
+            measured, and which transition period it proposes.
+          </li>
+          <li>
+            <strong>Decisions.</strong> VNG, as regievoerder, organises the input of municipalities and decides within
+            the mandate of the ALV. The VNG board sets the priorities, advised by the Commissie
+            Informatiesamenleving. The College voor Dienstverleningszaken assesses new standards and is the route to
+            national standardisation. A change outside the mandate goes to the ALV.
+          </li>
+        </ul>
+        <p className="text-gray-700">
+          <a
+            href={CHECKLIST_CHANGE_PROPOSAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-cg-lightblue hover:underline"
+          >
+            Propose a change to the checklist
+          </a>
         </p>
       </section>
     </div>

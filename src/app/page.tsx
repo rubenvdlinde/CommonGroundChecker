@@ -15,7 +15,7 @@ import PublicCodeSection from "@/components/PublicCodeSection";
 import type { CheckReport } from "@/lib/types";
 import ScannedRef from "@/components/ScannedRef";
 import type { CriteriaCategory } from "@/lib/criteria";
-import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "@/lib/criteria";
+import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID, checklistVersionLabel } from "@/lib/criteria";
 import { getAdminScoring, streamCheck } from "@/lib/apiClient";
 import { AlertCircle, ClipboardList } from "lucide-react";
 import AddComponentPanel from "@/components/AddComponentPanel";
@@ -78,6 +78,7 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
     size: 10,
     gapAfter: 4,
   });
+  addBlock(checklistVersionLabel(report.checklistVersion), { size: 10, gapAfter: 4 });
   addBlock(`Overall rating: ${describeRating(report.rating)}`, { size: 11, gapAfter: 4 });
   if (report.endorsement) {
     addBlock(
@@ -716,6 +717,7 @@ function CheckerHomePage() {
                       warning={report.scanRefWarning}
                     />
                   </p>
+                  <p className="text-xs text-gray-400">{checklistVersionLabel(report.checklistVersion)}</p>
                   <div className="flex items-center gap-4 text-xs">
                     <Link
                       href={`/history/${encodeURIComponent(report.owner)}/${encodeURIComponent(report.repo)}`}

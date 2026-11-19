@@ -208,4 +208,53 @@ describe("AnalysisDetailPage", () => {
     const ratingError = screen.getByRole("link", { name: "Overall rating 2.4 is below 2.5: go to the overall rating" });
     expect(document.getElementById(ratingError.getAttribute("href")!.slice(1))?.textContent).toContain("Overall rating");
   });
+
+  it("shows the checklist version the analysis was measured against", async () => {
+    getRepoHistory.mockResolvedValue({
+      repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },
+      analyses: [
+        { id: "analysis-1", checkedAt: "2026-11-19T10:00:00Z", score: 71, checklistVersion: "2026.1", results: [] },
+      ],
+    });
+
+    render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
+
+    expect(screen.getByText("Measured against checklist version 2026.1")).toBeTruthy();
+  });
+
+  it("says the checklist version is unknown for an older analysis", async () => {
+    getRepoHistory.mockResolvedValue({
+      repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },
+      analyses: [{ id: "analysis-1", checkedAt: "2026-05-06T10:00:00Z", score: 71, results: [] }],
+    });
+
+    render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
+
+    expect(screen.getByText("Measured against checklist version unknown")).toBeTruthy();
+  });
+
+  it("keeps a stored transition: the fail shows as a warning with its date, not as an error", async () => {
+    getRepoHistory.mockResolvedValue({
+      repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },
+      analyses: [
+        {
+          id: "analysis-1",
+          checkedAt: "2027-02-01T10:00:00Z",
+          score: 71,
+          checklistVersion: "2026.1",
+          rating: 4,
+          categoryRatings: {},
+          aspectRatings: {},
+          endorsement: { passed: true, reasons: [] },
+          results: [{ ...result("license", "fail"), requirementLevel: "mandatory", mandatoryFrom: "2027-03-01" }],
+        },
+      ],
+    });
+
+    render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
+
+    expect(screen.queryByRole("heading", { name: /missing mandatory items/ })).toBeNull();
+    expect(screen.getByRole("heading", { name: /^1 warning: missing or incomplete items$/ })).toBeTruthy();
+    expect(screen.getAllByText("Becomes mandatory on 1 March 2027").length).toBe(2);
+  });
 });
