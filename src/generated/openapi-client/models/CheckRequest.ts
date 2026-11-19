@@ -13,5 +13,13 @@ export type CheckRequest = {
      * The repository's own labels for the SLA times, on top of GitHub's default labels: label name to blocking-bug, bug, question, documentation, feature-request, no-fix-term or ignore
      */
     slaLabels?: Record<string, string> | null;
+    /**
+     * The branch or tag to scan. Empty scans the released version: the tag of the publiccode.yml softwareVersion, else the newest stable release or semver tag, else the default branch with a warning. "default-branch" scans the default branch, "latest-release" the newest stable release
+     */
+    ref?: string;
+    /**
+     * Run every check, also when the scanned commit did not change since the previous analysis
+     */
+    full?: boolean;
 };
 

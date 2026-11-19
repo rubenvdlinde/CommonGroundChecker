@@ -7,7 +7,8 @@ FROM node:20-bookworm-slim AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm run build
+RUN npm run build \
+  && npx tsx scripts/write-checker-fingerprint.ts
 
 FROM node:20-bookworm-slim AS runner
 WORKDIR /app
@@ -31,6 +32,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/src/generated ./src/generated
 COPY --from=builder /app/next.config.js ./next.config.js
 COPY --from=builder /app/scripts/maintainability ./scripts/maintainability
+COPY --from=builder /app/checker-fingerprint.json ./checker-fingerprint.json
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]

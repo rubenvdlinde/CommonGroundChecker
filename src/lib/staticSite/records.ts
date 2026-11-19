@@ -76,6 +76,11 @@ export interface LatestAnalysis extends ScannedRef {
   maintained: boolean;
   results: CheckReport["results"];
   durationSeconds: number | null;
+  /** Absent in files written before scans could be partial */
+  scanMode?: CheckReport["scanMode"] | null;
+  scanModeReason?: string | null;
+  toolFingerprint?: string | null;
+  inputsFingerprint?: string | null;
 }
 
 export interface LatestFile {
@@ -108,6 +113,8 @@ export interface HistoryEntry extends ScannedRef {
   declaredUserCount: number;
   /** Drops still open right after this analysis */
   openDrops: number;
+  scanMode?: CheckReport["scanMode"] | null;
+  durationSeconds?: number | null;
 }
 
 export interface HistoryFile {
@@ -284,6 +291,10 @@ export function buildLatestFile(input: ScanInput, previous: LatestFile | null): 
       maintained,
       results: report.results,
       durationSeconds: input.durationSeconds,
+      scanMode: report.scanMode ?? null,
+      scanModeReason: report.scanModeReason ?? null,
+      toolFingerprint: report.toolFingerprint ?? null,
+      inputsFingerprint: report.inputsFingerprint ?? null,
     },
     slas,
   };
@@ -330,6 +341,8 @@ export function appendToHistory(
     issueCounts: analysis.issueCounts,
     declaredUserCount: analysis.declaredUserCount,
     openDrops: drops.filter((drop) => drop.resolvedAt === null).length,
+    scanMode: analysis.scanMode ?? null,
+    durationSeconds: analysis.durationSeconds,
   };
   const earlier = (history?.analyses ?? []).filter((item) => item.id !== entry.id);
   return { schemaVersion: DATA_SCHEMA_VERSION, repoId: latest.repository.id, analyses: [entry, ...earlier], drops };

@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { putRepositoryFollow } from "@/lib/apiClient";
+import { DEFAULT_BRANCH_REF, LATEST_RELEASE_REF } from "@/lib/scanRef";
 
 export const CHECK_INTERVAL_OPTIONS = [
   { hours: 24, label: "Daily" },
@@ -11,10 +12,25 @@ export const CHECK_INTERVAL_OPTIONS = [
 
 const DEFAULT_INTERVAL_HOURS = 168;
 
+type ScanRefMode = "auto" | "default-branch" | "latest-release" | "named";
+
+function scanRefMode(scanRef: string | null): ScanRefMode {
+  if (!scanRef) return "auto";
+  if (scanRef === DEFAULT_BRANCH_REF) return "default-branch";
+  return scanRef === LATEST_RELEASE_REF ? "latest-release" : "named";
+}
+
+function scanRefFor(mode: ScanRefMode, namedRef: string): string | null {
+  if (mode === "auto") return null;
+  if (mode === "named") return namedRef.trim();
+  return mode === "default-branch" ? DEFAULT_BRANCH_REF : LATEST_RELEASE_REF;
+}
+
 interface FollowControlProps {
   repoId: string;
   initialFollowed: boolean;
   initialCheckIntervalHours: number | null;
+  initialScanRef?: string | null;
   initialNextCheckAt: string | null;
 }
 
@@ -26,12 +42,17 @@ export default function FollowControl({
   repoId,
   initialFollowed,
   initialCheckIntervalHours,
+  initialScanRef = null,
   initialNextCheckAt,
 }: FollowControlProps) {
   const idPrefix = useId();
   const [followed, setFollowed] = useState(initialFollowed);
   const [intervalHours, setIntervalHours] = useState(
     initialCheckIntervalHours ?? DEFAULT_INTERVAL_HOURS
+  );
+  const [refMode, setRefMode] = useState<ScanRefMode>(scanRefMode(initialScanRef));
+  const [namedRef, setNamedRef] = useState(
+    scanRefMode(initialScanRef) === "named" ? initialScanRef ?? "" : ""
   );
   const [nextCheckAt, setNextCheckAt] = useState(initialNextCheckAt);
   const [adminToken, setAdminToken] = useState("");
@@ -48,11 +69,17 @@ export default function FollowControl({
     try {
       const saved = await putRepositoryFollow(
         repoId,
-        { followed, checkIntervalHours: intervalHours },
+        {
+          followed,
+          checkIntervalHours: intervalHours,
+          scanRef: scanRefFor(refMode, namedRef),
+        },
         adminToken
       );
       setFollowed(saved.followed);
       setIntervalHours(saved.checkIntervalHours ?? DEFAULT_INTERVAL_HOURS);
+      setRefMode(scanRefMode(saved.scanRef ?? null));
+      if (scanRefMode(saved.scanRef ?? null) === "named") setNamedRef(saved.scanRef ?? "");
       setNextCheckAt(saved.nextCheckAt);
       setMessage({
         kind: "success",
@@ -115,6 +142,38 @@ export default function FollowControl({
               </option>
             ))}
           </select>
+        </div>
+        <div className="space-y-1">
+          <label htmlFor={`${idPrefix}-ref-mode`} className="block text-sm font-medium text-gray-800">
+            What to scan
+          </label>
+          <select
+            id={`${idPrefix}-ref-mode`}
+            value={refMode}
+            onChange={(event) => setRefMode(event.target.value as ScanRefMode)}
+            className="max-w-full min-h-[44px] lg:min-h-0 rounded-lg border border-gray-300 px-3 py-2 text-sm"
+          >
+            <option value="auto">Released version (declared version, else latest release)</option>
+            <option value="default-branch">Default branch</option>
+            <option value="latest-release">Latest release</option>
+            <option value="named">Branch or tag</option>
+          </select>
+          {refMode === "named" ? (
+            <div className="pt-2">
+              <label htmlFor={`${idPrefix}-ref-name`} className="block text-sm text-gray-800">
+                Branch or tag name
+              </label>
+              <input
+                id={`${idPrefix}-ref-name`}
+                type="text"
+                required
+                value={namedRef}
+                onChange={(event) => setNamedRef(event.target.value)}
+                placeholder="development"
+                className="min-h-[44px] lg:min-h-0 w-full max-w-md rounded-lg border border-gray-300 px-3 py-2 text-sm"
+              />
+            </div>
+          ) : null}
         </div>
         <div className="space-y-1">
           <label htmlFor={`${idPrefix}-token`} className="block text-sm font-medium text-gray-800">

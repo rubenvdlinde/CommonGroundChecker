@@ -77,7 +77,7 @@ function Row({ row }: { row: BasissetOverviewRow }) {
         <p className="text-sm text-gray-500">Not in the checker at this address.</p>
       )}
       {otherAddress.length > 0 && (
-        <ul aria-label={`At another address for ${entry.name}`} className="text-sm text-amber-900">
+        <ul aria-label={`At another address for ${entry.name}`} className="text-sm text-amber-900 break-words">
           {otherAddress.map((repository) => (
             <li key={repository.repoUrl} className="flex flex-wrap items-center gap-x-2">
               <span>Same repository name in the checker at another address:</span>

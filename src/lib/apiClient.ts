@@ -53,6 +53,8 @@ export type {
 
 interface StreamOptions {
   repoUrl: string;
+  /** Branch or tag to scan, or `latest-release`; the default branch when left out. */
+  ref?: string;
   helmChartLocations?: string[];
   documentationLocations?: string[];
   dockerLocations?: string[];

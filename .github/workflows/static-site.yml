@@ -18,6 +18,10 @@ on:
         description: "Scan nothing; rebuild the index and the site from the config and the data branch"
         type: boolean
         default: false
+      full:
+        description: "Run every check, also for components whose code did not change since the last scan"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -69,9 +73,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ONLY: ${{ inputs.only }}
           INDEX_ONLY: ${{ inputs.index_only }}
+          FULL: ${{ inputs.full }}
         run: |
           set -- --data data
           if [ "$INDEX_ONLY" = "true" ]; then set -- "$@" --index-only; fi
+          if [ "$FULL" = "true" ]; then set -- "$@" --full; fi
           for url in $ONLY; do set -- "$@" --only "$url"; done
           if [ -f config/scoring.json ]; then set -- "$@" --scoring config/scoring.json; fi
           npm run --silent scan:static -- "$@" 2> scan-log.txt

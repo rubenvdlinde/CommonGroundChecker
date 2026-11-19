@@ -33,6 +33,14 @@ export type CheckResult = {
      * True when the criterion does not apply to this component. It then counts in no score, rating or verdict.
      */
     notApplicable?: boolean;
+    /**
+     * Set when a scan of an unchanged commit copied this result from the analysis that measured it
+     */
+    reusedFrom?: {
+        analysisId: string | null;
+        checkedAt: string;
+        commit: string;
+    };
 };
 export namespace CheckResult {
     export enum requirementLevel {

@@ -163,6 +163,8 @@ describe("RatingHistoryChart rendering", () => {
 
     const table = screen.getByRole("table", { name: /Overall rating per run/ });
     expect(table.className).toContain("sr-only");
+    expect(table.parentElement?.className).toContain("sr-only");
+    expect(table.querySelector("caption")?.className).toContain("whitespace-normal");
     const headers = within(table).getAllByRole("columnheader").map((cell) => cell.textContent);
     expect(headers).toEqual(["Date", "Rating", "Result"]);
     const rows = within(table).getAllByRole("row").slice(1);

@@ -121,7 +121,8 @@ export async function checkCodeMetrics(
   owner: string,
   repo: string,
   localRepoPath?: string,
-  cloneUrl?: string
+  cloneUrl?: string,
+  cloneRef?: string
 ): Promise<CheckResult> {
   const lizard = await detectLizardCommand();
 
@@ -152,7 +153,14 @@ export async function checkCodeMetrics(
     if (!localRepoPath) {
       const clone = await runCommand(
         "git",
-        ["clone", "--depth", "1", effectiveCloneUrl, repoDir],
+        [
+          "clone",
+          "--depth",
+          "1",
+          ...(cloneRef ? ["--branch", cloneRef] : []),
+          effectiveCloneUrl,
+          repoDir,
+        ],
         { GIT_LFS_SKIP_SMUDGE: "1" }
       );
 

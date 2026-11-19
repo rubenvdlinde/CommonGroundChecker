@@ -13,6 +13,8 @@ import { ratingToStars } from "@/lib/stars";
 import RepoMeta from "@/components/RepoMeta";
 import PublicCodeSection from "@/components/PublicCodeSection";
 import type { CheckReport } from "@/lib/types";
+import ScannedRef from "@/components/ScannedRef";
+import ScanModeLine from "@/components/ScanModeLine";
 import type { CriteriaCategory } from "@/lib/criteria";
 import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID, checklistVersionLabel } from "@/lib/criteria";
 import { getAdminScoring, streamCheck } from "@/lib/apiClient";
@@ -520,7 +522,8 @@ export default function CheckerHome() {
     documentationLocations: string[],
     dockerLocations: string[],
     apiSpecificationLocations: string[],
-    isRegister: boolean
+    isRegister: boolean,
+    ref: string
   ) {
     console.log("HomePage handleCheck", {
       url,
@@ -544,6 +547,7 @@ export default function CheckerHome() {
           dockerLocations,
           apiSpecificationLocations,
           isRegister,
+          ...(ref ? { ref } : {}),
         },
         (step, pct) => {
           setProgress({ step, pct });
@@ -614,8 +618,8 @@ export default function CheckerHome() {
                           key={c.label}
                           className="group relative rounded-3xl border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
                         >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-center gap-3">
+                          <div className="flex flex-wrap items-start justify-between gap-3">
+                            <div className="flex min-w-0 items-center gap-3">
                               <span className="rounded-2xl bg-gray-100 p-2 text-lg">
                                 {c.icon}
                               </span>
@@ -723,10 +727,20 @@ export default function CheckerHome() {
                   </div>
                   <p className="text-xs text-gray-400">
                     Checked at{" "}
-                    {new Date(report.checkedAt).toLocaleString("nl-NL")} —
-                    Branch: {report.repoMeta.defaultBranch}
+                    {new Date(report.checkedAt).toLocaleString("nl-NL")} —{" "}
+                    <ScannedRef
+                      scannedRef={report.scannedRef ?? report.repoMeta.defaultBranch}
+                      kind={report.scannedRefKind}
+                      commit={report.scannedCommit}
+                      warning={report.scanRefWarning}
+                    />
                   </p>
                   <p className="text-xs text-gray-400">{checklistVersionLabel(report.checklistVersion)}</p>
+                  <ScanModeLine
+                    scanMode={report.scanMode}
+                    scanDurationSeconds={report.scanDurationSeconds}
+                    results={report.results}
+                  />
                   <div className="flex items-center gap-4 text-xs">
                     <Link
                       href={componentHref(report.owner, report.repo)}
