@@ -294,11 +294,11 @@ export default function HistoryPageClient({
                   className="block border border-gray-200 rounded-xl px-4 py-3 hover:border-cg-lightblue hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-3 flex-wrap">
-                    <div className="flex items-start gap-3">
+                    <div className="flex min-w-0 items-start gap-3">
                       <RepoLogo logoUrl={repository.logoUrl ?? null} name={displayName} size={40} />
-                      <div>
+                      <div className="min-w-0">
                         <p className="flex flex-wrap items-baseline gap-x-2 font-semibold text-gray-800">
-                          <span>{displayName}</span>
+                          <span className="[overflow-wrap:anywhere]">{displayName}</span>
                           {latest && isRating(latest.rating) && <RatingBadge rating={latest.rating} />}
                         </p>
                         <p className="mt-1 flex flex-wrap items-center gap-2">
