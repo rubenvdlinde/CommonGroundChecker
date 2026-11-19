@@ -1,9 +1,11 @@
 import Link from "next/link";
 import EndorsementChip from "@/components/EndorsementChip";
+import LifecycleChip from "@/components/LifecycleChip";
 import OrganisationsSourceNote from "@/components/OrganisationsSourceNote";
 import RatingBadge from "@/components/RatingBadge";
 import { getOrganisation } from "@/lib/apiClient";
-import { computeMaintained, developmentStatusOf, minUsers } from "@/lib/maintained";
+import { computeLifecycleStatus } from "@/lib/lifecycle";
+import { developmentStatusOf, minUsers } from "@/lib/maintained";
 import { componentCountLabel } from "@/lib/organisations";
 import { loadStoredRatings } from "@/lib/storedRatings";
 import type { OrganisationDetail } from "@/generated/openapi-client";
@@ -73,13 +75,21 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
         {components.map((component, index) => {
           const analysis = component.latestAnalysis!;
           const { rating, endorsement } = ratings[index];
-          const level = computeMaintained({
+          const lifecycle = computeLifecycleStatus({
+            hasAnalysis: true,
             endorsement,
             developmentStatus: developmentStatusOf(analysis.results),
             declaredUserCount: analysis.declaredUserCount ?? null,
             slas: component.slas,
             minUsers: minimumUsers,
             today,
+            retiredAt: component.retiredAt ?? null,
+            retiredReason: component.retiredReason ?? null,
+            drops: {
+              open: component.openDropCount ?? 0,
+              overdue: component.overdueDropCount ?? 0,
+              nextFixBy: component.nextFixBy ?? null,
+            },
           });
           return (
             <li
@@ -94,19 +104,12 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
                   {component.owner}/{component.name}
                 </Link>
                 <p className="text-xs text-purple-700">Scanned version: {scannedVersion(analysis)}</p>
+                {lifecycle.note && <p className="text-xs text-amber-900">{lifecycle.note}</p>}
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <RatingBadge rating={rating} />
                 <EndorsementChip endorsement={endorsement} />
-                <span
-                  className={`inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border ${
-                    level.maintained
-                      ? "border-green-300 text-green-700 bg-green-50"
-                      : "border-gray-300 text-gray-600 bg-gray-50"
-                  }`}
-                >
-                  {level.maintained ? "Maintained" : "Not yet Maintained"}
-                </span>
+                <LifecycleChip status={lifecycle.status} />
               </div>
             </li>
           );

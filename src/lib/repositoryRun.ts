@@ -6,7 +6,8 @@ import { loadStoredRatings } from "@/lib/storedRatings";
 import { parseSla } from "@/lib/sla";
 import { USAGE_CHECK_ID, readUsageData } from "@/lib/usage";
 import { readPublicCodeData } from "@/lib/checkers/publiccode";
-import { developmentStatusOf } from "@/lib/maintained";
+import { developmentStatusOf, type MaintainedSla } from "@/lib/maintained";
+import { computeLifecycleStatus, openDropsOf, type LifecycleResult } from "@/lib/lifecycle";
 import type { CheckReport, CheckResult, Endorsement, StarRating } from "@/lib/types";
 import type { MaintenanceDrop, RepoMeta } from "@/generated/openapi-client";
 
@@ -43,9 +44,13 @@ export interface RepositoryRun {
     id: string;
     owner: string;
     name: string;
+    repoUrl: string;
     followed: boolean;
     checkIntervalHours: number | null;
     nextCheckAt: string | null;
+    /** When an admin retired the repository, or null */
+    retiredAt: string | null;
+    retiredReason: string | null;
   };
   repoMeta: CheckReport["repoMeta"];
   /** Every loaded run, newest first */
@@ -224,9 +229,12 @@ export async function loadRepositoryRun(
         id: repository.id,
         owner: repository.owner ?? owner,
         name: repository.name ?? repo,
+        repoUrl: repository.repoUrl ?? `https://github.com/${owner}/${repo}`,
         followed: repository.followed ?? false,
         checkIntervalHours: repository.checkIntervalHours ?? null,
         nextCheckAt: repository.nextCheckAt ?? null,
+        retiredAt: repository.retiredAt ?? null,
+        retiredReason: repository.retiredReason ?? null,
       },
       repoMeta: normalizeRepoMeta(repository.metadata),
       runs,
@@ -239,4 +247,27 @@ export async function loadRepositoryRun(
       drops: response?.drops ?? [],
     },
   };
+}
+
+/** The Common Ground status of a loaded repository, with the usage and SLAs the backend stored for it. */
+export function lifecycleOfRun(
+  run: RepositoryRun,
+  options: {
+    usage: { declaredUserCount?: number | null; slas?: MaintainedSla[] } | null;
+    minUsers: number;
+    today: string;
+  }
+): LifecycleResult {
+  return computeLifecycleStatus({
+    hasAnalysis: run.runs.length > 0,
+    endorsement: run.latest.endorsement,
+    developmentStatus: run.latest.developmentStatus,
+    declaredUserCount: options.usage?.declaredUserCount ?? null,
+    slas: options.usage?.slas ?? [],
+    minUsers: options.minUsers,
+    today: options.today,
+    retiredAt: run.repository.retiredAt,
+    retiredReason: run.repository.retiredReason,
+    drops: openDropsOf(run.drops),
+  });
 }

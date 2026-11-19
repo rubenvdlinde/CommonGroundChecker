@@ -1,8 +1,9 @@
 import RepositoryRunPage from "@/components/RepositoryRunPage";
 import { getOrganisations, getRepositoryUsage, type UsageStatus } from "@/lib/apiClient";
+import { loadBasisset, matchBasisset } from "@/lib/basisset";
 import { minUsers } from "@/lib/maintained";
 import { organisationSlugsByKey } from "@/lib/organisations";
-import { loadRepositoryRun } from "@/lib/repositoryRun";
+import { lifecycleOfRun, loadRepositoryRun } from "@/lib/repositoryRun";
 
 interface HistoryPageProps {
   params: Promise<{
@@ -34,17 +35,29 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
   const result = await loadRepositoryRun(owner, repo);
   if (result.kind !== "found") return <RepositoryRunPage owner={owner} repo={repo} result={result} />;
 
-  const [usage, organisationSlugs] = await Promise.all([
+  const [usage, organisationSlugs, basisset] = await Promise.all([
     loadUsage(result.run.repository.id),
     loadOrganisationSlugs(),
+    loadBasisset(),
   ]);
+  const today = new Date().toISOString().slice(0, 10);
+  const minimumUsers = minUsers();
+  const { run } = result;
+  const scannedVersion = run.runs[0]?.version ?? run.repoMeta.version ?? null;
 
   return (
     <RepositoryRunPage
       owner={owner}
       repo={repo}
       result={result}
-      maintained={{ usage, minUsers: minUsers(), today: new Date().toISOString().slice(0, 10), organisationSlugs }}
+      maintained={{ usage, minUsers: minimumUsers, today, organisationSlugs }}
+      lifecycle={{
+        result: lifecycleOfRun(run, { usage, minUsers: minimumUsers, today }),
+        basisset: matchBasisset(basisset, run.repository.repoUrl, scannedVersion),
+        scannedVersion,
+        retiredAt: run.repository.retiredAt,
+        adminControls: true,
+      }}
     />
   );
 }

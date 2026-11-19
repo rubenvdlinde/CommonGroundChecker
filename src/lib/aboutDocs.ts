@@ -231,20 +231,17 @@ export const CG_STATES: LifecycleState[] = [
     id: "suitable",
     name: "Suitable for Common Ground",
     text: "The verdict holds: no mandatory criterion fails, the overall rating is at least 2.5, there is a valid maintenance contract, and the maintainability estimate is at least 4 stars.",
-    status: pathSection("verdict").status,
   },
   {
     id: "maintained",
     name: "Maintained",
     text: "Suitable, developmentStatus stable, at least one user listed under usedBy in publiccode.yml, and a valid SLA with a maintainer, on the VNG model contract. The component is in the support of the programme. A drop below a criterion starts a fix term: the maintainer must fix it in time, and the component stays Maintained during the term.",
-    status: { kind: "in-development" },
     note: ["A drop starts a fix term:", "the maintainer must fix", "it in time."],
   },
   {
     id: "retired",
     name: "Retired",
-    text: "The component is obsolete, or the programme retires it. Its history stays visible.",
-    status: { kind: "proposed" },
+    text: "The component is obsolete, or the programme retires it. Its history stays visible, and it is no longer measured every night.",
   },
 ];
 

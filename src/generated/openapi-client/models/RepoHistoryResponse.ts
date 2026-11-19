@@ -30,6 +30,14 @@ export type RepoHistoryResponse = {
         nextCheckAt: string;
         createdAt: string;
         updatedAt: string;
+        /**
+         * When an admin retired the repository; null when it is not retired
+         */
+        retiredAt?: string | null;
+        /**
+         * Why an admin retired the repository
+         */
+        retiredReason?: string | null;
     };
     analyses: Array<RepoAnalysisOutput>;
     /**

@@ -4,11 +4,16 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { RepoSummary } from "@/generated/openapi-client";
+import LifecycleChip, { BasissetChip } from "@/components/LifecycleChip";
 import RatingBadge from "@/components/RatingBadge";
 import RepoLogo from "@/components/RepoLogo";
 import RunStatus, { runStatus } from "@/components/RunStatus";
 import { buildHistoryHref, normalizeSearchQuery, SEARCH_DEBOUNCE_MS } from "@/lib/historySearch";
 import { isRating } from "@/lib/ratings";
+import type { Basisset } from "@/lib/basisset";
+import { buildHistoryIndex, matchesFilter, statusCounts } from "@/lib/historyIndex";
+import { DEFAULT_MIN_USERS } from "@/lib/maintained";
+import { LIFECYCLE_SHORT_LABELS, LIFECYCLE_STATUSES, type LifecycleStatus } from "@/lib/lifecycle";
 
 export type SortKey = "rating" | "date" | "score";
 export type SortDirection = "asc" | "desc";
@@ -19,6 +24,15 @@ interface HistoryPageClientProps {
   query: string;
   repositories: RepoSummary[];
   error?: string;
+  /** The status to show, or null for every status */
+  status?: LifecycleStatus | null;
+  /** Only components in the Common Ground basisset */
+  basissetOnly?: boolean;
+  /** The Common Ground basisset, or null when it could not be read */
+  basisset?: Basisset | null;
+  minUsers?: number;
+  /** Today as YYYY-MM-DD */
+  today?: string;
 }
 
 function sortValue(repository: RepoSummary, sortKey: SortKey): number | null {
@@ -30,11 +44,11 @@ function sortValue(repository: RepoSummary, sortKey: SortKey): number | null {
 }
 
 /** Sorts on the latest analysis; repositories without a value for the key come last in either direction. */
-export function sortRepositories(
-  repositories: RepoSummary[],
+export function sortRepositories<T extends RepoSummary>(
+  repositories: T[],
   sortKey: SortKey,
   sortDirection: SortDirection
-): RepoSummary[] {
+): T[] {
   const sorted = [...repositories];
   const directionMultiplier = sortDirection === "asc" ? 1 : -1;
 
@@ -53,6 +67,18 @@ export function sortRepositories(
   return sorted;
 }
 
+const FILTER_CHIP_CLASS =
+  "inline-flex items-center min-h-[44px] sm:min-h-[32px] text-xs font-semibold px-3 rounded-full border transition-colors";
+const ACTIVE_CHIP_CLASS = "border-cg-lightblue text-cg-blue bg-cg-lightblue/10";
+const IDLE_CHIP_CLASS = "border-gray-300 text-gray-600 bg-white hover:border-cg-lightblue hover:text-cg-blue";
+
+/** "status Maintained in the basisset", for the line that counts the matches. */
+function filterLabel(status: LifecycleStatus | null, basissetOnly: boolean): string {
+  const parts = [status ? `status ${LIFECYCLE_SHORT_LABELS[status]}` : "any status"];
+  if (basissetOnly) parts.push("in the basisset");
+  return parts.join(" ");
+}
+
 const sortOptions: Array<{ label: string; sort: SortKey; direction: SortDirection }> = [
   { label: "Rating ↓", sort: "rating", direction: "desc" },
   { label: "Rating ↑", sort: "rating", direction: "asc" },
@@ -68,15 +94,34 @@ export default function HistoryPageClient({
   query,
   repositories,
   error,
+  status = null,
+  basissetOnly = false,
+  basisset = null,
+  minUsers = DEFAULT_MIN_USERS,
+  today = new Date().toISOString().slice(0, 10),
 }: HistoryPageClientProps) {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState(query);
   const requestedQuery = useRef(query);
 
-  const sortedRepositories = useMemo(
-    () => sortRepositories(repositories, sort, direction),
-    [repositories, sort, direction]
+  const entries = useMemo(
+    () => buildHistoryIndex(repositories, { basisset, minUsers, today }),
+    [repositories, basisset, minUsers, today]
   );
+  const counts = useMemo(() => statusCounts(entries, basissetOnly), [entries, basissetOnly]);
+  const sortedRepositories = useMemo(
+    () => sortRepositories(entries.filter((entry) => matchesFilter(entry, { status, basisset: basissetOnly })), sort, direction),
+    [entries, status, basissetOnly, sort, direction]
+  );
+  const filtered = status !== null || basissetOnly;
+  const hrefWith = (options: { q?: string; sort?: SortKey; direction?: SortDirection; status?: LifecycleStatus | null; basisset?: boolean }) =>
+    buildHistoryHref({
+      q: options.q ?? query,
+      sort: options.sort ?? sort,
+      direction: options.direction ?? direction,
+      status: options.status === undefined ? status : options.status,
+      basisset: options.basisset ?? basissetOnly,
+    });
 
   // A query that this component did not request came from navigation, so the input follows it.
   useEffect(() => {
@@ -92,16 +137,16 @@ export default function HistoryPageClient({
 
     const timer = setTimeout(() => {
       requestedQuery.current = term;
-      router.replace(buildHistoryHref({ q: term, sort, direction }), { scroll: false });
+      router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly }), { scroll: false });
     }, SEARCH_DEBOUNCE_MS);
     return () => clearTimeout(timer);
-  }, [searchValue, sort, direction, router]);
+  }, [searchValue, sort, direction, status, basissetOnly, router]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const term = normalizeSearchQuery(searchValue);
     requestedQuery.current = term;
-    router.replace(buildHistoryHref({ q: term, sort, direction }), { scroll: false });
+    router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly }), { scroll: false });
   }
 
   return (
@@ -134,6 +179,8 @@ export default function HistoryPageClient({
           </div>
           <input type="hidden" name="sort" value={sort} />
           <input type="hidden" name="direction" value={direction} />
+          {status && <input type="hidden" name="status" value={status} />}
+          {basissetOnly && <input type="hidden" name="basisset" value="1" />}
           <button
             type="submit"
             className="rounded-lg border border-cg-lightblue bg-cg-lightblue/10 px-3 py-1.5 text-sm font-semibold text-cg-blue hover:bg-cg-lightblue/20"
@@ -148,7 +195,7 @@ export default function HistoryPageClient({
             return (
               <Link
                 key={`${option.sort}-${option.direction}`}
-                href={buildHistoryHref({ q: query, sort: option.sort, direction: option.direction })}
+                href={hrefWith({ sort: option.sort, direction: option.direction })}
                 aria-current={isActive ? "true" : undefined}
                 className={`inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border transition-colors ${
                   isActive
@@ -160,6 +207,36 @@ export default function HistoryPageClient({
               </Link>
             );
           })}
+        </div>
+        <div role="group" aria-label="Filter by Common Ground status" className="flex flex-wrap items-center gap-2 pt-1">
+          <span className="text-xs text-gray-500">Status:</span>
+          {[null, ...LIFECYCLE_STATUSES].map((option) => {
+            const isActive = option === status;
+            const count = option === null ? counts.all : counts.byStatus[option];
+            return (
+              <Link
+                key={option ?? "all"}
+                href={hrefWith({ status: option })}
+                aria-current={isActive ? "true" : undefined}
+                className={`${FILTER_CHIP_CLASS} ${isActive ? ACTIVE_CHIP_CLASS : IDLE_CHIP_CLASS}`}
+              >
+                {option === null ? "All" : LIFECYCLE_SHORT_LABELS[option]} ({count})
+              </Link>
+            );
+          })}
+          <Link
+            href={hrefWith({ basisset: !basissetOnly })}
+            aria-current={basissetOnly ? "true" : undefined}
+            className={`${FILTER_CHIP_CLASS} ${basissetOnly ? ACTIVE_CHIP_CLASS : IDLE_CHIP_CLASS}`}
+          >
+            In basisset ({counts.basisset})
+          </Link>
+          <Link
+            href="/basisset"
+            className="inline-flex items-center min-h-[44px] sm:min-h-[32px] text-xs text-cg-lightblue hover:underline"
+          >
+            About the basisset
+          </Link>
         </div>
         <div className="pt-2">
           <a
@@ -178,16 +255,22 @@ export default function HistoryPageClient({
         aria-label="Repositories"
         className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
       >
-        {query && !error && sortedRepositories.length > 0 && (
+        {(query || filtered) && !error && sortedRepositories.length > 0 && (
           <p role="status" className="text-xs text-gray-500 mb-3">
-            {sortedRepositories.length} {sortedRepositories.length === 1 ? "repository matches" : "repositories match"} “{query}”.
+            {sortedRepositories.length} {sortedRepositories.length === 1 ? "repository matches" : "repositories match"}
+            {query ? ` “${query}”` : ""}
+            {filtered ? ` with ${filterLabel(status, basissetOnly)}` : ""}.
           </p>
         )}
         {error ? (
           <p className="text-sm text-red-500">{error}</p>
         ) : sortedRepositories.length === 0 ? (
           <p role="status" className="text-sm text-gray-500">
-            {query ? `No repositories match “${query}”.` : "No repositories analyzed yet."}
+            {filtered && entries.length > 0
+              ? `No repositories${query ? ` match “${query}”` : ""} with ${filterLabel(status, basissetOnly)}.`
+              : query
+              ? `No repositories match “${query}”.`
+              : "No repositories analyzed yet."}
           </p>
         ) : (
           <div className="space-y-3">
@@ -211,6 +294,15 @@ export default function HistoryPageClient({
                           <span>{displayName}</span>
                           {latest && isRating(latest.rating) && <RatingBadge rating={latest.rating} />}
                         </p>
+                        <p className="mt-1 flex flex-wrap items-center gap-2">
+                          <LifecycleChip status={repository.lifecycle.status} />
+                          {repository.basisset.entries.length > 0 && (
+                            <BasissetChip inBasisset={repository.basisset.entries.some((entry) => entry.inBasisset)} />
+                          )}
+                        </p>
+                        {repository.lifecycle.note && (
+                          <p className="text-xs text-amber-900">{repository.lifecycle.note}</p>
+                        )}
                         {repository.displayName && (
                           <p className="text-xs text-gray-600">{fullName}</p>
                         )}

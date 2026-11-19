@@ -81,13 +81,8 @@ describe("about docs data", () => {
     }
   });
 
-  it("marks the states the checker does not show yet", () => {
-    const status = Object.fromEntries(CG_STATES.map((state) => [state.id, state.status]));
-    expect(status.listed).toBeUndefined();
-    expect(status.measured).toBeUndefined();
-    expect(status.suitable).toEqual(PATH_SECTIONS.find((section) => section.id === "verdict")!.status);
-    expect(status.maintained).toEqual({ kind: "in-development" });
-    expect(status.retired).toEqual({ kind: "proposed" });
+  it("marks no state as not shown, as the checker shows every state", () => {
+    for (const state of CG_STATES) expect(state.status, state.id).toBeUndefined();
   });
 
   it("states the suitable verdict and the Maintained conditions", () => {
@@ -399,7 +394,7 @@ describe("AboutPage", () => {
       expect(image.querySelectorAll("[data-state]")).toHaveLength(CG_STATES.length);
       expect(image.querySelectorAll("[data-transition]")).toHaveLength(CG_TRANSITIONS.length);
       expect(image.querySelector('[data-state="maintained"]')!.textContent).toBe(
-        "MaintainedA drop starts a fix term:the maintainer must fixit in time.In development"
+        "MaintainedA drop starts a fix term:the maintainer must fixit in time."
       );
       expect(image.querySelectorAll("[data-note]")).toHaveLength(3);
     }
@@ -411,7 +406,7 @@ describe("AboutPage", () => {
     const section = document.getElementById("common-ground-lifecycle")!;
     const states = within(section).getByRole("list", { name: "The states" });
     expect(within(states).getAllByRole("listitem")).toHaveLength(CG_STATES.length);
-    expect(within(states).getByText("Proposed", { selector: "li:last-child span" })).toBeTruthy();
+    expect(within(states).queryByText("Proposed")).toBeNull();
 
     const table = within(section).getByRole("table", { name: "The transitions" });
     const rows = within(table).getAllByRole("row").slice(1);

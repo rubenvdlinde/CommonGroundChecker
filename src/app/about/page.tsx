@@ -213,8 +213,8 @@ export default function AboutPage() {
         </h2>
         <p className="text-gray-700">
           A component has its own lifecycle in the Common Ground programme. It is separate from the lifecycle of the
-          software. A component can move into the support of the programme and out of it again. A dashed state with
-          a label is not shown by the checker yet.
+          software. A component can move into the support of the programme and out of it again. The checker shows the
+          state of every component on its page, on the History list and on the organisation pages.
         </p>
         <LifecycleDiagram layout={WIDE_LAYOUT} className="hidden lg:block w-full h-auto" />
         <LifecycleDiagram layout={NARROW_LAYOUT} className="lg:hidden block w-full max-w-sm h-auto mx-auto" />

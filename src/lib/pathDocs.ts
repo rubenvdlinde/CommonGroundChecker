@@ -176,7 +176,6 @@ export const PATH_SECTIONS: PathSection[] = [
     parts: [
       {
         title: "Maintained",
-        status: { kind: "in-development" },
         paragraphs: [
           "A component is Maintained when it is suitable, its developmentStatus in publiccode.yml is stable, at least one organisation is listed as a user under usedBy in publiccode.yml, and there is a valid SLA with a maintainer, on the VNG model contract. A component that leaves stable leaves Maintained and goes back to Suitable for Common Ground. The SLA rests on the hard criteria and the KPIs below. One user follows the Common Ground standard put to the VNG ALV: a component is proven in practice by one or more municipalities. VNG does not contract the maintainer. Municipalities do, on the VNG model contracts and framework agreements.",
         ],

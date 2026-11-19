@@ -320,3 +320,117 @@ describe("HistoryPageClient", () => {
     expect(screen.queryAllByText(/open drop/)).toHaveLength(2);
   });
 });
+
+describe("HistoryPageClient status filter", () => {
+  afterEach(() => cleanup());
+
+  const basisset = {
+    version: "0.3.1",
+    components: [
+      {
+        name: "OpenZaak",
+        repo: ["https://github.com/open-zaak/open-zaak"],
+        version: "1.29.0",
+        description: "",
+        status: "g",
+        architectureLayers: "1-2",
+        basisset: true,
+        note: null,
+      },
+    ],
+  };
+  const sla = { id: "s", party: "VNG", maintainer: "Maykin", startsOn: "2026-01-01", until: "2027-12-31", link: null };
+  const maintained = repositoryWith({
+    id: "oz",
+    owner: "open-zaak",
+    name: "open-zaak",
+    repoUrl: "https://github.com/open-zaak/open-zaak",
+    slas: [sla],
+    latestAnalysis: {
+      checkedAt: "2026-11-01T10:00:00.000Z",
+      score: 80,
+      endorsement: { passed: true, reasons: [] },
+      developmentStatus: "stable",
+      declaredUserCount: 3,
+      version: "1.31.2",
+    },
+  });
+  const measured = repositoryWith({
+    id: "m",
+    name: "measured-repo",
+    latestAnalysis: { checkedAt: "2026-11-01T10:00:00.000Z", score: 40, endorsement: { passed: false, reasons: ["x"] } },
+  });
+  const listed = repositoryWith({ id: "l", name: "listed-repo", analysisCount: 0, latestAnalysis: null });
+
+  function renderIndex(props: Partial<Parameters<typeof HistoryPageClient>[0]> = {}) {
+    return render(
+      <HistoryPageClient
+        sort="rating"
+        direction="desc"
+        query="zaak"
+        repositories={[maintained, measured, listed]}
+        basisset={basisset}
+        minUsers={1}
+        today="2026-11-19"
+        {...props}
+      />
+    );
+  }
+
+  it("offers a chip per status with its count, keeping the search and sort in the link", () => {
+    renderIndex();
+
+    const chips = screen.getByRole("group", { name: "Filter by Common Ground status" });
+    expect(within(chips).getAllByRole("link").map((link) => link.textContent)).toEqual([
+      "All (3)",
+      "Listed (1)",
+      "Measured (1)",
+      "Suitable (0)",
+      "Maintained (1)",
+      "Retired (0)",
+      "In basisset (1)",
+      "About the basisset",
+    ]);
+    expect(within(chips).getByRole("link", { name: "All (3)" }).getAttribute("aria-current")).toBe("true");
+    expect(within(chips).getByRole("link", { name: "Maintained (1)" }).getAttribute("href")).toBe(
+      "/history?sort=rating&direction=desc&q=zaak&status=maintained"
+    );
+    expect(within(chips).getByRole("link", { name: "In basisset (1)" }).getAttribute("href")).toBe(
+      "/history?sort=rating&direction=desc&q=zaak&basisset=1"
+    );
+  });
+
+  it("shows only the chosen status and keeps the filter in the sort links and the search form", () => {
+    const { container } = renderIndex({ status: "maintained" });
+
+    expect(screen.getByRole("status").textContent).toBe("1 repository matches “zaak” with status Maintained.");
+    expect(screen.queryByText("measured-repo")).toBeNull();
+    const card = screen.getByRole("link", { name: /open-zaak\/open-zaak/ });
+    expect(card.querySelector("[data-lifecycle-status]")?.textContent).toBe("Maintained");
+    expect(within(card).getByText("In basisset")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Date ↓" }).getAttribute("href")).toBe(
+      "/history?sort=date&direction=desc&q=zaak&status=maintained"
+    );
+    expect(screen.getByRole("link", { name: "All (3)" }).getAttribute("href")).toBe(
+      "/history?sort=rating&direction=desc&q=zaak"
+    );
+    expect(container.querySelector('input[type="hidden"][name="status"]')?.getAttribute("value")).toBe("maintained");
+  });
+
+  it("counts within the basisset and says when nothing has the status", () => {
+    renderIndex({ status: "measured", basissetOnly: true });
+
+    expect(screen.getByRole("link", { name: "All (1)" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "In basisset (1)" }).getAttribute("href")).toBe(
+      "/history?sort=rating&direction=desc&q=zaak&status=measured"
+    );
+    expect(screen.getByRole("status").textContent).toBe(
+      "No repositories match “zaak” with status Measured in the basisset."
+    );
+  });
+
+  it("gives Listed to a repository without an analysis on the card", () => {
+    renderIndex({ status: "listed" });
+    expect(screen.getByRole("link", { name: /listed-repo/ }).querySelector("[data-lifecycle-status]")?.textContent).toBe("Listed");
+  });
+});

@@ -4,6 +4,7 @@ import CriteriaResults from "@/components/CriteriaResults";
 import DropsCard from "@/components/DropsCard";
 import FollowControl from "@/components/FollowControl";
 import IssueBlocks from "@/components/IssueBlocks";
+import LifecycleSection, { type RepositoryLifecycle } from "@/components/LifecycleSection";
 import MaintainedSection from "@/components/MaintainedSection";
 import PublicCodeSection from "@/components/PublicCodeSection";
 import RatingHistoryChart from "@/components/RatingHistoryChart";
@@ -20,6 +21,8 @@ interface RepositoryRunPageProps {
   result: RepositoryRunResult;
   /** Shown on the repository page: the stored usage and SLAs behind the Maintained level */
   maintained?: RepositoryMaintained;
+  /** Shown on the repository page: the Common Ground status and the basisset */
+  lifecycle?: RepositoryLifecycle;
 }
 
 export interface RepositoryMaintained {
@@ -57,7 +60,7 @@ function Navigation() {
  * latest run, a run page the requested one. Both list every run and graph
  * the overall rating over time.
  */
-export default function RepositoryRunPage({ owner, repo, result, maintained }: RepositoryRunPageProps) {
+export default function RepositoryRunPage({ owner, repo, result, maintained, lifecycle }: RepositoryRunPageProps) {
   if (result.kind !== "found") {
     return (
       <div className="max-w-4xl mx-auto px-6 py-10 space-y-4">
@@ -100,6 +103,8 @@ export default function RepositoryRunPage({ owner, repo, result, maintained }: R
       </div>
 
       <RepoMeta owner={repository.owner} repo={repository.name} repoMeta={repoMeta} followed={repository.followed} />
+
+      {lifecycle && <LifecycleSection repoId={repository.id} {...lifecycle} />}
 
       {maintained && (
         <>

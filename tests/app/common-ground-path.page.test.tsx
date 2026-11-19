@@ -55,7 +55,7 @@ describe("path docs data", () => {
   });
 
   it("marks the parts other lanes are building as in development", () => {
-    for (const title of ["Maintained", "Nightly measurement and fix terms", "Versions and a transition period", "Counting usage"]) {
+    for (const title of ["Nightly measurement and fix terms", "Versions and a transition period", "Counting usage"]) {
       expect(statusOf(title), title).toEqual({ kind: "in-development" });
     }
   });
@@ -180,7 +180,7 @@ describe("CommonGroundPathPage", () => {
     render(<CommonGroundPathPage />);
 
     expect(screen.getByRole("heading", { level: 2, name: "Which version is measured In review (#68)" })).toBeTruthy();
-    expect(screen.getByRole("heading", { level: 3, name: "Maintained In development" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 3, name: "Maintained" })).toBeTruthy();
     expect(screen.getByRole("heading", { level: 3, name: "How the checklist changes Proposed" })).toBeTruthy();
     expect(screen.getByRole("heading", { level: 2, name: "Who decides that a component is Maintained" })).toBeTruthy();
   });

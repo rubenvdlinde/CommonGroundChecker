@@ -14,6 +14,13 @@ vi.mock("@/lib/apiClient", () => ({
   getRepositoryUsage,
   getOrganisations,
   putRepositoryFollow,
+  putRepositoryRetire: vi.fn(),
+}));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ refresh: vi.fn(), replace: vi.fn(), push: vi.fn() }) }));
+const loadBasisset = vi.hoisted(() => vi.fn(async () => null));
+vi.mock("@/lib/basisset", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/basisset")>()),
+  loadBasisset,
 }));
 
 import RepoHistoryPage from "@/app/history/[owner]/[repo]/page";
@@ -202,6 +209,12 @@ describe("RepoHistoryPage", () => {
     expect(reasons.textContent).toContain("No SLA");
     expect(reasons.textContent).toContain("development status is beta, only a stable component can be Maintained");
     expect(screen.getByText("Users declared in publiccode.yml over time")).toBeTruthy();
+
+    const status = screen.getByRole("region", { name: "Common Ground status" });
+    expect(status.querySelector("[data-lifecycle-status]")?.textContent).toBe("Measured");
+    expect(within(status).getByRole("list", { name: "What is missing for Suitable for Common Ground" })).toBeTruthy();
+    expect(within(status).getByText("The Common Ground basisset could not be read just now.")).toBeTruthy();
+    expect(within(status).getByText("Retire this component (admin)")).toBeTruthy();
   });
 
   it("still renders when the usage cannot be loaded", async () => {

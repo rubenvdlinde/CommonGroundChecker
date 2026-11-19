@@ -35,6 +35,8 @@ export type { RepoHistoryResponse } from './models/RepoHistoryResponse';
 export { RepoMeta } from './models/RepoMeta';
 export type { RepoMetadata } from './models/RepoMetadata';
 export type { RepoSummary } from './models/RepoSummary';
+export type { RetireInput } from './models/RetireInput';
+export type { RetireState } from './models/RetireState';
 export type { ScoringConfigResponse } from './models/ScoringConfigResponse';
 export type { Sla } from './models/Sla';
 export type { SlaInput } from './models/SlaInput';
