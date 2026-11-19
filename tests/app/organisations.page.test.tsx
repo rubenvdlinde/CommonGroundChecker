@@ -71,7 +71,7 @@ const stableResults = [{ id: "publiccode", status: "pass", requirementLevel: "ma
 describe("OrganisationPage", () => {
   afterEach(() => cleanup());
 
-  it("lists the components with rating, suitable and approved status, version and a link", async () => {
+  it("lists the components with rating, suitable and Maintained status, version and a link", async () => {
     getAdminScoring.mockRejectedValue(new Error("offline"));
     getOrganisation.mockResolvedValue({
       organisation: { name: "Utrecht", slug: "utrecht", spellings: ["Utrecht", "utrecht"], componentCount: 2 },
@@ -135,10 +135,11 @@ describe("OrganisationPage", () => {
     );
     expect(within(rows[0]).getByRole("img", { name: "Overall rating 4.2 of 5.5, 4 stars" })).toBeTruthy();
     expect(rows[0].textContent).toContain("Suitable for Common Ground");
-    expect(rows[0].textContent).toContain("Approved");
+    expect(rows[0].textContent).toContain("Maintained");
+    expect(rows[0].textContent).not.toContain("Not yet Maintained");
     expect(rows[0].textContent).toContain("Scanned version: 3.0.0");
     expect(rows[1].textContent).toContain("Not yet suitable for Common Ground");
-    expect(rows[1].textContent).toContain("Not approved");
+    expect(rows[1].textContent).toContain("Not yet Maintained");
     expect(rows[1].textContent).toContain("Scanned version: main");
   });
 

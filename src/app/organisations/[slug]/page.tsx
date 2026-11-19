@@ -105,7 +105,7 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
                       : "border-gray-300 text-gray-600 bg-gray-50"
                   }`}
                 >
-                  {level.maintained ? "Approved" : "Not approved"}
+                  {level.maintained ? "Maintained" : "Not yet Maintained"}
                 </span>
               </div>
             </li>
