@@ -10,6 +10,7 @@ import { checkCiConfig } from "./ciConfig";
 import { checkFiveLayer } from "./fiveLayer";
 import { checkHelmChart } from "./helmchart";
 import { checkSbom } from "./sbom";
+import { checkArtifactHub } from "./artifactHub";
 import { checkDocumentation } from "./documentation";
 import { checkChangelog } from "./changelog";
 import { checkMaintenance } from "./maintenance";
@@ -177,6 +178,11 @@ export async function runChecks(
   );
   const maintainabilityPromise = checkMaintainability(localRepoPath);
   const codeMetricsPromise = checkCodeMetrics(owner, repo, localRepoPath, cloneUrl);
+  const artifactHubPromise = checkArtifactHub(context, tree, {
+    dockerLocations: options?.dockerLocations ?? [],
+    helmChartLocations: options?.helmChartLocations ?? [],
+    now: checkedAt,
+  });
   const owaspSecureCodingPromise = checkOwaspSecureCoding(context, tree, localRepoPath);
   const adrValidatorPromise = checkAdrValidator(
     owner,
@@ -207,13 +213,14 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator, artifacthub] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
     codeMetricsPromise,
     owaspSecureCodingPromise,
     adrValidatorPromise,
+    artifactHubPromise,
   ]);
   const publiccode = publiccodeAnalysis.result;
 
@@ -259,6 +266,7 @@ export async function runChecks(
     dockerimage,
     cicd,
     sbom,
+    artifacthub,
     documentation,
     changelog,
     tests,
@@ -353,6 +361,7 @@ export async function runChecks(
     dockerimage,
     cicd,
     sbom,
+    artifacthub,
     documentation,
     changelog,
     tests,

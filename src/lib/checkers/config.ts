@@ -69,6 +69,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   security: { weight: 1, requirementLevel: "mandatory" },
   semver: { weight: 1, requirementLevel: "mandatory" },
   sbom: { weight: 1, requirementLevel: "mandatory" },
+  artifacthub: { weight: 1, requirementLevel: "mandatory" },
   coverage: { weight: 1, requirementLevel: "mandatory" },
   fivelayer: { weight: 1, requirementLevel: "mandatory" },
 };

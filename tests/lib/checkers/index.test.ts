@@ -27,6 +27,7 @@ const ids = [
   "semver",
   "fivelayer",
   "helmchart",
+  "artifacthub",
 ] as const;
 
 const mocks = vi.hoisted(() => ({
@@ -57,6 +58,7 @@ const mocks = vi.hoisted(() => ({
   checkSemver: vi.fn(),
   checkFiveLayer: vi.fn(),
   checkHelmChart: vi.fn(),
+  checkArtifactHub: vi.fn(),
   checkCodeMetrics: vi.fn(),
   checkOwaspSecureCoding: vi.fn(),
   checkEuplLicense: vi.fn(),
@@ -133,6 +135,7 @@ vi.mock("@/lib/checkers/sourcecode", () => ({ checkSourceCode: mocks.checkSource
 vi.mock("@/lib/checkers/semver", () => ({ checkSemver: mocks.checkSemver }));
 vi.mock("@/lib/checkers/fiveLayer", () => ({ checkFiveLayer: mocks.checkFiveLayer }));
 vi.mock("@/lib/checkers/helmchart", () => ({ checkHelmChart: mocks.checkHelmChart }));
+vi.mock("@/lib/checkers/artifactHub", () => ({ checkArtifactHub: mocks.checkArtifactHub }));
 vi.mock("@/lib/checkers/config", () => ({ getActiveScoringConfig: mocks.getActiveScoringConfig }));
 
 import { runChecks } from "@/lib/checkers/index";
@@ -261,6 +264,7 @@ describe("runChecks", () => {
     mocks.checkSemver.mockReturnValue(resultFor("semver", "pass"));
     mocks.checkFiveLayer.mockResolvedValue(resultFor("fivelayer", "pass"));
     mocks.checkHelmChart.mockResolvedValue(resultFor("helmchart", "pass"));
+    mocks.checkArtifactHub.mockResolvedValue(resultFor("artifacthub", "pass"));
   });
 
   it("applies weighted scoring and non-register OpenAPI bypass", async () => {
@@ -289,7 +293,7 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(25);
+    expect(report.results).toHaveLength(26);
     expect(report.results.find((result) => result.id === "maintainability")?.starRating).toBe(3);
     expect(report.results.find((result) => result.id === "semver")?.starRating).toBe(1);
     expect(report.results.find((result) => result.id === "tests")?.starRating).toBe(3);
@@ -416,6 +420,36 @@ describe("runChecks", () => {
       expect(report.score).toBe(43);
       expect(report.endorsement.reasons).toContain("Mandatory criterion fails: Open source licence");
     });
+  });
+
+  it("passes the tree, the locations and the clock to the Artifact Hub check, which warns until 19 May 2027", async () => {
+    const configById = criterionConfig(1, "recommended");
+    configById.artifacthub = { weight: 1, requirementLevel: "mandatory" };
+    mocks.checkArtifactHub.mockResolvedValue({ ...resultFor("artifacthub", "fail"), title: "Helm chart on Artifact Hub, images scanned" });
+    mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "pass"), starRating: 4, rating: 4.4 });
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-artifacthub",
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+    const options = { dockerLocations: ["ghcr.io/org/repo"], helmChartLocations: ["charts/repo"] };
+
+    const before = await runChecks("https://github.com/org/repo", { ...options, now: new Date("2027-05-18T23:59:59Z") });
+    const after = await runChecks("https://github.com/org/repo", { ...options, now: new Date("2027-05-19T00:00:00Z") });
+
+    expect(mocks.checkArtifactHub).toHaveBeenCalledWith(expect.objectContaining({ repo: "repo" }), ["src/main.ts", "README.md"], {
+      ...options,
+      now: new Date("2027-05-18T23:59:59Z"),
+    });
+    expect(before.results.find((result) => result.id === "artifacthub")?.mandatoryFrom).toBe("2027-05-19");
+    expect(before.endorsement.reasons).not.toContain("Mandatory criterion fails: Helm chart on Artifact Hub, images scanned");
+    expect(after.results.find((result) => result.id === "artifacthub")).not.toHaveProperty("mandatoryFrom");
+    expect(after.endorsement.reasons).toContain("Mandatory criterion fails: Helm chart on Artifact Hub, images scanned");
   });
 
   it("applies fixed category weights when aggregating mandatory criteria", async () => {

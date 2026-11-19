@@ -40,6 +40,7 @@ export const RESULT_ORDER_BY_ID: string[] = [
   "adrvalidator",
   "helmchart",
   "sbom",
+  "artifacthub",
   "documentation",
   "changelog",
   "tests",
@@ -68,6 +69,7 @@ export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
   cicd: "Deployment & Operations",
   helmchart: "Deployment & Operations",
   sbom: "Software Quality",
+  artifacthub: "Security",
   documentation: "Software Quality",
   changelog: "Software Quality",
   tests: "Software Quality",
@@ -93,7 +95,7 @@ export function criterionAnchorId(id: string): string {
  * and weights. A change accepted through the change process gets a new
  * version, and every analysis records the version it was measured against.
  */
-export const CHECKLIST_VERSION = "2026.1";
+export const CHECKLIST_VERSION = "2026.2";
 
 /** The issue form for a proposal to change the checklist. */
 export const CHECKLIST_CHANGE_PROPOSAL_URL =
@@ -127,6 +129,7 @@ export const CRITERION_VERSIONS: CriterionVersions = {
   adrvalidator: { introducedIn: "2026.1" },
   helmchart: { introducedIn: "2026.1" },
   sbom: { introducedIn: "2026.1" },
+  artifacthub: { introducedIn: "2026.2", mandatoryFrom: "2027-05-19" },
   documentation: { introducedIn: "2026.1" },
   changelog: { introducedIn: "2026.1" },
   tests: { introducedIn: "2026.1" },

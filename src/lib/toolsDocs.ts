@@ -108,6 +108,8 @@ const SOURCES = {
   sonarqube: { title: "SonarQube Community Build", url: "https://github.com/SonarSource/sonarqube" },
   gitleaks: { title: "gitleaks", url: "https://github.com/gitleaks/gitleaks" },
   osv: { title: "OSV.dev", url: "https://osv.dev/" },
+  artifactHub: { title: "Artifact Hub", url: "https://artifacthub.io/docs/topics/security_report/" },
+  trivy: { title: "Trivy", url: "https://trivy.dev/" },
   scorecard: { title: "OpenSSF Scorecard", url: "https://scorecard.dev/" },
   criticality: { title: "OpenSSF Criticality Score", url: "https://github.com/ossf/criticality_score" },
   spectral: { title: "Spectral", url: "https://github.com/stoplightio/spectral" },
@@ -339,6 +341,18 @@ export const TOOL_GROUPS: ToolGroup[] = [
         proves: "Practices such as branch protection, code review, pinned dependencies and signed releases, and that an SBOM file exists.",
         doesNotProve:
           "That a release is safe, or that the SBOM is complete. The Scorecard result can be older than the commit checked.",
+        inReview: false,
+      },
+      {
+        measure: "Container images",
+        track: "rated",
+        tool: "the Trivy security report Artifact Hub publishes for the component's Helm chart, read through the Artifact Hub API",
+        version: "the report Artifact Hub last published; its scanner runs Trivy 0.76.2",
+        licence: "Artifact Hub and Trivy Apache-2.0",
+        proves:
+          "That the Helm chart is registered on Artifact Hub, and how many known vulnerabilities per severity the images of its latest version have. The latest version is scanned again every day.",
+        doesNotProve:
+          "That the images a municipality actually runs are safe: only the images from the chart's default values are scanned. It says nothing about versions older than one year, charts with more than 15 images, private images, or images over 4 GiB, which Artifact Hub skips. Vulnerabilities Trivy does not know are not counted.",
         inReview: false,
       },
     ],

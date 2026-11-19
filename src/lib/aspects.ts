@@ -73,6 +73,11 @@ export const ASPECT_MODEL: CategoryAspects[] = [
       openSourceHealthAspect("dependency-activity", "Dependency activity", "activity"),
       openSourceHealthAspect("dependency-licences", "Dependency licences", "licence"),
       openSourceHealthAspect("dependency-management", "Dependency management", "management"),
+      {
+        id: "container-images",
+        title: "Container images",
+        source: { type: "criteria", checkIds: ["artifacthub"] },
+      },
       { id: "secrets", title: "Secrets", source: { type: "criteria", checkIds: ["secretscanning"] } },
       { id: "secure-coding", title: "Secure coding", source: { type: "criteria", checkIds: ["owaspsecurecoding"] } },
       {

@@ -22,6 +22,7 @@ const EXPECTED_MODEL: Record<string, string[]> = {
     "dependency-activity",
     "dependency-licences",
     "dependency-management",
+    "container-images",
     "secrets",
     "secure-coding",
     "supply-chain",

@@ -162,6 +162,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   adrvalidator: "mandatory",
   helmchart: "mandatory",
   sbom: "recommended",
+  artifacthub: "mandatory",
   documentation: "mandatory",
   tests: "mandatory",
   complexity: "recommended",
@@ -190,6 +191,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "NL API Design Rules": "adrvalidator",
   "Helm chart (Kubernetes)": "helmchart",
   SBOM: "sbom",
+  "Helm chart on Artifact Hub": "artifacthub",
   Documentation: "documentation",
   "Changelog presence": "changelog",
   "Test suite presence": "tests",
@@ -333,7 +335,15 @@ const CRITERIA_OVERVIEW = [
     category: "Software Quality" as CriteriaCategory,
     desc: "SPDX or CycloneDX inventory file",
     tooltip:
-      "A Software Bill of Materials (SBOM) lists every dependency and its version. Common formats are SPDX (.spdx.json) and CycloneDX (.cdx.json / bom.xml). Currently a recommended — not mandatory — check.",
+      "A Software Bill of Materials (SBOM) lists every dependency and its version. Common formats are SPDX (.spdx.json) and CycloneDX (.cdx.json / bom.xml). Currently a recommended — not mandatory — check. The checker checks that an SBOM is present, not what it lists.",
+  },
+  {
+    icon: "🛡️",
+    label: "Helm chart on Artifact Hub",
+    category: "Security" as CriteriaCategory,
+    desc: "Container images scanned, no critical vulnerabilities",
+    tooltip:
+      "For container components only. The Helm chart is registered on Artifact Hub, which scans its container images with Trivy. The latest version must have no critical vulnerabilities. Mandatory from 19 May 2027; until then a fail is a warning.",
   },
   {
     icon: "📚",
