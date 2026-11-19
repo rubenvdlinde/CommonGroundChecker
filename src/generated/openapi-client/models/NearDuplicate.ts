@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Organisations listed separately whose names differ only in accents, punctuation or a prefix such as Gemeente
+ * Organisations listed separately whose names differ only in accents, punctuation, a prefix such as Gemeente, or one typo
  */
 export type NearDuplicate = {
     names: Array<string>;
