@@ -5,7 +5,7 @@
 
 const BASE = "https://api.github.com";
 
-const README_CANDIDATES = [
+export const README_CANDIDATES = [
   "README.md",
   "README.rst",
   "README.txt",
@@ -17,7 +17,7 @@ const README_CANDIDATES = [
   "readme.adoc",
 ];
 
-const MANIFEST_CANDIDATES = [
+export const MANIFEST_CANDIDATES = [
   "package.json",
   "pyproject.toml",
   "Chart.yaml",
@@ -54,7 +54,7 @@ async function ghFetch(path: string) {
   return res.json();
 }
 
-function extractVersionFromReadme(content: string): string | null {
+export function extractVersionFromReadme(content: string): string | null {
   const patterns: RegExp[] = [
     /\bversion\s*[:=]\s*v?(\d+\.\d+\.\d+(?:[-+][\w.-]+)?)/i,
     /\brelease\s*[:=]\s*v?(\d+\.\d+\.\d+(?:[-+][\w.-]+)?)/i,
@@ -103,7 +103,7 @@ function compareSemverDesc(a: string, b: string): number {
   return 0;
 }
 
-function pickBestTagName(tags: string[]): string | null {
+export function pickBestTagName(tags: string[]): string | null {
   const cleaned = tags
     .map((tag) => tag.trim())
     .filter(Boolean)
@@ -120,7 +120,7 @@ function pickBestTagName(tags: string[]): string | null {
   return normalizeVersion(cleaned[0]);
 }
 
-function extractVersionFromPackageJson(content: string): string | null {
+export function extractVersionFromPackageJson(content: string): string | null {
   try {
     const parsed = JSON.parse(content) as { version?: unknown };
     if (typeof parsed.version !== "string") return null;
@@ -130,7 +130,7 @@ function extractVersionFromPackageJson(content: string): string | null {
   }
 }
 
-function extractVersionFromPyproject(content: string): string | null {
+export function extractVersionFromPyproject(content: string): string | null {
   const patterns: RegExp[] = [
     /^version\s*=\s*["']([^"']+)["']/m,
     /^\s*project\.version\s*=\s*["']([^"']+)["']/m,
@@ -146,7 +146,7 @@ function extractVersionFromPyproject(content: string): string | null {
   return null;
 }
 
-function extractVersionFromChartYaml(content: string): string | null {
+export function extractVersionFromChartYaml(content: string): string | null {
   const match = content.match(/^version\s*:\s*([\w.+-]+)/m);
   if (!match?.[1]) return null;
   return normalizeVersion(match[1]);

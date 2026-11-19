@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import path from "node:path";
 import type { CheckResult } from "../types";
 
 interface CommandResult {
@@ -175,6 +176,9 @@ function buildRawRepoUrl(
 ): string {
   if (providerId === "gitlab") {
     return buildRawGitLabUrl(projectPath, branch, filePath);
+  }
+  if (providerId === "local") {
+    return path.join(projectPath, filePath);
   }
   return buildRawGitHubUrl(owner, repo, branch, filePath);
 }

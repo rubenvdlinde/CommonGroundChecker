@@ -103,6 +103,18 @@ Open [http://localhost:3000](http://localhost:3000) and paste a GitHub repositor
 
 A **GitHub personal access token** in `.env` is optional but strongly recommended — the unauthenticated GitHub API rate limit is 60 requests/hour, which is quickly exhausted for newer repos.
 
+### Scan a local checkout
+
+To check a repository without the web interface, for example in a CI job or before pushing, scan a local git checkout in place:
+
+```bash
+npm run --silent scan:local -- <checkout> [--owner O] [--repo R] [--register] [--scoring FILE] [--api-spec PATH]... [--out FILE] [--full]
+```
+
+It prints one JSON document with the status of each criterion, the score and the version found. Tracked and untracked files are read (ignores honoured), the best tag reachable from `HEAD` is the version, and the licence comes from the `LICENSE` file. Without `--scoring` the default scoring configuration is used and no API is called; `FILE` is a saved copy of `GET /api/admin/scoring`. `--full` adds the complete report.
+
+A criterion whose tool or service could not run (for example Lizard is not installed) is listed under `unmeasured`: its status says nothing about the checkout. The exit code is 0 when the scan ran and 2 when it could not scan.
+
 ## Tech stack
 
 - **Next.js 16 + React 18 + TypeScript** for the app and server API route handlers.
