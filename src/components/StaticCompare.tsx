@@ -47,20 +47,20 @@ export default function StaticCompare(props: StaticCompareProps) {
   const keyB = parseComponentKey(params.get("b"));
   const textA = keyA ? componentKeyText(keyA) : null;
   const textB = keyB ? componentKeyText(keyB) : null;
-  const [state, setState] = useState<{ a: CompareSide | null; b: CompareSide | null; message: string | null; loading: boolean }>({
+  const pair = keyA && keyB ? `${textA} ${textB}` : null;
+  const [state, setState] = useState<{ pair: string | null; a: CompareSide | null; b: CompareSide | null; message: string | null }>({
+    pair: null,
     a: null,
     b: null,
     message: null,
-    loading: false,
   });
 
   useEffect(() => {
-    if (!keyA || !keyB) {
-      setState({ a: null, b: null, message: null, loading: false });
-      return;
-    }
+    if (!keyA || !keyB || !pair || textA === textB) return;
     let cancelled = false;
-    setState((current) => ({ ...current, loading: true, message: null }));
+    const done = (next: Omit<typeof state, "pair">) => {
+      if (!cancelled) setState({ pair, ...next });
+    };
     (async () => {
       const index = await readJson<IndexFile>("index.json");
       const find = (key: ComponentKey) =>
@@ -68,39 +68,35 @@ export default function StaticCompare(props: StaticCompareProps) {
       const entryA = find(keyA);
       const entryB = find(keyB);
       const missing = [entryA ? null : textA, entryB ? null : textB].filter(Boolean);
-      if (missing.length > 0) {
-        if (!cancelled) {
-          setState({ a: null, b: null, loading: false, message: `Not on the component list: ${missing.join(" and ")}.` });
-        }
+      if (!entryA || !entryB) {
+        done({ a: null, b: null, message: `Not on the component list: ${missing.join(" and ")}.` });
         return;
       }
       const [latestA, latestB] = await Promise.all([
-        readJson<LatestFile>(`${entryA!.path}/latest.json`),
-        readJson<LatestFile>(`${entryB!.path}/latest.json`),
+        readJson<LatestFile>(`${entryA.path}/latest.json`),
+        readJson<LatestFile>(`${entryB.path}/latest.json`),
       ]);
-      if (!cancelled) {
-        setState({ a: sideOf(entryA!, latestA, props), b: sideOf(entryB!, latestB, props), message: null, loading: false });
-      }
-    })().catch(() => {
-      if (!cancelled) setState({ a: null, b: null, loading: false, message: "The data of this site could not be read." });
-    });
+      done({ a: sideOf(entryA, latestA, props), b: sideOf(entryB, latestB, props), message: null });
+    })().catch(() => done({ a: null, b: null, message: "The data of this site could not be read." }));
     return () => {
       cancelled = true;
     };
-    // The keys are compared as text, so a new search params object for the same pair does not reload.
+    // The pair is compared as text, so a new search params object for the same pair does not reload.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [textA, textB]);
+  }, [pair]);
+
+  const current = pair !== null && state.pair === pair ? state : null;
 
   return (
     <ComparePageView
       options={props.options}
       selectedA={textA}
       selectedB={textB}
-      a={state.a}
-      b={state.b}
+      a={current?.a ?? null}
+      b={current?.b ?? null}
       functionalityNames={props.functionalityNames}
-      message={keyA && keyB && textA === textB ? "Choose two different components." : state.message}
-      loading={state.loading}
+      message={pair && textA === textB ? "Choose two different components." : (current?.message ?? null)}
+      loading={pair !== null && textA !== textB && current === null}
     />
   );
 }
