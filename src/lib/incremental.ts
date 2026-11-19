@@ -38,7 +38,7 @@ export interface ScanModeDecision {
 }
 
 /** FULL_SCAN_INTERVAL_DAYS as a whole number of 1 or more, else the default of 7. */
-export function readFullScanIntervalDays(env: NodeJS.ProcessEnv = process.env): number {
+export function readFullScanIntervalDays(env: Record<string, string | undefined> = process.env): number {
   const days = Number(env.FULL_SCAN_INTERVAL_DAYS);
   return Number.isInteger(days) && days >= 1 ? days : DEFAULT_FULL_SCAN_INTERVAL_DAYS;
 }

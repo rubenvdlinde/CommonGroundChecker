@@ -222,6 +222,32 @@ describe("AnalysisDetailPage", () => {
     expect(screen.getByText("Measured against checklist version 2026.1")).toBeTruthy();
   });
 
+  it("says the code checks were reused in a partial scan, and marks the reused criteria", async () => {
+    const reusedFrom = { analysisId: "analysis-0", checkedAt: "2026-11-12T02:00:00Z", commit: "abc1234def5678abc1234def5678abc1234def56" };
+    getRepoHistory.mockResolvedValue({
+      repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },
+      analyses: [
+        {
+          id: "analysis-1",
+          checkedAt: "2026-11-19T02:00:00Z",
+          score: 71,
+          scanMode: "partial",
+          scanDurationSeconds: 4.2,
+          results: [{ ...result("complexity", "pass"), reusedFrom }, result("usage", "info")],
+        },
+      ],
+    });
+
+    render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
+
+    expect(
+      screen.getByText(
+        "Code unchanged since 12 November 2026 (commit abc1234): code checks reused, outside-world checks run again. Scan took 4.2 s."
+      )
+    ).toBeTruthy();
+    expect(screen.getAllByText("reused")).toHaveLength(1);
+  });
+
   it("says the checklist version is unknown for an older analysis", async () => {
     getRepoHistory.mockResolvedValue({
       repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },

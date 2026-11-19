@@ -135,7 +135,10 @@ vi.mock("@/lib/checkers/semver", () => ({ checkSemver: mocks.checkSemver }));
 vi.mock("@/lib/checkers/fiveLayer", () => ({ checkFiveLayer: mocks.checkFiveLayer }));
 vi.mock("@/lib/checkers/helmchart", () => ({ checkHelmChart: mocks.checkHelmChart }));
 vi.mock("@/lib/checkers/usage", () => ({ checkUsage: mocks.checkUsage }));
-vi.mock("@/lib/checkers/config", () => ({ getActiveScoringConfig: mocks.getActiveScoringConfig }));
+vi.mock("@/lib/checkers/config", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/checkers/config")>()),
+  getActiveScoringConfig: mocks.getActiveScoringConfig,
+}));
 
 import { runChecks } from "@/lib/checkers/index";
 import { CATEGORY_ORDER, CATEGORY_WEIGHTS, CHECKLIST_VERSION, CRITERION_VERSIONS } from "@/lib/criteria";
@@ -869,5 +872,127 @@ describe("runChecks", () => {
     await runChecks("https://github.com/org/repo", {}, progressCb);
     expect(progressSteps.length).toBeGreaterThan(0);
     expect(progressSteps[0].step).toContain("Fetching repository metadata");
+  });
+
+  describe("a scan of an unchanged commit", () => {
+    const COMMIT = "development".padEnd(40, "0");
+
+    function setMandatoryScoring() {
+      mocks.getActiveScoringConfig.mockResolvedValue({
+        id: "cfg-ref",
+        config: {
+          criterionConfigByCheckId: criterionConfig(1, "mandatory"),
+          statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+          complexityThreshold: 12,
+          complexityMaxCcnThreshold: 20,
+          spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+        },
+      });
+    }
+
+    function useFullScan() {
+      useScanRefProvider();
+      setMandatoryScoring();
+      return runChecks("https://github.com/org/repo", { ref: "development" });
+    }
+
+    function gitClones() {
+      return childProcessMocks.spawn.mock.calls.filter(
+        ([command, args]) => command === "git" && (args as string[])[0] === "clone"
+      ).length;
+    }
+
+    it("reuses the code checks, runs the outside-world checks again and recomputes the ratings", async () => {
+      const first = await useFullScan();
+      expect(first).toMatchObject({ scanMode: "full", scanModeReason: "there is no previous analysis" });
+      expect(first.toolFingerprint).toMatch(/^sha256:[0-9a-f]{32}$/);
+      expect(first.inputsFingerprint).toMatch(/^sha256:[0-9a-f]{32}$/);
+      expect(first.scanDurationSeconds).toBeGreaterThanOrEqual(0);
+
+      vi.clearAllMocks();
+      mocks.checkDockerImage.mockReturnValue(resultFor("dockerimage", "fail"));
+      useScanRefProvider();
+      setMandatoryScoring();
+      const previous = { id: "analysis-1", ...first };
+
+      const second = await runChecks("https://github.com/org/repo", { ref: "development", previousAnalysis: previous });
+
+      expect(second).toMatchObject({ scanMode: "partial", scanModeReason: "the code did not change", scannedCommit: COMMIT });
+      expect(gitClones()).toBe(0);
+      for (const check of [
+        mocks.checkComplexity,
+        mocks.checkMaintainability,
+        mocks.checkCodeMetrics,
+        mocks.checkOwaspSecureCoding,
+        mocks.checkSourceCode,
+        mocks.checkDocker,
+        mocks.checkLicense,
+        mocks.checkEuplLicense,
+      ]) {
+        expect(check).not.toHaveBeenCalled();
+      }
+      for (const check of [mocks.checkDockerImage, mocks.checkUsage, mocks.checkMaintenance, mocks.checkSemver, mocks.checkAdrValidator]) {
+        expect(check).toHaveBeenCalledTimes(1);
+      }
+      // publiccode.yml is still read for the repository details and the usage check.
+      expect(mocks.analysePublicCode).toHaveBeenCalledTimes(1);
+
+      const byId = new Map(second.results.map((result) => [result.id, result]));
+      const from = { analysisId: "analysis-1", checkedAt: first.checkedAt, commit: COMMIT };
+      expect(byId.get("complexity")).toMatchObject({ status: "pass", reusedFrom: from, requirementLevel: "mandatory" });
+      expect(byId.get("sourcecode")?.reusedFrom).toEqual(from);
+      expect(byId.get("publiccode")?.reusedFrom).toEqual(from);
+      expect(byId.get("dockerimage")).toMatchObject({ status: "fail" });
+      expect(byId.get("dockerimage")).not.toHaveProperty("reusedFrom");
+      expect(byId.get("usage")).not.toHaveProperty("reusedFrom");
+      expect(second.results.map((result) => result.id)).toEqual(first.results.map((result) => result.id));
+      // The fresh dockerimage fail lowers the score and the rating, and adds a reason to the verdict.
+      expect(second.score).toBeLessThan(first.score);
+      expect(second.rating ?? 0).toBeLessThan(first.rating ?? 0);
+      expect(second.endorsement.reasons.length).toBeGreaterThan(first.endorsement.reasons.length);
+    });
+
+    it("keeps pointing at the scan that measured a result over a chain of partial scans", async () => {
+      const first = await useFullScan();
+      vi.clearAllMocks();
+      useScanRefProvider();
+      const second = await runChecks("https://github.com/org/repo", {
+        ref: "development",
+        previousAnalysis: { id: "analysis-1", ...first },
+      });
+      vi.clearAllMocks();
+      useScanRefProvider();
+      const third = await runChecks("https://github.com/org/repo", {
+        ref: "development",
+        previousAnalysis: { id: "analysis-2", ...second },
+      });
+
+      expect(third.scanMode).toBe("partial");
+      expect(third.results.find((result) => result.id === "complexity")?.reusedFrom?.analysisId).toBe("analysis-1");
+    });
+
+    it.each([
+      ["the commit changed", { scannedCommit: "f".repeat(40) }, {}, "the code changed"],
+      ["the checklist version changed", { checklistVersion: "2025.9" }, {}, "the checklist version changed"],
+      ["the tools changed", { toolFingerprint: "sha256:old" }, {}, "the checker or its tools changed"],
+      ["a hint changed", {}, { helmChartLocations: ["charts/app"] }, "the scan settings changed"],
+      ["a full scan is asked for", {}, { full: true }, "a full scan was asked for"],
+      ["the code checks are a week old", { checkedAt: "2020-01-01T00:00:00.000Z" }, {}, "the code checks are 7 days or more old"],
+    ])("runs every check when %s", async (_label, previousOverrides, options, reason) => {
+      const first = await useFullScan();
+      vi.clearAllMocks();
+      useScanRefProvider();
+
+      const second = await runChecks("https://github.com/org/repo", {
+        ref: "development",
+        ...options,
+        previousAnalysis: { id: "analysis-1", ...first, ...previousOverrides },
+      });
+
+      expect(second).toMatchObject({ scanMode: "full", scanModeReason: reason });
+      expect(mocks.checkComplexity).toHaveBeenCalledTimes(1);
+      expect(gitClones()).toBe(1);
+      expect(second.results.some((result) => result.reusedFrom)).toBe(false);
+    });
   });
 });

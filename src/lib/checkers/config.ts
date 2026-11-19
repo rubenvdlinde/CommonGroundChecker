@@ -106,6 +106,24 @@ export const CRITERION_FRESHNESS_BY_CHECK_ID: Record<string, CheckFreshness> = {
   security: "per-commit",
   sbom: "per-commit",
   fivelayer: "per-commit",
+  // Criteria of other branches, classed here so a merge needs no second pass.
+  licenceconsistency: "per-commit",
+  spdxheaders: "per-commit",
+  opentrack: "per-commit",
+  testcoderatio: "per-commit",
+  duplication: "per-commit",
+  sonarqube: "per-commit",
+  coupling: "per-commit",
+  size: "per-commit",
+  standards: "per-commit",
+  secretscanning: "per-commit",
+  // Known vulnerabilities (OSV), freshness and activity of the locked dependencies.
+  opensourcehealth: "per-run",
+  openssfscorecard: "per-run",
+  // CHAOSS metrics and SLA response and fix times.
+  projecthealth: "per-run",
+  // The Artifact Hub listing and its Trivy report.
+  artifacthub: "per-run",
   // Whether the image is still in its registry.
   dockerimage: "per-run",
   // Downloads, installs and declared users change without a commit.

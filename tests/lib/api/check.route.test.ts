@@ -4,12 +4,14 @@ const mocks = vi.hoisted(() => ({
   runChecks: vi.fn(),
   postRepository: vi.fn(),
   postRepositoryAnalysis: vi.fn(),
+  getRepoHistory: vi.fn(),
 }));
 
 vi.mock("@/lib/checkers", () => ({ runChecks: mocks.runChecks }));
 vi.mock("@/lib/apiClient", () => ({
   postRepository: mocks.postRepository,
   postRepositoryAnalysis: mocks.postRepositoryAnalysis,
+  getRepoHistory: mocks.getRepoHistory,
   toPubliccodeRepositoryMetadata: () => ({}),
 }));
 
@@ -63,6 +65,7 @@ describe("POST /api/check with a ref", () => {
     mocks.runChecks.mockResolvedValue(report());
     mocks.postRepository.mockResolvedValue({ id: "repo-id" });
     mocks.postRepositoryAnalysis.mockResolvedValue({});
+    mocks.getRepoHistory.mockRejectedValue(new Error("Repository not found"));
   });
 
   it("scans the requested ref and stores which ref and commit were scanned", async () => {
@@ -133,5 +136,72 @@ describe("POST /api/check with a ref", () => {
 
     expect(await response.text()).toContain("Invalid ref");
     expect(mocks.runChecks).not.toHaveBeenCalled();
+  });
+});
+
+describe("POST /api/check and a previous analysis", () => {
+  const previous = {
+    id: "analysis-1",
+    checkedAt: "2026-11-18T02:00:00.000Z",
+    scannedCommit: SHA,
+    checklistVersion: "2026.1",
+    toolFingerprint: "sha256:tools",
+    inputsFingerprint: "sha256:inputs",
+    results: [{ id: "complexity", title: "Complexity", description: "", status: "pass", message: "ok" }],
+  };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mocks.runChecks.mockResolvedValue({
+      ...report(),
+      scanMode: "partial",
+      scanModeReason: "the code did not change",
+      scanDurationSeconds: 4.2,
+      toolFingerprint: "sha256:tools",
+      inputsFingerprint: "sha256:inputs",
+    });
+    mocks.postRepository.mockResolvedValue({ id: "repo-id" });
+    mocks.postRepositoryAnalysis.mockResolvedValue({});
+    mocks.getRepoHistory.mockResolvedValue({ repository: {}, analyses: [previous] });
+  });
+
+  it("hands the latest stored analysis to the checks and stores how the scan ran, from both routes", async () => {
+    await POST(request("http://localhost/api/check", { repoUrl: "https://github.com/org/repo" }));
+    await (await POST_STREAM(request("http://localhost/api/check/stream", { repoUrl: "https://github.com/org/repo" }))).text();
+
+    expect(mocks.getRepoHistory).toHaveBeenCalledWith("org", "repo", 1);
+    for (const [, options] of mocks.runChecks.mock.calls) {
+      expect(options).toMatchObject({ full: false, previousAnalysis: previous });
+    }
+    expect(mocks.postRepositoryAnalysis).toHaveBeenCalledTimes(2);
+    for (const [, input] of mocks.postRepositoryAnalysis.mock.calls) {
+      expect(input).toMatchObject({
+        scanMode: "partial",
+        scanDurationSeconds: 4.2,
+        toolFingerprint: "sha256:tools",
+        inputsFingerprint: "sha256:inputs",
+      });
+    }
+  });
+
+  it("runs every check with full: true and does not read the previous analysis", async () => {
+    await POST(request("http://localhost/api/check", { repoUrl: "https://github.com/org/repo", full: true }));
+    await (
+      await POST_STREAM(request("http://localhost/api/check/stream", { repoUrl: "https://github.com/org/repo", full: true }))
+    ).text();
+
+    expect(mocks.getRepoHistory).not.toHaveBeenCalled();
+    for (const [, options] of mocks.runChecks.mock.calls) {
+      expect(options).toMatchObject({ full: true, previousAnalysis: null });
+    }
+  });
+
+  it("scans fully when the store cannot be reached", async () => {
+    mocks.getRepoHistory.mockRejectedValue(new Error("connect ECONNREFUSED"));
+
+    const response = await POST(request("http://localhost/api/check", { repoUrl: "https://github.com/org/repo" }));
+
+    expect(response.status).toBe(200);
+    expect(mocks.runChecks.mock.calls[0][1]).toMatchObject({ previousAnalysis: null });
   });
 });
