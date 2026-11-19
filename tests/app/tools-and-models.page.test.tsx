@@ -80,6 +80,10 @@ describe("what the checker reports", () => {
       )
     ).toBeTruthy();
     expect(within(section).getByText(/most components will not reach 4 stars/)).toBeTruthy();
+    expect(
+      within(section).getByText(/threshold the Common Ground programme uses to decide whether to adopt a component as supported/)
+    ).toBeTruthy();
+    expect(section.textContent).not.toMatch(/advice/i);
   });
 
   it("names Simian 4.2.1 as the estimate's duplication cross-check and jscpd 4.0.5 only as replaced", () => {

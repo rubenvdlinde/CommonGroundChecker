@@ -137,7 +137,8 @@ export const THREE_SYSTEMS: { id: string; title: string; paragraphs: string[] }[
     id: "verdict",
     title: "The verdict: suitable for Common Ground",
     paragraphs: [
-      "The verdict is advice for a buyer, not a condition for being listed. A component is suitable for Common Ground when all four of these hold: no mandatory criterion fails, the overall rating is at least 2.5, it has a valid maintenance contract, and the maintainability estimate is at least 4 stars (a rating of 3.5 or more). 4 stars is the level of the SIG/TÜViT certification.",
+      "Suitable for Common Ground is the threshold the Common Ground programme uses to decide whether to adopt a component as supported. It is not a condition for being listed: a component that is not yet suitable is still listed.",
+      "A component is suitable for Common Ground when all four of these hold: no mandatory criterion fails, the overall rating is at least 2.5, it has a valid maintenance contract, and the maintainability estimate is at least 4 stars (a rating of 3.5 or more). 4 stars is the level of the SIG/TÜViT certification.",
       "By design, most components will not reach 4 stars on maintainability. SIG calibrates its model so that 5% of systems get 5 stars and 30% get 4, so about one in three reaches 4 stars or more. The open benchmark is spread the same way: on each unit property and on duplication, 21 of its 60 repositories rate 4 or 5 stars. A component below 4 stars is not bad; it is not yet at certification level.",
     ],
   },
