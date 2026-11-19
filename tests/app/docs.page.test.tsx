@@ -101,6 +101,9 @@ describe("RatingGuidePage", () => {
     expect(screen.getByRole("heading", { level: 2, name: "The checklist and its versions" })).toBeTruthy();
     expect(screen.getByText(new RegExp(`This is version ${CHECKLIST_VERSION.replace(".", "\\.")}\\.`))).toBeTruthy();
     expect(screen.getByText(/Until that date a fail shows as a warning/)).toBeTruthy();
+    expect(screen.getByText(/decides within\s+the mandate of the ALV/)).toBeTruthy();
+    expect(screen.getByText(/College voor Dienstverleningszaken/)).toBeTruthy();
+    expect(document.body.textContent).not.toMatch(/The community decides|Forum Standaardisatie|management organisation/);
     expect(screen.getByRole("link", { name: "Propose a change to the checklist" }).getAttribute("href")).toBe(
       CHECKLIST_CHANGE_PROPOSAL_URL
     );
@@ -113,6 +116,14 @@ describe("RatingGuidePage", () => {
     expect(text).toMatch(/threshold the Common Ground programme uses to decide whether to adopt\s+a component as supported/);
     expect(text).toMatch(/It is not a condition for being listed/);
     expect(text).not.toMatch(/advice/i);
+  });
+
+  it("says the checker does not certify and leaves a SIG certificate to the regievoerder", () => {
+    render(<RatingGuidePage />);
+
+    const text = document.body.textContent ?? "";
+    expect(text).toMatch(/4 stars is the level at which SIG and TÜViT certify maintainability\. The checker does not\s+certify/);
+    expect(text).toMatch(/up to VNG as\s+regievoerder\. The ALV papers do not ask for one\./);
   });
 });
 

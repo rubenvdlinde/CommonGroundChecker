@@ -7,7 +7,7 @@ export const MIN_RATING = 0.5;
 export const MAX_RATING = 5.5;
 /** The overall rating a component needs to be suitable for Common Ground. */
 export const PASSING_RATING = 2.5;
-/** The maintainability stars a component needs to be suitable for Common Ground: the SIG/TÜViT certification level. */
+/** The maintainability stars a component needs to be suitable for Common Ground: the level at which SIG and TÜViT certify. */
 export const PASSING_MAINTAINABILITY_STARS = 4;
 /** The maintainability rating where those stars start. */
 export const PASSING_MAINTAINABILITY_RATING = minimumRatingFor(PASSING_MAINTAINABILITY_STARS);
