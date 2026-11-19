@@ -71,7 +71,10 @@ export default async function FunctionalitiesPage() {
             component list
           </a>{" "}
           by pull request. {plural(mapped, "component lists", "components list")} functionalities now
-          {drafts > 0 ? `; ${drafts} of those lists are a draft that the component owners still have to confirm` : ""}.
+          {drafts > 0
+            ? `; ${drafts} of those ${drafts === 1 ? "lists is" : "lists are"} a draft that the component owners still have to confirm`
+            : ""}
+          .
         </p>
       </section>
 

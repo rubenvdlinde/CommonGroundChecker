@@ -15,7 +15,9 @@ describe("checkConfig", () => {
   it("accepts the component list and SLAs in the repository", () => {
     const repositories = parseYaml(readFileSync(path.join(root, "config/repositories.yml"), "utf-8"));
     const slas = parseYaml(readFileSync(path.join(root, "config/slas.yml"), "utf-8"));
+    const functionalities = parseYaml(readFileSync(path.join(root, "config/functionalities.yml"), "utf-8"));
     expect(checkConfig(repositories, slas)).toEqual([]);
+    expect(checkConfig(repositories, slas, functionalities)).toEqual([]);
     expect((repositories as { repositories: unknown[] }).repositories.length).toBeGreaterThan(0);
   });
 
@@ -120,6 +122,64 @@ describe("checkRemote", () => {
       ["error", "https://github.com/a/private"],
       ["warning", "https://github.com/a/without"],
       ["warning", "https://gitea.example/a/b"],
+    ]);
+  });
+});
+
+describe("checkConfig with the functionality taxonomy", () => {
+  const taxonomy = {
+    source: { name: "GEMMA", licence: "EUPL-1.2" },
+    referenceComponents: [{ id: "zrc", name: "Zaakregistratiecomponent", functionalities: ["registreren-en-delen-van-zaken"] }],
+    functionalities: [{ id: "registreren-en-delen-van-zaken", name: "Registreren en delen van zaken" }],
+  };
+  const entry = (fields: Record<string, unknown>) => ({ repositories: [{ url: "https://github.com/open-zaak/open-zaak", ...fields }] });
+
+  it("accepts functionalities from the taxonomy", () => {
+    expect(checkConfig(entry({ functionalities: ["registreren-en-delen-van-zaken"], functionalitiesDraft: true }), noSlas, taxonomy)).toEqual([]);
+  });
+
+  it("rejects a functionality the taxonomy does not know", () => {
+    expect(checkConfig(entry({ functionalities: ["teleporteren"] }), noSlas, taxonomy)).toEqual([
+      {
+        level: "error",
+        subject: "https://github.com/open-zaak/open-zaak",
+        message: "Functionality teleporteren is not in config/functionalities.yml.",
+      },
+    ]);
+  });
+
+  it("rejects an id that is not a slug, and a functionality listed twice", () => {
+    const findings = checkConfig(
+      entry({ functionalities: ["Registreren en delen van zaken", "registreren-en-delen-van-zaken", "registreren-en-delen-van-zaken"] }),
+      noSlas,
+      taxonomy
+    );
+    expect(findings.map((finding) => finding.message).join(" ")).toMatch(/must match pattern/);
+    expect(findings.map((finding) => finding.message).join(" ")).toMatch(/duplicate items/);
+  });
+
+  it("warns about a draft mark without functionalities", () => {
+    expect(checkConfig(entry({ functionalitiesDraft: true }), noSlas, taxonomy)).toEqual([
+      {
+        level: "warning",
+        subject: "https://github.com/open-zaak/open-zaak",
+        message: "functionalitiesDraft is set, but no functionalities are listed.",
+      },
+    ]);
+  });
+
+  it("rejects a broken taxonomy", () => {
+    const broken = {
+      ...taxonomy,
+      referenceComponents: [{ id: "zrc", name: "Zaakregistratiecomponent", functionalities: ["onbekend"] }],
+      functionalities: [taxonomy.functionalities[0], taxonomy.functionalities[0]],
+    };
+    expect(checkConfig(entry({}), noSlas, broken).map((finding) => finding.message)).toEqual([
+      "Functionality registreren-en-delen-van-zaken is listed more than once.",
+      "Reference component zrc names unknown functionality onbekend.",
+    ]);
+    expect(checkConfig(entry({}), noSlas, { functionalities: [] }).map((finding) => finding.message)).toEqual([
+      "Lists no functionalities.",
     ]);
   });
 });

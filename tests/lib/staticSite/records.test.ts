@@ -149,6 +149,33 @@ describe("buildIndexEntry and buildIndexFile", () => {
     expect(entry.latestAnalysis).not.toHaveProperty("results");
   });
 
+  it("lists the functionalities of the component list and the evidence of the standards result", () => {
+    const evidence = ["Found in the repository, not declared: Zaken API 1.5.1 in src/openapi.yaml (by title)"];
+    const config = {
+      url: "https://github.com/open-zaak/open-zaak",
+      functionalities: ["registreren-en-delen-van-zaken"],
+      functionalitiesDraft: true,
+    };
+    const latest = buildLatestFile(
+      input({ config, report: report({ results: [result("standards", "info", { evidence })] }) }),
+      null
+    );
+    expect(latest.repository).toMatchObject({ functionalities: ["registreren-en-delen-van-zaken"], functionalitiesDraft: true });
+    const entry = buildIndexEntry(
+      { path, dataDir: "", config, slas: [], latest, history: null, lastError: null },
+      now
+    );
+    expect(entry).toMatchObject({ functionalities: ["registreren-en-delen-van-zaken"], functionalitiesDraft: true });
+    expect(entry.latestAnalysis?.standardsEvidence).toEqual(evidence);
+
+    const withoutStandards = buildIndexEntry(
+      { path, dataDir: "", config: { url: config.url }, slas: [], latest: buildLatestFile(input(), null), history: null, lastError: null },
+      now
+    );
+    expect(withoutStandards).toMatchObject({ functionalities: [], functionalitiesDraft: false });
+    expect(withoutStandards.latestAnalysis?.standardsEvidence).toBeNull();
+  });
+
   it("lists a repository without a scan, and a retired one as not followed", () => {
     const entry = buildIndexEntry(
       {
