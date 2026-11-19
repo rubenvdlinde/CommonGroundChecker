@@ -27,6 +27,7 @@ import { checkSemver } from "./semver";
 import { checkCopyrightOwner } from "./copyrightOwner";
 import { checkOwaspSecureCoding } from "./owaspSecureCoding";
 import { checkEuplLicense } from "./eupl";
+import { checkStandards } from "./standards";
 import {
   getActiveScoringConfig,
 } from "./config";
@@ -156,6 +157,7 @@ export async function runChecks(
     checkMaintenance(context, tree),
     checkFiveLayer(context, tree, meta),
     checkHelmChart(context, tree, options?.helmChartLocations ?? []),
+    checkStandards(context, tree, options?.apiSpecificationLocations ?? []),
   ]);
   const complexityPromise = checkComplexity(
     owner,
@@ -197,7 +199,7 @@ export async function runChecks(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, standards], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -264,6 +266,7 @@ export async function runChecks(
     semver,
     fivelayer,
     helmchart,
+    standards,
   ];
 
   const categoryAggregates = results.reduce(
@@ -355,6 +358,7 @@ export async function runChecks(
     semver,
     fivelayer,
     helmchart,
+    standards,
   ].map((result) => ({
     ...result,
     requirementLevel:
@@ -366,7 +370,8 @@ export async function runChecks(
   const endorsement = computeEndorsement(resultsWithRequirementLevels, rating, scoringConfig);
   const resultsWithStars = resultsWithRequirementLevels.map((result) => ({
     ...result,
-    starRating: result.starRating ?? statusToStars(result.status),
+    starRating:
+      result.starRating ?? (result.requirementLevel === "informative" ? undefined : statusToStars(result.status)),
   }));
 
   return {

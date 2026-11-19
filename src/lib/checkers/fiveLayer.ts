@@ -2,6 +2,7 @@ import { load as loadYaml } from "js-yaml";
 import type { CheckResult } from "../types";
 import type { RepoContext } from "../providers/types";
 import { buildLegacyRepoContext } from "./compat";
+import { COMMON_GROUND_LAYER_URI } from "../standards";
 
 type LayerKey = "interaction" | "process" | "integration" | "service" | "data";
 type SignalStrength = "strong" | "weak";
@@ -245,7 +246,7 @@ async function readPublicCode(
 
 // A component declares its layer in publiccode.yml as a `supports` entry whose id is LAYER_URI#<layer>.
 // `supports` takes any URI; country sections are deprecated, and none is defined for NL.
-export const LAYER_URI = "https://commonground.nl/cms/view/54476261/5-lagen-model";
+export const LAYER_URI = COMMON_GROUND_LAYER_URI;
 
 const LAYER_ALIASES: Record<string, LayerKey> = {
   interaction: "interaction",

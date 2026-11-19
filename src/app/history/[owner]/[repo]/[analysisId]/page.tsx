@@ -255,7 +255,10 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
                         message={result.message}
                         evidence={result.evidence}
                         referenceUrl={result.referenceUrl}
-                        starRating={result.starRating ?? statusToStars(result.status)}
+                        starRating={
+                          result.starRating ??
+                          (result.requirementLevel === "informative" ? undefined : statusToStars(result.status))
+                        }
                       />
                     ))}
                   </div>

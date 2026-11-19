@@ -28,7 +28,7 @@ const EXPECTED_MODEL: Record<string, string[]> = {
   maintainability: ["analysability", "modifiability", "testability", "modularity", "reusability", "testing"],
   governance: ["licensing", "ownership", "maintenance", "community-documents"],
   "deployment-operations": ["containerisation", "release-management"],
-  architecture: ["api", "layering"],
+  architecture: ["api", "layering", "standards"],
 };
 
 async function renderCategory(slug: string) {
@@ -69,9 +69,9 @@ describe("rating docs data", () => {
     }
   });
 
-  it("only leaves layering out of the rating", () => {
+  it("only leaves layering and standards out of the rating", () => {
     const uncounted = RATING_DOCS.flatMap((category) => category.aspects.filter((a) => !a.counted).map((a) => a.id));
-    expect(uncounted).toEqual(["layering"]);
+    expect(uncounted).toEqual(["layering", "standards"]);
   });
 
   it("builds the anchor link of an aspect", () => {

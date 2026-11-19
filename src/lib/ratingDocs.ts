@@ -184,6 +184,10 @@ const SOURCES = {
     url: "https://github.com/Logius-standaarden/API-Design-Rules",
   },
   spectral: { title: "Spectral, the OpenAPI linter", url: "https://github.com/stoplightio/spectral" },
+  publiccodeSupports: {
+    title: "publiccode.yml standard, the supports key",
+    url: "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
+  },
   fiveLayerModel: {
     title: "Common Ground five-layer model (GEMMA Online)",
     url: "https://www.gemmaonline.nl/wiki/Common_Ground_vijflaagsmodel",
@@ -631,6 +635,25 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         ],
         counted: false,
         sources: [SOURCES.fiveLayerModel],
+      },
+      {
+        id: "standards",
+        title: "Standards",
+        meaning:
+          "Which Dutch government standards the component supports, and in which version, such as the ZGW APIs or the NL API Design Rules. A component declares them in publiccode.yml under supports, as the Common Ground profile for publiccode.yml describes.",
+        criteria: [
+          {
+            checkId: "standards",
+            name: "Supported standards",
+            tool: "publiccode.yml supports, compared with the info.title and info.version of the OpenAPI files",
+          },
+        ],
+        rating: [
+          "The check lists the declared standards and versions, and names an entry that is not in its registry of known standards. It compares them with the OpenAPI files in the repository: declared and found, declared but not found, and found but not declared.",
+          "The result is informative. It has no stars and does not count in the Architecture rating or in the verdict.",
+        ],
+        counted: false,
+        sources: [SOURCES.publiccodeSupports, SOURCES.apiDesignRules],
       },
     ],
   },

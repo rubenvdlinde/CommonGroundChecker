@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import type { PublicCodeData, PublicCodeDependency, PublicCodeParty } from "@/lib/types";
+import { describeDeclaredStandard, resolveSupportsId } from "@/lib/standards";
 
 interface PublicCodeSectionProps {
   data: PublicCodeData;
@@ -142,6 +143,21 @@ export default function PublicCodeSection({ data }: PublicCodeSectionProps) {
         {data.softwareType && <Field label="Software type">{data.softwareType}</Field>}
         {joined(data.platforms) && <Field label="Platforms">{joined(data.platforms)}</Field>}
         {joined(data.categories) && <Field label="Categories">{joined(data.categories)}</Field>}
+        {data.supports.length > 0 && (
+          <Field label="Supported standards">
+            <ul>
+              {data.supports.map((id) => (
+                <li key={id}>
+                  {isWebUrl(id) ? (
+                    <LinkOrText value={id} label={describeDeclaredStandard(resolveSupportsId(id))} />
+                  ) : (
+                    describeDeclaredStandard(resolveSupportsId(id))
+                  )}
+                </li>
+              ))}
+            </ul>
+          </Field>
+        )}
         {audience.length > 0 && <Field label="Intended audience">{audience.join("; ")}</Field>}
         {joined(data.usedBy) && <Field label="Used by">{joined(data.usedBy)}</Field>}
         {data.organisation && partyLine(data.organisation) && (

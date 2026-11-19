@@ -96,3 +96,31 @@ describe("PublicCodeSection", () => {
     expect(screen.queryByText("Depends on")).toBeNull();
   });
 });
+
+describe("PublicCodeSection supported standards", () => {
+  afterEach(() => cleanup());
+
+  it("names the declared standards, with a link for a web URI", () => {
+    render(
+      <PublicCodeSection
+        data={data({
+          supports: [
+            { id: "https://vng-realisatie.github.io/gemma-zaken/standaard/zaken/redoc-1.5.1.html" },
+            { id: "alias:gdpr" },
+            { id: "urn:example:standard" },
+          ],
+        })}
+      />
+    );
+    const field = screen.getByText("Supported standards").closest("div")!;
+    expect(within(field).getByRole("link", { name: "Zaken API 1.5.1" }).getAttribute("href")).toBe(
+      "https://vng-realisatie.github.io/gemma-zaken/standaard/zaken/redoc-1.5.1.html"
+    );
+    expect(within(field).getByText("GDPR (AVG)")).toBeTruthy();
+    expect(within(field).getByText("urn:example:standard")).toBeTruthy();
+  });
+
+  it("reads the ids of a stored shape", () => {
+    expect(readPublicCodeData({ supports: ["alias:gdpr"] })?.supports).toEqual(["alias:gdpr"]);
+  });
+});

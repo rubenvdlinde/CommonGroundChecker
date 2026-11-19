@@ -87,6 +87,7 @@ export const ASPECT_MODEL: CategoryAspects[] = [
     aspects: [
       { id: "api", title: "API", source: { type: "criteria", checkIds: ["openapi", "adrvalidator"] } },
       { id: "layering", title: "Layering", source: { type: "criteria", checkIds: ["fivelayer"] }, weight: 0 },
+      { id: "standards", title: "Standards", source: { type: "criteria", checkIds: ["standards"] }, weight: 0 },
     ],
   },
   {

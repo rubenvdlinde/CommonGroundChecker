@@ -101,6 +101,8 @@ export interface PublicCodeData {
   roadmap: string | null;
   developmentStatus: string | null;
   softwareType: string | null;
+  /** The `id` of every `supports` entry: standards, regulations and the Common Ground layer */
+  supports: string[];
   intendedAudience: {
     countries: string[];
     unsupportedCountries: string[];
