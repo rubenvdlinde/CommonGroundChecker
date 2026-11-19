@@ -80,6 +80,14 @@ describe("MaintainedSection", () => {
     expect(screen.getByText(/never gives stars/)).toBeTruthy();
   });
 
+  it("leaves out the admin form when read-only, and points to config/slas.yml", () => {
+    renderSection({ readOnly: true, initialUsage: { ...twoUsers, slas: [sla] } });
+    expect(screen.queryByText("Record SLAs (admin)")).toBeNull();
+    expect(screen.queryByLabelText("Admin token")).toBeNull();
+    expect(screen.getByRole("link", { name: "config/slas.yml" }).getAttribute("href")).toMatch(/config\/slas\.yml$/);
+    expect(screen.getByRole("list", { name: "SLAs" }).textContent).toContain("Gemeente Utrecht with Maykin Media");
+  });
+
   it("lists the declared users as self-declared", () => {
     renderSection();
 

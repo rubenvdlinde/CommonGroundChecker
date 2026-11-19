@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { RepoSummary } from "@/generated/openapi-client";
+import AddComponentPanel from "@/components/AddComponentPanel";
 import RatingBadge from "@/components/RatingBadge";
 import RepoLogo from "@/components/RepoLogo";
 import RunStatus, { runStatus } from "@/components/RunStatus";
 import { buildHistoryHref, normalizeSearchQuery, SEARCH_DEBOUNCE_MS } from "@/lib/historySearch";
 import { isRating } from "@/lib/ratings";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 
 export type SortKey = "rating" | "date" | "score";
 export type SortDirection = "asc" | "desc";
@@ -163,15 +165,18 @@ export default function HistoryPageClient({
         </div>
         <div className="pt-2">
           <a
-            href="/api/repositories/export"
+            href={IS_STATIC_SITE ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/index.json` : "/api/repositories/export"}
             className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-cg-lightblue text-cg-blue bg-cg-lightblue/10 hover:border-cg-blue hover:bg-cg-lightblue/20"
           >
-            Download CSV
+            {IS_STATIC_SITE ? "Download JSON" : "Download CSV"}
           </a>
         </div>
         <p className="text-xs text-gray-500 max-w-2xl">
-          Downloads a CSV export containing the most recent scan result for each analyzed repository.
+          {IS_STATIC_SITE
+            ? "Downloads the index of this site: the most recent scan result for each followed repository."
+            : "Downloads a CSV export containing the most recent scan result for each analyzed repository."}
         </p>
+        {IS_STATIC_SITE && <AddComponentPanel compact />}
       </section>
 
       <section

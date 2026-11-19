@@ -4,7 +4,10 @@ import FollowControl from "@/components/FollowControl";
 import RepoMeta from "@/components/RepoMeta";
 import RatingBadge from "@/components/RatingBadge";
 import UsageHistoryChart from "@/components/UsageHistoryChart";
-import { getOrganisations, getRepoHistory, getRepositoryUsage } from "@/lib/apiClient";
+import ProvidersSection from "@/components/ProvidersSection";
+import { dataSource, type StaticAnalysisExtras } from "@/lib/dataSource";
+import { IS_STATIC_SITE, STATIC_SITE_LINKS } from "@/lib/dataSource/mode";
+import { staticRepositoryParams } from "@/lib/dataSource/staticDataSource";
 import { developmentStatusOf, minUsers } from "@/lib/maintained";
 import { organisationSlugsByKey } from "@/lib/organisations";
 import { loadStoredRatings } from "@/lib/storedRatings";
@@ -52,13 +55,19 @@ function normalizeRepoMeta(raw: RepoMetaType): CheckReport["repoMeta"] {
   };
 }
 
-function summarizeStatuses(results: unknown): {
+/** Every component page in the static export; the server renders them on request. */
+export const generateStaticParams = IS_STATIC_SITE ? staticRepositoryParams : undefined;
+
+function summarizeStatuses(results: unknown, stored?: StaticAnalysisExtras["statusCounts"]): {
   pass: number;
   warn: number;
   fail: number;
   info: number;
   total: number;
 } {
+  if (stored) {
+    return { ...stored, total: stored.pass + stored.warn + stored.fail + stored.info };
+  }
   if (!Array.isArray(results)) {
     return { pass: 0, warn: 0, fail: 0, info: 0, total: 0 };
   }
@@ -91,16 +100,12 @@ function badgeClass(score: number): string {
 }
 
 export default async function RepoHistoryPage({ params }: HistoryPageProps) {
+  const source = dataSource();
   const { owner: rawOwner, repo: rawRepo } = await params;
   const owner = decodeURIComponent(rawOwner);
   const repo = decodeURIComponent(rawRepo);
 
-  let repositoryResponse;
-  try {
-    repositoryResponse = await getRepoHistory(owner, repo, 50);
-  } catch (error) {
-    repositoryResponse = null;
-  }
+  const repositoryResponse = await source.getRepoHistory(owner, repo, 50);
 
   const repository = repositoryResponse?.repository;
 
@@ -121,15 +126,11 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
   const repoMeta = normalizeRepoMeta(repository.metadata);
   const analyses = repositoryResponse?.analyses ?? [];
   const ratings = await loadStoredRatings(analyses);
-  let usage = null;
-  try {
-    usage = await getRepositoryUsage(repository.id);
-  } catch {
-    usage = null;
-  }
+  const usage = await source.getRepositoryUsage(repository.id);
+  const extras = repositoryResponse?.extras;
   let organisationSlugs: Record<string, string> = {};
   try {
-    organisationSlugs = Object.fromEntries(organisationSlugsByKey((await getOrganisations()).organisations ?? []));
+    organisationSlugs = Object.fromEntries(organisationSlugsByKey((await source.getOrganisations()).organisations ?? []));
   } catch {
     organisationSlugs = {};
   }
@@ -137,20 +138,22 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
-      <nav className="flex items-center justify-end gap-4 text-sm">
-        <Link href="/" className="text-gray-500 hover:text-cg-lightblue transition-colors">
-          Checker
-        </Link>
-        <Link href="/history" className="text-cg-lightblue hover:underline font-medium">
-          History
-        </Link>
-        <Link href="/admin" className="text-gray-500 hover:text-cg-lightblue transition-colors">
-          Admin
-        </Link>
-        <Link href="/about" className="text-gray-500 hover:text-cg-lightblue transition-colors">
-          About
-        </Link>
-      </nav>
+      {!IS_STATIC_SITE && (
+        <nav className="flex items-center justify-end gap-4 text-sm">
+          <Link href="/" className="text-gray-500 hover:text-cg-lightblue transition-colors">
+            Checker
+          </Link>
+          <Link href="/history" className="text-cg-lightblue hover:underline font-medium">
+            History
+          </Link>
+          <Link href="/admin" className="text-gray-500 hover:text-cg-lightblue transition-colors">
+            Admin
+          </Link>
+          <Link href="/about" className="text-gray-500 hover:text-cg-lightblue transition-colors">
+            About
+          </Link>
+        </nav>
+      )}
 
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <h2 className="text-2xl font-bold text-cg-blue">Repository History</h2>
@@ -159,7 +162,7 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
             Search another repository
           </Link>
           <Link href="/" className="text-cg-lightblue hover:underline">
-            Run new check
+            {IS_STATIC_SITE ? "Add a component" : "Run new check"}
           </Link>
         </div>
       </div>
@@ -174,19 +177,42 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
         minUsers={minimumUsers}
         today={new Date().toISOString().slice(0, 10)}
         organisationSlugs={organisationSlugs}
+        readOnly={IS_STATIC_SITE}
       />
+
+      {extras && <ProvidersSection providers={extras.providers} listUrl={STATIC_SITE_LINKS.componentList} />}
 
       <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">Users over time</h3>
         <UsageHistoryChart analyses={analyses} minUsers={minimumUsers} />
       </section>
 
-      <FollowControl
-        repoId={repository.id}
-        initialFollowed={repository.followed ?? false}
-        initialCheckIntervalHours={repository.checkIntervalHours ?? null}
-        initialNextCheckAt={repository.nextCheckAt ?? null}
-      />
+      {IS_STATIC_SITE ? (
+        <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-2">
+          <h3 className="text-lg font-semibold text-gray-800">Follow</h3>
+          {extras?.retired ? (
+            <p className="text-sm text-gray-700">
+              Retired on {extras.retired.on}: {extras.retired.reason}. It is no longer scanned; these are its last results.
+            </p>
+          ) : (
+            <p className="text-sm text-gray-700">
+              On the{" "}
+              <a href={STATIC_SITE_LINKS.componentList} className="text-cg-lightblue hover:underline">
+                component list
+              </a>
+              , so it is scanned every night.
+              {extras?.basisset ? " It is part of the Common Ground basisset." : ""}
+            </p>
+          )}
+        </section>
+      ) : (
+        <FollowControl
+          repoId={repository.id}
+          initialFollowed={repository.followed ?? false}
+          initialCheckIntervalHours={repository.checkIntervalHours ?? null}
+          initialNextCheckAt={repository.nextCheckAt ?? null}
+        />
+      )}
 
       <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
         <div className="flex items-center justify-between gap-3 flex-wrap">
@@ -201,7 +227,8 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
         ) : (
           <div className="space-y-3">
             {analyses.map((analysis, index) => {
-              const stats = summarizeStatuses(analysis.results);
+              const stored = analysis as typeof analysis & StaticAnalysisExtras;
+              const stats = summarizeStatuses(analysis.results, stored.statusCounts);
               return (
                 <div
                   key={analysis.id}
@@ -229,12 +256,16 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
                     >
                       Score {analysis.score}
                     </span>
-                    <Link
-                      href={`/history/${encodeURIComponent(repository.owner)}/${encodeURIComponent(repository.name)}/${encodeURIComponent(analysis.id)}`}
-                      className="text-sm text-cg-lightblue hover:underline"
-                    >
-                      View details
-                    </Link>
+                    {stored.detailAvailable === false ? (
+                      <span className="text-xs text-gray-500">Summary only</span>
+                    ) : (
+                      <Link
+                        href={`/history/${encodeURIComponent(repository.owner)}/${encodeURIComponent(repository.name)}/${encodeURIComponent(analysis.id)}`}
+                        className="text-sm text-cg-lightblue hover:underline"
+                      >
+                        View details
+                      </Link>
+                    )}
                   </div>
                 </div>
               );

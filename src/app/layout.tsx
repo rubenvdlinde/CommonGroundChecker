@@ -21,7 +21,7 @@ export default function RootLayout({
         <header className="bg-cg-blue text-white shadow-md">
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
             <Image
-              src="/icons/common-ground-full-logo.svg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icons/common-ground-full-logo.svg`}
               alt="Common Ground logo"
               width={180}
               height={52}

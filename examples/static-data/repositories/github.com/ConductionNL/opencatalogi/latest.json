@@ -1,0 +1,1571 @@
+{
+ "schemaVersion": 1,
+ "repository": {
+  "id": "github.com/ConductionNL/opencatalogi",
+  "repoUrl": "https://github.com/ConductionNL/opencatalogi",
+  "host": "github.com",
+  "owner": "ConductionNL",
+  "name": "opencatalogi",
+  "metadata": {
+   "description": "This nextcloud app provided al fully working example of Open Catalogi",
+   "language": "PHP",
+   "stars": 0,
+   "forks": 4,
+   "defaultBranch": "main",
+   "topics": [],
+   "license": "European Union Public License 1.2",
+   "version": "v2.1.0",
+   "versionEvidence": {
+    "source": "release",
+    "detail": "latest release tag: v2.1.0"
+   },
+   "displayName": "OpenCatalogi",
+   "shortDescription": "Framework voor gefedereerde catalogi in Nextcloud",
+   "logoUrl": null,
+   "developmentStatus": "stable",
+   "maintenanceType": "internal",
+   "maintainers": [
+    "Conduction Development Team"
+   ]
+  },
+  "followed": true,
+  "checkIntervalHours": 24,
+  "lastCheckedAt": "2026-11-19T12:51:16.844Z",
+  "nextCheckAt": null,
+  "createdAt": "2026-11-19T12:47:54.735Z",
+  "updatedAt": "2026-11-19T12:51:16.844Z",
+  "basisset": false,
+  "scanRef": null,
+  "isRegister": false,
+  "slaLabels": [],
+  "retired": null,
+  "providers": []
+ },
+ "analysis": {
+  "id": "2026-11-19T12-51-16-844Z",
+  "repoId": "github.com/ConductionNL/opencatalogi",
+  "scoringConfigId": null,
+  "checkedAt": "2026-11-19T12:51:16.844Z",
+  "createdAt": "2026-11-19T12:51:16.844Z",
+  "version": "v2.1.0",
+  "checklistVersion": null,
+  "scannedRef": "main",
+  "scannedRefKind": "default-branch",
+  "scannedCommit": null,
+  "score": 57,
+  "rating": 2.9,
+  "categoryRatings": {
+   "Governance": 3.9,
+   "Security": 1.8,
+   "Architecture": 3,
+   "Software Quality": 2.7,
+   "Deployment & Operations": 3.3
+  },
+  "aspectRatings": {
+   "licensing": {
+    "rating": 5.5
+   },
+   "ownership": {
+    "rating": 4.3
+   },
+   "maintenance": {
+    "rating": 0.5
+   },
+   "community-documents": {
+    "rating": 5.5,
+    "found": 5,
+    "expected": 5
+   },
+   "usage-and-ecosystem": {
+    "rating": null
+   },
+   "vulnerabilities": {
+    "rating": null
+   },
+   "dependency-freshness": {
+    "rating": null
+   },
+   "dependency-activity": {
+    "rating": null
+   },
+   "dependency-licences": {
+    "rating": null
+   },
+   "dependency-management": {
+    "rating": null
+   },
+   "secrets": {
+    "rating": null
+   },
+   "secure-coding": {
+    "rating": 0.5
+   },
+   "supply-chain": {
+    "rating": 3
+   },
+   "api": {
+    "rating": 3
+   },
+   "layering": {
+    "rating": 3
+   },
+   "analysability": {
+    "rating": 2.3
+   },
+   "modifiability": {
+    "rating": 3.1
+   },
+   "testability": {
+    "rating": 1.2
+   },
+   "modularity": {
+    "rating": 2.9
+   },
+   "reusability": {
+    "rating": 2.6
+   },
+   "testing": {
+    "rating": 4.3
+   },
+   "containerisation": {
+    "rating": 1,
+    "found": 0,
+    "expected": 3
+   },
+   "release-management": {
+    "rating": 5.5
+   }
+  },
+  "endorsement": {
+   "passed": false,
+   "reasons": [
+    "Mandatory criterion fails: Docker support",
+    "Mandatory criterion fails: Available Docker image",
+    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
+    "Mandatory criterion fails: OWASP Secure Coding",
+    "Mandatory criterion fails: API Design Rules",
+    "Mandatory criterion fails: Helm chart (Kubernetes)",
+    "publiccode.yml declares maintenance.type internal: there is no maintenance contract.",
+    "Maintainability below 4 stars (2.27)"
+   ]
+  },
+  "issueCounts": {
+   "errors": 6,
+   "warnings": 6
+  },
+  "declaredUsers": [],
+  "declaredUserCount": 0,
+  "maintained": false,
+  "results": [
+   {
+    "id": "sourcecode",
+    "title": "Actual Source Code",
+    "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
+    "status": "pass",
+    "message": "Code metrics: 62,943 lines of code, 4,680 functions, 4,625 files analyzed.",
+    "evidence": [
+     ".php-cs-fixer.dist.php",
+     "appinfo/routes.php",
+     "docker/demo/provision.sh",
+     "docker/init-ubuntu.sh",
+     "docs/docusaurus.config.js",
+     "docs/sidebars.js",
+     "docs/src/components/HomepageFeatures/index.js",
+     "docs/src/pages/index.js",
+     "eslint.config.mjs",
+     "fix-phpcs.php",
+     "Analyzer: lizard",
+     "Total lines of code (NLOC): 62,943",
+     "Function count: 4,680",
+     "Files analyzed: 4,625"
+    ],
+    "referenceUrl": "https://commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "openapi",
+    "title": "API-first / OpenAPI Specification",
+    "description": "The component must expose a machine-readable OpenAPI (or Swagger) specification.",
+    "status": "pass",
+    "message": "Component is not marked as a register; OpenAPI specification check is not required.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "license",
+    "title": "Open Source License (OSI-approved)",
+    "description": "The component must be published under an OSI-approved open-source license.",
+    "status": "pass",
+    "message": "License detected: European Union Public Licence (EUPL) 1.2. This is OSI-approved. Detection source: GitHub metadata (SPDX: EUPL-1.2).",
+    "evidence": [
+     "LICENSE"
+    ],
+    "referenceUrl": "https://opensource.org/licenses",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "eupllicense",
+    "title": "EUPL License",
+    "description": "The component should preferably use the European Union Public Licence (EUPL).",
+    "status": "pass",
+    "message": "EUPL detected (EUPL-1.2).",
+    "evidence": [
+     "EUPL-1.2"
+    ],
+    "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "copyrightowner",
+    "title": "Copyright / IP Owner Disclosure",
+    "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
+    "status": "pass",
+    "confidence": "medium",
+    "message": "Probable copyright owners detected: Conduction b.v., Remko Huisman, Ruben van der Linde (confidence: medium).",
+    "evidence": [
+     "composer.json: Conduction b.v.",
+     "composer.json: Remko Huisman",
+     "composer.json: Ruben van der Linde"
+    ],
+    "referenceUrl": "https://opensource.guide/legal/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "publiccode",
+    "title": "publiccode.yml Metadata File",
+    "description": "A publiccode.yml file must be present in the repository root.",
+    "status": "warn",
+    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "evidence": [
+     "publiccode.yml"
+    ],
+    "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "publiccode": {
+     "publiccodeYmlVersion": "0.4",
+     "name": "OpenCatalogi",
+     "applicationSuite": null,
+     "url": "https://github.com/ConductionNL/opencatalogi",
+     "landingURL": null,
+     "isBasedOn": [],
+     "softwareVersion": "0.7.34",
+     "releaseDate": "2026-05-26",
+     "logo": null,
+     "platforms": [
+      "nextcloud"
+     ],
+     "categories": [
+      "content-management",
+      "knowledge-management"
+     ],
+     "usedBy": [],
+     "roadmap": null,
+     "developmentStatus": "stable",
+     "softwareType": null,
+     "intendedAudience": {
+      "countries": [],
+      "unsupportedCountries": [],
+      "scope": []
+     },
+     "descriptions": [
+      {
+       "language": "nl",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Framework voor gefedereerde catalogi in Nextcloud",
+       "longDescription": "OpenCatalogi biedt een framework waarmee gefedereerde catalogi samenwerken\nin een open data ecosysteem. De app synchroniseert bronnen met meerdere\ncatalogi en ondersteunt automatische publicatie van open data conform het\nDIWOO-standaard.",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Gefedereerde catalogi",
+        "Automatische publicatie van open data",
+        "DIWOO-sitemaps voor WOO-documenten",
+        "Integratie met OpenRegister"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      },
+      {
+       "language": "en",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Framework for federated catalogs in Nextcloud",
+       "longDescription": "OpenCatalogi provides a framework for federated catalogs to work together\nin an open data ecosystem. The app synchronises sources with multiple\ncatalogs and supports automatic publication of open data following the\nDIWOO metadata standard.",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Federated catalogs",
+        "Automatic open data publication",
+        "DIWOO sitemaps for WOO documents",
+        "OpenRegister integration"
+       ],
+       "screenshots": [],
+       "videos": [],
+       "awards": []
+      }
+     ],
+     "legal": {
+      "license": "EUPL-1.2",
+      "mainCopyrightOwner": null,
+      "repoOwner": null,
+      "authorsFile": null
+     },
+     "maintenance": {
+      "type": "internal",
+      "contractors": [],
+      "contacts": [
+       {
+        "name": "Conduction Development Team",
+        "email": "info@conduction.nl",
+        "phone": null,
+        "affiliation": "Conduction B.V."
+       }
+      ]
+     },
+     "localisation": {
+      "localisationReady": true,
+      "availableLanguages": [
+       "nl",
+       "en"
+      ]
+     },
+     "dependsOn": {
+      "open": [
+       {
+        "name": "OpenRegister",
+        "versionMin": "0.1.0",
+        "versionMax": null,
+        "version": null,
+        "optional": null
+       }
+      ],
+      "proprietary": [],
+      "hardware": []
+     },
+     "organisation": null,
+     "fundedBy": []
+    },
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "maintenance",
+    "title": "Maintenance contract",
+    "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
+    "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
+    "status": "fail",
+    "message": "publiccode.yml declares maintenance.type internal: there is no maintenance contract.",
+    "evidence": [
+     "publiccode.yml"
+    ],
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
+    "id": "docker",
+    "title": "Docker support",
+    "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
+    "status": "fail",
+    "message": "Docker-compose file found but no Dockerfile detected. A Dockerfile is required.",
+    "evidence": [
+     "docker-compose.yml"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "dockerimage",
+    "title": "Available Docker image",
+    "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
+    "status": "fail",
+    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "evidence": [],
+    "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "cicd",
+    "title": "CI/CD configuration",
+    "description": "Checks whether the repository includes continuous integration or continuous delivery pipeline configuration.",
+    "status": "pass",
+    "message": "Detected CI/CD configuration in 5 file(s).",
+    "evidence": [
+     ".github/workflows/branch-protection.yml",
+     ".github/workflows/code-quality.yml",
+     ".github/workflows/docs-capture.yml",
+     ".github/workflows/documentation.yml",
+     ".github/workflows/issue-triage.yml"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "sbom",
+    "title": "SBOM (Software Bill of Materials)",
+    "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
+    "status": "warn",
+    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
+    "evidence": [],
+    "referenceUrl": "https://www.cisa.gov/sbom",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "documentation",
+    "title": "Documentation Availability",
+    "description": "The component should provide accessible user or technical documentation in the repository or via a dedicated docs site.",
+    "status": "pass",
+    "message": "Documentation files found in repository.",
+    "evidence": [
+     "README.md",
+     "docs/Administrator",
+     "docs/Administrator/README.md",
+     "docs/Administrator/catalogi.md",
+     "docs/Administrator/configuratie.md",
+     "docs/Administrator/directory.md",
+     "docs/Administrator/directory.png",
+     "docs/Administrator/directory_configuratie.png"
+    ],
+    "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "changelog",
+    "title": "Changelog presence",
+    "description": "A changelog file helps stakeholders understand what changed between releases.",
+    "status": "pass",
+    "message": "Changelog file found: changelog.md",
+    "evidence": [
+     "changelog.md"
+    ],
+    "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
+    "id": "tests",
+    "title": "Test suite presence",
+    "description": "The repository should include automated tests (unit/integration) or clear test configuration to support reliable software quality.",
+    "status": "pass",
+    "message": "Test files or test configuration detected.",
+    "evidence": [
+     "jest.config.js",
+     "src/components/widgets/ThemePreviewWidget.spec.js",
+     "src/entities/attachment/attachment.spec.ts",
+     "src/entities/catalogi/catalogi.spec.ts",
+     "src/entities/configuration/configuration.spec.ts",
+     "src/entities/glossary/glossary.spec.ts",
+     "src/entities/listing/listing.spec.ts",
+     "src/entities/organization/organization.spec.ts",
+     "src/entities/publication/publication.spec.ts",
+     "src/entities/publicationType/publicationType.spec.ts"
+    ],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "coverage",
+    "title": "Code coverage",
+    "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
+    "status": "warn",
+    "message": "No coverage report file was found. Add coverage output such as coverage/coverage-summary.json, coverage.xml, or lcov.info.",
+    "evidence": [],
+    "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "complexity",
+    "title": "Cyclomatic complexity (Lizard)",
+    "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
+    "status": "fail",
+    "message": "Lizard analysis ran. Avg CCN 2.50 (threshold: 15); Max CCN 63.00 (threshold: 30). Threshold exceeded: MaxCCN 63.00 > 30.",
+    "evidence": [
+     "Analyzer: lizard",
+     "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
+     "Average CCN: 2.50 (threshold: 15)",
+     "Max CCN: 63.00 (threshold: 30)",
+     "6      2     24      1       6 normalizePath@8-13@/tmp/cgchecker-repo-GcHANZ/repo/src/services/formatZodErrors.js",
+     "2      1     17      0       2 (anonymous)@30-31@/tmp/cgchecker-repo-GcHANZ/repo/src/services/formatZodErrors.js",
+     "6      1     29      1       7 getError@27-33@/tmp/cgchecker-repo-GcHANZ/repo/src/services/formatZodErrors.js",
+     "2      1     17      0       2 (anonymous)@50-51@/tmp/cgchecker-repo-GcHANZ/repo/src/services/formatZodErrors.js",
+     "1      1      4      0       1 (anonymous)@52-52@/tmp/cgchecker-repo-GcHANZ/repo/src/services/formatZodErrors.js",
+     "6      1     35      1       7 getErrors@47-53@/tmp/cgchecker-repo-GcHANZ/repo/src/services/formatZodErrors.js"
+    ],
+    "referenceUrl": "https://github.com/terryyin/lizard",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "maintainability",
+    "title": "Maintainability (ISO 25010)",
+    "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "fail",
+    "starRating": 2,
+    "rating": 2.27,
+    "aspectRatings": {
+     "analysability": 2.33,
+     "modifiability": 3.1,
+     "testability": 1.16,
+     "modularity": 2.86,
+     "reusability": 2.58
+    },
+    "measurements": [
+     {
+      "id": "duplication",
+      "title": "Duplication",
+      "aspects": [
+       "analysability",
+       "modifiability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript",
+        "value": "11.6%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "PHP",
+        "value": "10.6%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript",
+        "value": "14.6%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Vue",
+        "value": "12.4%",
+        "thresholds": {
+         "2": "≤ 23.0%",
+         "3": "≤ 11.6%",
+         "4": "≤ 5.8%",
+         "5": "≤ 3.5%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "unit-size",
+      "title": "Unit size",
+      "aspects": [
+       "analysability",
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, more than 15 lines",
+        "value": "66.6%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "JavaScript, more than 30 lines",
+        "value": "45.6%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "JavaScript, more than 60 lines",
+        "value": "25.2%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 15 lines",
+        "value": "78.8%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, more than 30 lines",
+        "value": "54.4%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, more than 60 lines",
+        "value": "26.9%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript, more than 15 lines",
+        "value": "71.5%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "TypeScript, more than 30 lines",
+        "value": "34.3%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, more than 60 lines",
+        "value": "16.1%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Vue, more than 15 lines",
+        "value": "44.1%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Vue, more than 30 lines",
+        "value": "19.5%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Vue, more than 60 lines",
+        "value": "4.6%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [
+       "modifiability",
+       "testability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, complexity above 5",
+        "value": "55.6%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 10",
+        "value": "32.8%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "JavaScript, complexity above 25",
+        "value": "8.2%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 5",
+        "value": "57.6%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 10",
+        "value": "28.8%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "PHP, complexity above 25",
+        "value": "8.6%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript, complexity above 5",
+        "value": "26.0%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "TypeScript, complexity above 10",
+        "value": "20.4%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript, complexity above 25",
+        "value": "3.5%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Vue, complexity above 5",
+        "value": "26.2%",
+        "thresholds": {
+         "2": "≤ 34.6%",
+         "3": "≤ 27.7%",
+         "4": "≤ 20.7%",
+         "5": "≤ 15.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Vue, complexity above 10",
+        "value": "12.1%",
+        "thresholds": {
+         "2": "≤ 13.2%",
+         "3": "≤ 10.6%",
+         "4": "≤ 7.5%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "Vue, complexity above 25",
+        "value": "0.9%",
+        "thresholds": {
+         "2": "≤ 2.7%",
+         "3": "≤ 1.7%",
+         "4": "≤ 1.1%",
+         "5": "≤ 0.5%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [
+       "reusability"
+      ],
+      "rows": [
+       {
+        "label": "JavaScript, 3 or more parameters",
+        "value": "7.3%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "JavaScript, 5 or more parameters",
+        "value": "3.7%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "JavaScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, 3 or more parameters",
+        "value": "22.7%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, 5 or more parameters",
+        "value": "6.3%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "PHP, 7 or more parameters",
+        "value": "2.8%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "TypeScript, 3 or more parameters",
+        "value": "3.8%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 3 or more parameters",
+        "value": "0.5%",
+        "thresholds": {
+         "2": "≤ 26.0%",
+         "3": "≤ 18.3%",
+         "4": "≤ 15.4%",
+         "5": "≤ 12.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 7.2%",
+         "3": "≤ 4.8%",
+         "4": "≤ 3.4%",
+         "5": "≤ 2.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Vue, 7 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 2.1%",
+         "3": "≤ 1.4%",
+         "4": "≤ 0.9%",
+         "5": "≤ 0.6%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP, fan-in above 10",
+        "value": "0.8%",
+        "thresholds": {
+         "2": "≤ 13.0%",
+         "3": "≤ 10.7%",
+         "4": "≤ 9.7%",
+         "5": "≤ 7.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 8.0%",
+         "3": "≤ 5.9%",
+         "4": "≤ 5.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 3.8%",
+         "3": "≤ 2.3%",
+         "4": "≤ 1.8%",
+         "5": "≤ 1.2%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "33.6%",
+        "thresholds": {
+         "4": "≥ 94.5%",
+         "5": "≥ 97.3%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "PHP",
+        "value": "0.1839",
+        "thresholds": {
+         "4": "≤ 0.075",
+         "5": "≤ 0.0375"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 2.13 to 2.41 (2 of 5 stars) over 237 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★☆☆ 2.5 (javascript 2.5, php 2.7, typescript 2.2, vue 2.4)",
+     "Unit size: ★★☆☆☆ 2.1 (javascript 1.5, php 1.4, typescript 2.1, vue 3.8)",
+     "Unit complexity: ★☆☆☆☆ 1.4 (javascript 1.2, php 1.1, typescript 1.4, vue 1.9)",
+     "Unit interfacing: ★★★☆☆ 3.0 (javascript 3.3, php 1.5, typescript 5.2, vue 5.5)",
+     "Module coupling: ★★★★★ 5.4 (php 5.4)",
+     "Component independence: ★☆☆☆☆ 0.9 (php 0.9)",
+     "Component entanglement: ★★☆☆☆ 2.3 (php 2.3)",
+     "Lever: unit complexity in vue, about 539 lines to fix for half a star",
+     "Lever: unit interfacing in php, about 599 lines to fix for half a star",
+     "Lever: unit size in javascript"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "owaspsecurecoding",
+    "title": "OWASP Secure Coding",
+    "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
+    "status": "fail",
+    "message": "Multiple risky coding patterns were detected (56 findings across 486 scanned source files). Review them against OWASP secure coding guidance.",
+    "evidence": [
+     "Dynamic code execution: fix-phpcs.php",
+     "Dynamic code execution: lib/AppInfo/Application.php",
+     "Dynamic code execution: lib/Controller/OoapiController.php",
+     "Dynamic code execution: lib/Controller/PublicationsController.php",
+     "Dynamic code execution: lib/Service/BroadcastService.php",
+     "Dynamic code execution: lib/Service/CatalogiService.php",
+     "Dynamic code execution: lib/Service/DcatMappingService.php",
+     "Dynamic code execution: lib/Service/DirectoryService.php",
+     "Dynamic code execution: lib/Service/PublicationService.php",
+     "Dynamic code execution: lib/Service/SitemapService.php",
+     "Dynamic code execution: lib/Service/UsageCounterService.php",
+     "Dynamic code execution: lib/Tool/CMSTool.php",
+     "Dynamic code execution: src/modals/catalog/CatalogModal.vue",
+     "Dynamic code execution: src/sidebars/dashboard/DashboardSideBar.vue",
+     "Dynamic code execution: tests/Stubs/OpenRegister/Service/Dmn/UnaryTestEvaluator.php",
+     "Dynamic code execution: tests/Unit/AppInfo/ApplicationRegisterInvariantTest.php",
+     "Dynamic code execution: tests/Unit/AppInfo/CanonicalSettingsRouteContractTest.php",
+     "Dynamic code execution: tests/Unit/Command/AttachDocumentsToPublicationsCommandTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CatalogiControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DirectoryControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/GlossaryControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ListingsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/OoapiControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SetupControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/StatsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ThemesControllerTest.php",
+     "Dynamic code execution: tests/Unit/Http/XMLResponseTest.php",
+     "Dynamic code execution: tests/Unit/Listener/CatalogCacheEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/Listener/CatalogSchemaEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/Listener/ProvideManifestConfigStateListenerTest.php",
+     "Dynamic code execution: tests/Unit/Listener/ToolRegistrationListenerTest.php",
+     "Dynamic code execution: tests/Unit/Observability/OpenCatalogiMetricsProviderTest.php",
+     "Dynamic code execution: tests/Unit/Repair/InitializeSettingsTest.php",
+     "Dynamic code execution: tests/Unit/Repair/RemoveRetiredCronJobsTest.php",
+     "Dynamic code execution: tests/Unit/Repair/WOO536RepairReadRulesTest.php",
+     "Dynamic code execution: tests/Unit/Service/BroadcastServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogiServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DcatServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DirectoryServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DownloadServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/EventServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Federation/FederationHostPolicyTest.php",
+     "Dynamic code execution: tests/Unit/Service/FileServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/OoapiServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationQueryServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/RetentionServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SchemaOrgServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SitemapServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/UsageCounterServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/WooReadinessServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/WooServiceTest.php",
+     "Dynamic code execution: tests/Unit/Tool/CMSToolTest.php",
+     "Dynamic code execution: tests/bootstrap-unit.php"
+    ],
+    "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "adrvalidator",
+    "title": "API Design Rules",
+    "description": "The component should comply with the Common Ground API Design Rules (ADR).",
+    "status": "fail",
+    "message": "API Design Rules violations found across 1 specification(s): 39 issue(s).",
+    "evidence": [
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json",
+     "Discovery source: auto-discovered",
+     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "HINT [openapi3] Use OpenAPI Specification for documentation @ openapi (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [include-major-version-in-uri] /core/uri-version: Include the major version number in the URI: https://logius-standaarden.github.io/API-Design-Rules/#/core/uri-version @ servers.0.url (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.parameters.SlugPath (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.InternalServerError.content (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.ServiceUnavailable.content (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-version-header] Return the full version number in a response header @ components.responses.CorsPreflight.headers (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/catalogi.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/catalogi/{id}.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/catalogs/{catalogSlug}/dcat.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/catalogs/{catalogSlug}/dcat.get.responses.304 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/catalogs/{catalogSlug}/schema.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/dcat.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/directory.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/directory.post.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./api/directory.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/federation/publications.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/federation/publications/{id}.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/federation/publications/{id}/attachments.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/federation/publications/{id}/download.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/federation/publications/{id}/used.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/federation/publications/{id}/uses.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/glossary.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/glossary/{id}.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/listings/{id}.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/openapi.json.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/robots.txt.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/search.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/themes.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/themes/{id}.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/{catalogSlug}.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/{catalogSlug}/sitemaps/{categoryCode}.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/{catalogSlug}/sitemaps/{categoryCode}/publications.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/{catalogSlug}/{id}.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/{catalogSlug}/{id}/attachments.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/{catalogSlug}/{id}/download.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/{catalogSlug}/{id}/used.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)",
+     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./api/{catalogSlug}/{id}/uses.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/openapi.json)"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "contributing",
+    "title": "Contributing guide",
+    "description": "A CONTRIBUTING file should explain how external developers can propose changes, run checks, and submit pull requests.",
+    "status": "pass",
+    "message": "Contributing guide found.",
+    "evidence": [
+     "CONTRIBUTING.md",
+     "docs/Community/CONTRIBUTING.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "codeofconduct",
+    "title": "Code of Conduct",
+    "description": "A Code of Conduct should define expected behavior and reporting channels to maintain a safe and inclusive contribution environment.",
+    "status": "pass",
+    "message": "Code of Conduct file found.",
+    "evidence": [
+     "CODE_OF_CONDUCT.md"
+    ],
+    "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "security",
+    "title": "Security policy",
+    "description": "A SECURITY file should explain how to report vulnerabilities privately, which versions are supported, and how security disclosures are handled.",
+    "status": "pass",
+    "message": "Security policy file found.",
+    "evidence": [
+     "SECURITY.md",
+     "docs/Technology/SECURITY.md"
+    ],
+    "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "semver",
+    "title": "Semantic Versioning",
+    "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
+    "status": "pass",
+    "message": "Version \"v2.1.0\" follows semantic versioning.",
+    "evidence": [
+     "v2.1.0"
+    ],
+    "referenceUrl": "https://semver.org/",
+    "requirementLevel": "mandatory",
+    "starRating": 5
+   },
+   {
+    "id": "fivelayer",
+    "title": "Common Ground 5-Layer Architecture",
+    "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
+    "status": "warn",
+    "message": "Detected layer signals: Interaction layer (frontend / portal); Service layer (back-end microservice); Integration layer (gateway / NLX); Data layer (data store / register); Process layer (orchestration / BFF). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
+    "evidence": [
+     "Found path segment \"ui\" in NAMED_PARAMETERS_GUIDE.md",
+     "Found path segment \"ui\" in docker-compose-build.yml",
+     "Found path segment \"ui\" in docs/features/deelnames-gebruik.md",
+     "Found path segment \"frontend\" in docs/handleidingen/Frontend.md",
+     "Found path segment \"frontend\" in docs/handleidingen/installation_frontend.puml",
+     "Found path segment \"frontend\" in docs/handleidingen/installation_frontend.svg",
+     "Found path segment \"ui\" in lib/Controller/UiController.php",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-03-21-deelnames-gebruik",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-03-21-deelnames-gebruik/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-03-21-deelnames-gebruik/design.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-03-21-deelnames-gebruik/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-03-21-deelnames-gebruik/specs",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-03-21-deelnames-gebruik/specs/deelnames-gebruik",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-03-21-deelnames-gebruik/specs/deelnames-gebruik/spec.md",
+     "Found path segment \"ui\" in openspec/changes/archive/2026-03-21-deelnames-gebruik/tasks.md",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/.openspec.yaml",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/context-brief.md",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/design.md",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/hydra.json",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/proposal.md",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/specs",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/specs/forum-standaardisatie-compliance",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/specs/forum-standaardisatie-compliance/spec.md",
+     "Found path segment \"ui\" in openspec/changes/forum-standaardisatie-pas-toe-of-leg-uit/tasks.md",
+     "Found path segment \"frontend\" in openspec/changes/nc-css-vars-color-cleanup/specs/frontend-theming",
+     "Found path segment \"frontend\" in openspec/changes/nc-css-vars-color-cleanup/specs/frontend-theming/spec.md",
+     "Found path segment \"frontend\" in openspec/changes/tree-shake-lodash-cherry-picks/specs/frontend-performance",
+     "Found path segment \"frontend\" in openspec/changes/tree-shake-lodash-cherry-picks/specs/frontend-performance/spec.md",
+     "Found path segment \"frontend\" in openspec/specs/frontend-performance",
+     "Found path segment \"frontend\" in openspec/specs/frontend-performance/spec.md",
+     "Found path segment \"frontend\" in openspec/specs/frontend-theming",
+     "Found path segment \"frontend\" in openspec/specs/frontend-theming/spec.md",
+     "Found path segment \"ui\" in scripts/build-l10n-js.js",
+     "Found path segment \"ui\" in src/components/editor/ToastUiEditor.vue",
+     "Found path segment \"ui\" in tests/Stubs/Doctrine/DBAL/Query/Expression/ExpressionBuilder.php",
+     "Found path segment \"ui\" in tests/Unit/Controller/UiControllerTest.php",
+     "Found \"frontend\" in repository metadata and docs",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-catalogue-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-catalogue-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-catalogue-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-catalogue-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/01-configure-catalogue-05.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-federation-sources-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-federation-sources-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-federation-sources-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-federation-sources-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/02-manage-federation-sources-05.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-01.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-02.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-03.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-04.png",
+     "Found path segment \"admin\" in docs/static/screenshots/tutorials/admin/03-admin-settings-05.png",
+     "Found path segment \"admin\" in docs/tutorials/admin/01-configure-catalogue.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/02-manage-federation-sources.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/03-admin-settings.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/04-rotterdam-demo-portal.md",
+     "Found path segment \"admin\" in docs/tutorials/admin/_category_.json",
+     "Found path segment \"service\" in lib/Service/AttachmentMigrationService.php",
+     "Found path segment \"service\" in lib/Service/Broadcast",
+     "Found path segment \"service\" in lib/Service/Broadcast/BroadcastResult.php",
+     "Found path segment \"service\" in lib/Service/BroadcastService.php",
+     "Found path segment \"service\" in lib/Service/CatalogiService.php",
+     "Found path segment \"service\" in lib/Service/CmsMigrationService.php",
+     "Found path segment \"service\" in lib/Service/DcatMappingService.php",
+     "Found path segment \"service\" in lib/Service/DcatSerializer.php",
+     "Found path segment \"service\" in lib/Service/DcatService.php",
+     "Found path segment \"service\" in lib/Service/DcatVocabularyService.php",
+     "Found path segment \"service\" in lib/Service/DemoDataService.php",
+     "Found path segment \"service\" in lib/Service/DirectoryService.php",
+     "Found path segment \"service\" in lib/Service/DownloadService.php",
+     "Found path segment \"service\" in lib/Service/EventService.php",
+     "Found path segment \"service\" in lib/Service/Federation",
+     "Found path segment \"service\" in lib/Service/Federation/FederationHostPolicy.php",
+     "Found path segment \"service\" in lib/Service/FileService.php",
+     "Found path segment \"service\" in lib/Service/OoapiMappingService.php",
+     "Found path segment \"service\" in lib/Service/OoapiService.php",
+     "Found path segment \"service\" in lib/Service/PublicationQueryService.php",
+     "Found path segment \"service\" in lib/Service/PublicationService.php",
+     "Found path segment \"service\" in lib/Service/QualityService.php",
+     "Found path segment \"service\" in lib/Service/RegisterSchemaLinkService.php",
+     "Found path segment \"service\" in lib/Service/RetentionPolicyTable.php",
+     "Found path segment \"service\" in lib/Service/RetentionService.php",
+     "Found path segment \"service\" in lib/Service/SchemaOrgService.php",
+     "Found path segment \"service\" in lib/Service/SettingsService.php",
+     "Found path segment \"service\" in lib/Service/SitemapService.php",
+     "Found path segment \"service\" in lib/Service/TooiVocabularyService.php",
+     "Found path segment \"service\" in lib/Service/UsageCounterService.php",
+     "Found path segment \"service\" in lib/Service/WooReadinessService.php",
+     "Found path segment \"service\" in lib/Service/WooService.php",
+     "Found path segment \"services\" in src/services/formatZodErrors.js",
+     "Found path segment \"services\" in src/services/getPublicationTypeId.js",
+     "Found path segment \"services\" in src/services/getTheme.js",
+     "Found path segment \"services\" in src/services/getValidISOstring.js",
+     "Found path segment \"services\" in src/services/nextcloudGroups.js",
+     "Found path segment \"services\" in src/services/publicationStatus.js",
+     "Found path segment \"services\" in src/services/resolveObjectId.js",
+     "Found path segment \"services\" in src/services/retentionStatus.js",
+     "Found path segment \"services\" in src/services/schemaHelpers.js",
+     "Found path segment \"services\" in src/services/usageStats.js",
+     "Found path segment \"services\" in src/services/wooHelpers.js",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/ConfigurationService.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/DeckCardService.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/Dmn",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/Dmn/DecisionEvaluationException.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/Dmn/DecisionTableEvaluator.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/Dmn/UnaryTestEvaluator.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/FileService.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/ObjectService.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/RegisterResolverService.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/Resolver",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/Resolver/Exception",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/Resolver/Exception/MissingConfigException.php",
+     "Found path segment \"service\" in tests/Stubs/OpenRegister/Service/ToolRegistry.php",
+     "Found path segment \"service\" in tests/Unit/Service/AttachOrphanSchemasTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/AttachmentMigrationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/BroadcastServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CatalogiServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/CmsMigrationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DcatMappingServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DcatSerializerTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DcatServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DcatVocabularyServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DemoDataServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DirectoryServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/DownloadServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/EventServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/Federation",
+     "Found path segment \"service\" in tests/Unit/Service/Federation/FederationHostPolicyTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/FileServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/OoapiMappingServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/OoapiServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/PublicationQueryServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/PublicationServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/QualityServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RegisterFragmentMergeTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RegisterSchemaLinkServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RetentionPolicyTableTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/RetentionServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SchemaOrgServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SettingsServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/SitemapServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/TooiVocabularyServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/UsageCounterServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/WooReadinessServiceTest.php",
+     "Found path segment \"service\" in tests/Unit/Service/WooServiceTest.php",
+     "Found \"service\" in repository metadata and docs",
+     "Found path segment \"integration\" in tests/Integration/CatalogFilteringTest.php",
+     "Found path segment \"integration\" in tests/Integration/README.md",
+     "Found path segment \"integration\" in tests/Integration/bootstrap.php",
+     "Found path segment \"integration\" in tests/integration/dcat-ap-harvest.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/dcat-national-portal-federation.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/diwoo-tooi-vocabulary-binding.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/ooapi-catalog-publication.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/publication-quality-metrics.postman_collection.json",
+     "Found path segment \"integration\" in tests/integration/structured-data-discoverability.postman_collection.json",
+     "Found \"integration\" in repository metadata and docs",
+     "Found path segment \"db\" in tests/Stubs/OpenRegister/Db/Agent.php",
+     "Found path segment \"db\" in tests/Stubs/OpenRegister/Db/FileMapper.php",
+     "Found path segment \"db\" in tests/Stubs/OpenRegister/Db/ObjectEntity.php",
+     "Found path segment \"db\" in tests/Stubs/OpenRegister/Db/Register.php",
+     "Found path segment \"db\" in tests/Stubs/OpenRegister/Db/RegisterMapper.php",
+     "Found path segment \"db\" in tests/Stubs/OpenRegister/Db/Schema.php",
+     "Found path segment \"db\" in tests/Stubs/OpenRegister/Db/SchemaMapper.php",
+     "Found \"database\" in repository metadata and docs",
+     "Found \"workflow\" in repository metadata and docs"
+    ],
+    "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "confidence": "medium",
+    "requirementLevel": "mandatory",
+    "starRating": 3
+   },
+   {
+    "id": "helmchart",
+    "title": "Helm chart (Kubernetes)",
+    "description": "A Helm chart was detected for the component being checked.",
+    "status": "fail",
+    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
+    "evidence": [],
+    "referenceUrl": "https://haven.commonground.nl",
+    "requirementLevel": "mandatory",
+    "starRating": 1
+   },
+   {
+    "id": "usage",
+    "title": "Usage and ecosystem",
+    "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
+    "evidence": [
+     "Nextcloud App Store opencatalogi: not measured: HTTP 429 (2026-11-19)",
+     "GitHub releases: 1,716 release file downloads, 500 most recent releases with files (2026-11-19)",
+     "GitHub ConductionNL/opencatalogi: 0 stars, 4 forks, 0 watchers (2026-11-19)",
+     "GitHub commits ConductionNL/opencatalogi: 18 contributors, 10 from the owning organisation, 3 from other organisations, 5 unknown (2026-11-19)"
+    ],
+    "usage": {
+     "sources": [
+      {
+       "id": "nextcloud-appstore",
+       "kind": "downloads",
+       "source": "Nextcloud App Store",
+       "subject": "opencatalogi",
+       "url": "https://apps.nextcloud.com/apps/opencatalogi",
+       "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
+       "measuredAt": "2026-11-19",
+       "figures": [],
+       "notMeasured": "HTTP 429"
+      },
+      {
+       "id": "github-releases",
+       "kind": "downloads",
+       "source": "GitHub releases",
+       "subject": null,
+       "url": "https://github.com/ConductionNL/opencatalogi/releases",
+       "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "release file downloads",
+         "value": 1716
+        },
+        {
+         "label": "most recent releases with files",
+         "value": 500
+        }
+       ]
+      },
+      {
+       "id": "repository",
+       "kind": "ecosystem",
+       "source": "GitHub",
+       "subject": "ConductionNL/opencatalogi",
+       "url": "https://github.com/ConductionNL/opencatalogi",
+       "measuredAt": "2026-11-19",
+       "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
+       "figures": [
+        {
+         "label": "stars",
+         "value": 0
+        },
+        {
+         "label": "forks",
+         "value": 4
+        },
+        {
+         "label": "watchers",
+         "value": 0
+        }
+       ]
+      },
+      {
+       "id": "contributors",
+       "kind": "ecosystem",
+       "source": "GitHub commits",
+       "subject": "ConductionNL/opencatalogi",
+       "url": "https://github.com/ConductionNL/opencatalogi/graphs/contributors",
+       "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-19",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 18
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 10
+        },
+        {
+         "label": "from other organisations",
+         "value": 3
+        },
+        {
+         "label": "unknown",
+         "value": 5
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "durationSeconds": 29.2
+ },
+ "slas": []
+}

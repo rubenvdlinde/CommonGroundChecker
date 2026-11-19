@@ -7,7 +7,9 @@ import RatingBadge from "@/components/RatingBadge";
 import RatingSummary from "@/components/RatingSummary";
 import { statusToStars } from "@/lib/stars";
 import { readPublicCodeData } from "@/lib/checkers/publiccode";
-import { getRepoHistory } from "@/lib/apiClient";
+import { dataSource } from "@/lib/dataSource";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
+import { staticAnalysisParams } from "@/lib/dataSource/staticDataSource";
 import { parseMeasurements } from "@/lib/measurements";
 import { isRating } from "@/lib/ratings";
 import { loadStoredRatings } from "@/lib/storedRatings";
@@ -109,18 +111,16 @@ function normalizeRepoMeta(raw: RepoMeta): CheckReport["repoMeta"] {
   };
 }
 
+/** The static export has a run page for the latest analysis of each component; the server renders any run on request. */
+export const generateStaticParams = IS_STATIC_SITE ? staticAnalysisParams : undefined;
+
 export default async function AnalysisDetailPage({ params }: AnalysisDetailPageProps) {
   const { owner: rawOwner, repo: rawRepo, analysisId: rawAnalysisId } = await params;
   const owner = decodeURIComponent(rawOwner);
   const repo = decodeURIComponent(rawRepo);
   const analysisId = decodeURIComponent(rawAnalysisId);
 
-  let historyResponse;
-  try {
-    historyResponse = await getRepoHistory(owner, repo, 50);
-  } catch (error) {
-    historyResponse = null;
-  }
+  const historyResponse = await dataSource().getRepoHistory(owner, repo, 50);
 
   const repository = historyResponse?.repository;
   const analysis = historyResponse?.analyses?.find((analysisItem) => analysisItem.id === analysisId);
@@ -149,20 +149,22 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
-      <nav className="flex items-center justify-end gap-4 text-sm">
-        <Link href="/" className="text-gray-500 hover:text-cg-lightblue transition-colors">
-          Checker
-        </Link>
-        <Link href="/history" className="text-cg-lightblue hover:underline font-medium">
-          History
-        </Link>
-        <Link href="/admin" className="text-gray-500 hover:text-cg-lightblue transition-colors">
-          Admin
-        </Link>
-        <Link href="/about" className="text-gray-500 hover:text-cg-lightblue transition-colors">
-          About
-        </Link>
-      </nav>
+      {!IS_STATIC_SITE && (
+        <nav className="flex items-center justify-end gap-4 text-sm">
+          <Link href="/" className="text-gray-500 hover:text-cg-lightblue transition-colors">
+            Checker
+          </Link>
+          <Link href="/history" className="text-cg-lightblue hover:underline font-medium">
+            History
+          </Link>
+          <Link href="/admin" className="text-gray-500 hover:text-cg-lightblue transition-colors">
+            Admin
+          </Link>
+          <Link href="/about" className="text-gray-500 hover:text-cg-lightblue transition-colors">
+            About
+          </Link>
+        </nav>
+      )}
 
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <h2 className="text-2xl font-bold text-cg-blue">Analysis Details</h2>

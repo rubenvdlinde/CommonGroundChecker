@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useId, useState } from "react";
 import MaintainedLevel from "@/components/MaintainedLevel";
 import { deleteSla, postSla, type UsageStatus } from "@/lib/apiClient";
+import { STATIC_SITE_LINKS } from "@/lib/dataSource/mode";
 import { computeMaintained, organisationsLabel } from "@/lib/maintained";
 import { organisationHref, organisationKey } from "@/lib/organisations";
 import type { Endorsement } from "@/lib/types";
@@ -20,6 +21,8 @@ interface MaintainedSectionProps {
   today: string;
   /** Slugs of the organisation pages by organisation key; a declared name without one is shown without a link */
   organisationSlugs?: Record<string, string>;
+  /** Without the admin form, for the static site where SLAs change by pull request */
+  readOnly?: boolean;
 }
 
 const inputClass = "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm";
@@ -51,6 +54,7 @@ export default function MaintainedSection({
   minUsers,
   today,
   organisationSlugs = {},
+  readOnly = false,
 }: MaintainedSectionProps) {
   const idPrefix = useId();
   const [usage, setUsage] = useState(initialUsage);
@@ -159,6 +163,15 @@ export default function MaintainedSection({
         )}
       </div>
 
+      {readOnly ? (
+        <p className="border-t border-gray-200 pt-4 text-xs text-gray-500">
+          SLAs are recorded in{" "}
+          <a href={STATIC_SITE_LINKS.slaList} className="text-cg-lightblue hover:underline">
+            config/slas.yml
+          </a>{" "}
+          and change by pull request.
+        </p>
+      ) : (
       <details className="border-t border-gray-200 pt-4">
         <summary className="cursor-pointer text-sm font-semibold text-gray-800">
           Record SLAs (admin)
@@ -285,6 +298,7 @@ export default function MaintainedSection({
           </p>
         </div>
       </details>
+      )}
     </section>
   );
 }

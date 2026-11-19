@@ -1,5 +1,9 @@
+import { Suspense } from "react";
 import HistoryPageClient, { type SortDirection, type SortKey } from "@/components/HistoryPageClient";
-import { getRepositories, type RepoSummary } from "@/lib/apiClient";
+import StaticHistoryIndex from "@/components/StaticHistoryIndex";
+import type { RepoSummary } from "@/lib/apiClient";
+import { dataSource } from "@/lib/dataSource";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { normalizeSearchQuery } from "@/lib/historySearch";
 
 interface HistoryHomePageProps {
@@ -25,6 +29,15 @@ function normalizeSortDirection(value: string | undefined): SortDirection {
 }
 
 export default async function HistoryHomePage({ searchParams }: HistoryHomePageProps) {
+  if (IS_STATIC_SITE) {
+    const repositories = await dataSource().listRepositories();
+    return (
+      <Suspense fallback={<HistoryPageClient sort="rating" direction="desc" query="" repositories={repositories} />}>
+        <StaticHistoryIndex repositories={repositories} />
+      </Suspense>
+    );
+  }
+
   const query = await searchParams;
   const sortKey = normalizeSortKey(firstValue(query.sort));
   const sortDirection = normalizeSortDirection(firstValue(query.direction));
@@ -34,7 +47,7 @@ export default async function HistoryHomePage({ searchParams }: HistoryHomePageP
   let error: string | undefined;
 
   try {
-    repositories = await getRepositories(50, searchQuery);
+    repositories = await dataSource().listRepositories({ limit: 50, q: searchQuery });
   } catch (err) {
     error = err instanceof Error ? err.message : "Unable to connect to repository history API.";
   }

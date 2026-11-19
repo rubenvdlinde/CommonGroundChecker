@@ -1,0 +1,31 @@
+name: Request a scan
+description: Ask for a component to be added to the component list, or rescanned before the next nightly run.
+title: "Scan request: "
+labels: ["scan request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The quickest way to add a component is a pull request on `config/repositories.yml`. Use this form when you cannot open one.
+  - type: input
+    id: url
+    attributes:
+      label: Repository URL
+      description: The public https address of the repository.
+      placeholder: https://github.com/example-org/example-component
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Request
+      options:
+        - Add this component to the component list
+        - Rescan this component now
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: For example where the Helm chart or the API specification is, or which release to scan.

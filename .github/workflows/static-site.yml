@@ -1,0 +1,120 @@
+# Scans the component list every night and publishes the static site.
+#
+# 02:00 UTC is 03:00 in Amsterdam in winter (CET) and 04:00 in summer (CEST);
+# GitHub schedules in UTC only. The data files are committed to the `data`
+# branch, which this workflow creates on its first run.
+name: Static site
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Scan only these repository URLs, separated by spaces (empty: all)"
+        required: false
+        default: ""
+      index_only:
+        description: "Scan nothing; rebuild the index and the site from the config and the data branch"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: static-site
+  cancel-in-progress: false
+
+jobs:
+  scan-and-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    permissions:
+      contents: write
+    # The same base image and analysis tools as the checker's Dockerfile.
+    container:
+      image: node:20-bookworm-slim
+    env:
+      HYDRA_GATE_TOOLS_DIR: /opt/analysis-tools
+      HYDRA_GATE_SIG_NO_INSTALL: "1"
+    steps:
+      - name: Install git and the analysis tools
+        run: |
+          apt-get update && apt-get install -y --no-install-recommends git ca-certificates
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - uses: actions/checkout@v7.0.1
+
+      - name: Install the pinned analysis tools
+        run: sh scripts/install-analysis-tools.sh
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Check out the data branch
+        run: |
+          if git fetch --depth 1 origin data; then
+            git worktree add data FETCH_HEAD
+            git -C data switch -c data
+          else
+            git worktree add --detach data
+            git -C data checkout --orphan data
+            git -C data rm -r -q --cached .
+            find data -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          fi
+
+      - name: Scan the component list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ONLY: ${{ inputs.only }}
+          INDEX_ONLY: ${{ inputs.index_only }}
+        run: |
+          set -- --data data
+          if [ "$INDEX_ONLY" = "true" ]; then set -- "$@" --index-only; fi
+          for url in $ONLY; do set -- "$@" --only "$url"; done
+          if [ -f config/scoring.json ]; then set -- "$@" --scoring config/scoring.json; fi
+          npm run --silent scan:static -- "$@" 2> scan-log.txt
+          tail -n 200 scan-log.txt
+
+      - name: Commit the data files
+        run: |
+          cd data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -q -m "chore(data): scan of $(date -u +%Y-%m-%d)"
+            git push origin HEAD:data
+          fi
+
+      - name: Build the static site
+        env:
+          CGC_DATA_DIR: data
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_SOURCE_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+          NEXT_PUBLIC_CONFIG_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          npm run build:static
+          mkdir -p out/data
+          cp data/index.json out/data/
+          cp -r data/repositories out/data/
+
+      - uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: out
+
+  deploy:
+    needs: scan-and-build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5.0.1

@@ -371,3 +371,7 @@ The PDF export lists every aspect with its rating.
 Copyright © 2026 VNG Realisatie
 
 This project is licensed under the **European Union Public Licence v. 1.2 (EUPL-1.2)**. See [LICENSE](LICENSE) for the full text.
+
+## Static site
+
+The checker can also run without a server or database: a nightly workflow scans the components in `config/repositories.yml`, writes JSON files to the `data` branch and publishes a static export. See `/docs/run-without-a-server` in the app, `npm run scan:static`, `npm run build:static` and `.github/workflows/static-site.yml`. Try it with the sample data: `CGC_DATA_DIR=examples/static-data npm run build:static`, then serve `out/`.

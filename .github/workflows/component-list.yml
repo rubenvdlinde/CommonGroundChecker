@@ -1,0 +1,36 @@
+# Checks a pull request that changes the component list or the SLAs: the
+# schemas, no duplicates, and for new or changed entries a public repository
+# (error) with a publiccode.yml (warning).
+name: Component list
+
+on:
+  pull_request:
+    paths:
+      - "config/**"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Check the component list
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git show "origin/$BASE_REF:config/repositories.yml" > "$RUNNER_TEMP/base-repositories.yml" 2>/dev/null || : > "$RUNNER_TEMP/base-repositories.yml"
+          npm run --silent config:check -- --base "$RUNNER_TEMP/base-repositories.yml"

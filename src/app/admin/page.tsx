@@ -1,4 +1,6 @@
+import Link from "next/link";
 import AdminWeightsForm from "@/components/AdminWeightsForm";
+import { IS_STATIC_SITE, STATIC_SITE_LINKS } from "@/lib/dataSource/mode";
 import { getAdminScoring } from "@/lib/apiClient";
 import {
   DEFAULT_COMPLEXITY_MAX_CCN_THRESHOLD,
@@ -34,7 +36,31 @@ function buildDefaultConfig() {
   };
 }
 
+function StaticAdminNotice() {
+  return (
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 space-y-4">
+      <h2 className="text-2xl font-bold text-cg-blue">Admin</h2>
+      <p className="text-gray-700">
+        This site runs without a server, so it has no admin pages. Its settings live in the repository and change by
+        pull request: the{" "}
+        <a href={STATIC_SITE_LINKS.componentList} className="text-cg-lightblue hover:underline">
+          component list
+        </a>{" "}
+        and the{" "}
+        <a href={STATIC_SITE_LINKS.slaList} className="text-cg-lightblue hover:underline">
+          SLAs
+        </a>
+        .
+      </p>
+      <Link href="/docs/run-without-a-server" className="inline-flex items-center min-h-[44px] text-cg-lightblue hover:underline">
+        How the static site works
+      </Link>
+    </div>
+  );
+}
+
 export default async function AdminPage() {
+  if (IS_STATIC_SITE) return <StaticAdminNotice />;
   let successData = null;
   let error: string | undefined;
 

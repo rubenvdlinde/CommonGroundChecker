@@ -1,0 +1,105 @@
+# The component list of the Common Ground Checker.
+#
+# Every repository listed here is scanned every night. To add a component, open a
+# pull request that adds an entry; see docs/run-without-a-server in the site, or
+# .github/PULL_REQUEST_TEMPLATE/component.md. The pull request check validates this
+# file against config/schema/repositories.schema.json.
+#
+# Fields (only url is required):
+#   url         public https URL of the repository
+#   basisset    true when the component is in the Common Ground basisset
+#               (code.overheid.nl/CommonGround/vcg-basisset, data/components.json)
+#   scanRef     latest-release, default-branch, or a branch or tag name
+#   register    true when the component is a register
+#   hints       paths the checker would not find itself: helm, docker, docs, apiSpecs
+#   slaLabels   issue labels that mark an issue as covered by an SLA
+#   retired     on (YYYY-MM-DD) and reason; a retired component is no longer scanned
+#   providers   organisations that offer services on top of the component:
+#               name, services (maintenance, support, hosting, implementation, training),
+#               url, contact (a general address, no personal data), since (YYYY-MM-DD)
+#
+# Seeded on 2026-11-19 from the repositories the preview instance had stored. The
+# basisset marks come from vcg-basisset data/components.json version 0.3.1.
+
+repositories:
+  - url: https://github.com/Baseflow/cg-dmf-poc
+    basisset: true
+  - url: https://github.com/ConductionNL/anonymiq
+  - url: https://github.com/ConductionNL/buildiq
+  - url: https://github.com/ConductionNL/decidiq
+  - url: https://github.com/ConductionNL/dossiq
+  - url: https://github.com/ConductionNL/filinq
+  - url: https://github.com/ConductionNL/hermiq
+  - url: https://github.com/ConductionNL/humaniq
+  - url: https://github.com/ConductionNL/integriq
+  - url: https://github.com/ConductionNL/keepiq
+  - url: https://github.com/ConductionNL/larpinq
+  - url: https://github.com/ConductionNL/launchpad
+  - url: https://github.com/ConductionNL/learniq
+  - url: https://github.com/ConductionNL/opencatalogi
+  - url: https://github.com/ConductionNL/openregister
+    basisset: true
+    # The basisset lists the Codeberg mirror, https://codeberg.org/conduction/openregister.
+  - url: https://github.com/ConductionNL/pipelinq
+  - url: https://github.com/ConductionNL/planninq
+  - url: https://github.com/ConductionNL/portaliq
+  - url: https://github.com/ConductionNL/shillinq
+  - url: https://github.com/ConductionNL/stackiq
+  - url: https://github.com/ConductionNL/thematiq
+  - url: https://github.com/ConductionNL/versioniq
+  - url: https://github.com/generiekzaakafhandelcomponent/gzac-backend-template
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/generiekzaakafhandelcomponent/gzac-frontend-template
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/GPP-Woo/GPP-publicatiebank
+    basisset: true
+  - url: https://github.com/infonl/dimpact-zaakafhandelcomponent
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/Interne-Taak-Afhandeling/ITA
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/Klantinteractie-Servicesysteem/KISS-frontend
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/maykinmedia/open-archiefbeheer
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/maykinmedia/open-beheer
+    basisset: true
+  - url: https://github.com/maykinmedia/open-inwoner
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/maykinmedia/open-klant
+    basisset: true
+  - url: https://github.com/maykinmedia/open-object
+    basisset: true
+  - url: https://github.com/maykinmedia/open-organisatie
+    basisset: true
+  - url: https://github.com/maykinmedia/open-plan
+    basisset: true
+  - url: https://github.com/maykinmedia/open-product
+    basisset: true
+  - url: https://github.com/maykinmedia/open-vtb
+    basisset: true
+  - url: https://github.com/maykinmedia/referentielijsten
+    basisset: true
+  - url: https://github.com/nl-portal/nl-portal
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/open-formulieren/open-forms
+    basisset: false  # in vcg-basisset components.json, but outside the basisset
+  - url: https://github.com/open-zaak/open-notificaties
+    basisset: true
+  - url: https://github.com/open-zaak/open-zaak
+    basisset: true
+  - url: https://github.com/open-zaak/vng-selectielijst
+    basisset: true
+  - url: https://github.com/OpenWebconcept/plugin-openpub-base
+    basisset: true
+  - url: https://github.com/OpenWebconcept/plugin-pdc-base
+    basisset: true
+  - url: https://github.com/operaton/operaton
+    basisset: true
+  - url: https://github.com/operaton/operaton-modeler
+    basisset: true
+  - url: https://github.com/wearefrank/zaakbrug
+    basisset: true
+  - url: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv
+    basisset: true
+  - url: https://gitlab.com/rinis-oss/fsc/open-fsc
+    basisset: true

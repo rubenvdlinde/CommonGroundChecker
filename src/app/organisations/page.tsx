@@ -1,6 +1,7 @@
 import OrganisationsIndex from "@/components/OrganisationsIndex";
 import OrganisationsSourceNote from "@/components/OrganisationsSourceNote";
-import { getOrganisations } from "@/lib/apiClient";
+import { dataSource } from "@/lib/dataSource";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import type { OrganisationSummary } from "@/generated/openapi-client";
 
 interface OrganisationsPageProps {
@@ -8,15 +9,18 @@ interface OrganisationsPageProps {
 }
 
 export default async function OrganisationsPage({ searchParams }: OrganisationsPageProps) {
-  const { q } = await searchParams;
+  // The static export has no request, so its search starts empty.
+  const { q } = IS_STATIC_SITE ? { q: undefined } : await searchParams;
   const query = (Array.isArray(q) ? q[0] : q) ?? "";
 
   let organisations: OrganisationSummary[] = [];
   let error: string | null = null;
   try {
-    organisations = (await getOrganisations()).organisations ?? [];
+    organisations = (await dataSource().getOrganisations()).organisations ?? [];
   } catch {
-    error = "The organisations could not be loaded from the backend.";
+    error = IS_STATIC_SITE
+      ? "The organisations could not be read from the data files."
+      : "The organisations could not be loaded from the backend.";
   }
 
   return (

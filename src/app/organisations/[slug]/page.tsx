@@ -2,7 +2,9 @@ import Link from "next/link";
 import EndorsementChip from "@/components/EndorsementChip";
 import OrganisationsSourceNote from "@/components/OrganisationsSourceNote";
 import RatingBadge from "@/components/RatingBadge";
-import { getOrganisation } from "@/lib/apiClient";
+import { dataSource } from "@/lib/dataSource";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
+import { staticOrganisationParams } from "@/lib/dataSource/staticDataSource";
 import { computeMaintained, developmentStatusOf, minUsers } from "@/lib/maintained";
 import { componentCountLabel } from "@/lib/organisations";
 import { loadStoredRatings } from "@/lib/storedRatings";
@@ -24,6 +26,9 @@ function scannedVersion(analysis: { version?: string | null; scannedRef?: string
   return analysis.version || analysis.scannedRef || "unknown";
 }
 
+/** Every organisation page in the static export; the server renders them on request. */
+export const generateStaticParams = IS_STATIC_SITE ? staticOrganisationParams : undefined;
+
 export default async function OrganisationPage({ params }: OrganisationPageProps) {
   const { slug: rawSlug } = await params;
   const slug = decodeURIComponent(rawSlug);
@@ -31,7 +36,7 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
   let detail: OrganisationDetail | null = null;
   let error: string | null = null;
   try {
-    detail = await getOrganisation(slug);
+    detail = await dataSource().getOrganisation(slug);
   } catch {
     error = "The organisation could not be loaded from the backend.";
   }

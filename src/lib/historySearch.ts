@@ -19,3 +19,36 @@ export function buildHistoryHref({ q, sort, direction }: HistoryHrefOptions): st
   if (term) params.set("q", term);
   return `/history?${params.toString()}`;
 }
+
+interface SearchableRepository {
+  owner: string;
+  name: string;
+  repoUrl: string;
+  description?: string | null;
+  displayName?: string | null;
+  shortDescription?: string | null;
+  topics?: string[];
+}
+
+/**
+ * Whether a repository matches a search term, as the backend's repository
+ * search does: owner, name, description or URL contain the term ignoring
+ * case, or a topic equals it. The static site also matches the publiccode.yml
+ * name and short description, which it has at hand.
+ */
+export function matchesRepositorySearch(repository: SearchableRepository, query: string): boolean {
+  const term = normalizeSearchQuery(query).toLowerCase();
+  if (!term) return true;
+  const fields = [
+    repository.owner,
+    repository.name,
+    repository.repoUrl,
+    repository.description,
+    repository.displayName,
+    repository.shortDescription,
+  ];
+  return (
+    fields.some((field) => typeof field === "string" && field.toLowerCase().includes(term)) ||
+    (repository.topics ?? []).some((topic) => topic.toLowerCase() === term)
+  );
+}

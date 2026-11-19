@@ -17,6 +17,8 @@ import type { CriteriaCategory } from "@/lib/criteria";
 import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "@/lib/criteria";
 import { getAdminScoring, streamCheck } from "@/lib/apiClient";
 import { AlertCircle, ClipboardList } from "lucide-react";
+import AddComponentPanel from "@/components/AddComponentPanel";
+import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 
 function sanitizePdfFileName(value: string): string {
   return value.replace(/[^a-z0-9-_]+/gi, "-").replace(/-+/g, "-").toLowerCase();
@@ -452,7 +454,7 @@ function Disclaimer() {
   );
 }
 
-export default function HomePage() {
+function CheckerHomePage() {
   const [loading, setLoading] = useState(false);
   const [exportingPdf, setExportingPdf] = useState(false);
   const [report, setReport] = useState<CheckReport | null>(null);
@@ -840,5 +842,15 @@ export default function HomePage() {
         )}
       </div>
     </main>
+  );
+}
+
+/** The static site cannot scan on request; its home page explains how to add a component instead. */
+export default function HomePage() {
+  if (!IS_STATIC_SITE) return <CheckerHomePage />;
+  return (
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-6">
+      <AddComponentPanel />
+    </div>
   );
 }

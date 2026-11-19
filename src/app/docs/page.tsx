@@ -94,6 +94,18 @@ export default function RatingGuidePage() {
           Ratings are rounded to whole stars for display. A rating of 3.5 or more shows as 4 stars.
         </p>
       </section>
+      <section aria-labelledby="without-a-server" className="space-y-3">
+        <h2 id="without-a-server" className="text-2xl font-bold text-cg-blue">
+          Run the checker without a server
+        </h2>
+        <p className="text-gray-700">
+          The checker also runs as a static site, scanned every night from a component list in the repository.{" "}
+          <Link href="/docs/run-without-a-server" className="text-cg-lightblue hover:underline">
+            How the static site works, and how to add your component
+          </Link>
+          .
+        </p>
+      </section>
     </div>
   );
 }
