@@ -43,7 +43,7 @@ describe("RepoHistoryPage", () => {
     getRepoHistory.mockResolvedValue({
       repository: { id: "repo-id", owner: "org", name: "repo", metadata: { topics: [], stars: 0, forks: 0 } },
       analyses: [
-        { id: "b", checkedAt: "2026-11-11T10:00:00Z", score: 71, rating: 3.4, endorsement: { passed: true, reasons: [] }, results: [], declaredUserCount: 4, confirmedUserCount: 1 },
+        { id: "b", checkedAt: "2026-11-11T10:00:00Z", score: 71, rating: 3.4, endorsement: { passed: true, reasons: [] }, results: [{ id: "publiccode", status: "pass", requirementLevel: "mandatory", publiccode: { developmentStatus: "beta" } }], declaredUserCount: 4, confirmedUserCount: 1 },
         { id: "a", checkedAt: "2026-11-01T10:00:00Z", score: 70, rating: 3.4, endorsement: { passed: true, reasons: [] }, results: [], declaredUserCount: 3, confirmedUserCount: 0 },
       ],
     });
@@ -63,6 +63,7 @@ describe("RepoHistoryPage", () => {
     const reasons = screen.getByRole("list", { name: "Why it is not approved" });
     expect(reasons.textContent).toContain("1 of 3 confirmed users");
     expect(reasons.textContent).toContain("No SLA");
+    expect(reasons.textContent).toContain("development status is beta, only stable components can be approved");
     expect(screen.getByText("Declared and confirmed users over time")).toBeTruthy();
   });
 

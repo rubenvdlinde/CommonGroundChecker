@@ -51,7 +51,7 @@ export default function ApprovalLevel({ approval, endorsement, minConfirmedUsers
       <LevelRow
         title="Approved"
         reached={approval.approved}
-        detail={`Suitable for Common Ground, used by at least ${minConfirmedUsers} confirmed organisations and maintained under a valid SLA.${
+        detail={`Suitable for Common Ground, stable, used by at least ${minConfirmedUsers} confirmed organisations and maintained under a valid SLA.${
           approval.sla ? ` SLA: ${approval.sla.party} with ${approval.sla.maintainer}, until ${approval.sla.until}.` : ""
         }`}
         reasons={approval.reasons}

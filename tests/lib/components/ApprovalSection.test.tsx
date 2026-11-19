@@ -61,6 +61,7 @@ function renderSection(overrides: Partial<Parameters<typeof ApprovalSection>[0]>
     <ApprovalSection
       repoId="repo-id"
       endorsement={suitable}
+      developmentStatus="stable"
       initialUsage={usage}
       minConfirmedUsers={2}
       today={today}
@@ -105,6 +106,13 @@ describe("ApprovalSection", () => {
     expect(approved.textContent).toContain("Reached");
     expect(approved.textContent).toContain("SLA: VNG with Maykin Media, until 2027-12-31.");
     expect(screen.queryByRole("list", { name: "Why it is not approved" })).toBeNull();
+  });
+
+  it("does not reach Approved for a component that is not stable", () => {
+    renderSection({ developmentStatus: "beta", initialUsage: { ...usage, confirmedUserCount: 2, slas: [sla] } });
+
+    const reasons = screen.getByRole("list", { name: "Why it is not approved" });
+    expect(reasons.textContent).toBe("development status is beta, only stable components can be approved");
   });
 
   it("names the end date of an expired SLA", () => {

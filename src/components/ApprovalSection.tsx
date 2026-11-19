@@ -16,6 +16,8 @@ import type { Endorsement } from "@/lib/types";
 interface ApprovalSectionProps {
   repoId: string;
   endorsement: Endorsement;
+  /** `developmentStatus` of the latest scanned publiccode.yml, or null */
+  developmentStatus: string | null;
   /** The usage status from the backend, or null when it could not be loaded */
   initialUsage: UsageStatus | null;
   minConfirmedUsers: number;
@@ -53,6 +55,7 @@ function usageSummary(usage: UsageStatus | null): string {
 export default function ApprovalSection({
   repoId,
   endorsement,
+  developmentStatus,
   initialUsage,
   minConfirmedUsers,
   today,
@@ -72,6 +75,7 @@ export default function ApprovalSection({
 
   const approval = computeApproval({
     endorsement,
+    developmentStatus,
     confirmedUserCount: usage ? usage.confirmedUserCount ?? null : null,
     slas: usage?.slas ?? [],
     minConfirmedUsers,

@@ -76,7 +76,8 @@ export default function RatingGuidePage() {
           </li>
           <li>
             <strong>A component is approved</strong>, the level above suitable, when it is suitable for Common
-            Ground, at least {minConfirmedUsers()} organisations confirmed they use it, and an SLA is valid. An organisation counts
+            Ground, its publiccode.yml declares the development status stable, at least{" "}
+            {minConfirmedUsers()} organisations confirmed they use it, and an SLA is valid. An organisation counts
             when publiccode.yml names it under usedBy and an admin recorded its written confirmation or a register
             entry. An SLA is valid up to and including its end date. The minimum is a proposal: a component with
             one user is not yet a shared component. The checker counts usage only here: it never gives stars and

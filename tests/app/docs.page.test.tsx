@@ -98,7 +98,7 @@ describe("RatingGuidePage", () => {
     render(<RatingGuidePage />);
 
     const approved = screen.getByText("A component is approved").closest("li");
-    expect(approved?.textContent).toContain("at least 2 organisations confirmed they use it, and an SLA is valid");
+    expect(approved?.textContent).toContain("declares the development status stable, at least 2 organisations confirmed they use it, and an SLA is valid");
     expect(approved?.textContent).toContain("The minimum is a proposal");
     expect(approved?.textContent).toContain("never gives stars and never counts in a rating");
   });

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   computeApproval,
   declaredUsersOf,
+  developmentStatusOf,
   DEFAULT_MIN_CONFIRMED_USERS,
   isSlaValid,
   minConfirmedUsers,
@@ -15,6 +16,7 @@ const validSla = { party: "VNG", maintainer: "Maykin Media", startsOn: "2026-01-
 function input(overrides: Partial<ApprovalInput> = {}): ApprovalInput {
   return {
     endorsement: { passed: true, reasons: [] },
+    developmentStatus: "stable",
     confirmedUserCount: 2,
     slas: [validSla],
     minConfirmedUsers: 2,
@@ -54,6 +56,18 @@ describe("declaredUsersOf", () => {
   });
 });
 
+describe("developmentStatusOf", () => {
+  it("reads developmentStatus from the stored publiccode result", () => {
+    expect(developmentStatusOf([{ id: "license" }, { id: "publiccode", publiccode: { developmentStatus: " beta " } }])).toBe("beta");
+  });
+
+  it("is null without publiccode.yml, without the field, or for results that are not a list", () => {
+    expect(developmentStatusOf([{ id: "publiccode" }])).toBeNull();
+    expect(developmentStatusOf([{ id: "publiccode", publiccode: { developmentStatus: null } }])).toBeNull();
+    expect(developmentStatusOf(undefined)).toBeNull();
+  });
+});
+
 describe("isSlaValid", () => {
   it("is valid up to and including its until day", () => {
     expect(isSlaValid({ until: "2026-11-20" }, today)).toBe(true);
@@ -71,6 +85,22 @@ describe("computeApproval", () => {
     const approval = computeApproval(input({ endorsement: { passed: false, reasons: ["Overall rating below 2.5"] } }));
     expect(approval.approved).toBe(false);
     expect(approval.reasons).toEqual(["Not yet suitable for Common Ground"]);
+  });
+
+  it("approves a stable component, whatever the case of the value", () => {
+    expect(computeApproval(input({ developmentStatus: "Stable" })).approved).toBe(true);
+  });
+
+  it.each(["beta", "development", "concept", "obsolete"])("does not approve a %s component", (status) => {
+    const approval = computeApproval(input({ developmentStatus: status }));
+    expect(approval.approved).toBe(false);
+    expect(approval.reasons).toEqual([`development status is ${status}, only stable components can be approved`]);
+  });
+
+  it("does not approve when publiccode.yml declares no development status", () => {
+    expect(computeApproval(input({ developmentStatus: null })).reasons).toEqual([
+      "development status is not declared, only stable components can be approved",
+    ]);
   });
 
   it("names the confirmed users against the minimum", () => {
@@ -115,8 +145,13 @@ describe("computeApproval", () => {
 
   it("lists every missing condition in order", () => {
     const approval = computeApproval(
-      input({ endorsement: { passed: false, reasons: [] }, confirmedUserCount: 0, slas: [] })
+      input({ endorsement: { passed: false, reasons: [] }, developmentStatus: "beta", confirmedUserCount: 0, slas: [] })
     );
-    expect(approval.reasons).toEqual(["Not yet suitable for Common Ground", "0 of 2 confirmed users", "No SLA"]);
+    expect(approval.reasons).toEqual([
+      "Not yet suitable for Common Ground",
+      "development status is beta, only stable components can be approved",
+      "0 of 2 confirmed users",
+      "No SLA",
+    ]);
   });
 });

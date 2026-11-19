@@ -14,6 +14,16 @@ export function declaredUsersOf(results: CheckResult[]): string[] {
   return results.find((result) => result.publiccode)?.publiccode?.usedBy ?? [];
 }
 
+/** `developmentStatus` of the scanned publiccode.yml in stored results, or null when the file or the field is missing. */
+export function developmentStatusOf(results: unknown): string | null {
+  if (!Array.isArray(results)) return null;
+  for (const result of results as Array<{ publiccode?: { developmentStatus?: unknown } } | null>) {
+    const status = result?.publiccode?.developmentStatus;
+    if (result?.publiccode) return typeof status === "string" && status.trim() ? status.trim() : null;
+  }
+  return null;
+}
+
 export interface ApprovalSla {
   party: string;
   maintainer: string;
@@ -29,7 +39,7 @@ export function isSlaValid(sla: Pick<ApprovalSla, "until">, today: string): bool
 }
 
 export interface Approval {
-  /** Approved: suitable for Common Ground, enough confirmed users and a valid SLA */
+  /** Approved: suitable for Common Ground, stable, enough confirmed users and a valid SLA */
   approved: boolean;
   /** Why the component is not approved, in the order of the conditions */
   reasons: string[];
@@ -39,6 +49,8 @@ export interface Approval {
 
 export interface ApprovalInput {
   endorsement: Endorsement;
+  /** `developmentStatus` of the scanned publiccode.yml; null when it is not declared */
+  developmentStatus: string | null;
   /** Declared users with a confirmation; null when the latest scan did not record usedBy */
   confirmedUserCount: number | null;
   slas: ApprovalSla[];
@@ -49,12 +61,18 @@ export interface ApprovalInput {
 
 /**
  * Approved is the level above Suitable for Common Ground: the component is
- * suitable, at least `minConfirmedUsers` declared organisations confirmed
+ * suitable, its publiccode.yml declares `developmentStatus: stable`, at
+ * least `minConfirmedUsers` declared organisations confirmed
  * they use it, and an SLA is valid. Usage counts only here, never in a rating.
  */
 export function computeApproval(input: ApprovalInput): Approval {
   const reasons: string[] = [];
   if (!input.endorsement.passed) reasons.push("Not yet suitable for Common Ground");
+  if (input.developmentStatus?.toLowerCase() !== "stable") {
+    reasons.push(
+      `development status is ${input.developmentStatus ?? "not declared"}, only stable components can be approved`
+    );
+  }
 
   if (input.confirmedUserCount === null) {
     reasons.push("Confirmed users not counted yet: the latest scan did not record usedBy");
