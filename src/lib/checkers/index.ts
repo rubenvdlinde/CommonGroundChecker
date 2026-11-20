@@ -417,6 +417,7 @@ export async function runChecksOnContext(
         "recommended";
       if (
         requirementLevel !== "mandatory" ||
+        result.status === "info" ||
         result.notApplicable ||
         upcomingMandatoryFrom({ id: result.id, requirementLevel }, checkedAt) !== null
       ) {
@@ -475,6 +476,13 @@ export async function runChecksOnContext(
     ? Math.round((weightedCategoryScore / totalCategoryWeight) * 100)
     : 0;
   const score = Math.min(100, baseScore);
+  const notMeasured = results
+    .filter(
+      (result) =>
+        result.status === "info" &&
+        scoringConfig.criterionConfigByCheckId[result.id]?.requirementLevel === "mandatory"
+    )
+    .map((result) => result.title);
 
   const resultsWithRequirementLevels = [
     sourcecode,
@@ -541,6 +549,7 @@ export async function runChecksOnContext(
     categoryRatings,
     aspectRatings,
     endorsement,
+    notMeasured,
     results: resultsWithStars,
     scannedRef: scanned.ref,
     scannedRefKind: scanned.kind,

@@ -116,7 +116,7 @@ export async function checkOwaspSecureCoding(
       title: "OWASP Secure Coding",
       description:
         "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-      status: "warn",
+      status: "info",
       message:
         "Source files were found, but their contents could not be analyzed for the OWASP secure coding check.",
       evidence: filesToScan.slice(0, 10),
