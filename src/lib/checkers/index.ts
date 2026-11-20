@@ -22,6 +22,7 @@ import { checkTests } from "./tests";
 import { checkComplexity } from "./complexity";
 import { checkMaintainability } from "./maintainability";
 import { checkTestCodeRatio } from "./testCodeRatio";
+import { checkOpenSourceHealth } from "./openSourceHealth";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -299,6 +300,7 @@ export async function runChecksOnContext(
       })
     )
   );
+  const openSourceHealthPromise = measure("opensourcehealth", async () => checkOpenSourceHealth(await checkout()));
   const secretScanningPromise = measure("secretscanning", async () => checkSecretScanning(await checkout()));
   const spdxHeadersPromise = measure("spdxheaders", async () => checkSpdxHeaders(await checkout()));
   const complexityPromise = measure("complexity", async () =>
@@ -365,7 +367,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -377,6 +379,7 @@ export async function runChecksOnContext(
     artifactHubPromise,
     spdxHeadersPromise,
     secretScanningPromise,
+    openSourceHealthPromise,
   ]);
   const publiccode = reused.get("publiccode") ?? publiccodeAnalysis.result;
 
@@ -432,6 +435,7 @@ export async function runChecksOnContext(
     complexity,
     maintainability,
     testcoderatio,
+    opensourcehealth,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -543,6 +547,7 @@ export async function runChecksOnContext(
     complexity,
     maintainability,
     testcoderatio,
+    opensourcehealth,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,

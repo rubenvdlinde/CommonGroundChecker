@@ -21,6 +21,7 @@ const ids = [
   "complexity",
   "maintainability",
   "testcoderatio",
+  "opensourcehealth",
   "codemetrics",
   "owaspsecurecoding",
   "adrvalidator",
@@ -61,6 +62,7 @@ const mocks = vi.hoisted(() => ({
   checkComplexity: vi.fn(),
   checkMaintainability: vi.fn(),
   checkTestCodeRatio: vi.fn(),
+  checkOpenSourceHealth: vi.fn(),
   checkSourceCode: vi.fn(),
   checkSemver: vi.fn(),
   checkFiveLayer: vi.fn(),
@@ -144,6 +146,7 @@ vi.mock("@/lib/checkers/tests", () => ({ checkTests: mocks.checkTests }));
 vi.mock("@/lib/checkers/complexity", () => ({ checkComplexity: mocks.checkComplexity }));
 vi.mock("@/lib/checkers/maintainability", () => ({ checkMaintainability: mocks.checkMaintainability }));
 vi.mock("@/lib/checkers/testCodeRatio", () => ({ checkTestCodeRatio: mocks.checkTestCodeRatio }));
+vi.mock("@/lib/checkers/openSourceHealth", () => ({ checkOpenSourceHealth: mocks.checkOpenSourceHealth }));
 vi.mock("@/lib/checkers/codeMetrics", () => ({ checkCodeMetrics: mocks.checkCodeMetrics }));
 vi.mock("@/lib/checkers/owaspSecureCoding", () => ({ checkOwaspSecureCoding: mocks.checkOwaspSecureCoding }));
 vi.mock("@/lib/checkers/eupl", () => ({
@@ -285,6 +288,7 @@ describe("runChecks", () => {
     mocks.checkTests.mockReturnValue(resultFor("tests", "pass"));
     mocks.checkComplexity.mockResolvedValue(resultFor("complexity", "pass"));
     mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "warn"), starRating: 3 });
+    mocks.checkOpenSourceHealth.mockResolvedValue({ ...resultFor("opensourcehealth", "pass"), starRating: 4 });
     mocks.checkTestCodeRatio.mockResolvedValue(resultFor("testcoderatio", "pass"));
     mocks.checkCodeMetrics.mockResolvedValue(resultFor("codemetrics", "info"));
     mocks.checkOwaspSecureCoding.mockResolvedValue(resultFor("owaspsecurecoding", "pass"));
@@ -479,9 +483,10 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(34);
+    expect(report.results).toHaveLength(35);
     expect(report.results.find((result) => result.id === "licenceconsistency")?.starRating).toBe(5);
     expect(report.results.find((result) => result.id === "spdxheaders")?.starRating).toBe(4);
+    expect(report.results.find((result) => result.id === "opensourcehealth")?.starRating).toBe(4);
     expect(report.results.find((result) => result.id === "maintainability")?.starRating).toBe(3);
     expect(report.results.find((result) => result.id === "semver")?.starRating).toBe(1);
     expect(report.results.find((result) => result.id === "tests")?.starRating).toBe(3);
@@ -1266,7 +1271,8 @@ describe("runChecks", () => {
       const second = await runChecks("https://github.com/org/repo", { ref: "development", previousAnalysis: previous });
 
       expect(second).toMatchObject({ scanMode: "partial", scanModeReason: "the code did not change", scannedCommit: COMMIT });
-      expect(gitClones()).toBe(0);
+      // Only the per-run dependency check reads the checkout: known vulnerabilities change without a commit.
+      expect(gitClones()).toBe(1);
       for (const check of [
         mocks.checkComplexity,
         mocks.checkMaintainability,
@@ -1279,7 +1285,7 @@ describe("runChecks", () => {
       ]) {
         expect(check).not.toHaveBeenCalled();
       }
-      for (const check of [mocks.checkDockerImage, mocks.checkUsage, mocks.checkMaintenance, mocks.checkSemver, mocks.checkAdrValidator]) {
+      for (const check of [mocks.checkDockerImage, mocks.checkUsage, mocks.checkMaintenance, mocks.checkSemver, mocks.checkAdrValidator, mocks.checkOpenSourceHealth]) {
         expect(check).toHaveBeenCalledTimes(1);
       }
       // publiccode.yml is still read for the repository details and the usage check.

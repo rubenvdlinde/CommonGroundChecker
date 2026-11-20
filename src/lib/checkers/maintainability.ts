@@ -1,7 +1,7 @@
 import { mkdtemp, readFile, rm } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { spawn } from "node:child_process";
+import { runPythonScript, TIMED_OUT } from "./pythonScript";
 import type { CheckResult, MeasurementGroup, MeasurementRow, StarLevel, StarRating } from "../types";
 import { STAR_LEVELS } from "../types";
 import { formatStars, ratingToStars } from "../stars";
@@ -338,25 +338,6 @@ export function mapMaintainabilityReport(report: MaintainabilityReport): CheckRe
   };
 }
 
-function runScript(args: string[]): Promise<{ code: number; stderr: string }> {
-  return new Promise((resolve) => {
-    const child = spawn("python3", [SCRIPT_PATH, ...args], { stdio: ["ignore", "ignore", "pipe"] });
-    let stderr = "";
-    const timer = setTimeout(() => child.kill("SIGKILL"), TIMEOUT_MS);
-    child.stderr.on("data", (chunk) => {
-      stderr += String(chunk);
-    });
-    child.on("error", (error) => {
-      clearTimeout(timer);
-      resolve({ code: 127, stderr: error.message });
-    });
-    child.on("close", (code, signal) => {
-      clearTimeout(timer);
-      resolve({ code: signal ? 124 : code ?? 1, stderr });
-    });
-  });
-}
-
 export async function checkMaintainability(localRepoPath?: string): Promise<CheckResult> {
   if (!localRepoPath) {
     return warn("The repository could not be cloned, so maintainability was not measured.");
@@ -365,8 +346,8 @@ export async function checkMaintainability(localRepoPath?: string): Promise<Chec
   const tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-maintainability-"));
   try {
     const jsonPath = path.join(tempRoot, "report.json");
-    const run = await runScript(["report", localRepoPath, "--json", jsonPath]);
-    if (run.code === 124) {
+    const run = await runPythonScript(SCRIPT_PATH, ["report", localRepoPath, "--json", jsonPath], TIMEOUT_MS);
+    if (run.code === TIMED_OUT) {
       return warn(`Maintainability analysis did not finish within ${TIMEOUT_MS / 1000} seconds.`);
     }
     if (run.code === NOTHING_TO_JUDGE) {

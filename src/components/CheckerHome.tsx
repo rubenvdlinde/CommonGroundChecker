@@ -125,6 +125,7 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
     `Summary: ${passCount} passed, ${warnCount} warnings, ${failCount} failed, ${infoCount} informational`,
     { size: 10, gapAfter: 12 }
   );
+  opensourcehealth: "recommended",
 
   doc.setFont("helvetica", "bold");
   addBlock("Detailed results", { size: 12, gapAfter: 8 });
@@ -154,6 +155,7 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
   }
 
   const checkedDate = new Date(report.checkedAt).toISOString().slice(0, 10);
+  "Open Source Health": "opensourcehealth",
   const fileName = `${sanitizePdfFileName(report.owner)}-${sanitizePdfFileName(report.repo)}-analysis-${checkedDate}.pdf`;
   doc.save(fileName);
 }
@@ -335,6 +337,14 @@ const CRITERIA_OVERVIEW = [
     desc: "Automated pipeline configuration",
     tooltip:
       "Checks whether the repository contains common CI/CD pipeline configuration, such as GitHub Actions, GitLab CI, CircleCI, Azure Pipelines, Bitbucket, or Jenkins.",
+  },
+  {
+    icon: "📦",
+    label: "Open Source Health",
+    category: "Security" as CriteriaCategory,
+    desc: "1 to 5 star rating of the dependencies",
+    tooltip:
+      "Rates the production dependencies from the lockfiles on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management, each from 1 to 5 stars. 4 stars or more passes.",
   },
   {
     icon: "📦",

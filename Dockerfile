@@ -52,6 +52,7 @@ COPY --from=builder /app/src/generated ./src/generated
 COPY --from=builder /app/next.config.js ./next.config.js
 COPY --from=builder /app/scripts/maintainability ./scripts/maintainability
 COPY --from=builder /app/checker-fingerprint.json ./checker-fingerprint.json
+COPY --from=builder /app/scripts/open-source-health ./scripts/open-source-health
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]

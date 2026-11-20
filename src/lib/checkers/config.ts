@@ -78,6 +78,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   complexity: { weight: 0, requirementLevel: "informative" },
   maintainability: { weight: 1, requirementLevel: "recommended" },
   testcoderatio: { weight: 1, requirementLevel: "recommended" },
+  opensourcehealth: { weight: 1, requirementLevel: "recommended" },
   codemetrics: { weight: 0, requirementLevel: "informative" },
   usage: { weight: 0, requirementLevel: "informative" },
   projecthealth: { weight: 0, requirementLevel: "informative" },
