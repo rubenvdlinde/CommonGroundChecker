@@ -110,11 +110,11 @@ data/repositories/<host>/<owner>/<repo>/history.json a short summary per analysi
             <code>retired</code>: the date and the reason; a retired component is no longer scanned.
           </li>
           <li id="providers" className="scroll-mt-6">
-            <code>providers</code>: organisations that offer services on top of the component. Each has a{" "}
+            <code>providers</code>: optional services an organisation offers for the component. Each has a{" "}
             <code>name</code> and one or more <code>services</code>: maintenance, support, hosting, implementation or
             training. <code>url</code>, <code>contact</code> (a general address, no personal data) and{" "}
-            <code>since</code> are optional. A provider adds itself by pull request; the maintainer of the component
-            may review it.
+            <code>since</code> are optional. The provider of a component is always the owner of its repository; these
+            entries show as &quot;Also offers&quot;.
           </li>
         </ul>
         <p className={p}>

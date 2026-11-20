@@ -1,18 +1,20 @@
 /**
  * One side of the compare page: a component with its latest analysis, its
- * functionalities and standards, and who offers services for it. Both modes
+ * functionalities and standards, its provider and the services listed for it. Both modes
  * build it from the same fields, so the page renders them the same way.
  */
 import type { ComparedAnalysis, ComponentKey } from "./compare";
 import { standardsOfResults, type ComponentStandard } from "./componentStandards";
 import { storedCategoryRatings } from "./ratings";
+import { ownerOfRepository, type RepositoryOwner } from "./repositoryOwner";
 import { componentHref } from "./routes";
 import type { ProviderService } from "./staticSite/config";
 import type { PublicCodeData } from "./types";
 
+/** Services an organisation listed for the component in the component list. */
 export interface CompareProvider {
   name: string;
-  slug: string;
+  url: string | null;
   services: ProviderService[];
 }
 
@@ -31,6 +33,8 @@ export interface CompareSide {
   features: string[];
   /** Null when the analysis did not measure standards */
   standards: ComponentStandard[] | null;
+  /** The owner of the repository; null for a URL that names no repository */
+  provider: RepositoryOwner | null;
   providers: CompareProvider[];
 }
 
@@ -95,6 +99,7 @@ export function compareSideFrom(input: CompareSideInput): CompareSide {
     functionalitiesDraft: input.functionalitiesDraft === true,
     features: publiccodeFeatures(results),
     standards: analysis ? standardsOfResults(results) : null,
+    provider: ownerOfRepository(input.repoUrl),
     providers: input.providers ?? [],
   };
 }

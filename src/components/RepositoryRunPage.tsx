@@ -9,6 +9,7 @@ import IssueBlocks from "@/components/IssueBlocks";
 import LifecycleSection, { type RepositoryLifecycle } from "@/components/LifecycleSection";
 import MaintainedSection from "@/components/MaintainedSection";
 import FunctionalitiesSection, { type ComponentLandscape } from "@/components/FunctionalitiesSection";
+import ProvidedBy from "@/components/ProvidedBy";
 import ProvidersSection from "@/components/ProvidersSection";
 import PublicCodeSection from "@/components/PublicCodeSection";
 import RatingHistoryChart from "@/components/RatingHistoryChart";
@@ -121,6 +122,8 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
       </div>
 
       <RepoMeta owner={repository.owner} repo={repository.name} repoMeta={repoMeta} followed={repository.followed} />
+
+      <ProvidedBy repoUrl={repository.repoUrl} />
 
       {lifecycle && <LifecycleSection repoId={repository.id} {...lifecycle} />}
 

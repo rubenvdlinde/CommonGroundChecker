@@ -37,7 +37,7 @@ const a = compareSideFrom({
   },
   functionalities: ["basisgegevens", "objecttypen"],
   functionalitiesDraft: true,
-  providers: [{ name: "Maykin", slug: "maykin", services: ["maintenance", "hosting"] }],
+  providers: [{ name: "Example Hosting", url: null, services: ["maintenance", "hosting"] }],
 });
 const b = compareSideFrom({
   owner: "ConductionNL",
@@ -114,8 +114,9 @@ describe("ComparePageView", () => {
     const overall = screen.getByRole("row", { name: /Overall rating/ });
     expect(within(overall).getByText("OpenRegister scores better")).toBeTruthy();
     expect(screen.getByText("Notificaties API 1.0.0, found in an OpenAPI file")).toBeTruthy();
-    expect(screen.getByRole("link", { name: "Maykin" }).getAttribute("href")).toBe("/providers/maykin");
-    expect(screen.getByText("No provider listed yet.")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "maykinmedia" }).getAttribute("href")).toBe("/providers/maykinmedia");
+    expect(screen.getByRole("link", { name: "ConductionNL" }).getAttribute("href")).toBe("/providers/conductionnl");
+    expect(screen.getByText("Example Hosting also offers maintenance, hosting")).toBeTruthy();
   });
 
   it("keeps the picker on the URL's components and shows a message instead of the comparison", () => {

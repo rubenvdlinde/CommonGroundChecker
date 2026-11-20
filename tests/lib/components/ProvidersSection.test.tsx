@@ -26,9 +26,19 @@ describe("ProvidersSection", () => {
     expect(screen.getByRole("link", { name: "https://example.org/contact" })).toBeTruthy();
   });
 
-  it("says when no provider is listed and links to the component list", () => {
-    render(<ProvidersSection providers={[]} listUrl="https://github.com/o/r/blob/main/config/repositories.yml" />);
-    expect(screen.getByText("No service providers listed.")).toBeTruthy();
+  it("links to the component list it is taken from", () => {
+    render(
+      <ProvidersSection
+        providers={[{ name: "Example", services: ["training"] }]}
+        listUrl="https://github.com/o/r/blob/main/config/repositories.yml"
+      />
+    );
+    expect(screen.getByRole("heading", { name: "Also offers" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "component list" }).getAttribute("href")).toMatch(/config\/repositories\.yml$/);
+  });
+
+  it("shows nothing when no services are listed", () => {
+    const { container } = render(<ProvidersSection providers={[]} listUrl="https://example.org/list.yml" />);
+    expect(container.innerHTML).toBe("");
   });
 });
