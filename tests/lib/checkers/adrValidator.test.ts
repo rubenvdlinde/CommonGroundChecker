@@ -1,6 +1,36 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import path from "node:path";
-import { formatSpectralIssue, spectralCommand } from "@/lib/checkers/adrValidator";
+
+const childProcessMocks = vi.hoisted(() => ({
+  stdout: "[]",
+  /** Replaces the default run (print `stdout`, exit 0) when set */
+  emit: null as
+    | null
+    | ((handlers: Record<string, (value: unknown) => void>, onStdout: (chunk: string) => void) => void),
+}));
+
+vi.mock("node:child_process", () => ({
+  spawn: vi.fn(() => {
+    const handlers: Record<string, (value: unknown) => void> = {};
+    let onStdout: (chunk: string) => void = () => {};
+    const child = {
+      stdout: { on: (_event: string, cb: (chunk: string) => void) => { onStdout = cb; } },
+      stderr: { on: () => {} },
+      on: (event: string, cb: (value: unknown) => void) => { handlers[event] = cb; },
+    };
+    setImmediate(() => {
+      if (childProcessMocks.emit) {
+        childProcessMocks.emit(handlers, onStdout);
+        return;
+      }
+      onStdout(childProcessMocks.stdout);
+      handlers.close?.(0);
+    });
+    return child;
+  }),
+}));
+
+import { checkAdrValidator, formatSpectralIssue, spectralCommand } from "@/lib/checkers/adrValidator";
 
 describe("formatSpectralIssue", () => {
   it("formats a Spectral issue with code, severity, path and source", () => {
@@ -79,5 +109,86 @@ describe("spectralCommand", () => {
 
   it("finds the installed binary in this repository", () => {
     expect(spectralCommand(["lint"]).command).toBe(binary);
+  });
+});
+
+describe("checkAdrValidator", () => {
+  const lint = (severities: number[]) => {
+    childProcessMocks.stdout = JSON.stringify(
+      severities.map((severity, index) => ({
+        code: `rule-${index}`,
+        message: "Finding.",
+        severity,
+      }))
+    );
+    return checkAdrValidator("org", "repo", "org/repo", "github", "main", ["openapi.yaml"]);
+  };
+
+  beforeEach(() => {
+    childProcessMocks.stdout = "[]";
+    childProcessMocks.emit = null;
+  });
+
+  it("fails when Spectral reports at least one error", async () => {
+    const result = await lint([0, 1, 3]);
+
+    expect(result.status).toBe("fail");
+    expect(result.message).toContain("1 error(s), 1 warning(s), 0 info, 1 hint(s)");
+    expect((result.evidence ?? []).filter((line) => line.includes("[rule-"))).toHaveLength(3);
+  });
+
+  it("warns when Spectral reports warnings but no errors", async () => {
+    const result = await lint([1, 1, 2]);
+
+    expect(result.status).toBe("warn");
+    expect(result.message).toContain("0 error(s), 2 warning(s), 1 info, 0 hint(s)");
+  });
+
+  it("passes when Spectral reports only info and hints", async () => {
+    const result = await lint([2, 3, 3]);
+
+    expect(result.status).toBe("pass");
+    expect(result.message).toContain("0 error(s), 0 warning(s), 1 info, 2 hint(s)");
+    expect((result.evidence ?? []).filter((line) => line.includes("[rule-"))).toHaveLength(3);
+  });
+
+  it("passes when Spectral reports no findings", async () => {
+    const result = await lint([]);
+
+    expect(result.status).toBe("pass");
+    expect(result.evidence).toContain("No API Design Rules violations found by Spectral.");
+  });
+
+  it("counts a finding without a severity as an error", async () => {
+    childProcessMocks.stdout = JSON.stringify([{ code: "rule", message: "Finding." }]);
+    const result = await checkAdrValidator("org", "repo", "org/repo", "github", "main", ["openapi.yaml"]);
+
+    expect(result.status).toBe("fail");
+  });
+});
+
+describe("checkAdrValidator when Spectral cannot measure", () => {
+  const run = () =>
+    checkAdrValidator("org", "repo", "org/repo", "github", "main", ["openapi.yaml"]);
+
+  it("reports info, not warn, when Spectral is not available", async () => {
+    childProcessMocks.emit = (handlers) => handlers.error?.(new Error("spawn npx ENOENT"));
+
+    const result = await run();
+
+    expect(result.status).toBe("info");
+    expect(result.message).toContain("Spectral CLI is not available");
+  });
+
+  it("reports info, not warn, when Spectral output cannot be parsed", async () => {
+    childProcessMocks.emit = (handlers, onStdout) => {
+      onStdout("Error running Spectral: ruleset could not be loaded");
+      handlers.close?.(2);
+    };
+
+    const result = await run();
+
+    expect(result.status).toBe("info");
+    expect(result.message).toContain("could not be fully validated");
   });
 });
