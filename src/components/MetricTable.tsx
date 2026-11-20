@@ -1,7 +1,7 @@
 import type { InformativeMetric } from "@/lib/types";
 
 const LINK_CLASS =
-  "text-cg-lightblue underline hover:text-cg-blue rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cg-blue";
+  "inline-flex min-h-[44px] items-center lg:min-h-0 text-cg-lightblue underline hover:text-cg-blue rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cg-blue";
 
 interface MetricTableProps {
   caption: string;
@@ -39,7 +39,7 @@ function TargetCell({ metric }: { metric: InformativeMetric }) {
 export default function MetricTable({ caption, metrics }: MetricTableProps) {
   const hasTargets = metrics.some((metric) => metric.target);
   return (
-    <div className="overflow-x-auto">
+    <div className="relative overflow-x-auto" role="region" aria-label={caption} tabIndex={0}>
       <table className="min-w-full text-xs text-left border border-gray-200">
         <caption className="text-left text-gray-600 pb-1">{caption}</caption>
         <thead className="bg-cg-gray">
@@ -57,7 +57,7 @@ export default function MetricTable({ caption, metrics }: MetricTableProps) {
         <tbody>
           {metrics.map((metric) => (
             <tr key={metric.id} className="border-t border-gray-100 align-top">
-              <th scope="row" className="px-2 py-1 font-normal text-gray-800">
+              <th scope="row" className="min-w-[8rem] px-2 py-1 font-normal text-gray-800">
                 <a href={metric.referenceUrl} target="_blank" rel="noopener noreferrer" className={LINK_CLASS}>
                   {metric.name}
                   <span className="sr-only">: definition, opens in a new tab</span>
