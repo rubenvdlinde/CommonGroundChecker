@@ -45,6 +45,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
           "Detects probable copyright holder(s) from COPYRIGHT/NOTICE/LICENSE/README files and package metadata. If no explicit statement is found, it falls back to repository ownership metadata with a warning.",
       },
       {
+        id: "spdxheaders",
+        label: "SPDX licence headers",
+        explanation:
+          "Clones the repository and counts the share of git-tracked source files whose first 30 lines carry an SPDX-License-Identifier header, or that REUSE.toml, .reuse/dep5 or a .license file covers. Stars: 100% five, 95% four, 80% three, 50% two, else one; these bands are the checker's own, the REUSE specification asks for every file. Four or five stars pass, three warn, fewer fail.",
+      },
+      {
         id: "publiccode",
         label: "publiccode.yml",
         explanation:

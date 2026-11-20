@@ -35,6 +35,7 @@ import { USAGE_CHECK_ID } from "../usage";
 import { checkProjectHealth } from "./projectHealth";
 import { checkStandards } from "./standards";
 import { checkLicenceConsistency } from "./licenceConsistency";
+import { checkSpdxHeaders } from "./spdxHeaders";
 import {
   getActiveScoringConfig,
   type ActiveScoringConfig,
@@ -295,6 +296,7 @@ export async function runChecksOnContext(
       })
     )
   );
+  const spdxHeadersPromise = measure("spdxheaders", async () => checkSpdxHeaders(await checkout()));
   const complexityPromise = measure("complexity", async () =>
     checkComplexity(
       owner,
@@ -359,7 +361,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -369,6 +371,7 @@ export async function runChecksOnContext(
     adrValidatorPromise,
     usagePromise,
     artifactHubPromise,
+    spdxHeadersPromise,
   ]);
   const publiccode = reused.get("publiccode") ?? publiccodeAnalysis.result;
 
@@ -409,6 +412,7 @@ export async function runChecksOnContext(
     eupllicense,
     licenceconsistency,
     copyrightowner,
+    spdxheaders,
     publiccode,
     maintenance,
     docker,
@@ -517,6 +521,7 @@ export async function runChecksOnContext(
     eupllicense,
     licenceconsistency,
     copyrightowner,
+    spdxheaders,
     publiccode,
     maintenance,
     docker,
