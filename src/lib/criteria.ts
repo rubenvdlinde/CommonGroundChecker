@@ -5,7 +5,8 @@ export type CriteriaCategory =
   | "Security"
   | "Architecture"
   | "Software Quality"
-  | "Deployment & Operations";
+  | "Deployment & Operations"
+  | "AI readiness";
 
 export const CATEGORY_ORDER: CriteriaCategory[] = [
   "Governance",
@@ -13,9 +14,24 @@ export const CATEGORY_ORDER: CriteriaCategory[] = [
   "Architecture",
   "Software Quality",
   "Deployment & Operations",
+  "AI readiness",
 ];
 
-export type CategoryWeights = Record<CriteriaCategory, number>;
+/**
+ * Categories shown with their own rating that never count: not in the overall
+ * rating, the verdict, Maintained or the drop alerts.
+ */
+export const INFORMATIVE_CATEGORIES: readonly CriteriaCategory[] = ["AI readiness"];
+
+/** True for a category that is shown but never counts. */
+export function isInformativeCategory(category: string): boolean {
+  return (INFORMATIVE_CATEGORIES as readonly string[]).includes(category);
+}
+
+/** A category that counts in the overall rating. */
+export type CountedCategory = Exclude<CriteriaCategory, "AI readiness">;
+
+export type CategoryWeights = Record<CountedCategory, number>;
 
 export const CATEGORY_WEIGHTS: CategoryWeights = {
   Governance: 0.2,
@@ -67,6 +83,12 @@ export const RESULT_ORDER_BY_ID: string[] = [
   "openssfscorecard",
   "projecthealth",
   "semver",
+  "agentinstructions",
+  "specifications",
+  "architecturedecisions",
+  "devenvironment",
+  "machineinterfaces",
+  "agenttooling",
 ];
 
 export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
@@ -111,6 +133,12 @@ export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
   openssfscorecard: "Security",
   semver: "Software Quality",
   fivelayer: "Architecture",
+  agentinstructions: "AI readiness",
+  specifications: "AI readiness",
+  architecturedecisions: "AI readiness",
+  devenvironment: "AI readiness",
+  machineinterfaces: "AI readiness",
+  agenttooling: "AI readiness",
 };
 
 /** DOM id of a criterion's result card, used as the target of links to it. */
@@ -189,6 +217,12 @@ export const CRITERION_VERSIONS: CriterionVersions = {
   sonarqube: { introducedIn: "2026.2" },
   coupling: { introducedIn: "2026.2" },
   opentrack: { introducedIn: "2026.2" },
+  agentinstructions: { introducedIn: "2026.2" },
+  specifications: { introducedIn: "2026.2" },
+  architecturedecisions: { introducedIn: "2026.2" },
+  devenvironment: { introducedIn: "2026.2" },
+  machineinterfaces: { introducedIn: "2026.2" },
+  agenttooling: { introducedIn: "2026.2" },
 };
 
 /** The start of a YYYY-MM-DD date in UTC, or null for anything else. */

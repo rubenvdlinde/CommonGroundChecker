@@ -142,6 +142,27 @@ export const ASPECT_MODEL: CategoryAspects[] = [
       },
     ],
   },
+  {
+    category: "AI readiness",
+    aspects: [
+      { id: "agent-instructions", title: "Instructions", source: { type: "criteria", checkIds: ["agentinstructions"] } },
+      {
+        id: "specifications-and-decisions",
+        title: "Specifications and decisions",
+        source: { type: "criteria", checkIds: ["specifications", "architecturedecisions"] },
+      },
+      {
+        id: "runnable-environment",
+        title: "Runnable environment",
+        source: { type: "criteria", checkIds: ["devenvironment"] },
+      },
+      {
+        id: "interfaces-and-tooling",
+        title: "Interfaces and tooling",
+        source: { type: "criteria", checkIds: ["machineinterfaces", "agenttooling"] },
+      },
+    ],
+  },
 ];
 
 /** Earlier names of categories in the model, for a base that still uses them. */

@@ -1,5 +1,12 @@
 import type { AspectRating, CheckResult, CheckStatus, Endorsement, PublicCodeData, RequirementLevel } from "./types";
-import { CATEGORY_ORDER, CATEGORY_WEIGHTS, isInTransition, isMandatoryFromDate } from "./criteria";
+import {
+  CATEGORY_ORDER,
+  CATEGORY_WEIGHTS,
+  isInTransition,
+  isInformativeCategory,
+  isMandatoryFromDate,
+  type CountedCategory,
+} from "./criteria";
 import { ASPECT_MODEL, resolveCategory, type AspectDefinition, type CategoryAspects } from "./aspects";
 import { formatStars, minimumRatingFor, ratingToStars } from "./stars";
 
@@ -129,9 +136,13 @@ function failsMandatory(result: RatingInput, config: RatingConfig): boolean {
   );
 }
 
-/** The criterion weight of a result that counts: applicable, not informative, weight above 0 and measured. */
-function countedWeight(result: RatingInput | undefined, config: RatingConfig): number | null {
+/**
+ * The criterion weight of a result that counts: applicable, not informative, weight above 0 and measured.
+ * In an informative category every measured, applicable criterion counts with weight 1.
+ */
+function countedWeight(result: RatingInput | undefined, config: RatingConfig, informative = false): number | null {
   if (!result || result.status === "info" || result.notApplicable) return null;
+  if (informative) return 1;
   if (requirementLevelOf(result, config) === "informative") return null;
   const weight = Math.max(0, config.criterionConfigByCheckId[result.id]?.weight ?? 1);
   return weight > 0 ? weight : null;
@@ -140,7 +151,8 @@ function countedWeight(result: RatingInput | undefined, config: RatingConfig): n
 function rateAspect(
   aspect: AspectDefinition,
   resultsById: Map<string, RatingInput>,
-  config: RatingConfig
+  config: RatingConfig,
+  informative: boolean
 ): { rating: number | null; found?: number; expected?: number } {
   const { source } = aspect;
 
@@ -149,14 +161,14 @@ function rateAspect(
 
   if (source.type === "check-aspect") {
     const result = resultsById.get(source.checkId);
-    if (countedWeight(result, config) === null) return { rating: null };
+    if (countedWeight(result, config, informative) === null) return { rating: null };
     const value = result?.aspectRatings?.[source.key];
     return { rating: isRating(value) ? value : null };
   }
 
   const counted = source.checkIds.flatMap((id) => {
     const result = resultsById.get(id);
-    const weight = countedWeight(result, config);
+    const weight = countedWeight(result, config, informative);
     return result && weight !== null ? [{ result, weight }] : [];
   });
 
@@ -178,7 +190,8 @@ function rateAspect(
 /**
  * Rates every aspect of the model from the check results, every category as the
  * mean of its rated aspects, and the component as the weighted mean of the
- * categories with the category weights. Ratings are rounded to one decimal;
+ * categories with the category weights. An informative category is rated but
+ * left out of the overall rating. Ratings are rounded to one decimal;
  * each level is computed from the unrounded level below it.
  */
 export function computeRatings(
@@ -194,7 +207,8 @@ export function computeRatings(
     const category = resolveCategory(modelCategory);
     if (!category) continue;
 
-    const rated = aspects.map((aspect) => ({ aspect, ...rateAspect(aspect, resultsById, config) }));
+    const informative = isInformativeCategory(category);
+    const rated = aspects.map((aspect) => ({ aspect, ...rateAspect(aspect, resultsById, config, informative) }));
     for (const { aspect, rating, found, expected } of rated) {
       aspectRatings[aspect.id] = {
         rating: rating === null ? null : roundRating(rating),
@@ -215,8 +229,10 @@ export function computeRatings(
   const categoryWeights = config.categoryWeights ?? CATEGORY_WEIGHTS;
   const overall = weightedMean(
     CATEGORY_ORDER.flatMap((category) => {
-      const mean = categoryMeans.get(category) ?? null;
-      const weight = Math.max(0, categoryWeights[category] ?? CATEGORY_WEIGHTS[category] ?? 0);
+      if (isInformativeCategory(category)) return [];
+      const counted = category as CountedCategory;
+      const mean = categoryMeans.get(counted) ?? null;
+      const weight = Math.max(0, categoryWeights[counted] ?? CATEGORY_WEIGHTS[counted] ?? 0);
       return mean === null ? [] : [{ value: mean, weight }];
     })
   );
