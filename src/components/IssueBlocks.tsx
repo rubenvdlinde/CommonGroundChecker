@@ -81,7 +81,7 @@ function IssueBlock({ kind, entries, ratingError = null }: IssueBlockProps) {
               {statusChip}
               <a
                 href={`#${RATING_SUMMARY_ID}`}
-                className="font-semibold text-gray-900 underline hover:text-cg-lightblue"
+                className="inline-flex min-h-[44px] items-center lg:min-h-0 font-semibold text-gray-900 underline hover:text-cg-lightblue"
               >
                 {ratingError}
                 <span className="sr-only">: go to the overall rating</span>

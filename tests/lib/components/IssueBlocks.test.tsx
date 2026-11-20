@@ -202,6 +202,8 @@ describe("IssueBlocks", () => {
       name: "Overall rating 2.1 is below 2.5: go to the overall rating",
     });
     expect(ratingLink.getAttribute("href")).toBe("#rating-summary");
+    expect(ratingLink.className).toContain("min-h-[44px]");
+    expect(ratingLink.className).toContain("lg:min-h-0");
   });
 
   it("shows the errors block for a rating error alone, in the singular", () => {

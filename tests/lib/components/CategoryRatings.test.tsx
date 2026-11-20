@@ -76,6 +76,10 @@ describe("CategoryRatings", () => {
     renderRatings();
 
     const table = screen.getByRole("table", { name: "What Testability is made of" });
+    const measurements = screen.getByRole("region", { name: "What Testability is made of" });
+    expect(measurements.getAttribute("tabindex")).toBe("0");
+    // Positioned, so the visually hidden star text in its cells is clipped by it rather than widening the page
+    expect(measurements.className).toContain("relative");
     const headers = within(table).getAllByRole("columnheader").map((header) => header.textContent);
     expect(headers).toEqual([
       "Measured",
@@ -219,6 +223,21 @@ describe("CategoryRatings", () => {
 
     expect(screen.queryByRole("group", { name: /Usage and ecosystem/ })).toBeNull();
     expect(screen.getByRole("group", { name: "Licensing" })).toBeTruthy();
+  });
+
+  it("scrolls each wide table in a keyboard reachable region and gives links 44px touch targets", () => {
+    renderRatings();
+
+    const region = screen.getByRole("region", { name: "What Licensing is made of" });
+    expect(region.getAttribute("tabindex")).toBe("0");
+    expect(region.className).toContain("overflow-x-auto");
+    expect(region.className).toContain("relative");
+    expect(within(region).getByRole("table", { name: "What Licensing is made of" })).toBeTruthy();
+    for (const link of within(region).getAllByRole("link")) {
+      expect(link.className).toContain("min-h-[44px]");
+      expect(link.className).toContain("lg:min-h-0");
+    }
+    expect(region.closest("details")?.querySelector("summary")?.className).toContain("py-3.5");
   });
 
   it("marks a rated aspect with weight 0 as not counted", () => {
