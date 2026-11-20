@@ -101,6 +101,66 @@ function parseCoverageBanner(content: string): number | null {
   return null;
 }
 
+const PERCENT = "([0-9]{1,3}(?:\\.[0-9]+)?)\\s?%";
+
+// Words that mark a percentage as a policy (threshold, target, requirement)
+// rather than a measured value.
+const POLICY_WORDS =
+  /\b(?:thresholds?|targets?|targeting|minimum|min|at least|must|should|gates?|required?|requires|requirement|goal|aim(?:s|ing)?|enforced?)\b|≥|>=|⩾/i;
+
+const README_BADGE_PATH = new RegExp(`badge\\/(?:coverage|cov)-${PERCENT.replace("%", "(?:%25|%)")}`, "i");
+const README_ALT_TEXT = /!\[([^\]]*)\]\(|\balt=["']([^"']*)["']|:alt:\s*([^\r\n]*)/gi;
+const COVERAGE_LABEL_PERCENT = new RegExp(`\\b(?:coverage|cov)\\b[^\\d%\\n]{0,20}?${PERCENT}`, "i");
+const README_REPORT_STATEMENTS = [
+  new RegExp(
+    `\\b(?:(?:code|test|line|statement)\\s+)?coverage\\b[*_\`\\s]*(?:is|of|:|=|\\|)\\s*[*_\`]*\\s*(?:currently\\s+|now\\s+)?${PERCENT}`,
+    "i"
+  ),
+  new RegExp(`${PERCENT}\\s+(?:(?:code|test|line|statement)\\s+)?coverage\\b`, "i"),
+];
+
+function toPercentage(raw: string | undefined): number | null {
+  if (raw === undefined) return null;
+  const value = Number(raw);
+  return Number.isFinite(value) && value >= 0 && value <= 100 ? value : null;
+}
+
+/**
+ * Reads a measured coverage percentage from README text: a coverage badge
+ * path with a percentage, badge alt text with a percentage, or a
+ * report-style statement such as "Code coverage: 85%". Lines that state a
+ * threshold, target or requirement are ignored.
+ */
+function parseCoverageFromReadmeText(content: string): number | null {
+  const badgeValue = toPercentage(content.match(README_BADGE_PATH)?.[1]);
+  if (badgeValue !== null) {
+    return badgeValue;
+  }
+
+  let altMatch: RegExpExecArray | null;
+  README_ALT_TEXT.lastIndex = 0;
+  while ((altMatch = README_ALT_TEXT.exec(content)) !== null) {
+    const alt = altMatch[1] ?? altMatch[2] ?? altMatch[3] ?? "";
+    if (POLICY_WORDS.test(alt)) continue;
+    const altValue = toPercentage(alt.match(COVERAGE_LABEL_PERCENT)?.[1]);
+    if (altValue !== null) {
+      return altValue;
+    }
+  }
+
+  for (const line of content.split(/\r?\n/)) {
+    if (POLICY_WORDS.test(line)) continue;
+    for (const regex of README_REPORT_STATEMENTS) {
+      const value = toPercentage(line.match(regex)?.[1]);
+      if (value !== null) {
+        return value;
+      }
+    }
+  }
+
+  return null;
+}
+
 function extractBadgeTextContent(content: string): string {
   const fragments: string[] = [];
   const textTag = /<text[^>]*>([^<]*)<\/text>/gi;
@@ -155,7 +215,7 @@ function extractCoverageBadgeUrls(content: string): string[] {
       continue;
     }
 
-    if (/(?:badge\/(?:coverage|cov)|\/coverage(?:[-/]|$)|\/cov(?:[-/]|$))/i.test(normalized)) {
+    if (/(?:badge\/(?:coverage|cov)|\/coverage(?:[-/]|$)|\/cov(?:[-/]|$)|sonarcloud\.io\/api\/project_badges\/measure\?.*\bmetric=coverage\b)/i.test(normalized)) {
       urls.add(normalized);
     }
   }
@@ -213,9 +273,9 @@ async function parseCoverageFromReadme(context: RepoContext, tree: string[]): Pr
   const content = await context.provider.getFileContent(context, readmePath);
   if (!content) return null;
 
-  const bannerValue = parseCoverageBanner(content);
-  if (bannerValue !== null) {
-    return bannerValue;
+  const readmeValue = parseCoverageFromReadmeText(content);
+  if (readmeValue !== null) {
+    return readmeValue;
   }
 
   const badgeUrls = extractCoverageBadgeUrls(content);
