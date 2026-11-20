@@ -130,7 +130,7 @@ describe("ComparePageView", () => {
         message="Choose two different components."
       />
     );
-    expect((screen.getByLabelText("Component A") as HTMLSelectElement).value).toBe("maykinmedia/open-object");
+    expect((screen.getByLabelText("First component") as HTMLSelectElement).value).toBe("maykinmedia/open-object");
     expect(screen.getByRole("status").textContent).toBe("Choose two different components.");
     expect(screen.queryByText("Overlap in functionalities")).toBeNull();
   });

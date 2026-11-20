@@ -54,14 +54,13 @@ function cellClass(winner: Winner, side: "a" | "b"): string {
 }
 
 function WinnerCell({ winner, a, b }: { winner: Winner; a: string; b: string }) {
-  const short = winner === "a" ? "A" : winner === "b" ? "B" : winner === "equal" ? "=" : "";
+  const label = winner === "a" ? a : winner === "b" ? b : winner === "equal" ? "Equal" : "n/a";
   return (
-    <td className="px-2 py-2 text-center text-xs text-gray-600">
-      <span aria-hidden="true" className="font-semibold">
-        {short}
+    <td className="break-words px-2 py-2 text-xs text-gray-600">
+      <span aria-hidden="true" className={winner === "a" || winner === "b" ? "font-semibold" : ""}>
+        {label}
       </span>
       <span className="sr-only">{winnerText(winner, a, b)}</span>
-      {winner === "not-comparable" && <span aria-hidden="true">n/a</span>}
     </td>
   );
 }
@@ -70,17 +69,17 @@ function TableHead({ a, b, first }: { a: string; b: string; first: string }) {
   return (
     <thead>
       <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
-        <th scope="col" className="w-[40%] px-2 py-2 font-semibold">
+        <th scope="col" className="w-[31%] px-2 py-2 font-semibold">
           {first}
         </th>
-        <th scope="col" className="w-[24%] px-2 py-2 font-semibold">
-          A <span className="sr-only">{a}</span>
+        <th scope="col" className="w-[23%] break-words px-2 py-2 font-semibold">
+          {a}
         </th>
-        <th scope="col" className="w-[24%] px-2 py-2 font-semibold">
-          B <span className="sr-only">{b}</span>
+        <th scope="col" className="w-[23%] break-words px-2 py-2 font-semibold">
+          {b}
         </th>
-        <th scope="col" className="w-[12%] px-2 py-2 text-center font-semibold">
-          Better
+        <th scope="col" className="w-[23%] px-2 py-2 font-semibold">
+          Scores better
         </th>
       </tr>
     </thead>
@@ -172,8 +171,8 @@ function ComponentPicker({ options, selectedA, selectedB }: Pick<ComparePageView
   );
   return (
     <form method="get" action={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${COMPARE_PATH}`} className="flex flex-wrap items-end gap-3">
-      {select("a", "Component A", selectedA)}
-      {select("b", "Component B", selectedB)}
+      {select("a", "First component", selectedA)}
+      {select("b", "Second component", selectedB)}
       <button
         type="submit"
         className="min-h-[44px] rounded-lg border border-cg-lightblue bg-cg-lightblue/10 px-4 text-sm font-semibold text-cg-blue hover:bg-cg-lightblue/20"
@@ -223,10 +222,9 @@ export default function ComparePageView({
   );
 }
 
-function SideHeading({ side, letter }: { side: CompareSide; letter: "A" | "B" }) {
+function SideHeading({ side }: { side: CompareSide }) {
   return (
     <div className="min-w-0 rounded-xl border border-gray-200 bg-white px-4 py-3">
-      <p className="text-xs font-semibold text-gray-500">Component {letter}</p>
       <p className="break-words font-semibold text-gray-800">
         <Link href={side.href} className="text-cg-blue hover:underline">
           {side.name}
@@ -254,8 +252,8 @@ function Comparison({ a, b, functionalityNames }: { a: CompareSide; b: CompareSi
   return (
     <>
       <div className="grid gap-3 sm:grid-cols-2">
-        <SideHeading side={a} letter="A" />
-        <SideHeading side={b} letter="B" />
+        <SideHeading side={a} />
+        <SideHeading side={b} />
       </div>
 
       <Panel title="Overlap in functionalities">
@@ -359,8 +357,8 @@ function Comparison({ a, b, functionalityNames }: { a: CompareSide; b: CompareSi
         ) : (
           <>
             <p className="text-sm text-gray-700">
-              A higher rating is better. The better value is marked green; “=” means equal, and n/a means one of the two
-              has no rating for it.
+              A higher rating is better. The better value is marked green. n/a means one of the two has no rating
+              for it.
             </p>
             <RatingTable caption="Overall and per category" rows={categories} a={a.name} b={b.name} />
             <details className="text-sm">
