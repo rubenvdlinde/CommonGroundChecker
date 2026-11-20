@@ -17,7 +17,7 @@ function SourceName({ source }: { source: UsageSource }) {
 /** One row per usage source with what it measured, when, and what the figures do not say. Never rated. */
 export default function UsageTable({ caption, sources }: { caption: string; sources: UsageSource[] }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="relative overflow-x-auto" role="region" aria-label={caption} tabIndex={0}>
       <table className="min-w-full text-xs text-left border border-gray-200">
         <caption className="text-left text-gray-600 pb-1">{caption}</caption>
         <thead className="bg-cg-gray">

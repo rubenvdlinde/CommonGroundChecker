@@ -224,7 +224,7 @@ function InformativeAspectRow({
         with other components.
       </p>
       <details className="mt-1">
-        <summary className="cursor-pointer text-xs text-cg-lightblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-cg-lightblue">
+        <summary className="cursor-pointer py-3.5 lg:py-0 text-xs text-cg-lightblue focus-visible:outline focus-visible:outline-2 focus-visible:outline-cg-lightblue">
           Show what {aspect.title} is made of
         </summary>
         <div className="mt-2">

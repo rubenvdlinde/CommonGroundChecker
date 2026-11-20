@@ -224,6 +224,10 @@ describe("CategoryRatings", () => {
     const details = within(group).getByRole("table", { name: /What the sources say about Usage and ecosystem/ }).closest("details");
     expect(details?.open).toBe(false);
     expect(details?.querySelector("summary")?.textContent).toBe("Show what Usage and ecosystem is made of");
+    expect(details?.querySelector("summary")?.className).toContain("py-3.5");
+    const region = within(group).getByRole("region", { name: /What the sources say about Usage and ecosystem/ });
+    expect(region.getAttribute("tabindex")).toBe("0");
+    expect(region.className).toContain("relative");
   });
 
   it("leaves usage out when no source found anything", () => {
