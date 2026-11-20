@@ -1,11 +1,12 @@
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
-import { PROVIDERS_PATH, USERS_PATH } from "@/lib/routes";
+import { FUNCTIONALITIES_PATH, PROVIDERS_PATH, USERS_PATH } from "@/lib/routes";
 
 export type NavLink = { href: string; label: string };
 
 /** The links both modes share, in order. Components is the home page. */
 const SHARED_NAV_LINKS: ReadonlyArray<NavLink> = [
   { href: "/", label: "Components" },
+  { href: FUNCTIONALITIES_PATH, label: "Functionalities" },
   { href: USERS_PATH, label: "Users" },
   { href: PROVIDERS_PATH, label: "Providers" },
   { href: "/docs", label: "Rating guide" },

@@ -22,7 +22,7 @@ describe("SiteNav", () => {
     render(<SiteNav links={SERVER_NAV_LINKS} />);
     const row = within(screen.getByRole("navigation", { name: "Main" })).getAllByRole("list")[0];
     const links = within(row).getAllByRole("link");
-    expect(links.map((link) => link.textContent)).toEqual(["Components", "Users", "Providers", "Rating guide", "About", "Admin"]);
+    expect(links.map((link) => link.textContent)).toEqual(["Components", "Functionalities", "Users", "Providers", "Rating guide", "About", "Admin"]);
     expect(links.filter((link) => link.getAttribute("aria-current") === "page").map((link) => link.textContent)).toEqual([
       "Components",
     ]);
@@ -46,6 +46,7 @@ describe("SiteNav", () => {
     expect(menuList().hidden).toBe(false);
     expect(within(menuList()).getAllByRole("link").map((link) => link.textContent)).toEqual([
       "Components",
+      "Functionalities",
       "Users",
       "Providers",
       "Rating guide",

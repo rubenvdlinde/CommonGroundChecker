@@ -2,21 +2,22 @@ import { describe, expect, it } from "vitest";
 import { SERVER_NAV_LINKS, STATIC_NAV_LINKS, isActiveNavLink, navLinks } from "@/lib/navigation";
 
 describe("navigation", () => {
-  it("lists Components, Users, Providers, Rating guide and About, then Admin on the server", () => {
+  it("lists Components, Functionalities, Users, Providers, Rating guide and About, then Admin on the server", () => {
     expect(SERVER_NAV_LINKS.map((link) => link.label)).toEqual([
       "Components",
+      "Functionalities",
       "Users",
       "Providers",
       "Rating guide",
       "About",
       "Admin",
     ]);
-    expect(SERVER_NAV_LINKS.map((link) => link.href)).toEqual(["/", "/users", "/providers", "/docs", "/about", "/admin"]);
+    expect(SERVER_NAV_LINKS.map((link) => link.href)).toEqual(["/", "/functionalities", "/users", "/providers", "/docs", "/about", "/admin"]);
     expect(navLinks(false)).toBe(SERVER_NAV_LINKS);
   });
 
   it("never shows Admin in the static site", () => {
-    expect(STATIC_NAV_LINKS.map((link) => link.label)).toEqual(["Components", "Users", "Providers", "Rating guide", "About"]);
+    expect(STATIC_NAV_LINKS.map((link) => link.label)).toEqual(["Components", "Functionalities", "Users", "Providers", "Rating guide", "About"]);
     expect(navLinks(true)).toBe(STATIC_NAV_LINKS);
   });
 
