@@ -44,6 +44,37 @@ describe("mapMaintainabilityReport", () => {
     expect(levers?.[0]).toBe("Lever: unit complexity in typescript, about 188 lines to fix for half a star");
   });
 
+  it("lists the combined JavaScript, TypeScript and Vue structure as its own language", () => {
+    const result = mapMaintainabilityReport({
+      ...report,
+      rating: {
+        ...report.rating,
+        properties: {
+          ...report.rating.properties,
+          module_coupling: {
+            rating: 5.11,
+            languages: { php: { rating: 5.04, loc: 459167 }, "js/ts/vue": { rating: 5.43, loc: 92149 } },
+          },
+        },
+      },
+    });
+
+    expect(result.evidence).toContain("Module coupling: ★★★★★ 5.1 (php 5.0, js/ts/vue 5.4)");
+  });
+
+  it("says why component independence was not rated for a language with a single component", () => {
+    const warning =
+      "all 12 modules fall into one component (src, directory rule), so component independence and entanglement are trivial; neither is rated.";
+    const result = mapMaintainabilityReport({
+      ...report,
+      structure: { "js/ts/vue": { warning }, php: { warning: undefined }, python: null },
+    });
+
+    expect(result.evidence).toContain(`Not rated (js/ts/vue): ${warning}`);
+    expect(result.evidence?.filter((line) => line.startsWith("Not rated"))).toHaveLength(1);
+    expect(result.evidence?.some((line) => line.startsWith("Component independence"))).toBe(false);
+  });
+
   it.each([
     [3.4, 3.6, "pass", 4],
     [2.6, 3.0, "warn", 3],

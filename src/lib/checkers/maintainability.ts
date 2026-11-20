@@ -98,6 +98,8 @@ interface Lever {
 export interface MaintainabilityReport {
   files: number;
   skipped_files?: string[];
+  /** Per language ("php", "python", "js/ts/vue"); a warning means independence and entanglement were not rated. */
+  structure?: Record<string, { warning?: string } | null>;
   rating: {
     overall: { range: [number, number] } | null;
     properties: Record<string, { rating: number | null; languages: Record<string, RatedLanguage> }>;
@@ -319,6 +321,11 @@ export function mapMaintainabilityReport(report: MaintainabilityReport): CheckRe
   const evidence = Object.entries(report.rating.properties)
     .filter(([, property]) => property.rating !== null)
     .map(([key, property]) => propertyLine(key, property.rating!, property.languages));
+  for (const [language, structure] of Object.entries(report.structure ?? {})) {
+    if (structure?.warning) {
+      evidence.push(`Not rated (${language}): ${structure.warning}`);
+    }
+  }
   evidence.push(...(report.rating.levers ?? []).slice(0, 3).map(leverLine));
   if (report.skipped_files?.length) {
     evidence.push(`Skipped ${report.skipped_files.length} file(s) the analyser could not read`);
