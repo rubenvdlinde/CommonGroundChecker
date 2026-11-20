@@ -42,7 +42,7 @@ import {
   getActiveScoringConfig,
   type ActiveScoringConfig,
 } from "./config";
-import { statusToStars } from "../stars";
+import { derivedStarRating } from "../stars";
 import { computeEndorsement, computeRatings } from "../ratings";
 import { resolveScanRef } from "../scanRef";
 import { checkerFingerprint } from "../checkerFingerprint";
@@ -574,9 +574,7 @@ export async function runChecksOnContext(
   const endorsement = computeEndorsement(resultsWithRequirementLevels, rating, scoringConfig);
   // An informative criterion is shown without stars.
   const resultsWithStars = resultsWithRequirementLevels.map((result) =>
-    result.requirementLevel === "informative" || result.id === USAGE_CHECK_ID
-      ? result
-      : { ...result, starRating: result.starRating ?? statusToStars(result.status) }
+    result.id === USAGE_CHECK_ID ? result : { ...result, starRating: derivedStarRating(result) }
   );
 
   return {

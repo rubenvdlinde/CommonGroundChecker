@@ -1,7 +1,7 @@
 import RatingBadge from "@/components/RatingBadge";
 import ResultCard from "@/components/ResultCard";
 import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "@/lib/criteria";
-import { statusToStars } from "@/lib/stars";
+import { derivedStarRating } from "@/lib/stars";
 import type { CheckResult } from "@/lib/types";
 
 interface CriteriaResultsProps {
@@ -70,10 +70,7 @@ export default function CriteriaResults({ results, categoryRatings }: CriteriaRe
                       message={result.message}
                       evidence={result.evidence}
                       referenceUrl={result.referenceUrl}
-                      starRating={
-                        result.starRating ??
-                        (result.requirementLevel === "informative" ? undefined : statusToStars(result.status))
-                      }
+                      starRating={derivedStarRating(result)}
                       metrics={result.metrics}
                       sla={result.sla}
                       mandatoryFrom={result.mandatoryFrom}

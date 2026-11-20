@@ -346,4 +346,24 @@ describe("AnalysisDetailPage", () => {
     expect(screen.getByRole("heading", { name: /^1 warning: missing or incomplete items$/ })).toBeTruthy();
     expect(screen.getAllByText("Becomes mandatory on 1 March 2027").length).toBe(2);
   });
+
+  it("shows no stars for a criterion that was not measured", async () => {
+    getRepoHistory.mockResolvedValue({
+      repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },
+      analyses: [
+        {
+          id: "analysis-1",
+          checkedAt: "2026-11-11T15:39:33Z",
+          score: 0,
+          version: "1.0.0",
+          results: [result("security", "info")],
+        },
+      ],
+    });
+
+    render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
+
+    expect(screen.getByRole("button", { name: /security/ })).toBeTruthy();
+    expect(screen.queryAllByLabelText(/of 5 stars/)).toHaveLength(0);
+  });
 });

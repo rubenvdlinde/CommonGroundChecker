@@ -1179,6 +1179,49 @@ describe("runChecks", () => {
     );
   });
 
+  it("gives a result that was not measured no stars unless the check rated it", async () => {
+    mocks.checkSecurity.mockReturnValue(resultFor("security", "info"));
+    mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "info"), starRating: 2 });
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-1",
+      config: {
+        criterionConfigByCheckId: criterionConfig(1),
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    expect(report.results.find((result) => result.id === "security")?.starRating).toBeUndefined();
+    expect(report.results.find((result) => result.id === "maintainability")?.starRating).toBe(2);
+  });
+
+  it("gives an informative criterion no stars from its status", async () => {
+    const configById = criterionConfig(1);
+    configById.complexity = { weight: 0, requirementLevel: "informative" };
+    mocks.checkComplexity.mockResolvedValue(resultFor("complexity", "fail"));
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-1",
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    const complexity = report.results.find((result) => result.id === "complexity");
+    expect(complexity?.requirementLevel).toBe("informative");
+    expect(complexity?.starRating).toBeUndefined();
+    expect(report.results.find((result) => result.id === "semver")?.starRating).toBe(5);
+  });
+
   describe("a scan of an unchanged commit", () => {
     const COMMIT = "development".padEnd(40, "0");
 
