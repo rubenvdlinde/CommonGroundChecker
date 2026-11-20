@@ -6,6 +6,7 @@ import {
   RATING_DOCS,
   codeProperty,
   findCategoryDoc,
+  type FactorTable as FactorTableData,
   type RatingAspectDoc,
 } from "@/lib/ratingDocs";
 import { TOOLS_DOC_HREF, TOOLS_DOC_LINKED_FROM } from "@/lib/toolsDocs";
@@ -66,6 +67,37 @@ function CodePropertyTable() {
   );
 }
 
+function FactorTable({ table }: { table: FactorTableData }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm text-left border border-gray-200">
+        <caption className="text-left text-gray-700 pb-2">{table.caption}</caption>
+        <thead className="bg-cg-gray">
+          <tr>
+            {table.columns.map((column) => (
+              <th key={column} scope="col" className="p-2">
+                {column}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map(([header, ...cells]) => (
+            <tr key={header} className="border-t border-gray-200">
+              <th scope="row" className="p-2 font-medium">{header}</th>
+              {cells.map((cell, index) => (
+                <td key={table.columns[index + 1]} className="p-2">
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function AspectSection({ aspect }: { aspect: RatingAspectDoc }) {
   const headingId = `${aspect.id}-heading`;
   return (
@@ -118,6 +150,7 @@ function AspectSection({ aspect }: { aspect: RatingAspectDoc }) {
           {paragraph}
         </p>
       ))}
+      {aspect.factors && <FactorTable table={aspect.factors} />}
 
       <h3 className="text-lg font-semibold text-gray-800">Sources</h3>
       <ul className="list-disc pl-6 space-y-1">

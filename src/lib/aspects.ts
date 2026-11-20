@@ -9,7 +9,9 @@ export type AspectSource =
   /** A rating the check reports for this aspect in its `aspectRatings` */
   | { type: "check-aspect"; checkId: string; key: string }
   /** Shown from the check's own data, such as its sources or informative metrics, never rated */
-  | { type: "informative"; checkId: string };
+  | { type: "informative"; checkId: string }
+  /** Not rated: the size a check measures, shown as lines of code and effort */
+  | { type: "size"; checkId: string };
 
 export interface AspectDefinition {
   /** Stable kebab-case id, also the anchor in /docs/<category-slug>#<aspect-id> */
@@ -122,6 +124,7 @@ export const ASPECT_MODEL: CategoryAspects[] = [
         title: "Testing",
         source: { type: "criteria", checkIds: ["tests", "coverage", "testcoderatio"] },
       },
+      { id: "size", title: "Size", source: { type: "size", checkId: "size" }, weight: 0 },
     ],
   },
   {

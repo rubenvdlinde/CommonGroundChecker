@@ -138,7 +138,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
       "Update package.json, composer.json and publiccode.yml when the licence changes.",
     ],
     publiccodeFields: ["licence"],
-    planned: { category: "Governance", aspect: "licensing", level: "recommended" },
   },
   {
     id: "copyrightowner",
@@ -164,7 +163,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
       "Cover generated or binary files with REUSE.toml.",
       "100% gives five stars, 95% four, 80% three and 50% two. These bands are the checker's own.",
     ],
-    planned: { category: "Governance", aspect: "licensing", level: "recommended" },
   },
   {
     id: "publiccode",
@@ -353,7 +351,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     what: "Lines of test code relative to lines of production code, rated from 1 to 5 stars.",
     why: "It works without a coverage report. A ratio of 100% corresponds roughly to 80% coverage.",
     howToPass: ["Write tests alongside the code.", "120% gives five stars, 100% four, 75% three and 25% two."],
-    planned: { category: "Maintainability", aspect: "testing", level: "recommended" },
   },
   {
     id: "complexity",
@@ -419,7 +416,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     why: "Size puts the other measurements in context. A small component and a large one are not maintained the same way.",
     tool: "scc",
     howToPass: ["There is nothing to pass: the criterion is informative."],
-    planned: { category: "Maintainability", level: "informative" },
   },
   {
     id: "sonarqube",
@@ -452,7 +448,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
       "Keep dependencies recent and replace abandoned ones.",
       "Commit lockfiles, so the versions are fixed.",
     ],
-    planned: { category: "Security", level: "recommended" },
   },
   {
     id: "owaspsecurecoding",
@@ -477,7 +472,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
       "Load secrets from the environment or a secret store.",
       "Mark a known false positive in .gitleaksignore.",
     ],
-    planned: { category: "Security", aspect: "secrets", level: "recommended" },
   },
   {
     id: "openssfscorecard",
@@ -490,7 +484,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
       "Run the Scorecard action and fix the checks it reports.",
       "9 or higher gives five stars, 7 four, 5 three and 3 two. These bands are the checker's own.",
     ],
-    planned: { category: "Security", aspect: "supply-chain", level: "recommended" },
   },
   {
     id: "contributing",

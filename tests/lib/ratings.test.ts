@@ -442,6 +442,20 @@ describe("computeRatings", () => {
   });
 });
 
+describe("the size aspect", () => {
+  it("is never rated and does not change the Maintainability rating", () => {
+    const results = [
+      result("maintainability", "warn", { aspectRatings: SUBCHARACTERISTICS }),
+      result("size", "info"),
+    ];
+    const withSize = computeRatings(results, config({ maintainability: mandatory, size: { weight: 1, requirementLevel: "mandatory" } }));
+    const withoutSize = computeRatings(results.slice(0, 1), config({ maintainability: mandatory }));
+
+    expect(withSize.aspectRatings.size).toEqual({ rating: null });
+    expect(withSize.categoryRatings[MAINTAINABILITY]).toBe(withoutSize.categoryRatings[MAINTAINABILITY]);
+  });
+});
+
 describe("computeEndorsement", () => {
   const maintainable = result("maintainability", "pass", { rating: 4.4, starRating: 4 });
 

@@ -128,6 +128,7 @@ function rateAspect(
   const { source } = aspect;
 
   if (source.type === "informative") return { rating: null };
+  if (source.type === "size") return { rating: null };
 
   if (source.type === "check-aspect") {
     const result = resultsById.get(source.checkId);

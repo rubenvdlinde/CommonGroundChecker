@@ -10,12 +10,27 @@ COPY . .
 RUN npm run build \
   && npx tsx scripts/write-checker-fingerprint.ts
 
+# scc 4.1.0 (MIT) for the size check, the release binary checked against its published SHA-256.
+FROM debian:bookworm-slim AS scc
+ARG TARGETARCH
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends ca-certificates curl \
+  && case "${TARGETARCH:-amd64}" in \
+       amd64) asset=scc_Linux_x86_64.tar.gz; sum=c7328436d3027f4357d3d7853f7dc3ac2bbcb4ca08f1adad91a27c593884079b ;; \
+       arm64) asset=scc_Linux_arm64.tar.gz; sum=6e0d2a1f8d3540ba7df185477dec40bb7340f1b214bfd303147de5cad2bd7b8b ;; \
+       *) echo "no scc build for ${TARGETARCH}" >&2; exit 1 ;; \
+     esac \
+  && curl -fsSL -o /tmp/scc.tar.gz "https://github.com/boyter/scc/releases/download/v4.1.0/${asset}" \
+  && echo "${sum}  /tmp/scc.tar.gz" | sha256sum -c - \
+  && tar -xzf /tmp/scc.tar.gz -C /usr/local/bin scc \
+  && /usr/local/bin/scc --version
+
 FROM node:20-bookworm-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
-# Pinned analysis tools for the complexity and maintainability checks; installing at runtime is disabled.
+# Pinned analysis tools for the complexity, maintainability and size checks; installing at runtime is disabled.
 ENV HYDRA_GATE_TOOLS_DIR=/opt/analysis-tools
 ENV HYDRA_GATE_SIG_NO_INSTALL=1
 
@@ -53,6 +68,8 @@ COPY --from=builder /app/next.config.js ./next.config.js
 COPY --from=builder /app/scripts/maintainability ./scripts/maintainability
 COPY --from=builder /app/checker-fingerprint.json ./checker-fingerprint.json
 COPY --from=builder /app/scripts/open-source-health ./scripts/open-source-health
+COPY --from=builder /app/scripts/size ./scripts/size
+COPY --from=scc /usr/local/bin/scc /usr/local/bin/scc
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]

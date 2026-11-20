@@ -177,6 +177,13 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
           "Counts non-blank, non-comment lines in test files and in production files of the cloned repository and rates test code as a percentage of production code: 120% or more is 5 stars, 100% is 4, 75% is 3, 25% is 2, lower is 1. 4 or 5 stars passes, 3 warns, lower fails. A 100% ratio corresponds roughly to 80% coverage.",
       },
       {
+        id: "size",
+        label: "Size",
+        explanation:
+          "Counts the lines of production code per language with scc and estimates the effort to rebuild it. This criterion is informative and does not contribute to the score.",
+        requirementLevel: "informative",
+      },
+      {
         id: "codemetrics",
         label: "Code metrics",
         explanation:

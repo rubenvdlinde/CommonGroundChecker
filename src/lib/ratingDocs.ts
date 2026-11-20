@@ -1,3 +1,14 @@
+import {
+  FAMILY_LABELS,
+  HOURS_PER_PERSON_YEAR,
+  ISBSG_HOURS_PER_FUNCTION_POINT,
+  QSM_LINES_PER_FUNCTION_POINT,
+  SIG_V17_LINES_PER_PERSON_YEAR,
+  formatCount,
+  type SizeFactor,
+} from "./size";
+import type { SizeFamily } from "./types";
+
 /** A public document that an aspect's description is based on. */
 export interface DocSource {
   title: string;
@@ -49,7 +60,16 @@ export interface RatingAspectDoc {
   counted: boolean;
   /** True when the aspect is shown for information only and never rated */
   informative?: boolean;
+  /** A table of the factors the aspect is computed with */
+  factors?: FactorTable;
   sources: DocSource[];
+}
+
+export interface FactorTable {
+  caption: string;
+  columns: string[];
+  /** Per row: the row header, then one cell per remaining column */
+  rows: string[][];
 }
 
 export interface RatingCategoryDoc {
@@ -111,6 +131,27 @@ const SOURCES = {
   },
   lizard: { title: "lizard, code complexity analyser", url: "https://github.com/terryyin/lizard" },
   jscpd: { title: "jscpd, copy and paste detector", url: "https://github.com/kucherenko/jscpd" },
+  scc: { title: "scc, Sloc Cloc and Code, version 4.1.0", url: "https://github.com/boyter/scc/releases/tag/v4.1.0" },
+  qsmLanguages: {
+    title: "QSM Function Point Languages Table, version 5.0",
+    url: "https://www.qsm.com/resources/function-point-languages-table",
+  },
+  isbsgDeliveryRate: {
+    title: "ISBSG (2010), the impact of team size and software size on project delivery rate (PDF)",
+    url: "https://isbsg.org/wp-content/uploads/2017/03/The-impact-of-team-size-and-software-size-on-project-delivery-rate-2010.pdf",
+  },
+  maintainabilityGuidanceV17: {
+    title: "Trusted Product Maintainability, guidance for producers v17.0 (PDF, web archive)",
+    url: "https://web.archive.org/web/20250826/https://softwareimprovementgroup.com/wp-content/uploads/SIG-TUViT-Evaluation-Criteria-Trusted-Product-Maintainability-Guidance-for-producers.pdf",
+  },
+  sigrid2026Model: {
+    title: "Sigrid 2026 model changes: volume no longer counts towards the maintainability rating",
+    url: "https://docs.sigrid-says.com/reference/quality-model-documents/2026-model-changes.html",
+  },
+  sigridDefaultExcludes: {
+    title: "Sigrid default excludes",
+    url: "https://github.com/Software-Improvement-Group/sigridci/blob/main/resources/default-excludes.txt",
+  },
   testCodeRatio: {
     title: "Test code ratio and its relation to coverage",
     url: "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/capabilities/system-maintainability.md",
@@ -313,6 +354,56 @@ const SUBCHARACTERISTIC_RATING = [
   "Each property gets a rating from 0.5 to 5.5. A share between two star limits gets a rating between them, on a straight line, so a share exactly at the 4-star limit rates 3.5. When a property has several bounds, its rating is the lowest of them.",
   "The sub-characteristic rating is the plain mean of the ratings of its properties. Rounded, that gives the stars.",
 ];
+
+const SIZE_FAMILIES: SizeFamily[] = ["php", "python", "javascript", "typescript", "vue", "html", "css", "sql"];
+
+function factorCell(factor: SizeFactor, format: (value: number) => string): string {
+  const value = format(factor.value);
+  return factor.proxyOf ? `${value} (${FAMILY_LABELS[factor.proxyOf]} proxy)` : value;
+}
+
+/** The factors of both size models per language family, from the constants the checker computes with. */
+export const SIZE_FACTORS: FactorTable = {
+  caption:
+    "Factors per language. A proxy is the published factor of another language, used where the source publishes none.",
+  columns: [
+    "Language",
+    "Lines per function point (QSM v5.0)",
+    "Hours per function point (ISBSG)",
+    "Lines per person-year (SIG v17.0)",
+  ],
+  rows: SIZE_FAMILIES.map((family) => [
+    FAMILY_LABELS[family],
+    factorCell(QSM_LINES_PER_FUNCTION_POINT[family], String),
+    factorCell(ISBSG_HOURS_PER_FUNCTION_POINT[family], String),
+    factorCell(SIG_V17_LINES_PER_PERSON_YEAR[family], formatCount),
+  ]),
+};
+
+const SIZE_DOC: RatingAspectDoc = {
+  id: "size",
+  title: "Size",
+  meaning:
+    "How much production code the component has, and roughly how much work it would take to build it again. A larger system costs more to maintain and to take over. Size is shown for context: it is not better or worse in itself.",
+  criteria: [{ checkId: "size", name: "Size", tool: "scc 4.1.0 on the production scope of the cloned repository" }],
+  rating: [
+    "scc counts lines of code: lines that are neither blank nor a comment. It counts the same production scope as the maintainability estimate: the tracked files, minus test code, minus generated, vendored and third-party code and database migrations (Sigrid's default excludes), minus the Nextcloud build output js/ and l10n/, and minus the exclude patterns of a sigrid.yaml at the repository root when there is one. Files scc recognises as minified or generated are left out as well. Besides PHP, JavaScript, TypeScript, Vue and Python, the size includes HTML and templates, style sheets and SQL.",
+    `Rebuild effort, the open estimate, by backfiring: function points = the sum over the languages of lines ÷ lines per function point (QSM v5.0). Hours = the sum of function points × the median hours per function point (ISBSG). Person-years = hours ÷ ${formatCount(HOURS_PER_PERSON_YEAR)}, which is COCOMO II's 152 hours per person-month times 12. QSM has rows for JavaScript, HTML and SQL only, so PHP, Python, TypeScript and Vue use the JavaScript row and CSS uses the HTML row. ISBSG gives 7.6 hours for scripting languages, 13.7 for HTML, also used for CSS, and 11.4 for SQL. For a scripting language that works out to about 11,280 lines per person-year.`,
+    "SIG-style volume, the estimate track: person-years = the sum over the languages of lines ÷ lines per person-year from the SIG/TÜV NORD guidance for producers v17.0, which lists the lines of code in 3.9 person-years: JavaScript 36,300, TypeScript 31,600 and Python 25,000. SIG published no factor for PHP, Vue, HTML, CSS or SQL. They use the JavaScript factor, and the report labels them as a proxy. With the Python factor instead, PHP lines would weigh 45% more.",
+    "Neither figure is rated. SIG removed volume from the maintainability model in v18.0 (March 2026), and Sigrid still shows the person-years as context. The checker does the same: Size has weight 0 and no stars, and the SIG-style figure is labelled as context, not part of the 2026 rating. Under v17.0, 4 stars required 3.9 person-years or less. The SIG-style figure is a reproduction, not calibrated against SIG audits: SIG counts lines with its own parser and may detect languages differently. Backfiring usually lands 10 to 35% below it. COCOMO is not used, because it models a new project with its overhead and comes out 2.5 to 4 times higher.",
+  ],
+  counted: false,
+  factors: SIZE_FACTORS,
+  sources: [
+    SOURCES.scc,
+    SOURCES.sigridDefaultExcludes,
+    SOURCES.qsmLanguages,
+    SOURCES.isbsgDeliveryRate,
+    SOURCES.maintainabilityGuidanceV17,
+    SOURCES.sigrid2026Model,
+    SOURCES.heitlager,
+  ],
+};
 
 const MAINTAINABILITY_SOURCES: DocSource[] = [
   SOURCES.iso25010,
@@ -521,7 +612,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
     slug: "maintainability",
     title: "Maintainability",
     summary:
-      "Maintainability is how easily a component can be understood, changed, tested and reused. ISO/IEC 25010 defines five sub-characteristics. The checker estimates each of them from properties of the source code, the way the published maintainability model does, and adds an aspect for the tests.",
+      "Maintainability is how easily a component can be understood, changed, tested and reused. ISO/IEC 25010 defines five sub-characteristics. The checker estimates each of them from properties of the source code, the way the published maintainability model does, adds an aspect for the tests, and shows the size of the code without rating it.",
     aspects: [
       subcharacteristic(
         "analysability",
@@ -571,6 +662,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         counted: true,
         sources: [SOURCES.testCodeRatio, SOURCES.iso25010],
       },
+      SIZE_DOC,
     ],
   },
   {

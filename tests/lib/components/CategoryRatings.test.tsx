@@ -5,8 +5,10 @@ import { cleanup, render, screen, within } from "@testing-library/react";
 import CategoryRatings from "@/components/CategoryRatings";
 import { mapMaintainabilityReport, type MaintainabilityReport } from "@/lib/checkers/maintainability";
 import { resolveCategory } from "@/lib/aspects";
-import type { CheckResult } from "@/lib/types";
+import type { CheckResult, SizeMeasurement } from "@/lib/types";
+import { mapSize } from "@/lib/checkers/size";
 import openZaakFixture from "../../fixtures/maintainability-report-open-zaak.json";
+import openZaakSizeFixture from "../../fixtures/size-open-zaak.json";
 
 const MAINTAINABILITY = resolveCategory("Maintainability") as string;
 
@@ -15,11 +17,18 @@ function result(id: string, status: CheckResult["status"]): CheckResult {
 }
 
 const maintainability = mapMaintainabilityReport(openZaakFixture as unknown as MaintainabilityReport);
+const size = mapSize(openZaakSizeFixture as SizeMeasurement);
 
-function renderRatings() {
+function renderRatings(extra: CheckResult[] = [size]) {
   return render(
     <CategoryRatings
-      results={[maintainability, result("license", "pass"), result("eupllicense", "warn"), result("documentation", "pass")]}
+      results={[
+        maintainability,
+        result("license", "pass"),
+        result("eupllicense", "warn"),
+        result("documentation", "pass"),
+        ...extra,
+      ]}
       categoryRatings={{ Governance: 3.8, [MAINTAINABILITY]: 2.6 }}
       aspectRatings={{
         licensing: { rating: 4 },
@@ -238,6 +247,30 @@ describe("CategoryRatings", () => {
       expect(link.className).toContain("lg:min-h-0");
     }
     expect(region.closest("details")?.querySelector("summary")?.className).toContain("py-3.5");
+  });
+
+  it("shows the size as lines of code, not rated, with the languages and both effort figures", () => {
+    renderRatings();
+
+    const group = screen.getByRole("group", { name: /^Size/ });
+    expect(within(group).queryByRole("meter")).toBeNull();
+    expect(within(group).getByText("(informative, not rated)")).toBeTruthy();
+    expect(within(group).getByText("42,010 lines of code, not rated")).toBeTruthy();
+    const table = within(group).getByRole("table", { name: /What Size is made of: production code, counted with scc 4.1.0/ });
+    const python = within(table).getByRole("row", { name: /^Python/ });
+    expect(within(python).getAllByRole("cell").map((cell) => cell.textContent)).toEqual(["342", "38,066"]);
+    expect(within(group).getByText(/^4.1 person-years \(914 function points/)).toBeTruthy();
+    expect(within(group).getByText(/^6.4 person-years, from the SIG v17.0/).textContent).toContain(
+      "Context, not part of the 2026 rating."
+    );
+  });
+
+  it("says why the size was not measured", () => {
+    renderRatings([{ ...result("size", "info"), message: "Not measured: scc 4.1.0 could not run." }]);
+
+    const group = screen.getByRole("group", { name: /^Size/ });
+    expect(within(group).getByText("not measured")).toBeTruthy();
+    expect(within(group).getByText("Not measured: scc 4.1.0 could not run.")).toBeTruthy();
   });
 
   it("marks a rated aspect with weight 0 as not counted", () => {

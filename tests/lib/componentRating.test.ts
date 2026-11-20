@@ -135,6 +135,22 @@ describe("aspectComposition", () => {
     expect(aspectComposition(aspect("project-health"), [])).toEqual({ type: "metrics", metrics: [] });
   });
 
+  it("shows the size a check measured, or its message when it was not measured", () => {
+    const size = { tool: "scc 4.1.0", files: 1, loc: 10, languages: [{ language: "PHP", family: "php" as const, files: 1, loc: 10 }] };
+
+    expect(aspectComposition(aspect("size"), [result("size", "info", { size, message: "10 lines" })])).toEqual({
+      type: "size",
+      size,
+      message: "10 lines",
+    });
+    expect(aspectComposition(aspect("size"), [result("size", "info", { message: "Not measured: no clone." })])).toEqual({
+      type: "size",
+      size: null,
+      message: "Not measured: no clone.",
+    });
+    expect(aspectComposition(aspect("size"), [])).toEqual({ type: "size", size: null, message: null });
+  });
+
   it("lists the documents of a document-count aspect", () => {
     const composition = aspectComposition(aspect("community-documents"), [
       result("documentation", "pass"),

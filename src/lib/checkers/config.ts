@@ -83,6 +83,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   usage: { weight: 0, requirementLevel: "informative" },
   projecthealth: { weight: 0, requirementLevel: "informative" },
   standards: { weight: 0, requirementLevel: "informative" },
+  size: { weight: 0, requirementLevel: "informative" },
   owaspsecurecoding: { weight: 1, requirementLevel: "mandatory" },
   adrvalidator: { weight: 1, requirementLevel: "mandatory" },
   contributing: { weight: 1, requirementLevel: "mandatory" },

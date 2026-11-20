@@ -53,6 +53,7 @@ export const RESULT_ORDER_BY_ID: string[] = [
   "maintainability",
   "testcoderatio",
   "opensourcehealth",
+  "size",
   "codemetrics",
   "owaspsecurecoding",
   "contributing",
@@ -91,6 +92,7 @@ export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
   maintainability: "Software Quality",
   testcoderatio: "Software Quality",
   opensourcehealth: "Security",
+  size: "Software Quality",
   codemetrics: "Software Quality",
   owaspsecurecoding: "Security",
   contributing: "Governance",
@@ -168,6 +170,13 @@ export const CRITERION_VERSIONS: CriterionVersions = {
   semver: { introducedIn: "2026.1" },
   usage: { introducedIn: "2026.2" },
   projecthealth: { introducedIn: "2026.2" },
+  licenceconsistency: { introducedIn: "2026.2" },
+  spdxheaders: { introducedIn: "2026.2" },
+  testcoderatio: { introducedIn: "2026.2" },
+  secretscanning: { introducedIn: "2026.2" },
+  openssfscorecard: { introducedIn: "2026.2" },
+  opensourcehealth: { introducedIn: "2026.2" },
+  size: { introducedIn: "2026.2" },
 };
 
 /** The start of a YYYY-MM-DD date in UTC, or null for anything else. */

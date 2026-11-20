@@ -78,6 +78,7 @@ interface StructureMeasurements {
   module_coupling?: BoundMeasurement[];
   component_independence?: { hidden_share: number; limit_min?: number; stars?: ReportedStars };
   component_entanglement?: { violation_degree: number; limit?: number; stars?: ReportedStars };
+  warning?: string;
 }
 
 /** Star bands per property: per level the maximum share per bound, or one value. */
@@ -98,8 +99,6 @@ interface Lever {
 export interface MaintainabilityReport {
   files: number;
   skipped_files?: string[];
-  /** Per language ("php", "python", "js/ts/vue"); a warning means independence and entanglement were not rated. */
-  structure?: Record<string, { warning?: string } | null>;
   rating: {
     overall: { range: [number, number] } | null;
     properties: Record<string, { rating: number | null; languages: Record<string, RatedLanguage> }>;
@@ -109,8 +108,8 @@ export interface MaintainabilityReport {
   };
   /** Measurements per language */
   languages?: Record<string, LanguageMeasurements>;
-  /** Module coupling and component structure per language */
-  structure?: Record<string, StructureMeasurements>;
+  /** Module coupling and component structure per language; a warning means independence and entanglement were not rated. */
+  structure?: Record<string, StructureMeasurements | null>;
   /** Every star level per property */
   bands?: ReportBands;
 }
@@ -230,7 +229,9 @@ function singleRow(
 
 function propertyRows(property: string, report: MaintainabilityReport): MeasurementRow[] {
   const languages = Object.entries(report.languages ?? {});
-  const structures = Object.entries(report.structure ?? {});
+  const structures = Object.entries(report.structure ?? {}).filter(
+    (entry): entry is [string, StructureMeasurements] => entry[1] !== null
+  );
   const bands = report.bands;
 
   switch (property) {

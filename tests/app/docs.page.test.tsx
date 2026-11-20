@@ -27,7 +27,7 @@ const EXPECTED_MODEL: Record<string, string[]> = {
     "secure-coding",
     "supply-chain",
   ],
-  maintainability: ["analysability", "modifiability", "testability", "modularity", "reusability", "testing"],
+  maintainability: ["analysability", "modifiability", "testability", "modularity", "reusability", "testing", "size"],
   governance: ["licensing", "ownership", "maintenance", "community-documents", "usage-and-ecosystem", "project-health"],
   "deployment-operations": ["containerisation", "release-management"],
   architecture: ["api", "layering", "standards"],
@@ -76,6 +76,7 @@ describe("rating docs data", () => {
     expect(aspects.filter((a) => !a.counted).map((a) => a.id).sort()).toEqual([
       "layering",
       "project-health",
+      "size",
       "standards",
       "usage-and-ecosystem",
     ]);
@@ -201,7 +202,7 @@ describe("CategoryDocPage", () => {
   it("shows the code property limits and which levels are derived on the maintainability page", async () => {
     await renderCategory("maintainability");
 
-    const table = screen.getByRole("table");
+    const table = screen.getByRole("table", { name: /Star limits per code property/ });
     expect(within(table).getByRole("columnheader", { name: "4 stars (published)" })).toBeTruthy();
     expect(within(table).getByRole("columnheader", { name: "5 stars (derived)" })).toBeTruthy();
     const analysability = document.getElementById("analysability")!;
@@ -218,6 +219,28 @@ describe("CategoryDocPage", () => {
     const description = document.getElementById("code-property-limits")!;
     expect(region.contains(description)).toBe(false);
     expect(within(region).getByRole("table").getAttribute("aria-describedby")).toBe("code-property-limits");
+  });
+
+  it("explains both size formulas with the factors per language, as not counted", async () => {
+    await renderCategory("maintainability");
+
+    const size = document.getElementById("size")!;
+    expect(within(size).getByText(/not counted in the rating/)).toBeTruthy();
+    expect(within(size).getByText(/Person-years = hours ÷ 1,824/)).toBeTruthy();
+    expect(within(size).getByText(/the sum over the languages of lines ÷ lines per person-year/)).toBeTruthy();
+    const table = within(size).getByRole("table", { name: /Factors per language/ });
+    const php = within(table).getByRole("row", { name: /^PHP/ });
+    expect(within(php).getAllByRole("cell").map((cell) => cell.textContent)).toEqual([
+      "47 (JavaScript proxy)",
+      "7.6",
+      "9,308 (JavaScript proxy)",
+    ]);
+    const python = within(table).getByRole("row", { name: /^Python/ });
+    expect(within(python).getAllByRole("cell").map((cell) => cell.textContent)).toEqual([
+      "47 (JavaScript proxy)",
+      "7.6",
+      "6,410",
+    ]);
   });
 
   it("marks layering as not counted", async () => {

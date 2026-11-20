@@ -3,7 +3,7 @@ import { RESULT_CATEGORY_BY_ID, type CriteriaCategory } from "./criteria";
 import { measurementsForAspect } from "./measurements";
 import { RATING_DOCS } from "./ratingDocs";
 import { MAX_RATING, MIN_RATING, criterionRating } from "./ratings";
-import type { AspectRating, CheckResult, CheckStatus, InformativeMetric, MeasurementGroup, UsageSource } from "./types";
+import type { AspectRating, CheckResult, CheckStatus, InformativeMetric, MeasurementGroup, SizeMeasurement, UsageSource } from "./types";
 import { USAGE_CHECK_ID, shownUsageSources } from "./usage";
 
 /** The ratings where the rounded stars change: 1.5, 2.5, 3.5 and 4.5. */
@@ -74,7 +74,8 @@ export type AspectComposition =
   | { type: "metrics"; metrics: InformativeMetric[] }
   | { type: "documents"; criteria: AspectCriterion[] }
   | { type: "criteria"; criteria: AspectCriterion[] }
-  | { type: "usage"; sources: UsageSource[] };
+  | { type: "usage"; sources: UsageSource[] }
+  | { type: "size"; size: SizeMeasurement | null; message: string | null };
 
 function aspectCriterion(result: CheckResult): AspectCriterion {
   return {
@@ -100,6 +101,11 @@ export function aspectComposition(aspect: AspectDefinition, results: CheckResult
       return { type: "usage", sources: shownUsageSources(resultsById.get(source.checkId)?.usage) };
     }
     return { type: "metrics", metrics: resultsById.get(source.checkId)?.metrics ?? [] };
+  }
+
+  if (source.type === "size") {
+    const result = resultsById.get(source.checkId);
+    return { type: "size", size: result?.size ?? null, message: result?.message ?? null };
   }
 
   if (source.type === "check-aspect") {

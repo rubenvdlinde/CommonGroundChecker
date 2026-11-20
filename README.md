@@ -79,11 +79,14 @@ A component declares a standard and its version the same way, with the official 
 | 23 | **Code metrics** — repository metrics such as lines of code and function count are collected as informative context | Informative | [commonground.nl](https://www.commonground.nl) |
 | 24 | **Semantic versioning** — releases or tags following MAJOR.MINOR.PATCH | Mandatory | [semver.org](https://semver.org/) |
 | 25 | **Maintainability (ISO 25010)** — unit size, unit complexity, unit interfacing, duplication, module coupling and component structure, each rated from 1 to 5 stars, with an estimated overall maintainability rating | Recommended | [Maintainability model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md) |
+| 26 | **Size** — lines of production code per language, the rebuild effort by backfiring, and SIG-style person-years as context; shown, not rated | Informative | [scc](https://github.com/boyter/scc) |
 
 **Stars:** every criterion also shows 1 to 5 stars. Maintainability has its own scale (4 stars or more passes, 3 stars warns). The other criteria map pass, warn and fail to 5, 3 and 1 stars. The component as a whole and each category also get a rating; see [Ratings](#ratings).
 
 The maintainability analysis runs `scripts/maintainability/check_maintainability.py`, which needs `python3`, lizard 1.24.3 and jscpd 4.0.5. The Docker image installs them. `MAINTAINABILITY_TIMEOUT_SECONDS` (default 600) caps how long one analysis may run. `node scripts/sync-vendored.mjs <maintainability|open-source-health> [commit]` refreshes a vendored script from its upstream; `UPSTREAM` in its directory records the commit. The Open Source Health analysis (`scripts/open-source-health/`) needs only `python3` and network access to OSV.dev, Packagist, the npm registry and PyPI; `OPEN_SOURCE_HEALTH_TIMEOUT_SECONDS` (default 300) caps it.
 | 27 | **Test code ratio** — test code lines as a percentage of production code lines, rated from 1 to 5 stars (120/100/75/25% bands; 100% test code is roughly 80% coverage) | Recommended | [ISO 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) |
+
+The size check lists the production files with `scripts/size/scope.py`, which applies the maintainability script's excludes, and counts them with scc 4.1.0, which the Docker image installs. `SIZE_TIMEOUT_SECONDS` (default 300) caps each step. The formulas and factors are on the Maintainability page of the rating guide.
 
 **Note:** Only mandatory criteria are included in the overall score. Recommended and informative criteria are shown in the report but do not contribute to the score. Each category is scored as the weighted average of its mandatory criteria (pass = 1, warn or info = 0.5, fail = 0), and the overall score is the weighted average of those category scores, using the default category weights Governance 20%, Architecture 20%, Security 25%, Deployment & Operations 20% and Software Quality 15%.
 
@@ -390,7 +393,7 @@ Each category consists of aspects, defined in `src/lib/aspects.ts`:
 | Governance | licensing, ownership, community documents |
 | Security | vulnerabilities, dependency freshness, activity, licences and management, secrets, secure coding, supply chain |
 | Architecture | API, layering (shown, not counted) |
-| Maintainability | analysability, modifiability, testability, modularity, reusability, testing |
+| Maintainability | analysability, modifiability, testability, modularity, reusability, testing, size (shown, not counted) |
 | Deployment & Operations | containerisation, release management |
 
 - **Criterion rating:** the criterion's continuous rating when it has one, otherwise its stars, otherwise its status: pass = 5.5, warn = 3, fail = 0.5, the ends and the middle of the scale. Mandatory and recommended criteria count with their criterion weight; informative criteria, criteria with weight 0 and results that were not measured (`info`) are left out.
@@ -406,6 +409,7 @@ The live report and the stored analysis page show the rating of one component fr
 
 - **Measured aspects** (the maintainability sub-characteristics): the measured share per property, language and bound, against the thresholds for 5, 4, 3 and 2 stars, and the stars it earns. A check provides these in the `measurements` field of its result; for maintainability they come from the analysis script's report, including its `bands`.
 - **Document aspects:** one row per document, found or missing.
+- **Size:** no bar; the lines of code per language, the rebuild effort and the SIG-style person-years, from the `size` field of the size check's result.
 - **Other aspects:** one row per criterion with its status and stars, linking to its result card.
 
 The PDF export lists every aspect with its rating.
