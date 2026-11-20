@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:24:45.540Z",
+  "lastCheckedAt": "2026-11-20T08:57:13.469Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:58:29.673Z",
-  "updatedAt": "2026-11-20T06:24:45.540Z",
+  "updatedAt": "2026-11-20T08:57:13.469Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,31 +44,31 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T06-24-45-540Z",
+  "id": "2026-11-20T08-57-13-469Z",
   "repoId": "github.com/ConductionNL/stackiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:24:45.540Z",
-  "createdAt": "2026-11-20T06:24:45.540Z",
+  "checkedAt": "2026-11-20T08:57:13.469Z",
+  "createdAt": "2026-11-20T08:57:13.469Z",
   "version": "v0.2.0",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
-  "scannedCommit": "e3d7529ee3445b1d0d23942f945e3e73270ace76",
-  "score": 81,
-  "rating": 4.4,
+  "scannedCommit": "3570bb38f17bcadf19437535dbefc11eef3e4609",
+  "score": 100,
+  "rating": 5,
   "categoryRatings": {
-   "Governance": 5.2,
-   "Security": 3,
+   "Governance": 5.5,
+   "Security": 4.5,
    "Architecture": 5.5,
-   "Software Quality": 4.4,
-   "Deployment & Operations": 4.3
+   "Software Quality": 4.1,
+   "Deployment & Operations": 5.5
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 5.5
+    "rating": 5.4
    },
    "ownership": {
-    "rating": 4.3
+    "rating": 5.5
    },
    "maintenance": {
     "rating": 5.5
@@ -85,28 +85,28 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 3.5
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 2.1
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
     "rating": null
    },
    "secrets": {
-    "rating": null
+    "rating": 3
    },
    "secure-coding": {
-    "rating": 0.5
+    "rating": 5.5
    },
    "supply-chain": {
     "rating": 5.5
@@ -127,20 +127,23 @@
     "rating": 4.4
    },
    "testability": {
-    "rating": 3.8
+    "rating": 3.1
    },
    "modularity": {
-    "rating": 4.7
+    "rating": 4.2
    },
    "reusability": {
     "rating": 4.1
    },
    "testing": {
-    "rating": 5.5
+    "rating": 5
+   },
+   "size": {
+    "rating": null
    },
    "containerisation": {
-    "rating": 3,
-    "found": 2,
+    "rating": 5.5,
+    "found": 3,
     "expected": 3
    },
    "release-management": {
@@ -148,14 +151,11 @@
    }
   },
   "endorsement": {
-   "passed": false,
-   "reasons": [
-    "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: OWASP Secure Coding"
-   ]
+   "passed": true,
+   "reasons": []
   },
   "issueCounts": {
-   "errors": 2,
+   "errors": 0,
    "warnings": 1
   },
   "declaredUsers": [],
@@ -167,7 +167,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 12,280 lines of code, 2,284 functions, 2,250 files analyzed.",
+    "message": "Code metrics: 24,373 lines of code, 3,890 functions, 3,862 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -180,9 +180,9 @@
      "docs/src/pages/index.js",
      "eslint.config.mjs",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 12,280",
-     "Function count: 2,284",
-     "Files analyzed: 2,250"
+     "Total lines of code (NLOC): 24,373",
+     "Function count: 3,890",
+     "Files analyzed: 3,862"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -226,6 +226,23 @@
     "starRating": 5
    },
    {
+    "id": "licenceconsistency",
+    "title": "Licence consistency",
+    "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
+    "evidence": [
+     "LICENSE: EUPL-1.2",
+     "package.json: EUPL-1.2",
+     "composer.json: EUPL-1.2",
+     "publiccode.yml: EUPL-1.2",
+     "appinfo/info.xml: EUPL-1.2"
+    ],
+    "referenceUrl": "https://spdx.org/licenses/",
+    "status": "pass",
+    "message": "All 5 licence declarations agree (EUPL-1.2).",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
     "id": "copyrightowner",
     "title": "Copyright / IP Owner Disclosure",
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
@@ -240,11 +257,22 @@
     "starRating": 5
    },
    {
+    "id": "spdxheaders",
+    "title": "SPDX licence headers",
+    "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
+    "referenceUrl": "https://reuse.software/spec/",
+    "status": "pass",
+    "starRating": 5,
+    "message": "100.0% of 1770 source files carry an SPDX header (5 of 5 stars).",
+    "evidence": [],
+    "requirementLevel": "recommended"
+   },
+   {
     "id": "publiccode",
     "title": "publiccode.yml Metadata File",
     "description": "A publiccode.yml file must be present in the repository root.",
-    "status": "warn",
-    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "status": "pass",
+    "message": "publiccode.yml is present and contains all required and recommended fields.",
     "evidence": [
      "publiccode.yml"
     ],
@@ -432,7 +460,7 @@
      "fundedBy": []
     },
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "maintenance",
@@ -455,7 +483,9 @@
     "message": "Dockerfile and docker-compose file(s) found.",
     "evidence": [
      "Dockerfile",
+     ".github/docker-compose.ci.yml",
      "docker-compose.yml",
+     "stackiq-compose.yaml",
      "(Helm chart)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
@@ -466,12 +496,16 @@
     "id": "dockerimage",
     "title": "Available Docker image",
     "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
-    "status": "fail",
-    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
-    "evidence": [],
+    "status": "pass",
+    "message": "The repository declares a published image of this component.",
+    "evidence": [
+     "conductionnl/stackiq (declared in charts/stackiq/values.yaml)",
+     "ghcr.io/conductionnl/stackiq:${APP_IMAGE_TAG:-latest} (declared in docker-compose.yml)",
+     "conductionnl/stackiq on GitHub Container Registry (named in README.md, found on the registry)"
+    ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "cicd",
@@ -495,18 +529,9 @@
     "title": "SBOM (Software Bill of Materials)",
     "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
     "status": "pass",
-    "message": "SBOM file(s) found: sbom.cdx.json, src/components/sbom/SbomComponentsPanel.vue, src/components/sbom/sbomComponents.js, tests/fixtures/sbom/controller-endpoints.json, tests/fixtures/sbom/cyclonedx-1.5-valid.json (+6 more). It appears to list 806 dependencies in sbom.cdx.json.",
+    "message": "SBOM file(s) found: sbom.cdx.json. It appears to list 806 dependencies in sbom.cdx.json.",
     "evidence": [
-     "sbom.cdx.json",
-     "src/components/sbom/SbomComponentsPanel.vue",
-     "src/components/sbom/sbomComponents.js",
-     "tests/fixtures/sbom/controller-endpoints.json",
-     "tests/fixtures/sbom/cyclonedx-1.5-valid.json",
-     "tests/fixtures/sbom/cyclonedx-1.6-valid.json",
-     "tests/fixtures/sbom/cyclonedx-empty-components.json",
-     "tests/fixtures/sbom/cyclonedx-invalid-format.json",
-     "tests/fixtures/sbom/cyclonedx-with-vex.json",
-     "tests/fixtures/sbom/spdx-2.3-valid.json"
+     "sbom.cdx.json"
     ],
     "referenceUrl": "https://www.cisa.gov/sbom",
     "requirementLevel": "mandatory",
@@ -522,8 +547,7 @@
     "evidence": [],
     "notApplicable": true,
     "requirementLevel": "mandatory",
-    "mandatoryFrom": "2027-05-19",
-    "starRating": 3
+    "mandatoryFrom": "2027-05-19"
    },
    {
     "id": "documentation",
@@ -598,22 +622,21 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 1.21 <= 15 and Max CCN 21.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 2.68 <= 15 and Max CCN 30.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.21 (threshold: 15)",
-     "Max CCN: 21.00 (threshold: 30)",
-     "1      1      4      0       1 showError@9-9@/tmp/cgchecker-repo-yX5aaA/repo/tests/vitest/stubs/nextcloud-dialogs.js",
-     "1      1      4      0       1 showWarning@11-11@/tmp/cgchecker-repo-yX5aaA/repo/tests/vitest/stubs/nextcloud-dialogs.js",
-     "2      1     16      1       2 showError@22-23@/tmp/cgchecker-repo-yX5aaA/repo/tests/vitest/organisationModalsMounted.spec.js",
-     "2      1     16      1       2 showError@19-20@/tmp/cgchecker-repo-yX5aaA/repo/tests/vitest/sbomComplianceAndUserGroups.spec.js",
-     "1      1      5      0       1 showError@33-33@/tmp/cgchecker-repo-yX5aaA/repo/tests/vitest/contractApprovalLoadGolden.spec.js",
-     "1      1      7      0       1 (anonymous)@45-45@/tmp/cgchecker-repo-yX5aaA/repo/tests/vitest/interruptedImportErrorGolden.spec.js"
+     "Average CCN: 2.68 (threshold: 15)",
+     "Max CCN: 30.00 (threshold: 30)",
+     "2      1      9      1       9 getError@65-73@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/organisatie.js",
+     "3      1      9      0       3 clearError@291-293@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/organisatie.js",
+     "3      2     20      2       3 httpError@39-41@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/organisatieRequests.js",
+     "2      1      9      1       2 getError@43-44@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/catalog.js",
+     "3      1     10      1       3 setError@61-63@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/catalog.js",
+     "3      1      9      0       3 clearError@79-81@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/catalog.js"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "requirementLevel": "mandatory",
-    "starRating": 5
+    "requirementLevel": "informative"
    },
    {
     "id": "maintainability",
@@ -622,13 +645,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 4.119999999999999,
+    "rating": 3.87,
     "aspectRatings": {
-     "analysability": 3.72,
-     "modifiability": 4.4,
-     "testability": 3.75,
-     "modularity": 4.73,
-     "reusability": 4.07
+     "analysability": 3.73,
+     "modifiability": 4.38,
+     "testability": 3.12,
+     "modularity": 4.23,
+     "reusability": 4.05
     },
     "measurements": [
      {
@@ -641,12 +664,9 @@
       "rows": [
        {
         "label": "JavaScript",
-        "value": "1.0%",
+        "value": "0.9%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        },
@@ -654,21 +674,15 @@
         "label": "PHP",
         "value": "4.1%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 4
        },
        {
         "label": "Vue",
-        "value": "7.3%",
+        "value": "7.2%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 3
        }
@@ -686,21 +700,15 @@
         "label": "JavaScript, more than 15 lines",
         "value": "27.6%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
        {
         "label": "JavaScript, more than 30 lines",
-        "value": "7.0%",
+        "value": "6.8%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -708,65 +716,47 @@
         "label": "JavaScript, more than 60 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "50.1%",
+        "value": "50.3%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 3
        },
        {
         "label": "PHP, more than 30 lines",
-        "value": "30.4%",
+        "value": "30.1%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 3
        },
        {
         "label": "PHP, more than 60 lines",
-        "value": "12.8%",
+        "value": "12.5%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 3
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "21.7%",
+        "value": "21.9%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
        {
         "label": "Vue, more than 30 lines",
-        "value": "2.6%",
+        "value": "2.5%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -774,10 +764,7 @@
         "label": "Vue, more than 60 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        }
@@ -793,12 +780,9 @@
       "rows": [
        {
         "label": "JavaScript, complexity above 5",
-        "value": "16.0%",
+        "value": "16.6%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 4
        },
@@ -806,10 +790,7 @@
         "label": "JavaScript, complexity above 10",
         "value": "2.0%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 5
        },
@@ -817,54 +798,39 @@
         "label": "JavaScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "22.3%",
+        "value": "22.4%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 3
        },
        {
         "label": "PHP, complexity above 10",
-        "value": "6.4%",
+        "value": "6.3%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 4
        },
        {
         "label": "PHP, complexity above 25",
-        "value": "0.7%",
+        "value": "0.6%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 4
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "2.6%",
+        "value": "2.7%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -872,10 +838,7 @@
         "label": "Vue, complexity above 10",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 5
        },
@@ -883,10 +846,7 @@
         "label": "Vue, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        }
@@ -901,12 +861,9 @@
       "rows": [
        {
         "label": "JavaScript, 3 or more parameters",
-        "value": "6.9%",
+        "value": "7.3%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -914,10 +871,7 @@
         "label": "JavaScript, 5 or more parameters",
         "value": "0.5%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -925,21 +879,15 @@
         "label": "JavaScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "12.6%",
+        "value": "12.8%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 4
        },
@@ -947,10 +895,7 @@
         "label": "PHP, 5 or more parameters",
         "value": "2.3%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -958,21 +903,15 @@
         "label": "PHP, 7 or more parameters",
         "value": "0.6%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
        {
         "label": "Vue, 3 or more parameters",
-        "value": "0.0%",
+        "value": "0.2%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -980,10 +919,7 @@
         "label": "Vue, 5 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -991,10 +927,7 @@
         "label": "Vue, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        }
@@ -1012,10 +945,7 @@
         "label": "PHP, fan-in above 10",
         "value": "0.2%",
         "thresholds": {
-         "2": "≤ 13.0%",
-         "3": "≤ 10.7%",
-         "4": "≤ 9.7%",
-         "5": "≤ 7.4%"
+         "4": "≤ 9.7%"
         },
         "stars": 5
        },
@@ -1023,10 +953,7 @@
         "label": "PHP, fan-in above 20",
         "value": "0.1%",
         "thresholds": {
-         "2": "≤ 8.0%",
-         "3": "≤ 5.9%",
-         "4": "≤ 5.3%",
-         "5": "≤ 3.3%"
+         "4": "≤ 5.3%"
         },
         "stars": 5
        },
@@ -1034,10 +961,31 @@
         "label": "PHP, fan-in above 50",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 3.8%",
-         "3": "≤ 2.3%",
-         "4": "≤ 1.8%",
-         "5": "≤ 1.2%"
+         "4": "≤ 1.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 10",
+        "value": "0.7%",
+        "thresholds": {
+         "4": "≤ 9.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 5.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 1.8%"
         },
         "stars": 5
        }
@@ -1053,12 +1001,20 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "95.2%",
+        "value": "94.7%",
         "thresholds": {
-         "4": "≥ 94.5%",
-         "5": "≥ 97.3%"
+         "4": "≥ 94.5%"
         },
         "stars": 4
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "48.6%",
+        "thresholds": {
+         "4": "≥ 94.5%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
        }
       ]
      },
@@ -1071,436 +1027,548 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "0.0203",
+        "value": "0.022",
         "thresholds": {
-         "4": "≤ 0.075",
-         "5": "≤ 0.0375"
+         "4": "≤ 0.075"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "0.039",
+        "thresholds": {
+         "4": "≤ 0.075"
+        },
+        "stars": 4
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 3.84 to 3.90 (4 of 5 stars) over 626 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★★☆ 4.0 (javascript 5.2, php 4.3, vue 3.3)",
+     "Unit size: ★★★☆☆ 3.5 (javascript 4.7, php 2.9, vue 4.9)",
+     "Unit complexity: ★★★★☆ 3.7 (javascript 4.3, php 3.3, vue 5.3)",
+     "Unit interfacing: ★★★★★ 4.6 (javascript 4.9, php 4.4, vue 5.5)",
+     "Module coupling: ★★★★★ 5.4 (php 5.5, js/ts/vue 5.4)",
+     "Component independence: ★★★☆☆ 2.5 (php 3.6, js/ts/vue 1.1)",
+     "Component entanglement: ★★★★★ 4.7 (php 4.9, js/ts/vue 4.5)",
+     "Lever: component independence in php, about 1404 lines to fix for half a star",
+     "Lever: duplication in php, about 1678 lines to fix for half a star",
+     "Lever: unit complexity in php, about 1843 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.9%, php not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 4.1%, vue not measured (Simian has no support for this language) against 7.2%"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opentrack",
+    "title": "Maintainability, open track",
+    "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
+    "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
+    "status": "info",
+    "starRating": 3,
+    "rating": 3.3333333333333335,
+    "measurements": [
+     {
+      "id": "open-unit-size",
+      "title": "Unit size",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, more than 29 lines",
+        "value": "23.8%",
+        "thresholds": {
+         "2": "≤ 60.2%",
+         "3": "≤ 37.0%",
+         "4": "≤ 26.1%",
+         "5": "≤ 4.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, more than 42 lines",
+        "value": "15.4%",
+        "thresholds": {
+         "2": "≤ 46.7%",
+         "3": "≤ 24.3%",
+         "4": "≤ 14.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, more than 71 lines",
+        "value": "7.7%",
+        "thresholds": {
+         "2": "≤ 33.4%",
+         "3": "≤ 11.1%",
+         "4": "≤ 5.3%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, complexity above 5",
+        "value": "18.6%",
+        "thresholds": {
+         "2": "≤ 45.1%",
+         "3": "≤ 34.4%",
+         "4": "≤ 24.9%",
+         "5": "≤ 8.2%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, complexity above 7",
+        "value": "10.0%",
+        "thresholds": {
+         "2": "≤ 38.1%",
+         "3": "≤ 23.9%",
+         "4": "≤ 14.6%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, complexity above 10",
+        "value": "4.8%",
+        "thresholds": {
+         "2": "≤ 32.2%",
+         "3": "≤ 13.1%",
+         "4": "≤ 6.2%",
+         "5": "≤ 0.4%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, 3 or more parameters",
+        "value": "10.2%",
+        "thresholds": {
+         "2": "≤ 31.4%",
+         "3": "≤ 21.6%",
+         "4": "≤ 13.2%",
+         "5": "≤ 0.7%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, 4 or more parameters",
+        "value": "4.3%",
+        "thresholds": {
+         "2": "≤ 19.2%",
+         "3": "≤ 10.4%",
+         "4": "≤ 3.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, 5 or more parameters",
+        "value": "1.7%",
+        "thresholds": {
+         "2": "≤ 12.3%",
+         "3": "≤ 6.6%",
+         "4": "≤ 1.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 4
+       }
+      ]
+     }
+    ],
+    "message": "Open-track rating 3.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "evidence": [
+     "Unit size: ★★★☆☆ 23.8% / 15.4% / 7.7% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★★☆ 18.6% / 10.0% / 4.8% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★☆☆ 10.2% / 4.3% / 1.7% of the code above 2 / 3 / 4 parameters",
+     "Duplication: not measured",
+     "Module coupling: not measured",
+     "Component independence: not measured",
+     "Component entanglement: not measured",
+     "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "testcoderatio",
+    "title": "Test code ratio",
+    "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
+    "status": "pass",
+    "starRating": 4,
+    "message": "Test code ratio 108.4% (4 of 5 stars).",
+    "evidence": [
+     "Test code ratio: 108.4%",
+     "Test code: 131,586 lines in 1,079 files",
+     "Production code: 121,335 lines in 683 files",
+     "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
+    ],
+    "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opensourcehealth",
+    "title": "Open Source Health",
+    "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
+    "status": "pass",
+    "starRating": 4,
+    "rating": 4.41,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 3.49,
+     "activity": 2.07,
+     "licence": 5.5,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "1",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "12.5%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "9.8%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "6.2%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "29 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "49.8%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 2 years",
+        "value": "37.2%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 4 years",
+        "value": "20.3%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "93 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
         },
         "stars": 5
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.10 to 4.14 (4 of 5 stars) over 607 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Open Source Health 4 of 5 stars over 666 production dependencies (composer, npm). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★☆ 4.0 (javascript 5.2, php 4.2, vue 3.2)",
-     "Unit size: ★★★☆☆ 3.5 (javascript 4.7, php 2.9, vue 4.9)",
-     "Unit complexity: ★★★★☆ 3.8 (javascript 4.5, php 3.3, vue 5.3)",
-     "Unit interfacing: ★★★★★ 4.7 (javascript 5.0, php 4.5, vue 5.5)",
-     "Module coupling: ★★★★★ 5.5 (php 5.5)",
-     "Component independence: ★★★★☆ 3.8 (php 3.8)",
-     "Component entanglement: ★★★★★ 5.0 (php 5.0)",
-     "Lever: component independence in php, about 777 lines to fix for half a star",
-     "Lever: duplication in php, about 1633 lines to fix for half a star",
-     "Lever: duplication in vue, about 1601 lines to fix for half a star"
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★☆☆ >1.0y 12.5%, >2.0y 9.8%, >3.5y 6.2%, >5.0y count 29",
+     "Activity: ★★☆☆☆ >1.0y 49.8%, >2.0y 37.2%, >4.0y 20.3%, >5.5y count 93",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk (19 excluded by sigrid.yaml)",
+     "Management: ★★★★★ 0 unmanaged of 666 dependencies"
     ],
     "requirementLevel": "recommended"
+   },
+   {
+    "id": "size",
+    "title": "Size",
+    "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
+    "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Not measured: scc 4.1.0 could not run.",
+    "evidence": [
+     "spawn scc ENOENT"
+    ]
+   },
+   {
+    "id": "duplication",
+    "title": "Duplication (open track)",
+    "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "referenceUrl": "https://github.com/kucherenko/jscpd",
+    "status": "warn",
+    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "evidence": [
+     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "coupling",
+    "title": "Coupling (open track)",
+    "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "info",
+    "message": "Not measured: PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "evidence": [
+     "PHP: not measured: pdepend 3.0.0 is not installed",
+     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+    ],
+    "openTrack": {
+     "coupling": {
+      "version": 1,
+      "languages": {
+       "php": {
+        "measured": false,
+        "reason": "pdepend 3.0.0 is not installed",
+        "files": 402
+       },
+       "javascript": {
+        "measured": false,
+        "reason": "dependency-cruiser 17.4.3 is not installed",
+        "files": 224
+       }
+      }
+     }
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "fail",
-    "message": "Multiple risky coding patterns were detected (382 findings across 1711 scanned source files). Review them against OWASP secure coding guidance.",
+    "status": "pass",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 683 scanned source files.",
     "evidence": [
-     "Dynamic code execution: lib/AppInfo/Application.php",
-     "Dynamic code execution: lib/BackgroundJob/JobRegistrar.php",
-     "Dynamic code execution: lib/Controller/ContractApprovalController.php",
-     "Dynamic code execution: lib/Controller/ControllerRegistrar.php",
-     "Dynamic code execution: lib/Controller/GebruikController.php",
-     "Dynamic code execution: lib/Controller/ObjectActionResponder.php",
-     "Dynamic code execution: lib/Controller/PublicationController.php",
-     "Dynamic code execution: lib/EventListener/StackiqEventListener.php",
-     "Dynamic code execution: lib/Mcp/McpReadTools.php",
-     "Dynamic code execution: lib/Mcp/McpWriteTools.php",
-     "Dynamic code execution: lib/Repair/MigrateContactsToNc.php",
-     "Dynamic code execution: lib/Repair/MigrateUserPreferences.php",
-     "Dynamic code execution: lib/Repair/RepointDashboardWidgetId.php",
-     "Dynamic code execution: lib/Service/ArchiMate/AmefConfigReader.php",
-     "Dynamic code execution: lib/Service/Cmdb/CmdbPartReferences.php",
-     "Dynamic code execution: lib/Service/Cmdb/CmdbWorkbookBounds.php",
-     "Dynamic code execution: lib/Service/Cmdb/CmdbWorkbookReader.php",
-     "Dynamic code execution: lib/Service/ContactpersoonService.php",
-     "Dynamic code execution: lib/Service/DataQualityReportService.php",
-     "Dynamic code execution: lib/Service/GebruikService.php",
-     "Dynamic code execution: lib/Service/ModerationService.php",
-     "Dynamic code execution: lib/Service/PortfolioReportDerivation.php",
-     "Dynamic code execution: lib/Service/PortfolioReportService.php",
-     "Dynamic code execution: lib/Service/Registration/ServiceFactories.php",
-     "Dynamic code execution: lib/Service/Settings/RoleGroupSettings.php",
-     "Dynamic code execution: lib/Service/SettingsService.php",
-     "Dynamic code execution: lib/Service/Stackiq/GroupHandler.php",
-     "Dynamic code execution: lib/Service/Stackiq/OrganizationHandler.php",
-     "Dynamic code execution: lib/Service/SyncProgress.php",
-     "Dynamic code execution: lib/Service/ViewService.php",
-     "Dynamic code execution: src/modals/AddContactpersoonModal.vue",
-     "Dynamic code execution: src/services/attestation.js",
-     "Dynamic code execution: src/services/connectionRegistry.js",
-     "Dynamic code execution: src/services/viewExport.js",
-     "Dynamic code execution: src/sidebars/search/SearchSideBar.vue",
-     "Dynamic code execution: src/store/modules/architectureView.js",
-     "Dynamic code execution: src/store/modules/settings.js",
-     "Dynamic code execution: src/utils/archiMateImportProgress.js",
-     "Dynamic code execution: src/utils/cmdbImport.js",
-     "Dynamic code execution: src/utils/dataEntityGraph.js",
-     "Dynamic code execution: src/utils/processStepUsages.js",
-     "Dynamic code execution: src/utils/technologyLifecycle.js",
-     "Dynamic code execution: src/utils/translationBadge.js",
-     "Dynamic code execution: src/utils/usageOverlay.js",
-     "Dynamic code execution: src/views/FeaturesRoadmapTabs.vue",
-     "Dynamic code execution: src/views/architecture/ArchitectureViewEditor.vue",
-     "Dynamic code execution: tests/Support/LegacyObjectArgs.php",
-     "Dynamic code execution: tests/Unit/AppInfo/ApplicationViewDocumentExportTest.php",
-     "Dynamic code execution: tests/Unit/AppInfo/DomainServiceRegistrationOrderTest.php",
-     "Dynamic code execution: tests/Unit/AppInfo/ObservabilityAdoptionTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/BackgroundJobScheduleAndGuardsTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/ContractStatusJobTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/JobRegistrarTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/MaintenanceRecipientsJobRunTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/ModuleVersionPublicationJobRunTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/OrganizationContactSyncJobLinkRefreshTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/OrganizationContactSyncJobTest.php",
-     "Dynamic code execution: tests/Unit/BackgroundJob/SyncJobsRunTest.php",
-     "Dynamic code execution: tests/Unit/Controller/AangebodenGebruikControllerDeelnemersTest.php",
-     "Dynamic code execution: tests/Unit/Controller/AangebodenGebruikControllerEndpointContractTest.php",
-     "Dynamic code execution: tests/Unit/Controller/AangebodenGebruikControllerGroupCheckGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/CmdbImportControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ContactNamesUidsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ContactpersonenAccountGuardGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ContactpersonenControllerAccountPathsTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ContactpersonenControllerConvertToUserTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ContactpersonenControllerUpdateUserGroupsTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ContactpersonenControllerUserAdminContractTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ContractApprovalControllerRaiseTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ContractApprovalGuardGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ControllerRegistrarTest.php",
-     "Dynamic code execution: tests/Unit/Controller/DataQualityReportControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/FacetControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/GebruikControllerContractTest.php",
-     "Dynamic code execution: tests/Unit/Controller/GebruikControllerDecompositionTest.php",
-     "Dynamic code execution: tests/Unit/Controller/GebruikControllerScopeGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/LandscapeComparisonControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ListingEndpointsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ListingQueryOptionsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/MergeControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ObjectActionEndpointsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ObjectActionResponderTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OrganisationMembersControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OrganisationMembersGuardGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OrganisationMembersResponsesGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OrganisationReportGateGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OwnershipTransferControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/PortfolioReportControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/PublicationControllerAccessGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ReferenceComponentCoverageControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SbomControllerGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SbomControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/Settings/ModuleRegistrationHandlerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerAdminGuardGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerCanonicalWriteTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerCmdbImportMappingTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerConfigEndpointsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerEmailArchiMateContractTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerErrorResponsesGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerOrgExportPermissionTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerOrgExportTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerProgressStreamGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerStatusContractTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerUserGroupsConfigAuthTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerUserGroupsContractTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SetupControllerDatasetGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SetupControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ViewControllerContractTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ViewControllerGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ViewControllerProductsEnrichmentTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/AnonymousRegistrationListenerTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/CatalogueMergeRelinkerTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/ContactPersonOrganisationListenerTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/DecisionConcludedListenerHandleGoldenTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/DecisionConcludedListenerNamespaceTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/ListenerRegistrarTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/MaintenanceRecipientsListenerFailureTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/MaintenanceRecipientsListenerTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/ModuleComplianceSubscriberHandleTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/ModuleComponentListenerTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/ModuleRegistrationSubscriberGoldenTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/StackiqEventListenerDecompositionTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/StackiqEventListenerGoldenTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/TestEventListenerErrorTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/UsageClassificationSubscriberTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/UserProfileContactSyncGoldenTest.php",
-     "Dynamic code execution: tests/Unit/EventListener/UserProfileUpdatedEventListenerHandleTest.php",
-     "Dynamic code execution: tests/Unit/Examples/ContactpersoonServiceExampleTest.php",
-     "Dynamic code execution: tests/Unit/Mcp/McpContractToolsTest.php",
-     "Dynamic code execution: tests/Unit/Mcp/McpToolFixture.php",
-     "Dynamic code execution: tests/Unit/OrganisationUserWorkflowTest.php",
-     "Dynamic code execution: tests/Unit/Repair/BackfillContractApprovalStateTest.php",
-     "Dynamic code execution: tests/Unit/Repair/BackfillModuleVersionPublicationRunGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Repair/BackfillModuleVersionPublicationTest.php",
-     "Dynamic code execution: tests/Unit/Repair/BackfillRecordStatusTest.php",
-     "Dynamic code execution: tests/Unit/Repair/ClearDisallowedDependentValuesGuardsTest.php",
-     "Dynamic code execution: tests/Unit/Repair/ClearDisallowedDependentValuesTest.php",
-     "Dynamic code execution: tests/Unit/Repair/InitializeSettingsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateAppConfigKeysRunGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateAppConfigKeysTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateBackgroundJobClassesTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateContactsToNcGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateContactsToNcTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateRegisterSlugTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateSchemaApplicationIdTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateUserPreferencesTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RenameCollidingSchemaSlugsTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RenameDutchCatalogColumnsMigrationTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RenameDutchCatalogColumnsRunTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RenameDutchCatalogValuesRunTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RenameDutchCatalogValuesTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RenameDutchSchemaSlugsTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RepairStepNamesAndElevationTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RepointDashboardWidgetIdRunGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RepointDashboardWidgetIdTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RepointEolSyncConfigRunGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Repair/SeedCmdbImportPacksReportTest.php",
-     "Dynamic code execution: tests/Unit/Repair/SeedCmdbImportPacksTest.php",
-     "Dynamic code execution: tests/Unit/SbomImportServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/AanbodServiceAcceptDenyTest.php",
-     "Dynamic code execution: tests/Unit/Service/AanbodServiceOpenRegisterLookupGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/AangebodenGebruik/GebruikBulkSaveTest.php",
-     "Dynamic code execution: tests/Unit/Service/AangebodenGebruikKoppelingenGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/AangebodenGebruikListingsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/AangebodenGebruikServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/AangebodenGebruikTransferDeleteTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMate/AmefConfigReaderTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMate/AmefRegisterIdTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMate/GemmaStandardLinkerTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateAmefConfigGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateAmefRegisterIdTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateConfigFailModeTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateErrorsAndSchemaIdsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateExportConnectionsTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateExportQualityChecksTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateExportRoundTripTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateGemmaStandardLinksTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateImportGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateImportModelObjectGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateImportProgressTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateObjectServiceLookupTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateOrgExportGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateServiceCancelTest.php",
-     "Dynamic code execution: tests/Unit/Service/ArchiMateServiceExportStatusTest.php",
-     "Dynamic code execution: tests/Unit/Service/AskServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/AttestationAnswerServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/AttestationServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/CatalogExportServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ClaimedUsageServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/Cmdb/CmdbImportPackStoreProbeTest.php",
-     "Dynamic code execution: tests/Unit/Service/Cmdb/CmdbImportPackStoreRecordGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/Cmdb/CmdbImportPackStoreTest.php",
-     "Dynamic code execution: tests/Unit/Service/Cmdb/CmdbImportProfileEdgeCasesTest.php",
-     "Dynamic code execution: tests/Unit/Service/Cmdb/CmdbImportProfileTest.php",
-     "Possible hardcoded secret: tests/Unit/Service/Cmdb/CmdbOwnerIdentityTest.php",
-     "Dynamic code execution: tests/Unit/Service/Cmdb/CmdbWorkbookBoundsScenariosTest.php",
-     "Dynamic code execution: tests/Unit/Service/Cmdb/CmdbWorkbookBoundsTest.php",
-     "Dynamic code execution: tests/Unit/Service/CmdbExportImportServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ConnectionReportCallersTest.php",
-     "Dynamic code execution: tests/Unit/Service/ConnectionReportServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ConnectionSuggestionStore.php",
-     "Dynamic code execution: tests/Unit/Service/Contactpersoon/ContactPersonOrganisationGuardTest.php",
-     "Dynamic code execution: tests/Unit/Service/Contactpersoon/ContactPersonUserDetailsTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContactpersoonBackupEntityTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContactpersoonNameSyncGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContactpersoonProcessTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContactpersoonServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContactpersoonServiceUserAccountTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContactpersoonUserDetailsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContractBindingsTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContractOutcomeGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContractStatusExpiringPassTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContractStatusServiceExpiryRunTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContractSubmitAuthorisationTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContractSubmitForApprovalTest.php",
-     "Dynamic code execution: tests/Unit/Service/DataQualityReportBuildGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/DataQualityReportServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/DemoDataServiceInstallGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/DemoDataServiceRelativeDatesTest.php",
-     "Dynamic code execution: tests/Unit/Service/EolSyncServiceFailuresTest.php",
-     "Dynamic code execution: tests/Unit/Service/EolSyncServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/FacetServiceBaseObjectsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/FacetServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/Federation/FederationServiceOpenCatalogiTest.php",
-     "Dynamic code execution: tests/Unit/Service/Federation/FederationServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/FederationServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/GebruikServiceGetGebruikenTest.php",
-     "Dynamic code execution: tests/Unit/Service/GebruikSyncServiceAmefElementsTest.php",
-     "Dynamic code execution: tests/Unit/Service/GebruikSyncServiceStatusDatesTest.php",
-     "Dynamic code execution: tests/Unit/Service/IntakeModerationTest.php",
-     "Dynamic code execution: tests/Unit/Service/Itsm/ItsmFlowGatewaySaveTest.php",
-     "Dynamic code execution: tests/Unit/Service/Itsm/ItsmFlowGatewayTest.php",
-     "Dynamic code execution: tests/Unit/Service/ItsmExchangeServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ItsmFileImportServiceImportGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/LandscapeComparisonServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/MaintenanceRecipientContactUserIdsTest.php",
-     "Dynamic code execution: tests/Unit/Service/MaintenanceRecipientGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/MergeOrganisatieBlockersTest.php",
-     "Dynamic code execution: tests/Unit/Service/MergeOrganisatieLookupTest.php",
-     "Dynamic code execution: tests/Unit/Service/MergeOrganisatieServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ModuleComplianceBulkSyncGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ModuleComplianceServiceUpdateFlowTest.php",
-     "Dynamic code execution: tests/Unit/Service/ModuleComponentGuardTest.php",
-     "Dynamic code execution: tests/Unit/Service/ModuleEventProcessorTest.php",
-     "Dynamic code execution: tests/Unit/Service/ModuleRegistrationServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ModuleVersionPublicationServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ModuleVersionServiceEnsureDefaultTest.php",
-     "Dynamic code execution: tests/Unit/Service/ModuleVersionServiceFetchTest.php",
-     "Dynamic code execution: tests/Unit/Service/ObjectTypeTargetCharacterisationTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganisatieServiceAddUsersGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganisatieServiceCreateGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganisatieServiceMapStatusMergeTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganisatieServiceParentHierarchyTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganisatieServiceParentLinkCreateTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganisatieServiceStatusAndLinkTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganisationReportAccessTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganizationFullSyncTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganizationSyncContactAccountTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganizationSyncContactPersonGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganizationSyncEntityGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganizationSyncNestedContactsTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganizationSyncOrchestrationTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganizationSyncRelatedContactsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/OrganizationSyncStatusTest.php",
-     "Dynamic code execution: tests/Unit/Service/OwnershipTransferServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/PortfolioReportRowsTest.php",
-     "Dynamic code execution: tests/Unit/Service/PortfolioReportServiceOverlapTest.php",
-     "Dynamic code execution: tests/Unit/Service/PortfolioReportServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ProgressStoreTest.php",
-     "Dynamic code execution: tests/Unit/Service/ProgressTrackerCancelTest.php",
-     "Dynamic code execution: tests/Unit/Service/ProgressTrackerErrorsTest.php",
-     "Dynamic code execution: tests/Unit/Service/ProgressTrackerStartTest.php",
-     "Dynamic code execution: tests/Unit/Service/ProgressTrackerTest.php",
-     "Dynamic code execution: tests/Unit/Service/PublicCatalogueRecordGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/PublicCatalogueRecordsTest.php",
-     "Dynamic code execution: tests/Unit/Service/PublicationServiceFailurePathsTest.php",
-     "Dynamic code execution: tests/Unit/Service/PublicationServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/QueryLimitBoundingTest.php",
-     "Dynamic code execution: tests/Unit/Service/ReferenceComponentCoverageBuildGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ReferenceComponentCoverageCsvTest.php",
-     "Dynamic code execution: tests/Unit/Service/ReferenceComponentCoverageServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/Registration/ServiceFactoriesTest.php",
-     "Dynamic code execution: tests/Unit/Service/ReviewAggregateServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ReviewServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/SbomImportGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ServiceRegistrarTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/ArchiMateImportControlTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CatalogueLocatorAmefSchemaTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CatalogueLocatorCatalogTypeResolutionTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CatalogueLocatorLookupOrderTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CatalogueLocatorResolverWiringTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CatalogueLocatorSchemaLookupTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CatalogueLocatorSharedOrganisationTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CatalogueLocatorTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CronjobSettingsOrganisationsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/CronjobSettingsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/EmailSettingsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/EmailSettingsTemplateFailureTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/EolSyncSettingsMalformedTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/EolSyncSettingsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/ModuleSettingsHandlerAmefGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/ModuleSettingsHandlerTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/OrganizationSettingsHandlerTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/RoleGroupSettingsOrganizationAdminGroupsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/RoleGroupSettingsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/RoleGroupSettingsUpdateFailureTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/RoleGroupSettingsUserGroupsConfigTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/SettingsObjectCountsFailureTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/SettingsObjectCountsStatisticsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/SettingsObjectCountsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/SyncSettingsHandlerCronjobTest.php",
-     "Dynamic code execution: tests/Unit/Service/Settings/SyncSettingsHandlerTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceArchiMateStatusFallbackTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceAutoConfigureAfterImportTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceConfigureAmefTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceConfigureOpenCatalogiTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceConfigureVoorzieningenTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceDiagnosticsTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceEmailConnectionTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceFocusedConfigTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceGetSettingsTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceObjectCountsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceRegisterVerificationTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceResetCleanupTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceRoleGroupsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceTemplatesConfigGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/SettingsServiceUserGroupsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerAccountsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerContactpersoonUpdateTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerCreateUserTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerCreationMailTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerFirstContactTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerOrganisationEntityTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerProcessingTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerProfileTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerRemainingPathsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerRoleMappingTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerSlugConflictTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/ContactPersonHandlerStoreRoleTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/GroupHandlerGroupsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/GroupHandlerOrganisationGroupsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/GroupHandlerRoleCaseTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/HierarchyHandlerBeheerderGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/HierarchyHandlerDecompositionTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/HierarchyHandlerReadsTest.php",
-     "Dynamic code execution: tests/Unit/Service/Stackiq/OrganizationHandlerGroupAndContactsTest.php",
-     "Dynamic code execution: tests/Unit/Service/StackiqContactSyncGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/StackiqContactSyncLookupGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/StackiqContactSyncServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/Support/RegisteredByFromOrganisationTest.php",
-     "Dynamic code execution: tests/Unit/Service/SymfonyEmailServiceSettingsTest.php",
-     "Dynamic code execution: tests/Unit/Service/SyncProgressTest.php",
-     "Dynamic code execution: tests/Unit/Service/TechnologyComponentEolStamperTest.php",
-     "Dynamic code execution: tests/Unit/Service/UsageClassificationServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ViewDocumentGatewayTest.php",
-     "Dynamic code execution: tests/Unit/Service/ViewServiceAccessScopeTest.php",
-     "Dynamic code execution: tests/Unit/Service/ViewServiceDrawnViewTest.php",
-     "Dynamic code execution: tests/Unit/Service/ViewServiceEnrichmentDataGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ViewServiceGebruikDataGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ViewServiceNodeEnrichmentGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ViewServiceReadGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Settings/ContractRbacTest.php",
-     "Dynamic code execution: tests/Unit/Settings/SchemaRbacTest.php",
-     "Dynamic code execution: tests/Unit/Support/CmdbTestSupport.php",
-     "Dynamic code execution: tests/Unit/Support/FakeMigrationPackService.php",
-     "Dynamic code execution: tests/bootstrap-unit.php",
-     "Dynamic code execution: tests/bootstrap.php",
-     "Dynamic code execution: tests/vitest/archiMateImportExport.spec.js",
-     "Possible hardcoded secret: tests/vitest/changePasswordDialogDom.spec.js",
-     "Unsafe HTML injection: tests/vitest/entryPoints.spec.js",
-     "Possible hardcoded secret: tests/vitest/heartbeat.spec.js",
-     "Weak hash algorithm: tests/vitest/passwordPortfolioGemmaAndEmail.spec.js",
-     "Possible hardcoded secret: tests/vitest/passwordPortfolioGemmaAndEmail.spec.js",
-     "Dynamic code execution: tests/vitest/settingsInfoPanels.spec.js",
-     "Dynamic code execution: tests/vitest/settingsStoreSaveExport.spec.js",
-     "Unsafe HTML injection: tests/vitest/settingsStoreSaveExport.spec.js",
-     "Dynamic code execution: tests/vitest/stackiqPluginActions.spec.js",
-     "Possible hardcoded secret: tests/vitest/viewObjectInputKind.spec.js",
-     "Dynamic code execution: tests/vitest/viewObjectMarkdownEditor.spec.js",
-     "Dynamic code execution: tests/vitest/viewObjectMounted.spec.js",
-     "Unsafe HTML injection: tests/vitest/viewObjectMounted.spec.js",
-     "Possible hardcoded secret: tests/vitest/viewObjectPropertyEditing.spec.js"
+     ".php-cs-fixer.dist.php",
+     "appinfo/routes.php",
+     "compare_archimate.php",
+     "compare_archimate.py",
+     "docs/docusaurus.config.js",
+     "docs/sidebars.js",
+     "docs/src/components/HomepageFeatures/index.js",
+     "docs/src/pages/index.js",
+     "eslint.config.mjs",
+     "jest.config.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "adrvalidator",
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "pass",
-    "message": "API specification(s) at https://raw.githubusercontent.com/ConductionNL/stackiq/e3d7529ee3445b1d0d23942f945e3e73270ace76/openapi.json comply with Common Ground API Design Rules.",
+    "message": "API specification(s) at https://raw.githubusercontent.com/ConductionNL/stackiq/3570bb38f17bcadf19437535dbefc11eef3e4609/openapi.json comply with Common Ground API Design Rules.",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/stackiq/e3d7529ee3445b1d0d23942f945e3e73270ace76/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/stackiq/3570bb38f17bcadf19437535dbefc11eef3e4609/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "No API Design Rules violations found for https://raw.githubusercontent.com/ConductionNL/stackiq/e3d7529ee3445b1d0d23942f945e3e73270ace76/openapi.json.",
+     "No API Design Rules violations found for https://raw.githubusercontent.com/ConductionNL/stackiq/3570bb38f17bcadf19437535dbefc11eef3e4609/openapi.json.",
      "Ruleset: https://static.developer.overheid.nl/adr/ruleset.yaml",
      "No API Design Rules violations found by Spectral."
     ],
@@ -1546,6 +1614,31 @@
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
     "requirementLevel": "mandatory",
     "starRating": 5
+   },
+   {
+    "id": "secretscanning",
+    "title": "No committed secrets",
+    "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
+    "status": "warn",
+    "message": "Secret scanning could not run.",
+    "evidence": [
+     "gitleaks is not installed on the checker host."
+    ],
+    "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "openssfscorecard",
+    "title": "OpenSSF Scorecard",
+    "description": "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API and rates it from 1 to 5 stars. The star bands are this checker's own: 9 or higher is 5 stars, 7 or higher is 4, 5 or higher is 3, 3 or higher is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
+    "status": "info",
+    "message": "This repository is not in the OpenSSF Scorecard dataset. The project can publish a score by running the OpenSSF Scorecard GitHub Action (ossf/scorecard-action).",
+    "evidence": [
+     "https://github.com/ossf/scorecard-action"
+    ],
+    "referenceUrl": "https://scorecard.dev",
+    "requirementLevel": "recommended"
    },
    {
     "id": "semver",
@@ -1596,7 +1689,7 @@
     "message": "Usage from 5 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "Nextcloud App Store stackiq: 0 ratings given (2026-11-20)",
-     "GitHub releases: 5,829 release file downloads, 500 most recent releases with files (2026-11-20)",
+     "GitHub releases: 5,831 release file downloads, 500 most recent releases with files (2026-11-20)",
      "GitHub Container Registry conductionnl/stackiq: not measured: GitHub publishes no pull count for container images through its API (2026-11-20)",
      "GitHub ConductionNL/stackiq: 0 stars, 3 forks, 3 watchers (2026-11-20)",
      "GitHub commits ConductionNL/stackiq: 13 contributors, 9 from the owning organisation, 1 from other organisations, 3 unknown (2026-11-20)"
@@ -1629,7 +1722,7 @@
        "figures": [
         {
          "label": "release file downloads",
-         "value": 5829
+         "value": 5831
         },
         {
          "label": "most recent releases with files",
@@ -1736,8 +1829,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "0.95",
-      "explanation": "1,202 change requests were closed (merged or not) and 1,269 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "0.97",
+      "explanation": "1,228 change requests were closed (merged or not) and 1,269 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -1999,10 +2092,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 12.2,
+  "durationSeconds": 15,
   "scanMode": "full",
   "scanModeReason": "the code changed",
-  "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
+  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

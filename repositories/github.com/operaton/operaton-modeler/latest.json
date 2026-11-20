@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:15:36.620Z",
+  "lastCheckedAt": "2026-11-20T09:02:53.198Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:02:49.943Z",
-  "updatedAt": "2026-11-20T06:15:36.620Z",
+  "updatedAt": "2026-11-20T09:02:53.198Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -42,28 +42,28 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T06-15-36-620Z",
+  "id": "2026-11-20T09-02-53-198Z",
   "repoId": "github.com/operaton/operaton-modeler",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:15:36.620Z",
-  "createdAt": "2026-11-20T06:15:36.620Z",
+  "checkedAt": "2026-11-20T09:02:53.198Z",
+  "createdAt": "2026-11-20T09:02:53.198Z",
   "version": "v0.0.0",
   "checklistVersion": "2026.2",
   "scannedRef": "develop",
   "scannedRefKind": "default-branch-fallback",
   "scannedCommit": "53b62c34788c537eb7e86a06bf7ee7ea1c60ad87",
-  "score": 57,
-  "rating": 3.2,
+  "score": 66,
+  "rating": 3.7,
   "categoryRatings": {
-   "Governance": 3.3,
-   "Security": 1.8,
+   "Governance": 3,
+   "Security": 3.9,
    "Architecture": 4.3,
-   "Software Quality": 3.7,
+   "Software Quality": 4.2,
    "Deployment & Operations": 3.3
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 4.3
+    "rating": 3.1
    },
    "ownership": {
     "rating": 3
@@ -83,31 +83,31 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 3
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 3.3
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 2.4
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
     "rating": null
    },
    "secrets": {
-    "rating": null
+    "rating": 3
    },
    "secure-coding": {
-    "rating": 0.5
+    "rating": 3
    },
    "supply-chain": {
-    "rating": 3
+    "rating": 5.5
    },
    "api": {
     "rating": 4.3
@@ -122,19 +122,22 @@
     "rating": 3
    },
    "modifiability": {
-    "rating": 3.2
-   },
-   "testability": {
     "rating": 3.9
    },
+   "testability": {
+    "rating": 4.4
+   },
    "modularity": {
-    "rating": null
+    "rating": 5.3
    },
    "reusability": {
     "rating": 4.3
    },
    "testing": {
-    "rating": 4.3
+    "rating": 4.2
+   },
+   "size": {
+    "rating": null
    },
    "containerisation": {
     "rating": 1,
@@ -151,15 +154,13 @@
     "Mandatory criterion fails: publiccode.yml Metadata File",
     "Mandatory criterion fails: Docker support",
     "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
-    "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No publiccode.yml was found, so there is no maintenance contract."
    ]
   },
   "issueCounts": {
-   "errors": 6,
-   "warnings": 6
+   "errors": 4,
+   "warnings": 9
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -170,7 +171,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 51,203 lines of code, 6,190 functions, 6,143 files analyzed.",
+    "message": "Code metrics: 47,502 lines of code, 5,762 functions, 5,718 files analyzed.",
     "evidence": [
      "app/lib/__tests__/cli-spec.js",
      "app/lib/__tests__/flags-spec.js",
@@ -183,9 +184,9 @@
      "app/lib/config/providers/OSInfoProvider.js",
      "app/lib/config/providers/UUIDProvider.js",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 51,203",
-     "Function count: 6,190",
-     "Files analyzed: 6,143"
+     "Total lines of code (NLOC): 47,502",
+     "Function count: 5,762",
+     "Files analyzed: 5,718"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -229,6 +230,20 @@
     "starRating": 3
    },
    {
+    "id": "licenceconsistency",
+    "title": "Licence consistency",
+    "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
+    "evidence": [
+     "LICENSE: MIT",
+     "package.json: SEE LICENSE IN LICENSE (not recognised, not compared)"
+    ],
+    "referenceUrl": "https://spdx.org/licenses/",
+    "status": "warn",
+    "message": "Only one licence declaration found (LICENSE: MIT); nothing to compare it with. Declare the licence in the package manifest and publiccode.yml as well.",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
     "id": "copyrightowner",
     "title": "Copyright / IP Owner Disclosure",
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
@@ -249,6 +264,38 @@
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
     "starRating": 5
+   },
+   {
+    "id": "spdxheaders",
+    "title": "SPDX licence headers",
+    "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
+    "referenceUrl": "https://reuse.software/spec/",
+    "status": "fail",
+    "starRating": 1,
+    "message": "0.0% of 617 source files carry an SPDX header (1 of 5 stars). 617 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "evidence": [
+     "app/lib/__tests__/cli-spec.js",
+     "app/lib/__tests__/flags-spec.js",
+     "app/lib/__tests__/preload-spec.js",
+     "app/lib/cli.js",
+     "app/lib/config/__tests__/config-spec.js",
+     "app/lib/config/index.js",
+     "app/lib/config/providers/DefaultProvider.js",
+     "app/lib/config/providers/ElementTemplatesProvider.js",
+     "app/lib/config/providers/OSInfoProvider.js",
+     "app/lib/config/providers/UUIDProvider.js",
+     "app/lib/connector-templates/__tests__/connector-templates-spec.js",
+     "app/lib/connector-templates/index.js",
+     "app/lib/dialog.js",
+     "app/lib/file-system.js",
+     "app/lib/flags.js",
+     "app/lib/index.js",
+     "app/lib/log/__tests__/log-spec.js",
+     "app/lib/log/index.js",
+     "app/lib/log/log.js",
+     "app/lib/log/transports/client.js"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "publiccode",
@@ -288,7 +335,7 @@
     "title": "Available Docker image",
     "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
     "status": "fail",
-    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "message": "No Docker image location was provided, no compose file or Helm values in the repository reference an image of this repository, and the README and docs name no image of it that the registry confirms. Add a registry/repository URL for the published image.",
     "evidence": [],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
@@ -315,12 +362,14 @@
     "id": "sbom",
     "title": "SBOM (Software Bill of Materials)",
     "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
-    "status": "warn",
-    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
-    "evidence": [],
+    "status": "pass",
+    "message": "SBOM file(s) found: LICENSE.spdx. It appears to list 1 dependencies in LICENSE.spdx.",
+    "evidence": [
+     "LICENSE.spdx"
+    ],
     "referenceUrl": "https://www.cisa.gov/sbom",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "artifacthub",
@@ -332,8 +381,7 @@
     "evidence": [],
     "notApplicable": true,
     "requirementLevel": "mandatory",
-    "mandatoryFrom": "2027-05-19",
-    "starRating": 3
+    "mandatoryFrom": "2027-05-19"
    },
    {
     "id": "documentation",
@@ -406,22 +454,21 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 1.47 (threshold: 15); Max CCN 47.00 (threshold: 30). Threshold exceeded: MaxCCN 47.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 1.97 (threshold: 15); Max CCN 47.00 (threshold: 30). Threshold exceeded: MaxCCN 47.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.47 (threshold: 15)",
+     "Average CCN: 1.97 (threshold: 15)",
      "Max CCN: 47.00 (threshold: 30)",
-     "3      1     14      0       3 ReactFoo@15-17@/tmp/cgchecker-repo-F2aYxA/repo/resources/plugins/test-script-error/broken.js",
-     "3      1     14      2       3 check@16-18@/tmp/cgchecker-repo-F2aYxA/repo/resources/plugins/test-lint-rules/bpmnlint-plugin-custom/rules/rule-error.js",
-     "6      1     14      0      10 module.exports@14-23@/tmp/cgchecker-repo-F2aYxA/repo/resources/plugins/test-lint-rules/bpmnlint-plugin-custom/rules/rule-error.js",
-     "1      1      4      0       1 error@2420-2420@/tmp/cgchecker-repo-F2aYxA/repo/app/test/spec/zeebe-api/zeebe-api-spec.js",
-     "6      1     18      2       6 this.showErrorBox@39-44@/tmp/cgchecker-repo-F2aYxA/repo/app/test/helper/mock/electron-dialog.js",
-     "3      1     12      0       3 (anonymous)@22-24@/tmp/cgchecker-repo-F2aYxA/repo/app/lib/util/__tests__/error-tracking-spec.js"
+     "9      1     31      1      13 handleElementTemplateErrors@304-316@/tmp/cgchecker-repo-HmaDhT/repo/client/src/app/tabs/cloud-bpmn/BpmnEditor.js",
+     "9      1     27      1      11 handleError@324-334@/tmp/cgchecker-repo-HmaDhT/repo/client/src/app/tabs/cloud-bpmn/BpmnEditor.js",
+     "6      2     29      1       8 logWarning@17-24@/tmp/cgchecker-repo-HmaDhT/repo/client/src/app/tabs/bpmn-shared/util/configure.js",
+     "9      1     27      1      11 handleError@499-509@/tmp/cgchecker-repo-HmaDhT/repo/client/src/app/tabs/cloud-dmn/DmnEditor.js",
+     "9      1     31      1      13 handleElementTemplateErrors@286-298@/tmp/cgchecker-repo-HmaDhT/repo/client/src/app/tabs/bpmn/BpmnEditor.js",
+     "9      1     27      1      11 handleError@306-316@/tmp/cgchecker-repo-HmaDhT/repo/client/src/app/tabs/bpmn/BpmnEditor.js"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "requirementLevel": "mandatory",
-    "starRating": 1
+    "requirementLevel": "informative"
    },
    {
     "id": "maintainability",
@@ -430,12 +477,12 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 3.57,
+    "rating": 4.109999999999999,
     "aspectRatings": {
      "analysability": 3,
-     "modifiability": 3.2,
-     "testability": 3.94,
-     "modularity": null,
+     "modifiability": 3.94,
+     "testability": 4.39,
+     "modularity": 5.26,
      "reusability": 4.31
     },
     "measurements": [
@@ -451,10 +498,7 @@
         "label": "JavaScript",
         "value": "12.2%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 2
        }
@@ -472,10 +516,7 @@
         "label": "JavaScript, more than 15 lines",
         "value": "47.4%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 4
        },
@@ -483,10 +524,7 @@
         "label": "JavaScript, more than 30 lines",
         "value": "21.4%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 4
        },
@@ -494,10 +532,7 @@
         "label": "JavaScript, more than 60 lines",
         "value": "5.2%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        }
@@ -515,10 +550,7 @@
         "label": "JavaScript, complexity above 5",
         "value": "14.6%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -526,10 +558,7 @@
         "label": "JavaScript, complexity above 10",
         "value": "5.1%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 4
        },
@@ -537,10 +566,7 @@
         "label": "JavaScript, complexity above 25",
         "value": "0.8%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 4
        }
@@ -557,10 +583,7 @@
         "label": "JavaScript, 3 or more parameters",
         "value": "5.5%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -568,10 +591,7 @@
         "label": "JavaScript, 5 or more parameters",
         "value": "0.3%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -579,272 +599,581 @@
         "label": "JavaScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue, fan-in above 10",
+        "value": "0.4%",
+        "thresholds": {
+         "4": "≤ 9.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 5.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 1.8%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue",
+        "value": "98.2%",
+        "thresholds": {
+         "4": "≥ 94.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue",
+        "value": "0",
+        "thresholds": {
+         "4": "≤ 0.075"
         },
         "stars": 5
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 3.53 to 3.61 (4 of 5 stars) over 401 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.04 to 4.18 (4 of 5 stars) over 401 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★☆☆☆ 2.5 (javascript 2.5)",
      "Unit size: ★★★★☆ 3.5 (javascript 3.5)",
      "Unit complexity: ★★★★☆ 3.9 (javascript 3.9)",
      "Unit interfacing: ★★★★★ 5.1 (javascript 5.1)",
+     "Module coupling: ★★★★★ 5.4 (js/ts/vue 5.4)",
+     "Component independence: ★★★★★ 4.8 (js/ts/vue 4.8)",
+     "Component entanglement: ★★★★★ 5.5 (js/ts/vue 5.5)",
      "Lever: unit complexity in javascript, about 138 lines to fix for half a star",
      "Lever: duplication in javascript, about 1015 lines to fix for half a star",
-     "Lever: unit size in javascript, about 1489 lines to fix for half a star"
+     "Lever: component independence in js/ts/vue, about 400 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 12.2%"
     ],
     "requirementLevel": "recommended"
+   },
+   {
+    "id": "opentrack",
+    "title": "Maintainability, open track",
+    "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
+    "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
+    "status": "info",
+    "starRating": 4,
+    "rating": 4,
+    "measurements": [
+     {
+      "id": "open-unit-size",
+      "title": "Unit size",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, more than 29 lines",
+        "value": "22.3%",
+        "thresholds": {
+         "2": "≤ 60.2%",
+         "3": "≤ 37.0%",
+         "4": "≤ 26.1%",
+         "5": "≤ 4.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, more than 42 lines",
+        "value": "11.8%",
+        "thresholds": {
+         "2": "≤ 46.7%",
+         "3": "≤ 24.3%",
+         "4": "≤ 14.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, more than 71 lines",
+        "value": "3.6%",
+        "thresholds": {
+         "2": "≤ 33.4%",
+         "3": "≤ 11.1%",
+         "4": "≤ 5.3%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, complexity above 5",
+        "value": "14.6%",
+        "thresholds": {
+         "2": "≤ 45.1%",
+         "3": "≤ 34.4%",
+         "4": "≤ 24.9%",
+         "5": "≤ 8.2%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, complexity above 7",
+        "value": "9.4%",
+        "thresholds": {
+         "2": "≤ 38.1%",
+         "3": "≤ 23.9%",
+         "4": "≤ 14.6%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, complexity above 10",
+        "value": "5.1%",
+        "thresholds": {
+         "2": "≤ 32.2%",
+         "3": "≤ 13.1%",
+         "4": "≤ 6.2%",
+         "5": "≤ 0.4%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, 3 or more parameters",
+        "value": "5.5%",
+        "thresholds": {
+         "2": "≤ 31.4%",
+         "3": "≤ 21.6%",
+         "4": "≤ 13.2%",
+         "5": "≤ 0.7%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, 4 or more parameters",
+        "value": "1.1%",
+        "thresholds": {
+         "2": "≤ 19.2%",
+         "3": "≤ 10.4%",
+         "4": "≤ 3.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, 5 or more parameters",
+        "value": "0.3%",
+        "thresholds": {
+         "2": "≤ 12.3%",
+         "3": "≤ 6.6%",
+         "4": "≤ 1.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 4
+       }
+      ]
+     }
+    ],
+    "message": "Open-track rating 4.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "evidence": [
+     "Unit size: ★★★★☆ 22.3% / 11.8% / 3.6% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★★☆ 14.6% / 9.4% / 5.1% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★★☆ 5.5% / 1.1% / 0.3% of the code above 2 / 3 / 4 parameters",
+     "Duplication: not measured",
+     "Module coupling: not measured",
+     "Component independence: not measured",
+     "Component entanglement: not measured",
+     "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "testcoderatio",
+    "title": "Test code ratio",
+    "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
+    "status": "pass",
+    "starRating": 4,
+    "message": "Test code ratio 104.4% (4 of 5 stars).",
+    "evidence": [
+     "Test code ratio: 104.4%",
+     "Test code: 30,862 lines in 203 files",
+     "Production code: 29,549 lines in 411 files",
+     "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
+    ],
+    "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opensourcehealth",
+    "title": "Open Source Health",
+    "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
+    "status": "pass",
+    "starRating": 4,
+    "rating": 3.95,
+    "aspectRatings": {
+     "vulnerabilities": 3,
+     "freshness": 3.32,
+     "activity": 2.41,
+     "licence": 5.5,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "1",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Moderate",
+        "value": "2",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Low",
+        "value": "1",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "25.2%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 2 years",
+        "value": "19.8%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "13.0%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "39 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "35.4%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 2 years",
+        "value": "28.3%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 4 years",
+        "value": "19.2%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "69 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Open Source Health 4 of 5 stars over 469 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★☆☆ 0 critical, 1 high, 2 moderate",
+     "Freshness: ★★★☆☆ >1.0y 25.2%, >2.0y 19.8%, >3.5y 13%, >5.0y count 39",
+     "Activity: ★★☆☆☆ >1.0y 35.4%, >2.0y 28.3%, >4.0y 19.2%, >5.5y count 69",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★★★★★ 0 unmanaged of 469 dependencies",
+     "Vulnerable: npm:undici@7.30.0 (high)"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "size",
+    "title": "Size",
+    "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
+    "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Not measured: scc 4.1.0 could not run.",
+    "evidence": [
+     "spawn scc ENOENT"
+    ]
+   },
+   {
+    "id": "duplication",
+    "title": "Duplication (open track)",
+    "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "referenceUrl": "https://github.com/kucherenko/jscpd",
+    "status": "warn",
+    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "evidence": [
+     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "coupling",
+    "title": "Coupling (open track)",
+    "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "info",
+    "message": "Not measured: JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "evidence": [
+     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+    ],
+    "openTrack": {
+     "coupling": {
+      "version": 1,
+      "languages": {
+       "javascript": {
+        "measured": false,
+        "reason": "dependency-cruiser 17.4.3 is not installed",
+        "files": 401
+       }
+      }
+     }
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "fail",
-    "message": "Multiple risky coding patterns were detected (233 findings across 614 scanned source files). Review them against OWASP secure coding guidance.",
+    "status": "warn",
+    "message": "Potential OWASP secure coding issues were detected (1 findings across 383 scanned source files, failing from 4).",
     "evidence": [
-     "Dynamic code execution: app/lib/__tests__/cli-spec.js",
-     "Dynamic code execution: app/lib/__tests__/flags-spec.js",
-     "Dynamic code execution: app/lib/__tests__/preload-spec.js",
-     "Dynamic code execution: app/lib/config/__tests__/config-spec.js",
-     "Dynamic code execution: app/lib/connector-templates/__tests__/connector-templates-spec.js",
-     "Dynamic code execution: app/lib/file-system.js",
-     "Dynamic code execution: app/lib/index.js",
-     "Dynamic code execution: app/lib/log/__tests__/log-spec.js",
-     "Dynamic code execution: app/lib/menu/mac-os/mac-menu-builder.js",
-     "Dynamic code execution: app/lib/menu/menu-builder.js",
-     "Dynamic code execution: app/lib/menu/menu.js",
-     "Dynamic code execution: app/lib/platform/linux/index.js",
-     "Dynamic code execution: app/lib/platform/mac-os/index.js",
-     "Dynamic code execution: app/lib/platform/windows/index.js",
-     "Dynamic code execution: app/lib/preload.js",
-     "Dynamic code execution: app/lib/util/__tests__/error-tracking-spec.js",
-     "Dynamic code execution: app/lib/util/__tests__/files-spec.js",
-     "Dynamic code execution: app/lib/util/browser-open.js",
-     "Dynamic code execution: app/lib/util/clipboard-write-text.js",
-     "Dynamic code execution: app/lib/util/ensure-opts.js",
-     "Dynamic code execution: app/lib/util/error-tracking.js",
-     "Dynamic code execution: app/lib/util/file-explorer-open.js",
-     "Dynamic code execution: app/lib/util/filter-extensions.js",
-     "Dynamic code execution: app/lib/util/renderer.js",
-     "Dynamic code execution: app/lib/window-manager/__tests__/window-manager-spec.js",
-     "Dynamic code execution: app/test/expect.js",
-     "Dynamic code execution: app/test/helper/mock/config.js",
-     "Dynamic code execution: app/test/helper/mock/electron-dialog.js",
-     "Dynamic code execution: app/test/spec/dialog-spec.js",
-     "Dynamic code execution: app/test/spec/file-system-spec.js",
-     "Dynamic code execution: app/test/spec/menu/menu-builder-spec.js",
-     "Dynamic code execution: app/test/spec/plugins-spec.js",
-     "Dynamic code execution: app/test/spec/send-license-book-summary-spec.js",
-     "Dynamic code execution: app/test/spec/zeebe-api/zeebe-api-spec.js",
-     "Possible hardcoded secret: app/test/spec/zeebe-api/zeebe-api-spec.js",
-     "Dynamic code execution: app/test/util/spy-on.js",
-     "Dynamic code execution: app/util/__tests__/get-version-spec.js",
-     "Dynamic code execution: app/util/__tests__/validate-release-version-spec.js",
-     "Dynamic code execution: client/karma.config.js",
-     "Dynamic code execution: client/src/app/App.js",
-     "Dynamic code execution: client/src/app/__tests__/AppParentSpec.js",
-     "Dynamic code execution: client/src/app/__tests__/AppSpec.js",
-     "Dynamic code execution: client/src/app/__tests__/EmptyTabSpec.js",
-     "Dynamic code execution: client/src/app/__tests__/HistorySpec.js",
-     "Dynamic code execution: client/src/app/__tests__/IntegrationSpec.js",
-     "Dynamic code execution: client/src/app/__tests__/KeyboardBindingsSpec.js",
-     "Dynamic code execution: client/src/app/__tests__/RecentTabsSpec.js",
-     "Dynamic code execution: client/src/app/__tests__/TabsProviderSpec.js",
-     "Dynamic code execution: client/src/app/__tests__/mocks/index.js",
-     "Dynamic code execution: client/src/app/cached/WithCachedState.js",
-     "Dynamic code execution: client/src/app/cached/__tests__/CacheSpec.js",
-     "Dynamic code execution: client/src/app/cached/__tests__/CachedComponentSpec.js",
-     "Dynamic code execution: client/src/app/cached/__tests__/WitchCachedStateSpec.js",
-     "Dynamic code execution: client/src/app/cached/__tests__/WithCacheSpec.js",
-     "Dynamic code execution: client/src/app/drop-zone/__tests__/DropZoneSpec.js",
-     "Dynamic code execution: client/src/app/modals/keyboard-shortcuts/__tests__/KeyboardShortcutsModalSpec.js",
-     "Dynamic code execution: client/src/app/modals/keyboard-shortcuts/getShortcuts.js",
-     "Dynamic code execution: client/src/app/notifications/__tests__/NotificationSpec.js",
-     "Dynamic code execution: client/src/app/notifications/__tests__/NotificationsSpec.js",
-     "Dynamic code execution: client/src/app/panel/__tests__/PanelSpec.js",
-     "Dynamic code execution: client/src/app/panel/tabs/linting/__tests__/LintingStatusBarItemSpec.js",
-     "Dynamic code execution: client/src/app/panel/tabs/linting/__tests__/LintingTabSpec.js",
-     "Dynamic code execution: client/src/app/panel/tabs/log/__tests__/LogTabSpec.js",
-     "Dynamic code execution: client/src/app/panel/tabs/variable-outline/__tests__/VariableOutlineStatusBarItemSpec.js",
-     "Dynamic code execution: client/src/app/plugins/__tests__/PluginParentSpec.js",
-     "Dynamic code execution: client/src/app/plugins/__tests__/PluginsRootSpec.js",
-     "Dynamic code execution: client/src/app/primitives/__tests__/TabLinksSpec.js",
-     "Dynamic code execution: client/src/app/resizable-container/__tests__/ResizableContainerSpec.js",
-     "Dynamic code execution: client/src/app/slot-fill/Slot.js",
-     "Dynamic code execution: client/src/app/slot-fill/SlotFillRoot.js",
-     "Dynamic code execution: client/src/app/slot-fill/WithContext.js",
-     "Dynamic code execution: client/src/app/slot-fill/__tests__/FillSpec.js",
-     "Dynamic code execution: client/src/app/slot-fill/__tests__/SlotFillSpec.js",
-     "Dynamic code execution: client/src/app/status-bar/__tests__/StatusBarSpec.js",
-     "Dynamic code execution: client/src/app/tab-actions/__tests__/TabActionsSpec.js",
-     "Dynamic code execution: client/src/app/tabs/__tests__/EditorTabSpec.js",
-     "Dynamic code execution: client/src/app/tabs/__tests__/EngineProfileSpec.js",
-     "Dynamic code execution: client/src/app/tabs/__tests__/MultiSheetTabSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn-shared/modeler/features/apply-default-templates/__tests__/applyDefaultTemplatesSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn-shared/util/__tests__/configureSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/__tests__/BpmnEditorSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/__tests__/DiagramSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/complete-direct-editing/CompleteDirectEditing.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/complete-direct-editing/__tests__/CompleteDirectEditingSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/hand-tool-on-space/HandToolOnSpace.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/improved-canvas/EditorActions.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/__tests__/JobExecutionExtensionProviderSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/props/__tests__/JobExecutionGroupSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/props/__tests__/JobExecutionPropsSpec.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/utils/Helpers.js",
-     "Dynamic code execution: client/src/app/tabs/bpmn/modeler/features/properties-panel-keyboard-bindings/__tests__/PropertiesPanelKeyboardBindingsSpec.js",
-     "Dynamic code execution: client/src/app/tabs/cloud-bpmn/__tests__/DiagramSpec.js",
-     "Dynamic code execution: client/src/app/tabs/cloud-dmn/__tests__/DiagramSpec.js",
-     "Dynamic code execution: client/src/app/tabs/cloud-dmn/__tests__/DmnEditorSpec.js",
-     "Dynamic code execution: client/src/app/tabs/cmmn/__tests__/CmmnEditorSpec.js",
-     "Dynamic code execution: client/src/app/tabs/cmmn/__tests__/DiagramSpec.js",
-     "Dynamic code execution: client/src/app/tabs/dmn/__tests__/DiagramSpec.js",
-     "Dynamic code execution: client/src/app/tabs/dmn/__tests__/DmnEditorSpec.js",
-     "Dynamic code execution: client/src/app/tabs/dmn/__tests__/OverviewContainerSpec.js",
-     "Dynamic code execution: client/src/app/tabs/dmn/modeler/features/overview/overview-renderer/OverviewRenderer.js",
-     "Dynamic code execution: client/src/app/tabs/dmn/util/__tests__/configureSpec.js",
-     "Dynamic code execution: client/src/app/tabs/dmn/util/configure.js",
-     "Dynamic code execution: client/src/app/tabs/form/__tests__/FormEditorSpec.js",
-     "Dynamic code execution: client/src/app/tabs/form/linting/__tests__/FormLinterSpec.js",
-     "Dynamic code execution: client/src/app/tabs/form/linting/__tests__/ProblemsReporterSpec.js",
-     "Dynamic code execution: client/src/app/tabs/form/linting/__tests__/RuleResolverSpec.js",
-     "Dynamic code execution: client/src/app/tabs/form/linting/__tests__/helpers/formUtils.js",
-     "Dynamic code execution: client/src/app/tabs/form/linting/config/__tests__/ruleConfigSpec.js",
-     "Dynamic code execution: client/src/app/tabs/form/linting/util/__tests__/formVersionSpec.js",
-     "Dynamic code execution: client/src/app/tabs/form/linting/util/__tests__/helpersSpec.js",
-     "Dynamic code execution: client/src/app/tabs/json/CodeMirror.js",
-     "Dynamic code execution: client/src/app/tabs/json/__tests__/JSONEditorSpec.js",
-     "Dynamic code execution: client/src/app/tabs/rpa/__tests__/RPAEditorSpec.js",
-     "Dynamic code execution: client/src/app/tabs/rpa/__tests__/RunButtonSpec.js",
-     "Dynamic code execution: client/src/app/tabs/rpa/__tests__/StatusButtonSpec.js",
-     "Dynamic code execution: client/src/app/tabs/util/__tests__/namespaceSpec.js",
-     "Dynamic code execution: client/src/app/tabs/util/__tests__/operatonConversionSpec.js",
-     "Dynamic code execution: client/src/app/tabs/util/__tests__/typeSpec.js",
-     "Dynamic code execution: client/src/app/tabs/util/namespace.js",
-     "Dynamic code execution: client/src/app/tabs/xml/CodeMirror.js",
-     "Dynamic code execution: client/src/app/tabs/xml/__tests__/XMLEditorSpec.js",
-     "Dynamic code execution: client/src/app/util/__tests__/executeOnceSpec.js",
-     "Dynamic code execution: client/src/app/util/__tests__/generateImageSpec.js",
-     "Dynamic code execution: client/src/app/util/__tests__/parseDiagramTypeSpec.js",
-     "Dynamic code execution: client/src/app/util/__tests__/parseExecutionPlatformSpec.js",
-     "Dynamic code execution: client/src/app/util/executeOnce.js",
-     "Dynamic code execution: client/src/app/util/generateImage.js",
-     "Dynamic code execution: client/src/app/util/parseDiagramType.js",
-     "Dynamic code execution: client/src/app/util/parseExecutionPlatform.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/__tests__/CamundaPluginSpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/deployment-tool/__tests__/DeploymentConfigOverlaySpec.js",
-     "Possible hardcoded secret: client/src/plugins/camunda-plugin/deployment-tool/__tests__/DeploymentConfigOverlaySpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/deployment-tool/__tests__/DeploymentConfigValidatorSpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/deployment-tool/__tests__/DeploymentToolSpec.js",
-     "Possible hardcoded secret: client/src/plugins/camunda-plugin/deployment-tool/__tests__/DeploymentToolSpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/shared/__tests__/CamundaAPISpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/shared/__tests__/WellKnownAPISpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/shared/__tests__/webAppUrlsSpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/start-instance-tool/__tests__/StartInstanceConfigOverlaySpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/start-instance-tool/__tests__/StartInstanceToolSpec.js",
-     "Dynamic code execution: client/src/plugins/camunda-plugin/start-instance-tool/util/__tests__/isExecutableSpec.js",
-     "Dynamic code execution: client/src/plugins/connector-templates/__tests__/ConnectorTemplatesSpec.js",
-     "Dynamic code execution: client/src/plugins/create-new-action/__tests__/CreateNewActionSpec.js",
-     "Dynamic code execution: client/src/plugins/element-templates-modal/__tests__/ElementTemplatesModalSpec.js",
-     "Dynamic code execution: client/src/plugins/element-templates-modal/components/__tests__/DropdownSpec.js",
-     "Dynamic code execution: client/src/plugins/element-templates-modal/components/__tests__/ElementTemplatesModalViewSpec.js",
-     "Dynamic code execution: client/src/plugins/element-templates-modal/components/__tests__/InputSpec.js",
-     "Dynamic code execution: client/src/plugins/element-templates-modal/modeler/__tests__/bpmn-io-modelers/EditorActionsSpec.js",
-     "Dynamic code execution: client/src/plugins/element-templates-modal/modeler/__tests__/bpmn-io-modelers/PropertiesProviderSpec.js",
-     "Dynamic code execution: client/src/plugins/error-tracking/__tests__/ErrorTrackingSpec.js",
-     "Dynamic code execution: client/src/plugins/privacy-preferences/__tests__/PrivacyPreferencesSpec.js",
-     "Dynamic code execution: client/src/plugins/privacy-preferences/__tests__/PrivacyPreferencesViewSpec.js",
-     "Dynamic code execution: client/src/plugins/report-feedback/ReportFeedbackSystemInfoSection.js",
-     "Dynamic code execution: client/src/plugins/report-feedback/__tests__/ClipboardCopySystemInfoSpec.js",
-     "Dynamic code execution: client/src/plugins/report-feedback/__tests__/ReportFeedbackOverlaySpec.js",
-     "Dynamic code execution: client/src/plugins/report-feedback/__tests__/ReportFeedbackSpec.js",
-     "Dynamic code execution: client/src/plugins/report-feedback/__tests__/ReportFeedbackSystemInfoSpec.js",
-     "Dynamic code execution: client/src/plugins/tab-context-action/__tests__/TabContextActionSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/__tests__/MixpanelSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/__tests__/UserJourneyStatisticsSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/event-handlers/__tests__/DeploymentEventHandlerSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/event-handlers/__tests__/FormEditorEventHandlerSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/event-handlers/__tests__/LinkEventHandlerSpec.js",
-     "Unsafe HTML injection: client/src/plugins/user-journey-statistics/event-handlers/__tests__/LinkEventHandlerSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/event-handlers/__tests__/ModelingEventHandlerSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/event-handlers/__tests__/OverlayEventHandlerSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/event-handlers/__tests__/PingEventHandlerSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/event-handlers/__tests__/TabEventHandlerSpec.js",
-     "Dynamic code execution: client/src/plugins/user-journey-statistics/util.js",
-     "Dynamic code execution: client/src/plugins/version-info/__tests__/ReleaseInfoSpec.js",
-     "Dynamic code execution: client/src/plugins/version-info/__tests__/VersionInfoOverlaySpec.js",
-     "Dynamic code execution: client/src/plugins/version-info/__tests__/VersionInfoSpec.js",
-     "Possible hardcoded secret: client/src/plugins/zeebe-plugin/deployment-plugin/DeploymentPluginConstants.js",
-     "Dynamic code execution: client/src/plugins/zeebe-plugin/deployment-plugin/__tests__/DeploymentPluginValidatorSpec.js",
-     "Possible hardcoded secret: client/src/plugins/zeebe-plugin/deployment-plugin/__tests__/DeploymentPluginValidatorSpec.js",
-     "Dynamic code execution: client/src/plugins/zeebe-plugin/shared/__tests__/utilSpec.js",
-     "Dynamic code execution: client/src/remote/__tests__/ConfigSpec.js",
-     "Dynamic code execution: client/src/remote/__tests__/DialogSpec.js",
-     "Dynamic code execution: client/src/remote/__tests__/FileSystemSpec.js",
-     "Dynamic code execution: client/src/remote/__tests__/PluginsSpec.js",
-     "Dynamic code execution: client/src/remote/__tests__/SystemClipboardSpec.js",
-     "Dynamic code execution: client/src/remote/__tests__/ZeebeAPISpec.js",
-     "Possible hardcoded secret: client/src/remote/__tests__/ZeebeAPISpec.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/ButtonSpec.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/CloseTrap.test.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/DropdownButtonSpec.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/IconSpec.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/KeyboardInteractionTrapSpec.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/ModalSpec.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/OverlayDropdownSpec.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/OverlaySpec.js",
-     "Dynamic code execution: client/src/shared/ui/__tests__/SectionSpec.js",
-     "Dynamic code execution: client/src/shared/ui/form/__tests__/CheckBoxSpec.js",
-     "Dynamic code execution: client/src/shared/ui/form/__tests__/FileInputSpec.js",
-     "Dynamic code execution: client/src/shared/ui/form/__tests__/RadioSpec.js",
-     "Dynamic code execution: client/src/shared/ui/form/__tests__/TextInputSpec.js",
-     "Dynamic code execution: client/src/shared/ui/form/__tests__/ToggleSwitchSpec.js",
-     "Possible hardcoded secret: client/src/util/Flags.js",
-     "Dynamic code execution: client/src/util/__tests__/EnginesSpec.js",
-     "Dynamic code execution: client/src/util/__tests__/FlagsSpec.js",
-     "Dynamic code execution: client/src/util/__tests__/MetadataSpec.js",
-     "Dynamic code execution: client/src/util/__tests__/bpmn-io-modelers/OperatonAdHocSpec.js",
-     "Dynamic code execution: client/src/util/__tests__/bpmn-io-modelers/OperatonExportSpec.js",
-     "Dynamic code execution: client/src/util/__tests__/elementTemplatesSpec.js",
-     "Dynamic code execution: client/src/util/__tests__/operatonXmlSpec.js",
-     "Dynamic code execution: client/src/util/__tests__/xmlConversionSpec.js",
-     "Dynamic code execution: client/src/util/dom/__tests__/draggerSpec.js",
-     "Dynamic code execution: client/src/util/elementsUtil.js",
-     "Dynamic code execution: client/src/util/extensionElementsHelpers.js",
-     "Dynamic code execution: client/src/util/metrics/index.js",
-     "Dynamic code execution: client/src/util/throttle.js",
-     "Dynamic code execution: client/test/bpmn-io-modelers/bpmn/BpmnModelerSpec.js",
-     "Dynamic code execution: client/test/bpmn-io-modelers/bpmn/CloudBpmnModelerSpec.js",
-     "Dynamic code execution: client/test/bpmn-io-modelers/cmmn/CmmnModelerSpec.js",
-     "Dynamic code execution: client/test/bpmn-io-modelers/dmn/CloudDmnModelerSpec.js",
-     "Dynamic code execution: client/test/bpmn-io-modelers/dmn/DmnModelerSpec.js",
-     "Dynamic code execution: client/test/helper/autocleanup.js",
-     "Dynamic code execution: dev.js",
-     "Dynamic code execution: resources/plugins/test-editor-events/client/bpmn-modeler-extension/TestEditorEventsLogger.js",
-     "Dynamic code execution: resources/plugins/test-editor-events/client/dmn-modeler-extension/DmnTestEditorEventsLogger.js",
-     "Dynamic code execution: resources/plugins/test-lint-rules/bpmnlint-plugin-custom/rules/awesome-send-task.js",
-     "Dynamic code execution: resources/plugins/test-lint-rules/bpmnlint-plugin-custom/rules/no-manual-task.js",
-     "Dynamic code execution: resources/plugins/test-lint-rules/bpmnlint-plugin-custom/rules/rule-error.js",
-     "Dynamic code execution: resources/plugins/test/menu.js",
-     "Dynamic code execution: tasks/after-pack/add-platform-files.js",
-     "Dynamic code execution: tasks/after-pack/add-version.js",
-     "Dynamic code execution: tasks/after-pack/register-archive-hook.js",
-     "Dynamic code execution: tasks/after-pack/set-permissions.js",
-     "Dynamic code execution: tasks/after-sign.js",
-     "Dynamic code execution: tasks/after-sign/notarize.js",
-     "Dynamic code execution: tasks/license-book-handlers/collect-licenses.js",
-     "Dynamic code execution: tasks/license-book-handlers/create-license-book.js",
-     "Dynamic code execution: tasks/test-distro.js"
+     "Possible hardcoded secret: client/src/plugins/zeebe-plugin/deployment-plugin/DeploymentPluginConstants.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 3
    },
    {
     "id": "adrvalidator",
@@ -895,6 +1224,31 @@
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
     "requirementLevel": "mandatory",
     "starRating": 5
+   },
+   {
+    "id": "secretscanning",
+    "title": "No committed secrets",
+    "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
+    "status": "warn",
+    "message": "Secret scanning could not run.",
+    "evidence": [
+     "gitleaks is not installed on the checker host."
+    ],
+    "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "openssfscorecard",
+    "title": "OpenSSF Scorecard",
+    "description": "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API and rates it from 1 to 5 stars. The star bands are this checker's own: 9 or higher is 5 stars, 7 or higher is 4, 5 or higher is 3, 3 or higher is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
+    "status": "info",
+    "message": "This repository is not in the OpenSSF Scorecard dataset. The project can publish a score by running the OpenSSF Scorecard GitHub Action (ossf/scorecard-action).",
+    "evidence": [
+     "https://github.com/ossf/scorecard-action"
+    ],
+    "referenceUrl": "https://scorecard.dev",
+    "requirementLevel": "recommended"
    },
    {
     "id": "semver",
@@ -966,586 +1320,7 @@
      "Found path segment \"client\" in client/src/app/EmptyTab.less",
      "Found path segment \"client\" in client/src/app/History.js",
      "Found path segment \"client\" in client/src/app/KeyboardBindings.js",
-     "Found path segment \"client\" in client/src/app/RecentTabs.js",
-     "Found path segment \"client\" in client/src/app/TabsProvider.js",
-     "Found path segment \"client\" in client/src/app/__tests__",
-     "Found path segment \"client\" in client/src/app/cached",
-     "Found path segment \"client\" in client/src/app/cached/Cache.js",
-     "Found path segment \"client\" in client/src/app/cached/CacheContext.js",
-     "Found path segment \"client\" in client/src/app/cached/CachedComponent.js",
-     "Found path segment \"client\" in client/src/app/cached/WithCache.js",
-     "Found path segment \"client\" in client/src/app/cached/WithCachedState.js",
-     "Found path segment \"client\" in client/src/app/cached/__tests__",
-     "Found path segment \"client\" in client/src/app/cached/index.js",
-     "Found path segment \"client\" in client/src/app/drop-zone",
-     "Found path segment \"client\" in client/src/app/drop-zone/DropHandler.js",
-     "Found path segment \"client\" in client/src/app/drop-zone/DropZone.js",
-     "Found path segment \"client\" in client/src/app/drop-zone/DropZone.less",
-     "Found path segment \"client\" in client/src/app/drop-zone/__tests__",
-     "Found path segment \"client\" in client/src/app/drop-zone/index.js",
-     "Found path segment \"client\" in client/src/app/index.js",
-     "Found path segment \"client\" in client/src/app/modals",
-     "Found path segment \"client\" in client/src/app/modals/index.js",
-     "Found path segment \"client\" in client/src/app/modals/keyboard-shortcuts",
-     "Found path segment \"client\" in client/src/app/modals/keyboard-shortcuts/KeyboardShortcutsModal.js",
-     "Found path segment \"client\" in client/src/app/modals/keyboard-shortcuts/View.js",
-     "Found path segment \"client\" in client/src/app/modals/keyboard-shortcuts/View.less",
-     "Found path segment \"client\" in client/src/app/modals/keyboard-shortcuts/__tests__",
-     "Found path segment \"client\" in client/src/app/modals/keyboard-shortcuts/getShortcuts.js",
-     "Found path segment \"client\" in client/src/app/modals/keyboard-shortcuts/index.js",
-     "Found path segment \"client\" in client/src/app/notifications",
-     "Found path segment \"client\" in client/src/app/notifications/Notification.js",
-     "Found path segment \"client\" in client/src/app/notifications/Notification.less",
-     "Found path segment \"client\" in client/src/app/notifications/Notifications.js",
-     "Found path segment \"client\" in client/src/app/notifications/Notifications.less",
-     "Found path segment \"client\" in client/src/app/notifications/__tests__",
-     "Found path segment \"client\" in client/src/app/notifications/index.js",
-     "Found path segment \"client\" in client/src/app/panel",
-     "Found path segment \"client\" in client/src/app/panel/Panel.js",
-     "Found path segment \"client\" in client/src/app/panel/Panel.less",
-     "Found path segment \"client\" in client/src/app/panel/__tests__",
-     "Found path segment \"client\" in client/src/app/panel/tabs",
-     "Found path segment \"client\" in client/src/app/panel/tabs/linting",
-     "Found path segment \"client\" in client/src/app/panel/tabs/linting/LintingStatusBarItem.js",
-     "Found path segment \"client\" in client/src/app/panel/tabs/linting/LintingStatusBarItem.less",
-     "Found path segment \"client\" in client/src/app/panel/tabs/linting/LintingTab.js",
-     "Found path segment \"client\" in client/src/app/panel/tabs/linting/LintingTab.less",
-     "Found path segment \"client\" in client/src/app/panel/tabs/linting/__tests__",
-     "Found path segment \"client\" in client/src/app/panel/tabs/log",
-     "Found path segment \"client\" in client/src/app/panel/tabs/log/LogTab.js",
-     "Found path segment \"client\" in client/src/app/panel/tabs/log/LogTab.less",
-     "Found path segment \"client\" in client/src/app/panel/tabs/log/__tests__",
-     "Found path segment \"client\" in client/src/app/panel/tabs/variable-outline",
-     "Found path segment \"client\" in client/src/app/panel/tabs/variable-outline/VariableOutlineStatusBarItem.js",
-     "Found path segment \"client\" in client/src/app/panel/tabs/variable-outline/VariableOutlineTab.js",
-     "Found path segment \"client\" in client/src/app/panel/tabs/variable-outline/VariableOutlineTab.less",
-     "Found path segment \"client\" in client/src/app/panel/tabs/variable-outline/__tests__",
-     "Found path segment \"client\" in client/src/app/plugins",
-     "Found path segment \"client\" in client/src/app/plugins/PluginParent.js",
-     "Found path segment \"client\" in client/src/app/plugins/PluginParent.less",
-     "Found path segment \"client\" in client/src/app/plugins/PluginsRoot.js",
-     "Found path segment \"client\" in client/src/app/plugins/__tests__",
-     "Found path segment \"client\" in client/src/app/plugins/index.js",
-     "Found path segment \"client\" in client/src/app/primitives",
-     "Found path segment \"client\" in client/src/app/primitives/Loader.js",
-     "Found path segment \"client\" in client/src/app/primitives/Tab.js",
-     "Found path segment \"client\" in client/src/app/primitives/TabContainer.js",
-     "Found path segment \"client\" in client/src/app/primitives/TabLinks.js",
-     "Found path segment \"client\" in client/src/app/primitives/Tabbed.less",
-     "Found path segment \"client\" in client/src/app/primitives/__tests__",
-     "Found path segment \"client\" in client/src/app/primitives/index.js",
-     "Found path segment \"client\" in client/src/app/resizable-container",
-     "Found path segment \"client\" in client/src/app/resizable-container/PanelContainer.js",
-     "Found path segment \"client\" in client/src/app/resizable-container/PropertiesPanelContainer.js",
-     "Found path segment \"client\" in client/src/app/resizable-container/PropertiesPanelContainer.less",
-     "Found path segment \"client\" in client/src/app/resizable-container/ResizableContainer.js",
-     "Found path segment \"client\" in client/src/app/resizable-container/ResizableContainer.less",
-     "Found path segment \"client\" in client/src/app/resizable-container/__tests__",
-     "Found path segment \"client\" in client/src/app/slot-fill",
-     "Found path segment \"client\" in client/src/app/slot-fill/Fill.js",
-     "Found path segment \"client\" in client/src/app/slot-fill/FillContext.js",
-     "Found path segment \"client\" in client/src/app/slot-fill/Slot.js",
-     "Found path segment \"client\" in client/src/app/slot-fill/SlotContext.js",
-     "Found path segment \"client\" in client/src/app/slot-fill/SlotFillRoot.js",
-     "Found path segment \"client\" in client/src/app/slot-fill/WithContext.js",
-     "Found path segment \"client\" in client/src/app/slot-fill/__tests__",
-     "Found path segment \"client\" in client/src/app/slot-fill/index.js",
-     "Found path segment \"client\" in client/src/app/status-bar",
-     "Found path segment \"client\" in client/src/app/status-bar/StatusBar.js",
-     "Found path segment \"client\" in client/src/app/status-bar/StatusBar.less",
-     "Found path segment \"client\" in client/src/app/status-bar/__tests__",
-     "Found path segment \"client\" in client/src/app/status-bar/index.js",
-     "Found path segment \"client\" in client/src/app/tab-actions",
-     "Found path segment \"client\" in client/src/app/tab-actions/TabActions.js",
-     "Found path segment \"client\" in client/src/app/tab-actions/TabActions.less",
-     "Found path segment \"client\" in client/src/app/tab-actions/__tests__",
-     "Found path segment \"client\" in client/src/app/tab-actions/index.js",
-     "Found path segment \"client\" in client/src/app/tabs",
-     "Found path segment \"client\" in client/src/app/tabs/EditorTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/EngineProfile.js",
-     "Found path segment \"client\" in client/src/app/tabs/EngineProfileHelper.js",
-     "Found path segment \"client\" in client/src/app/tabs/ErrorTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/ErrorTab.less",
-     "Found path segment \"client\" in client/src/app/tabs/MultiSheetTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/MultiSheetTab.less",
-     "Found path segment \"client\" in client/src/app/tabs/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared/modeler",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared/modeler/features",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared/modeler/features/apply-default-templates",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared/modeler/features/apply-default-templates/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared/modeler/features/apply-default-templates/applyDefaultTemplates.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared/util",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared/util/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn-shared/util/configure.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/BpmnEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/BpmnEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/BpmnTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/diagram.bpmn",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/getBpmnContextMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/getBpmnEditMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/getBpmnWindowMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/BpmnModeler.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/complete-direct-editing",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/complete-direct-editing/CompleteDirectEditing.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/complete-direct-editing/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/complete-direct-editing/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/global-clipboard",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/global-clipboard/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/hand-tool-on-space",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/hand-tool-on-space/HandToolOnSpace.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/hand-tool-on-space/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/improved-canvas",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/improved-canvas/EditorActions.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/improved-canvas/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/operaton-ad-hoc",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/operaton-ad-hoc/OperatonAdHocProps.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/operaton-ad-hoc/OperatonAdHocProvider.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/operaton-ad-hoc/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/JobExecutionExtensionProvider.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/props",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/props/JobExecutionGroup.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/props/JobExecutionProps.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/props/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/utils",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-extension/utils/Helpers.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-form-group",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-form-group/PropertiesPanelGroupsExtension.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-form-group/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-form-group/props",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-form-group/props/BpmnFormProps.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-form-group/props/BpmnFormTypeGroup.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-form-group/props/BpmnFormTypeProps.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-keyboard-bindings",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-keyboard-bindings/FeelPopupKeyboardBindings.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-keyboard-bindings/PropertiesPanelKeyboardBindings.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-keyboard-bindings/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/features/properties-panel-keyboard-bindings/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/bpmn/modeler/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/BpmnEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/BpmnEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/BpmnTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/diagram.bpmn",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/modeler",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/modeler/BpmnModeler.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/modeler/features",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/modeler/features/global-clipboard",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/modeler/features/global-clipboard/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-bpmn/modeler/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn/DmnEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn/DmnTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn/diagram.dmn",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn/modeler",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn/modeler/DmnModeler.js",
-     "Found path segment \"client\" in client/src/app/tabs/cloud-dmn/modeler/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/CmmnEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/CmmnEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/CmmnTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/diagram.cmmn",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/getCmmnEditMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/getCmmnWindowMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/modeler",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/modeler/CmmnModeler.js",
-     "Found path segment \"client\" in client/src/app/tabs/cmmn/modeler/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/DmnEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/DmnEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/DmnTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/OverviewContainer.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/OverviewContainer.less",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/diagram.dmn",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/getDmnEditMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/getDmnWindowMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/DmnModeler.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/DrdViewer.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/features",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/features/overview",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/features/overview/open-drg-element",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/features/overview/open-drg-element/OpenDrgElement.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/features/overview/open-drg-element/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/features/overview/overview-renderer",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/features/overview/overview-renderer/OverviewRenderer.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/features/overview/overview-renderer/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/modeler/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/util",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/util/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/dmn/util/configure.js",
-     "Found path segment \"client\" in client/src/app/tabs/form",
-     "Found path segment \"client\" in client/src/app/tabs/form/FormEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/FormEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/form/FormPreviewToggle.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/FormPreviewToggle.less",
-     "Found path segment \"client\" in client/src/app/tabs/form/FormTab.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/form/editor",
-     "Found path segment \"client\" in client/src/app/tabs/form/editor/FormEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/getFormEditMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/getFormWindowMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/initial-cloud.form",
-     "Found path segment \"client\" in client/src/app/tabs/form/initial.form",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/FormLinter.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/ProblemsReporter.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/RuleResolver.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/config",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/config/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/config/ruleConfig.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/rules",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/rules/discourage-disabled-fields.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/rules/feel",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/rules/feel/validate-feel.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/rules/form-element-type.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/rules/no-empty-lists.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/rules/no-submit-button.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/rules/ruleRegistry.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/util",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/util/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/util/formVersion.js",
-     "Found path segment \"client\" in client/src/app/tabs/form/linting/util/helpers.js",
-     "Found path segment \"client\" in client/src/app/tabs/getEditMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/json",
-     "Found path segment \"client\" in client/src/app/tabs/json/CodeMirror.js",
-     "Found path segment \"client\" in client/src/app/tabs/json/JSONEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/json/JSONEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/json/Menu.js",
-     "Found path segment \"client\" in client/src/app/tabs/json/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/json/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/rpa",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/RPAEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/RPAEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/RPATab.js",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/RunButton.js",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/StatusButton.js",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/XMLEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/getRobotEditMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/index.js",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/resources",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/resources/TestIcon.svg",
-     "Found path segment \"client\" in client/src/app/tabs/rpa/resources/initial.rpa",
-     "Found path segment \"client\" in client/src/app/tabs/util",
-     "Found path segment \"client\" in client/src/app/tabs/util/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/util/namespace.js",
-     "Found path segment \"client\" in client/src/app/tabs/util/operatonConversion.js",
-     "Found path segment \"client\" in client/src/app/tabs/util/type.js",
-     "Found path segment \"client\" in client/src/app/tabs/xml",
-     "Found path segment \"client\" in client/src/app/tabs/xml/CodeMirror.js",
-     "Found path segment \"client\" in client/src/app/tabs/xml/XMLEditor.js",
-     "Found path segment \"client\" in client/src/app/tabs/xml/XMLEditor.less",
-     "Found path segment \"client\" in client/src/app/tabs/xml/__tests__",
-     "Found path segment \"client\" in client/src/app/tabs/xml/getXMLEditMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/xml/getXMLWindowMenu.js",
-     "Found path segment \"client\" in client/src/app/tabs/xml/index.js",
-     "Found path segment \"client\" in client/src/app/util",
-     "Found path segment \"client\" in client/src/app/util/__tests__",
-     "Found path segment \"client\" in client/src/app/util/dragger.js",
-     "Found path segment \"client\" in client/src/app/util/executeOnce.js",
-     "Found path segment \"client\" in client/src/app/util/generateImage.js",
-     "Found path segment \"client\" in client/src/app/util/parseDiagramType.js",
-     "Found path segment \"client\" in client/src/app/util/parseExecutionPlatform.js",
-     "Found path segment \"client\" in client/src/app/util/scroller.js",
-     "Found path segment \"client\" in client/src/index.js",
-     "Found path segment \"client\" in client/src/moddle",
-     "Found path segment \"client\" in client/src/moddle/createOperatonModdleDescriptor.js",
-     "Found path segment \"client\" in client/src/moddle/operaton-bpmn-moddle.js",
-     "Found path segment \"client\" in client/src/moddle/operaton-bpmn-modeler-moddle.json",
-     "Found path segment \"client\" in client/src/moddle/operaton-cmmn-moddle.js",
-     "Found path segment \"client\" in client/src/moddle/operaton-dmn-moddle.js",
-     "Found path segment \"client\" in client/src/moddle/operaton-dmn-modeler-moddle.json",
-     "Found path segment \"client\" in client/src/plugins",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/CamundaPlugin.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/__tests__",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/DeploymentConfigOverlay.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/DeploymentConfigOverlay.less",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/DeploymentTool.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/DeploymentTool.less",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/__tests__",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/index.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/validation",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/validation/BaseInputValidator.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/validation/DefaultInputValidator.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/validation/DeploymentConfigValidator.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/validation/EndpointURLValidator.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/deployment-tool/validation/index.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/index.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/shared",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/shared/AuthTypes.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/shared/CamundaAPI.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/shared/RestAPI.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/shared/WellKnownAPI.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/shared/__tests__",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/shared/ui",
-     "Found path segment \"ui\" in client/src/plugins/camunda-plugin/shared/ui/CockpitDeploymentLink.js",
-     "Found path segment \"ui\" in client/src/plugins/camunda-plugin/shared/ui/CockpitLink.js",
-     "Found path segment \"ui\" in client/src/plugins/camunda-plugin/shared/ui/CockpitLink.less",
-     "Found path segment \"ui\" in client/src/plugins/camunda-plugin/shared/ui/CockpitProcessInstanceLink.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/shared/webAppUrls.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/StartInstanceConfigOverlay.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/StartInstanceConfigOverlay.less",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/StartInstanceTool.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/StartInstanceTool.less",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/__tests__",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/index.js",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/util",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/util/__tests__",
-     "Found path segment \"client\" in client/src/plugins/camunda-plugin/start-instance-tool/util/isExecutable.js",
-     "Found path segment \"client\" in client/src/plugins/connector-templates",
-     "Found path segment \"client\" in client/src/plugins/connector-templates/ConnectorTemplates.js",
-     "Found path segment \"client\" in client/src/plugins/connector-templates/__tests__",
-     "Found path segment \"client\" in client/src/plugins/connector-templates/index.js",
-     "Found path segment \"client\" in client/src/plugins/create-new-action",
-     "Found path segment \"client\" in client/src/plugins/create-new-action/CreateNewAction.js",
-     "Found path segment \"client\" in client/src/plugins/create-new-action/__tests__",
-     "Found path segment \"client\" in client/src/plugins/create-new-action/index.js",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/ElementTemplatesModal.js",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/__tests__",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/components",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/components/Dropdown.js",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/components/Dropdown.less",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/components/ElementTemplatesModalView.js",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/components/ElementTemplatesModalView.less",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/components/Input.js",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/components/Input.less",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/components/__tests__",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/icons",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/icons/CaretDown.svg",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/icons/CaretUp.svg",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/icons/Close.svg",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/icons/Search.svg",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/index.js",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/modeler",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/modeler/EditorActions.js",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/modeler/PropertiesProvider.js",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/modeler/__tests__",
-     "Found path segment \"client\" in client/src/plugins/element-templates-modal/modeler/index.js",
-     "Found path segment \"client\" in client/src/plugins/error-tracking",
-     "Found path segment \"client\" in client/src/plugins/error-tracking/ErrorTracking.js",
-     "Found path segment \"client\" in client/src/plugins/error-tracking/__tests__",
-     "Found path segment \"client\" in client/src/plugins/error-tracking/index.js",
-     "Found path segment \"client\" in client/src/plugins/index.js",
-     "Found path segment \"client\" in client/src/plugins/privacy-preferences",
-     "Found path segment \"client\" in client/src/plugins/privacy-preferences/PrivacyPreferences.js",
-     "Found path segment \"client\" in client/src/plugins/privacy-preferences/PrivacyPreferencesView.js",
-     "Found path segment \"client\" in client/src/plugins/privacy-preferences/PrivacyPreferencesView.less",
-     "Found path segment \"client\" in client/src/plugins/privacy-preferences/__tests__",
-     "Found path segment \"client\" in client/src/plugins/privacy-preferences/constants.js",
-     "Found path segment \"client\" in client/src/plugins/privacy-preferences/index.js",
-     "Found path segment \"client\" in client/src/plugins/report-feedback",
-     "Found path segment \"client\" in client/src/plugins/report-feedback/ClipboardCopySystemInfo.js",
-     "Found path segment \"client\" in client/src/plugins/report-feedback/ReportFeedback.js",
-     "Found path segment \"client\" in client/src/plugins/report-feedback/ReportFeedback.less",
-     "Found path segment \"client\" in client/src/plugins/report-feedback/ReportFeedbackOverlay.js",
-     "Found path segment \"client\" in client/src/plugins/report-feedback/ReportFeedbackOverlay.less",
-     "Found path segment \"client\" in client/src/plugins/report-feedback/ReportFeedbackSystemInfoSection.js",
-     "Found path segment \"client\" in client/src/plugins/report-feedback/__tests__",
-     "Found path segment \"client\" in client/src/plugins/report-feedback/index.js",
-     "Found path segment \"client\" in client/src/plugins/tab-context-action",
-     "Found path segment \"client\" in client/src/plugins/tab-context-action/TabContextAction.js",
-     "Found path segment \"client\" in client/src/plugins/tab-context-action/__tests__",
-     "Found path segment \"client\" in client/src/plugins/tab-context-action/index.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/MixpanelHandler.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/UserJourneyStatistics.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/__tests__",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/DeploymentEventHandler.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/FormEditorEventHandler.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/LinkEventHandler.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/ModelingEventHandler.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/OverlayEventHandler.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/PingEventHandler.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/TabEventHandler.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/__tests__",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/event-handlers/index.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/index.js",
-     "Found path segment \"client\" in client/src/plugins/user-journey-statistics/util.js",
-     "Found path segment \"client\" in client/src/plugins/version-info",
-     "Found path segment \"client\" in client/src/plugins/version-info/ReleaseInfo.js",
-     "Found path segment \"client\" in client/src/plugins/version-info/ReleaseInfo.less",
-     "Found path segment \"client\" in client/src/plugins/version-info/VersionInfo.js",
-     "Found path segment \"client\" in client/src/plugins/version-info/VersionInfo.less",
-     "Found path segment \"client\" in client/src/plugins/version-info/VersionInfoOverlay.js",
-     "Found path segment \"client\" in client/src/plugins/version-info/__tests__",
-     "Found path segment \"client\" in client/src/plugins/version-info/index.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/ZeebePlugin.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin/DeploymentPlugin.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin/DeploymentPlugin.less",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin/DeploymentPluginConstants.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin/DeploymentPluginOverlay.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin/DeploymentPluginOverlay.less",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin/DeploymentPluginValidator.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin/__tests__",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/deployment-plugin/index.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/index.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/shared",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/shared/ZeebeAuthTypes.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/shared/ZeebeTargetTypes.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/shared/__tests__",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/shared/util.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/start-instance-plugin",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/start-instance-plugin/StartInstanceConfigOverlay.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/start-instance-plugin/StartInstanceConfigOverlay.less",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/start-instance-plugin/StartInstancePlugin.js",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/start-instance-plugin/StartInstancePlugin.less",
-     "Found path segment \"client\" in client/src/plugins/zeebe-plugin/start-instance-plugin/index.js",
-     "Found path segment \"client\" in client/src/remote",
-     "Found path segment \"client\" in client/src/remote/Config.js",
-     "Found path segment \"client\" in client/src/remote/Dialog.js",
-     "Found path segment \"client\" in client/src/remote/FileSystem.js",
-     "Found path segment \"client\" in client/src/remote/Log.js",
-     "Found path segment \"client\" in client/src/remote/Plugins.js",
-     "Found path segment \"client\" in client/src/remote/SystemClipboard.js",
-     "Found path segment \"client\" in client/src/remote/Workspace.js",
-     "Found path segment \"client\" in client/src/remote/ZeebeAPI.js",
-     "Found path segment \"client\" in client/src/remote/__tests__",
-     "Found path segment \"client\" in client/src/remote/index.js",
-     "Found path segment \"client\" in client/src/shared",
-     "Found path segment \"client\" in client/src/shared/ui",
-     "Found path segment \"ui\" in client/src/shared/ui/Button.js",
-     "Found path segment \"ui\" in client/src/shared/ui/Button.less",
-     "Found path segment \"ui\" in client/src/shared/ui/DropdownButton.js",
-     "Found path segment \"ui\" in client/src/shared/ui/DropdownButton.less",
-     "Found path segment \"ui\" in client/src/shared/ui/Section.js",
-     "Found path segment \"ui\" in client/src/shared/ui/Section.less",
-     "Found path segment \"ui\" in client/src/shared/ui/__tests__",
-     "Found path segment \"ui\" in client/src/shared/ui/form",
-     "Found path segment \"ui\" in client/src/shared/ui/form/CheckBox.js",
-     "Found path segment \"ui\" in client/src/shared/ui/form/FileInput.js",
-     "Found path segment \"ui\" in client/src/shared/ui/form/FormFeedback.js",
-     "Found path segment \"ui\" in client/src/shared/ui/form/Radio.js",
-     "Found path segment \"ui\" in client/src/shared/ui/form/TextInput.js",
-     "Found path segment \"ui\" in client/src/shared/ui/form/ToggleSwitch.js",
-     "Found path segment \"ui\" in client/src/shared/ui/form/Util.js",
-     "Found path segment \"ui\" in client/src/shared/ui/form/__tests__",
-     "Found path segment \"ui\" in client/src/shared/ui/form/index.js",
-     "Found path segment \"ui\" in client/src/shared/ui/icon",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/Icon.js",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/Icon.less",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/app-codes.css",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/app.eot",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/app.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/app.ttf",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/app.woff",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/app.woff2",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/config.json",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/align-bottom-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/align-horizontal-center-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/align-left-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/align-right-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/align-top-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/align-vertical-center-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/distribute-horizontally-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/distribute-vertically-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/raw/set-color-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/align-bottom-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/align-horizontal-center-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/align-left-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/align-right-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/align-top-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/align-vertical-center-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/distribute-horizontally-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/distribute-vertically-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/font/source/symbols/set-color-tool.svg",
-     "Found path segment \"ui\" in client/src/shared/ui/icon/index.js",
-     "Found path segment \"ui\" in client/src/shared/ui/index.js",
-     "Found path segment \"ui\" in client/src/shared/ui/modal",
-     "Found path segment \"ui\" in client/src/shared/ui/modal/Modal.js",
-     "Found path segment \"ui\" in client/src/shared/ui/modal/index.js",
-     "Found path segment \"ui\" in client/src/shared/ui/overlay",
-     "Found path segment \"ui\" in client/src/shared/ui/overlay/Overlay.js",
-     "Found path segment \"ui\" in client/src/shared/ui/overlay/Overlay.less",
-     "Found path segment \"ui\" in client/src/shared/ui/overlay/OverlayDropdown.js",
-     "Found path segment \"ui\" in client/src/shared/ui/overlay/OverlayDropdown.less",
-     "Found path segment \"ui\" in client/src/shared/ui/overlay/index.js",
-     "Found path segment \"ui\" in client/src/shared/ui/trap",
-     "Found path segment \"ui\" in client/src/shared/ui/trap/CloseTrap.js",
-     "Found path segment \"ui\" in client/src/shared/ui/trap/EscapeTrap.js",
-     "Found path segment \"ui\" in client/src/shared/ui/trap/FocusTrap.js",
-     "Found path segment \"ui\" in client/src/shared/ui/trap/GlobalClickTrap.js",
-     "Found path segment \"ui\" in client/src/shared/ui/trap/KeyboardInteractionTrap.js",
-     "Found path segment \"ui\" in client/src/shared/ui/trap/index.js",
-     "Found path segment \"client\" in client/src/styles",
-     "Found path segment \"client\" in client/src/styles/_base.less",
-     "Found path segment \"client\" in client/src/styles/_buttons.less",
-     "Found path segment \"client\" in client/src/styles/_colors.less",
-     "Found path segment \"client\" in client/src/styles/_font.less",
-     "Found path segment \"client\" in client/src/styles/_forms.less",
-     "Found path segment \"client\" in client/src/styles/_icons.less",
-     "Found path segment \"client\" in client/src/styles/_modal.less",
-     "Found path segment \"client\" in client/src/styles/_modeling.less",
-     "Found path segment \"client\" in client/src/styles/style.less",
-     "Found path segment \"client\" in client/src/util",
-     "Found path segment \"client\" in client/src/util/Engines.js",
-     "Found path segment \"client\" in client/src/util/Flags.js",
-     "Found path segment \"client\" in client/src/util/Metadata.js",
-     "Found path segment \"client\" in client/src/util/__tests__",
-     "Found path segment \"client\" in client/src/util/a11y.js",
-     "Found path segment \"client\" in client/src/util/debounce.js",
-     "Found path segment \"client\" in client/src/util/dom",
-     "Found path segment \"client\" in client/src/util/dom/__tests__",
-     "Found path segment \"client\" in client/src/util/dom/dragger.js",
-     "Found path segment \"client\" in client/src/util/dom/isInput.js",
-     "Found path segment \"client\" in client/src/util/elementTemplates.js",
-     "Found path segment \"client\" in client/src/util/elementsUtil.js",
-     "Found path segment \"client\" in client/src/util/extensionElementsHelpers.js",
-     "Found path segment \"client\" in client/src/util/formHelpers.js",
-     "Found path segment \"client\" in client/src/util/generate-id.js",
-     "Found path segment \"client\" in client/src/util/index.js",
-     "Found path segment \"client\" in client/src/util/metrics",
-     "Found path segment \"client\" in client/src/util/metrics/index.js",
-     "Found path segment \"client\" in client/src/util/metrics/processVariables.js",
-     "Found path segment \"client\" in client/src/util/metrics/serviceTasks.js",
-     "Found path segment \"client\" in client/src/util/metrics/subprocessPlanes.js",
-     "Found path segment \"client\" in client/src/util/metrics/userTasks.js",
-     "Found path segment \"client\" in client/src/util/operatonXml.js",
-     "Found path segment \"client\" in client/src/util/throttle.js",
-     "Found path segment \"client\" in client/src/util/xmlConversion.js",
-     "Found path segment \"client\" in client/test",
-     "Found path segment \"client\" in client/webpack.config.js",
-     "Found path segment \"client\" in resources/plugins/test-client/client/TestClient.js",
-     "Found path segment \"client\" in resources/plugins/test-client/client/index.js",
-     "Found path segment \"client\" in resources/plugins/test-editor-events/client/TestEditorEvents.js",
-     "Found path segment \"client\" in resources/plugins/test-editor-events/client/bpmn-modeler-extension",
-     "Found path segment \"client\" in resources/plugins/test-editor-events/client/bpmn-modeler-extension/TestEditorEventsLogger.js",
-     "Found path segment \"client\" in resources/plugins/test-editor-events/client/bpmn-modeler-extension/index.js",
-     "Found path segment \"client\" in resources/plugins/test-editor-events/client/dmn-modeler-extension",
-     "Found path segment \"client\" in resources/plugins/test-editor-events/client/dmn-modeler-extension/DmnTestEditorEventsLogger.js",
-     "Found path segment \"client\" in resources/plugins/test-editor-events/client/dmn-modeler-extension/index.js",
-     "Found path segment \"client\" in resources/plugins/test-editor-events/client/index.js",
-     "Found path segment \"client\" in resources/plugins/test-lint-rules/client/index.js",
-     "Found \"bpmn\" in repository metadata and docs"
+     "... and 580 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1786,10 +1561,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 6.4,
+  "durationSeconds": 11.4,
   "scanMode": "full",
   "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
+  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

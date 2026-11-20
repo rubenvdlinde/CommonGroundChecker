@@ -3,6 +3,40 @@
  "repoId": "github.com/Interne-Taak-Afhandeling/ITA",
  "analyses": [
   {
+   "id": "2026-11-20T08-59-05-789Z",
+   "checkedAt": "2026-11-20T08:59:05.789Z",
+   "version": "v3.4.0",
+   "scannedRef": "v3.4.0",
+   "scannedRefKind": "release",
+   "scannedCommit": "6aa5d320d0554ed221f3e5343d57be2d0991b99b",
+   "checklistVersion": "2026.2",
+   "score": 60,
+   "rating": 3.3,
+   "categoryRatings": {
+    "Governance": 1.5,
+    "Security": 3.5,
+    "Architecture": 4.3,
+    "Software Quality": 4.1,
+    "Deployment & Operations": 3.3
+   },
+   "suitable": false,
+   "maintained": false,
+   "statusCounts": {
+    "pass": 11,
+    "warn": 13,
+    "fail": 8,
+    "info": 7
+   },
+   "issueCounts": {
+    "errors": 4,
+    "warnings": 16
+   },
+   "declaredUserCount": 0,
+   "openDrops": 2,
+   "scanMode": "full",
+   "durationSeconds": 8.8
+  },
+  {
    "id": "2026-11-20T06-12-47-210Z",
    "checkedAt": "2026-11-20T06:12:47.210Z",
    "version": "v3.4.0",
@@ -135,5 +169,40 @@
    "openDrops": 0
   }
  ],
- "drops": []
+ "drops": [
+  {
+   "id": "2026-11-20T08-59-05-789Z-criterion-docker",
+   "analysisId": "2026-11-20T08-59-05-789Z",
+   "previousAnalysisId": "2026-11-20T06-12-47-210Z",
+   "scannedRefKind": "release",
+   "checklistVersion": "2026.2",
+   "kind": "criterion",
+   "subject": "docker",
+   "label": "Docker support",
+   "from": "pass",
+   "to": "fail",
+   "detectedAt": "2026-11-20T08:59:05.789Z",
+   "fixTermDays": 30,
+   "fixBy": "2026-12-20T08:59:05.789Z",
+   "resolvedAt": null,
+   "resolvedAnalysisId": null
+  },
+  {
+   "id": "2026-11-20T08-59-05-789Z-rating-Deployment & Operations",
+   "analysisId": "2026-11-20T08-59-05-789Z",
+   "previousAnalysisId": "2026-11-20T06-12-47-210Z",
+   "scannedRefKind": "release",
+   "checklistVersion": "2026.2",
+   "kind": "rating",
+   "subject": "Deployment & Operations",
+   "label": "Deployment & Operations rating",
+   "from": "4",
+   "to": "3",
+   "detectedAt": "2026-11-20T08:59:05.789Z",
+   "fixTermDays": 60,
+   "fixBy": "2027-01-19T08:59:05.789Z",
+   "resolvedAt": null,
+   "resolvedAnalysisId": null
+  }
+ ]
 }

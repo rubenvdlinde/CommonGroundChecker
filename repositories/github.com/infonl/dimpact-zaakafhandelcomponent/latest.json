@@ -40,10 +40,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:12:35.096Z",
+  "lastCheckedAt": "2026-11-20T08:58:52.471Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:14.158Z",
-  "updatedAt": "2026-11-20T06:12:35.096Z",
+  "updatedAt": "2026-11-20T08:58:52.471Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -54,28 +54,28 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T06-12-35-096Z",
+  "id": "2026-11-20T08-58-52-471Z",
   "repoId": "github.com/infonl/dimpact-zaakafhandelcomponent",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:12:35.096Z",
-  "createdAt": "2026-11-20T06:12:35.096Z",
+  "checkedAt": "2026-11-20T08:58:52.471Z",
+  "createdAt": "2026-11-20T08:58:52.471Z",
   "version": "v5.12.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v5.12.0",
   "scannedRefKind": "declared-version",
   "scannedCommit": "f06ed945c8266194ca7e9e4aeddc81ccd4c88a9c",
-  "score": 64,
-  "rating": 3.2,
+  "score": 78,
+  "rating": 3.7,
   "categoryRatings": {
-   "Governance": 3.3,
-   "Security": 1.3,
+   "Governance": 3.2,
+   "Security": 3,
    "Architecture": 4.3,
-   "Software Quality": 4.6,
-   "Deployment & Operations": 3.3
+   "Software Quality": 3.8,
+   "Deployment & Operations": 4.3
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 5.5
+    "rating": 5.4
    },
    "ownership": {
     "rating": 3
@@ -95,7 +95,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -113,10 +113,10 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": null
+    "rating": 3
    },
    "secure-coding": {
-    "rating": 0.5
+    "rating": 3
    },
    "supply-chain": {
     "rating": 3
@@ -134,23 +134,26 @@
     "rating": 3.6
    },
    "modifiability": {
-    "rating": 4.2
+    "rating": 3.6
    },
    "testability": {
-    "rating": 4.7
+    "rating": 2.7
    },
    "modularity": {
-    "rating": 5.5
+    "rating": 3.1
    },
    "reusability": {
     "rating": 4.2
    },
    "testing": {
-    "rating": 5.5
+    "rating": 5.3
+   },
+   "size": {
+    "rating": null
    },
    "containerisation": {
-    "rating": 1,
-    "found": 1,
+    "rating": 3,
+    "found": 2,
     "expected": 3
    },
    "release-management": {
@@ -161,15 +164,13 @@
    "passed": false,
    "reasons": [
     "Mandatory criterion fails: Docker support",
-    "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
-    "Mandatory criterion fails: OWASP Secure Coding",
-    "No valid maintenance contract: INFO has no end date (until)."
+    "No valid maintenance contract: INFO has no end date (until).",
+    "Maintainability below 4 stars (3.41)"
    ]
   },
   "issueCounts": {
-   "errors": 4,
-   "warnings": 8
+   "errors": 1,
+   "warnings": 11
   },
   "declaredUsers": [
    "Gemeente Assen",
@@ -184,7 +185,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 76,129 lines of code, 8,270 functions, 8,227 files analyzed.",
+    "message": "Code metrics: 46,665 lines of code, 4,170 functions, 4,156 files analyzed.",
     "evidence": [
      ".qa-agent/createZaak.ts",
      ".qa-agent/globalSetup.ts",
@@ -197,9 +198,9 @@
      "docs/manuals/pdf-generator/write-wiki-manuals-page.sh",
      "docs/solution-architecture/plantuml-diagrams/generate-plantuml-images.sh",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 76,129",
-     "Function count: 8,270",
-     "Files analyzed: 8,227"
+     "Total lines of code (NLOC): 46,665",
+     "Function count: 4,170",
+     "Files analyzed: 4,156"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -243,6 +244,20 @@
     "starRating": 5
    },
    {
+    "id": "licenceconsistency",
+    "title": "Licence consistency",
+    "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
+    "evidence": [
+     "LICENSE.md: EUPL-1.2",
+     "publiccode.yaml: EUPL-1.2-or-later"
+    ],
+    "referenceUrl": "https://spdx.org/licenses/",
+    "status": "pass",
+    "message": "All 2 licence declarations agree (EUPL-1.2-or-later).",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
     "id": "copyrightowner",
     "title": "Copyright / IP Owner Disclosure",
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
@@ -257,11 +272,22 @@
     "starRating": 3
    },
    {
+    "id": "spdxheaders",
+    "title": "SPDX licence headers",
+    "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
+    "referenceUrl": "https://reuse.software/spec/",
+    "status": "pass",
+    "starRating": 5,
+    "message": "100.0% of 747 source files carry an SPDX header (5 of 5 stars).",
+    "evidence": [],
+    "requirementLevel": "recommended"
+   },
+   {
     "id": "publiccode",
     "title": "publiccode.yml Metadata File",
     "description": "A publiccode.yml file must be present in the repository root.",
     "status": "warn",
-    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "message": "publiccode.yml is valid. Recommended fields missing: description.nl.",
     "evidence": [
      "publiccode.yaml"
     ],
@@ -382,8 +408,8 @@
     "message": "Dockerfile found but no docker-compose file. A docker-compose file is required for this checker.",
     "evidence": [
      "Dockerfile",
-     "scripts/docker/nvd-database-cache/Dockerfile",
-     "(Helm chart)"
+     "(Helm chart)",
+     "other Dockerfiles found: scripts/docker/nvd-database-cache/Dockerfile"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
@@ -393,12 +419,14 @@
     "id": "dockerimage",
     "title": "Available Docker image",
     "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
-    "status": "fail",
-    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
-    "evidence": [],
+    "status": "pass",
+    "message": "The repository names a published image of this component, and the registry confirmed it.",
+    "evidence": [
+     "infonl/zaakafhandelcomponent on GitHub Container Registry (named in docs/development/INSTALL.md, found on the registry)"
+    ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "cicd",
@@ -436,7 +464,7 @@
     "status": "fail",
     "message": "No Helm package on Artifact Hub belongs to this repository. Searched for zaakafhandelcomponent, zac-dev, dimpact-zaakafhandelcomponent. Register the Helm chart on Artifact Hub, and link the package from publiccode.yml or the README if its name differs.",
     "evidence": [
-     "Container component: the repository has a Helm chart (charts/zac/Chart.yaml)"
+     "Container component: it publishes a container image (infonl/zaakafhandelcomponent on GitHub Container Registry (named in docs/development/INSTALL.md, found on the registry))"
     ],
     "requirementLevel": "mandatory",
     "mandatoryFrom": "2027-05-19",
@@ -513,36 +541,35 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 1.28 (threshold: 15); Max CCN 42.00 (threshold: 30). Threshold exceeded: MaxCCN 42.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 1.83 (threshold: 15); Max CCN 32.00 (threshold: 30). Threshold exceeded: MaxCCN 32.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.28 (threshold: 15)",
-     "Max CCN: 42.00 (threshold: 30)",
-     "3      1     23      1       3 error@45-47@/tmp/cgchecker-repo-N7clJZ/repo/scripts/bruno/create-bruno-collection-from-openapi.js",
-     "12      1     53      1      13 storeBpmnTest1Configuration@45-57@/tmp/cgchecker-repo-N7clJZ/repo/src/itest/kotlin/nl/info/zac/itest/bpmn/ZaakRestServiceBpmnWarningTest.kt",
-     "81      1    384      1      86 storeZaakVerlopendMailSetting@57-142@/tmp/cgchecker-repo-N7clJZ/repo/src/itest/kotlin/nl/info/zac/itest/bpmn/ZaakRestServiceBpmnWarningTest.kt",
-     "7      1     48      0      11 captureSignaleringServiceWarnings@780-790@/tmp/cgchecker-repo-N7clJZ/repo/src/test/kotlin/nl/info/zac/signalering/SignaleringServiceTest.kt",
-     "8      1     63      0       8 mockNoReadApplicationRoleErrorPage@34-41@/tmp/cgchecker-repo-N7clJZ/repo/src/test/kotlin/nl/info/zac/authentication/RequestAuthorizationFilterTest.kt",
-     "11      1     65      0      11 verifyNoReadApplicationRoleErrorPageIsShown@43-53@/tmp/cgchecker-repo-N7clJZ/repo/src/test/kotlin/nl/info/zac/authentication/RequestAuthorizationFilterTest.kt"
+     "Average CCN: 1.83 (threshold: 15)",
+     "Max CCN: 32.00 (threshold: 30)",
+     "3      1     23      1       3 error@45-47@/tmp/cgchecker-repo-18Ks7O/repo/scripts/bruno/create-bruno-collection-from-openapi.js",
+     "12      1     53      1      13 storeBpmnTest1Configuration@45-57@/tmp/cgchecker-repo-18Ks7O/repo/src/itest/kotlin/nl/info/zac/itest/bpmn/ZaakRestServiceBpmnWarningTest.kt",
+     "81      1    384      1      86 storeZaakVerlopendMailSetting@57-142@/tmp/cgchecker-repo-18Ks7O/repo/src/itest/kotlin/nl/info/zac/itest/bpmn/ZaakRestServiceBpmnWarningTest.kt",
+     "2      1     14      0       2 onError@481-482@/tmp/cgchecker-repo-18Ks7O/repo/src/main/app/src/app/documenten/ontkoppelde-documenten-list/ontkoppelde-documenten-list.component.ts",
+     "4      1     23      0       4 error@339-342@/tmp/cgchecker-repo-18Ks7O/repo/src/main/app/src/app/klanten/zoek/personen/persoon-zoek.component.ts",
+     "5      1     14      0       5 handleBetrokkeneError@58-62@/tmp/cgchecker-repo-18Ks7O/repo/src/main/app/src/app/klanten/bedrijf-view/bedrijf-resolver.service.ts"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "requirementLevel": "mandatory",
-    "starRating": 1
+    "requirementLevel": "informative"
    },
    {
     "id": "maintainability",
     "title": "Maintainability (ISO 25010)",
     "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
-    "status": "pass",
-    "starRating": 4,
-    "rating": 4.4,
+    "status": "warn",
+    "starRating": 3,
+    "rating": 3.41,
     "aspectRatings": {
      "analysability": 3.64,
-     "modifiability": 4.18,
-     "testability": 4.65,
-     "modularity": 5.5,
+     "modifiability": 3.55,
+     "testability": 2.71,
+     "modularity": 3.13,
      "reusability": 4.22
     },
     "measurements": [
@@ -558,10 +585,7 @@
         "label": "JavaScript",
         "value": "0.8%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        },
@@ -569,10 +593,7 @@
         "label": "Python",
         "value": "2.8%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        },
@@ -580,10 +601,7 @@
         "label": "TypeScript",
         "value": "8.3%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 3
        }
@@ -601,10 +619,7 @@
         "label": "JavaScript, more than 15 lines",
         "value": "71.3%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 2
        },
@@ -612,10 +627,7 @@
         "label": "JavaScript, more than 30 lines",
         "value": "53.1%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 1
        },
@@ -623,10 +635,7 @@
         "label": "JavaScript, more than 60 lines",
         "value": "32.1%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 1
        },
@@ -634,10 +643,7 @@
         "label": "Python, more than 15 lines",
         "value": "77.7%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 2
        },
@@ -645,10 +651,7 @@
         "label": "Python, more than 30 lines",
         "value": "52.9%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 1
        },
@@ -656,10 +659,7 @@
         "label": "Python, more than 60 lines",
         "value": "32.2%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 1
        },
@@ -667,10 +667,7 @@
         "label": "TypeScript, more than 15 lines",
         "value": "30.1%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
@@ -678,10 +675,7 @@
         "label": "TypeScript, more than 30 lines",
         "value": "12.5%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -689,10 +683,7 @@
         "label": "TypeScript, more than 60 lines",
         "value": "4.9%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        }
@@ -710,10 +701,7 @@
         "label": "JavaScript, complexity above 5",
         "value": "59.8%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 1
        },
@@ -721,10 +709,7 @@
         "label": "JavaScript, complexity above 10",
         "value": "39.3%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 1
        },
@@ -732,10 +717,7 @@
         "label": "JavaScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        },
@@ -743,10 +725,7 @@
         "label": "Python, complexity above 5",
         "value": "52.8%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 1
        },
@@ -754,10 +733,7 @@
         "label": "Python, complexity above 10",
         "value": "31.6%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 1
        },
@@ -765,10 +741,7 @@
         "label": "Python, complexity above 25",
         "value": "6.8%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 1
        },
@@ -776,10 +749,7 @@
         "label": "TypeScript, complexity above 5",
         "value": "13.9%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -787,10 +757,7 @@
         "label": "TypeScript, complexity above 10",
         "value": "3.5%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 5
        },
@@ -798,10 +765,7 @@
         "label": "TypeScript, complexity above 25",
         "value": "0.6%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 4
        }
@@ -818,10 +782,7 @@
         "label": "JavaScript, 3 or more parameters",
         "value": "25.9%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 2
        },
@@ -829,10 +790,7 @@
         "label": "JavaScript, 5 or more parameters",
         "value": "10.3%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 1
        },
@@ -840,10 +798,7 @@
         "label": "JavaScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
@@ -851,10 +806,7 @@
         "label": "Python, 3 or more parameters",
         "value": "29.0%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 1
        },
@@ -862,10 +814,7 @@
         "label": "Python, 5 or more parameters",
         "value": "12.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 1
        },
@@ -873,10 +822,7 @@
         "label": "Python, 7 or more parameters",
         "value": "0.4%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
@@ -884,10 +830,7 @@
         "label": "TypeScript, 3 or more parameters",
         "value": "5.3%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -895,10 +838,7 @@
         "label": "TypeScript, 5 or more parameters",
         "value": "0.5%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -906,10 +846,7 @@
         "label": "TypeScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        }
@@ -927,10 +864,7 @@
         "label": "Python, fan-in above 10",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 13.0%",
-         "3": "≤ 10.7%",
-         "4": "≤ 9.7%",
-         "5": "≤ 7.4%"
+         "4": "≤ 9.7%"
         },
         "stars": 5
        },
@@ -938,10 +872,7 @@
         "label": "Python, fan-in above 20",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 8.0%",
-         "3": "≤ 5.9%",
-         "4": "≤ 5.3%",
-         "5": "≤ 3.3%"
+         "4": "≤ 5.3%"
         },
         "stars": 5
        },
@@ -949,10 +880,31 @@
         "label": "Python, fan-in above 50",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 3.8%",
-         "3": "≤ 2.3%",
-         "4": "≤ 1.8%",
-         "5": "≤ 1.2%"
+         "4": "≤ 1.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 10",
+        "value": "9.5%",
+        "thresholds": {
+         "4": "≤ 9.7%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "js/ts/vue, fan-in above 20",
+        "value": "5.3%",
+        "thresholds": {
+         "4": "≤ 5.3%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "js/ts/vue, fan-in above 50",
+        "value": "0.7%",
+        "thresholds": {
+         "4": "≤ 1.8%"
         },
         "stars": 5
        }
@@ -970,10 +922,18 @@
         "label": "Python",
         "value": "100.0%",
         "thresholds": {
-         "4": "≥ 94.5%",
-         "5": "≥ 97.3%"
+         "4": "≥ 94.5%"
         },
         "stars": 5
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "62.3%",
+        "thresholds": {
+         "4": "≥ 94.5%"
+        },
+        "stars": null,
+        "starsText": "below 4 stars"
        }
       ]
      },
@@ -988,59 +948,399 @@
         "label": "Python",
         "value": "0",
         "thresholds": {
-         "4": "≤ 0.075",
-         "5": "≤ 0.0375"
+         "4": "≤ 0.075"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "0.0541",
+        "thresholds": {
+         "4": "≤ 0.075"
+        },
+        "stars": 4
+       }
+      ]
+     }
+    ],
+    "message": "Estimated maintainability rating 3.37 to 3.45 (3 of 5 stars) over 423 file(s). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Duplication: ★★★☆☆ 3.3 (javascript 5.3, python 4.7, typescript 3.1)",
+     "Unit size: ★★★★☆ 4.0 (javascript 1.4, python 1.4, typescript 4.6)",
+     "Unit complexity: ★★★★☆ 3.8 (javascript 1.1, python 1.2, typescript 4.4)",
+     "Unit interfacing: ★★★★☆ 4.4 (javascript 1.5, python 1.4, typescript 5.1)",
+     "Module coupling: ★★★★☆ 3.6 (python 5.5, js/ts/vue 3.4)",
+     "Component independence: ★★☆☆☆ 1.6 (python 5.5, js/ts/vue 1.3)",
+     "Component entanglement: ★★★★☆ 4.2 (python 5.5, js/ts/vue 4.1)",
+     "Lever: module coupling in js/ts/vue, about 359 lines to fix for half a star",
+     "Lever: unit complexity in typescript, about 864 lines to fix for half a star",
+     "Lever: unit complexity in python, about 1048 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.8%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 2.8%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 8.3%",
+     "Skipped 1 file(s) the analyser could not read"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opentrack",
+    "title": "Maintainability, open track",
+    "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
+    "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
+    "status": "info",
+    "starRating": 3,
+    "rating": 3,
+    "measurements": [
+     {
+      "id": "open-unit-size",
+      "title": "Unit size",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, more than 29 lines",
+        "value": "20.4%",
+        "thresholds": {
+         "2": "≤ 60.2%",
+         "3": "≤ 37.0%",
+         "4": "≤ 26.1%",
+         "5": "≤ 4.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, more than 42 lines",
+        "value": "15.5%",
+        "thresholds": {
+         "2": "≤ 46.7%",
+         "3": "≤ 24.3%",
+         "4": "≤ 14.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, more than 71 lines",
+        "value": "7.3%",
+        "thresholds": {
+         "2": "≤ 33.4%",
+         "3": "≤ 11.1%",
+         "4": "≤ 5.3%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, complexity above 5",
+        "value": "21.4%",
+        "thresholds": {
+         "2": "≤ 45.1%",
+         "3": "≤ 34.4%",
+         "4": "≤ 24.9%",
+         "5": "≤ 8.2%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, complexity above 7",
+        "value": "12.8%",
+        "thresholds": {
+         "2": "≤ 38.1%",
+         "3": "≤ 23.9%",
+         "4": "≤ 14.6%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, complexity above 10",
+        "value": "9.0%",
+        "thresholds": {
+         "2": "≤ 32.2%",
+         "3": "≤ 13.1%",
+         "4": "≤ 6.2%",
+         "5": "≤ 0.4%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, 3 or more parameters",
+        "value": "9.5%",
+        "thresholds": {
+         "2": "≤ 31.4%",
+         "3": "≤ 21.6%",
+         "4": "≤ 13.2%",
+         "5": "≤ 0.7%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, 4 or more parameters",
+        "value": "4.6%",
+        "thresholds": {
+         "2": "≤ 19.2%",
+         "3": "≤ 10.4%",
+         "4": "≤ 3.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, 5 or more parameters",
+        "value": "2.5%",
+        "thresholds": {
+         "2": "≤ 12.3%",
+         "3": "≤ 6.6%",
+         "4": "≤ 1.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     }
+    ],
+    "message": "Open-track rating 3.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "evidence": [
+     "Unit size: ★★★☆☆ 20.4% / 15.5% / 7.3% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★☆☆ 21.4% / 12.8% / 9.0% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★☆☆ 9.5% / 4.6% / 2.5% of the code above 2 / 3 / 4 parameters",
+     "Duplication: not measured",
+     "Module coupling: not measured",
+     "Component independence: not measured",
+     "Component entanglement: not measured",
+     "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)",
+     "Skipped 1 file(s) the analyser could not read"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "testcoderatio",
+    "title": "Test code ratio",
+    "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
+    "status": "pass",
+    "starRating": 5,
+    "message": "Test code ratio 142.7% (5 of 5 stars).",
+    "evidence": [
+     "Test code ratio: 142.7%",
+     "Test code: 60,860 lines in 283 files",
+     "Production code: 42,657 lines in 464 files",
+     "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
+    ],
+    "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opensourcehealth",
+    "title": "Open Source Health",
+    "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": null
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
         },
         "stars": 5
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.36 to 4.44 (4 of 5 stars) over 423 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Open Source Health 5 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★☆☆ 3.3 (javascript 5.3, python 4.7, typescript 3.1)",
-     "Unit size: ★★★★☆ 4.0 (javascript 1.4, python 1.4, typescript 4.6)",
-     "Unit complexity: ★★★★☆ 3.8 (javascript 1.1, python 1.2, typescript 4.4)",
-     "Unit interfacing: ★★★★☆ 4.4 (javascript 1.5, python 1.4, typescript 5.1)",
-     "Module coupling: ★★★★★ 5.5 (python 5.5)",
-     "Component independence: ★★★★★ 5.5 (python 5.5)",
-     "Component entanglement: ★★★★★ 5.5 (python 5.5)",
-     "Lever: unit size in python, about 1513 lines to fix for half a star",
-     "Lever: unit complexity in typescript, about 864 lines to fix for half a star",
-     "Lever: duplication in typescript, about 1044 lines to fix for half a star",
-     "Skipped 1 file(s) the analyser could not read"
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: not rated (data unavailable)"
     ],
     "requirementLevel": "recommended"
+   },
+   {
+    "id": "size",
+    "title": "Size",
+    "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
+    "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Not measured: scc 4.1.0 could not run.",
+    "evidence": [
+     "spawn scc ENOENT"
+    ]
+   },
+   {
+    "id": "duplication",
+    "title": "Duplication (open track)",
+    "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "referenceUrl": "https://github.com/kucherenko/jscpd",
+    "status": "warn",
+    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "evidence": [
+     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "coupling",
+    "title": "Coupling (open track)",
+    "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "info",
+    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "evidence": [
+     "Python: not measured: grimp 3.18 is not installed",
+     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+    ],
+    "openTrack": {
+     "coupling": {
+      "version": 1,
+      "languages": {
+       "python": {
+        "measured": false,
+        "reason": "grimp 3.18 is not installed",
+        "files": 25
+       },
+       "javascript": {
+        "measured": false,
+        "reason": "dependency-cruiser 17.4.3 is not installed",
+        "files": 398
+       }
+      }
+     }
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "fail",
-    "message": "Multiple risky coding patterns were detected (18 findings across 747 scanned source files). Review them against OWASP secure coding guidance.",
+    "status": "warn",
+    "message": "Potential OWASP secure coding issues were detected (1 findings across 420 scanned source files, failing from 5).",
     "evidence": [
-     "Dynamic code execution: docs/manuals/pdf-generator/render-pdf.mjs",
-     "Possible hardcoded secret: scripts/kind/kind_stack.py",
-     "Dynamic code execution: src/e2e/step-definitions/authentication.ts",
-     "Dynamic code execution: src/e2e/step-definitions/bpmn.ts",
-     "Dynamic code execution: src/e2e/step-definitions/common.ts",
-     "Dynamic code execution: src/e2e/step-definitions/external-systems.ts",
-     "Dynamic code execution: src/e2e/step-definitions/hooks.ts",
-     "Dynamic code execution: src/e2e/step-definitions/open-forms.ts",
-     "Dynamic code execution: src/e2e/step-definitions/persoon.ts",
-     "Dynamic code execution: src/e2e/step-definitions/taken-verdelen.ts",
-     "Dynamic code execution: src/e2e/step-definitions/zaak.ts",
-     "Dynamic code execution: src/e2e/step-definitions/zaken-verdelen.ts",
-     "Weak hash algorithm: src/main/app/scripts/cache-busting.js",
-     "Dynamic code execution: src/main/app/src/app/taken/taak-view/formio/formio-setup-service.signing-datagrids.spec.ts",
-     "Dynamic code execution: src/main/app/src/app/taken/taak-view/formio/formio-setup-service.ts",
-     "Dynamic code execution: src/main/app/src/error-403-pages.spec.ts",
-     "Unsafe HTML injection: src/main/app/src/error-403-pages.spec.ts",
-     "Dynamic code execution: src/main/app/src/functions.ts"
+     "Weak hash algorithm: src/main/app/scripts/cache-busting.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 3
    },
    {
     "id": "adrvalidator",
@@ -1091,6 +1391,31 @@
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
     "requirementLevel": "mandatory",
     "starRating": 5
+   },
+   {
+    "id": "secretscanning",
+    "title": "No committed secrets",
+    "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
+    "status": "warn",
+    "message": "Secret scanning could not run.",
+    "evidence": [
+     "gitleaks is not installed on the checker host."
+    ],
+    "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "openssfscorecard",
+    "title": "OpenSSF Scorecard",
+    "description": "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API and rates it from 1 to 5 stars. The star bands are this checker's own: 9 or higher is 5 stars, 7 or higher is 4, 5 or higher is 3, 3 or higher is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
+    "status": "info",
+    "message": "This repository is not in the OpenSSF Scorecard dataset. The project can publish a score by running the OpenSSF Scorecard GitHub Action (ossf/scorecard-action).",
+    "evidence": [
+     "https://github.com/ossf/scorecard-action"
+    ],
+    "referenceUrl": "https://scorecard.dev",
+    "requirementLevel": "recommended"
    },
    {
     "id": "semver",
@@ -1162,525 +1487,7 @@
      "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/exception/BagRuntimeException.kt",
      "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/model",
      "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/model/BevraagAdressenParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/BagClientHeadersFactory.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/GebruiksdoelEnumAdapter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/IndicatieEnumAdapter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/JsonbConfiguration.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/StatusNaamgevingEnumAdapter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/StatusPandEnumAdapter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/StatusVerblijfsobjectEnumAdapter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/StatusWoonplaatsEnumAdapter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/TypeAdresseerbaarObjectEnumAdapter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/bag/util/TypeOpenbareRuimteEnumAdapter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/BrpClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/PersonenApi.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/exception/BrpPersonNotFoundException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/exception/BrpResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/exception/BrpRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/exception/BrpTemporaryPersonIdNotCachedException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util/AbstractDatumJsonbDeserializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util/AbstractVerblijfplaatsJsonbDeserializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util/BrpClientHeadersFactory.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util/BrpExtensionFunctions.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util/BrpProtocolleringContext.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util/FieldPropertyVisibilityStrategy.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util/JsonbConfiguration.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/brp/util/PersonenQueryResponseJsonbDeserializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/keycloak",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/keycloak/KeycloakEmployeesAdminClientConfiguration.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/KlantClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/KlantClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/exception/KlantRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/exception/KlantRuntimeResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/model/ContactDetails.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/model/KlantcontactContactDetails.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/util",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/klant/util/KlantClientHeadersFactory.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/KvkBasisprofielClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/KvkClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/KvkSearchClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/KvkVestigingsprofielClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/exception/KvkClientNoResultException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/exception/KvkClientNoResultResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/exception/KvkRuntimeExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/model/BedrijfType.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/model/KvkSearchParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/util",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/util/KvkClientHeadersFactory.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/util/KvkExtensionFunctions.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/kvk/util/KvkValidators.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/officeconverter",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/officeconverter/OfficeConverterClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/officeconverter/OfficeConverterClientHeadersFactory.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/officeconverter/OfficeConverterClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/officeconverter/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/officeconverter/exception/MessageEntityDataCouldNotBeBufferedException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/opa",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/opa/OpaAdminClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/opa/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/opa/model/OpaRuleResult.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/opa/model/RoleNamesResponse.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/opa/model/RuleQuery.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/opa/model/RuleResponse.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/object",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/object/ObjectsClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/object/ObjectsClientHeadersFactory.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/object/ObjectsClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/exception/ORErrorException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/exception/ORErrorExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/exception/ORRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/exception/ORRuntimeResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/exception/ORValidationErrorException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/exception/ORValidationErrorExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/model/ORError.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/model/ORFieldValidationError.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/or/shared/model/ORValidationError.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/pabc",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/pabc/PabcClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/pabc/PabcClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/pabc/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/pabc/exception/PabcRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/pabc/util",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/pabc/util/PabcClientHeadersFactory.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/SmartDocumentsClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/exception/SmartDocumentsBadRequestException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/exception/SmartDocumentsBadRequestResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/exception/SmartDocumentsResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/exception/SmartDocumentsRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/model/document",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/model/document/SmartDocumentsDocumentRequestDeclarations.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/model/document/SmartDocumentsDocumentResponseDeclarations.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/model/template",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/model/template/SmartDocumentsTemplateDeclarations.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/rest",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/smartdocuments/rest/DownloadedFile.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc/BrcClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc/BrcClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc/exception/BrcResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc/exception/BrcRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc/model/BesluitenListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/brc/model/NillableDatesBesluitPatch.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/DrcClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/DrcClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/exception/DrcRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/exception/DrcRuntimeResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/model/BestandsDeelInputStream.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/model/BestandsDeelMultipartBody.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/model/EnkelvoudigInformatieobjectListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/drc/model/ObjectInformatieobjectListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/ZgwApiService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/cache",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/cache/CacheMemoryUsage.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/cache/Caching.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception/MultipleBehandelaarRolesException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception/ResultTypeNotFoundException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception/StatusTypeNotFoundException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception/ZgwErrorException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception/ZgwErrorExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception/ZgwRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception/ZgwValidationErrorException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/exception/ZgwValidationErrorResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/AbstractEnum.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/AbstractListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/Bron.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/FieldValidationError.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/ObjectType.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/Results.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/ZgwError.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/ZgwValidationError.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/AuditTrailRegel.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/AuditWijziging.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/ZrcAuditTrailRegel.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/besluiten",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/besluiten/BesluitInformatieobjectWijziging.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/besluiten/BesluitWijziging.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/documenten",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/documenten/EnkelvoudigInformatieobjectWijziging.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/documenten/GebruiksrechtenWijziging.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/shared/model/audit/documenten/ObjectInformatieobjectWijziging.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/AuditWijzigingJsonbDeserializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/FieldVisibilityJsonb.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/JsonbConfiguration.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/LocalDateConversions.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/ResultsJsonbDeserializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/UriJsonbDeserializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/ZgwClientHeadersFactory.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/ZgwDateTimeFormat.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/ZgwJwtTokenUtils.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/util/ZgwUriUtils.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/ZrcClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/ZrcClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/exception/ZaakGeometrieNotSupportedException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/exception/ZrcResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/exception/ZrcRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/jsonb",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/jsonb/DeleteGeoJsonGeometryJsonbSerializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/jsonb/RolJsonbDeserializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/jsonb/ZaakObjectJsonbDeserializer.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/DeleteGeoJsonGeometry.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/GerelateerdeZakenZaakPatch.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/NillableHoofdzaakZaakPatch.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/Rol.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/RolListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/RolMedewerker.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/RolNatuurlijkPersoon.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/RolNietNatuurlijkPersoon.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/RolOrganisatorischeEenheid.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/RolVestiging.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/ZaakInformatieObjectExtensions.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/ZaakInformatieobjectListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/ZaakListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/ZaakUuid.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ObjectAdres.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ObjectBagObject.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ObjectNummeraanduiding.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ObjectOpenbareRuimte.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ObjectOverige.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ObjectPand.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ObjectWoonplaats.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/Zaakobject.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectAdres.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectAdresRequest.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectMetObjectIdentificatie.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectMetObjectIdentificatieRequest.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectNummeraanduiding.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectNummeraanduidingRequest.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectOpenbareRuimte.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectOpenbareRuimteRequest.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectPand.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectPandRequest.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectProductaanvraag.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectProductaanvraagRequest.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectRequest.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectWoonplaats.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/model/zaakobjecten/ZaakobjectWoonplaatsRequest.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/util",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/util/StatusTypeUtil.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/util/ZaakSubUtil.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/util/ZaakUtil.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/zrc/util/ZaakspecifiekGeautoriseerd.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/ZtcClient.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/ZtcClientService.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/exception",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/exception/CatalogusNotFoundException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/exception/EigenschapNotFoundException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/exception/RoltypeNotFoundException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/exception/ZtcResponseExceptionMapper.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/exception/ZtcRuntimeException.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/AbstractZtcListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/BesluittypeListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/CatalogusListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/EigenschapListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/Formaat.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/IndicatieInternExtern.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/InformatieobjecttypeListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/ObjectStatusFilter.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/Referentieproces.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/ResultaattypeListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/Richting.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/RoltypeListGeneriekParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/RoltypeListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/StatustypeListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/ZaaktypeInformatieobjecttypeListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/ZaaktypeListParameters.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/extensions",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/extensions/InformatieObjectTypeExtensions.kt",
-     "Found path segment \"client\" in src/main/kotlin/nl/info/client/zgw/ztc/model/extensions/ZaakTypeExtensions.kt",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/admin.routes.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/admin",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/admin/admin.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/admin/admin.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definition-item",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definition-item/bpmn-process-definition-item.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definition-item/bpmn-process-definition-item.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definition-item/bpmn-process-definition-item.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definition-item/bpmn-process-definition-item.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definitions.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definitions.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definitions.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definitions.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definitions.directive.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/bpmn-process-definitions.directive.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/file.helper.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn-process-definitions/file.helper.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn.service.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/bpmn.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/groep-signaleringen",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/groep-signaleringen/groep-signaleringen.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/groep-signaleringen/groep-signaleringen.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/groep-signaleringen/groep-signaleringen.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/groep-signaleringen/groep-signaleringen.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/health-check.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/inrichtingscheck",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/inrichtingscheck/inrichtingscheck.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/inrichtingscheck/inrichtingscheck.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/inrichtingscheck/inrichtingscheck.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/inrichtingscheck/inrichtingscheck.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate-beheer.service.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate-beheer.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate-koppeling.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate-resolver.service.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate-resolver.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate/mailtemplate.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate/mailtemplate.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate/mailtemplate.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplate/mailtemplate.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplates",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplates/mailtemplates.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplates/mailtemplates.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplates/mailtemplates.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/mailtemplates/mailtemplates.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/model",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/model/mail-utils.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form-item",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form-item/smart-documents-form-item.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form-item/smart-documents-form-item.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form-item/smart-documents-form-item.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form-item/smart-documents-form-item.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-components/smart-documents-form/smart-documents-form.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/parameters-edit.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/parameters-edit.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/parameters-edit.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/parameters-step-buttons.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-acties",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-acties/acties-form.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-acties/parameters-step-acties.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-acties/parameters-step-acties.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-acties/parameters-step-acties.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-algemeen",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-algemeen/algemeen-form.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-algemeen/parameters-step-algemeen.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-algemeen/parameters-step-algemeen.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-algemeen/parameters-step-algemeen.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-beeindiging",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-beeindiging/parameters-step-beeindiging.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-beeindiging/parameters-step-beeindiging.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-beeindiging/parameters-step-beeindiging.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-beeindiging/zaakbeeindiging-form.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-humantasks",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-humantasks/human-tasks-form.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-humantasks/parameters-step-humantasks.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-humantasks/parameters-step-humantasks.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-humantasks/parameters-step-humantasks.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-humantasks/parameters-step-humantasks.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-koppelingen",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-koppelingen/koppelingen-form.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-koppelingen/parameters-step-koppelingen.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-koppelingen/parameters-step-koppelingen.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-koppelingen/parameters-step-koppelingen.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-mail",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-mail/mail-form.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-mail/parameters-step-mail.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-mail/parameters-step-mail.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-mail/parameters-step-mail.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-mail/parameters-step-mail.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-proces-model",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-proces-model/parameters-step-proces-model.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-proces-model/parameters-step-proces-model.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-proces-model/parameters-step-proces-model.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/steps/parameters-step-proces-model/process-model-form.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/zaaktype-configuration-form.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters-edit/zaaktype-configuration-form.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters/parameters.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters/parameters.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters/parameters.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters/parameters.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/parameters/zaakafhandel-parameters-list-parameters.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabel.service.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabel.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-create-dialog",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-create-dialog/referentie-tabel-create-dialog.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-create-dialog/referentie-tabel-create-dialog.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-create-dialog/referentie-tabel-create-dialog.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-create-dialog/referentie-tabel-create-dialog.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-edit-dialog",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-edit-dialog/referentie-tabel-edit-dialog.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-edit-dialog/referentie-tabel-edit-dialog.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-edit-dialog/referentie-tabel-edit-dialog.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item/referentie-tabel-item.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item/referentie-tabel-item.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item/referentie-tabel-item.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item/referentie-tabel-item.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item/referentie-tabel-value-dialog",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item/referentie-tabel-value-dialog/referentie-tabel-value-dialog.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item/referentie-tabel-value-dialog/referentie-tabel-value-dialog.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-item/referentie-tabel-value-dialog/referentie-tabel-value-dialog.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabel-row.directive.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabellen.component.html",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabellen.component.less",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabellen.component.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/referentie-tabellen/referentie-tabellen.component.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/signaleringen-settings-beheer.service.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/signaleringen-settings-beheer.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/smart-documents.service.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/smart-documents.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/zaakafhandel-parameters-resolver.service.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/zaakafhandel-parameters-resolver.service.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/zaakafhandel-parameters.service.spec.ts",
-     "Found path segment \"admin\" in src/main/app/src/app/admin/zaakafhandel-parameters.service.ts",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/MailTemplateKoppelingenService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/ReferenceTableAdminService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/ReferenceTableService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/ResultaattypeReferenceService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/ZaaktypeConfigurationBeheerService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/ZaaktypeConfigurationRepository.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/ZaaktypeConfigurationService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/ZaaktypeConfigurationVersioning.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/exception",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/exception/ReferenceTableNotFoundException.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/exception/SystemReferenceTableNotConfiguredException.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/exception/ZaaktypeConfigurationNotFoundException.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/exception/ZaaktypeInUseException.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/DefaultHumanTaskFormulierKoppeling.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/FormulierDefinitie.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/FormulierKoppelingConverter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/FormulierVeldDefinitie.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/HumanTaskReferentieTabel.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ProcessEngine.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ReferenceTable.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ReferenceTableValue.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/UserModifiableZaaktypeConfigurationData.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaakafhandelparametersStatusMailOption.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaakbeeindigReden.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeBetrokkeneParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeBrpParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeCmmnExtension.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeCmmnHumantaskParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeCmmnUsereventlistenerParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeCompletionParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeConfiguration.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeDeadlineWarningWindows.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeEmailParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeMailtemplateParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeProcessBinding.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/admin/model/ZaaktypeZaakafzenderParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/BpmnProcessDefinitionDownloadService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/BpmnProcessDefinitionRestService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/HealthCheckRestService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/MailtemplateBeheerRestService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/MailtemplateKoppelingRestService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/ReferenceTableRestService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/SignaleringAdminRestService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/ZaaktypeConfigurationRestService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/converter",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/converter/RestHumanTaskParametersConverter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/converter/RestHumanTaskReferenceTableConverter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/converter/RestMailtemplateKoppelingConverter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/converter/RestProcessDefinitionConverter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/converter/RestZaakbeeindigParameterConverter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/converter/RestZaaktypeConfigurationConverter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/flowable",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/flowable/cmmn",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/flowable/cmmn/ZacCmmnAdminUtilRestService.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/BpmnProcessDefinitionTaskFormContent.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestAutomaticEmailConfirmation.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestBetrokkeneKoppelingen.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestBpmnProcessDefinition.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestBrpDoelbindingen.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestBuildInformation.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestDeletedSignaleringenResponse.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestHumanTaskParameters.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestHumanTaskReferenceTable.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestMailtemplate.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestMailtemplateKoppeling.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestPlanItemDefinition.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestProcessDefinition.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestProcessDefinitionContent.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestReferenceTable.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestReferenceTableUpdate.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestReferenceTableValue.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestReplyTo.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestSmartDocuments.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestTaakFormulierDefinitie.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestTaakFormulierVeldDefinitie.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestUserEventListenerParameter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestZaakAfzender.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestZaakbeeindigParameter.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestZaakbeeindigReden.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestZaaktypeConfiguration.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestZaaktypeInrichtingscheck.kt",
-     "Found path segment \"admin\" in src/main/kotlin/nl/info/zac/app/admin/model/RestZaaktypeOverzicht.kt",
-     "Found path segment \"service\" in src/main/app/src/app/core/service/util.service.spec.ts",
-     "Found path segment \"service\" in src/main/app/src/app/core/service/util.service.ts",
-     "Found path segment \"services\" in src/main/app/src/app/zaken/zaak-view/services/zaak-action-dialogs.service.spec.ts",
-     "Found path segment \"services\" in src/main/app/src/app/zaken/zaak-view/services/zaak-action-dialogs.service.ts",
-     "Found path segment \"services\" in src/main/app/src/app/zaken/zaak-view/services/zaak-betrokkenen.service.spec.ts",
-     "Found path segment \"services\" in src/main/app/src/app/zaken/zaak-view/services/zaak-betrokkenen.service.ts",
-     "Found path segment \"services\" in src/main/app/src/app/zaken/zaak-view/services/zaak-side-action.service.spec.ts",
-     "Found path segment \"services\" in src/main/app/src/app/zaken/zaak-view/services/zaak-side-action.service.ts",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/AdresApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/AdresUitgebreidApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/AdresseerbaarObjectApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/AlgemeneInformatieApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/BronhouderApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/LigplaatsApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/NummeraanduidingApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/OpenbareRuimteApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/PandApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/StandplaatsApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/VerblijfsobjectApi.kt",
-     "Found path segment \"api\" in src/main/kotlin/nl/info/client/bag/api/WoonplaatsApi.kt",
-     "Found path segment \"rest\" in src/main/kotlin/nl/info/client/smartdocuments/rest/DownloadedFile.kt",
-     "Found path segment \"rest\" in src/main/kotlin/nl/info/zac/smartdocuments/rest/RestMappedSmartDocumentsTemplate.kt",
-     "Found path segment \"rest\" in src/main/kotlin/nl/info/zac/smartdocuments/rest/RestMappedSmartDocumentsTemplateGroup.kt",
-     "Found path segment \"rest\" in src/main/kotlin/nl/info/zac/smartdocuments/rest/RestSmartDocumentsPath.kt",
-     "Found path segment \"rest\" in src/main/kotlin/nl/info/zac/smartdocuments/rest/RestSmartDocumentsTemplate.kt",
-     "Found path segment \"rest\" in src/main/kotlin/nl/info/zac/smartdocuments/rest/RestSmartDocumentsTemplateGroup.kt",
-     "Found path segment \"rest\" in src/main/kotlin/nl/info/zac/smartdocuments/rest/RestSmartDocumentsValidator.kt",
-     "Found path segment \"services\" in src/main/resources/META-INF/services/org.flowable.cdi.spi.CmmnEngineLookup",
-     "Found path segment \"services\" in src/main/resources/META-INF/services/org.flowable.cdi.spi.ProcessEngineLookup",
-     "Found \"process\" in repository metadata and docs",
-     "Found \"zaak\" in repository metadata and docs"
+     "... and 519 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1832,7 +1639,7 @@
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
       "value": "3 organisations; largest 94%",
-      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (152 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is sanderboer.nl (3 authors), with 94% of the 110 commits whose organisation is known; 28% of the commits come from 3 of 8 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (151 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is sanderboer.nl (3 authors), with 94% of the 109 commits whose organisation is known; 28% of the commits come from 3 of 8 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1843,7 +1650,7 @@
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
       "value": "0.99",
-      "explanation": "1,088 change requests were closed (merged or not) and 1,099 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "explanation": "1,089 change requests were closed (merged or not) and 1,102 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -1954,10 +1761,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 13.3,
+  "durationSeconds": 14.7,
   "scanMode": "full",
   "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
+  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

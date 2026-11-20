@@ -32,10 +32,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:13:30.724Z",
+  "lastCheckedAt": "2026-11-20T08:59:55.818Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:57.462Z",
-  "updatedAt": "2026-11-20T06:13:30.724Z",
+  "updatedAt": "2026-11-20T08:59:55.818Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -48,28 +48,28 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T06-13-30-724Z",
+  "id": "2026-11-20T08-59-55-818Z",
   "repoId": "github.com/maykinmedia/open-klant",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:13:30.724Z",
-  "createdAt": "2026-11-20T06:13:30.724Z",
+  "checkedAt": "2026-11-20T08:59:55.818Z",
+  "createdAt": "2026-11-20T08:59:55.818Z",
   "version": "v2.19.2",
   "checklistVersion": "2026.2",
   "scannedRef": "2.19.2",
   "scannedRefKind": "tag",
   "scannedCommit": "ac8b824d1e00c1d2db58d8f8f2015b29a8e20210",
-  "score": 61,
-  "rating": 2.9,
+  "score": 80,
+  "rating": 3.4,
   "categoryRatings": {
-   "Governance": 3.6,
-   "Security": 1.8,
+   "Governance": 3,
+   "Security": 3.5,
    "Architecture": 3,
-   "Software Quality": 3,
-   "Deployment & Operations": 3.3
+   "Software Quality": 2.9,
+   "Deployment & Operations": 4.3
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 5.5
+    "rating": 3.1
    },
    "ownership": {
     "rating": 3
@@ -89,28 +89,28 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 1.6
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 1.4
    },
    "container-images": {
-    "rating": null
+    "rating": 0.5
    },
    "secrets": {
-    "rating": null
+    "rating": 3
    },
    "secure-coding": {
-    "rating": 0.5
+    "rating": 5.5
    },
    "supply-chain": {
     "rating": 3
@@ -134,17 +134,20 @@
     "rating": 1.9
    },
    "modularity": {
-    "rating": 3
+    "rating": 2.9
    },
    "reusability": {
     "rating": 2.1
    },
    "testing": {
-    "rating": 5.5
+    "rating": 5
+   },
+   "size": {
+    "rating": null
    },
    "containerisation": {
-    "rating": 1,
-    "found": 1,
+    "rating": 3,
+    "found": 2,
     "expected": 3
    },
    "release-management": {
@@ -155,9 +158,6 @@
    "passed": false,
    "reasons": [
     "Mandatory criterion fails: publiccode.yml Metadata File",
-    "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
-    "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: API Design Rules",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No publiccode.yml was found, so there is no maintenance contract.",
@@ -165,8 +165,8 @@
    ]
   },
   "issueCounts": {
-   "errors": 6,
-   "warnings": 4
+   "errors": 3,
+   "warnings": 8
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -236,6 +236,20 @@
     "starRating": 5
    },
    {
+    "id": "licenceconsistency",
+    "title": "Licence consistency",
+    "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
+    "evidence": [
+     "LICENSE.md: EUPL-1.2",
+     "package.json: UNLICENSED"
+    ],
+    "referenceUrl": "https://spdx.org/licenses/",
+    "status": "fail",
+    "message": "Licence declarations disagree: EUPL-1.2 (LICENSE.md) versus UNLICENSED (package.json).",
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
     "id": "copyrightowner",
     "title": "Copyright / IP Owner Disclosure",
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
@@ -251,6 +265,38 @@
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
     "starRating": 5
+   },
+   {
+    "id": "spdxheaders",
+    "title": "SPDX licence headers",
+    "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
+    "referenceUrl": "https://reuse.software/spec/",
+    "status": "fail",
+    "starRating": 1,
+    "message": "2.1% of 323 source files carry an SPDX header (1 of 5 stars). 316 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "evidence": [
+     "build.js",
+     "docs/_static/theme_overrides.css",
+     "docs/conf.py",
+     "postcss.config.js",
+     "src/manage.py",
+     "src/openklant/__init__.py",
+     "src/openklant/accounts/__init__.py",
+     "src/openklant/accounts/admin.py",
+     "src/openklant/accounts/apps.py",
+     "src/openklant/accounts/backends.py",
+     "src/openklant/accounts/management/__init__.py",
+     "src/openklant/accounts/management/commands/__init__.py",
+     "src/openklant/accounts/management/commands/createinitialsuperuser.py",
+     "src/openklant/accounts/managers.py",
+     "src/openklant/accounts/metrics.py",
+     "src/openklant/accounts/migrations/0001_initial.py",
+     "src/openklant/accounts/migrations/0002_auto_20211116_0918.py",
+     "src/openklant/accounts/migrations/0003_user_filled_email_unique.py",
+     "src/openklant/accounts/migrations/__init__.py",
+     "src/openklant/accounts/models.py"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "publiccode",
@@ -283,6 +329,9 @@
     "evidence": [
      "Dockerfile",
      "docker-compose.yml",
+     "docker/docker-compose.keycloak.yml",
+     "docker/docker-compose.observability.yml",
+     "docker/docker-compose.referentielijsten.yml",
      "migration/docker-compose.yml"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
@@ -293,12 +342,16 @@
     "id": "dockerimage",
     "title": "Available Docker image",
     "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
-    "status": "fail",
-    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
-    "evidence": [],
+    "status": "pass",
+    "message": "The repository declares a published image of this component.",
+    "evidence": [
+     "maykinmedia/open-klant:${TAG:-latest} (declared in docker-compose.yml)",
+     "maykinmedia/open-klant:1.0.0 (declared in migration/docker-compose.yml)",
+     "maykinmedia/open-klant on Docker Hub (named in README.rst, found on the registry)"
+    ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "cicd",
@@ -333,13 +386,14 @@
     "title": "Helm chart on Artifact Hub, images scanned",
     "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
     "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
-    "status": "info",
-    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
-    "evidence": [],
-    "notApplicable": true,
+    "status": "fail",
+    "message": "No Helm package on Artifact Hub belongs to this repository. Searched for open-klant. Register the Helm chart on Artifact Hub, and link the package from publiccode.yml or the README if its name differs.",
+    "evidence": [
+     "Container component: it publishes a container image (maykinmedia/open-klant:${TAG:-latest} (declared in docker-compose.yml))"
+    ],
     "requirementLevel": "mandatory",
     "mandatoryFrom": "2027-05-19",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "documentation",
@@ -415,22 +469,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 1.80 (threshold: 15); Max CCN 37.00 (threshold: 30). Threshold exceeded: MaxCCN 37.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 3.06 (threshold: 15); Max CCN 37.00 (threshold: 30). Threshold exceeded: MaxCCN 37.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.80 (threshold: 15)",
+     "Average CCN: 3.06 (threshold: 15)",
      "Max CCN: 37.00 (threshold: 30)",
-     "24      1    136      1      31 test_create_klantcontact_validation_error@2409-2439@/tmp/cgchecker-repo-iTgR30/repo/src/openklant/components/klantinteracties/api/tests/test_klantcontacten.py",
-     "24      1    136      1      31 test_create_betrokkene_validation_error@2441-2471@/tmp/cgchecker-repo-iTgR30/repo/src/openklant/components/klantinteracties/api/tests/test_klantcontacten.py",
-     "24      1    136      1      31 test_create_onderwerpobject_validation_error@2597-2627@/tmp/cgchecker-repo-iTgR30/repo/src/openklant/components/klantinteracties/api/tests/test_klantcontacten.py",
-     "10      2    107      1      13 test_no_integrity_error_without_nummer@647-659@/tmp/cgchecker-repo-iTgR30/repo/src/openklant/components/klantinteracties/tests/test_migrations.py",
-     "25      1    223      1      33 test_partij_create_nummer_error@112-144@/tmp/cgchecker-repo-iTgR30/repo/src/openklant/components/klantinteracties/tests/test_admin.py",
-     "29      1    254      1      36 test_interetaak_create_nummer_error@753-788@/tmp/cgchecker-repo-iTgR30/repo/src/openklant/components/klantinteracties/tests/test_admin.py"
+     "24      6    115      2      34 _prevent_protected_error_for_self_contained_identificatoren@296-329@/tmp/cgchecker-repo-y4YVIA/repo/src/openklant/management/commands/delete_klantcontacten_not_related_to_zaken.py",
+     "!!!! Warnings (cyclomatic_complexity > 15 or length > 1000 or nloc > 1000000 or parameter_count > 100) !!!!",
+     "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "requirementLevel": "mandatory",
-    "starRating": 1
+    "requirementLevel": "informative"
    },
    {
     "id": "maintainability",
@@ -444,7 +494,7 @@
      "analysability": 2.53,
      "modifiability": 2.81,
      "testability": 1.93,
-     "modularity": 2.96,
+     "modularity": 2.93,
      "reusability": 2.14
     },
     "measurements": [
@@ -460,10 +510,7 @@
         "label": "JavaScript",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        },
@@ -471,10 +518,7 @@
         "label": "Python",
         "value": "9.8%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 3
        }
@@ -492,10 +536,7 @@
         "label": "JavaScript, more than 15 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
@@ -503,10 +544,7 @@
         "label": "JavaScript, more than 30 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -514,10 +552,7 @@
         "label": "JavaScript, more than 60 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        },
@@ -525,10 +560,7 @@
         "label": "Python, more than 15 lines",
         "value": "52.1%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 3
        },
@@ -536,10 +568,7 @@
         "label": "Python, more than 30 lines",
         "value": "34.2%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 3
        },
@@ -547,10 +576,7 @@
         "label": "Python, more than 60 lines",
         "value": "18.1%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 2
        }
@@ -568,10 +594,7 @@
         "label": "JavaScript, complexity above 5",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -579,10 +602,7 @@
         "label": "JavaScript, complexity above 10",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 5
        },
@@ -590,10 +610,7 @@
         "label": "JavaScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        },
@@ -601,10 +618,7 @@
         "label": "Python, complexity above 5",
         "value": "34.1%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 2
        },
@@ -612,10 +626,7 @@
         "label": "Python, complexity above 10",
         "value": "15.0%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 1
        },
@@ -623,10 +634,7 @@
         "label": "Python, complexity above 25",
         "value": "3.4%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 1
        }
@@ -643,10 +651,7 @@
         "label": "JavaScript, 3 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -654,10 +659,7 @@
         "label": "JavaScript, 5 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -665,10 +667,7 @@
         "label": "JavaScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
@@ -676,10 +675,7 @@
         "label": "Python, 3 or more parameters",
         "value": "22.1%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 2
        },
@@ -687,10 +683,7 @@
         "label": "Python, 5 or more parameters",
         "value": "4.9%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 2
        },
@@ -698,10 +691,7 @@
         "label": "Python, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        }
@@ -719,10 +709,7 @@
         "label": "Python, fan-in above 10",
         "value": "8.3%",
         "thresholds": {
-         "2": "≤ 13.0%",
-         "3": "≤ 10.7%",
-         "4": "≤ 9.7%",
-         "5": "≤ 7.4%"
+         "4": "≤ 9.7%"
         },
         "stars": 4
        },
@@ -730,10 +717,7 @@
         "label": "Python, fan-in above 20",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 8.0%",
-         "3": "≤ 5.9%",
-         "4": "≤ 5.3%",
-         "5": "≤ 3.3%"
+         "4": "≤ 5.3%"
         },
         "stars": 5
        },
@@ -741,10 +725,31 @@
         "label": "Python, fan-in above 50",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 3.8%",
-         "3": "≤ 2.3%",
-         "4": "≤ 1.8%",
-         "5": "≤ 1.2%"
+         "4": "≤ 1.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 9.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 5.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 1.8%"
         },
         "stars": 5
        }
@@ -762,11 +767,18 @@
         "label": "Python",
         "value": "87.4%",
         "thresholds": {
-         "4": "≥ 94.5%",
-         "5": "≥ 97.3%"
+         "4": "≥ 94.5%"
         },
         "stars": null,
         "starsText": "below 4 stars"
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "100.0%",
+        "thresholds": {
+         "4": "≥ 94.5%"
+        },
+        "stars": 5
        }
       ]
      },
@@ -779,13 +791,20 @@
       "rows": [
        {
         "label": "Python",
-        "value": "0.1591",
+        "value": "0.1818",
         "thresholds": {
-         "4": "≤ 0.075",
-         "5": "≤ 0.0375"
+         "4": "≤ 0.075"
         },
         "stars": null,
         "starsText": "below 4 stars"
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "0",
+        "thresholds": {
+         "4": "≤ 0.075"
+        },
+        "stars": 5
        }
       ]
      }
@@ -796,68 +815,548 @@
      "Unit size: ★★☆☆☆ 2.2 (javascript 5.5, python 2.2)",
      "Unit complexity: ★★☆☆☆ 1.5 (javascript 5.5, python 1.5)",
      "Unit interfacing: ★★☆☆☆ 2.0 (javascript 5.5, python 2.0)",
-     "Module coupling: ★★★★☆ 4.1 (python 4.1)",
-     "Component independence: ★★☆☆☆ 2.4 (python 2.4)",
-     "Component entanglement: ★★☆☆☆ 2.4 (python 2.4)",
+     "Module coupling: ★★★★☆ 4.1 (python 4.1, js/ts/vue 5.5)",
+     "Component independence: ★★☆☆☆ 2.4 (python 2.4, js/ts/vue 5.5)",
+     "Component entanglement: ★★☆☆☆ 2.3 (python 2.3, js/ts/vue 5.5)",
      "Lever: unit complexity in python, about 132 lines to fix for half a star",
      "Lever: unit size in python, about 181 lines to fix for half a star",
-     "Lever: unit interfacing in python, about 166 lines to fix for half a star"
+     "Lever: unit interfacing in python, about 166 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 9.8%"
     ],
     "requirementLevel": "recommended"
+   },
+   {
+    "id": "opentrack",
+    "title": "Maintainability, open track",
+    "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
+    "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
+    "status": "info",
+    "starRating": 2,
+    "rating": 2,
+    "measurements": [
+     {
+      "id": "open-unit-size",
+      "title": "Unit size",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, more than 29 lines",
+        "value": "34.0%",
+        "thresholds": {
+         "2": "≤ 60.2%",
+         "3": "≤ 37.0%",
+         "4": "≤ 26.1%",
+         "5": "≤ 4.9%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, more than 42 lines",
+        "value": "26.1%",
+        "thresholds": {
+         "2": "≤ 46.7%",
+         "3": "≤ 24.3%",
+         "4": "≤ 14.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, more than 71 lines",
+        "value": "11.9%",
+        "thresholds": {
+         "2": "≤ 33.4%",
+         "3": "≤ 11.1%",
+         "4": "≤ 5.3%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, complexity above 5",
+        "value": "34.0%",
+        "thresholds": {
+         "2": "≤ 45.1%",
+         "3": "≤ 34.4%",
+         "4": "≤ 24.9%",
+         "5": "≤ 8.2%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, complexity above 7",
+        "value": "27.7%",
+        "thresholds": {
+         "2": "≤ 38.1%",
+         "3": "≤ 23.9%",
+         "4": "≤ 14.6%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, complexity above 10",
+        "value": "14.9%",
+        "thresholds": {
+         "2": "≤ 32.2%",
+         "3": "≤ 13.1%",
+         "4": "≤ 6.2%",
+         "5": "≤ 0.4%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, 3 or more parameters",
+        "value": "22.0%",
+        "thresholds": {
+         "2": "≤ 31.4%",
+         "3": "≤ 21.6%",
+         "4": "≤ 13.2%",
+         "5": "≤ 0.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, 4 or more parameters",
+        "value": "7.5%",
+        "thresholds": {
+         "2": "≤ 19.2%",
+         "3": "≤ 10.4%",
+         "4": "≤ 3.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, 5 or more parameters",
+        "value": "4.8%",
+        "thresholds": {
+         "2": "≤ 12.3%",
+         "3": "≤ 6.6%",
+         "4": "≤ 1.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     }
+    ],
+    "message": "Open-track rating 2.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "evidence": [
+     "Unit size: ★★☆☆☆ 34.0% / 26.1% / 11.9% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★☆☆☆ 34.0% / 27.7% / 14.9% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★☆☆☆ 22.0% / 7.5% / 4.8% of the code above 2 / 3 / 4 parameters",
+     "Duplication: not measured",
+     "Module coupling: not measured",
+     "Component independence: not measured",
+     "Component entanglement: not measured",
+     "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "testcoderatio",
+    "title": "Test code ratio",
+    "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
+    "status": "pass",
+    "starRating": 4,
+    "message": "Test code ratio 115.1% (4 of 5 stars).",
+    "evidence": [
+     "Test code ratio: 115.1%",
+     "Test code: 20,040 lines in 83 files",
+     "Production code: 17,405 lines in 227 files",
+     "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
+    ],
+    "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opensourcehealth",
+    "title": "Open Source Health",
+    "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
+    "status": "pass",
+    "starRating": 4,
+    "rating": 3.89,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 5.5,
+     "activity": 1.58,
+     "licence": 5.5,
+     "management": 1.38
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "0 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "50.0%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 2 years",
+        "value": "50.0%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 4 years",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "0 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "33.3%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 1
+       }
+      ]
+     }
+    ],
+    "message": "Open Source Health 4 of 5 stars over 2 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★★★ >1.0y 0%, >2.0y 0%, >3.5y 0%, >5.0y count 0",
+     "Activity: ★★☆☆☆ >1.0y 50%, >2.0y 50%, >4.0y 0%, >5.5y count 0",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★☆☆☆☆ 1 unmanaged of 3 dependencies"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "size",
+    "title": "Size",
+    "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
+    "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Not measured: scc 4.1.0 could not run.",
+    "evidence": [
+     "spawn scc ENOENT"
+    ]
+   },
+   {
+    "id": "duplication",
+    "title": "Duplication (open track)",
+    "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "referenceUrl": "https://github.com/kucherenko/jscpd",
+    "status": "warn",
+    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "evidence": [
+     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "coupling",
+    "title": "Coupling (open track)",
+    "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "info",
+    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "evidence": [
+     "Python: not measured: grimp 3.18 is not installed",
+     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+    ],
+    "openTrack": {
+     "coupling": {
+      "version": 1,
+      "languages": {
+       "python": {
+        "measured": false,
+        "reason": "grimp 3.18 is not installed",
+        "files": 140
+       },
+       "javascript": {
+        "measured": false,
+        "reason": "dependency-cruiser 17.4.3 is not installed",
+        "files": 6
+       }
+      }
+     }
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "fail",
-    "message": "Multiple risky coding patterns were detected (5 findings across 267 scanned source files). Review them against OWASP secure coding guidance.",
+    "status": "pass",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 200 scanned source files.",
     "evidence": [
-     "Possible hardcoded secret: src/openklant/accounts/tests/factories.py",
-     "Possible hardcoded secret: src/openklant/accounts/tests/test_metrics.py",
-     "Possible hardcoded secret: src/openklant/components/token/tests/test_migrations.py",
-     "Dynamic code execution: src/openklant/jstests/components/dummy/dummy.spec.js",
-     "Possible hardcoded secret: src/openklant/setup_configuration/tests/test_token_auth_config.py"
+     "build.js",
+     "docs/conf.py",
+     "postcss.config.js",
+     "src/manage.py",
+     "src/openklant/__init__.py",
+     "src/openklant/accounts/__init__.py",
+     "src/openklant/accounts/admin.py",
+     "src/openklant/accounts/apps.py",
+     "src/openklant/accounts/backends.py",
+     "src/openklant/accounts/management/__init__.py"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "adrvalidator",
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "fail",
-    "message": "API Design Rules violations found across 2 specification(s): 23 issue(s).",
+    "message": "API Design Rules violations found across 2 specification(s): 2 error(s), 21 warning(s), 0 info, 0 hint(s).",
     "evidence": [
      "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/contactgegevens/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/contactgegevens/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /contactgegevens/api/v1 \"/contactgegevens/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/contactgegevens/openapi.yaml)",
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/contactgegevens/openapi.yaml)",
+     "WARNING [servers-use-https] Server URL /contactgegevens/api/v1 \"/contactgegevens/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/contactgegevens/openapi.yaml)",
      "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./maak-klantcontact.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_ActorSerializer @ components.schemas.Base_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_PartijSerializer @ components.schemas.Base_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedBetrokkeneList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedDigitaalAdresList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedKlantcontactList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedPartijList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_GeautomatiseerdeActor @ components.schemas.actor_identificatie_GeautomatiseerdeActor (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_Medewerker @ components.schemas.actor_identificatie_Medewerker (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_OrganisatorischeEenheid @ components.schemas.actor_identificatie_OrganisatorischeEenheid (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/contactpersoon_PartijSerializer @ components.schemas.contactpersoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/geautomatiseerde_actor_ActorSerializer @ components.schemas.geautomatiseerde_actor_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/medewerker_ActorSerializer @ components.schemas.medewerker_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatie_PartijSerializer @ components.schemas.organisatie_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatorische_eenheid_ActorSerializer @ components.schemas.organisatorische_eenheid_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Contactpersoon @ components.schemas.partij_identificatie_Contactpersoon (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Organisatie @ components.schemas.partij_identificatie_Organisatie (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Persoon @ components.schemas.partij_identificatie_Persoon (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/persoon_PartijSerializer @ components.schemas.persoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
-     "ERROR [servers-use-https] Server URL /klantinteracties/api/v1 \"/klantinteracties/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)"
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./maak-klantcontact.post.tags.0 (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_ActorSerializer @ components.schemas.Base_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/Base_PartijSerializer @ components.schemas.Base_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedBetrokkeneList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedDigitaalAdresList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedKlantcontactList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.PaginatedPartijList (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_GeautomatiseerdeActor @ components.schemas.actor_identificatie_GeautomatiseerdeActor (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_Medewerker @ components.schemas.actor_identificatie_Medewerker (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/actor_identificatie_OrganisatorischeEenheid @ components.schemas.actor_identificatie_OrganisatorischeEenheid (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/contactpersoon_PartijSerializer @ components.schemas.contactpersoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/geautomatiseerde_actor_ActorSerializer @ components.schemas.geautomatiseerde_actor_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/medewerker_ActorSerializer @ components.schemas.medewerker_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatie_PartijSerializer @ components.schemas.organisatie_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatorische_eenheid_ActorSerializer @ components.schemas.organisatorische_eenheid_ActorSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Contactpersoon @ components.schemas.partij_identificatie_Contactpersoon (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Organisatie @ components.schemas.partij_identificatie_Organisatie (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/partij_identificatie_Persoon @ components.schemas.partij_identificatie_Persoon (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [schema-camel-case] Schema name should be CamelCase in #/components/schemas/persoon_PartijSerializer @ components.schemas.persoon_PartijSerializer (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)",
+     "WARNING [servers-use-https] Server URL /klantinteracties/api/v1 \"/klantinteracties/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/maykinmedia/open-klant/ac8b824d1e00c1d2db58d8f8f2015b29a8e20210/src/openklant/components/klantinteracties/openapi.yaml)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -901,6 +1400,31 @@
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
     "requirementLevel": "mandatory",
     "starRating": 5
+   },
+   {
+    "id": "secretscanning",
+    "title": "No committed secrets",
+    "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
+    "status": "warn",
+    "message": "Secret scanning could not run.",
+    "evidence": [
+     "gitleaks is not installed on the checker host."
+    ],
+    "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "openssfscorecard",
+    "title": "OpenSSF Scorecard",
+    "description": "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API and rates it from 1 to 5 stars. The star bands are this checker's own: 9 or higher is 5 stars, 7 or higher is 4, 5 or higher is 3, 3 or higher is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
+    "status": "info",
+    "message": "This repository is not in the OpenSSF Scorecard dataset. The project can publish a score by running the OpenSSF Scorecard GitHub Action (ossf/scorecard-action).",
+    "evidence": [
+     "https://github.com/ossf/scorecard-action"
+    ],
+    "referenceUrl": "https://scorecard.dev",
+    "requirementLevel": "recommended"
    },
    {
     "id": "semver",
@@ -988,7 +1512,7 @@
     "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "npm Open Klant: not measured: HTTP 405 (2026-11-20)",
-     "Docker Hub maykinmedia/open-klant: 214,258 pulls in total (2026-11-20)",
+     "Docker Hub maykinmedia/open-klant: 214,310 pulls in total (2026-11-20)",
      "GitHub maykinmedia/open-klant: 7 stars, 5 forks, 5 watchers (2026-11-20)",
      "GitHub commits maykinmedia/open-klant: 9 contributors, 7 from the owning organisation, 1 from other organisations, 1 unknown (2026-11-20)"
     ],
@@ -1016,7 +1540,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 214258
+         "value": 214310
         }
        ]
       },
@@ -1301,10 +1825,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 6.5,
+  "durationSeconds": 7.6,
   "scanMode": "full",
   "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
+  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

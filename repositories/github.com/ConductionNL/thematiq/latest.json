@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:24:57.890Z",
+  "lastCheckedAt": "2026-11-20T08:57:28.841Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:58:40.491Z",
-  "updatedAt": "2026-11-20T06:24:57.890Z",
+  "updatedAt": "2026-11-20T08:57:28.841Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,34 +44,34 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T06-24-57-890Z",
+  "id": "2026-11-20T08-57-28-841Z",
   "repoId": "github.com/ConductionNL/thematiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:24:57.890Z",
-  "createdAt": "2026-11-20T06:24:57.890Z",
+  "checkedAt": "2026-11-20T08:57:28.841Z",
+  "createdAt": "2026-11-20T08:57:28.841Z",
   "version": "v1.2.10",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
   "scannedCommit": "05fd08a284847b007622fb603fe1dab0548816ce",
-  "score": 78,
-  "rating": 4.2,
+  "score": 100,
+  "rating": 5.2,
   "categoryRatings": {
-   "Governance": 4.3,
-   "Security": 3,
+   "Governance": 5.5,
+   "Security": 5.2,
    "Architecture": 5.5,
-   "Software Quality": 4.3,
-   "Deployment & Operations": 4.3
+   "Software Quality": 4.4,
+   "Deployment & Operations": 5.5
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 5.5
+    "rating": 5.4
    },
    "ownership": {
-    "rating": 3
+    "rating": 5.5
    },
    "maintenance": {
-    "rating": 3
+    "rating": 5.5
    },
    "community-documents": {
     "rating": 5.5,
@@ -85,28 +85,28 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
     "rating": null
    },
    "secrets": {
-    "rating": null
+    "rating": 3
    },
    "secure-coding": {
-    "rating": 0.5
+    "rating": 5.5
    },
    "supply-chain": {
     "rating": 5.5
@@ -136,11 +136,14 @@
     "rating": 4.8
    },
    "testing": {
-    "rating": 4.3
+    "rating": 4.7
+   },
+   "size": {
+    "rating": null
    },
    "containerisation": {
-    "rating": 3,
-    "found": 2,
+    "rating": 5.5,
+    "found": 3,
     "expected": 3
    },
    "release-management": {
@@ -148,16 +151,12 @@
    }
   },
   "endorsement": {
-   "passed": false,
-   "reasons": [
-    "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: OWASP Secure Coding",
-    "Maintenance contract not checked"
-   ]
+   "passed": true,
+   "reasons": []
   },
   "issueCounts": {
-   "errors": 2,
-   "warnings": 4
+   "errors": 0,
+   "warnings": 2
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -168,7 +167,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 38,351 lines of code, 4,312 functions, 4,297 files analyzed.",
+    "message": "Code metrics: 40,167 lines of code, 4,195 functions, 4,181 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -181,9 +180,9 @@
      "js/admin-app-brands.js",
      "js/admin-assistant-mark.js",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 38,351",
-     "Function count: 4,312",
-     "Files analyzed: 4,297"
+     "Total lines of code (NLOC): 40,167",
+     "Function count: 4,195",
+     "Files analyzed: 4,181"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -227,25 +226,53 @@
     "starRating": 5
    },
    {
+    "id": "licenceconsistency",
+    "title": "Licence consistency",
+    "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
+    "evidence": [
+     "LICENSE: EUPL-1.2",
+     "package.json: EUPL-1.2",
+     "composer.json: EUPL-1.2",
+     "publiccode.yml: EUPL-1.2",
+     "appinfo/info.xml: EUPL-1.2"
+    ],
+    "referenceUrl": "https://spdx.org/licenses/",
+    "status": "pass",
+    "message": "All 5 licence declarations agree (EUPL-1.2).",
+    "requirementLevel": "recommended",
+    "starRating": 5
+   },
+   {
     "id": "copyrightowner",
     "title": "Copyright / IP Owner Disclosure",
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
-    "status": "warn",
-    "confidence": "low",
-    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: ConductionNL (confidence: low).",
+    "status": "pass",
+    "confidence": "medium",
+    "message": "Probable copyright owner detected: Conduction b.v. (confidence: medium).",
     "evidence": [
-     "repository owner metadata: ConductionNL"
+     "composer.json: Conduction b.v."
     ],
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
+   },
+   {
+    "id": "spdxheaders",
+    "title": "SPDX licence headers",
+    "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
+    "referenceUrl": "https://reuse.software/spec/",
+    "status": "pass",
+    "starRating": 5,
+    "message": "100.0% of 1227 source files carry an SPDX header (5 of 5 stars).",
+    "evidence": [],
+    "requirementLevel": "recommended"
    },
    {
     "id": "publiccode",
     "title": "publiccode.yml Metadata File",
     "description": "A publiccode.yml file must be present in the repository root.",
-    "status": "warn",
-    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
+    "status": "pass",
+    "message": "publiccode.yml is present and contains all required and recommended fields.",
     "evidence": [
      "publiccode.yml"
     ],
@@ -360,20 +387,20 @@
      "fundedBy": []
     },
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "maintenance",
     "title": "Maintenance contract",
     "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
     "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
-    "status": "warn",
-    "message": "Found publiccode.yml but could not read its contents, so the maintenance contract was not checked.",
+    "status": "pass",
+    "message": "Maintenance contract with Conduction B.V. until 2028-12-31.",
     "evidence": [
-     "publiccode.yml"
+     "Conduction B.V.: valid until 2028-12-31"
     ],
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "docker",
@@ -383,7 +410,9 @@
     "message": "Dockerfile and docker-compose file(s) found.",
     "evidence": [
      "Dockerfile",
+     ".github/docker-compose.ci.yml",
      "docker-compose.yml",
+     "thematiq-compose.yaml",
      "(Helm chart)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
@@ -394,12 +423,16 @@
     "id": "dockerimage",
     "title": "Available Docker image",
     "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
-    "status": "fail",
-    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
-    "evidence": [],
+    "status": "pass",
+    "message": "The repository declares a published image of this component.",
+    "evidence": [
+     "conductionnl/thematiq (declared in charts/thematiq/values.yaml)",
+     "ghcr.io/conductionnl/thematiq:${APP_IMAGE_TAG:-latest} (declared in docker-compose.yml)",
+     "conductionnl/thematiq on GitHub Container Registry (named in README.md, found on the registry)"
+    ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "cicd",
@@ -423,7 +456,7 @@
     "title": "SBOM (Software Bill of Materials)",
     "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
     "status": "pass",
-    "message": "SBOM file(s) found: sbom.cdx.json. Could not determine dependency count from sbom.cdx.json.",
+    "message": "SBOM file(s) found: sbom.cdx.json. It appears to list 1 dependencies in sbom.cdx.json.",
     "evidence": [
      "sbom.cdx.json"
     ],
@@ -441,8 +474,7 @@
     "evidence": [],
     "notApplicable": true,
     "requirementLevel": "mandatory",
-    "mandatoryFrom": "2027-05-19",
-    "starRating": 3
+    "mandatoryFrom": "2027-05-19"
    },
    {
     "id": "documentation",
@@ -503,36 +535,35 @@
     "id": "coverage",
     "title": "Code coverage",
     "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
-    "status": "warn",
-    "message": "Coverage report files were found but a supported coverage percentage could not be determined.",
+    "status": "pass",
+    "message": "Code coverage is 96.16%, which meets the 80% threshold.",
     "evidence": [
-     "coverage-summary.json"
+     "coverage-summary.json: 96.16%"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "complexity",
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 1.92 <= 15 and Max CCN 25.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 2.78 <= 15 and Max CCN 26.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.92 (threshold: 15)",
-     "Max CCN: 25.00 (threshold: 30)",
-     "5      1     22      2       6 converterError@1814-1819@/tmp/cgchecker-repo-GVODob/repo/js/lib/tokenConverter.js",
-     "12      6     77      1      12 incompleteWarningFor@1112-1123@/tmp/cgchecker-repo-GVODob/repo/js/admin.js",
-     "12      6     77      1      12 fontWarningFor@1128-1139@/tmp/cgchecker-repo-GVODob/repo/js/admin.js",
-     "34      8    161      1      34 incompleteWarningLines@1164-1197@/tmp/cgchecker-repo-GVODob/repo/js/admin.js",
-     "8      2     38      1      59 paintContrastWarnings@4500-4558@/tmp/cgchecker-repo-GVODob/repo/js/admin.js",
-     "19      4     86      1      22 showError@4900-4921@/tmp/cgchecker-repo-GVODob/repo/js/admin.js"
+     "Average CCN: 2.78 (threshold: 15)",
+     "Max CCN: 26.00 (threshold: 30)",
+     "5      1     22      2       6 converterError@1814-1819@/tmp/cgchecker-repo-yFwJpG/repo/js/lib/tokenConverter.js",
+     "12      6     77      1      12 incompleteWarningFor@1112-1123@/tmp/cgchecker-repo-yFwJpG/repo/js/admin.js",
+     "12      6     77      1      12 fontWarningFor@1128-1139@/tmp/cgchecker-repo-yFwJpG/repo/js/admin.js",
+     "34      8    161      1      34 incompleteWarningLines@1164-1197@/tmp/cgchecker-repo-yFwJpG/repo/js/admin.js",
+     "8      2     38      1      59 paintContrastWarnings@4500-4558@/tmp/cgchecker-repo-yFwJpG/repo/js/admin.js",
+     "19      4     86      1      22 showError@4900-4921@/tmp/cgchecker-repo-yFwJpG/repo/js/admin.js"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "requirementLevel": "mandatory",
-    "starRating": 5
+    "requirementLevel": "informative"
    },
    {
     "id": "maintainability",
@@ -543,8 +574,8 @@
     "starRating": 4,
     "rating": 4.235,
     "aspectRatings": {
-     "analysability": 5.14,
-     "modifiability": 5.07,
+     "analysability": 5.12,
+     "modifiability": 5.06,
      "testability": 3.32,
      "modularity": 3.31,
      "reusability": 4.78
@@ -562,21 +593,15 @@
         "label": "JavaScript",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        },
        {
         "label": "PHP",
-        "value": "0.9%",
+        "value": "1.1%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        }
@@ -594,10 +619,7 @@
         "label": "JavaScript, more than 15 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
@@ -605,10 +627,7 @@
         "label": "JavaScript, more than 30 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -616,10 +635,7 @@
         "label": "JavaScript, more than 60 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        },
@@ -627,10 +643,7 @@
         "label": "PHP, more than 15 lines",
         "value": "16.5%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
@@ -638,10 +651,7 @@
         "label": "PHP, more than 30 lines",
         "value": "0.9%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -649,10 +659,7 @@
         "label": "PHP, more than 60 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        }
@@ -670,10 +677,7 @@
         "label": "JavaScript, complexity above 5",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -681,10 +685,7 @@
         "label": "JavaScript, complexity above 10",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 5
        },
@@ -692,10 +693,7 @@
         "label": "JavaScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        },
@@ -703,10 +701,7 @@
         "label": "PHP, complexity above 5",
         "value": "4.7%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -714,10 +709,7 @@
         "label": "PHP, complexity above 10",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 5
        },
@@ -725,10 +717,7 @@
         "label": "PHP, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        }
@@ -745,10 +734,7 @@
         "label": "JavaScript, 3 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -756,10 +742,7 @@
         "label": "JavaScript, 5 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -767,10 +750,7 @@
         "label": "JavaScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
@@ -778,10 +758,7 @@
         "label": "PHP, 3 or more parameters",
         "value": "12.2%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -789,10 +766,7 @@
         "label": "PHP, 5 or more parameters",
         "value": "1.4%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -800,10 +774,7 @@
         "label": "PHP, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        }
@@ -821,10 +792,7 @@
         "label": "PHP, fan-in above 10",
         "value": "5.4%",
         "thresholds": {
-         "2": "≤ 13.0%",
-         "3": "≤ 10.7%",
-         "4": "≤ 9.7%",
-         "5": "≤ 7.4%"
+         "4": "≤ 9.7%"
         },
         "stars": 5
        },
@@ -832,10 +800,7 @@
         "label": "PHP, fan-in above 20",
         "value": "1.7%",
         "thresholds": {
-         "2": "≤ 8.0%",
-         "3": "≤ 5.9%",
-         "4": "≤ 5.3%",
-         "5": "≤ 3.3%"
+         "4": "≤ 5.3%"
         },
         "stars": 5
        },
@@ -843,10 +808,31 @@
         "label": "PHP, fan-in above 50",
         "value": "0.2%",
         "thresholds": {
-         "2": "≤ 3.8%",
-         "3": "≤ 2.3%",
-         "4": "≤ 1.8%",
-         "5": "≤ 1.2%"
+         "4": "≤ 1.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 9.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 5.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 1.8%"
         },
         "stars": 5
        }
@@ -862,13 +848,20 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "73.2%",
+        "value": "73.3%",
         "thresholds": {
-         "4": "≥ 94.5%",
-         "5": "≥ 97.3%"
+         "4": "≥ 94.5%"
         },
         "stars": null,
         "starsText": "below 4 stars"
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "100.0%",
+        "thresholds": {
+         "4": "≥ 94.5%"
+        },
+        "stars": null
        }
       ]
      },
@@ -883,10 +876,17 @@
         "label": "PHP",
         "value": "0.0667",
         "thresholds": {
-         "4": "≤ 0.075",
-         "5": "≤ 0.0375"
+         "4": "≤ 0.075"
         },
         "stars": 4
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "0",
+        "thresholds": {
+         "4": "≤ 0.075"
+        },
+        "stars": null
        }
       ]
      }
@@ -897,274 +897,512 @@
      "Unit size: ★★★★★ 5.0 (javascript 5.5, php 5.0)",
      "Unit complexity: ★★★★★ 5.2 (javascript 5.5, php 5.2)",
      "Unit interfacing: ★★★★★ 4.5 (javascript 5.5, php 4.5)",
-     "Module coupling: ★★★★★ 4.8 (php 4.8)",
+     "Module coupling: ★★★★★ 4.8 (php 4.8, js/ts/vue 5.5)",
      "Component independence: ★☆☆☆☆ 1.4 (php 1.4)",
      "Component entanglement: ★★★★☆ 3.7 (php 3.7)",
-     "Lever: module coupling in php, about 1017 lines to fix for half a star",
+     "Not rated (js/ts/vue): all 2 modules fall into one component ((root), directory rule), so component independence and entanglement are trivial; neither is rated.",
+     "Lever: module coupling in php, about 1023 lines to fix for half a star",
      "Lever: unit complexity in php, about 1084 lines to fix for half a star",
-     "Lever: duplication in php, about 266 lines to fix for half a star"
+     "Lever: duplication in php, about 308 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, php not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 1.1%"
     ],
     "requirementLevel": "recommended"
+   },
+   {
+    "id": "opentrack",
+    "title": "Maintainability, open track",
+    "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
+    "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
+    "status": "info",
+    "starRating": 4,
+    "rating": 4.333333333333333,
+    "measurements": [
+     {
+      "id": "open-unit-size",
+      "title": "Unit size",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, more than 29 lines",
+        "value": "1.3%",
+        "thresholds": {
+         "2": "≤ 60.2%",
+         "3": "≤ 37.0%",
+         "4": "≤ 26.1%",
+         "5": "≤ 4.9%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, more than 42 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 46.7%",
+         "3": "≤ 24.3%",
+         "4": "≤ 14.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, more than 71 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 33.4%",
+         "3": "≤ 11.1%",
+         "4": "≤ 5.3%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, complexity above 5",
+        "value": "4.7%",
+        "thresholds": {
+         "2": "≤ 45.1%",
+         "3": "≤ 34.4%",
+         "4": "≤ 24.9%",
+         "5": "≤ 8.2%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, complexity above 7",
+        "value": "1.2%",
+        "thresholds": {
+         "2": "≤ 38.1%",
+         "3": "≤ 23.9%",
+         "4": "≤ 14.6%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, complexity above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 32.2%",
+         "3": "≤ 13.1%",
+         "4": "≤ 6.2%",
+         "5": "≤ 0.4%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, 3 or more parameters",
+        "value": "12.2%",
+        "thresholds": {
+         "2": "≤ 31.4%",
+         "3": "≤ 21.6%",
+         "4": "≤ 13.2%",
+         "5": "≤ 0.7%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, 4 or more parameters",
+        "value": "5.5%",
+        "thresholds": {
+         "2": "≤ 19.2%",
+         "3": "≤ 10.4%",
+         "4": "≤ 3.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, 5 or more parameters",
+        "value": "1.4%",
+        "thresholds": {
+         "2": "≤ 12.3%",
+         "3": "≤ 6.6%",
+         "4": "≤ 1.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 4
+       }
+      ]
+     }
+    ],
+    "message": "Open-track rating 4.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "evidence": [
+     "Unit size: ★★★★★ 1.3% / 0.0% / 0.0% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★★★ 4.7% / 1.2% / 0.0% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★☆☆ 12.2% / 5.5% / 1.4% of the code above 2 / 3 / 4 parameters",
+     "Duplication: not measured",
+     "Module coupling: not measured",
+     "Component independence: not measured",
+     "Component entanglement: not measured",
+     "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "testcoderatio",
+    "title": "Test code ratio",
+    "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
+    "status": "warn",
+    "starRating": 3,
+    "message": "Test code ratio 83.8% (3 of 5 stars).",
+    "evidence": [
+     "Test code ratio: 83.8%",
+     "Test code: 84,110 lines in 515 files",
+     "Production code: 100,314 lines in 509 files",
+     "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
+    ],
+    "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opensourcehealth",
+    "title": "Open Source Health",
+    "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 5.5,
+     "activity": 5.5,
+     "licence": 5.5,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "0 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 4 years",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "0 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Open Source Health 5 of 5 stars over 1 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★★★ >1.0y 0%, >2.0y 0%, >3.5y 0%, >5.0y count 0",
+     "Activity: ★★★★★ >1.0y 0%, >2.0y 0%, >4.0y 0%, >5.5y count 0",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★★★★★ 0 unmanaged of 1 dependencies"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "size",
+    "title": "Size",
+    "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
+    "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Not measured: scc 4.1.0 could not run.",
+    "evidence": [
+     "spawn scc ENOENT"
+    ]
+   },
+   {
+    "id": "duplication",
+    "title": "Duplication (open track)",
+    "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "referenceUrl": "https://github.com/kucherenko/jscpd",
+    "status": "warn",
+    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "evidence": [
+     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "coupling",
+    "title": "Coupling (open track)",
+    "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "info",
+    "message": "Not measured: PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "evidence": [
+     "PHP: not measured: pdepend 3.0.0 is not installed",
+     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+    ],
+    "openTrack": {
+     "coupling": {
+      "version": 1,
+      "languages": {
+       "php": {
+        "measured": false,
+        "reason": "pdepend 3.0.0 is not installed",
+        "files": 393
+       },
+       "javascript": {
+        "measured": false,
+        "reason": "dependency-cruiser 17.4.3 is not installed",
+        "files": 2
+       }
+      }
+     }
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "fail",
-    "message": "Multiple risky coding patterns were detected (248 findings across 1024 scanned source files). Review them against OWASP secure coding guidance.",
+    "status": "pass",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 509 scanned source files.",
     "evidence": [
-     "Dynamic code execution: js/admin-app-brands.js",
-     "Dynamic code execution: js/admin-assistant-mark.js",
-     "Dynamic code execution: js/admin-config-source.js",
-     "Dynamic code execution: js/admin-documents.js",
-     "Dynamic code execution: js/admin-group-house-style.js",
-     "Dynamic code execution: js/admin-openproject-link.js",
-     "Dynamic code execution: js/admin-set-licence.js",
-     "Dynamic code execution: js/admin-workspace-icons.js",
-     "Dynamic code execution: js/admin.js",
-     "Possible hardcoded secret: js/admin.js",
-     "Dynamic code execution: js/app-menu.js",
-     "Dynamic code execution: js/header-user.js",
-     "Dynamic code execution: js/lib/appTheming.js",
-     "Dynamic code execution: js/lib/auditFormat.js",
-     "Dynamic code execution: js/lib/brandForm.js",
-     "Dynamic code execution: js/lib/layerSwap.js",
-     "Dynamic code execution: js/lib/markupRender.js",
-     "Dynamic code execution: js/lib/markupSanitizer.js",
-     "Dynamic code execution: js/lib/multiBrandSource.js",
-     "Dynamic code execution: js/lib/ownComponentFrame.js",
-     "Dynamic code execution: js/lib/themingPlan.js",
-     "Dynamic code execution: js/lib/tokenConverter.js",
-     "Dynamic code execution: js/lib/tokenTransforms.js",
-     "Dynamic code execution: js/login-copy.js",
-     "Dynamic code execution: js/not-found.js",
-     "Dynamic code execution: js/ownTokens.js",
-     "Dynamic code execution: js/playground.js",
-     "Dynamic code execution: js/preview-banner.js",
-     "Dynamic code execution: js/search-placeholder.js",
-     "Dynamic code execution: lib/AppInfo/OpenRegisterAutoloader.php",
-     "Dynamic code execution: lib/Repair/MigrateUserPreferences.php",
-     "Dynamic code execution: lib/Service/ColorSpaceConverter.php",
-     "Dynamic code execution: lib/Service/ColourFunctionEvaluator.php",
-     "Dynamic code execution: lib/Service/InternalScopesService.php",
-     "Dynamic code execution: lib/Service/ShellCatalogueFonts.php",
-     "Dynamic code execution: lib/Service/TokenSetConverterService.php",
-     "Dynamic code execution: scripts/generate-dark-variants.php",
-     "Dynamic code execution: tests/Unit/AppInfo/ApplicationTest.php",
-     "Dynamic code execution: tests/Unit/CapabilitiesTest.php",
-     "Dynamic code execution: tests/Unit/Command/ConfigApplyTest.php",
-     "Dynamic code execution: tests/Unit/Command/ThemeCommandsTest.php",
-     "Dynamic code execution: tests/Unit/Controller/BrandFormControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/BrandFormCreateGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/CustomCssControllerAuditTest.php",
-     "Dynamic code execution: tests/Unit/Controller/CustomTokenSetControllerAuditTest.php",
-     "Dynamic code execution: tests/Unit/Controller/CustomTokenSetControllerCaptureTest.php",
-     "Dynamic code execution: tests/Unit/Controller/CustomTokenSetControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/CustomTokenSetInputDeleteGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/CustomTokenSetStoreConvertedGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/CustomTokenSetUploadWritesTest.php",
-     "Dynamic code execution: tests/Unit/Controller/DtcgExportControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/EmailThemingSettingsGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/FontControllerLibraryTest.php",
-     "Dynamic code execution: tests/Unit/Controller/LayoutControllerSaveGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/LayoutControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/MetricsControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OpenProjectLinkControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OverridesControllerAuditTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OverridesResetImportGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OverridesSaveGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/OwnTokenControllerTest.php",
-     "Possible hardcoded secret: tests/Unit/Controller/OwnTokenControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ScheduledSwitchControllerTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerAuditTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerAuditTrailGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerDarkVariantsTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerEndpointsTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerMarianneTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerThemingSyncTest.php",
-     "Dynamic code execution: tests/Unit/Controller/SettingsControllerUpstreamFreshnessTest.php",
-     "Dynamic code execution: tests/Unit/Controller/ShellTokenControllerTest.php",
-     "Dynamic code execution: tests/Unit/DesignSystemServiceTest.php",
-     "Dynamic code execution: tests/Unit/IconAssetsTest.php",
-     "Dynamic code execution: tests/Unit/Listener/ThemeInjectionListenerTest.php",
-     "Dynamic code execution: tests/Unit/Mail/NLDesignEMailTemplateTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateAppConfigKeysTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateSchemaApplicationIdTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateStoredClassNamesTest.php",
-     "Dynamic code execution: tests/Unit/Repair/MigrateUserPreferencesTest.php",
-     "Dynamic code execution: tests/Unit/Repair/RecordRestrictedSetsAwaitingConfirmationTest.php",
-     "Dynamic code execution: tests/Unit/Service/ActiveTokenSetServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/AppBrandServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/AppMenuServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/AppThemingServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/AssistantMarkServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/BrandingCaptureServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/BrandingPackageServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/BrandingPackageTokenSourcesGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/Config/NlDesignThemeShareableConfigTypeTest.php",
-     "Dynamic code execution: tests/Unit/Service/ConfigBundleImportGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/ConfigBundleServiceTest.php",
-     "Possible hardcoded secret: tests/Unit/Service/ConfigBundleServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ConfigSourceServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ContractBindingsTest.php",
-     "Dynamic code execution: tests/Unit/Service/CssInjectionGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/CssInjectionServiceTest.php",
-     "Possible hardcoded secret: tests/Unit/Service/CustomOverridesServiceDarkScopesTest.php",
-     "Dynamic code execution: tests/Unit/Service/CustomOverridesServiceOwnTokensTest.php",
-     "Possible hardcoded secret: tests/Unit/Service/CustomOverridesServiceOwnTokensTest.php",
-     "Dynamic code execution: tests/Unit/Service/CustomTokenSetLogoAssetTest.php",
-     "Dynamic code execution: tests/Unit/Service/CustomTokenSetServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/CustomTokenSetStoreGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/DarkPaletteGenerateGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/DarkPaletteWriteGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/DelegatedGroupThemingServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/DesignSystemServiceCustomMetaTest.php",
-     "Dynamic code execution: tests/Unit/Service/DocumentStyleServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/EmailThemingSettingsTest.php",
-     "Dynamic code execution: tests/Unit/Service/EnvironmentMarkerServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/FontServiceLibraryTest.php",
-     "Dynamic code execution: tests/Unit/Service/FontServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/GalleryInstallGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/GalleryInstallServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/GroupDelegationRulesTest.php",
-     "Dynamic code execution: tests/Unit/Service/GroupThemingServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/HeaderUserServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/LayoutOptionsServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/LoginCopyServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/LogoLayerServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/MultiBrandImportServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/NotFoundCopyServiceTest.php",
-     "Possible hardcoded secret: tests/Unit/Service/OverridesCssBuilderReadableTextTest.php",
-     "Dynamic code execution: tests/Unit/Service/OwnTokenServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/PlaygroundStateServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/RuntimeFile/RuntimeFileStorageTest.php",
-     "Dynamic code execution: tests/Unit/Service/RuntimeFile/RuntimeFileWiringTest.php",
-     "Dynamic code execution: tests/Unit/Service/ScheduledSwitchServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ScheduledSwitchStoreTest.php",
-     "Dynamic code execution: tests/Unit/Service/SearchPlaceholderServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ShellTokenServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ShippedDarkContrastTest.php",
-     "Dynamic code execution: tests/Unit/Service/StockTokensServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ThemeGalleryServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ThemePreviewBannerServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ThemePreviewServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ThemingAuditServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ThemingServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/TokenDeprecationServiceTest.php",
-     "Possible hardcoded secret: tests/Unit/Service/TokenDeprecationServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/TokenLifecycleBundleSectionTest.php",
-     "Dynamic code execution: tests/Unit/Service/TokenSetCatalogueGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/TokenSetLicenceServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/TokenSetServicePublicCatalogueTest.php",
-     "Dynamic code execution: tests/Unit/Service/TokenSetServiceSelectableTest.php",
-     "Dynamic code execution: tests/Unit/Service/TokenSetServiceWarningsCacheTest.php",
-     "Dynamic code execution: tests/Unit/Service/UpstreamFreshnessRunGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Service/UpstreamFreshnessServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/UserTokenSetResolverTest.php",
-     "Dynamic code execution: tests/Unit/Service/WcagCachePrefixPairingTest.php",
-     "Dynamic code execution: tests/Unit/Service/WorkspaceIconServiceTest.php",
-     "Dynamic code execution: tests/Unit/Settings/AdminFormGoldenTest.php",
-     "Dynamic code execution: tests/Unit/Settings/AdminInitialStateTest.php",
-     "Dynamic code execution: tests/Unit/Support/RestrictedSetFixture.php",
-     "Possible hardcoded secret: tests/Unit/TokenSetContrastAuditTest.php",
-     "Dynamic code execution: tests/Unit/TokenValueTypesTest.php",
-     "Possible hardcoded secret: tests/Unit/TokenValueTypesTest.php",
-     "Dynamic code execution: tests/bootstrap.php",
-     "Unsafe HTML injection: tests/e2e/spec-coverage/css-architecture.spec.ts",
-     "Unsafe HTML injection: tests/e2e/spec-coverage/summer-breeze.spec.ts",
-     "Possible hardcoded secret: tests/e2e/spec-coverage/token-editor-edit-behavior.spec.ts",
-     "Dynamic code execution: tests/e2e/visual/playground.visual.spec.ts",
-     "Possible hardcoded secret: tests/e2e/workflows/token-apply-persistence.workflow.spec.ts",
-     "Unsafe HTML injection: tests/vitest/actionMenuLinkText.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-a11y.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-a11y.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-app-brands.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-apply-restricted-set.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-apply-restricted-set.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-assistant-mark.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-brand-form.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-brand-form.spec.js",
-     "Dynamic code execution: tests/vitest/admin-compliance-report.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-compliance-report.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-compliance-report.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-config-source.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-core-theming-panel.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-core-theming-panel.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-dark-mode.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-dark-mode.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-doc-link.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-doc-link.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-documents.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-dtcg-diagnostics.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-dtcg-diagnostics.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-gallery.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-gallery.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-group-delegation.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-group-delegation.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-group-house-style.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-group-theming.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-group-theming.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-incomplete-set.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-incomplete-set.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-marianne.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-marianne.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-multi-brand.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-multi-brand.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-scheduled-switches.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-scheduled-switches.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-set-licence.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-theme-paste.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-theme-paste.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-token-editor-scale.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-token-editor-scale.spec.js",
-     "Dynamic code execution: tests/vitest/admin-token-editor.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-token-editor.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-token-editor.spec.js",
-     "Dynamic code execution: tests/vitest/admin-token-reference.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-token-reference.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-token-reference.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-token-set-search.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-token-set-search.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-token-value-types.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-token-value-types.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin-version-restore.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin-version-restore.spec.js",
-     "Unsafe HTML injection: tests/vitest/admin.spec.js",
-     "Possible hardcoded secret: tests/vitest/admin.spec.js",
-     "Unsafe HTML injection: tests/vitest/anchorButtonText.spec.js",
-     "Unsafe HTML injection: tests/vitest/appMenu.spec.js",
-     "Unsafe HTML injection: tests/vitest/boardCardTitleOptOut.spec.js",
-     "Unsafe HTML injection: tests/vitest/boardIndexPageTabOptOut.spec.js",
-     "Unsafe HTML injection: tests/vitest/boardLookButtonsOptOut.spec.js",
-     "Unsafe HTML injection: tests/vitest/codeEditor.golden.spec.js",
-     "Unsafe HTML injection: tests/vitest/codeEditor.spec.js",
-     "Possible hardcoded secret: tests/vitest/componentScopesGenerator.spec.js",
-     "Possible hardcoded secret: tests/vitest/cunninghamCardsToken.spec.js",
-     "Unsafe HTML injection: tests/vitest/environment-marker.spec.js",
-     "Unsafe HTML injection: tests/vitest/headerUser.spec.js",
-     "Dynamic code execution: tests/vitest/lasuiteSearchGeometry.spec.js",
-     "Unsafe HTML injection: tests/vitest/layerSwapDom.spec.js",
-     "Unsafe HTML injection: tests/vitest/layoutOptions.spec.js",
-     "Unsafe HTML injection: tests/vitest/loginCopy.spec.js",
-     "Unsafe HTML injection: tests/vitest/navigationTertiaryButtonText.spec.js",
-     "Unsafe HTML injection: tests/vitest/notFound.spec.js",
-     "Dynamic code execution: tests/vitest/ownTokens.spec.js",
-     "Unsafe HTML injection: tests/vitest/ownTokens.spec.js",
-     "Possible hardcoded secret: tests/vitest/ownTokens.spec.js",
-     "Dynamic code execution: tests/vitest/playgroundInstrument.spec.js",
-     "Unsafe HTML injection: tests/vitest/playgroundInstrument.spec.js",
-     "Possible hardcoded secret: tests/vitest/playgroundInstrument.spec.js",
-     "Unsafe HTML injection: tests/vitest/playgroundInteraction.spec.js",
-     "Unsafe HTML injection: tests/vitest/playgroundOwnStage.spec.js",
-     "Possible hardcoded secret: tests/vitest/playgroundOwnStage.spec.js",
-     "Possible hardcoded secret: tests/vitest/playgroundSelection.spec.js",
-     "Unsafe HTML injection: tests/vitest/tileWidgetOptOut.spec.js",
-     "Dynamic code execution: tests/vitest/workplaceLayout.spec.js",
-     "Unsafe HTML injection: tests/vitest/zuiddrechtThreadChips.spec.js"
+     ".php-cs-fixer.dist.php",
+     "appinfo/routes.php",
+     "docs/docusaurus.config.js",
+     "docs/sidebars.js",
+     "docs/src/components/HomepageFeatures/index.js",
+     "docs/src/pages/index.js",
+     "eslint.config.mjs",
+     "js/admin-app-brands.js",
+     "js/admin-assistant-mark.js",
+     "js/admin-config-source.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "adrvalidator",
@@ -1225,6 +1463,31 @@
     "starRating": 5
    },
    {
+    "id": "secretscanning",
+    "title": "No committed secrets",
+    "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
+    "status": "warn",
+    "message": "Secret scanning could not run.",
+    "evidence": [
+     "gitleaks is not installed on the checker host."
+    ],
+    "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "openssfscorecard",
+    "title": "OpenSSF Scorecard",
+    "description": "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API and rates it from 1 to 5 stars. The star bands are this checker's own: 9 or higher is 5 stars, 7 or higher is 4, 5 or higher is 3, 3 or higher is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
+    "status": "info",
+    "message": "This repository is not in the OpenSSF Scorecard dataset. The project can publish a score by running the OpenSSF Scorecard GitHub Action (ossf/scorecard-action).",
+    "evidence": [
+     "https://github.com/ossf/scorecard-action"
+    ],
+    "referenceUrl": "https://scorecard.dev",
+    "requirementLevel": "recommended"
+   },
+   {
     "id": "semver",
     "title": "Semantic Versioning",
     "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
@@ -1241,306 +1504,12 @@
     "id": "fivelayer",
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
-    "status": "pass",
-    "message": "Detected layer signals: Service layer (back-end microservice). This repository appears to target a single Common Ground layer.",
-    "evidence": [
-     "Found path segment \"service\" in lib/Service/ActiveTokenSetService.php",
-     "Found path segment \"service\" in lib/Service/AdaptedToken.php",
-     "Found path segment \"service\" in lib/Service/AliasWalk.php",
-     "Found path segment \"service\" in lib/Service/AppBrandLogoStore.php",
-     "Found path segment \"service\" in lib/Service/AppBrandRecords.php",
-     "Found path segment \"service\" in lib/Service/AppBrandService.php",
-     "Found path segment \"service\" in lib/Service/AppBrandSources.php",
-     "Found path segment \"service\" in lib/Service/AppConfigManifest.php",
-     "Found path segment \"service\" in lib/Service/AppConfigToggle.php",
-     "Found path segment \"service\" in lib/Service/AppDataFolder.php",
-     "Found path segment \"service\" in lib/Service/AppMenuService.php",
-     "Found path segment \"service\" in lib/Service/AppThemingService.php",
-     "Found path segment \"service\" in lib/Service/AssistantMarkService.php",
-     "Found path segment \"service\" in lib/Service/AuditAndTranslation.php",
-     "Found path segment \"service\" in lib/Service/AuditArrayDiff.php",
-     "Found path segment \"service\" in lib/Service/AuditedTokenSet.php",
-     "Found path segment \"service\" in lib/Service/BrandColours.php",
-     "Found path segment \"service\" in lib/Service/BrandConversion.php",
-     "Found path segment \"service\" in lib/Service/BrandCssCut.php",
-     "Found path segment \"service\" in lib/Service/BrandDocument.php",
-     "Found path segment \"service\" in lib/Service/BrandFormService.php",
-     "Found path segment \"service\" in lib/Service/BrandFormSources.php",
-     "Found path segment \"service\" in lib/Service/BrandImportRecords.php",
-     "Found path segment \"service\" in lib/Service/BrandImportRun.php",
-     "Found path segment \"service\" in lib/Service/BrandPalette.php",
-     "Found path segment \"service\" in lib/Service/BrandSelection.php",
-     "Found path segment \"service\" in lib/Service/BrandSetStorage.php",
-     "Found path segment \"service\" in lib/Service/BrandingCaptureService.php",
-     "Found path segment \"service\" in lib/Service/BrandingPackageReader.php",
-     "Found path segment \"service\" in lib/Service/BrandingPackageService.php",
-     "Found path segment \"service\" in lib/Service/BundleExtraSections.php",
-     "Found path segment \"service\" in lib/Service/BundleValidationRun.php",
-     "Found path segment \"service\" in lib/Service/BundledFontLibrary.php",
-     "Found path segment \"service\" in lib/Service/CatalogueEvidence.php",
-     "Found path segment \"service\" in lib/Service/CatalogueFont.php",
-     "Found path segment \"service\" in lib/Service/CatalogueLogo.php",
-     "Found path segment \"service\" in lib/Service/ColorSpaceConverter.php",
-     "Found path segment \"service\" in lib/Service/ColourArgument.php",
-     "Found path segment \"service\" in lib/Service/ColourComponentScale.php",
-     "Found path segment \"service\" in lib/Service/ColourContrastAdjuster.php",
-     "Found path segment \"service\" in lib/Service/ColourFunctionEvaluator.php",
-     "Found path segment \"service\" in lib/Service/ColourFunctionReading.php",
-     "Found path segment \"service\" in lib/Service/ColourLiteralParser.php",
-     "Found path segment \"service\" in lib/Service/ColourRgba.php",
-     "Found path segment \"service\" in lib/Service/ComplianceReportService.php",
-     "Found path segment \"service\" in lib/Service/ComponentRepairRun.php",
-     "Found path segment \"service\" in lib/Service/Config",
-     "Found path segment \"service\" in lib/Service/Config/NlDesignThemeShareableConfigType.php",
-     "Found path segment \"service\" in lib/Service/ConfigBundleAppSettings.php",
-     "Found path segment \"service\" in lib/Service/ConfigBundleBranding.php",
-     "Found path segment \"service\" in lib/Service/ConfigBundleImportReport.php",
-     "Found path segment \"service\" in lib/Service/ConfigBundleSections.php",
-     "Found path segment \"service\" in lib/Service/ConfigBundleService.php",
-     "Found path segment \"service\" in lib/Service/ConfigBundleTokenSources.php",
-     "Found path segment \"service\" in lib/Service/ConfigSourceClock.php",
-     "Found path segment \"service\" in lib/Service/ConfigSourceLock.php",
-     "Found path segment \"service\" in lib/Service/ConfigSourcePackage.php",
-     "Found path segment \"service\" in lib/Service/ConfigSourceService.php",
-     "Found path segment \"service\" in lib/Service/ConfigSourceSteps.php",
-     "Found path segment \"service\" in lib/Service/ContractBindings.php",
-     "Found path segment \"service\" in lib/Service/ContrastMeasurement.php",
-     "Found path segment \"service\" in lib/Service/ContrastRepairRun.php",
-     "Found path segment \"service\" in lib/Service/ContrastReportCells.php",
-     "Found path segment \"service\" in lib/Service/ContrastService.php",
-     "Found path segment \"service\" in lib/Service/ContrastTools.php",
-     "Found path segment \"service\" in lib/Service/ContrastVerdictDocument.php",
-     "Found path segment \"service\" in lib/Service/ConversionRun.php",
-     "Found path segment \"service\" in lib/Service/ConverterColourRepair.php",
-     "Found path segment \"service\" in lib/Service/ConverterComponentRepair.php",
-     "Found path segment \"service\" in lib/Service/ConverterPairRepair.php",
-     "Found path segment \"service\" in lib/Service/CopyValues.php",
-     "Found path segment \"service\" in lib/Service/CoreThemingState.php",
-     "Found path segment \"service\" in lib/Service/CssBlockReader.php",
-     "Found path segment \"service\" in lib/Service/CssColorParser.php",
-     "Found path segment \"service\" in lib/Service/CssDeclarationScanner.php",
-     "Found path segment \"service\" in lib/Service/CssInjectionBrands.php",
-     "Found path segment \"service\" in lib/Service/CssInjectionChrome.php",
-     "Found path segment \"service\" in lib/Service/CssInjectionContext.php",
-     "Found path segment \"service\" in lib/Service/CssInjectionLayers.php",
-     "Found path segment \"service\" in lib/Service/CssInjectionService.php",
-     "Found path segment \"service\" in lib/Service/CssInjectionTokenFiles.php",
-     "Found path segment \"service\" in lib/Service/CssParserService.php",
-     "Found path segment \"service\" in lib/Service/CssUploadCheck.php",
-     "Found path segment \"service\" in lib/Service/CustomCssService.php",
-     "Found path segment \"service\" in lib/Service/CustomCssValidator.php",
-     "Found path segment \"service\" in lib/Service/CustomOverridesService.php",
-     "Found path segment \"service\" in lib/Service/CustomSetRecords.php",
-     "Found path segment \"service\" in lib/Service/CustomSetSources.php",
-     "Found path segment \"service\" in lib/Service/CustomSetUploadPipeline.php",
-     "Found path segment \"service\" in lib/Service/CustomTokenSetId.php",
-     "Found path segment \"service\" in lib/Service/CustomTokenSetService.php",
-     "Found path segment \"service\" in lib/Service/CustomTokenSetValidator.php",
-     "Found path segment \"service\" in lib/Service/CustomTokenSetsBundleSection.php",
-     "Found path segment \"service\" in lib/Service/DarkPaletteService.php",
-     "Found path segment \"service\" in lib/Service/DarkPins.php",
-     "Found path segment \"service\" in lib/Service/DelegatedChoice.php",
-     "Found path segment \"service\" in lib/Service/DelegatedGroupThemingService.php",
-     "Found path segment \"service\" in lib/Service/DenhaagContrastPairs.php",
-     "Found path segment \"service\" in lib/Service/DeprecationRecords.php",
-     "Found path segment \"service\" in lib/Service/DeprecationSources.php",
-     "Found path segment \"service\" in lib/Service/DesignSystemService.php",
-     "Found path segment \"service\" in lib/Service/DesignTokenRef.php",
-     "Found path segment \"service\" in lib/Service/DesignTokensAliasResolver.php",
-     "Found path segment \"service\" in lib/Service/DesignTokensMapper.php",
-     "Found path segment \"service\" in lib/Service/DesignTokensMapping.php",
-     "Found path segment \"service\" in lib/Service/DesignTokensWriter.php",
-     "Found path segment \"service\" in lib/Service/DocumentAssetService.php",
-     "Found path segment \"service\" in lib/Service/DocumentBrandAssets.php",
-     "Found path segment \"service\" in lib/Service/DocumentSet.php",
-     "Found path segment \"service\" in lib/Service/DocumentSetSources.php",
-     "Found path segment \"service\" in lib/Service/DocumentStyleService.php",
-     "Found path segment \"service\" in lib/Service/DtcgColourSerializer.php",
-     "Found path segment \"service\" in lib/Service/DtcgExportTools.php",
-     "Found path segment \"service\" in lib/Service/DtcgPlace.php",
-     "Found path segment \"service\" in lib/Service/DtcgTokenLeaves.php",
-     "Found path segment \"service\" in lib/Service/DtcgValueChecker.php",
-     "Found path segment \"service\" in lib/Service/DtcgValueSerializer.php",
-     "Found path segment \"service\" in lib/Service/DtcgValueTyper.php",
-     "Found path segment \"service\" in lib/Service/DtcgWriteRun.php",
-     "Found path segment \"service\" in lib/Service/EmailLogoAddress.php",
-     "Found path segment \"service\" in lib/Service/EmailThemingService.php",
-     "Found path segment \"service\" in lib/Service/EmailThemingSettings.php",
-     "Found path segment \"service\" in lib/Service/EnvironmentMarkerService.php",
-     "Found path segment \"service\" in lib/Service/Exception",
-     "Found path segment \"service\" in lib/Service/Exception/AppBrandException.php",
-     "Found path segment \"service\" in lib/Service/Exception/AssistantMarkException.php",
-     "Found path segment \"service\" in lib/Service/Exception/ConfigReadOnlyException.php",
-     "Found path segment \"service\" in lib/Service/Exception/ConfigSourceLockedException.php",
-     "Found path segment \"service\" in lib/Service/Exception/DelegationRefusedException.php",
-     "Found path segment \"service\" in lib/Service/Exception/FooterValidationException.php",
-     "Found path segment \"service\" in lib/Service/Exception/ForeignMailTemplateClassException.php",
-     "Found path segment \"service\" in lib/Service/Exception/GalleryException.php",
-     "Found path segment \"service\" in lib/Service/Exception/GroupThemingValidationException.php",
-     "Found path segment \"service\" in lib/Service/Exception/RestrictedSetInUseException.php",
-     "Found path segment \"service\" in lib/Service/Exception/RestrictedSetNotConfirmedException.php",
-     "Found path segment \"service\" in lib/Service/Exception/ScheduledSwitchException.php",
-     "Found path segment \"service\" in lib/Service/Exception/ScheduledSwitchNotFoundException.php",
-     "Found path segment \"service\" in lib/Service/FigmaColourStrings.php",
-     "Found path segment \"service\" in lib/Service/FigmaCssValue.php",
-     "Found path segment \"service\" in lib/Service/FigmaTokenReader.php",
-     "Found path segment \"service\" in lib/Service/FigmaTokenWriter.php",
-     "Found path segment \"service\" in lib/Service/FileDarkValues.php",
-     "Found path segment \"service\" in lib/Service/FontLabel.php",
-     "Found path segment \"service\" in lib/Service/FontService.php",
-     "Found path segment \"service\" in lib/Service/FontStylesheet.php",
-     "Found path segment \"service\" in lib/Service/FontUpload.php",
-     "Found path segment \"service\" in lib/Service/FontValidator.php",
-     "Found path segment \"service\" in lib/Service/FreshnessRun.php",
-     "Found path segment \"service\" in lib/Service/GalleryDownloadSources.php",
-     "Found path segment \"service\" in lib/Service/GalleryEntryValidator.php",
-     "Found path segment \"service\" in lib/Service/GalleryFile.php",
-     "Found path segment \"service\" in lib/Service/GalleryIndexCache.php",
-     "Found path segment \"service\" in lib/Service/GalleryIndexFetch.php",
-     "Found path segment \"service\" in lib/Service/GalleryInstallRecords.php",
-     "Found path segment \"service\" in lib/Service/GalleryInstallService.php",
-     "Found path segment \"service\" in lib/Service/GallerySetName.php",
-     "Found path segment \"service\" in lib/Service/GroupDelegationRules.php",
-     "Found path segment \"service\" in lib/Service/GroupEntryRun.php",
-     "Found path segment \"service\" in lib/Service/GroupMappingRules.php",
-     "Found path segment \"service\" in lib/Service/GroupThemingService.php",
-     "Found path segment \"service\" in lib/Service/HeaderUserService.php",
-     "Found path segment \"service\" in lib/Service/ImageSniffer.php",
-     "Found path segment \"service\" in lib/Service/IndexedJsonManifest.php",
-     "Found path segment \"service\" in lib/Service/InstanceReportContext.php",
-     "Found path segment \"service\" in lib/Service/InternalRule.php",
-     "Found path segment \"service\" in lib/Service/InternalScopesService.php",
-     "Found path segment \"service\" in lib/Service/LayerCssFiles.php",
-     "Found path segment \"service\" in lib/Service/LayoutOptionValues.php",
-     "Found path segment \"service\" in lib/Service/LayoutOptionsService.php",
-     "Found path segment \"service\" in lib/Service/LayoutStylesheets.php",
-     "Found path segment \"service\" in lib/Service/LeafMappingRun.php",
-     "Found path segment \"service\" in lib/Service/LeafScope.php",
-     "Found path segment \"service\" in lib/Service/ListedTokenSet.php",
-     "Found path segment \"service\" in lib/Service/LoginCopyService.php",
-     "Found path segment \"service\" in lib/Service/LogoLayerService.php",
-     "Found path segment \"service\" in lib/Service/MappedToken.php",
-     "Found path segment \"service\" in lib/Service/MultiBrandImportService.php",
-     "Found path segment \"service\" in lib/Service/MultiBrandSource.php",
-     "Found path segment \"service\" in lib/Service/NewCustomTokenSet.php",
-     "Found path segment \"service\" in lib/Service/NotFoundCopyService.php",
-     "Found path segment \"service\" in lib/Service/OpenProjectModules.php",
-     "Found path segment \"service\" in lib/Service/OpenProjectSetFile.php",
-     "Found path segment \"service\" in lib/Service/OpenProjectSetFileOutput.php",
-     "Found path segment \"service\" in lib/Service/OpenProjectSetFileWriter.php",
-     "Found path segment \"service\" in lib/Service/OverridesCssBuilder.php",
-     "Found path segment \"service\" in lib/Service/OverridesSetContext.php",
-     "Found path segment \"service\" in lib/Service/OverridesStorage.php",
-     "Found path segment \"service\" in lib/Service/OverridesThemingSync.php",
-     "Found path segment \"service\" in lib/Service/OverridesWrites.php",
-     "Found path segment \"service\" in lib/Service/OwnComponentService.php",
-     "Found path segment \"service\" in lib/Service/OwnTokenCss.php",
-     "Found path segment \"service\" in lib/Service/OwnTokenService.php",
-     "Found path segment \"service\" in lib/Service/OwnTokenSources.php",
-     "Found path segment \"service\" in lib/Service/PackageContent.php",
-     "Found path segment \"service\" in lib/Service/PackageSizeBudget.php",
-     "Found path segment \"service\" in lib/Service/PackageTokenSourceConverter.php",
-     "Found path segment \"service\" in lib/Service/PackageZip.php",
-     "Found path segment \"service\" in lib/Service/PageCopyServices.php",
-     "Found path segment \"service\" in lib/Service/PageCopySources.php",
-     "Found path segment \"service\" in lib/Service/PlannedSwitches.php",
-     "Found path segment \"service\" in lib/Service/PlaygroundSetFiles.php",
-     "Found path segment \"service\" in lib/Service/PlaygroundStateService.php",
-     "Found path segment \"service\" in lib/Service/PlaygroundTokenSources.php",
-     "Found path segment \"service\" in lib/Service/ProvidesLicenceGate.php",
-     "Found path segment \"service\" in lib/Service/ReportedTokenSet.php",
-     "Found path segment \"service\" in lib/Service/RestrictedSetGate.php",
-     "Found path segment \"service\" in lib/Service/RestrictedSetsInBundle.php",
-     "Found path segment \"service\" in lib/Service/ReuseLicences.php",
-     "Found path segment \"service\" in lib/Service/RuntimeFile",
-     "Found path segment \"service\" in lib/Service/RuntimeFile/AppDataRuntimeFileStore.php",
-     "Found path segment \"service\" in lib/Service/RuntimeFile/DirectoryRuntimeFileStore.php",
-     "Found path segment \"service\" in lib/Service/RuntimeFile/LocalFile.php",
-     "Found path segment \"service\" in lib/Service/RuntimeFile/RuntimeFileLocator.php",
-     "Found path segment \"service\" in lib/Service/RuntimeFile/RuntimeFileNames.php",
-     "Found path segment \"service\" in lib/Service/RuntimeFile/RuntimeFileStore.php",
-     "Found path segment \"service\" in lib/Service/RuntimeFile/SetFileReader.php",
-     "Found path segment \"service\" in lib/Service/ScheduledCoreThemingSync.php",
-     "Found path segment \"service\" in lib/Service/ScheduledSwitchOrder.php",
-     "Found path segment \"service\" in lib/Service/ScheduledSwitchRuntime.php",
-     "Found path segment \"service\" in lib/Service/ScheduledSwitchService.php",
-     "Found path segment \"service\" in lib/Service/ScheduledSwitchStore.php",
-     "Found path segment \"service\" in lib/Service/ScheduledSwitchTargets.php",
-     "Found path segment \"service\" in lib/Service/SearchPlaceholderService.php",
-     "Found path segment \"service\" in lib/Service/SetFileBlock.php",
-     "Found path segment \"service\" in lib/Service/SetFileEntry.php",
-     "Found path segment \"service\" in lib/Service/SetFileReadRun.php",
-     "Found path segment \"service\" in lib/Service/SetOrder.php",
-     "Found path segment \"service\" in lib/Service/SettableContrastPairs.php",
-     "Found path segment \"service\" in lib/Service/SettingsConfigServices.php",
-     "Found path segment \"service\" in lib/Service/SettingsReportServices.php",
-     "Found path segment \"service\" in lib/Service/SettingsTokenSetServices.php",
-     "Found path segment \"service\" in lib/Service/ShellCatalogueFonts.php",
-     "Found path segment \"service\" in lib/Service/ShellCatalogueLogos.php",
-     "Found path segment \"service\" in lib/Service/ShellCatalogueService.php",
-     "Found path segment \"service\" in lib/Service/ShellCatalogueVocabulary.php",
-     "Found path segment \"service\" in lib/Service/ShellLogoSources.php",
-     "Found path segment \"service\" in lib/Service/ShellRoleMapper.php",
-     "Found path segment \"service\" in lib/Service/ShellSetSources.php",
-     "Found path segment \"service\" in lib/Service/ShellTokenService.php",
-     "Found path segment \"service\" in lib/Service/ShellValueSources.php",
-     "Found path segment \"service\" in lib/Service/ShippedTokenSetAuditService.php",
-     "Found path segment \"service\" in lib/Service/SourceUpdateRun.php",
-     "Found path segment \"service\" in lib/Service/StockTokensService.php",
-     "Found path segment \"service\" in lib/Service/StudioToken.php",
-     "Found path segment \"service\" in lib/Service/StudioWriteRun.php",
-     "Found path segment \"service\" in lib/Service/SwitchImportRun.php",
-     "Found path segment \"service\" in lib/Service/SwitchImportValidation.php",
-     "Found path segment \"service\" in lib/Service/SwitchPlan.php",
-     "Found path segment \"service\" in lib/Service/SwitchWindow.php",
-     "Found path segment \"service\" in lib/Service/ThematiqExportLayers.php",
-     "Found path segment \"service\" in lib/Service/ThemeGalleryService.php",
-     "Found path segment \"service\" in lib/Service/ThemeInjectionStyles.php",
-     "Found path segment \"service\" in lib/Service/ThemePreviewBannerService.php",
-     "Found path segment \"service\" in lib/Service/ThemePreviewService.php",
-     "Found path segment \"service\" in lib/Service/ThemeSelectionSources.php",
-     "Found path segment \"service\" in lib/Service/ThemeSets.php",
-     "Found path segment \"service\" in lib/Service/ThemeVersionRestoreService.php",
-     "Found path segment \"service\" in lib/Service/ThemeVersionService.php",
-     "Found path segment \"service\" in lib/Service/ThemingAuditService.php",
-     "Found path segment \"service\" in lib/Service/ThemingService.php",
-     "Found path segment \"service\" in lib/Service/TokenDeprecationService.php",
-     "Found path segment \"service\" in lib/Service/TokenLifecycleBundleSection.php",
-     "Found path segment \"service\" in lib/Service/TokenReference.php",
-     "Found path segment \"service\" in lib/Service/TokenReferenceCells.php",
-     "Found path segment \"service\" in lib/Service/TokenReferenceLayers.php",
-     "Found path segment \"service\" in lib/Service/TokenReferenceService.php",
-     "Found path segment \"service\" in lib/Service/TokenRegistry.php",
-     "Found path segment \"service\" in lib/Service/TokenRegistryInterface.php",
-     "Found path segment \"service\" in lib/Service/TokenSetAudits.php",
-     "Found path segment \"service\" in lib/Service/TokenSetConverterService.php",
-     "Found path segment \"service\" in lib/Service/TokenSetDownload.php",
-     "Found path segment \"service\" in lib/Service/TokenSetFileLocation.php",
-     "Found path segment \"service\" in lib/Service/TokenSetFiles.php",
-     "Found path segment \"service\" in lib/Service/TokenSetFontAuditService.php",
-     "Found path segment \"service\" in lib/Service/TokenSetLayerEntries.php",
-     "Found path segment \"service\" in lib/Service/TokenSetLayers.php",
-     "Found path segment \"service\" in lib/Service/TokenSetLicenceService.php",
-     "Found path segment \"service\" in lib/Service/TokenSetManifestFile.php",
-     "Found path segment \"service\" in lib/Service/TokenSetPreviewService.php",
-     "Found path segment \"service\" in lib/Service/TokenSetRuntime.php",
-     "Found path segment \"service\" in lib/Service/TokenSetSelectionPolicy.php",
-     "Found path segment \"service\" in lib/Service/TokenSetService.php",
-     "Found path segment \"service\" in lib/Service/TokenSetUploadPipeline.php",
-     "Found path segment \"service\" in lib/Service/TokenSetVocabularyAuditService.php",
-     "Found path segment \"service\" in lib/Service/TokenSetWear.php",
-     "Found path segment \"service\" in lib/Service/TokenValueValidator.php",
-     "Found path segment \"service\" in lib/Service/TokensStudioSets.php",
-     "Found path segment \"service\" in lib/Service/ToolTokenFileNormaliser.php",
-     "Found path segment \"service\" in lib/Service/TypedValue.php",
-     "Found path segment \"service\" in lib/Service/TypographyMember.php",
-     "Found path segment \"service\" in lib/Service/UploadRefusal.php",
-     "Found path segment \"service\" in lib/Service/UpstreamFreshnessService.php",
-     "Found path segment \"service\" in lib/Service/UserTokenSetResolver.php",
-     "Found path segment \"service\" in lib/Service/VocabularySet.php",
-     "Found path segment \"service\" in lib/Service/WorkspaceIconService.php"
-    ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
+    "status": "pass",
+    "message": "Declared layer: Interaction layer (frontend / portal).",
+    "evidence": [
+     "Declared \"interaction\" in publiccode.yml supports"
+    ],
     "confidence": "high",
     "requirementLevel": "mandatory",
     "starRating": 5
@@ -1564,14 +1533,31 @@
     "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Usage from 3 sources, 1 not measured. Shown for information; never rated or compared.",
+    "message": "Usage from 5 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub releases: 2,592 release file downloads, 469 releases with files (2026-11-20)",
+     "Nextcloud App Store thematiq: 0 ratings given (2026-11-20)",
+     "GitHub releases: 2,596 release file downloads, 469 releases with files (2026-11-20)",
+     "GitHub Container Registry conductionnl/thematiq: not measured: GitHub publishes no pull count for container images through its API (2026-11-20)",
      "GitHub ConductionNL/thematiq: 5 stars, 2 forks, 0 watchers (2026-11-20)",
-     "GitHub commits ConductionNL/thematiq: not measured: HTTP 403 (2026-11-20)"
+     "GitHub commits ConductionNL/thematiq: 12 contributors, 7 from the owning organisation, 2 from other organisations, 3 unknown (2026-11-20)"
     ],
     "usage": {
      "sources": [
+      {
+       "id": "nextcloud-appstore",
+       "kind": "downloads",
+       "source": "Nextcloud App Store",
+       "subject": "thematiq",
+       "url": "https://apps.nextcloud.com/apps/thematiq",
+       "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
+       "measuredAt": "2026-11-20",
+       "figures": [
+        {
+         "label": "ratings given",
+         "value": 0
+        }
+       ]
+      },
       {
        "id": "github-releases",
        "kind": "downloads",
@@ -1583,13 +1569,24 @@
        "figures": [
         {
          "label": "release file downloads",
-         "value": 2592
+         "value": 2596
         },
         {
          "label": "releases with files",
          "value": 469
         }
        ]
+      },
+      {
+       "id": "ghcr:conductionnl/thematiq",
+       "kind": "containers",
+       "source": "GitHub Container Registry",
+       "subject": "conductionnl/thematiq",
+       "url": "https://github.com/orgs/conductionnl/packages/container/package/thematiq",
+       "measuredAt": "2026-11-20",
+       "caveat": "Pull counts would include CI pulls.",
+       "figures": [],
+       "notMeasured": "GitHub publishes no pull count for container images through its API"
       },
       {
        "id": "repository",
@@ -1620,10 +1617,26 @@
        "source": "GitHub commits",
        "subject": "ConductionNL/thematiq",
        "url": "https://github.com/ConductionNL/thematiq/graphs/contributors",
-       "caveat": "",
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
        "measuredAt": "2026-11-20",
-       "figures": [],
-       "notMeasured": "HTTP 403"
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 12
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 7
+        },
+        {
+         "label": "from other organisations",
+         "value": 2
+        },
+        {
+         "label": "unknown",
+         "value": 3
+        }
+       ]
       }
      ]
     }
@@ -1633,7 +1646,7 @@
     "title": "Project health (CHAOSS)",
     "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
     "status": "info",
-    "message": "2 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
     "evidence": [],
     "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
     "metrics": [
@@ -1641,22 +1654,22 @@
       "id": "contributor-absence-factor",
       "name": "Contributor Absence Factor",
       "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 6 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
       "target": {
        "text": "at least 2 people",
-       "met": null
+       "met": false
       }
      },
      {
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
+      "value": "1 organisation; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (249 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is conduction.nl (5 authors), with 100% of the 248 commits whose organisation is known; 0% of the commits come from 1 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
-       "met": null
+       "met": false
       }
      },
      {
@@ -1674,22 +1687,22 @@
       "id": "time-to-first-response",
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
+      "value": "no response",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13 got a comment or review from anyone but its author.",
       "target": {
        "text": "at most 48 hours",
-       "met": null
+       "met": false
       }
      },
      {
       "id": "issue-response-time",
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
+      "value": "no response",
+      "explanation": "None of the 1 latest issues opened by people between 2026-08-22 and 2026-11-13 got a comment from anyone but its author.",
       "target": {
        "text": "at most 120 hours",
-       "met": null
+       "met": false
       }
      },
      {
@@ -1775,7 +1788,7 @@
      "notes": [
       "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
       "Only the 200 most recently updated issues of each kind were read.",
-      "Vulnerabilities are not measured: the GitHub security advisories API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git)."
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured."
      ]
     },
     "requirementLevel": "informative"
@@ -1791,10 +1804,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 13.1,
+  "durationSeconds": 16,
   "scanMode": "full",
-  "scanModeReason": "the code changed",
-  "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

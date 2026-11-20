@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:13:16.883Z",
+  "lastCheckedAt": "2026-11-20T08:59:41.001Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:49.582Z",
-  "updatedAt": "2026-11-20T06:13:16.883Z",
+  "updatedAt": "2026-11-20T08:59:41.001Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -44,28 +44,28 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T06-13-16-883Z",
+  "id": "2026-11-20T08-59-41-001Z",
   "repoId": "github.com/maykinmedia/open-inwoner",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:13:16.883Z",
-  "createdAt": "2026-11-20T06:13:16.883Z",
+  "checkedAt": "2026-11-20T08:59:41.001Z",
+  "createdAt": "2026-11-20T08:59:41.001Z",
   "version": "v2.5.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v2.5.0",
   "scannedRefKind": "declared-version",
   "scannedCommit": "fd00dfbe8e0ed46d7884d9608ab2aec98d119408",
-  "score": 65,
-  "rating": 3.1,
+  "score": 78,
+  "rating": 3.7,
   "categoryRatings": {
-   "Governance": 3.9,
-   "Security": 1.8,
+   "Governance": 3.3,
+   "Security": 3.7,
    "Architecture": 4.3,
-   "Software Quality": 2.5,
-   "Deployment & Operations": 3.3
+   "Software Quality": 2.7,
+   "Deployment & Operations": 4.3
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 5.5
+    "rating": 3.1
    },
    "ownership": {
     "rating": 4.3
@@ -85,28 +85,28 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 3.5
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 3.5
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
-    "rating": null
+    "rating": 0.5
    },
    "secrets": {
-    "rating": null
+    "rating": 3
    },
    "secure-coding": {
-    "rating": 0.5
+    "rating": 3
    },
    "supply-chain": {
     "rating": 3
@@ -124,23 +124,26 @@
     "rating": 3.1
    },
    "modifiability": {
-    "rating": 2.3
+    "rating": 2.6
    },
    "testability": {
-    "rating": 1.6
+    "rating": 2
    },
    "modularity": {
-    "rating": 1.5
+    "rating": 2.2
    },
    "reusability": {
     "rating": 2.4
    },
    "testing": {
-    "rating": 4.3
+    "rating": 3.8
+   },
+   "size": {
+    "rating": null
    },
    "containerisation": {
-    "rating": 1,
-    "found": 1,
+    "rating": 3,
+    "found": 2,
     "expected": 3
    },
    "release-management": {
@@ -150,17 +153,14 @@
   "endorsement": {
    "passed": false,
    "reasons": [
-    "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
-    "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No valid maintenance contract: Maykin Media has no end date (until).",
-    "Maintainability below 4 stars (2.10)"
+    "Maintainability below 4 stars (2.42)"
    ]
   },
   "issueCounts": {
-   "errors": 4,
-   "warnings": 7
+   "errors": 1,
+   "warnings": 13
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -230,6 +230,21 @@
     "starRating": 5
    },
    {
+    "id": "licenceconsistency",
+    "title": "Licence consistency",
+    "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
+    "evidence": [
+     "LICENSE.md: EUPL-1.2",
+     "package.json: UNLICENSED",
+     "publiccode.yaml: EUPL-1.2"
+    ],
+    "referenceUrl": "https://spdx.org/licenses/",
+    "status": "fail",
+    "message": "Licence declarations disagree: EUPL-1.2 (LICENSE.md, publiccode.yaml) versus UNLICENSED (package.json).",
+    "requirementLevel": "recommended",
+    "starRating": 1
+   },
+   {
     "id": "copyrightowner",
     "title": "Copyright / IP Owner Disclosure",
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
@@ -250,11 +265,43 @@
     "starRating": 5
    },
    {
+    "id": "spdxheaders",
+    "title": "SPDX licence headers",
+    "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
+    "referenceUrl": "https://reuse.software/spec/",
+    "status": "fail",
+    "starRating": 1,
+    "message": "0.0% of 1999 source files carry an SPDX header (1 of 5 stars). 1999 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "evidence": [
+     ".storybook/main.ts",
+     ".storybook/preview.tsx",
+     ".storybook/reactintl.ts",
+     "bin/generate_setup_configuration.py",
+     "bootstrap.py",
+     "docker/openklant/seed_conversations.py",
+     "docker/qmatic-mock/server.py",
+     "docs/_static/theme_overrides.css",
+     "docs/check_sphinx.py",
+     "docs/conf.py",
+     "performance-tests/locustfile.py",
+     "postcss.config.js",
+     "src/custom_migrations/__init__.py",
+     "src/custom_migrations/apps.py",
+     "src/custom_migrations/migrations/0001_delete_old_celery_tasks.py",
+     "src/custom_migrations/migrations/0002_reschedule_prune_notifications.py",
+     "src/custom_migrations/migrations/__init__.py",
+     "src/eherkenning/__init__.py",
+     "src/eherkenning/backends.py",
+     "src/eherkenning/managers.py"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
     "id": "publiccode",
     "title": "publiccode.yml Metadata File",
     "description": "A publiccode.yml file must be present in the repository root.",
     "status": "warn",
-    "message": "publiccode.yml is valid. Recommended fields missing: categories, nl.",
+    "message": "publiccode.yml is valid. Recommended fields missing: categories, description.nl.",
     "evidence": [
      "publiccode.yaml"
     ],
@@ -404,7 +451,17 @@
     "evidence": [
      "Dockerfile",
      "docker-compose.dev.yml",
-     "docker-compose.yml"
+     "docker-compose.yml",
+     "docker/docker-compose.hc-brp-mock.yml",
+     "docker/docker-compose.hostdev.yml",
+     "docker/docker-compose.keycloak.yml",
+     "docker/docker-compose.objects-apis.yml",
+     "docker/docker-compose.observability.yml",
+     "docker/docker-compose.open-zaak.yml",
+     "docker/docker-compose.openafval.yml",
+     "docker/docker-compose.openklant.yml",
+     "docker/docker-compose.qmatic-mock.yml",
+     "docker/docker-compose.ssd-mock.yml"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
@@ -414,12 +471,15 @@
     "id": "dockerimage",
     "title": "Available Docker image",
     "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
-    "status": "fail",
-    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
-    "evidence": [],
+    "status": "pass",
+    "message": "The repository declares a published image of this component.",
+    "evidence": [
+     "maykinmedia/open-inwoner:${TAG:-latest} (declared in docker-compose.yml)",
+     "maykinmedia/open-inwoner on Docker Hub (named in README.rst, found on the registry)"
+    ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "cicd",
@@ -454,13 +514,14 @@
     "title": "Helm chart on Artifact Hub, images scanned",
     "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
     "referenceUrl": "https://artifacthub.io/docs/topics/security_report/",
-    "status": "info",
-    "message": "Not applicable: no published container image or Helm chart was found, so this is not a container component. A Dockerfile alone (Dockerfile) does not make it one. Its dependencies are covered by the repository dependency scan.",
-    "evidence": [],
-    "notApplicable": true,
+    "status": "fail",
+    "message": "No Helm package on Artifact Hub belongs to this repository. Searched for open-inwoner. Register the Helm chart on Artifact Hub, and link the package from publiccode.yml or the README if its name differs.",
+    "evidence": [
+     "Container component: it publishes a container image (maykinmedia/open-inwoner:${TAG:-latest} (declared in docker-compose.yml))"
+    ],
     "requirementLevel": "mandatory",
     "mandatoryFrom": "2027-05-19",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "documentation",
@@ -534,22 +595,21 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 1.85 (threshold: 15); Max CCN 51.00 (threshold: 30). Threshold exceeded: MaxCCN 51.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 2.62 (threshold: 15); Max CCN 51.00 (threshold: 30). Threshold exceeded: MaxCCN 51.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 1.85 (threshold: 15)",
+     "Average CCN: 2.62 (threshold: 15)",
      "Max CCN: 51.00 (threshold: 30)",
-     "2      1     11      2       2 get_error_message@27-28@/tmp/cgchecker-repo-KJJFWf/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
-     "2      1     11      2       2 get_error_message@35-36@/tmp/cgchecker-repo-KJJFWf/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
-     "4      1     36      1       5 test_check_without_form_class_raises_value_error@245-249@/tmp/cgchecker-repo-KJJFWf/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
-     "6      1     36      1       7 test_check_without_required_permissions_raises_value_error@251-257@/tmp/cgchecker-repo-KJJFWf/repo/src/maykin_config_checks/tests/test_interactive_config_checks.py",
-     "2      1     14      2       2 get_error_message@6-7@/tmp/cgchecker-repo-KJJFWf/repo/src/maykin_config_checks/permissions.py",
-     "11      1     80      1      14 test_reset_for_retry_from_pending_raises_error@282-295@/tmp/cgchecker-repo-KJJFWf/repo/src/notifications/tests/test_notification_record.py"
+     "2      1     14      2       2 get_error_message@6-7@/tmp/cgchecker-repo-Y6cLBA/repo/src/maykin_config_checks/permissions.py",
+     "5      1     35      2       5 log_webhook_auth_error@36-40@/tmp/cgchecker-repo-Y6cLBA/repo/src/open_inwoner/openzaak/mixins.py",
+     "5      1     27      1       5 log_webhook_deserialization_error@42-46@/tmp/cgchecker-repo-Y6cLBA/repo/src/open_inwoner/openzaak/mixins.py",
+     "5      1     27      1       5 log_webhook_parse_error@64-68@/tmp/cgchecker-repo-Y6cLBA/repo/src/open_inwoner/openzaak/mixins.py",
+     "5      1     38      2       5 log_webhook_store_error@70-74@/tmp/cgchecker-repo-Y6cLBA/repo/src/open_inwoner/openzaak/mixins.py",
+     "7      1     43      3       7 log_webhook_handler_error@76-82@/tmp/cgchecker-repo-Y6cLBA/repo/src/open_inwoner/openzaak/mixins.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "requirementLevel": "mandatory",
-    "starRating": 1
+    "requirementLevel": "informative"
    },
    {
     "id": "maintainability",
@@ -558,12 +618,12 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "fail",
     "starRating": 2,
-    "rating": 2.1,
+    "rating": 2.425,
     "aspectRatings": {
      "analysability": 3.07,
-     "modifiability": 2.33,
-     "testability": 1.59,
-     "modularity": 1.47,
+     "modifiability": 2.58,
+     "testability": 1.96,
+     "modularity": 2.22,
      "reusability": 2.44
     },
     "measurements": [
@@ -579,10 +639,7 @@
         "label": "JavaScript",
         "value": "1.8%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        },
@@ -590,10 +647,7 @@
         "label": "Python",
         "value": "6.1%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 3
        },
@@ -601,10 +655,7 @@
         "label": "TypeScript",
         "value": "6.7%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 3
        }
@@ -622,10 +673,7 @@
         "label": "JavaScript, more than 15 lines",
         "value": "32.1%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
@@ -633,10 +681,7 @@
         "label": "JavaScript, more than 30 lines",
         "value": "13.4%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -644,10 +689,7 @@
         "label": "JavaScript, more than 60 lines",
         "value": "6.4%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 4
        },
@@ -655,10 +697,7 @@
         "label": "Python, more than 15 lines",
         "value": "60.8%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 3
        },
@@ -666,10 +705,7 @@
         "label": "Python, more than 30 lines",
         "value": "34.9%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 2
        },
@@ -677,10 +713,7 @@
         "label": "Python, more than 60 lines",
         "value": "16.5%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 2
        },
@@ -688,10 +721,7 @@
         "label": "TypeScript, more than 15 lines",
         "value": "54.9%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 3
        },
@@ -699,10 +729,7 @@
         "label": "TypeScript, more than 30 lines",
         "value": "33.1%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 3
        },
@@ -710,10 +737,7 @@
         "label": "TypeScript, more than 60 lines",
         "value": "7.5%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 4
        }
@@ -731,10 +755,7 @@
         "label": "JavaScript, complexity above 5",
         "value": "13.3%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -742,10 +763,7 @@
         "label": "JavaScript, complexity above 10",
         "value": "5.9%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 4
        },
@@ -753,10 +771,7 @@
         "label": "JavaScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        },
@@ -764,10 +779,7 @@
         "label": "Python, complexity above 5",
         "value": "37.6%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 1
        },
@@ -775,10 +787,7 @@
         "label": "Python, complexity above 10",
         "value": "17.1%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 1
        },
@@ -786,10 +795,7 @@
         "label": "Python, complexity above 25",
         "value": "3.9%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 1
        },
@@ -797,10 +803,7 @@
         "label": "TypeScript, complexity above 5",
         "value": "21.0%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 3
        },
@@ -808,10 +811,7 @@
         "label": "TypeScript, complexity above 10",
         "value": "5.4%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 4
        },
@@ -819,10 +819,7 @@
         "label": "TypeScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        }
@@ -839,10 +836,7 @@
         "label": "JavaScript, 3 or more parameters",
         "value": "2.3%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -850,10 +844,7 @@
         "label": "JavaScript, 5 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -861,10 +852,7 @@
         "label": "JavaScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
@@ -872,10 +860,7 @@
         "label": "Python, 3 or more parameters",
         "value": "25.9%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 2
        },
@@ -883,10 +868,7 @@
         "label": "Python, 5 or more parameters",
         "value": "5.8%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 2
        },
@@ -894,10 +876,7 @@
         "label": "Python, 7 or more parameters",
         "value": "1.1%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 3
        },
@@ -905,10 +884,7 @@
         "label": "TypeScript, 3 or more parameters",
         "value": "3.2%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -916,10 +892,7 @@
         "label": "TypeScript, 5 or more parameters",
         "value": "0.3%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -927,10 +900,7 @@
         "label": "TypeScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        }
@@ -946,12 +916,9 @@
       "rows": [
        {
         "label": "Python, fan-in above 10",
-        "value": "12.9%",
+        "value": "12.7%",
         "thresholds": {
-         "2": "≤ 13.0%",
-         "3": "≤ 10.7%",
-         "4": "≤ 9.7%",
-         "5": "≤ 7.4%"
+         "4": "≤ 9.7%"
         },
         "stars": 2
        },
@@ -959,10 +926,7 @@
         "label": "Python, fan-in above 20",
         "value": "6.2%",
         "thresholds": {
-         "2": "≤ 8.0%",
-         "3": "≤ 5.9%",
-         "4": "≤ 5.3%",
-         "5": "≤ 3.3%"
+         "4": "≤ 5.3%"
         },
         "stars": 2
        },
@@ -970,10 +934,31 @@
         "label": "Python, fan-in above 50",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 3.8%",
-         "3": "≤ 2.3%",
-         "4": "≤ 1.8%",
-         "5": "≤ 1.2%"
+         "4": "≤ 1.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 9.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 5.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 1.8%"
         },
         "stars": 5
        }
@@ -989,13 +974,20 @@
       "rows": [
        {
         "label": "Python",
-        "value": "59.7%",
+        "value": "60.7%",
         "thresholds": {
-         "4": "≥ 94.5%",
-         "5": "≥ 97.3%"
+         "4": "≥ 94.5%"
         },
         "stars": null,
         "starsText": "below 4 stars"
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "99.6%",
+        "thresholds": {
+         "4": "≥ 94.5%"
+        },
+        "stars": 5
        }
       ]
      },
@@ -1008,81 +1000,532 @@
       "rows": [
        {
         "label": "Python",
-        "value": "0.2821",
+        "value": "0.2734",
         "thresholds": {
-         "4": "≤ 0.075",
-         "5": "≤ 0.0375"
+         "4": "≤ 0.075"
         },
         "stars": null,
         "starsText": "below 4 stars"
+       },
+       {
+        "label": "js/ts/vue",
+        "value": "0",
+        "thresholds": {
+         "4": "≤ 0.075"
+        },
+        "stars": 5
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.02 to 2.18 (2 of 5 stars) over 761 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.40 to 2.45 (2 of 5 stars) over 761 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★★☆ 3.5 (javascript 5.0, python 3.5, typescript 3.4)",
      "Unit size: ★★★☆☆ 2.6 (javascript 4.3, python 2.4, typescript 2.6)",
      "Unit complexity: ★★☆☆☆ 1.9 (javascript 4.0, python 1.4, typescript 3.5)",
      "Unit interfacing: ★★☆☆☆ 2.3 (javascript 5.3, python 1.5, typescript 5.3)",
-     "Module coupling: ★★☆☆☆ 1.5 (python 1.5)",
-     "Component independence: ★☆☆☆☆ 1.3 (python 1.3)",
-     "Component entanglement: ★★☆☆☆ 1.6 (python 1.6)",
-     "Lever: module coupling in python, about 562 lines to fix for half a star",
+     "Module coupling: ★★☆☆☆ 2.3 (python 1.6, js/ts/vue 5.5)",
+     "Component independence: ★★☆☆☆ 2.0 (python 1.3, js/ts/vue 5.4)",
+     "Component entanglement: ★★☆☆☆ 2.4 (python 1.7, js/ts/vue 5.5)",
+     "Lever: module coupling in python, about 683 lines to fix for half a star",
      "Lever: duplication in python, about 810 lines to fix for half a star",
-     "Lever: unit size in python, about 1414 lines to fix for half a star"
+     "Lever: unit size in python, about 1414 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 1.8%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 6.1%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 6.7%"
     ],
     "requirementLevel": "recommended"
+   },
+   {
+    "id": "opentrack",
+    "title": "Maintainability, open track",
+    "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
+    "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
+    "status": "info",
+    "starRating": 3,
+    "rating": 2.6666666666666665,
+    "measurements": [
+     {
+      "id": "open-unit-size",
+      "title": "Unit size",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, more than 29 lines",
+        "value": "33.9%",
+        "thresholds": {
+         "2": "≤ 60.2%",
+         "3": "≤ 37.0%",
+         "4": "≤ 26.1%",
+         "5": "≤ 4.9%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, more than 42 lines",
+        "value": "21.8%",
+        "thresholds": {
+         "2": "≤ 46.7%",
+         "3": "≤ 24.3%",
+         "4": "≤ 14.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, more than 71 lines",
+        "value": "10.8%",
+        "thresholds": {
+         "2": "≤ 33.4%",
+         "3": "≤ 11.1%",
+         "4": "≤ 5.3%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, complexity above 5",
+        "value": "33.5%",
+        "thresholds": {
+         "2": "≤ 45.1%",
+         "3": "≤ 34.4%",
+         "4": "≤ 24.9%",
+         "5": "≤ 8.2%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, complexity above 7",
+        "value": "24.1%",
+        "thresholds": {
+         "2": "≤ 38.1%",
+         "3": "≤ 23.9%",
+         "4": "≤ 14.6%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, complexity above 10",
+        "value": "14.8%",
+        "thresholds": {
+         "2": "≤ 32.2%",
+         "3": "≤ 13.1%",
+         "4": "≤ 6.2%",
+         "5": "≤ 0.4%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, 3 or more parameters",
+        "value": "21.2%",
+        "thresholds": {
+         "2": "≤ 31.4%",
+         "3": "≤ 21.6%",
+         "4": "≤ 13.2%",
+         "5": "≤ 0.7%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, 4 or more parameters",
+        "value": "8.4%",
+        "thresholds": {
+         "2": "≤ 19.2%",
+         "3": "≤ 10.4%",
+         "4": "≤ 3.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, 5 or more parameters",
+        "value": "4.7%",
+        "thresholds": {
+         "2": "≤ 12.3%",
+         "3": "≤ 6.6%",
+         "4": "≤ 1.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     }
+    ],
+    "message": "Open-track rating 2.7 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "evidence": [
+     "Unit size: ★★★☆☆ 33.9% / 21.8% / 10.8% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★☆☆☆ 33.5% / 24.1% / 14.8% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★☆☆ 21.2% / 8.4% / 4.7% of the code above 2 / 3 / 4 parameters",
+     "Duplication: not measured",
+     "Module coupling: not measured",
+     "Component independence: not measured",
+     "Component entanglement: not measured",
+     "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "testcoderatio",
+    "title": "Test code ratio",
+    "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
+    "status": "warn",
+    "starRating": 3,
+    "message": "Test code ratio 85.8% (3 of 5 stars).",
+    "evidence": [
+     "Test code ratio: 85.8%",
+     "Test code: 70,350 lines in 375 files",
+     "Production code: 81,992 lines in 1,442 files",
+     "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
+    ],
+    "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opensourcehealth",
+    "title": "Open Source Health",
+    "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
+    "status": "pass",
+    "starRating": 5,
+    "rating": 4.7,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 3.49,
+     "activity": 3.49,
+     "licence": 5.5,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "12.8%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "1.9%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "1.4%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "2 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "8.1%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "5.7%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 4 years",
+        "value": "4.3%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "7 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Open Source Health 5 of 5 stars over 212 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★☆☆ >1.0y 12.8%, >2.0y 1.9%, >3.5y 1.4%, >5.0y count 2",
+     "Activity: ★★★☆☆ >1.0y 8.1%, >2.0y 5.7%, >4.0y 4.3%, >5.5y count 7",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★★★★★ 0 unmanaged of 212 dependencies"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "size",
+    "title": "Size",
+    "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
+    "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Not measured: scc 4.1.0 could not run.",
+    "evidence": [
+     "spawn scc ENOENT"
+    ]
+   },
+   {
+    "id": "duplication",
+    "title": "Duplication (open track)",
+    "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "referenceUrl": "https://github.com/kucherenko/jscpd",
+    "status": "warn",
+    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "evidence": [
+     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "coupling",
+    "title": "Coupling (open track)",
+    "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "info",
+    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "evidence": [
+     "Python: not measured: grimp 3.18 is not installed",
+     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+    ],
+    "openTrack": {
+     "coupling": {
+      "version": 1,
+      "languages": {
+       "python": {
+        "measured": false,
+        "reason": "grimp 3.18 is not installed",
+        "files": 550
+       },
+       "javascript": {
+        "measured": false,
+        "reason": "dependency-cruiser 17.4.3 is not installed",
+        "files": 211
+       }
+      }
+     }
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "fail",
-    "message": "Multiple risky coding patterns were detected (38 findings across 1675 scanned source files). Review them against OWASP secure coding guidance.",
+    "status": "warn",
+    "message": "Potential OWASP secure coding issues were detected (5 findings across 1340 scanned source files, failing from 14).",
     "evidence": [
      "Possible hardcoded secret: docker/openklant/seed_conversations.py",
-     "Possible hardcoded secret: src/notifications/tests/test_admin.py",
-     "Possible hardcoded secret: src/notifications/tests/test_migrations.py",
-     "Possible hardcoded secret: src/notifications/tests/test_notification_record.py",
-     "Possible hardcoded secret: src/notifications/tests/test_prune.py",
-     "Possible hardcoded secret: src/notifications/tests/test_webhook.py",
-     "Possible hardcoded secret: src/open_inwoner/accounts/tests/test_oidc_login_e2e.py",
-     "Possible hardcoded secret: src/open_inwoner/accounts/tests/test_profile_views.py",
      "Weak hash algorithm: src/open_inwoner/cms/utils/page_setup.py",
-     "Dynamic code execution: src/open_inwoner/components/tests/abstract.py",
-     "Possible hardcoded secret: src/open_inwoner/configurations/tests/bootstrap/test_setup_kvk_config.py",
-     "Possible hardcoded secret: src/open_inwoner/configurations/tests/test_default_user_configuration.py",
-     "Dynamic code execution: src/open_inwoner/js/admin/django-better-admin-arrayfield/index.js",
-     "Dynamic code execution: src/open_inwoner/js/components/FilterBar/filterbar.js",
-     "Dynamic code execution: src/open_inwoner/js/components/FilterBar/multiselect_listbox_checkbox.js",
      "Unsafe HTML injection: src/open_inwoner/js/components/FilterBar/multiselect_listbox_checkbox.js",
-     "Unsafe HTML injection: src/open_inwoner/js/components/bfcache-reload/index.spec.ts",
      "Unsafe HTML injection: src/open_inwoner/js/components/card/ToggleHide.js",
-     "Dynamic code execution: src/open_inwoner/js/components/datepicker/index.js",
-     "Unsafe HTML injection: src/open_inwoner/js/components/form/FileInput.js",
-     "Dynamic code execution: src/open_inwoner/js/components/index.js",
-     "Unsafe HTML injection: src/open_inwoner/js/components/map/index.spec.js",
-     "Dynamic code execution: src/open_inwoner/js/components/session/index.js",
-     "Dynamic code execution: src/open_inwoner/js/components/siteimprove/error-tracking.js",
-     "Dynamic code execution: src/open_inwoner/js/components/siteimprove/tracking.js",
-     "Unsafe HTML injection: src/open_inwoner/js/components/spinner/index.spec.ts",
-     "Dynamic code execution: src/open_inwoner/js/components/twofactor-sms/index.js",
-     "Possible hardcoded secret: src/open_inwoner/laposta/tests/test_client.py",
-     "Possible hardcoded secret: src/open_inwoner/laposta/tests/test_forms.py",
-     "Possible hardcoded secret: src/open_inwoner/openklant/tests/factories.py",
-     "Weak hash algorithm: src/open_inwoner/openzaak/tests/test_cases.py",
-     "Possible hardcoded secret: src/open_inwoner/openzaak/tests/test_notification_webhook.py",
-     "Possible hardcoded secret: src/open_inwoner/openzaak/tests/test_process_zaken_notification_task.py",
-     "Possible hardcoded secret: src/open_inwoner/openzaak/tests/test_send_mock_notification_command.py",
-     "Unsafe HTML injection: src/open_inwoner/react/components/Action/Action.spec.tsx",
-     "Unsafe HTML injection: src/open_inwoner/react/components/Paragraph/Paragraph.spec.tsx",
-     "Unsafe HTML injection: src/open_inwoner/react/lib/json/test-lib-json.spec.ts",
-     "Unsafe HTML injection: src/open_inwoner/react/lib/web-component/loader.spec.tsx"
+     "Unsafe HTML injection: src/open_inwoner/js/components/form/FileInput.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 3
    },
    {
     "id": "adrvalidator",
@@ -1134,6 +1577,31 @@
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
     "requirementLevel": "mandatory",
     "starRating": 5
+   },
+   {
+    "id": "secretscanning",
+    "title": "No committed secrets",
+    "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
+    "status": "warn",
+    "message": "Secret scanning could not run.",
+    "evidence": [
+     "gitleaks is not installed on the checker host."
+    ],
+    "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "openssfscorecard",
+    "title": "OpenSSF Scorecard",
+    "description": "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API and rates it from 1 to 5 stars. The star bands are this checker's own: 9 or higher is 5 stars, 7 or higher is 4, 5 or higher is 3, 3 or higher is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
+    "status": "info",
+    "message": "This repository is not in the OpenSSF Scorecard dataset. The project can publish a score by running the OpenSSF Scorecard GitHub Action (ossf/scorecard-action).",
+    "evidence": [
+     "https://github.com/ossf/scorecard-action"
+    ],
+    "referenceUrl": "https://scorecard.dev",
+    "requirementLevel": "recommended"
    },
    {
     "id": "semver",
@@ -1205,42 +1673,7 @@
      "Found path segment \"admin\" in src/open_inwoner/js/admin/treebeard/index.js",
      "Found path segment \"admin\" in src/open_inwoner/media/admin/__init__.py",
      "Found path segment \"admin\" in src/open_inwoner/media/admin/video.py",
-     "Found path segment \"admin\" in src/open_inwoner/pdc/admin/__init__.py",
-     "Found path segment \"admin\" in src/open_inwoner/pdc/admin/category.py",
-     "Found path segment \"admin\" in src/open_inwoner/pdc/admin/faq.py",
-     "Found path segment \"admin\" in src/open_inwoner/pdc/admin/mixins.py",
-     "Found path segment \"admin\" in src/open_inwoner/pdc/admin/neighbourhood.py",
-     "Found path segment \"admin\" in src/open_inwoner/pdc/admin/organization.py",
-     "Found path segment \"admin\" in src/open_inwoner/pdc/admin/product.py",
-     "Found path segment \"admin\" in src/open_inwoner/pdc/admin/tag.py",
-     "Found path segment \"admin\" in src/open_inwoner/scss/admin/_admin_theme.scss",
-     "Found path segment \"admin\" in src/open_inwoner/scss/admin/_app_overrides.scss",
-     "Found path segment \"admin\" in src/open_inwoner/scss/admin/_django-prosemirror-overrides.scss",
-     "Found path segment \"admin\" in src/open_inwoner/scss/admin/_vars.scss",
-     "Found path segment \"admin\" in src/open_inwoner/scss/admin/admin_overrides.scss",
-     "Found path segment \"admin\" in src/open_inwoner/scss/admin/themes",
-     "Found path segment \"admin\" in src/open_inwoner/scss/admin/themes/_dark.scss",
-     "Found path segment \"admin\" in src/open_inwoner/scss/admin/themes/_light.scss",
-     "Found path segment \"admin\" in src/open_inwoner/static/img/admin/calendar-alt-regular.svg",
-     "Found path segment \"admin\" in src/open_inwoner/static/img/admin/clock-regular.svg",
-     "Found path segment \"admin\" in src/open_inwoner/static/img/admin/edit-regular.svg",
-     "Found path segment \"admin\" in src/open_inwoner/static/img/admin/plus-square-regular.svg",
-     "Found path segment \"admin\" in src/open_inwoner/static/img/admin/trash-alt-regular.svg",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/base_site.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/catalogusconfig_change_list.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/category_change_list.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/category_import.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/import_zgw_export_form.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/menu_icons.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/openklant",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/openklant/klantensysteemconfig",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/openklant/klantensysteemconfig/change_form.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/product_import.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/widgets",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/widgets/map.html",
-     "Found path segment \"admin\" in src/open_inwoner/templates/admin/zaaktypeconfig_change_list.html",
-     "Found \"integration\" in repository metadata and docs",
-     "Found \"database\" in repository metadata and docs"
+     "... and 36 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
@@ -1266,7 +1699,7 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Docker Hub maykinmedia/open-inwoner: 76,323 pulls in total (2026-11-20)",
+     "Docker Hub maykinmedia/open-inwoner: 76,378 pulls in total (2026-11-20)",
      "GitHub maykinmedia/open-inwoner: 4 stars, 8 forks, 2 watchers (2026-11-20)",
      "GitHub commits maykinmedia/open-inwoner: 11 contributors, 9 from the owning organisation, 0 from other organisations, 2 unknown (2026-11-20)"
     ],
@@ -1283,7 +1716,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 76323
+         "value": 76378
         }
        ]
       },
@@ -1638,10 +2071,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 13.9,
+  "durationSeconds": 15.4,
   "scanMode": "full",
   "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
+  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

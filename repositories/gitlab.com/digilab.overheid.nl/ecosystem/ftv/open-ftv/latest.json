@@ -50,10 +50,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:35:24.169Z",
+  "lastCheckedAt": "2026-11-20T09:03:16.666Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:03:37.938Z",
-  "updatedAt": "2026-11-20T06:35:24.169Z",
+  "updatedAt": "2026-11-20T09:03:16.666Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -64,28 +64,28 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T06-35-24-169Z",
+  "id": "2026-11-20T09-03-16-666Z",
   "repoId": "gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:35:24.169Z",
-  "createdAt": "2026-11-20T06:35:24.169Z",
+  "checkedAt": "2026-11-20T09:03:16.666Z",
+  "createdAt": "2026-11-20T09:03:16.666Z",
   "version": "v0.8.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v0.8.0",
   "scannedRefKind": "release",
   "scannedCommit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247",
-  "score": 50,
-  "rating": 2.4,
+  "score": 65,
+  "rating": 3.1,
   "categoryRatings": {
-   "Governance": 2.4,
-   "Security": 1.3,
+   "Governance": 2,
+   "Security": 3.5,
    "Architecture": 3,
-   "Software Quality": 2.5,
+   "Software Quality": 3.5,
    "Deployment & Operations": 3.3
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 5.5
+    "rating": 3.8
    },
    "ownership": {
     "rating": 1.8
@@ -105,7 +105,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -123,10 +123,10 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": null
+    "rating": 3
    },
    "secure-coding": {
-    "rating": 0.5
+    "rating": 5.5
    },
    "supply-chain": {
     "rating": 3
@@ -144,19 +144,22 @@
     "rating": 1.7
    },
    "modifiability": {
-    "rating": 1.7
+    "rating": 3
    },
    "testability": {
-    "rating": 1.5
+    "rating": 3.5
    },
    "modularity": {
-    "rating": null
+    "rating": 5.5
    },
    "reusability": {
     "rating": 3.4
    },
    "testing": {
-    "rating": 4.3
+    "rating": 4.2
+   },
+   "size": {
+    "rating": null
    },
    "containerisation": {
     "rating": 1,
@@ -173,17 +176,14 @@
     "Mandatory criterion fails: publiccode.yml Metadata File",
     "Mandatory criterion fails: Docker support",
     "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
-    "Mandatory criterion fails: OWASP Secure Coding",
     "Mandatory criterion fails: API Design Rules",
-    "Overall rating below 2.5",
     "No publiccode.yml was found, so there is no maintenance contract.",
-    "Maintainability below 4 stars (1.96)"
+    "Maintainability below 4 stars (3.17)"
    ]
   },
   "issueCounts": {
-   "errors": 7,
-   "warnings": 10
+   "errors": 4,
+   "warnings": 13
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -212,11 +212,6 @@
      "Files analyzed: 5,055"
     ],
     "referenceUrl": "https://commonground.nl",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -228,11 +223,6 @@
     "message": "Component is not marked as a register; OpenAPI specification check is not required.",
     "evidence": [],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -246,11 +236,6 @@
      "LICENSE.md"
     ],
     "referenceUrl": "https://opensource.org/licenses",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -264,13 +249,21 @@
      "EUPL"
     ],
     "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
+   },
+   {
+    "id": "licenceconsistency",
+    "title": "Licence consistency",
+    "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
+    "evidence": [
+     "LICENSE.md: EUPL-1.2"
+    ],
+    "referenceUrl": "https://spdx.org/licenses/",
+    "status": "warn",
+    "message": "Only one licence declaration found (LICENSE.md: EUPL-1.2); nothing to compare it with. Declare the licence in the package manifest and publiccode.yml as well.",
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "copyrightowner",
@@ -281,13 +274,40 @@
     "message": "Could not detect a probable copyright owner from repository metadata or common legal files (confidence: low).",
     "evidence": [],
     "referenceUrl": "https://opensource.guide/legal/",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
+   },
+   {
+    "id": "spdxheaders",
+    "title": "SPDX licence headers",
+    "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
+    "referenceUrl": "https://reuse.software/spec/",
+    "status": "fail",
+    "starRating": 1,
+    "message": "0.0% of 957 source files carry an SPDX header (1 of 5 stars). 957 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "evidence": [
+     "apps/laadpalen-applicatie/cmd/main.go",
+     "apps/laadpalen-applicatie/config/config.go",
+     "apps/laadpalen-applicatie/config/config_test.go",
+     "apps/laadpalen-applicatie/config/log.go",
+     "apps/laadpalen-applicatie/eslint.config.js",
+     "apps/laadpalen-applicatie/postcss.config.js",
+     "apps/laadpalen-applicatie/public/runtime-env.js",
+     "apps/laadpalen-applicatie/server/demoreset.go",
+     "apps/laadpalen-applicatie/server/demoreset_test.go",
+     "apps/laadpalen-applicatie/server/health.go",
+     "apps/laadpalen-applicatie/server/router.go",
+     "apps/laadpalen-applicatie/server/router_test.go",
+     "apps/laadpalen-applicatie/server/server.go",
+     "apps/laadpalen-applicatie/server/server_test.go",
+     "apps/laadpalen-applicatie/src/App.tsx",
+     "apps/laadpalen-applicatie/src/components/AddressMap.tsx",
+     "apps/laadpalen-applicatie/src/components/ApplicationForm.tsx",
+     "apps/laadpalen-applicatie/src/components/DemoReset.tsx",
+     "apps/laadpalen-applicatie/src/components/Header.tsx",
+     "apps/laadpalen-applicatie/src/components/ui/alert-dialog.tsx"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "publiccode",
@@ -297,11 +317,6 @@
     "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
     "evidence": [],
     "referenceUrl": "https://standard.publiccode.net/criteria/",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 1
    },
@@ -321,18 +336,14 @@
     "title": "Docker support",
     "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
     "status": "fail",
-    "message": "Dockerfile found but no docker-compose file. A docker-compose file is required for this checker.",
+    "message": "Docker-compose file found but no Dockerfile detected. A Dockerfile is required. Dockerfiles outside the repository root and the conventional build directories (docker/, build/, deploy/, .docker/, container/, docker/<repository-name>/) do not count, because they usually build sidecars or tooling rather than the component.",
     "evidence": [
-     "apps/pep-kong/Dockerfile",
-     "docker/keycloak/Dockerfile",
-     "(Helm chart)"
+     "docker/compose-integration-tests.yaml",
+     "docker/compose.yaml",
+     "(Helm chart)",
+     "other Dockerfiles found: apps/pep-kong/Dockerfile, docker/keycloak/Dockerfile"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 1
    },
@@ -341,7 +352,7 @@
     "title": "Available Docker image",
     "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
     "status": "fail",
-    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
+    "message": "No Docker image location was provided, no compose file or Helm values in the repository reference an image of this repository, and the README and docs name no image of it that the registry confirms. Add a registry/repository URL for the published image.",
     "evidence": [],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
@@ -357,11 +368,6 @@
      ".gitlab-ci.yml"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -373,11 +379,6 @@
     "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
     "evidence": [],
     "referenceUrl": "https://www.cisa.gov/sbom",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -412,11 +413,6 @@
      "apps/manager/ui/README.md"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -428,11 +424,6 @@
     "message": "No changelog file was found. Add a CHANGELOG.md, NEWS.md, or equivalent to document release history.",
     "evidence": [],
     "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "recommended",
     "starRating": 3
    },
@@ -455,11 +446,6 @@
      "apps/manager/ui/src/routes/beslispunten/$id/-lib/summary.test.ts"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -479,41 +465,35 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 2.25 (threshold: 15); Max CCN 39.00 (threshold: 30). Threshold exceeded: MaxCCN 39.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 2.89 (threshold: 15); Max CCN 39.00 (threshold: 30). Threshold exceeded: MaxCCN 39.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.25 (threshold: 15)",
+     "Average CCN: 2.89 (threshold: 15)",
      "Max CCN: 39.00 (threshold: 30)",
-     "3      1     18      1       3 dsnError@47-49@/tmp/cgchecker-repo-Jz6CpI/repo/utilities/storage/postgresql/pool/pool.go",
-     "3      1     59      1       3 baseError@51-53@/tmp/cgchecker-repo-Jz6CpI/repo/utilities/storage/postgresql/pool/pool.go",
-     "4      1     41      1       4 connectionError@55-58@/tmp/cgchecker-repo-Jz6CpI/repo/utilities/storage/postgresql/pool/pool.go",
-     "27      2    145      1      43 TestErrors2@92-134@/tmp/cgchecker-repo-Jz6CpI/repo/utilities/storage/postgresql/pool/pool_test.go",
-     "4      1     40      2       4 error@120-123@/tmp/cgchecker-repo-Jz6CpI/repo/eam/bundles/run.go",
-     "38      2    207      1      58 TestRunner_Error@135-192@/tmp/cgchecker-repo-Jz6CpI/repo/eam/bundles/run_test.go"
+     "16      5     88      1      17 policyWriteError@56-72@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/storage/policies.go",
+     "3      1     23      0       3 Error@126-128@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/management/decision_point.go",
+     "6      4     58      1       6 stateWithoutError@56-61@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/ui/src/auth/useSession.ts",
+     "2      2     19      0       2 reader.onerror@35-36@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/ui/src/routes/instellingen/index.tsx",
+     "5      1     48      1       5 OtherAddressWarning@5-9@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/ui/src/routes/beslispunten/$id/-components/OtherAddressWarning.tsx",
+     "11      5     59      1      13 lookupErrorMessage@80-92@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/ui/src/utilities/errorMessages.ts"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
-    "requirementLevel": "mandatory",
-    "starRating": 1
+    "requirementLevel": "informative"
    },
    {
     "id": "maintainability",
     "title": "Maintainability (ISO 25010)",
     "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
-    "status": "fail",
-    "starRating": 2,
-    "rating": 1.96,
+    "status": "warn",
+    "starRating": 3,
+    "rating": 3.175,
     "aspectRatings": {
      "analysability": 1.69,
-     "modifiability": 1.71,
-     "testability": 1.49,
-     "modularity": null,
+     "modifiability": 2.97,
+     "testability": 3.49,
+     "modularity": 5.5,
      "reusability": 3.37
     },
     "measurements": [
@@ -529,10 +509,7 @@
         "label": "JavaScript",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        },
@@ -540,10 +517,7 @@
         "label": "TypeScript",
         "value": "18.2%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 2
        }
@@ -561,10 +535,7 @@
         "label": "JavaScript, more than 15 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
@@ -572,10 +543,7 @@
         "label": "JavaScript, more than 30 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -583,10 +551,7 @@
         "label": "JavaScript, more than 60 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        },
@@ -594,10 +559,7 @@
         "label": "TypeScript, more than 15 lines",
         "value": "57.6%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 3
        },
@@ -605,10 +567,7 @@
         "label": "TypeScript, more than 30 lines",
         "value": "45.1%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 2
        },
@@ -616,10 +575,7 @@
         "label": "TypeScript, more than 60 lines",
         "value": "30.3%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 1
        }
@@ -637,10 +593,7 @@
         "label": "JavaScript, complexity above 5",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -648,10 +601,7 @@
         "label": "JavaScript, complexity above 10",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 5
        },
@@ -659,10 +609,7 @@
         "label": "JavaScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        },
@@ -670,10 +617,7 @@
         "label": "TypeScript, complexity above 5",
         "value": "32.2%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 2
        },
@@ -681,10 +625,7 @@
         "label": "TypeScript, complexity above 10",
         "value": "12.8%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 2
        },
@@ -692,10 +633,7 @@
         "label": "TypeScript, complexity above 25",
         "value": "5.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 1
        }
@@ -712,10 +650,7 @@
         "label": "JavaScript, 3 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -723,10 +658,7 @@
         "label": "JavaScript, 5 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -734,10 +666,7 @@
         "label": "JavaScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
@@ -745,10 +674,7 @@
         "label": "TypeScript, 3 or more parameters",
         "value": "2.5%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -756,10 +682,7 @@
         "label": "TypeScript, 5 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -767,136 +690,520 @@
         "label": "TypeScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue, fan-in above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 9.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 5.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 1.8%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue",
+        "value": "100.0%",
+        "thresholds": {
+         "4": "≥ 94.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue",
+        "value": "0",
+        "thresholds": {
+         "4": "≤ 0.075"
         },
         "stars": 5
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 1.86 to 2.06 (2 of 5 stars) over 160 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 2.95 to 3.40 (3 of 5 stars) over 160 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★☆☆☆ 1.9 (javascript 5.5, typescript 1.9)",
      "Unit size: ★☆☆☆☆ 1.4 (javascript 5.5, typescript 1.4)",
      "Unit complexity: ★☆☆☆☆ 1.5 (javascript 5.5, typescript 1.5)",
      "Unit interfacing: ★★★★★ 5.3 (javascript 5.5, typescript 5.3)",
-     "Lever: unit complexity in typescript, about 157 lines to fix for half a star",
+     "Module coupling: ★★★★★ 5.5 (js/ts/vue 5.5)",
+     "Component independence: ★★★★★ 5.5 (js/ts/vue 5.5)",
+     "Component entanglement: ★★★★★ 5.5 (js/ts/vue 5.5)",
      "Lever: unit size in typescript, about 521 lines to fix for half a star",
-     "Lever: duplication in typescript, about 760 lines to fix for half a star"
+     "Lever: unit complexity in typescript, about 157 lines to fix for half a star",
+     "Lever: duplication in typescript, about 760 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 18.2%"
     ],
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "recommended"
+   },
+   {
+    "id": "opentrack",
+    "title": "Maintainability, open track",
+    "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
+    "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
+    "status": "info",
+    "starRating": 3,
+    "rating": 3,
+    "measurements": [
+     {
+      "id": "open-unit-size",
+      "title": "Unit size",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, more than 29 lines",
+        "value": "46.6%",
+        "thresholds": {
+         "2": "≤ 60.2%",
+         "3": "≤ 37.0%",
+         "4": "≤ 26.1%",
+         "5": "≤ 4.9%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, more than 42 lines",
+        "value": "37.3%",
+        "thresholds": {
+         "2": "≤ 46.7%",
+         "3": "≤ 24.3%",
+         "4": "≤ 14.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, more than 71 lines",
+        "value": "25.5%",
+        "thresholds": {
+         "2": "≤ 33.4%",
+         "3": "≤ 11.1%",
+         "4": "≤ 5.3%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, complexity above 5",
+        "value": "32.1%",
+        "thresholds": {
+         "2": "≤ 45.1%",
+         "3": "≤ 34.4%",
+         "4": "≤ 24.9%",
+         "5": "≤ 8.2%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, complexity above 7",
+        "value": "22.4%",
+        "thresholds": {
+         "2": "≤ 38.1%",
+         "3": "≤ 23.9%",
+         "4": "≤ 14.6%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, complexity above 10",
+        "value": "12.8%",
+        "thresholds": {
+         "2": "≤ 32.2%",
+         "3": "≤ 13.1%",
+         "4": "≤ 6.2%",
+         "5": "≤ 0.4%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, 3 or more parameters",
+        "value": "2.5%",
+        "thresholds": {
+         "2": "≤ 31.4%",
+         "3": "≤ 21.6%",
+         "4": "≤ 13.2%",
+         "5": "≤ 0.7%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, 4 or more parameters",
+        "value": "0.5%",
+        "thresholds": {
+         "2": "≤ 19.2%",
+         "3": "≤ 10.4%",
+         "4": "≤ 3.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 12.3%",
+         "3": "≤ 6.6%",
+         "4": "≤ 1.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Open-track rating 3.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "evidence": [
+     "Unit size: ★★☆☆☆ 46.6% / 37.3% / 25.5% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★☆☆ 32.1% / 22.4% / 12.8% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★★☆ 2.5% / 0.5% / 0.0% of the code above 2 / 3 / 4 parameters",
+     "Duplication: not measured",
+     "Module coupling: not measured",
+     "Component independence: not measured",
+     "Component entanglement: not measured",
+     "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "testcoderatio",
+    "title": "Test code ratio",
+    "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
+    "status": "pass",
+    "starRating": 4,
+    "message": "Test code ratio 111.9% (4 of 5 stars).",
+    "evidence": [
+     "Test code ratio: 111.9%",
+     "Test code: 46,258 lines in 338 files",
+     "Production code: 41,346 lines in 617 files",
+     "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
+    ],
+    "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opensourcehealth",
+    "title": "Open Source Health",
+    "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": null
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Open Source Health 5 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: not rated (data unavailable)"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "size",
+    "title": "Size",
+    "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
+    "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Not measured: scc 4.1.0 could not run.",
+    "evidence": [
+     "spawn scc ENOENT"
+    ]
+   },
+   {
+    "id": "duplication",
+    "title": "Duplication (open track)",
+    "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "referenceUrl": "https://github.com/kucherenko/jscpd",
+    "status": "warn",
+    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "evidence": [
+     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "coupling",
+    "title": "Coupling (open track)",
+    "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "info",
+    "message": "Not measured: JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "evidence": [
+     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+    ],
+    "openTrack": {
+     "coupling": {
+      "version": 1,
+      "languages": {
+       "javascript": {
+        "measured": false,
+        "reason": "dependency-cruiser 17.4.3 is not installed",
+        "files": 160
+       }
+      }
+     }
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "fail",
-    "message": "Multiple risky coding patterns were detected (5 findings across 955 scanned source files). Review them against OWASP secure coding guidance.",
+    "status": "pass",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 617 scanned source files.",
     "evidence": [
-     "Possible hardcoded secret: apps/laadpalen-applicatie/server/demoreset_test.go",
-     "Possible hardcoded secret: apps/manager/server/server_adl_entries_test.go",
-     "Possible hardcoded secret: apps/manager/server/server_decision_points_get_test.go",
-     "Possible hardcoded secret: apps/manager/ui/src/lib/monaco/cedar-language.ts",
-     "Possible hardcoded secret: apps/manager/ui/src/lib/monaco/rego-language.ts"
+     "apps/laadpalen-applicatie/cmd/main.go",
+     "apps/laadpalen-applicatie/config/config.go",
+     "apps/laadpalen-applicatie/config/log.go",
+     "apps/laadpalen-applicatie/eslint.config.js",
+     "apps/laadpalen-applicatie/postcss.config.js",
+     "apps/laadpalen-applicatie/public/runtime-env.js",
+     "apps/laadpalen-applicatie/server/demoreset.go",
+     "apps/laadpalen-applicatie/server/health.go",
+     "apps/laadpalen-applicatie/server/router.go",
+     "apps/laadpalen-applicatie/server/server.go"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "adrvalidator",
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "fail",
-    "message": "API Design Rules violations found across 8 specification(s): 50 issue(s).",
+    "message": "API Design Rules violations found across 8 specification(s): 16 error(s), 34 warning(s), 0 info, 0 hint(s).",
     "evidence": [
      "API specification was auto-discovered by the checker: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AccessDenied.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AlreadyExists.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.Conflict.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.UnexpectedError.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "ERROR [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AccessDenied.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AlreadyExists.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.Conflict.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.UnexpectedError.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/attributes/openapi.yaml)",
      "API specification was auto-discovered by the checker: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AccessDenied.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.UnexpectedError.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
+     "ERROR [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AccessDenied.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.UnexpectedError.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authlog/openapi.yaml)",
      "API specification was auto-discovered by the checker: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AccessDenied.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
+     "ERROR [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AccessDenied.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/authzen/openapi.yaml)",
      "API specification was auto-discovered by the checker: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthenticated.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
+     "ERROR [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthenticated.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/bundles/openapi.yaml)",
      "API specification was auto-discovered by the checker: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/errors/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/errors/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/errors/openapi.yaml)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.ErrorResponse (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/errors/openapi.yaml)",
+     "ERROR [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/errors/openapi.yaml)",
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/errors/openapi.yaml)",
+     "WARNING [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.ErrorResponse (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/errors/openapi.yaml)",
      "API specification was auto-discovered by the checker: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.UnexpectedError.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.ServiceUnavailable.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml)",
-     "API specification was auto-discovered by the checker: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml",
-     "Discovery source: auto-discovered",
-     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AccessDenied.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotFound.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AlreadyExists.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.Conflict.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.UnexpectedError.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/policies/openapi.yaml)",
-     "API specification was auto-discovered by the checker: https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/settings/openapi.yaml",
-     "Discovery source: auto-discovered",
-     "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/settings/openapi.yaml)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/settings/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.BadRequest.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/settings/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.NotAuthorized.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/settings/openapi.yaml)",
-     "ERROR [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ components.responses.AccessDenied.content (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/settings/openapi.yaml)"
+     "ERROR [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml)",
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv/-/raw/eef675ac2fb1b014dd1f224b2cd0c7fb81541247/oas/liveness/openapi.yaml)",
+     "... and 24 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -912,11 +1219,6 @@
      "CONTRIBUTING.md"
     ],
     "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -928,11 +1230,6 @@
     "message": "No Code of Conduct file found. Add CODE_OF_CONDUCT.md to clarify community behavior standards.",
     "evidence": [],
     "referenceUrl": "https://opensource.guide/code-of-conduct/",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -944,13 +1241,31 @@
     "message": "No SECURITY.md file found. Add one to document responsible vulnerability disclosure and supported versions.",
     "evidence": [],
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
+   },
+   {
+    "id": "secretscanning",
+    "title": "No committed secrets",
+    "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
+    "status": "warn",
+    "message": "Secret scanning could not run.",
+    "evidence": [
+     "gitleaks is not installed on the checker host."
+    ],
+    "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "openssfscorecard",
+    "title": "OpenSSF Scorecard",
+    "description": "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API and rates it from 1 to 5 stars. The star bands are this checker's own: 9 or higher is 5 stars, 7 or higher is 4, 5 or higher is 3, 3 or higher is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
+    "status": "info",
+    "message": "Scorecard covers GitHub repositories only.",
+    "evidence": [],
+    "referenceUrl": "https://scorecard.dev",
+    "requirementLevel": "recommended"
    },
    {
     "id": "semver",
@@ -1022,491 +1337,10 @@
      "Found path segment \"ui\" in apps/laadpalen-applicatie/src/components/ui/select.tsx",
      "Found path segment \"ui\" in apps/laadpalen-applicatie/src/components/ui/sonner.tsx",
      "Found path segment \"ui\" in apps/laadpalen-applicatie/src/components/ui/textarea.tsx",
-     "Found path segment \"ui\" in apps/laadpalen-applicatie/src/components/ui/tooltip.tsx",
-     "Found path segment \"web\" in apps/laadpalen-applicatie/web/embed.go",
-     "Found path segment \"ui\" in apps/manager/ui/.gitignore",
-     "Found path segment \"ui\" in apps/manager/ui/.npmrc",
-     "Found path segment \"ui\" in apps/manager/ui/README.md",
-     "Found path segment \"ui\" in apps/manager/ui/eslint.config.js",
-     "Found path segment \"ui\" in apps/manager/ui/index.html",
-     "Found path segment \"ui\" in apps/manager/ui/package-lock.json",
-     "Found path segment \"ui\" in apps/manager/ui/package.json",
-     "Found path segment \"ui\" in apps/manager/ui/public/favicon-96x96.png",
-     "Found path segment \"ui\" in apps/manager/ui/public/fonts/FiraSans-Bold.ttf",
-     "Found path segment \"ui\" in apps/manager/ui/public/fonts/FiraSans-Italic.ttf",
-     "Found path segment \"ui\" in apps/manager/ui/public/fonts/FiraSans-Light.ttf",
-     "Found path segment \"ui\" in apps/manager/ui/public/fonts/FiraSans-Medium.ttf",
-     "Found path segment \"ui\" in apps/manager/ui/public/fonts/FiraSans-Regular.ttf",
-     "Found path segment \"ui\" in apps/manager/ui/redocly.yaml",
-     "Found path segment \"ui\" in apps/manager/ui/src/api/client/base.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/capabilities.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/capabilities.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/oauthErrors.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/oidc.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/principal.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/principal.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/profile.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/profile.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/retryWhenBack.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/retryWhenBack.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/useCapabilities.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/useProfile.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/useSession.test.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/auth/useSession.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/alert.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/badge.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/breadcrumb.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/button.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/card.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/code.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/condensed-grid.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/copy-button.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/decision-points-editor.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/description-list.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/divider.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/dot.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/fieldset.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/grid.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/header.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/heading.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/icon-button.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/info-tip.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/input.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/link.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/monaco-editor.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/navbar.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/required-field.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/select.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/sidebar-layout.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/sidebar.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/spec-link.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/syntax-error-alert.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/text.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/components/ui/textarea.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/config/env.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/config/menu.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/index.css",
-     "Found path segment \"ui\" in apps/manager/ui/src/lib/monaco/cedar-language.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/lib/monaco/rego-language.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/main.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/oas/attributes.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/oas/authlog.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/oas/bundles.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/oas/policies.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/oas/settings.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routeTree.gen.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/__root.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/attributen/$key/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/attributen/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/attributen/toevoegen.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/CheckTime.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/CodeOrDash.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/ConfigurationCard.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/DecisionPointHeader.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/DecisionPointPage.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/ExternalDecisionPoint.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/FieldList.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/HttpStatusBadge.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/InternalDecisionPoint.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/MetadataCard.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/OtherAddressWarning.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/Panel.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/ResponseDialog.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/SectionCard.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/StatusActions.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/StatusIcon.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/StatusPanel.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-components/statusBorders.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-constants/links.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-constants/texts.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-hooks/useMinimumRefresh.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-lib/format.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-lib/format.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-lib/summary.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/-lib/summary.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/$id/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-components/PolicyCountLink.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-components/StatusDot.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-components/list/DecisionPointsGrid.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-components/list/PolicyCountCell.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-components/list/StatusCell.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-components/list/UrlCell.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-components/list/columns.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-components/list/rowEvents.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-constants/texts.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-hooks/useDecisionPointStatus.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-hooks/usePolicyCount.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-lib/metadata.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-lib/metadata.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-lib/policyCounts.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-lib/policyCounts.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-lib/status.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/-lib/status.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/beslispunten/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/instellingen/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/logboek/$id/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/logboek/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/policies/$id/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/policies/-hooks/useDecisionPointFilter.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/policies/-lib/decisionPointFilter.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/policies/-lib/decisionPointFilter.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/policies/add.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/policies/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/profiel/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/routes/publicaties/index.tsx",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/attributes.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/authlog.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/bundles.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/decision.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/decision.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/decisionPoints.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/decisionPoints.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/policies.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/services/settings.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/utilities/attributeValue.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/utilities/attributeValue.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/utilities/color.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/utilities/datetime.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/utilities/errorMessages.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/utilities/syntaxMarkers.test.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/utilities/syntaxMarkers.ts",
-     "Found path segment \"ui\" in apps/manager/ui/src/vite-env.d.ts",
-     "Found path segment \"ui\" in apps/manager/ui/tsconfig.app.json",
-     "Found path segment \"ui\" in apps/manager/ui/tsconfig.json",
-     "Found path segment \"ui\" in apps/manager/ui/tsconfig.node.json",
-     "Found path segment \"ui\" in apps/manager/ui/vite.config.ts",
-     "Found path segment \"ui\" in apps/manager/ui/web/embed.go",
-     "Found \"ui\" in repository metadata and docs",
-     "Found path segment \"storage\" in apps/manager/storage/queries",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare",
-     "Found path segment \"data\" in apps/mock-dataspace/data/context",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering",
-     "Found path segment \"data\" in apps/mock-dataspace/data/matching",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader/models",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/joins",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming",
-     "Found path segment \"data\" in apps/mock-dataspace/data/writer",
-     "Found path segment \"data\" in apps/mock-dataspace/data/writer/csv",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/manager/data/attributes",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/manager/data/entities",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/pdp1/data/atributes",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/pdp1/data/entities",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/pdp2/data/atributes",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/pdp2/data/entities",
-     "Found path segment \"data\" in demo/rdw/manager/data/attributes",
-     "Found path segment \"data\" in demo/rdw/manager/data/entities",
-     "Found path segment \"data\" in demo/rdw/pdp1/data/atributes",
-     "Found path segment \"data\" in demo/rdw/pdp1/data/entities",
-     "Found path segment \"data\" in demo/rvig/manager/data/attributes",
-     "Found path segment \"data\" in demo/rvig/manager/data/entities",
-     "Found path segment \"data\" in demo/rvig/pdp1/data/atributes",
-     "Found path segment \"data\" in demo/rvig/pdp1/data/entities",
-     "Found path segment \"storage\" in utilities/storage/postgresql",
-     "Found path segment \"storage\" in utilities/storage/postgresql/pool",
-     "Found path segment \"storage\" in utilities/storage/valkeyrie",
-     "Found path segment \"storage\" in utilities/storage/valkeyrie/memory",
-     "Found path segment \"database\" in apps/manager/database/database.go",
-     "Found path segment \"database\" in apps/manager/database/database_test.go",
-     "Found path segment \"storage\" in apps/manager/storage/attribute_set.go",
-     "Found path segment \"storage\" in apps/manager/storage/attributes.go",
-     "Found path segment \"storage\" in apps/manager/storage/clock.go",
-     "Found path segment \"storage\" in apps/manager/storage/data.go",
-     "Found path segment \"storage\" in apps/manager/storage/decision_points.go",
-     "Found path segment \"storage\" in apps/manager/storage/deployments.go",
-     "Found path segment \"storage\" in apps/manager/storage/entities.go",
-     "Found path segment \"storage\" in apps/manager/storage/integers.go",
-     "Found path segment \"storage\" in apps/manager/storage/lastindex.go",
-     "Found path segment \"storage\" in apps/manager/storage/lastindex_test.go",
-     "Found path segment \"storage\" in apps/manager/storage/nullable.go",
-     "Found path segment \"storage\" in apps/manager/storage/policies.go",
-     "Found path segment \"storage\" in apps/manager/storage/principal.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_accepted_attribute_versions.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_accepted_entity_versions.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_accepted_policy_versions.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_attribute.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_attribute_deployment.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_deployment.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_deployment_bundle.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_entity.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_entity_deployment.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_policy.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_policy_deployment.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/create_relation_deployment.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/db.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/delete_attribute.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/delete_entity.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/delete_policy.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/deploy_accepted_attributes.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/deploy_accepted_entities.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/deploy_accepted_policies.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_attribute.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_attribute_version.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_deployment.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_entity.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_entity_version.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_last_deployment_version.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_policy.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_policy_deployed.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/get_policy_version.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_attribute_audit.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_attribute_deployments.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_attribute_versions.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_attributes.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_decision_points.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_deployments.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_entities.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_entity_audit.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_entity_deployments.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_entity_versions.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_policies.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_policy_audit.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_policy_deployed.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_policy_deployments.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/list_policy_versions.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/models.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_accepted_attribute_versions.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_accepted_entity_versions.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_accepted_policy_versions.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_attribute.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_attribute_deployment.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_deployment.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_deployment_bundle.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_entity.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_entity_deployment.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_policy.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_policy_deployment.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/create_relation_deployment.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/delete_attribute.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/delete_entity.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/delete_policy.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/deploy_accepted_attributes.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/deploy_accepted_entities.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/deploy_accepted_policies.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_attribute.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_attribute_version.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_deployment.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_entity.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_entity_version.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_last_deployment_version.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_policy.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_policy_deployed.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/get_policy_version.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_attribute_audit.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_attribute_deployments.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_attribute_versions.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_attributes.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_decision_points.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_deployments.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_entities.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_entity_audit.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_entity_deployments.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_entity_versions.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_policies.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_policy_audit.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_policy_deployed.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_policy_deployments.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/list_policy_versions.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/update_attribute.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/update_deployment.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/update_entity.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/update_policy.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/sql/upsert_decision_point.sql",
-     "Found path segment \"storage\" in apps/manager/storage/queries/update_attribute.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/update_deployment.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/update_entity.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/update_policy.sql.go",
-     "Found path segment \"storage\" in apps/manager/storage/queries/upsert_decision_point.sql.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/README.md",
-     "Found path segment \"data\" in apps/mock-dataspace/data/README_COMPARING.md",
-     "Found path segment \"data\" in apps/mock-dataspace/data/README_ENDPOINTS.md",
-     "Found path segment \"data\" in apps/mock-dataspace/data/README_FIELD_MATCHING.md",
-     "Found path segment \"data\" in apps/mock-dataspace/data/README_FILTERING.md",
-     "Found path segment \"data\" in apps/mock-dataspace/data/README_SCHEMA.md",
-     "Found path segment \"data\" in apps/mock-dataspace/data/README_TABLE_DATA.md",
-     "Found path segment \"data\" in apps/mock-dataspace/data/README_TRANSFORMATIONS.md",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/compare.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/compare_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/equal.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/equal_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/greater.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/greater_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/lesser.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/lesser_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/regex.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/compare/regex_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/context/request.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/context/request_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/compare_type.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/compare_type_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/field_type.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/field_type_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/filter_level.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/filter_level_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/join_type.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/join_type_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/method_type.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/method_type_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/order_type.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/order_type_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/replace.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/transformation_type.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/transformation_type_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/enums/unmarshal_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/all_of.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/all_of_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/any_of.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/any_of_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/constructor.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/constructor_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/field_value.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/field_value_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/filter.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/filter_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/filters.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/interfaces.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/match.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/filtering/match_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/matching/field_matcher.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/matching/field_matcher_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader/disk.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader/disk_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader/json.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader/json_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader/models/metadata.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader/yaml.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/reader/yaml_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/datasource.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/datasource_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/dataspace.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/dataspace_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/endpoint.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/endpoint_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/field.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/field_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/foreign_key.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/foreign_key_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/header_filter.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/header_filter_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/index.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/index_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/join.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/join_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/object.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/object_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/parent.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/parent_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/table.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/table_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/transform.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/schema/transform_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/interface.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/create.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/create_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/fds_data_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/fds_schema_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/joins/fields.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/joins/foreign_key.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/joins/foreign_key_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/joins/join.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/joins/joins.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/joins/merge.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/load.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/load_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/meta.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/meta_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/csv.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/datasource.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/datasource_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/row.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/row_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/rows.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/rows_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/table.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/models/table_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/read.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/read_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/store.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/store_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/store/memory/update.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/compare.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/compare_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/convert.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/convert_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/datetime.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/datetime_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/execute.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/execute_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/get_value.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/transforming/get_value_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/writer/csv/bytes_encoder.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/writer/csv/bytes_encoder_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/writer/csv/convert.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/writer/csv/convert_test.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/writer/csv/encode.go",
-     "Found path segment \"data\" in apps/mock-dataspace/data/writer/csv/encode_test.go",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/manager/data/attributes/.gitkeep",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/manager/data/entities/.gitkeep",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/pdp1/data/atributes/.gitkeep",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/pdp1/data/entities/.gitkeep",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/pdp2/data/atributes/.gitkeep",
-     "Found path segment \"data\" in demo/gemeente-vlierdam/pdp2/data/entities/.gitkeep",
-     "Found path segment \"data\" in demo/rdw/manager/data/attributes/.gitkeep",
-     "Found path segment \"data\" in demo/rdw/manager/data/entities/.gitkeep",
-     "Found path segment \"data\" in demo/rdw/pdp1/data/atributes/.gitkeep",
-     "Found path segment \"data\" in demo/rdw/pdp1/data/entities/.gitkeep",
-     "Found path segment \"data\" in demo/rvig/manager/data/attributes/.gitkeep",
-     "Found path segment \"data\" in demo/rvig/manager/data/entities/.gitkeep",
-     "Found path segment \"data\" in demo/rvig/pdp1/data/atributes/.gitkeep",
-     "Found path segment \"data\" in demo/rvig/pdp1/data/entities/.gitkeep",
-     "Found path segment \"storage\" in utilities/storage/postgresql/pool/options.go",
-     "Found path segment \"storage\" in utilities/storage/postgresql/pool/options_test.go",
-     "Found path segment \"storage\" in utilities/storage/postgresql/pool/pool.go",
-     "Found path segment \"storage\" in utilities/storage/postgresql/pool/pool_test.go",
-     "Found path segment \"storage\" in utilities/storage/valkeyrie/memory/map.go",
-     "Found path segment \"storage\" in utilities/storage/valkeyrie/memory/map_test.go",
-     "Found \"database\" in repository metadata and docs",
-     "Found path segment \"api\" in apps/manager/ui/src/api/client",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/aanvragen.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/brp.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/client.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/demoReset.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/errors.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/gebruikers.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/index.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/laadpalen.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/pdp.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/queryKeys.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/rdw.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/trace.ts",
-     "Found path segment \"api\" in apps/laadpalen-applicatie/src/lib/api/types.ts",
-     "Found path segment \"api\" in apps/manager/ui/src/api/client/base.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/attributes.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/authlog.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/bundles.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/decision.test.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/decision.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/decisionPoints.test.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/decisionPoints.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/policies.ts",
-     "Found path segment \"services\" in apps/manager/ui/src/services/settings.ts",
-     "Found \"service\" in repository metadata and docs",
-     "Found \"gateway\" in repository metadata and docs"
+     "... and 477 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -1520,11 +1354,6 @@
      "deploy/charts/open-ftv-keycloak/Chart.yaml"
     ],
     "referenceUrl": "https://haven.commonground.nl",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -1586,8 +1415,8 @@
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": "4 organisations; largest 91%",
-      "explanation": "Organisations are told apart by the email domain of the latest 500 commits of the last 12 months (481 commits by people, after the .mailmap) and, the forge does not say which account made a commit, so personal and hidden addresses stay unknown. The largest is an organisation with one author, with 91% of the 464 commits whose organisation is known; 4% of the commits come from 1 of 5 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "value": "4 organisations; largest 92%",
+      "explanation": "Organisations are told apart by the email domain of the latest 500 commits of the last 12 months (480 commits by people, after the .mailmap) and, the forge does not say which account made a commit, so personal and hidden addresses stay unknown. The largest is an organisation with one author, with 92% of the 463 commits whose organisation is known; 4% of the commits come from 1 of 5 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1597,8 +1426,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "1.01",
-      "explanation": "149 change requests were closed (merged or not) and 147 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "1.02",
+      "explanation": "150 change requests were closed (merged or not) and 147 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -1659,18 +1488,13 @@
     "status": "info",
     "message": "No publiccode.yml found, so no standards are declared.",
     "evidence": [],
-    "reusedFrom": {
-     "analysisId": "2026-11-20T06-15-55-921Z",
-     "checkedAt": "2026-11-20T06:15:55.921Z",
-     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
-    },
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 31.2,
-  "scanMode": "partial",
-  "scanModeReason": "the code did not change",
-  "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
+  "durationSeconds": 35,
+  "scanMode": "full",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

@@ -36,10 +36,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:15:43.853Z",
+  "lastCheckedAt": "2026-11-20T09:03:05.716Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:02:54.638Z",
-  "updatedAt": "2026-11-20T06:15:43.853Z",
+  "updatedAt": "2026-11-20T09:03:05.716Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -50,28 +50,28 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T06-15-43-853Z",
+  "id": "2026-11-20T09-03-05-716Z",
   "repoId": "github.com/wearefrank/zaakbrug",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:15:43.853Z",
-  "createdAt": "2026-11-20T06:15:43.853Z",
+  "checkedAt": "2026-11-20T09:03:05.716Z",
+  "createdAt": "2026-11-20T09:03:05.716Z",
   "version": "v1.27.3",
   "checklistVersion": "2026.2",
   "scannedRef": "v1.27.3",
   "scannedRefKind": "release",
   "scannedCommit": "42f2c75e06cbee6c4244d09cc6a73c56282ff9cd",
-  "score": 62,
-  "rating": 3.2,
+  "score": 78,
+  "rating": 3.9,
   "categoryRatings": {
-   "Governance": 3.3,
-   "Security": 3,
+   "Governance": 2.9,
+   "Security": 4,
    "Architecture": 3,
-   "Software Quality": 3.4,
-   "Deployment & Operations": 3.3
+   "Software Quality": 4,
+   "Deployment & Operations": 5.5
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 5.5
+    "rating": 3.8
    },
    "ownership": {
     "rating": 4.3
@@ -91,7 +91,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -109,10 +109,10 @@
     "rating": 3
    },
    "secrets": {
-    "rating": null
+    "rating": 3
    },
    "secure-coding": {
-    "rating": 3
+    "rating": 5.5
    },
    "supply-chain": {
     "rating": 3
@@ -130,23 +130,26 @@
     "rating": 3.7
    },
    "modifiability": {
-    "rating": 2.7
+    "rating": 3.7
    },
    "testability": {
-    "rating": 1.8
+    "rating": 3.7
    },
    "modularity": {
-    "rating": null
+    "rating": 5.5
    },
    "reusability": {
     "rating": 4.6
    },
    "testing": {
-    "rating": 4.3
+    "rating": 3.2
+   },
+   "size": {
+    "rating": null
    },
    "containerisation": {
-    "rating": 1,
-    "found": 1,
+    "rating": 5.5,
+    "found": 3,
     "expected": 3
    },
    "release-management": {
@@ -156,16 +159,13 @@
   "endorsement": {
    "passed": false,
    "reasons": [
-    "Mandatory criterion fails: Docker support",
-    "Mandatory criterion fails: Available Docker image",
     "Mandatory criterion fails: API Design Rules",
-    "publiccode.yaml declares maintenance.type community: there is no maintenance contract.",
-    "Maintainability below 4 stars (3.01)"
+    "publiccode.yaml declares maintenance.type community: there is no maintenance contract."
    ]
   },
   "issueCounts": {
-   "errors": 3,
-   "warnings": 10
+   "errors": 1,
+   "warnings": 12
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -235,6 +235,20 @@
     "starRating": 5
    },
    {
+    "id": "licenceconsistency",
+    "title": "Licence consistency",
+    "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
+    "evidence": [
+     "LICENSE.md: EUPL-1.2",
+     "publiccode.yaml: European Union Public License 1.2 (not recognised, not compared)"
+    ],
+    "referenceUrl": "https://spdx.org/licenses/",
+    "status": "warn",
+    "message": "Only one licence declaration found (LICENSE.md: EUPL-1.2); nothing to compare it with. Declare the licence in the package manifest and publiccode.yml as well.",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
     "id": "copyrightowner",
     "title": "Copyright / IP Owner Disclosure",
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
@@ -247,6 +261,28 @@
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
     "starRating": 3
+   },
+   {
+    "id": "spdxheaders",
+    "title": "SPDX licence headers",
+    "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
+    "referenceUrl": "https://reuse.software/spec/",
+    "status": "fail",
+    "starRating": 1,
+    "message": "0.0% of 10 source files carry an SPDX header (1 of 5 stars). 10 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "evidence": [
+     "docusaurus/babel.config.js",
+     "docusaurus/docusaurus.config.ts",
+     "docusaurus/sidebars.ts",
+     "docusaurus/src/components/HomepageFeatures/index.tsx",
+     "docusaurus/src/components/HomepageFeatures/styles.module.css",
+     "docusaurus/src/css/custom.css",
+     "docusaurus/src/pages/index.module.css",
+     "docusaurus/src/pages/index.tsx",
+     "src/main/resources/MergeProfileDefaultsWithProfiles-orig.js",
+     "src/main/resources/MergeProfileDefaultsWithProfiles.js"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "publiccode",
@@ -384,26 +420,38 @@
     "id": "docker",
     "title": "Docker support",
     "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
-    "status": "fail",
-    "message": "Dockerfile found but no docker-compose file. A docker-compose file is required for this checker.",
+    "status": "pass",
+    "message": "Dockerfile and docker-compose file(s) found.",
     "evidence": [
      "Dockerfile",
+     "compose.frank.loc.yaml",
+     "compose.yaml",
+     "contrib/compose.frank.jpda.yaml",
+     "contrib/compose.frank.loc.perf-tests.yaml",
+     "contrib/compose.frank.postgres.yaml",
+     "contrib/compose.frank.soap-ui.yaml",
+     "contrib/compose.openforms.loc.yaml",
+     "contrib/compose.openzaak.loc.yaml",
+     "contrib/compose.sentry.loc.yaml",
      "(Helm chart)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "dockerimage",
     "title": "Available Docker image",
     "description": "A published Docker image location should be available so deployments can pull a ready-to-run container image.",
-    "status": "fail",
-    "message": "No Docker image location was provided. Add a registry/repository URL for the published image.",
-    "evidence": [],
+    "status": "pass",
+    "message": "The repository declares a published image of this component.",
+    "evidence": [
+     "wearefrank/zaakbrug (declared in charts/zaakbrug/values.yaml)",
+     "wearefrank/zaakbrug:${VERSION:-latest} (declared in compose.yaml)"
+    ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "cicd",
@@ -441,7 +489,7 @@
     "status": "warn",
     "message": "Not measured: Artifact Hub found no container images in wearefrank/zaakbrug 2.3.38. List them in the artifacthub.io/images annotation of Chart.yaml.",
     "evidence": [
-     "Container component: the repository has a Helm chart (charts/zaakbrug/Chart.yaml)",
+     "Container component: it publishes a container image (wearefrank/zaakbrug (declared in charts/zaakbrug/values.yaml))",
      "Artifact Hub package: https://artifacthub.io/packages/helm/wearefrank/zaakbrug",
      "Matched because the package is named zaakbrug and its chart repository (https://wearefrank.github.io/charts/) belongs to the same owner, wearefrank"
     ],
@@ -528,22 +576,21 @@
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "requirementLevel": "mandatory",
-    "starRating": 5
+    "requirementLevel": "informative"
    },
    {
     "id": "maintainability",
     "title": "Maintainability (ISO 25010)",
     "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
-    "status": "warn",
-    "starRating": 3,
-    "rating": 3.01,
+    "status": "pass",
+    "starRating": 4,
+    "rating": 4.145,
     "aspectRatings": {
      "analysability": 3.65,
-     "modifiability": 2.74,
-     "testability": 1.8,
-     "modularity": null,
+     "modifiability": 3.66,
+     "testability": 3.65,
+     "modularity": 5.5,
      "reusability": 4.56
     },
     "measurements": [
@@ -559,10 +606,7 @@
         "label": "JavaScript",
         "value": "11.1%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 3
        },
@@ -570,10 +614,7 @@
         "label": "TypeScript",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 23.0%",
-         "3": "≤ 11.6%",
-         "4": "≤ 5.8%",
-         "5": "≤ 3.5%"
+         "4": "≤ 5.8%"
         },
         "stars": 5
        }
@@ -591,10 +632,7 @@
         "label": "JavaScript, more than 15 lines",
         "value": "52.1%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 3
        },
@@ -602,10 +640,7 @@
         "label": "JavaScript, more than 30 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -613,10 +648,7 @@
         "label": "JavaScript, more than 60 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        },
@@ -624,10 +656,7 @@
         "label": "TypeScript, more than 15 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
+         "4": "≤ 48.0%"
         },
         "stars": 5
        },
@@ -635,10 +664,7 @@
         "label": "TypeScript, more than 30 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
+         "4": "≤ 24.2%"
         },
         "stars": 5
        },
@@ -646,10 +672,7 @@
         "label": "TypeScript, more than 60 lines",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
+         "4": "≤ 9.1%"
         },
         "stars": 5
        }
@@ -667,10 +690,7 @@
         "label": "JavaScript, complexity above 5",
         "value": "64.1%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 1
        },
@@ -678,10 +698,7 @@
         "label": "JavaScript, complexity above 10",
         "value": "12.7%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 2
        },
@@ -689,10 +706,7 @@
         "label": "JavaScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        },
@@ -700,10 +714,7 @@
         "label": "TypeScript, complexity above 5",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 34.6%",
-         "3": "≤ 27.7%",
-         "4": "≤ 20.7%",
-         "5": "≤ 15.8%"
+         "4": "≤ 20.7%"
         },
         "stars": 5
        },
@@ -711,10 +722,7 @@
         "label": "TypeScript, complexity above 10",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 13.2%",
-         "3": "≤ 10.6%",
-         "4": "≤ 7.5%",
-         "5": "≤ 4.4%"
+         "4": "≤ 7.5%"
         },
         "stars": 5
        },
@@ -722,10 +730,7 @@
         "label": "TypeScript, complexity above 25",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.7%",
-         "3": "≤ 1.7%",
-         "4": "≤ 1.1%",
-         "5": "≤ 0.5%"
+         "4": "≤ 1.1%"
         },
         "stars": 5
        }
@@ -742,10 +747,7 @@
         "label": "JavaScript, 3 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -753,10 +755,7 @@
         "label": "JavaScript, 5 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -764,10 +763,7 @@
         "label": "JavaScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
         },
         "stars": 5
        },
@@ -775,10 +771,7 @@
         "label": "TypeScript, 3 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 26.0%",
-         "3": "≤ 18.3%",
-         "4": "≤ 15.4%",
-         "5": "≤ 12.5%"
+         "4": "≤ 15.4%"
         },
         "stars": 5
        },
@@ -786,10 +779,7 @@
         "label": "TypeScript, 5 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 7.2%",
-         "3": "≤ 4.8%",
-         "4": "≤ 3.4%",
-         "5": "≤ 2.5%"
+         "4": "≤ 3.4%"
         },
         "stars": 5
        },
@@ -797,237 +787,517 @@
         "label": "TypeScript, 7 or more parameters",
         "value": "0.0%",
         "thresholds": {
-         "2": "≤ 2.1%",
-         "3": "≤ 1.4%",
-         "4": "≤ 0.9%",
-         "5": "≤ 0.6%"
+         "4": "≤ 0.9%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "module-coupling",
+      "title": "Module coupling",
+      "aspects": [
+       "modifiability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue, fan-in above 10",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 9.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 20",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 5.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "js/ts/vue, fan-in above 50",
+        "value": "0.0%",
+        "thresholds": {
+         "4": "≤ 1.8%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-independence",
+      "title": "Component independence",
+      "aspects": [
+       "testability",
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue",
+        "value": "100.0%",
+        "thresholds": {
+         "4": "≥ 94.5%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [
+       "modularity"
+      ],
+      "rows": [
+       {
+        "label": "js/ts/vue",
+        "value": "0",
+        "thresholds": {
+         "4": "≤ 0.075"
         },
         "stars": 5
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.83 to 3.19 (3 of 5 stars) over 5 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.09 to 4.20 (4 of 5 stars) over 5 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★★☆ 3.7 (javascript 2.6, typescript 5.5)",
      "Unit size: ★★★★☆ 3.6 (javascript 3.2, typescript 5.5)",
      "Unit complexity: ★★☆☆☆ 1.8 (javascript 1.1, typescript 5.5)",
      "Unit interfacing: ★★★★★ 5.5 (javascript 5.5, typescript 5.5)",
+     "Module coupling: ★★★★★ 5.5 (js/ts/vue 5.5)",
+     "Component independence: ★★★★★ 5.5 (js/ts/vue 5.5)",
+     "Component entanglement: ★★★★★ 5.5 (js/ts/vue 5.5)",
      "Lever: unit complexity in javascript, about 44 lines to fix for half a star",
+     "Lever: unit size in javascript, about 12 lines to fix for half a star",
      "Lever: duplication in javascript, about 6 lines to fix for half a star",
-     "Lever: unit size in javascript, about 12 lines to fix for half a star"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 11.1%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%"
     ],
     "requirementLevel": "recommended"
+   },
+   {
+    "id": "opentrack",
+    "title": "Maintainability, open track",
+    "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
+    "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
+    "status": "info",
+    "starRating": 3,
+    "rating": 3.3333333333333335,
+    "measurements": [
+     {
+      "id": "open-unit-size",
+      "title": "Unit size",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, more than 29 lines",
+        "value": "17.5%",
+        "thresholds": {
+         "2": "≤ 60.2%",
+         "3": "≤ 37.0%",
+         "4": "≤ 26.1%",
+         "5": "≤ 4.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, more than 42 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 46.7%",
+         "3": "≤ 24.3%",
+         "4": "≤ 14.3%",
+         "5": "≤ 3.3%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, more than 71 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 33.4%",
+         "3": "≤ 11.1%",
+         "4": "≤ 5.3%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-unit-complexity",
+      "title": "Unit complexity",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, complexity above 5",
+        "value": "53.2%",
+        "thresholds": {
+         "2": "≤ 45.1%",
+         "3": "≤ 34.4%",
+         "4": "≤ 24.9%",
+         "5": "≤ 8.2%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "All languages, complexity above 7",
+        "value": "53.2%",
+        "thresholds": {
+         "2": "≤ 38.1%",
+         "3": "≤ 23.9%",
+         "4": "≤ 14.6%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "All languages, complexity above 10",
+        "value": "10.5%",
+        "thresholds": {
+         "2": "≤ 32.2%",
+         "3": "≤ 13.1%",
+         "4": "≤ 6.2%",
+         "5": "≤ 0.4%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-unit-interfacing",
+      "title": "Unit interfacing",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, 3 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 31.4%",
+         "3": "≤ 21.6%",
+         "4": "≤ 13.2%",
+         "5": "≤ 0.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, 4 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 19.2%",
+         "3": "≤ 10.4%",
+         "4": "≤ 3.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, 5 or more parameters",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 12.3%",
+         "3": "≤ 6.6%",
+         "4": "≤ 1.9%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Open-track rating 3.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "evidence": [
+     "Unit size: ★★★★☆ 17.5% / 0.0% / 0.0% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★☆☆☆☆ 53.2% / 53.2% / 10.5% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★★★ 0.0% / 0.0% / 0.0% of the code above 2 / 3 / 4 parameters",
+     "Duplication: not measured",
+     "Module coupling: not measured",
+     "Component independence: not measured",
+     "Component entanglement: not measured",
+     "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "testcoderatio",
+    "title": "Test code ratio",
+    "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
+    "status": "fail",
+    "starRating": 1,
+    "message": "Test code ratio 0.0% (1 of 5 stars).",
+    "evidence": [
+     "Test code ratio: 0.0%",
+     "Test code: 0 lines in 0 files",
+     "Production code: 329 lines in 7 files",
+     "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
+    ],
+    "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "opensourcehealth",
+    "title": "Open Source Health",
+    "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": null
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
+    ],
+    "message": "Open Source Health 5 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: not rated (data unavailable)"
+    ],
+    "requirementLevel": "recommended"
+   },
+   {
+    "id": "size",
+    "title": "Size",
+    "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
+    "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
+    "status": "info",
+    "message": "Not measured: scc 4.1.0 could not run.",
+    "evidence": [
+     "spawn scc ENOENT"
+    ]
+   },
+   {
+    "id": "duplication",
+    "title": "Duplication (open track)",
+    "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "referenceUrl": "https://github.com/kucherenko/jscpd",
+    "status": "warn",
+    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "evidence": [
+     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+    ],
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "coupling",
+    "title": "Coupling (open track)",
+    "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
+    "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
+    "status": "info",
+    "message": "Not measured: JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "evidence": [
+     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+    ],
+    "openTrack": {
+     "coupling": {
+      "version": 1,
+      "languages": {
+       "javascript": {
+        "measured": false,
+        "reason": "dependency-cruiser 17.4.3 is not installed",
+        "files": 5
+       }
+      }
+     }
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "warn",
-    "message": "Potential OWASP secure coding issues were detected (1 findings across 7 scanned source files).",
+    "status": "pass",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 7 scanned source files.",
     "evidence": [
-     "Dynamic code execution: src/main/resources/MergeProfileDefaultsWithProfiles.js"
+     "docusaurus/babel.config.js",
+     "docusaurus/docusaurus.config.ts",
+     "docusaurus/sidebars.ts",
+     "docusaurus/src/components/HomepageFeatures/index.tsx",
+     "docusaurus/src/pages/index.tsx",
+     "src/main/resources/MergeProfileDefaultsWithProfiles-orig.js",
+     "src/main/resources/MergeProfileDefaultsWithProfiles.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "adrvalidator",
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "fail",
-    "message": "API Design Rules violations found across 1 specification(s): 186 issue(s).",
+    "message": "API Design Rules violations found across 1 specification(s): 2 error(s), 184 warning(s), 0 info, 0 hint(s).",
     "evidence": [
      "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./klantcontacten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./klantcontacten.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./klantcontacten.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./klantcontacten.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./klantcontacten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./klantcontacten/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./resultaten.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./resultaten.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./resultaten/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.put.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./resultaten/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./resultaten/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./resultaten/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./rollen.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./rollen.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./rollen.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./rollen.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./rollen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./rollen/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./rollen/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./rollen/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./statussen.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./statussen.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./statussen.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.aanmaken | zaken.statussen.toevoegen | zaken.heropenen)\" must be listed among scopes. @ paths./statussen.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./statussen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./statussen/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaakinformatieobjecten.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.aanmaken | zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaakinformatieobjecten.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaakinformatieobjecten/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten/{uuid}.put.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaakinformatieobjecten/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaakinformatieobjecten/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken | zaken.verwijderen)\" must be listed among scopes. @ paths./zaakinformatieobjecten/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakobjecten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaakobjecten.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakobjecten.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.aanmaken | zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaakobjecten.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakobjecten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaakobjecten/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaken.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.aanmaken\" must be listed among scopes. @ paths./zaken.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/_zoek.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaken/_zoek.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaken/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{uuid}.put.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaken/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaken/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.verwijderen\" must be listed among scopes. @ paths./zaken/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/audittrail.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"audittrails.lezen\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/audittrail.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/audittrail/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"audittrails.lezen\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/audittrail/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/besluiten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/besluiten.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/besluiten.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.bijwerken\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/besluiten.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/besluiten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/besluiten/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/besluiten/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.bijwerken\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/besluiten/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/zaakeigenschappen.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/zaakeigenschappen.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/zaakeigenschappen.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/zaakeigenschappen.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaken/{zaak_uuid}/zaakeigenschappen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaken/{zaak_uuid}/zaakeigenschappen/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [servers-use-https] Server URL http://localhost:8000/zaken/api/v1 \"http://localhost:8000/zaken/api/v1\" must match the pattern \"^https://.*\". @ servers.0.url (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/betrokkene_identificatie_RolNatuurlijkPersoon @ components.schemas.betrokkene_identificatie_RolNatuurlijkPersoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.natuurlijk_persoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/natuurlijk_persoon @ components.schemas.natuurlijk_persoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/betrokkene_identificatie_RolNietNatuurlijkPersoon @ components.schemas.betrokkene_identificatie_RolNietNatuurlijkPersoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.niet_natuurlijk_persoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/niet_natuurlijk_persoon @ components.schemas.niet_natuurlijk_persoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/betrokkene_identificatie_RolVestiging @ components.schemas.betrokkene_identificatie_RolVestiging (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.vestiging (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/vestiging @ components.schemas.vestiging (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/betrokkene_identificatie_RolOrganisatorischeEenheid @ components.schemas.betrokkene_identificatie_RolOrganisatorischeEenheid (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.organisatorische_eenheid (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/organisatorische_eenheid @ components.schemas.organisatorische_eenheid (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/betrokkene_identificatie_RolMedewerker @ components.schemas.betrokkene_identificatie_RolMedewerker (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.medewerker (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/medewerker @ components.schemas.medewerker (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectAdres @ components.schemas.object_identificatie_ObjectAdres (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.adres (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/adres @ components.schemas.adres (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.besluit (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/besluit @ components.schemas.besluit (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectBuurt @ components.schemas.object_identificatie_ObjectBuurt (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.buurt (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/buurt @ components.schemas.buurt (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.enkelvoudig_document (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/enkelvoudig_document @ components.schemas.enkelvoudig_document (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectGemeente @ components.schemas.object_identificatie_ObjectGemeente (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.gemeente (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/gemeente @ components.schemas.gemeente (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectGemeentelijkeOpenbareRuimte @ components.schemas.object_identificatie_ObjectGemeentelijkeOpenbareRuimte (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.gemeentelijke_openbare_ruimte (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/gemeentelijke_openbare_ruimte @ components.schemas.gemeentelijke_openbare_ruimte (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectHuishouden @ components.schemas.object_identificatie_ObjectHuishouden (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.huishouden (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/huishouden @ components.schemas.huishouden (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectInrichtingselement @ components.schemas.object_identificatie_ObjectInrichtingselement (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.inrichtingselement (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/inrichtingselement @ components.schemas.inrichtingselement (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectKadastraleOnroerendeZaak @ components.schemas.object_identificatie_ObjectKadastraleOnroerendeZaak (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.kadastrale_onroerende_zaak (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/kadastrale_onroerende_zaak @ components.schemas.kadastrale_onroerende_zaak (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectKunstwerkdeel @ components.schemas.object_identificatie_ObjectKunstwerkdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.kunstwerkdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/kunstwerkdeel @ components.schemas.kunstwerkdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectMaatschappelijkeActiviteit @ components.schemas.object_identificatie_ObjectMaatschappelijkeActiviteit (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.maatschappelijke_activiteit (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/maatschappelijke_activiteit @ components.schemas.maatschappelijke_activiteit (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.object_identificatie_RolMedewerker (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_RolMedewerker @ components.schemas.object_identificatie_RolMedewerker (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.object_identificatie_RolNatuurlijkPersoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_RolNatuurlijkPersoon @ components.schemas.object_identificatie_RolNatuurlijkPersoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.object_identificatie_RolNietNatuurlijkPersoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_RolNietNatuurlijkPersoon @ components.schemas.object_identificatie_RolNietNatuurlijkPersoon (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectOpenbareRuimte @ components.schemas.object_identificatie_ObjectOpenbareRuimte (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.openbare_ruimte (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/openbare_ruimte @ components.schemas.openbare_ruimte (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.object_identificatie_RolOrganisatorischeEenheid (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_RolOrganisatorischeEenheid @ components.schemas.object_identificatie_RolOrganisatorischeEenheid (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectPand @ components.schemas.object_identificatie_ObjectPand (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.pand (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/pand @ components.schemas.pand (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectSpoorbaandeel @ components.schemas.object_identificatie_ObjectSpoorbaandeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.spoorbaandeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/spoorbaandeel @ components.schemas.spoorbaandeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.status (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/status @ components.schemas.status (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectTerreindeel @ components.schemas.object_identificatie_ObjectTerreindeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.terreindeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/terreindeel @ components.schemas.terreindeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectTerreinGebouwdObject @ components.schemas.object_identificatie_ObjectTerreinGebouwdObject (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.terrein_gebouwd_object (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/terrein_gebouwd_object @ components.schemas.terrein_gebouwd_object (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.object_identificatie_RolVestiging (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_RolVestiging @ components.schemas.object_identificatie_RolVestiging (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectWaterdeel @ components.schemas.object_identificatie_ObjectWaterdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.waterdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/waterdeel @ components.schemas.waterdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectWegdeel @ components.schemas.object_identificatie_ObjectWegdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.wegdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/wegdeel @ components.schemas.wegdeel (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectWijk @ components.schemas.object_identificatie_ObjectWijk (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.wijk (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/wijk @ components.schemas.wijk (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectWoonplaats @ components.schemas.object_identificatie_ObjectWoonplaats (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.woonplaats (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/woonplaats @ components.schemas.woonplaats (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectWozDeelobject @ components.schemas.object_identificatie_ObjectWozDeelobject (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.woz_deelobject (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/woz_deelobject @ components.schemas.woz_deelobject (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectWozObject @ components.schemas.object_identificatie_ObjectWozObject (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.woz_object (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/woz_object @ components.schemas.woz_object (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectWozWaarde @ components.schemas.object_identificatie_ObjectWozWaarde (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.woz_waarde (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/woz_waarde @ components.schemas.woz_waarde (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectZakelijkRecht @ components.schemas.object_identificatie_ObjectZakelijkRecht (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.zakelijk_recht (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/zakelijk_recht @ components.schemas.zakelijk_recht (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/object_identificatie_ObjectOverige @ components.schemas.object_identificatie_ObjectOverige (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [oas3-unused-component] Potentially unused component has been detected. @ components.schemas.overige (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/overige @ components.schemas.overige (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/GeoJSONGeometry @ components.schemas.GeoJSONGeometry (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)"
+     "ERROR [info-contact-fields-exist] Missing fields in `info.contact` field. Must specify email, name and url. @ info.contact (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "ERROR [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./klantcontacten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./klantcontacten.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./klantcontacten.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./klantcontacten.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./klantcontacten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./klantcontacten/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./resultaten.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./resultaten.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./resultaten/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.put.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./resultaten/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./resultaten/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./resultaten/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./resultaten/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./rollen.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./rollen.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./rollen.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./rollen.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./rollen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./rollen/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./rollen/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./rollen/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./statussen.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./statussen.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./statussen.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.aanmaken | zaken.statussen.toevoegen | zaken.heropenen)\" must be listed among scopes. @ paths./statussen.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./statussen/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./statussen/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaakinformatieobjecten.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten.post.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.aanmaken | zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaakinformatieobjecten.post.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten/{uuid}.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"zaken.lezen\" must be listed among scopes. @ paths./zaakinformatieobjecten/{uuid}.get.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten/{uuid}.put.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaakinformatieobjecten/{uuid}.put.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten/{uuid}.patch.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken)\" must be listed among scopes. @ paths./zaakinformatieobjecten/{uuid}.patch.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakinformatieobjecten/{uuid}.delete.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [oas3-operation-security-defined] \"(zaken.bijwerken | zaken.geforceerd-bijwerken | zaken.verwijderen)\" must be listed among scopes. @ paths./zaakinformatieobjecten/{uuid}.delete.security.0.JWT-Claims.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./zaakobjecten.get.tags.0 (https://raw.githubusercontent.com/wearefrank/zaakbrug/42f2c75e06cbee6c4244d09cc6a73c56282ff9cd/docs/zgw/zaken/openapi.json)",
+     "... and 139 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -1068,6 +1338,31 @@
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
     "requirementLevel": "mandatory",
     "starRating": 3
+   },
+   {
+    "id": "secretscanning",
+    "title": "No committed secrets",
+    "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
+    "status": "warn",
+    "message": "Secret scanning could not run.",
+    "evidence": [
+     "gitleaks is not installed on the checker host."
+    ],
+    "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "requirementLevel": "recommended",
+    "starRating": 3
+   },
+   {
+    "id": "openssfscorecard",
+    "title": "OpenSSF Scorecard",
+    "description": "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API and rates it from 1 to 5 stars. The star bands are this checker's own: 9 or higher is 5 stars, 7 or higher is 4, 5 or higher is 3, 3 or higher is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
+    "status": "info",
+    "message": "This repository is not in the OpenSSF Scorecard dataset. The project can publish a score by running the OpenSSF Scorecard GitHub Action (ossf/scorecard-action).",
+    "evidence": [
+     "https://github.com/ossf/scorecard-action"
+    ],
+    "referenceUrl": "https://scorecard.dev",
+    "requirementLevel": "recommended"
    },
    {
     "id": "semver",
@@ -1387,10 +1682,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 6.4,
+  "durationSeconds": 7.9,
   "scanMode": "full",
   "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
+  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
