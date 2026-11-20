@@ -1,0 +1,230 @@
+{
+ "commit": "c1f0512cfba44a2588f13246cbad7313b1010615",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 52,
+    "density": 4.0,
+    "violationDegree": 0.0709,
+    "violations": {
+     "cyclic": 17,
+     "indirect-cyclic": 2,
+     "transitive": 3
+    }
+   },
+   "componentIndependence": 0.5477,
+   "components": 15,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 11,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 1119,
+   "loc": 92149,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0048,
+     0.001,
+     0.0007
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 886,
+     "1": 73201,
+     "10": 224,
+     "131": 60,
+     "14": 22,
+     "15": 57,
+     "16": 67,
+     "17": 201,
+     "2": 10562,
+     "20": 10,
+     "28": 29,
+     "3": 2325,
+     "4": 1477,
+     "5": 1152,
+     "6": 1441,
+     "7": 4,
+     "8": 375,
+     "9": 56
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 131,
+      "module": "src/store/store.js"
+     },
+     {
+      "fanIn": 28,
+      "module": "src/components/shared/CloseCancelButton.vue"
+     },
+     {
+      "fanIn": 20,
+      "module": "src/services/requestToken.js"
+     },
+     {
+      "fanIn": 17,
+      "module": "src/components/shared/SettingsSection.vue"
+     },
+     {
+      "fanIn": 16,
+      "module": "src/modals/shared/ConfirmDialogFrame.vue"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0003,
+     "low": 0.9952,
+     "moderate": 0.0039,
+     "veryHigh": 0.0007
+    }
+   },
+   "modules": 521,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 9,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 217,
+    "density": 5.71,
+    "violationDegree": 0.0585,
+    "violations": {
+     "cyclic": 41,
+     "indirect-cyclic": 13,
+     "transitive": 19
+    }
+   },
+   "componentIndependence": 0.8584,
+   "components": 39,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 33,
+    "largestModuleCycle": 16,
+    "locShareInCycles": 0.0874,
+    "moduleCycles": 90,
+    "modulesInCycles": 251
+   },
+   "edges": 19455,
+   "loc": 458590,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0196,
+     0.0097,
+     0.0054
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 120691,
+     "1": 164790,
+     "10": 1473,
+     "100": 26,
+     "11": 1416,
+     "116": 14,
+     "12": 480,
+     "13": 674,
+     "14": 898,
+     "15": 151,
+     "16": 196,
+     "17": 270,
+     "18": 114,
+     "180": 69,
+     "183": 148,
+     "19": 292,
+     "192": 52,
+     "2": 70551,
+     "20": 31,
+     "203": 90,
+     "21": 546,
+     "22": 135,
+     "23": 372,
+     "236": 120,
+     "24": 233,
+     "25": 42,
+     "26": 25,
+     "27": 20,
+     "28": 13,
+     "29": 17,
+     "3": 35739,
+     "31": 117,
+     "32": 127,
+     "33": 65,
+     "34": 38,
+     "37": 62,
+     "4": 23508,
+     "40": 33,
+     "41": 33,
+     "42": 103,
+     "43": 14,
+     "5": 12539,
+     "51": 79,
+     "52": 107,
+     "54": 66,
+     "6": 7471,
+     "61": 13,
+     "62": 16,
+     "646": 716,
+     "66": 115,
+     "7": 7681,
+     "71": 26,
+     "719": 672,
+     "74": 11,
+     "75": 16,
+     "8": 2792,
+     "9": 2367,
+     "90": 8,
+     "95": 34,
+     "97": 73
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 719,
+      "module": "lib/Db/ObjectEntity.php"
+     },
+     {
+      "fanIn": 646,
+      "module": "lib/Db/Schema.php"
+     },
+     {
+      "fanIn": 236,
+      "module": "lib/Db/Register.php"
+     },
+     {
+      "fanIn": 203,
+      "module": "lib/Kernel/Contracts/ObjectOperationsInterface.php"
+     },
+     {
+      "fanIn": 192,
+      "module": "lib/Db/SchemaMapperInterface.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0044,
+     "low": 0.9804,
+     "moderate": 0.0099,
+     "veryHigh": 0.0054
+    }
+   },
+   "modules": 7480,
+   "scope": "7480 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "ConductionNL/openregister",
+ "seconds": 174.3,
+ "url": "https://github.com/ConductionNL/openregister",
+ "version": 1
+}

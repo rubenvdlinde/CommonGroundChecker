@@ -83,6 +83,7 @@ A component declares a standard and its version the same way, with the official 
 | 26 | **Duplication (open track)** — duplicated lines per language and overall as jscpd reports them, with the largest clones; shown for information, no stars until open thresholds are calibrated | Informative | [jscpd](https://github.com/kucherenko/jscpd) |
 | 26 | **External comparison: SonarQube** — the technical debt ratio and the open issues of four SIG-like rules (S138, S3776, S107, S1192) read from a SonarQube that already analyses the component; only shown when one is configured, never stars, never scored | Informative | [SonarQube Web API](https://docs.sonarsource.com/sonarqube-server/latest/extension-guide/web-api/) |
 | 26 | **Coupling (open track)** — module coupling (share of code per fan-in band), component independence, component entanglement and dependency cycles per language, from the module dependency graph of pdepend, grimp and dependency-cruiser; raw values, not rated yet | Informative | [Maintainability model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md) |
+| 26 | **Maintainability, open track** — the same code properties rated against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories; shown next to the estimate, not counted | Informative | [Alves et al. 2010](https://doi.org/10.1109/ICSM.2010.5609747) |
 
 **Stars:** every criterion also shows 1 to 5 stars. Maintainability has its own scale (4 stars or more passes, 3 stars warns). The other criteria map pass, warn and fail to 5, 3 and 1 stars. The component as a whole and each category also get a rating; see [Ratings](#ratings).
 
@@ -102,6 +103,8 @@ The levels above are the defaults in `src/lib/checkers/config.ts`; the category 
 
 
 The coupling analysis runs `scripts/coupling/check_coupling.py`. It builds one module dependency graph per language with pdepend 3.0.0 (PHP, needs `php`), grimp 3.18 with import-linter 2.15 (Python) and dependency-cruiser 17.4.3 (JavaScript, TypeScript, Vue), and scores them with the scope, code-line count and component rule of the maintainability analysis. The Docker image installs the tools. PHP is read under the PSR-4 directories of `composer.json`, in batches of directories of at most `COUPLING_PHP_BATCH_FILES` files (default 1000), each with a PHP memory limit of `COUPLING_PHP_MEMORY_MB` (default 1536). `COUPLING_TIMEOUT_SECONDS` (default 600) caps one analysis. A language whose tool is missing, fails or runs out of memory or time shows as "not measured" with the reason. The raw values are in the result's `openTrack.coupling` field.
+
+The open track runs `scripts/open-track/measure.py` with the same scope and lizard reader, and rates the result with the thresholds in `src/lib/openModel/thresholds-<date>.json`. Those thresholds, the benchmark list and the script that regenerates both are in `scripts/open-benchmark/` (see its README). The open track is not a SIG rating.
 
 
 ## Getting started

@@ -1,0 +1,242 @@
+{
+ "commit": "3775e680ce8f08029cea8b9ce8d9aa98adf94f6b",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 29,
+    "density": 2.64,
+    "violationDegree": 0.0702,
+    "violations": {
+     "cyclic": 4,
+     "transitive": 2
+    }
+   },
+   "componentIndependence": 0.2494,
+   "components": 14,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 5,
+    "largestModuleCycle": 3,
+    "locShareInCycles": 0.0316,
+    "moduleCycles": 1,
+    "modulesInCycles": 3
+   },
+   "edges": 311,
+   "loc": 41413,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0061,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 2044,
+     "1": 34116,
+     "11": 177,
+     "13": 43,
+     "15": 33,
+     "2": 4090,
+     "3": 201,
+     "4": 253,
+     "5": 231,
+     "6": 225
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 15,
+      "module": "src/components/page-editor/fields/InlineFieldMark.vue"
+     },
+     {
+      "fanIn": 13,
+      "module": "src/mixins/pageEditorValidation.js"
+     },
+     {
+      "fanIn": 11,
+      "module": "src/composables/useRegisterPicker.js"
+     },
+     {
+      "fanIn": 6,
+      "module": "src/composables/useRole.js"
+     },
+     {
+      "fanIn": 6,
+      "module": "src/dialogs/ConfirmActionDialog.vue"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 0.9939,
+     "moderate": 0.0061,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 214,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 25,
+    "density": 1.92,
+    "violationDegree": 0.1016,
+    "violations": {
+     "cyclic": 8
+    }
+   },
+   "componentIndependence": 0.4783,
+   "components": 14,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 9,
+    "largestModuleCycle": 7,
+    "locShareInCycles": 0.0651,
+    "moduleCycles": 3,
+    "modulesInCycles": 11
+   },
+   "edges": 210,
+   "loc": 23830,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0396,
+     0.0116,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 6396,
+     "1": 7928,
+     "11": 565,
+     "15": 103,
+     "2": 5730,
+     "27": 276,
+     "3": 794,
+     "4": 209,
+     "5": 137,
+     "6": 256,
+     "7": 1099,
+     "9": 337
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 27,
+      "module": "lib/AppInfo/Application.php"
+     },
+     {
+      "fanIn": 15,
+      "module": "lib/Service/PermissionResolver.php"
+     },
+     {
+      "fanIn": 11,
+      "module": "lib/Service/ApplicationVersionService.php"
+     },
+     {
+      "fanIn": 9,
+      "module": "lib/Mcp/Handler/AbstractToolHandler.php"
+     },
+     {
+      "fanIn": 7,
+      "module": "lib/Service/AutomationCompilerService.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0116,
+     "low": 0.9604,
+     "moderate": 0.028,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 139,
+   "scope": "139 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  },
+  "python": {
+   "componentDefinition": "directories below .claude/skills/skill-creator/scripts/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 0,
+    "density": 0.0,
+    "violationDegree": 0.0,
+    "violations": {}
+   },
+   "componentIndependence": 1.0,
+   "components": 2,
+   "contracts": null,
+   "cycles": {
+    "componentCycles": 0,
+    "largestComponentCycle": 0,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 7,
+   "loc": 2659,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 1828,
+     "1": 794,
+     "3": 37
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 3,
+      "module": ".claude/skills/skill-creator/scripts/utils.py"
+     },
+     {
+      "fanIn": 1,
+      "module": ".claude/skills/skill-creator/scripts/generate_report.py"
+     },
+     {
+      "fanIn": 1,
+      "module": ".claude/skills/skill-creator/scripts/improve_description.py"
+     },
+     {
+      "fanIn": 1,
+      "module": ".claude/skills/skill-creator/scripts/quick_validate.py"
+     },
+     {
+      "fanIn": 1,
+      "module": ".claude/skills/skill-creator/scripts/run_eval.py"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 1.0,
+     "moderate": 0.0,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 14,
+   "scope": "packages scripts",
+   "tool": "grimp 3.18"
+  }
+ },
+ "name": "ConductionNL/buildiq",
+ "seconds": 14.4,
+ "url": "https://github.com/ConductionNL/buildiq",
+ "version": 1
+}

@@ -180,6 +180,30 @@ describe("CategoryRatings", () => {
     expect(details?.querySelector("summary")?.textContent).toBe("Show what Licensing is made of");
   });
 
+  it("shows the size as lines of code, not rated, with the languages and both effort figures", () => {
+    renderRatings();
+
+    const group = screen.getByRole("group", { name: /^Size/ });
+    expect(within(group).queryByRole("meter")).toBeNull();
+    expect(within(group).getByText("(informative, not rated)")).toBeTruthy();
+    expect(within(group).getByText("42,010 lines of code, not rated")).toBeTruthy();
+    const table = within(group).getByRole("table", { name: /What Size is made of: production code, counted with scc 4.1.0/ });
+    const python = within(table).getByRole("row", { name: /^Python/ });
+    expect(within(python).getAllByRole("cell").map((cell) => cell.textContent)).toEqual(["342", "38,066"]);
+    expect(within(group).getByText(/^4.1 person-years \(914 function points/)).toBeTruthy();
+    expect(within(group).getByText(/^6.4 person-years, from the SIG v17.0/).textContent).toContain(
+      "Context, not part of the 2026 rating."
+    );
+  });
+
+  it("says why the size was not measured", () => {
+    renderRatings([{ ...result("size", "info"), message: "Not measured: scc 4.1.0 could not run." }]);
+
+    const group = screen.getByRole("group", { name: /^Size/ });
+    expect(within(group).getByText("not measured")).toBeTruthy();
+    expect(within(group).getByText("Not measured: scc 4.1.0 could not run.")).toBeTruthy();
+  });
+
   it("shows usage per source with its date and caveat, without a meter or stars", () => {
     const usage = result("usage", "info");
     usage.usage = {
@@ -253,34 +277,33 @@ describe("CategoryRatings", () => {
     expect(region.closest("details")?.querySelector("summary")?.className).toContain("py-3.5");
   });
 
-  it("shows the size as lines of code, not rated, with the languages and both effort figures", () => {
-    renderRatings();
-
-    const group = screen.getByRole("group", { name: /^Size/ });
-    expect(within(group).queryByRole("meter")).toBeNull();
-    expect(within(group).getByText("(informative, not rated)")).toBeTruthy();
-    expect(within(group).getByText("42,010 lines of code, not rated")).toBeTruthy();
-    const table = within(group).getByRole("table", { name: /What Size is made of: production code, counted with scc 4.1.0/ });
-    const python = within(table).getByRole("row", { name: /^Python/ });
-    expect(within(python).getAllByRole("cell").map((cell) => cell.textContent)).toEqual(["342", "38,066"]);
-    expect(within(group).getByText(/^4.1 person-years \(914 function points/)).toBeTruthy();
-    expect(within(group).getByText(/^6.4 person-years, from the SIG v17.0/).textContent).toContain(
-      "Context, not part of the 2026 rating."
-    );
-  });
-
-  it("says why the size was not measured", () => {
-    renderRatings([{ ...result("size", "info"), message: "Not measured: scc 4.1.0 could not run." }]);
-
-    const group = screen.getByRole("group", { name: /^Size/ });
-    expect(within(group).getByText("not measured")).toBeTruthy();
-    expect(within(group).getByText("Not measured: scc 4.1.0 could not run.")).toBeTruthy();
-  });
-
   it("marks a rated aspect with weight 0 as not counted", () => {
     renderRatings();
 
     expect(screen.getByRole("heading", { name: /^Layering\s*\(not counted\)$/ })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "API" })).toBeTruthy();
+  });
+
+  it("shows the open-track rating under the Maintainability header, linked to its criterion and not counted", () => {
+    const openTrack: CheckResult = { ...result("opentrack", "info"), rating: 2.94, starRating: 3 };
+    render(
+      <CategoryRatings
+        results={[maintainability, openTrack]}
+        categoryRatings={{ [MAINTAINABILITY]: 2.6 }}
+        aspectRatings={{}}
+      />
+    );
+
+    const section = screen.getByRole("region", { name: MAINTAINABILITY });
+    const link = within(section).getByRole("link", { name: "Open track" });
+    expect(link.getAttribute("href")).toBe("#criterion-opentrack");
+    const line = link.closest("p") as HTMLElement;
+    expect(line.textContent).toBe("Open track: 2.9 ★★★☆☆3 stars (informative, not counted)");
+  });
+
+  it("shows no open-track line without an open-track rating", () => {
+    renderRatings();
+
+    expect(screen.queryByRole("link", { name: "Open track" })).toBeNull();
   });
 });

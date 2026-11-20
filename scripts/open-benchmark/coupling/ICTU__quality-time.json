@@ -1,0 +1,191 @@
+{
+ "commit": "a0140ebb0787c4329698cd7eec992191e02d0197",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below components/frontend/src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 81,
+    "density": 5.06,
+    "violationDegree": 0.0463,
+    "violations": {
+     "cyclic": 11,
+     "transitive": 6
+    }
+   },
+   "componentIndependence": 0.4878,
+   "components": 18,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 14,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 647,
+   "loc": 14694,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0803,
+     0.0527,
+     0.0502
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 1374,
+     "1": 8156,
+     "10": 251,
+     "101": 223,
+     "11": 95,
+     "12": 2,
+     "13": 111,
+     "14": 198,
+     "2": 1772,
+     "3": 679,
+     "31": 35,
+     "36": 2,
+     "4": 640,
+     "5": 311,
+     "55": 514,
+     "6": 237,
+     "7": 31,
+     "8": 34,
+     "9": 29
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 101,
+      "module": "components/frontend/src/sharedPropTypes.js"
+     },
+     {
+      "fanIn": 55,
+      "module": "components/frontend/src/utils.jsx"
+     },
+     {
+      "fanIn": 36,
+      "module": "components/frontend/src/context/DataModel.js"
+     },
+     {
+      "fanIn": 31,
+      "module": "components/frontend/src/context/Permissions.jsx"
+     },
+     {
+      "fanIn": 14,
+      "module": "components/frontend/src/api/report.js"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0025,
+     "low": 0.9197,
+     "moderate": 0.0276,
+     "veryHigh": 0.0502
+    }
+   },
+   "modules": 184,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "python": {
+   "componentDefinition": "directories below components/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 5,
+    "density": 1.25,
+    "violationDegree": 0.0,
+    "violations": {}
+   },
+   "componentIndependence": 0.925,
+   "components": 5,
+   "contracts": null,
+   "cycles": {
+    "componentCycles": 0,
+    "largestComponentCycle": 0,
+    "largestModuleCycle": 3,
+    "locShareInCycles": 0.0365,
+    "moduleCycles": 2,
+    "modulesInCycles": 5
+   },
+   "edges": 1284,
+   "loc": 18681,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.064,
+     0.0393,
+     0.0029
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 1286,
+     "1": 11717,
+     "115": 26,
+     "116": 0,
+     "12": 131,
+     "13": 293,
+     "130": 28,
+     "16": 37,
+     "2": 1100,
+     "22": 15,
+     "23": 39,
+     "24": 41,
+     "3": 625,
+     "35": 40,
+     "36": 66,
+     "38": 113,
+     "4": 585,
+     "41": 11,
+     "42": 65,
+     "43": 290,
+     "5": 910,
+     "6": 124,
+     "7": 152,
+     "8": 452,
+     "9": 535
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 130,
+      "module": "components/collector/src/collector_utilities/type.py"
+     },
+     {
+      "fanIn": 116,
+      "module": "components/api_server/src/model/__init__.py"
+     },
+     {
+      "fanIn": 115,
+      "module": "components/collector/src/base_collectors/__init__.py"
+     },
+     {
+      "fanIn": 43,
+      "module": "components/shared_code/src/shared_data_model/parameters.py"
+     },
+     {
+      "fanIn": 42,
+      "module": "components/shared_code/src/shared_data_model/meta/source.py"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0364,
+     "low": 0.936,
+     "moderate": 0.0247,
+     "veryHigh": 0.0029
+    }
+   },
+   "modules": 427,
+   "scope": "packages base_collectors, collector_utilities, database, destinations, initialization, metric_collectors, model, models, notifier, notifier_utilities, routes, shared, shared_data_model, source_collectors, strategies, utils",
+   "tool": "grimp 3.18"
+  }
+ },
+ "name": "ICTU/quality-time",
+ "seconds": 14.1,
+ "url": "https://github.com/ICTU/quality-time",
+ "version": 1
+}

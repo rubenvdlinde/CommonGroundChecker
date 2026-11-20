@@ -25,6 +25,7 @@ const ids = [
   "size",
   "duplication",
   "coupling",
+  "opentrack",
   "codemetrics",
   "owaspsecurecoding",
   "adrvalidator",
@@ -70,6 +71,7 @@ const mocks = vi.hoisted(() => ({
   checkDuplication: vi.fn(),
   checkSonarQube: vi.fn(),
   checkCoupling: vi.fn(),
+  measureOpenTrack: vi.fn(),
   checkSourceCode: vi.fn(),
   checkSemver: vi.fn(),
   checkFiveLayer: vi.fn(),
@@ -158,6 +160,10 @@ vi.mock("@/lib/checkers/size", () => ({ checkSize: mocks.checkSize }));
 vi.mock("@/lib/checkers/duplication", () => ({ checkDuplication: mocks.checkDuplication }));
 vi.mock("@/lib/checkers/sonarqube", () => ({ checkSonarQube: mocks.checkSonarQube }));
 vi.mock("@/lib/checkers/coupling", () => ({ checkCoupling: mocks.checkCoupling }));
+vi.mock("@/lib/checkers/openTrack", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/checkers/openTrack")>()),
+  measureOpenTrack: mocks.measureOpenTrack,
+}));
 vi.mock("@/lib/checkers/codeMetrics", () => ({ checkCodeMetrics: mocks.checkCodeMetrics }));
 vi.mock("@/lib/checkers/owaspSecureCoding", () => ({ checkOwaspSecureCoding: mocks.checkOwaspSecureCoding }));
 vi.mock("@/lib/checkers/eupl", () => ({
@@ -299,6 +305,7 @@ describe("runChecks", () => {
     mocks.checkTests.mockReturnValue(resultFor("tests", "pass"));
     mocks.checkComplexity.mockResolvedValue(resultFor("complexity", "pass"));
     mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "warn"), starRating: 3 });
+    mocks.measureOpenTrack.mockResolvedValue({ failure: { ...resultFor("opentrack", "info"), starRating: 4, rating: 4.25 } });
     mocks.checkCoupling.mockResolvedValue(resultFor("coupling", "info"));
     mocks.checkSonarQube.mockResolvedValue(null);
     mocks.checkDuplication.mockResolvedValue(resultFor("duplication", "info"));
@@ -499,7 +506,7 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(38);
+    expect(report.results).toHaveLength(39);
     expect(report.results.find((result) => result.id === "licenceconsistency")?.starRating).toBe(5);
     expect(report.results.find((result) => result.id === "spdxheaders")?.starRating).toBe(4);
     expect(report.results.find((result) => result.id === "opensourcehealth")?.starRating).toBe(4);
@@ -1413,5 +1420,59 @@ describe("runChecks", () => {
       expect(gitClones()).toBe(1);
       expect(second.results.some((result) => result.reusedFrom)).toBe(false);
     });
+  });
+
+  it("shows the open-track rating next to the estimate without counting it", async () => {
+    const configById = criterionConfig(1, "mandatory");
+    configById.opentrack = { weight: 0, requirementLevel: "informative" };
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-open-track",
+      config: {
+        criterionConfigByCheckId: configById,
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const high = await runChecks("https://github.com/org/repo", { isRegister: false });
+    mocks.measureOpenTrack.mockResolvedValue({ failure: { ...resultFor("opentrack", "info"), starRating: 1, rating: 1 } });
+    const low = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    const order = high.results.map((result) => result.id);
+    expect(order.indexOf("opentrack")).toBe(order.indexOf("maintainability") + 1);
+    expect(high.results.find((result) => result.id === "opentrack")).toMatchObject({
+      starRating: 4,
+      requirementLevel: "informative",
+    });
+    expect(low.results.find((result) => result.id === "opentrack")?.starRating).toBe(1);
+    expect(low.score).toBe(high.score);
+    expect(low.rating).toBe(high.rating);
+    expect(low.categoryRatings).toEqual(high.categoryRatings);
+  });
+
+  it("rates the open track with the duplication another check reports", async () => {
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-open-track-duplication",
+      config: {
+        criterionConfigByCheckId: criterionConfig(1),
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+    mocks.measureOpenTrack.mockResolvedValue({ input: { histograms: { unit_size: { "3": 100 } } }, skippedFiles: 0 });
+    mocks.checkComplexity.mockResolvedValue({
+      ...resultFor("complexity", "pass"),
+      openTrack: { duplication: { tool: "jscpd 5.4.2", percentage: 2, languages: { php: 2 }, largestClones: [] } },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    expect(report.results.find((result) => result.id === "opentrack")?.evidence).toContain(
+      "Duplication: ★★★★☆ 2.0% duplicated lines"
+    );
   });
 });

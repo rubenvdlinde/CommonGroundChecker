@@ -7,11 +7,25 @@ const getRepoHistory = vi.hoisted(() => vi.fn());
 const getAdminScoring = vi.hoisted(() => vi.fn());
 const putRepositoryFollow = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/apiClient", () => ({ getRepoHistory, getAdminScoring, putRepositoryFollow }));
+const shownResults = vi.hoisted(() => [] as unknown[]);
+vi.mock("@/components/CategoryRatings", async (importOriginal) => {
+  const { createElement } = await import("react");
+  const actual = await importOriginal<typeof import("@/components/CategoryRatings")>();
+  return {
+    default: (props: Parameters<typeof actual.default>[0]) => {
+      shownResults.splice(0, shownResults.length, ...props.results);
+      return createElement(actual.default, props);
+    },
+  };
+});
 
 import AnalysisDetailPage from "@/app/components/[owner]/[repo]/[analysisId]/page";
 import { resolveCategory } from "@/lib/aspects";
 import { mapMaintainabilityReport, type MaintainabilityReport } from "@/lib/checkers/maintainability";
 import openZaakFixture from "../fixtures/maintainability-report-open-zaak.json";
+import { openTrackInput, rateOpenTrack, withOpenTrackExtras, type OpenTrackScriptMeasures } from "@/lib/checkers/openTrack";
+import type { CheckResult } from "@/lib/types";
+import openZaakOpenTrack from "../../scripts/open-benchmark/measures/open-zaak__open-zaak.json";
 
 function result(id: string, status: string, starRating?: number) {
   return { id, title: id, description: `${id} check`, status, message: `${id} ${status}`, evidence: [], starRating };
@@ -365,5 +379,35 @@ describe("AnalysisDetailPage", () => {
 
     expect(screen.getByRole("button", { name: /security/ })).toBeTruthy();
     expect(screen.queryAllByLabelText(/of 5 stars/)).toHaveLength(0);
+  });
+
+  it("keeps the open-track rating and the open-track measures of a stored analysis", async () => {
+    const measurement = { input: openTrackInput(openZaakOpenTrack as unknown as OpenTrackScriptMeasures), skippedFiles: 0 };
+    const duplication = {
+      ...result("duplication", "info"),
+      openTrack: { duplication: { tool: "jscpd 5.4.2", percentage: 0, languages: {}, largestClones: [] } },
+    };
+    const [opentrack] = withOpenTrackExtras([rateOpenTrack(measurement), duplication as CheckResult], measurement);
+    getRepoHistory.mockResolvedValue({
+      repository: { metadata: { repoUrl: "https://github.com/org/repo", topics: [] } },
+      analyses: [
+        {
+          id: "analysis-1",
+          checkedAt: "2026-11-11T15:39:33Z",
+          score: 71,
+          version: "1.0.0",
+          results: JSON.parse(JSON.stringify([{ ...opentrack, requirementLevel: "informative" }, duplication])),
+        },
+      ],
+    });
+
+    render(await AnalysisDetailPage({ params: Promise.resolve({ owner: "org", repo: "repo", analysisId: "analysis-1" }) }));
+
+    const card = screen.getByText(opentrack.title).closest("button") as HTMLElement;
+    expect(within(card).getByLabelText(`${opentrack.starRating} of 5 stars`)).toBeTruthy();
+    const stored = shownResults as CheckResult[];
+    expect(stored[0]).toMatchObject({ rating: opentrack.rating, starRating: opentrack.starRating, measurements: opentrack.measurements });
+    expect(withOpenTrackExtras(stored, measurement)[0].rating).toBe(opentrack.rating);
+    expect(stored[1]).toMatchObject({ openTrack: duplication.openTrack });
   });
 });

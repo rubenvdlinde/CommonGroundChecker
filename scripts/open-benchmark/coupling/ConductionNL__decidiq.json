@@ -1,0 +1,173 @@
+{
+ "commit": "e81a7cd768be6a0d6d98cfae5140481d7afff992",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 25,
+    "density": 2.27,
+    "violationDegree": 0.0473,
+    "violations": {
+     "cyclic": 2,
+     "transitive": 2
+    }
+   },
+   "componentIndependence": 0.2827,
+   "components": 13,
+   "cycles": {
+    "componentCycles": 2,
+    "largestComponentCycle": 2,
+    "largestModuleCycle": 4,
+    "locShareInCycles": 0.0573,
+    "moduleCycles": 1,
+    "modulesInCycles": 4
+   },
+   "edges": 259,
+   "loc": 25864,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0069,
+     0.0039,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 1672,
+     "1": 20318,
+     "10": 223,
+     "11": 28,
+     "12": 50,
+     "2": 2244,
+     "3": 749,
+     "36": 101,
+     "4": 308,
+     "6": 171
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 36,
+      "module": "src/components/tabs/useRelationStore.js"
+     },
+     {
+      "fanIn": 12,
+      "module": "src/store/store.js"
+     },
+     {
+      "fanIn": 11,
+      "module": "src/services/dashboardData.js"
+     },
+     {
+      "fanIn": 10,
+      "module": "src/views/dashboard/widgets/dashboardRefreshMixin.js"
+     },
+     {
+      "fanIn": 10,
+      "module": "src/views/dashboard/widgets/widgetLogic.js"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0039,
+     "low": 0.9931,
+     "moderate": 0.003,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 153,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 33,
+    "density": 2.06,
+    "violationDegree": 0.0947,
+    "violations": {
+     "cyclic": 7,
+     "indirect-cyclic": 4
+    }
+   },
+   "componentIndependence": 0.4608,
+   "components": 16,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 10,
+    "largestModuleCycle": 13,
+    "locShareInCycles": 0.0638,
+    "moduleCycles": 2,
+    "modulesInCycles": 18
+   },
+   "edges": 422,
+   "loc": 29523,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0173,
+     0.0053,
+     0.0015
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 7122,
+     "1": 15043,
+     "11": 351,
+     "16": 5,
+     "2": 3282,
+     "24": 111,
+     "3": 1512,
+     "4": 1121,
+     "5": 322,
+     "6": 499,
+     "7": 62,
+     "72": 45,
+     "9": 48
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 72,
+      "module": "lib/AppInfo/Application.php"
+     },
+     {
+      "fanIn": 24,
+      "module": "lib/Service/ParticipantResolver.php"
+     },
+     {
+      "fanIn": 16,
+      "module": "lib/Exception/MissingObjectException.php"
+     },
+     {
+      "fanIn": 11,
+      "module": "lib/Service/AuditLogService.php"
+     },
+     {
+      "fanIn": 9,
+      "module": "lib/Settings/AdminSettings.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0038,
+     "low": 0.9827,
+     "moderate": 0.0121,
+     "veryHigh": 0.0015
+    }
+   },
+   "modules": 249,
+   "scope": "249 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "ConductionNL/decidiq",
+ "seconds": 16.3,
+ "url": "https://github.com/ConductionNL/decidiq",
+ "version": 1
+}

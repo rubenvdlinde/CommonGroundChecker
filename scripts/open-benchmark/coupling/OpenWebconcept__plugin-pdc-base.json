@@ -1,0 +1,89 @@
+{
+ "commit": "bdf4254bba4d49aa577ec2e3076ba5cdadf82a25",
+ "languages": {
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below src/Base/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 24,
+    "density": 1.5,
+    "violationDegree": 0.0741,
+    "violations": {
+     "indirect-cyclic": 1,
+     "transitive": 3
+    }
+   },
+   "componentIndependence": 0.8015,
+   "components": 16,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 3,
+    "largestModuleCycle": 2,
+    "locShareInCycles": 0.1035,
+    "moduleCycles": 2,
+    "modulesInCycles": 4
+   },
+   "edges": 97,
+   "loc": 3758,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0383,
+     0.0349,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 1464,
+     "1": 759,
+     "11": 13,
+     "2": 567,
+     "21": 131,
+     "3": 114,
+     "4": 235,
+     "5": 99,
+     "6": 376
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 21,
+      "module": "src/Base/Support/CreatesFields.php"
+     },
+     {
+      "fanIn": 11,
+      "module": "src/Base/Foundation/ServiceProvider.php"
+     },
+     {
+      "fanIn": 6,
+      "module": "src/Base/Models/Item.php"
+     },
+     {
+      "fanIn": 6,
+      "module": "src/Base/RestAPI/ItemFields/ConnectedField.php"
+     },
+     {
+      "fanIn": 6,
+      "module": "src/Base/Settings/SettingsPageOptions.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0349,
+     "low": 0.9617,
+     "moderate": 0.0035,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 79,
+   "scope": "79 files under src/Base/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "OpenWebconcept/plugin-pdc-base",
+ "seconds": 6.4,
+ "url": "https://github.com/OpenWebconcept/plugin-pdc-base",
+ "version": 1
+}

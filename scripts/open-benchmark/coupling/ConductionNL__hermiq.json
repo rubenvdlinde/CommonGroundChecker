@@ -1,0 +1,173 @@
+{
+ "commit": "a30a31bbd25eaa6e91ed4ff6ecb1900ad8b1b943",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 25,
+    "density": 2.08,
+    "violationDegree": 0.0577,
+    "violations": {
+     "cyclic": 1,
+     "transitive": 2
+    }
+   },
+   "componentIndependence": 0.2137,
+   "components": 15,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 2,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 175,
+   "loc": 26215,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0071,
+     0.0009,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 2705,
+     "1": 19583,
+     "12": 163,
+     "2": 3071,
+     "22": 23,
+     "3": 425,
+     "4": 167,
+     "6": 78
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 22,
+      "module": "src/store/store.js"
+     },
+     {
+      "fanIn": 12,
+      "module": "src/api/skills.js"
+     },
+     {
+      "fanIn": 6,
+      "module": "src/api/agents.js"
+     },
+     {
+      "fanIn": 4,
+      "module": "src/api/agentTemplates.js"
+     },
+     {
+      "fanIn": 4,
+      "module": "src/api/budgets.js"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0009,
+     "low": 0.9929,
+     "moderate": 0.0062,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 123,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 29,
+    "density": 1.93,
+    "violationDegree": 0.1176,
+    "violations": {
+     "cyclic": 4,
+     "indirect-cyclic": 5,
+     "transitive": 1
+    }
+   },
+   "componentIndependence": 0.4481,
+   "components": 16,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 7,
+    "largestModuleCycle": 40,
+    "locShareInCycles": 0.2987,
+    "moduleCycles": 1,
+    "modulesInCycles": 40
+   },
+   "edges": 451,
+   "loc": 39620,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0692,
+     0.0029,
+     0.0029
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 12217,
+     "1": 8591,
+     "12": 886,
+     "13": 368,
+     "16": 1372,
+     "2": 5796,
+     "3": 2312,
+     "4": 3936,
+     "5": 1173,
+     "6": 504,
+     "68": 116,
+     "7": 21,
+     "8": 1674,
+     "9": 654
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 68,
+      "module": "lib/AppInfo/Application.php"
+     },
+     {
+      "fanIn": 16,
+      "module": "lib/Service/ScheduleService.php"
+     },
+     {
+      "fanIn": 13,
+      "module": "lib/Service/RedactionService.php"
+     },
+     {
+      "fanIn": 12,
+      "module": "lib/Service/ApprovalService.php"
+     },
+     {
+      "fanIn": 9,
+      "module": "lib/Service/ActionAuthService.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 0.9308,
+     "moderate": 0.0663,
+     "veryHigh": 0.0029
+    }
+   },
+   "modules": 232,
+   "scope": "232 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "ConductionNL/hermiq",
+ "seconds": 13.6,
+ "url": "https://github.com/ConductionNL/hermiq",
+ "version": 1
+}

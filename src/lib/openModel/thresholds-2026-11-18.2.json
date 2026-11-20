@@ -1,0 +1,244 @@
+{
+  "version": "2026-11-18.2",
+  "track": "open",
+  "description": "Open-track maintainability thresholds, derived from a public benchmark of Common Ground and Developer Overheid repositories with the benchmark method of Alves et al. Not a SIG rating.",
+  "method": {
+    "risk_thresholds": "Alves, Ypma and Visser 2010, section IV and Table IV: metric values at 70/80/90% (unit interfacing 80/90/95%) of the LOC-weighted unit distribution, every repository weighing the same",
+    "star_limits": "Alves, Correia and Visser 2011, Algorithm 1 (section III-A), partition 5/30/30/30/5%; stars per section III-B1: the lowest of the per-share levels",
+    "pooling": "all languages of a repository are pooled",
+    "rounding": "star limits are rounded up to 4 decimals",
+    "regenerate": "scripts/open-benchmark/README.md"
+  },
+  "distribution": {
+    "5": 0.05,
+    "4": 0.3,
+    "3": 0.3,
+    "2": 0.3,
+    "1": 0.05
+  },
+  "tools": {
+    "jscpd": "5.4.2",
+    "lizard": "1.24.3",
+    "coupling": [
+      "dependency-cruiser 17.4.3",
+      "grimp 3.18",
+      "pdepend 3.0.0"
+    ]
+  },
+  "benchmark": {
+    "repositories": 60,
+    "list": "scripts/open-benchmark/benchmark.json",
+    "min_code_loc": 2000,
+    "max_per_owner": 12
+  },
+  "properties": {
+    "unit_size": {
+      "kind": "risk-profile",
+      "metric": "unit size in lines of code (lizard NLOC)",
+      "bounds": [
+        29,
+        42,
+        71
+      ],
+      "stars": {
+        "5": [
+          0.0491,
+          0.0331,
+          0.0
+        ],
+        "4": [
+          0.2613,
+          0.1432,
+          0.0529
+        ],
+        "3": [
+          0.3697,
+          0.2428,
+          0.1106
+        ],
+        "2": [
+          0.6019,
+          0.4666,
+          0.3335
+        ]
+      },
+      "benchmark_spread": {
+        "5": 0.05,
+        "4": 0.3,
+        "3": 0.3,
+        "2": 0.3,
+        "1": 0.05
+      }
+    },
+    "unit_complexity": {
+      "kind": "risk-profile",
+      "metric": "McCabe cyclomatic complexity per unit (lizard CCN)",
+      "bounds": [
+        5,
+        7,
+        10
+      ],
+      "stars": {
+        "5": [
+          0.0818,
+          0.0187,
+          0.0035
+        ],
+        "4": [
+          0.2486,
+          0.1458,
+          0.0622
+        ],
+        "3": [
+          0.3439,
+          0.2395,
+          0.1307
+        ],
+        "2": [
+          0.4508,
+          0.3812,
+          0.3224
+        ]
+      },
+      "benchmark_spread": {
+        "5": 0.05,
+        "4": 0.3,
+        "3": 0.3,
+        "2": 0.3,
+        "1": 0.05
+      }
+    },
+    "unit_interfacing": {
+      "kind": "risk-profile",
+      "metric": "parameters per unit (lizard)",
+      "bounds": [
+        2,
+        3,
+        4
+      ],
+      "stars": {
+        "5": [
+          0.0069,
+          0.0,
+          0.0
+        ],
+        "4": [
+          0.1318,
+          0.0392,
+          0.0191
+        ],
+        "3": [
+          0.2156,
+          0.1037,
+          0.0659
+        ],
+        "2": [
+          0.3141,
+          0.1921,
+          0.1225
+        ]
+      },
+      "benchmark_spread": {
+        "5": 0.05,
+        "4": 0.3,
+        "3": 0.3,
+        "2": 0.3,
+        "1": 0.05
+      }
+    },
+    "duplication": {
+      "kind": "share",
+      "metric": "duplicated lines as a share of all lines, jscpd 5 (6 lines, 30 tokens, weak mode), one run per language",
+      "stars": {
+        "5": 0.0108,
+        "4": 0.0424,
+        "3": 0.0863,
+        "2": 0.3478
+      },
+      "benchmark_spread": {
+        "5": 0.05,
+        "4": 0.3,
+        "3": 0.3,
+        "2": 0.3,
+        "1": 0.05
+      },
+      "repositories": 60
+    },
+    "module_coupling": {
+      "kind": "risk-profile",
+      "metric": "fan-in per module: distinct depending modules (pdepend, grimp, dependency-cruiser)",
+      "bounds": [
+        2,
+        3,
+        5
+      ],
+      "stars": {
+        "5": [
+          0.0437,
+          0.0191,
+          0.0
+        ],
+        "4": [
+          0.1999,
+          0.1308,
+          0.0671
+        ],
+        "3": [
+          0.291,
+          0.2273,
+          0.1384
+        ],
+        "2": [
+          0.5404,
+          0.4393,
+          0.3039
+        ]
+      },
+      "benchmark_spread": {
+        "5": 0.053,
+        "4": 0.298,
+        "3": 0.298,
+        "2": 0.298,
+        "1": 0.053
+      },
+      "repositories": 57
+    },
+    "component_independence": {
+      "kind": "share-min",
+      "metric": "share of code in modules no other component depends on, code-line weighted over languages; higher is better",
+      "stars": {
+        "5": 0.9987,
+        "4": 0.815,
+        "3": 0.6381,
+        "2": 0.2729
+      },
+      "benchmark_spread": {
+        "5": 0.053,
+        "4": 0.298,
+        "3": 0.298,
+        "2": 0.298,
+        "1": 0.053
+      },
+      "repositories": 57
+    },
+    "component_entanglement": {
+      "kind": "share",
+      "metric": "violation degree of the component graph, code-line weighted over languages; lower is better",
+      "stars": {
+        "5": 0.0,
+        "4": 0.0285,
+        "3": 0.0938,
+        "2": 0.2359
+      },
+      "benchmark_spread": {
+        "5": 0.263,
+        "4": 0.088,
+        "3": 0.298,
+        "2": 0.298,
+        "1": 0.053
+      },
+      "repositories": 57
+    }
+  },
+  "not_calibrated": {}
+}

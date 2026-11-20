@@ -1,0 +1,211 @@
+{
+ "commit": "aa7f6c1f95e631a059cbf0a9931a574926764515",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below assets/js/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 5,
+    "density": 1.25,
+    "violationDegree": 0.0,
+    "violations": {}
+   },
+   "componentIndependence": 0.9979,
+   "components": 7,
+   "cycles": {
+    "componentCycles": 0,
+    "largestComponentCycle": 0,
+    "largestModuleCycle": 3,
+    "locShareInCycles": 0.0276,
+    "moduleCycles": 1,
+    "modulesInCycles": 3
+   },
+   "edges": 391,
+   "loc": 10242,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.016,
+     0.0045,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 152,
+     "1": 6701,
+     "13": 101,
+     "15": 5,
+     "16": 4,
+     "17": 8,
+     "2": 1642,
+     "22": 35,
+     "3": 1014,
+     "37": 11,
+     "4": 447,
+     "5": 55,
+     "6": 21,
+     "7": 14,
+     "9": 32
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 37,
+      "module": "assets/js/utils/index.ts"
+     },
+     {
+      "fanIn": 22,
+      "module": "assets/js/admin/vue/component/Icon.vue"
+     },
+     {
+      "fanIn": 17,
+      "module": "assets/js/admin/vue/form/index.ts"
+     },
+     {
+      "fanIn": 16,
+      "module": "assets/js/admin/utils/index.ts"
+     },
+     {
+      "fanIn": 15,
+      "module": "assets/js/admin/vue/composables/index.ts"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0045,
+     "low": 0.984,
+     "moderate": 0.0115,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 167,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 3,
+   "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 2,
+    "density": 0.67,
+    "violationDegree": 0.0,
+    "violations": {}
+   },
+   "componentIndependence": 0.8526,
+   "components": 3,
+   "cycles": {
+    "componentCycles": 0,
+    "largestComponentCycle": 0,
+    "largestModuleCycle": 15,
+    "locShareInCycles": 0.0864,
+    "moduleCycles": 27,
+    "modulesInCycles": 99
+   },
+   "edges": 6402,
+   "loc": 80869,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.1119,
+     0.0594,
+     0.0218
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 25067,
+     "1": 25258,
+     "10": 1522,
+     "11": 1012,
+     "12": 557,
+     "128": 280,
+     "13": 644,
+     "14": 392,
+     "145": 117,
+     "15": 314,
+     "16": 78,
+     "17": 223,
+     "18": 20,
+     "187": 318,
+     "19": 252,
+     "2": 8701,
+     "20": 752,
+     "21": 401,
+     "22": 153,
+     "24": 11,
+     "25": 120,
+     "27": 133,
+     "28": 41,
+     "29": 436,
+     "3": 3111,
+     "30": 60,
+     "31": 11,
+     "32": 17,
+     "33": 211,
+     "34": 323,
+     "35": 207,
+     "38": 143,
+     "39": 274,
+     "4": 2684,
+     "42": 12,
+     "43": 175,
+     "44": 52,
+     "5": 1160,
+     "50": 266,
+     "52": 53,
+     "53": 105,
+     "56": 122,
+     "6": 1192,
+     "62": 44,
+     "64": 12,
+     "7": 1292,
+     "75": 255,
+     "76": 293,
+     "8": 870,
+     "80": 123,
+     "9": 961,
+     "92": 39
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 187,
+      "module": "src/Domain/Publication/Dossier/AbstractDossier.php"
+     },
+     {
+      "fanIn": 145,
+      "module": "src/ValueObject/PlainDate.php"
+     },
+     {
+      "fanIn": 128,
+      "module": "src/Domain/Publication/Dossier/Type/WooDecision/WooDecision.php"
+     },
+     {
+      "fanIn": 92,
+      "module": "src/ValueObject/ExternalId.php"
+     },
+     {
+      "fanIn": 80,
+      "module": "src/Domain/Organisation/Organisation.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0377,
+     "low": 0.8881,
+     "moderate": 0.0525,
+     "veryHigh": 0.0218
+    }
+   },
+   "modules": 1872,
+   "scope": "1872 files under apps/admin/src/, apps/publication_api/src/, apps/worker/src/, src/, tenants/minvws/src/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "minvws/nl-rdo-woo-web",
+ "seconds": 41.3,
+ "url": "https://github.com/minvws/nl-rdo-woo-web",
+ "version": 1
+}

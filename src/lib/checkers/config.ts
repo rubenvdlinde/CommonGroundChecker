@@ -82,6 +82,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   duplication: { weight: 0, requirementLevel: "informative" },
   sonarqube: { weight: 0, requirementLevel: "informative" },
   coupling: { weight: 0, requirementLevel: "informative" },
+  opentrack: { weight: 0, requirementLevel: "informative" },
   codemetrics: { weight: 0, requirementLevel: "informative" },
   usage: { weight: 0, requirementLevel: "informative" },
   projecthealth: { weight: 0, requirementLevel: "informative" },

@@ -1,0 +1,179 @@
+{
+ "commit": "04cb50eb91a22c634d85ea891dce408f1bd781c3",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 28,
+    "density": 3.11,
+    "violationDegree": 0.0315,
+    "violations": {
+     "cyclic": 2,
+     "transitive": 3
+    }
+   },
+   "componentIndependence": 0.5516,
+   "components": 12,
+   "cycles": {
+    "componentCycles": 2,
+    "largestComponentCycle": 2,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 340,
+   "loc": 39286,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0042,
+     0.0002,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 5223,
+     "1": 27906,
+     "11": 3,
+     "18": 152,
+     "2": 4741,
+     "3": 264,
+     "4": 238,
+     "41": 9,
+     "5": 610,
+     "6": 9,
+     "7": 131
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 41,
+      "module": "src/store/modules/object.js"
+     },
+     {
+      "fanIn": 18,
+      "module": "src/store/store.js"
+     },
+     {
+      "fanIn": 11,
+      "module": "src/pinia.js"
+     },
+     {
+      "fanIn": 7,
+      "module": "src/utils/caseHelpers.js"
+     },
+     {
+      "fanIn": 6,
+      "module": "src/views/widgets/signalTable.js"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0002,
+     "low": 0.9958,
+     "moderate": 0.0039,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 247,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 36,
+    "density": 2.12,
+    "violationDegree": 0.1944,
+    "violations": {
+     "cyclic": 10,
+     "indirect-cyclic": 5,
+     "transitive": 2
+    }
+   },
+   "componentIndependence": 0.5689,
+   "components": 21,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 12,
+    "largestModuleCycle": 67,
+    "locShareInCycles": 0.095,
+    "moduleCycles": 3,
+    "modulesInCycles": 71
+   },
+   "edges": 1263,
+   "loc": 80400,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0125,
+     0.0078,
+     0.0066
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 26742,
+     "1": 33849,
+     "10": 266,
+     "11": 37,
+     "12": 238,
+     "167": 37,
+     "17": 105,
+     "2": 9771,
+     "200": 495,
+     "22": 91,
+     "26": 6,
+     "3": 4048,
+     "4": 1605,
+     "5": 956,
+     "6": 1339,
+     "7": 810,
+     "9": 5
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 200,
+      "module": "lib/Service/SettingsService.php"
+     },
+     {
+      "fanIn": 167,
+      "module": "lib/AppInfo/Application.php"
+     },
+     {
+      "fanIn": 26,
+      "module": "lib/Service/Transitions/ActionHandlerInterface.php"
+     },
+     {
+      "fanIn": 22,
+      "module": "lib/Service/Actions/ActionHandlerInterface.php"
+     },
+     {
+      "fanIn": 22,
+      "module": "lib/Settings/AdminSettings.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0012,
+     "low": 0.9875,
+     "moderate": 0.0047,
+     "veryHigh": 0.0066
+    }
+   },
+   "modules": 671,
+   "scope": "671 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "ConductionNL/dossiq",
+ "seconds": 20.5,
+ "url": "https://github.com/ConductionNL/dossiq",
+ "version": 1
+}

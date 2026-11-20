@@ -1,0 +1,158 @@
+{
+ "commit": "aa45aeee9e8ac5b5fb488b068c2afe52300769a4",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 4,
+    "density": 1.33,
+    "violationDegree": 0.3333,
+    "violations": {
+     "cyclic": 3
+    }
+   },
+   "componentIndependence": 0.519,
+   "components": 6,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 3,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 16,
+   "loc": 2266,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 695,
+     "1": 1221,
+     "2": 350
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 2,
+      "module": "src/logger.js"
+     },
+     {
+      "fanIn": 2,
+      "module": "src/store/modules/object.js"
+     },
+     {
+      "fanIn": 2,
+      "module": "src/views/settings/Settings.vue"
+     },
+     {
+      "fanIn": 1,
+      "module": "src/App.vue"
+     },
+     {
+      "fanIn": 1,
+      "module": "src/icons.js"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 1.0,
+     "moderate": 0.0,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 22,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 11,
+    "density": 1.57,
+    "violationDegree": 0.0741,
+    "violations": {
+     "cyclic": 1,
+     "indirect-cyclic": 1
+    }
+   },
+   "componentIndependence": 0.6523,
+   "components": 8,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 3,
+    "largestModuleCycle": 2,
+    "locShareInCycles": 0.0706,
+    "moduleCycles": 1,
+    "modulesInCycles": 2
+   },
+   "edges": 40,
+   "loc": 3072,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0228,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 1268,
+     "1": 1251,
+     "14": 70,
+     "2": 260,
+     "3": 77,
+     "4": 146
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 14,
+      "module": "lib/AppInfo/Application.php"
+     },
+     {
+      "fanIn": 4,
+      "module": "lib/Service/RegisterObjectFetcher.php"
+     },
+     {
+      "fanIn": 3,
+      "module": "lib/Service/SettingsService.php"
+     },
+     {
+      "fanIn": 2,
+      "module": "lib/Service/DocuDeskPdfRenderer.php"
+     },
+     {
+      "fanIn": 2,
+      "module": "lib/Service/IdListNormaliser.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 0.9772,
+     "moderate": 0.0228,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 32,
+   "scope": "32 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "ConductionNL/larpinq",
+ "seconds": 8.3,
+ "url": "https://github.com/ConductionNL/larpinq",
+ "version": 1
+}

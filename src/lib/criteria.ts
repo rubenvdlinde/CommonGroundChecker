@@ -51,20 +51,21 @@ export const RESULT_ORDER_BY_ID: string[] = [
   "coverage",
   "complexity",
   "maintainability",
-  "testcoderatio",
-  "opensourcehealth",
-  "size",
-  "duplication",
+  "opentrack",
   "sonarqube",
   "coupling",
+  "opensourcehealth",
+  "testcoderatio",
+  "size",
+  "duplication",
   "codemetrics",
   "owaspsecurecoding",
   "contributing",
   "codeofconduct",
   "security",
-  "projecthealth",
   "secretscanning",
   "openssfscorecard",
+  "projecthealth",
   "semver",
 ];
 
@@ -99,6 +100,7 @@ export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
   duplication: "Software Quality",
   sonarqube: "Software Quality",
   coupling: "Software Quality",
+  opentrack: "Software Quality",
   codemetrics: "Software Quality",
   owaspsecurecoding: "Security",
   contributing: "Governance",
@@ -186,6 +188,7 @@ export const CRITERION_VERSIONS: CriterionVersions = {
   duplication: { introducedIn: "2026.2" },
   sonarqube: { introducedIn: "2026.2" },
   coupling: { introducedIn: "2026.2" },
+  opentrack: { introducedIn: "2026.2" },
 };
 
 /** The start of a YYYY-MM-DD date in UTC, or null for anything else. */

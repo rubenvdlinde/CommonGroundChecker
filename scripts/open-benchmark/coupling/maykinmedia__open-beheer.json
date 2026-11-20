@@ -1,0 +1,162 @@
+{
+ "commit": "7ce9f34d1b2ec8a6e08f700201e301c2a80fea32",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below frontend/src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 1,
+    "density": 0.5,
+    "violationDegree": 0.0,
+    "violations": {}
+   },
+   "componentIndependence": 0.9888,
+   "components": 11,
+   "cycles": {
+    "componentCycles": 0,
+    "largestComponentCycle": 0,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 90,
+   "loc": 12101,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 6789,
+     "1": 4517,
+     "2": 795
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 2,
+      "module": "frontend/src/components/VersionSelector/VersionSelector.tsx"
+     },
+     {
+      "fanIn": 2,
+      "module": "frontend/src/components/profile/Profile.tsx"
+     },
+     {
+      "fanIn": 2,
+      "module": "frontend/src/components/zaaktypefilter/ZaaktypeFilter.tsx"
+     },
+     {
+      "fanIn": 2,
+      "module": "frontend/src/pages/informatieobjecttypecreate/informatieobjecttype.action.ts"
+     },
+     {
+      "fanIn": 2,
+      "module": "frontend/src/pages/login/Login.tsx"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 1.0,
+     "moderate": 0.0,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 126,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "python": {
+   "componentDefinition": "directories below backend/src/openbeheer/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 55,
+    "density": 2.89,
+    "violationDegree": 0.1373,
+    "violations": {
+     "cyclic": 10,
+     "transitive": 4
+    }
+   },
+   "componentIndependence": 0.3999,
+   "components": 21,
+   "contracts": null,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 6,
+    "largestModuleCycle": 5,
+    "locShareInCycles": 0.2211,
+    "moduleCycles": 3,
+    "modulesInCycles": 9
+   },
+   "edges": 172,
+   "loc": 11463,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.4111,
+     0.3543,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 1314,
+     "1": 2620,
+     "10": 113,
+     "14": 652,
+     "2": 320,
+     "21": 3999,
+     "27": 62,
+     "3": 1104,
+     "4": 494,
+     "5": 43,
+     "6": 91,
+     "8": 651
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 27,
+      "module": "backend/src/openbeheer/types/__init__.py"
+     },
+     {
+      "fanIn": 21,
+      "module": "backend/src/openbeheer/types/ztc.py"
+     },
+     {
+      "fanIn": 14,
+      "module": "backend/src/openbeheer/api/views.py"
+     },
+     {
+      "fanIn": 10,
+      "module": "backend/src/openbeheer/clients.py"
+     },
+     {
+      "fanIn": 8,
+      "module": "backend/src/openbeheer/types/_open_beheer.py"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.3543,
+     "low": 0.5889,
+     "moderate": 0.0569,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 140,
+   "scope": "packages openbeheer",
+   "tool": "grimp 3.18"
+  }
+ },
+ "name": "maykinmedia/open-beheer",
+ "seconds": 17.6,
+ "url": "https://github.com/maykinmedia/open-beheer",
+ "version": 1
+}

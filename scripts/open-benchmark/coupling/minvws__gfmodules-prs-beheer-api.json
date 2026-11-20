@@ -1,0 +1,88 @@
+{
+ "commit": "c87f74f4d08963d01b406ea6cda1d6d0641fb7eb",
+ "languages": {
+  "python": {
+   "componentDefinition": "directories below app/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 14,
+    "density": 1.75,
+    "violationDegree": 0.1698,
+    "violations": {
+     "cyclic": 5
+    }
+   },
+   "componentIndependence": 0.3815,
+   "components": 10,
+   "contracts": null,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 4,
+    "largestModuleCycle": 6,
+    "locShareInCycles": 0.1651,
+    "moduleCycles": 2,
+    "modulesInCycles": 8
+   },
+   "edges": 111,
+   "loc": 2393,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0326,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 560,
+     "1": 899,
+     "11": 78,
+     "2": 100,
+     "3": 287,
+     "4": 160,
+     "5": 39,
+     "6": 215,
+     "7": 55
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 11,
+      "module": "app/db/models/base.py"
+     },
+     {
+      "fanIn": 7,
+      "module": "app/db/models/organization.py"
+     },
+     {
+      "fanIn": 7,
+      "module": "app/utils/datetime.py"
+     },
+     {
+      "fanIn": 6,
+      "module": "app/config.py"
+     },
+     {
+      "fanIn": 6,
+      "module": "app/db/repository/base.py"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 0.9674,
+     "moderate": 0.0326,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 58,
+   "scope": "packages app",
+   "tool": "grimp 3.18"
+  }
+ },
+ "name": "minvws/gfmodules-prs-beheer-api",
+ "seconds": 5.0,
+ "url": "https://github.com/minvws/gfmodules-prs-beheer-api",
+ "version": 1
+}

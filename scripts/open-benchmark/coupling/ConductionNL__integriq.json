@@ -1,0 +1,176 @@
+{
+ "commit": "001b0a54b8ecde154d03459bb65dc757307acdb0",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 20,
+    "density": 2.22,
+    "violationDegree": 0.125,
+    "violations": {
+     "cyclic": 1,
+     "transitive": 2
+    }
+   },
+   "componentIndependence": 0.4536,
+   "components": 11,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 2,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 158,
+   "loc": 26128,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0015,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 4928,
+     "1": 16435,
+     "16": 38,
+     "2": 3315,
+     "3": 652,
+     "4": 618,
+     "5": 142
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 16,
+      "module": "src/views/Rule/actionForms/shared.js"
+     },
+     {
+      "fanIn": 5,
+      "module": "src/store/objectStore.js"
+     },
+     {
+      "fanIn": 5,
+      "module": "src/views/Synchronization/formsBridge.js"
+     },
+     {
+      "fanIn": 5,
+      "module": "src/views/Synchronization/tablesBridge.js"
+     },
+     {
+      "fanIn": 4,
+      "module": "scripts/lib/l10n.js"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 0.9985,
+     "moderate": 0.0015,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 111,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 5
+  },
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 50,
+    "density": 1.92,
+    "violationDegree": 0.0625,
+    "violations": {
+     "cyclic": 9,
+     "indirect-cyclic": 1
+    }
+   },
+   "componentIndependence": 0.3988,
+   "components": 26,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 11,
+    "largestModuleCycle": 11,
+    "locShareInCycles": 0.2256,
+    "moduleCycles": 3,
+    "modulesInCycles": 21
+   },
+   "edges": 785,
+   "loc": 56469,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.1649,
+     0.0263,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 12285,
+     "1": 16626,
+     "10": 765,
+     "11": 93,
+     "12": 97,
+     "16": 6,
+     "17": 485,
+     "19": 5538,
+     "2": 8857,
+     "20": 1609,
+     "21": 1396,
+     "3": 1421,
+     "31": 88,
+     "4": 3826,
+     "5": 1322,
+     "6": 922,
+     "7": 375,
+     "8": 638,
+     "9": 120
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 31,
+      "module": "lib/Service/ActionAuthService.php"
+     },
+     {
+      "fanIn": 21,
+      "module": "lib/Service/EventService.php"
+     },
+     {
+      "fanIn": 20,
+      "module": "lib/Service/CallService.php"
+     },
+     {
+      "fanIn": 19,
+      "module": "lib/Service/SynchronizationService.php"
+     },
+     {
+      "fanIn": 17,
+      "module": "lib/AppInfo/Application.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0263,
+     "low": 0.8351,
+     "moderate": 0.1386,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 394,
+   "scope": "394 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "ConductionNL/integriq",
+ "seconds": 15.2,
+ "url": "https://github.com/ConductionNL/integriq",
+ "version": 1
+}

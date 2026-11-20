@@ -1,0 +1,163 @@
+{
+ "commit": "94fa0ee680b904186fc75be2043c714dea72fa44",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 15,
+    "density": 1.67,
+    "violationDegree": 0.0,
+    "violations": {}
+   },
+   "componentIndependence": 0.2081,
+   "components": 10,
+   "cycles": {
+    "componentCycles": 0,
+    "largestComponentCycle": 0,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 79,
+   "loc": 6645,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0652,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 546,
+     "1": 5189,
+     "13": 433,
+     "2": 3,
+     "3": 217,
+     "4": 42,
+     "5": 129,
+     "6": 2,
+     "7": 84
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 13,
+      "module": "src/store/projects.js"
+     },
+     {
+      "fanIn": 7,
+      "module": "src/store/modules/settings.js"
+     },
+     {
+      "fanIn": 6,
+      "module": "src/store/objectStore.js"
+     },
+     {
+      "fanIn": 5,
+      "module": "src/utils/taskHelpers.js"
+     },
+     {
+      "fanIn": 4,
+      "module": "src/utils/durationParser.js"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 0.9348,
+     "moderate": 0.0652,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 48,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 13,
+    "density": 1.62,
+    "violationDegree": 0.1212,
+    "violations": {
+     "cyclic": 1,
+     "indirect-cyclic": 1,
+     "transitive": 1
+    }
+   },
+   "componentIndependence": 0.6007,
+   "components": 9,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 3,
+    "largestModuleCycle": 2,
+    "locShareInCycles": 0.122,
+    "moduleCycles": 1,
+    "modulesInCycles": 2
+   },
+   "edges": 42,
+   "loc": 2747,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0644,
+     0.0,
+     0.0
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 1215,
+     "1": 754,
+     "14": 177,
+     "2": 355,
+     "3": 19,
+     "6": 227
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 14,
+      "module": "lib/AppInfo/Application.php"
+     },
+     {
+      "fanIn": 6,
+      "module": "lib/Service/SettingsService.php"
+     },
+     {
+      "fanIn": 3,
+      "module": "lib/Exception/DependencyValidationException.php"
+     },
+     {
+      "fanIn": 3,
+      "module": "lib/Settings/AdminSettings.php"
+     },
+     {
+      "fanIn": 2,
+      "module": "lib/Listener/TaskScopeResolver.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 0.9356,
+     "moderate": 0.0644,
+     "veryHigh": 0.0
+    }
+   },
+   "modules": 32,
+   "scope": "32 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  }
+ },
+ "name": "ConductionNL/planninq",
+ "seconds": 8.1,
+ "url": "https://github.com/ConductionNL/planninq",
+ "version": 1
+}

@@ -1,6 +1,7 @@
 import { dataSource, type RepositoryExtras, type StaticAnalysisExtras } from "@/lib/dataSource";
 import { readReusedFrom } from "@/lib/scanModeText";
 import { parseMeasurements, parseMetrics } from "@/lib/measurements";
+import { parseSize } from "@/lib/size";
 import { countIssues } from "@/lib/issues";
 import { isRating, type Ratings } from "@/lib/ratings";
 import { loadStoredRatings } from "@/lib/storedRatings";
@@ -11,7 +12,7 @@ import { isMandatoryFromDate } from "@/lib/criteria";
 import { componentHref } from "@/lib/routes";
 import { developmentStatusOf, type MaintainedSla } from "@/lib/maintained";
 import { computeLifecycleStatus, openDropsOf, type LifecycleResult } from "@/lib/lifecycle";
-import type { CheckReport, CheckResult, Endorsement, StarRating } from "@/lib/types";
+import type { CheckReport, CheckResult, Endorsement, OpenTrackMeasures, StarRating } from "@/lib/types";
 import type { MaintenanceDrop, RepoMeta } from "@/generated/openapi-client";
 
 /** How many stored runs a repository page loads. */
@@ -100,7 +101,7 @@ export function normalizeResults(raw: unknown): CheckResult[] {
           ? item.requirementLevel
           : undefined;
 
-      return {
+      const result = {
         id: typeof item.id === "string" ? item.id : "unknown",
         title: typeof item.title === "string" ? item.title : "Unknown check",
         description: typeof item.description === "string" ? item.description : "",
@@ -132,12 +133,19 @@ export function normalizeResults(raw: unknown): CheckResult[] {
         rating: isRating(item.rating) ? item.rating : undefined,
         mandatoryFrom: isMandatoryFromDate(item.mandatoryFrom) ? item.mandatoryFrom : undefined,
         measurements: parseMeasurements(item.measurements),
+        size: parseSize(item.size),
         metrics: parseMetrics(item.metrics),
         publiccode: (item.id === "publiccode" && readPublicCodeData(item.publiccode)) || undefined,
         usage: item.id === USAGE_CHECK_ID ? readUsageData(item.usage) : undefined,
         sla: parseSla(item.sla),
         reusedFrom: readReusedFrom(item.reusedFrom),
       } satisfies CheckResult;
+
+      // The open-track measures of duplication and coupling, read by shape as openTrackExtras reads them.
+      const openTrack = item.openTrack;
+      return openTrack && typeof openTrack === "object" && !Array.isArray(openTrack)
+        ? { ...result, openTrack: openTrack as OpenTrackMeasures }
+        : result;
     });
 }
 

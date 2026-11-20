@@ -1,0 +1,188 @@
+{
+ "commit": "2023195eb60256e31f5c064d8966c3e9543bac4b",
+ "languages": {
+  "javascript": {
+   "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 37,
+    "density": 3.08,
+    "violationDegree": 0.0314,
+    "violations": {
+     "cyclic": 6
+    }
+   },
+   "componentIndependence": 0.2605,
+   "components": 14,
+   "cycles": {
+    "componentCycles": 2,
+    "largestComponentCycle": 4,
+    "largestModuleCycle": 0,
+    "locShareInCycles": 0.0,
+    "moduleCycles": 0,
+    "modulesInCycles": 0
+   },
+   "edges": 628,
+   "loc": 66718,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0086,
+     0.0003,
+     0.0003
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 6236,
+     "1": 52684,
+     "11": 91,
+     "12": 212,
+     "13": 197,
+     "15": 54,
+     "2": 4500,
+     "3": 1814,
+     "4": 208,
+     "5": 236,
+     "6": 303,
+     "60": 17,
+     "7": 100,
+     "8": 66
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 60,
+      "module": "src/store/modules/object.js"
+     },
+     {
+      "fanIn": 15,
+      "module": "src/services/localeUtils.js"
+     },
+     {
+      "fanIn": 13,
+      "module": "src/services/dashboardData.js"
+     },
+     {
+      "fanIn": 13,
+      "module": "src/views/dashboard/widgets/dashboardRefreshMixin.js"
+     },
+     {
+      "fanIn": 12,
+      "module": "src/services/posTotals.js"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0,
+     "low": 0.9914,
+     "moderate": 0.0083,
+     "veryHigh": 0.0003
+    }
+   },
+   "modules": 383,
+   "tool": "dependency-cruiser 17.4.3",
+   "unresolvedLocalImports": 0
+  },
+  "php": {
+   "batches": 1,
+   "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+   "componentEntanglement": {
+    "communicationLines": 50,
+    "density": 2.38,
+    "violationDegree": 0.1064,
+    "violations": {
+     "cyclic": 13,
+     "indirect-cyclic": 4,
+     "transitive": 3
+    }
+   },
+   "componentIndependence": 0.4222,
+   "components": 23,
+   "cycles": {
+    "componentCycles": 1,
+    "largestComponentCycle": 11,
+    "largestModuleCycle": 105,
+    "locShareInCycles": 0.2441,
+    "moduleCycles": 6,
+    "modulesInCycles": 118
+   },
+   "edges": 1402,
+   "loc": 90093,
+   "measured": true,
+   "moduleCoupling": {
+    "above": [
+     0.0183,
+     0.0107,
+     0.0054
+    ],
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "fanInHistogram": {
+     "0": 22552,
+     "1": 30432,
+     "10": 34,
+     "11": 230,
+     "13": 26,
+     "14": 155,
+     "17": 273,
+     "2": 13296,
+     "24": 195,
+     "3": 6521,
+     "31": 246,
+     "317": 484,
+     "34": 40,
+     "4": 6442,
+     "5": 4184,
+     "6": 1844,
+     "7": 2026,
+     "8": 511,
+     "9": 602
+    },
+    "highestFanIn": [
+     {
+      "fanIn": 317,
+      "module": "lib/AppInfo/Application.php"
+     },
+     {
+      "fanIn": 34,
+      "module": "lib/Lifecycle/ObjectOwnerAccessPolicy.php"
+     },
+     {
+      "fanIn": 31,
+      "module": "lib/Service/TicketService.php"
+     },
+     {
+      "fanIn": 24,
+      "module": "lib/Service/Marketing/ListObjectStore.php"
+     },
+     {
+      "fanIn": 17,
+      "module": "lib/Service/NotificationService.php"
+     }
+    ],
+    "riskProfile": {
+     "high": 0.0053,
+     "low": 0.9817,
+     "moderate": 0.0076,
+     "veryHigh": 0.0054
+    }
+   },
+   "modules": 628,
+   "scope": "628 files under lib/ (composer.json PSR-4)",
+   "tool": "pdepend 3.0.0"
+  },
+  "python": {
+   "files": 3,
+   "measured": false,
+   "reason": "no Python file sits in a package (a directory with __init__.py)"
+  }
+ },
+ "name": "ConductionNL/pipelinq",
+ "seconds": 28.9,
+ "url": "https://github.com/ConductionNL/pipelinq",
+ "version": 1
+}

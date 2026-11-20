@@ -27,6 +27,7 @@ import { checkSize } from "./size";
 import { checkDuplication } from "./duplication";
 import { checkSonarQube } from "./sonarqube";
 import { checkCoupling } from "./coupling";
+import { measureOpenTrack, rateOpenTrack, withOpenTrackExtras, type OpenTrackMeasurement } from "./openTrack";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -304,6 +305,10 @@ export async function runChecksOnContext(
       })
     )
   );
+  // A reused open-track result needs no new measurement, so the scan does not clone for it.
+  const openTrackPromise: Promise<OpenTrackMeasurement | null> = reused.has("opentrack")
+    ? Promise.resolve(null)
+    : checkout().then(measureOpenTrack);
   const couplingPromise = measure("coupling", async () => checkCoupling(await checkout()));
   // Null when no SonarQube is configured, so it is not reused like a measured result.
   const sonarQubePromise = checkSonarQube(context, tree);
@@ -376,7 +381,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth, size, duplication, sonarqube, coupling] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth, size, duplication, sonarqube, coupling, openTrackMeasurement] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -393,6 +398,7 @@ export async function runChecksOnContext(
     duplicationPromise,
     sonarQubePromise,
     couplingPromise,
+    openTrackPromise,
   ]);
   const publiccode = reused.get("publiccode") ?? publiccodeAnalysis.result;
 
@@ -426,7 +432,8 @@ export async function runChecksOnContext(
 
   onProgress?.("Calculating compliance score...", 90);
 
-  const results = [
+  const opentrack = openTrackMeasurement ? rateOpenTrack(openTrackMeasurement) : reused.get("opentrack")!;
+  const checkedResults = [
     sourcecode,
     openapi,
     license,
@@ -448,6 +455,7 @@ export async function runChecksOnContext(
     complexity,
     maintainability,
     ...(sonarqube ? [sonarqube] : []),
+    opentrack,
     testcoderatio,
     opensourcehealth,
     size,
@@ -467,6 +475,9 @@ export async function runChecksOnContext(
     projecthealth,
     standards,
   ];
+  // The open track is rated again with the measures other checks report, such as duplication.
+  const results = openTrackMeasurement ? withOpenTrackExtras(checkedResults, openTrackMeasurement) : checkedResults;
+  const ratedOpenTrack = results.find((result) => result.id === "opentrack") ?? opentrack;
 
   const categoryAggregates = results.reduce(
     (acc, result) => {
@@ -564,6 +575,7 @@ export async function runChecksOnContext(
     complexity,
     maintainability,
     ...(sonarqube ? [sonarqube] : []),
+    ratedOpenTrack,
     testcoderatio,
     opensourcehealth,
     size,

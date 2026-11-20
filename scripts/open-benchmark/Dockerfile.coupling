@@ -1,0 +1,14 @@
+# Tools of feat/open-track-coupling (db1cde2) for the open-track coupling benchmark.
+FROM node:20-bookworm-slim
+ENV HYDRA_GATE_TOOLS_DIR=/opt/analysis-tools HYDRA_GATE_SIG_NO_INSTALL=1
+ARG PDEPEND_SHA256=6b562a6ad2706c018c1673f389e77d683a55744c6b9654a737bacc9d2ddca6df
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends git ca-certificates curl python3 python3-pip php-cli php-xml \
+  && rm -rf /var/lib/apt/lists/* \
+  && pip3 install --no-cache-dir --break-system-packages lizard==1.24.3 grimp==3.18 import-linter==2.15 \
+  && npm install --silent --no-audit --no-fund --ignore-scripts --prefix /opt/analysis-tools/dependency-cruiser-17.4.3 \
+    dependency-cruiser@17.4.3 typescript@5.9.3 @vue/compiler-sfc@3.5.44 \
+  && mkdir -p /opt/analysis-tools/pdepend-3.0.0 \
+  && curl -fsSL -o /opt/analysis-tools/pdepend-3.0.0/pdepend.phar https://github.com/pdepend/pdepend/releases/download/3.0.0/pdepend.phar \
+  && echo "${PDEPEND_SHA256}  /opt/analysis-tools/pdepend-3.0.0/pdepend.phar" | sha256sum -c - \
+  && git config --system --add safe.directory '*'

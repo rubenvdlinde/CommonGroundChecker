@@ -386,7 +386,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     why: "Anyone can check and repeat the open track: the benchmark, the measurements and the thresholds are public.",
     tool: "lizard and jscpd, rated against the open benchmark thresholds",
     howToPass: ["There is nothing to pass: the criterion is informative.", "The same changes that improve maintainability improve the open track."],
-    planned: { category: "Maintainability", level: "informative" },
   },
   {
     id: "coupling",
