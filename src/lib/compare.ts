@@ -4,7 +4,7 @@
  * that is informative, is not comparable.
  */
 import { ASPECT_MODEL } from "./aspects";
-import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "./criteria";
+import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID, isInformativeCategory } from "./criteria";
 import { criterionRating, isRating } from "./ratings";
 import { COMPARE_PATH } from "./routes";
 import type { CheckResult, CheckStatus } from "./types";
@@ -60,7 +60,7 @@ export function compareCategoryRatings(a: ComparedAnalysis, b: ComparedAnalysis)
     { id: "overall", title: "Overall rating", a: ratingOf(a.rating), b: ratingOf(b.rating), winner: "not-comparable" },
     ...CATEGORY_ORDER.map((category) => ({
       id: category,
-      title: category,
+      title: isInformativeCategory(category) ? `${category} (informative)` : category,
       a: ratingOf(a.categoryRatings?.[category]),
       b: ratingOf(b.categoryRatings?.[category]),
       winner: "not-comparable" as Winner,

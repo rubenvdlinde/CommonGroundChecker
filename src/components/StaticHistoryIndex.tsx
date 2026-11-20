@@ -24,7 +24,8 @@ export function readHistoryParams(params: { get(name: string): string | null }):
       params.get("status") ?? undefined,
       params.get("basisset") ?? undefined,
       params.get("functionality") ?? undefined,
-      params.get("standard") ?? undefined
+      params.get("standard") ?? undefined,
+      params.get("ai") ?? undefined
     ),
   };
 }
@@ -65,6 +66,7 @@ export default function StaticHistoryIndex({
       basissetOnly={filter.basisset}
       functionality={filter.functionality ?? null}
       standard={filter.standard ?? null}
+      aiReady={filter.aiReady === true}
       functionalityNames={functionalityNames}
       basisset={basisset}
       today={today}

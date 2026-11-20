@@ -425,6 +425,19 @@ describe("HistoryPageClient status filter", () => {
     );
   });
 
+  it("offers an AI readiness chip that toggles ?ai=1 and narrows the list", () => {
+    const { unmount } = renderIndex();
+    const group = screen.getByRole("group", { name: "Filter by AI readiness" });
+    const chip = within(group).getByRole("link", { name: "AI ready, 4 stars or more (0)" });
+    expect(chip.getAttribute("href")).toBe("/components?sort=rating&direction=desc&q=zaak&ai=1");
+    expect(within(group).getByRole("link", { name: "About AI readiness" }).getAttribute("href")).toBe("/docs/ai-readiness");
+    unmount();
+
+    renderIndex({ aiReady: true });
+    expect(screen.getByRole("status").textContent).toContain("with AI readiness of 4 stars or more");
+    expect(screen.queryByText("measured-repo")).toBeNull();
+  });
+
   it("shows only the chosen status and keeps the filter in the sort links and the search form", () => {
     const { container } = renderIndex({ status: "maintained" });
 

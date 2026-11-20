@@ -1,4 +1,5 @@
 import RatingBadge from "@/components/RatingBadge";
+import InformativeCategoryTag from "./InformativeCategoryTag";
 import ResultCard from "@/components/ResultCard";
 import { CATEGORY_ORDER, RESULT_CATEGORY_BY_ID, RESULT_ORDER_BY_ID } from "@/lib/criteria";
 import { derivedStarRating } from "@/lib/stars";
@@ -56,6 +57,7 @@ export default function CriteriaResults({ results, categoryRatings }: CriteriaRe
                     {category}
                   </h4>
                   <RatingBadge rating={categoryRatings[category] ?? null} label={`${category} rating`} />
+                  <InformativeCategoryTag category={category} />
                 </div>
                 <div className="space-y-2">
                   {sortedResults.map((result, index) => (

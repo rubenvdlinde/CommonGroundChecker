@@ -4,7 +4,7 @@ import { matchesRepositorySearch } from "@/lib/historySearch";
 
 describe("readHistoryParams", () => {
   it("reads sort, direction and search from the URL with the server's defaults", () => {
-    const noFilter = { status: null, basisset: false, functionality: null, standard: null };
+    const noFilter = { status: null, basisset: false, functionality: null, standard: null, aiReady: false };
     expect(readHistoryParams(new URLSearchParams(""))).toEqual({ sort: "rating", direction: "desc", query: "", filter: noFilter });
     expect(readHistoryParams(new URLSearchParams("sort=score&direction=asc&q=%20zaak%20"))).toEqual({
       sort: "score",
@@ -26,13 +26,18 @@ describe("readHistoryParams", () => {
       basisset: true,
       functionality: null,
       standard: null,
+      aiReady: false,
     });
+  });
+
+  it("reads the AI readiness chip from the URL", () => {
+    expect(readHistoryParams(new URLSearchParams("ai=1")).filter.aiReady).toBe(true);
   });
 
   it("reads the functionality and the standard from the URL", () => {
     expect(
       readHistoryParams(new URLSearchParams("functionality=registreren-en-delen-van-zaken&standard=zgw-zaken")).filter
-    ).toEqual({ status: null, basisset: false, functionality: "registreren-en-delen-van-zaken", standard: "zgw-zaken" });
+    ).toEqual({ status: null, basisset: false, functionality: "registreren-en-delen-van-zaken", standard: "zgw-zaken", aiReady: false });
   });
 });
 
