@@ -5,7 +5,7 @@ import type { RepoContext } from "../providers/types";
 import { buildLegacyRepoContext } from "./compat";
 
 const SOURCE_FILE_PATTERN = /\.(ts|tsx|js|jsx|mjs|cjs|py|java|go|cs|php|rb|vue)$/i;
-const EXCLUDED_PATH_PATTERN = /(^|\/)(node_modules|dist|build|coverage|vendor|\.next|generated)(\/|$)/i;
+export const EXCLUDED_PATH_PATTERN = /(^|\/)(node_modules|dist|build|coverage|vendor|\.next|generated)(\/|$)/i;
 const TEST_PATH_PATTERN = /(^|\/)(tests?|__tests__|spec|fixtures)(\/|$)|\.(test|spec)\.[^/]+$/i;
 const MAX_FILES_TO_SCAN = 20;
 // The scan fails once findings exceed 10 per 1,000 scanned files, with at least 3

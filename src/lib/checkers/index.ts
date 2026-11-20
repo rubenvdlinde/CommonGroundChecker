@@ -21,6 +21,7 @@ import { checkSecurity } from "./security";
 import { checkTests } from "./tests";
 import { checkComplexity } from "./complexity";
 import { checkMaintainability } from "./maintainability";
+import { checkTestCodeRatio } from "./testCodeRatio";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -304,6 +305,7 @@ export async function runChecksOnContext(
     )
   );
   const maintainabilityPromise = measure("maintainability", async () => checkMaintainability(await checkout()));
+  const testCodeRatioPromise = measure("testcoderatio", async () => checkTestCodeRatio(await checkout()));
   // Code metrics are merged into the source code result, so a reused source code result needs none.
   const codeMetricsPromise: Promise<CheckResult | null> = reused.has("sourcecode")
     ? Promise.resolve(null)
@@ -355,10 +357,11 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards], complexity, maintainability, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
+    testCodeRatioPromise,
     codeMetricsPromise,
     owaspSecureCodingPromise,
     adrValidatorPromise,
@@ -416,6 +419,7 @@ export async function runChecksOnContext(
     coverage,
     complexity,
     maintainability,
+    testcoderatio,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -522,6 +526,7 @@ export async function runChecksOnContext(
     coverage,
     complexity,
     maintainability,
+    testcoderatio,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,

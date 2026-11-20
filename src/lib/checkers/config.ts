@@ -75,6 +75,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   cicd: { weight: 1, requirementLevel: "mandatory" },
   complexity: { weight: 1, requirementLevel: "mandatory" },
   maintainability: { weight: 1, requirementLevel: "recommended" },
+  testcoderatio: { weight: 1, requirementLevel: "recommended" },
   codemetrics: { weight: 0, requirementLevel: "informative" },
   usage: { weight: 0, requirementLevel: "informative" },
   projecthealth: { weight: 0, requirementLevel: "informative" },

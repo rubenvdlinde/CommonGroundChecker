@@ -78,6 +78,7 @@ A component declares a standard and its version the same way, with the official 
 **Stars:** every criterion also shows 1 to 5 stars. Maintainability has its own scale (4 stars or more passes, 3 stars warns). The other criteria map pass, warn and fail to 5, 3 and 1 stars. The component as a whole and each category also get a rating; see [Ratings](#ratings).
 
 The maintainability analysis runs `scripts/maintainability/check_maintainability.py`, which needs `python3`, lizard 1.24.3 and jscpd 4.0.5. The Docker image installs them. `MAINTAINABILITY_TIMEOUT_SECONDS` (default 600) caps how long one analysis may run. `node scripts/sync-maintainability.mjs [commit]` refreshes the vendored script from its upstream; `scripts/maintainability/UPSTREAM` records the commit.
+| 27 | **Test code ratio** — test code lines as a percentage of production code lines, rated from 1 to 5 stars (120/100/75/25% bands; 100% test code is roughly 80% coverage) | Recommended | [ISO 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) |
 
 **Note:** Only mandatory criteria are included in the overall score. Recommended and informative criteria are shown in the report but do not contribute to the score. Each category is scored as the weighted average of its mandatory criteria (pass = 1, warn or info = 0.5, fail = 0), and the overall score is the weighted average of those category scores, using the default category weights Governance 20%, Architecture 20%, Security 25%, Deployment & Operations 20% and Software Quality 15%.
 
