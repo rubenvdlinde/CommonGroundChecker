@@ -314,6 +314,12 @@ function parseRatingMap(raw: unknown): Record<string, number | null> | null {
   );
 }
 
+/** Category ratings of a stored analysis under the current category names, e.g. Maintainability as Software Quality. */
+export function storedCategoryRatings(raw: unknown): Record<string, number | null> {
+  const parsed = parseRatingMap(raw) ?? {};
+  return Object.fromEntries(Object.entries(parsed).map(([name, value]) => [resolveCategory(name) ?? name, value]));
+}
+
 function isCount(value: unknown): value is number {
   return typeof value === "number" && Number.isInteger(value) && value >= 0;
 }
@@ -359,7 +365,7 @@ export function ratingsForStoredAnalysis(
   if (hasStoredRatings(analysis)) {
     return {
       rating: isRating(analysis.rating) ? analysis.rating : null,
-      categoryRatings: parseRatingMap(analysis.categoryRatings) ?? {},
+      categoryRatings: storedCategoryRatings(analysis.categoryRatings),
       aspectRatings: parseStoredAspectRatings(analysis.aspectRatings) ?? {},
       endorsement: parseStoredEndorsement(analysis.endorsement) ?? { passed: false, reasons: [] },
     };

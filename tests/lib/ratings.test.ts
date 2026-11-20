@@ -10,6 +10,7 @@ import {
   PASSING_MAINTAINABILITY_STARS,
   ratingsForStoredAnalysis,
   roundRating,
+  storedCategoryRatings,
   type RatingConfig,
   type RatingInput,
 } from "@/lib/ratings";
@@ -739,5 +740,19 @@ describe("the transition period of a mandatory criterion", () => {
 
     expect(reasons(before)).not.toContain("Mandatory criterion fails: Open source licence");
     expect(reasons(after)).toContain("Mandatory criterion fails: Open source licence");
+  });
+});
+
+describe("storedCategoryRatings", () => {
+  it("reads a rating stored under an earlier category name under the current name", () => {
+    expect(storedCategoryRatings({ Maintainability: 2.2, Security: 2.6, Governance: "x" })).toEqual({
+      "Software Quality": 2.2,
+      Security: 2.6,
+      Governance: null,
+    });
+  });
+
+  it("gives an empty map for something that is not a rating map", () => {
+    expect(storedCategoryRatings(null)).toEqual({});
   });
 });

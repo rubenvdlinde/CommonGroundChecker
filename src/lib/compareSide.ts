@@ -5,6 +5,7 @@
  */
 import type { ComparedAnalysis, ComponentKey } from "./compare";
 import { standardsOfResults, type ComponentStandard } from "./componentStandards";
+import { storedCategoryRatings } from "./ratings";
 import { componentHref } from "./routes";
 import type { ProviderService } from "./staticSite/config";
 import type { PublicCodeData } from "./types";
@@ -77,7 +78,7 @@ export function compareSideFrom(input: CompareSideInput): CompareSide {
     input.analysis && results.length > 0
       ? {
           rating: typeof input.analysis.rating === "number" ? input.analysis.rating : null,
-          categoryRatings: record<number | null>(input.analysis.categoryRatings),
+          categoryRatings: storedCategoryRatings(input.analysis.categoryRatings),
           aspectRatings: record<{ rating: number | null }>(input.analysis.aspectRatings),
           results,
         }

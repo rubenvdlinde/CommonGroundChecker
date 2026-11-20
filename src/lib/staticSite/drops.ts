@@ -6,6 +6,8 @@
  * src/lib/maintenanceTerms.ts there), so a static site and a server agree.
  */
 
+import { storedCategoryRatings } from "@/lib/ratings";
+
 export type DropKind = "criterion" | "rating" | "verdict";
 
 export const OVERALL_RATING_SUBJECT = "overall";
@@ -86,12 +88,7 @@ export function snapshotOf(analysis: {
       };
     }
   }
-  const categoryRatings: Record<string, number | null> = {};
-  if (analysis.categoryRatings && typeof analysis.categoryRatings === "object") {
-    for (const [category, value] of Object.entries(analysis.categoryRatings as Record<string, unknown>)) {
-      categoryRatings[category] = isRatingValue(value) ? value : null;
-    }
-  }
+  const categoryRatings = storedCategoryRatings(analysis.categoryRatings);
   const passed = (analysis.endorsement as { passed?: unknown } | null | undefined)?.passed;
   return {
     criteria,
