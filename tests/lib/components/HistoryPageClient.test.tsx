@@ -468,6 +468,8 @@ function renderVersionCards(repositories: RepoSummary[]) {
 }
 
 describe("HistoryPageClient version chip", () => {
+  afterEach(() => cleanup());
+
   it("shows the latest analysis's version before the repository's", () => {
     renderVersionCards([
       versionSummary({
