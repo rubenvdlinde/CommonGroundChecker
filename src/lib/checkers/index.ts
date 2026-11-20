@@ -319,7 +319,7 @@ export async function runChecksOnContext(
   onProgress?.("Running code structure checks...", 45);
   const freshSourcecode = !reused.has("sourcecode");
   let sourcecode = await measure("sourcecode", () => checkSourceCode(tree));
-  const docker = await measure("docker", () => checkDocker(tree));
+  const docker = await measure("docker", () => checkDocker(tree, repo));
   const dockerimage = await dockerimagePromise;
   const cicd = await measure("cicd", () => checkCiConfig(tree));
   const sbom = await measure("sbom", () => checkSbom(context, tree));

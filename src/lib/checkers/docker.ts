@@ -5,19 +5,44 @@ const DOCKER_FILES = [
   "dockerfile.dev",
   "dockerfile.prod",
   "dockerfile.local",
+  "containerfile",
+  "containerfile.dev",
+  "containerfile.prod",
+  "containerfile.local",
 ];
+const BUILD_DIRECTORIES = ["docker", "build", "deploy", ".docker", "container"];
 // Compose file names: the specification's defaults compose.yaml/compose.yml,
 // the legacy docker-compose.yaml/.yml, and variants of either such as
 // compose.prod.yaml, docker-compose.dev.yml or <name>-compose.yaml.
 // https://docs.docker.com/compose/intro/compose-application-model/
 const COMPOSE_FILE_PATTERN = /^(?:[\w.-]*[-.])?compose(?:[.-][\w.-]+)?\.ya?ml$/;
 
-export function checkDocker(tree: string[]): CheckResult {
+/**
+ * A Dockerfile builds the component itself when it sits at the repository
+ * root, directly in a conventional build directory, or in
+ * docker/<repository-name>/. Dockerfiles elsewhere usually build sidecars,
+ * test fixtures or tooling.
+ */
+function isComponentDockerfile(path: string, repoName?: string): boolean {
+  const directories = path.toLowerCase().split("/").slice(0, -1);
+  if (directories.length === 0) return true;
+  if (directories.length === 1) return BUILD_DIRECTORIES.includes(directories[0]);
+  return (
+    directories.length === 2 &&
+    directories[0] === "docker" &&
+    repoName !== undefined &&
+    directories[1] === repoName.toLowerCase()
+  );
+}
+
+export function checkDocker(tree: string[], repoName?: string): CheckResult {
   const lowerTree = tree.map((p) => p.toLowerCase());
 
-  const dockerfiles = tree.filter((p) =>
+  const allDockerfiles = tree.filter((p) =>
     DOCKER_FILES.includes(p.toLowerCase().split("/").pop()!)
   );
+  const dockerfiles = allDockerfiles.filter((p) => isComponentDockerfile(p, repoName));
+  const otherDockerfiles = allDockerfiles.filter((p) => !dockerfiles.includes(p));
   const composeFiles = tree.filter((p) =>
     COMPOSE_FILE_PATTERN.test(p.toLowerCase().split("/").pop()!)
   );
@@ -27,6 +52,12 @@ export function checkDocker(tree: string[]): CheckResult {
 
   const allEvidence = [...dockerfiles, ...composeFiles];
   if (hasPackageHelmChart) allEvidence.push("(Helm chart)");
+  if (otherDockerfiles.length > 0) {
+    allEvidence.push(`other Dockerfiles found: ${otherDockerfiles.join(", ")}`);
+  }
+  const otherDockerfilesNote = otherDockerfiles.length > 0
+    ? " Dockerfiles outside the repository root and the conventional build directories (docker/, build/, deploy/, .docker/, container/, docker/<repository-name>/) do not count, because they usually build sidecars or tooling rather than the component."
+    : "";
 
   if (dockerfiles.length === 0 && composeFiles.length === 0 && !hasPackageHelmChart) {
     return {
@@ -36,8 +67,8 @@ export function checkDocker(tree: string[]): CheckResult {
         "The component must be deployable as a container. A Dockerfile and optionally a docker-compose file should be present.",
       status: "fail",
       message:
-        "No Dockerfile or docker-compose file found. Common Ground components must be containerisable.",
-      evidence: [],
+        `No Dockerfile or docker-compose file found. Common Ground components must be containerisable.${otherDockerfilesNote}`,
+      evidence: allEvidence,
       referenceUrl:
         "https://commonground.nl/cms/view/54476272/haven",
     };
@@ -65,7 +96,7 @@ export function checkDocker(tree: string[]): CheckResult {
     message:
       dockerfiles.length > 0
         ? "Dockerfile found but no docker-compose file. A docker-compose file is required for this checker."
-        : "Docker-compose file found but no Dockerfile detected. A Dockerfile is required.",
+        : `Docker-compose file found but no Dockerfile detected. A Dockerfile is required.${otherDockerfilesNote}`,
     evidence: allEvidence,
     referenceUrl: "https://commonground.nl/cms/view/54476272/haven",
   };
