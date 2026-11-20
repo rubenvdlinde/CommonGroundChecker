@@ -24,4 +24,29 @@ describe("OWASP secure coding checker", () => {
     expect(result.status).toBe("warn");
     expect(result.evidence?.[0]).toContain("Weak hash algorithm");
   });
+
+  it.each([
+    ["a PHP closure", "$ids = array_map(function ($item) { return $item->id; }, $items);"],
+    ["a JavaScript anonymous function", "items.forEach(function (item) { console.log(item); });"],
+    ["a method call named Function", "registry.Function(name);"],
+  ])("does not flag %s as dynamic code execution", async (_label, code) => {
+    vi.spyOn(github, "getFileContent").mockResolvedValueOnce(code);
+
+    const result = await checkOwaspSecureCoding("owner", "repo", ["src/main.ts"]);
+
+    expect(result.status).toBe("pass");
+  });
+
+  it.each([
+    ["the Function constructor", 'const run = new Function("return 1");'],
+    ["eval", "eval(userInput);"],
+    ["a string timer", 'setTimeout("doWork()", 10);'],
+  ])("flags %s as dynamic code execution", async (_label, code) => {
+    vi.spyOn(github, "getFileContent").mockResolvedValueOnce(code);
+
+    const result = await checkOwaspSecureCoding("owner", "repo", ["src/main.ts"]);
+
+    expect(result.status).toBe("warn");
+    expect(result.evidence?.[0]).toContain("Dynamic code execution");
+  });
 });
