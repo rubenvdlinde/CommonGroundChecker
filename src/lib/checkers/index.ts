@@ -37,6 +37,7 @@ import { checkStandards } from "./standards";
 import { checkLicenceConsistency } from "./licenceConsistency";
 import { checkSpdxHeaders } from "./spdxHeaders";
 import { checkSecretScanning } from "./secretScanning";
+import { checkOpenSsfScorecard } from "./openssfScorecard";
 import {
   getActiveScoringConfig,
   type ActiveScoringConfig,
@@ -289,6 +290,7 @@ export async function runChecksOnContext(
     ),
     measure("standards", () => checkStandards(context, tree, options?.apiSpecificationLocations ?? [])),
     measure("licenceconsistency", () => checkLicenceConsistency(context, tree)),
+    measure("openssfscorecard", () => checkOpenSsfScorecard(context)),
   ]);
   const usagePromise = networkChecksPromise.then(([, , , publiccodeAnalysis]) =>
     measure(USAGE_CHECK_ID, () =>
@@ -363,7 +365,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -437,6 +439,7 @@ export async function runChecksOnContext(
     codeofconduct,
     security,
     secretscanning,
+    openssfscorecard,
     semver,
     fivelayer,
     helmchart,
@@ -547,6 +550,7 @@ export async function runChecksOnContext(
     codeofconduct,
     security,
     secretscanning,
+    openssfscorecard,
     semver,
     fivelayer,
     helmchart,

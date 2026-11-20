@@ -132,6 +132,7 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
   for (const result of report.results) {
     ensurePageSpace(40);
     doc.setFont("helvetica", "bold");
+  openssfscorecard: "recommended",
     addBlock(
       `${result.title} [${result.status.toUpperCase()}] — ${(result.requirementLevel ?? "recommended").toUpperCase()}`,
       { size: 10, gapAfter: 2 }
@@ -159,6 +160,7 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
 type RequirementLevelLabel = "mandatory" | "recommended" | "informative";
 
 const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabel> = {
+  "OpenSSF Scorecard": "openssfscorecard",
   sourcecode: "mandatory",
   fivelayer: "mandatory",
   license: "mandatory",
@@ -364,6 +366,14 @@ const CRITERIA_OVERVIEW = [
     desc: "K8s-deployable with best practices",
     tooltip:
       "Haven is the Dutch government standard for Kubernetes deployments. Charts must include resource limits, liveness/readiness probes, a security context, and NetworkPolicy manifests.",
+  },
+  {
+    icon: "⭐",
+    label: "OpenSSF Scorecard",
+    category: "Security" as CriteriaCategory,
+    desc: "Scorecard rated 1 to 5 stars",
+    tooltip:
+      "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only. The checker's own bands turn it into stars: 9+ is 5, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
   },
   {
     icon: "🧾",
