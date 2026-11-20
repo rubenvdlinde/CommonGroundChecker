@@ -188,6 +188,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   contributing: "recommended",
   codeofconduct: "recommended",
   security: "recommended",
+  secretscanning: "recommended",
   semver: "recommended",
 };
 
@@ -221,6 +222,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "Code of Conduct": "codeofconduct",
   "Project health": "projecthealth",
   "Security policy": "security",
+  "No committed secrets": "secretscanning",
   "Semantic Versioning": "semver",
 };
 
@@ -474,6 +476,14 @@ const CRITERIA_OVERVIEW = [
     desc: "SECURITY.md present",
     tooltip:
       "Checks whether a SECURITY.md file exists, explaining how vulnerabilities should be reported privately and how security handling works.",
+  },
+  {
+    icon: "🔑",
+    label: "No committed secrets",
+    category: "Security" as CriteriaCategory,
+    desc: "Gitleaks scan of the working tree",
+    tooltip:
+      "Scans the cloned repository with gitleaks for committed secrets such as API keys, tokens and private keys. The project's own .gitleaks.toml allowlist is honoured. Findings show the rule and location only, never the secret.",
   },
   {
     icon: "🔢",

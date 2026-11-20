@@ -52,6 +52,7 @@ A component declares a standard and its version the same way, with the official 
 |---|-----------|-------|----------|
 | 10 | **Security policy** — SECURITY file with responsible disclosure info | Mandatory | [GitHub docs](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository) |
 | 11 | **OWASP Secure Coding** — heuristic static analysis checks for common insecure patterns | Mandatory | [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices/) |
+| 30 | **No committed secrets** — gitleaks scans the working tree for API keys, tokens and private keys, honouring the project's `.gitleaks.toml`. Findings in test paths (`tests/`, `test/`, `__tests__/`, `spec/`, `fixtures/`, `__fixtures__/`, `testdata/`, `*.test.*`, `*.spec.*`, `*_test.*`, `test_*.py`) are left out and counted in the message, unless the repository has its own `.gitleaks.toml` | Recommended | [gitleaks](https://github.com/gitleaks/gitleaks) |
 
 ### Deployment & Operations
 

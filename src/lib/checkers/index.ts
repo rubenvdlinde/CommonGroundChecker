@@ -36,6 +36,7 @@ import { checkProjectHealth } from "./projectHealth";
 import { checkStandards } from "./standards";
 import { checkLicenceConsistency } from "./licenceConsistency";
 import { checkSpdxHeaders } from "./spdxHeaders";
+import { checkSecretScanning } from "./secretScanning";
 import {
   getActiveScoringConfig,
   type ActiveScoringConfig,
@@ -296,6 +297,7 @@ export async function runChecksOnContext(
       })
     )
   );
+  const secretScanningPromise = measure("secretscanning", async () => checkSecretScanning(await checkout()));
   const spdxHeadersPromise = measure("spdxheaders", async () => checkSpdxHeaders(await checkout()));
   const complexityPromise = measure("complexity", async () =>
     checkComplexity(
@@ -361,7 +363,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -372,6 +374,7 @@ export async function runChecksOnContext(
     usagePromise,
     artifactHubPromise,
     spdxHeadersPromise,
+    secretScanningPromise,
   ]);
   const publiccode = reused.get("publiccode") ?? publiccodeAnalysis.result;
 
@@ -433,6 +436,7 @@ export async function runChecksOnContext(
     contributing,
     codeofconduct,
     security,
+    secretscanning,
     semver,
     fivelayer,
     helmchart,
@@ -542,6 +546,7 @@ export async function runChecksOnContext(
     contributing,
     codeofconduct,
     security,
+    secretscanning,
     semver,
     fivelayer,
     helmchart,

@@ -88,6 +88,7 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   maintenance: { weight: 1, requirementLevel: "recommended" },
   codeofconduct: { weight: 1, requirementLevel: "mandatory" },
   security: { weight: 1, requirementLevel: "mandatory" },
+  secretscanning: { weight: 1, requirementLevel: "recommended" },
   semver: { weight: 1, requirementLevel: "mandatory" },
   sbom: { weight: 1, requirementLevel: "mandatory" },
   artifacthub: { weight: 1, requirementLevel: "mandatory" },
