@@ -71,6 +71,8 @@ export interface CriterionDoc {
   why: string;
   /** The tool, for a criterion the rating guide does not name a tool for */
   tool?: string;
+  /** How the components are defined, for a criterion that measures components */
+  components?: string;
   /** Steps that make the criterion pass */
   howToPass: string[];
   /** Ids of the publiccode.yml profile fields the criterion reads */
@@ -78,6 +80,10 @@ export interface CriterionDoc {
   /** Set only for a criterion that lives in an open change, not in this version */
   planned?: PlannedCriterion;
 }
+
+/** How maintainability and coupling define components; both use the same definition. */
+const COMPONENTS_DOC =
+  "Components are the ones the repository declares: the components: block of the analysis scope file (sigrid.yaml), else the components: block of sigrid.components.yaml, else the scope file's component_base_dirs or component_depth. Without a declaration they are directories. Maintainability and coupling always use the same definition. When the repository declares components, the result also shows the figures with directory components and says that the declared ones are used. An app that lists its functional areas bottom to top in tools/sig/area-order.json also gets a count of the file references that go against that order, with the files most of them start in; a contract under lib/Kernel/Contracts/<Area>/ belongs to that area. That count is informative and changes no rating.";
 
 export const CRITERION_DOCS: CriterionDoc[] = [
   {
@@ -376,6 +382,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
       "Keep modules loosely coupled.",
       "4 stars or more passes, 3 stars warns, fewer fails.",
     ],
+    components: COMPONENTS_DOC,
   },
   {
     id: "opentrack",
@@ -395,6 +402,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     why: "Loosely coupled code can be changed in one place without breaking another.",
     tool: "pdepend for PHP, grimp for Python and dependency-cruiser for JavaScript, TypeScript and Vue",
     howToPass: ["There is nothing to pass: the criterion is informative.", "Break dependency cycles and reduce imports across components."],
+    components: COMPONENTS_DOC,
   },
   {
     id: "duplication",

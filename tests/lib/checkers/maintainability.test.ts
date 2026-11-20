@@ -115,6 +115,52 @@ describe("mapMaintainabilityReport", () => {
     expect(result.evidence?.some((line) => line.startsWith("Duplication cross-check"))).toBe(false);
   });
 
+  it("shows the rating under declared and under directory components when they differ", () => {
+    const views = {
+      used: "declared" as const,
+      declared: {
+        overall: [3.9, 4.1] as [number, number],
+        modularity: 3.5,
+        languages: {
+          php: { definition: "sigrid.components.yaml components (10 declared)", components: 10, hidden_share: 0.67, violation_degree: 0.036 },
+        },
+      },
+      directories: {
+        overall: [3.1, 3.3] as [number, number],
+        modularity: 1.2,
+        languages: { php: { definition: "directory rule", components: 40, hidden_share: 0.2, violation_degree: 0.25 } },
+      },
+    };
+    const evidence = mapMaintainabilityReport({ ...report, component_views: views }).evidence ?? [];
+
+    expect(evidence).toContain(
+      "Rating with declared functional components (sigrid.components.yaml components (10 declared)): 3.90 to 4.10, modularity 3.50 " +
+        "(php 10 components, exposed 33.0%, violation degree 0.036). The score uses this one."
+    );
+    expect(evidence).toContain(
+      "Rating with directory components: 3.10 to 3.30, modularity 1.20 (php 40 components, exposed 80.0%, violation degree 0.25)."
+    );
+
+    const same = { ...views, directories: { ...views.directories, overall: views.declared.overall, modularity: 3.5 } };
+    expect(mapMaintainabilityReport({ ...report, component_views: same }).evidence).toContain(
+      "Components: sigrid.components.yaml components (10 declared). Directory components give the same rating."
+    );
+  });
+
+  it("lists the references against the declared area order", () => {
+    const evidence =
+      mapMaintainabilityReport({
+        ...report,
+        structure: {
+          php: { area_order: { order: ["Kernel", "Core"], references: 12, top_sources: [{ file: "lib/A.php", references: 7 }] } },
+        },
+      }).evidence ?? [];
+
+    expect(evidence).toContain(
+      "References against the declared area order (php, Kernel < Core): 12; most from lib/A.php (7). Informative, not rated."
+    );
+  });
+
   it("warns when there is nothing to rate", () => {
     const result = mapMaintainabilityReport({ ...report, rating: { ...report.rating, overall: null } });
 

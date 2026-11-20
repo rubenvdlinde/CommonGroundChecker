@@ -72,10 +72,16 @@ minus test code (SIG rates test code separately), minus the Nextcloud build
 output directory js/ and l10n/. A `sigrid.yaml` (or .yml) at the repository
 root adds its top-level `exclude:` patterns, so the gate scopes the code the
 way SIG will once the repository carries a scope file. With
---components-from-scope the file's `components:`, `component_base_dirs`
-or `component_depth` define the components of the structure checks. When a
-language ends up with a single component, its independence and
-entanglement are trivial: the report warns and rates neither.
+--components-from-scope the declared components define the components of
+the structure checks, in this order: `components:` in the scope file, else
+`components:` in sigrid.components.yaml (or .yml), else the scope file's
+`component_base_dirs` or `component_depth`; without any, the directory rule.
+With a declared definition the report also gives the directory rule's
+figures and rating (component_views), and, when tools/sig/area-order.json
+declares the functional areas bottom to top, the file references against
+that order (area_order, informative). When a language ends up with a
+single component, its independence and entanglement are trivial: the report
+warns and rates neither.
 
 TOOLS, PINNED
 -------------
@@ -120,6 +126,7 @@ no summary line, which the runner reports as WIRING, never as a finding.
 """
 import argparse
 import collections
+import copy
 import json
 import os
 import re
@@ -258,20 +265,50 @@ def _inline_list(text):
     return [_scalar(x) for x in re.findall(r"""("[^"]*"|'[^']*'|[^,]+)""", inner)] if inner else []
 
 
+SCOPE_FILES = ("sigrid.yaml", "sigrid.yml")
+COMPONENTS_FILES = ("sigrid.components.yaml", "sigrid.components.yml")
+
+
+def _first_file(app, names):
+    """(name, lines) of the first of `names` that exists in `app`, or None."""
+    for fname in names:
+        path = os.path.join(app, fname)
+        if os.path.isfile(path):
+            with open(path, encoding="utf-8", errors="replace") as fh:
+                return fname, fh.read().splitlines()
+    return None
+
+
 def scope_file_components(app):
     """The component definition of the analysis scope file (sigrid.yaml or
     sigrid.yml), as {"components": [{"name", "include", "exclude"}]},
     {"component_base_dirs": [...]} or {"component_depth": n}, or None when
     it declares none. With more than one, `components:` wins over
     `component_base_dirs`, which wins over `component_depth`."""
-    for fname in ("sigrid.yaml", "sigrid.yml"):
-        path = os.path.join(app, fname)
-        if os.path.isfile(path):
-            with open(path, encoding="utf-8", errors="replace") as fh:
-                lines = fh.read().splitlines()
-            break
-    else:
-        return None
+    found = _first_file(app, SCOPE_FILES)
+    return _component_keys(found[1]) if found else None
+
+
+def declared_components(app):
+    """(definition, file name) of the components a repository declares, or
+    None. `components:` in the analysis scope file comes first, then
+    `components:` in the components file (sigrid.components.yaml or .yml),
+    then `component_base_dirs` or `component_depth` in the scope file."""
+    scope = _first_file(app, SCOPE_FILES)
+    in_scope = _component_keys(scope[1]) if scope else None
+    if in_scope and "components" in in_scope:
+        return in_scope, scope[0]
+    extra = _first_file(app, COMPONENTS_FILES)
+    in_extra = _component_keys(extra[1]) if extra else None
+    if in_extra and "components" in in_extra:
+        return {"components": in_extra["components"]}, extra[0]
+    if in_scope:
+        return in_scope, scope[0]
+    return None
+
+
+def _component_keys(lines):
+    """The component keys of one YAML file's lines, see scope_file_components()."""
     found, i = {}, 0
 
     def block_list(start):
@@ -341,9 +378,9 @@ ROOT_FILES = "Root files"
 UNASSIGNED = "(no component)"
 
 
-def scope_component_factory(definition):
-    """(description, component_of) for a scope file's component definition,
-    following the analysis scope documentation:
+def scope_component_factory(definition, source="scope file"):
+    """(description, component_of) for a declared component definition from
+    the file `source`, following the analysis scope documentation:
       components:           a file belongs to the first component whose
                             `include` regex matches "/" + its path and whose
                             `exclude` does not; other files belong to none.
@@ -366,7 +403,7 @@ def scope_component_factory(definition):
                 if any(p.fullmatch(probe) for p in c["include"]) and not any(p.fullmatch(probe) for p in c["exclude"]):
                     return c["name"]
             return UNASSIGNED
-        return "scope file components", by_pattern
+        return f"{source} components ({len(comps)} declared)", by_pattern
     if "component_base_dirs" in definition:
         bases = sorted(set(definition["component_base_dirs"]), key=lambda b: (-len(b), b))
 
@@ -380,16 +417,78 @@ def scope_component_factory(definition):
                     return f"{b}/{sub}" if b else sub
                 return b or ROOT_FILES
             return rel.split("/")[0] if "/" in rel else ROOT_FILES
-        return "scope file component_base_dirs " + json.dumps(definition["component_base_dirs"]), by_base
+        return f"{source} component_base_dirs " + json.dumps(definition["component_base_dirs"]), by_base
     depth = definition["component_depth"]
 
     def by_depth(rel):
         dirs = rel.split("/")[:-1]
         return "/".join(dirs[:depth]) if dirs else ROOT_FILES
-    return f"scope file component_depth {depth}", by_depth
+    return f"{source} component_depth {depth}", by_depth
 
 
 COMPONENTS_FROM_SCOPE = False
+
+
+def component_definition(app, modules, declared=True):
+    """The component definition of one language's modules, shared by this
+    estimate and the coupling measure so both always use the same one:
+    {"kind": "declared" or "directories", "description", "root",
+    "component"}. The declared definition of declared_components() wins; the
+    directory rule of component_of_factory() is the fallback."""
+    found = declared_components(app) if declared else None
+    if found:
+        description, comp = scope_component_factory(*found)
+        return {"kind": "declared", "description": description, "root": "", "component": comp}
+    root, comp = component_of_factory(modules)
+    return {"kind": "directories", "root": root, "component": comp,
+            "description": f"directories below {root or '.'}/ (a level is descended while one directory holds "
+                           "more than 80% of the modules)"}
+
+
+AREA_ORDER_FILE = os.path.join("tools", "sig", "area-order.json")
+AREA_CONTRACTS = re.compile(r"(?:^|/)lib/Kernel/Contracts/([^/]+)/")
+
+
+def read_area_order(app):
+    """The functional areas an app declares bottom to top in
+    tools/sig/area-order.json ({"order": [...]}), or None."""
+    path = os.path.join(app, AREA_ORDER_FILE)
+    try:
+        with open(path, encoding="utf-8") as fh:
+            order = json.load(fh).get("order")
+    except (OSError, ValueError, AttributeError):
+        return None
+    if isinstance(order, list) and order and all(isinstance(a, str) for a in order):
+        return order
+    return None
+
+
+def against_area_order(edges, comp, order, top=10):
+    """File references that go against the declared area order: from an
+    area to an area of a higher rank. A contract under
+    lib/Kernel/Contracts/<Area>/ belongs to <Area>. A file whose area is not
+    in the order counts on neither side. Informative only."""
+    rank = {area: i for i, area in enumerate(order)}
+
+    def area(rel):
+        m = AREA_CONTRACTS.search(rel)
+        return m.group(1) if m and m.group(1) in rank else comp(rel)
+    by_source, pairs, seen = collections.Counter(), collections.Counter(), set()
+    count = 0
+    for src, dst in edges:
+        a, b = area(src), area(dst)
+        seen.update((a, b))
+        if a != b and a in rank and b in rank and rank[b] > rank[a]:
+            count += 1
+            by_source[src] += 1
+            pairs[(a, b)] += 1
+    return {
+        "order": order,
+        "references": count,
+        "top_sources": [{"file": f, "references": n} for f, n in sorted(by_source.items(), key=lambda x: (-x[1], x[0]))[:top]],
+        "area_pairs": [{"from": a, "to": b, "references": n} for (a, b), n in sorted(pairs.items(), key=lambda x: (-x[1], x[0]))[:top]],
+        "unknown_areas": [a for a in order if a not in seen],
+    }
 
 
 def sigrid_yaml_excludes(app):
@@ -1233,13 +1332,30 @@ def structure(app, files, deps, prof=PROFILES[DEFAULT_PROFILE]):
         share = above / total
         coupling.append({"above": bound, "share": round(share, 4), "loc": above, "limit": cap, "ok": share <= cap,
                          "stars": stars_of("module_coupling", round(share, 4), i)})
-    definition = scope_file_components(app) if COMPONENTS_FROM_SCOPE else None
-    if definition:
-        source, comp = scope_component_factory(definition)
-        root = ""
-    else:
-        source = "directory rule"
-        root, comp = component_of_factory(modules)
+    definition = component_definition(app, modules, declared=COMPONENTS_FROM_SCOPE)
+    out = {
+        "modules": len(modules),
+        "module_loc": total,
+        "module_coupling": coupling,
+        "highest_fan_in": [f"{m} (fan-in {len(incoming[m])}, {loc[m]} loc)"
+                           for m in sorted(modules, key=lambda m: (-len(incoming[m]), m))[:10]],
+    }
+    out.update(component_structure(modules, loc, incoming, definition, prof))
+    if definition["kind"] == "declared":
+        out["directory_view"] = component_structure(modules, loc, incoming,
+                                                    component_definition(app, modules, declared=False), prof)
+        order = read_area_order(app)
+        if order:
+            out["area_order"] = against_area_order(((s, t) for s, ts in deps.items() for t in ts if s != t),
+                                                   definition["component"], order)
+    return out
+
+
+def component_structure(modules, loc, incoming, definition, prof):
+    """Component independence and entanglement under one component definition."""
+    comp = definition["component"]
+    source = "directory rule" if definition["kind"] == "directories" else definition["description"]
+    total = sum(loc[m] for m in modules) or 1
     hidden = sum(loc[m] for m in modules if all(comp(s) == comp(m) for s in incoming[m]))
     lines = collections.Counter()
     for t, srcs in incoming.items():
@@ -1253,14 +1369,8 @@ def structure(app, files, deps, prof=PROFILES[DEFAULT_PROFILE]):
     for m in modules:
         comp_loc[comp(m)] += loc[m]
     independence = hidden / total
-    single = len(comp_loc) < 2
     out = {
-        "modules": len(modules),
-        "module_loc": total,
-        "module_coupling": coupling,
-        "highest_fan_in": [f"{m} (fan-in {len(incoming[m])}, {loc[m]} loc)"
-                           for m in sorted(modules, key=lambda m: (-len(incoming[m]), m))[:10]],
-        "component_root": root or ".",
+        "component_root": definition["root"] or ".",
         "component_source": source,
         "components": dict(comp_loc.most_common()),
         "component_independence": {"hidden_share": round(independence, 4), "hidden_loc": hidden,
@@ -1284,13 +1394,49 @@ def structure(app, files, deps, prof=PROFILES[DEFAULT_PROFILE]):
                     "it is not a floored check.",
         },
     }
-    if single:
+    if len(comp_loc) < 2:
         out["warning"] = (f"all {len(modules)} modules fall into one component ({next(iter(comp_loc))}, "
                           f"{source}), so component independence and entanglement are trivial; "
                           "neither is rated.")
         out["component_independence"].update(ok=None, stars=None)
         out["component_entanglement"]["stars"] = None
     return out
+
+
+COMPONENT_FIELDS = ("component_root", "component_source", "components", "component_independence",
+                    "component_entanglement", "warning")
+
+
+def component_views(report):
+    """The rating under the declared components next to the rating under
+    directory components, when a language used a declared definition; None
+    otherwise. The report's own rating is the declared one."""
+    structures = {lang: s for lang, s in (report.get("structure") or {}).items() if s and s.get("directory_view")}
+    if not structures:
+        return None
+    alt = copy.deepcopy(report)
+    for lang, s in structures.items():
+        target = alt["structure"][lang]
+        for key in COMPONENT_FIELDS:
+            target.pop(key, None)
+        target.update(copy.deepcopy(s["directory_view"]))
+    rated = rating_estimate(alt)
+
+    def view(rating, pick):
+        props = rating["properties"]
+        return {
+            "overall": (rating["overall"] or {}).get("range"),
+            "modularity": rating["subcharacteristics"].get("modularity"),
+            "component_independence": props["component_independence"]["rating"],
+            "component_entanglement": props["component_entanglement"]["rating"],
+            "languages": {lang: {"definition": pick(s)["component_source"], "components": len(pick(s)["components"]),
+                                 "hidden_share": pick(s)["component_independence"]["hidden_share"],
+                                 "violation_degree": pick(s)["component_entanglement"]["violation_degree"]}
+                          for lang, s in structures.items()},
+        }
+    return {"used": "declared",
+            "declared": view(report["rating"], lambda s: s),
+            "directories": view(rated, lambda s: s["directory_view"])}
 
 
 def build_report(app, lizard, jscpd, profile_name=DEFAULT_PROFILE, reader=None):
@@ -1351,6 +1497,9 @@ def build_report(app, lizard, jscpd, profile_name=DEFAULT_PROFILE, reader=None):
         if report["structure"][JS_STRUCTURE]:
             report["structure"][JS_STRUCTURE]["graph"] = source
     report["rating"] = rating_estimate(report)
+    views = component_views(report)
+    if views:
+        report["component_views"] = views
     return report
 
 
@@ -1847,8 +1996,8 @@ def main(argv):
                    help="limits to report against: " + ", ".join(PROFILES)
                         + " (default: HYDRA_GATE_SIG_PROFILE, else " + DEFAULT_PROFILE + ")")
     p.add_argument("--components-from-scope", action="store_true",
-                   help="take the components from the analysis scope file (sigrid.yaml) when it declares "
-                        "component_depth, component_base_dirs or components")
+                   help="take the components a repository declares (sigrid.yaml components, else "
+                        "sigrid.components.yaml, else component_base_dirs or component_depth)")
     args = ap.parse_args(argv)
     global COMPONENTS_FROM_SCOPE
     COMPONENTS_FROM_SCOPE = getattr(args, "components_from_scope", False)

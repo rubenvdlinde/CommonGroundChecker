@@ -11,7 +11,7 @@ The open track rates maintainability against thresholds that anyone can check an
 | `run.py` | clones and measures the candidates |
 | `derive.py` | selects the benchmark and derives the thresholds |
 | `coupling/` | the coupling measures of every benchmark repository, written by `run.py --coupling-image` |
-| `check_coupling.py`, `coupling.py`, `Dockerfile.coupling` | the coupling check's measure script (a copy of `scripts/coupling/check_coupling.py`, feat/open-track-coupling db1cde2), a wrapper that adds the fan-in histogram, and the image with its tools |
+| `check_coupling.py`, `coupling.py`, `Dockerfile.coupling` | the coupling check's measure script (a copy of `scripts/coupling/check_coupling.py`, feat/open-track-coupling db1cde2, since then on the estimate's shared component definition), a wrapper that adds the fan-in histogram, and the image with its tools |
 
 ## Version 2026-11-18.2 (in use)
 

@@ -2,7 +2,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { runPythonScript, TIMED_OUT } from "./pythonScript";
-import type { CheckResult, CouplingMeasures, MeasuredCoupling } from "../types";
+import type { AreaOrderMeasure, CheckResult, CouplingMeasures, MeasuredCoupling } from "../types";
 
 const SCRIPT_PATH = path.join(process.cwd(), "scripts", "coupling", "check_coupling.py");
 const TIMEOUT_SECONDS = Number(process.env.COUPLING_TIMEOUT_SECONDS) || 600;
@@ -53,6 +53,28 @@ function measuredLine(label: string, language: MeasuredCoupling): string {
   );
 }
 
+/** The same figures with directory components, when the repository declares its own components. */
+function directoryLine(label: string, language: MeasuredCoupling): string | null {
+  const view = language.directoryView;
+  if (!view) return null;
+  return (
+    `${label} with directory components (${view.componentDefinition}): ${view.components} components; ` +
+    `independence ${percent(view.componentIndependence)}, entanglement ${view.componentEntanglement.violationDegree.toFixed(3)} ` +
+    `(density ${view.componentEntanglement.density.toFixed(2)}), largest component cycle ${view.largestComponentCycle}. ` +
+    "The figures above use the declared components."
+  );
+}
+
+/** The references against the area order the repository declares, with the files most of them start in. */
+export function areaOrderLine(label: string, order: AreaOrderMeasure): string {
+  const top = order.topSources.slice(0, 3).map((source) => `${source.file} (${source.references})`);
+  return (
+    `${label} references against the declared area order (${order.order.join(" < ")}): ${count(order.references)}` +
+    (top.length ? `; most from ${top.join(", ")}` : "") +
+    ". Informative, not rated."
+  );
+}
+
 function contractsLine(label: string, language: MeasuredCoupling): string | null {
   const contracts = language.contracts;
   if (!contracts) return null;
@@ -80,6 +102,9 @@ export function mapCouplingReport(report: CouplingMeasures): CheckResult {
     measured.push(label);
     evidence.push(measuredLine(label, language));
     evidence.push(`${label} components: ${language.componentDefinition}${language.scope ? `; ${language.scope}` : ""}`);
+    const directories = directoryLine(label, language);
+    if (directories) evidence.push(directories);
+    if (language.areaOrder) evidence.push(areaOrderLine(label, language.areaOrder));
     const contracts = contractsLine(label, language);
     if (contracts) evidence.push(contracts);
   }

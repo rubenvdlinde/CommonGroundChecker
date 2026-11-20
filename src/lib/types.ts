@@ -431,6 +431,33 @@ export interface MeasuredCoupling {
   contracts?: { kept: number; broken: number } | { error: string } | null;
   /** JavaScript: relative or aliased imports dependency-cruiser could not resolve */
   unresolvedLocalImports?: number;
+  /** "declared" when the components come from the repository's own definition, else "directories" */
+  componentDefinitionKind?: "declared" | "directories";
+  /** With declared components: the same figures with directory components, for comparison */
+  directoryView?: CouplingComponentView;
+  /** With declared components and a declared area order: the file references against that order (informative) */
+  areaOrder?: AreaOrderMeasure;
+}
+
+/** Component figures of one language under one component definition. */
+export interface CouplingComponentView {
+  componentDefinition: string;
+  components: number;
+  componentIndependence: number;
+  componentEntanglement: MeasuredCoupling["componentEntanglement"];
+  componentCycles: number;
+  largestComponentCycle: number;
+}
+
+/** File references from a functional area to an area higher in the order the app declares. */
+export interface AreaOrderMeasure {
+  /** The areas, bottom to top */
+  order: string[];
+  references: number;
+  topSources: { file: string; references: number }[];
+  areaPairs: { from: string; to: string; references: number }[];
+  /** Areas of the order that no measured file belongs to */
+  unknownAreas: string[];
 }
 
 export interface UnmeasuredCoupling {

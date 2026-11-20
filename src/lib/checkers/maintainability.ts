@@ -80,7 +80,18 @@ interface StructureMeasurements {
   module_coupling?: BoundMeasurement[];
   component_independence?: { hidden_share: number; limit_min?: number; stars?: ReportedStars };
   component_entanglement?: { violation_degree: number; limit?: number; stars?: ReportedStars };
+  /** Where the components come from: "directory rule" or the declared definition */
+  component_source?: string;
+  /** File references against the area order the repository declares (informative) */
+  area_order?: { order: string[]; references: number; top_sources: { file: string; references: number }[] };
   warning?: string;
+}
+
+/** The rating under one component definition. */
+interface ComponentView {
+  overall: [number, number] | null;
+  modularity: number | null;
+  languages: Record<string, { definition: string; components: number; hidden_share: number; violation_degree: number }>;
 }
 
 /** Star bands per property: per level the maximum share per bound, or one value. */
@@ -115,6 +126,8 @@ export interface MaintainabilityReport {
   structure?: Record<string, StructureMeasurements | null>;
   /** Every star level per property */
   bands?: ReportBands;
+  /** With declared components: the rating under them (the one used) and under directory components */
+  component_views?: { used: "declared"; declared: ComponentView; directories: ComponentView };
 }
 
 const BASE_RESULT = {
@@ -322,6 +335,49 @@ function crossCheckLine(report: MaintainabilityReport): string | null {
   return `Duplication cross-check, Simian ${report.tools?.simian ?? "4.2.1"} strict against the estimate: ${parts.join(", ")}`;
 }
 
+function viewText(view: ComponentView): string {
+  const range = view.overall ? `${view.overall[0].toFixed(2)} to ${view.overall[1].toFixed(2)}` : "not rated";
+  const languages = Object.entries(view.languages)
+    .map(
+      ([language, measured]) =>
+        `${language} ${measured.components} components, exposed ${percent(1 - measured.hidden_share)}, ` +
+        `violation degree ${decimal(measured.violation_degree)}`
+    )
+    .join("; ");
+  const modularity = view.modularity === null ? "" : `, modularity ${view.modularity.toFixed(2)}`;
+  return `${range}${modularity} (${languages})`;
+}
+
+/** Both ratings when the declared and the directory components rate differently; the declared one is used. */
+function componentViewLines(report: MaintainabilityReport): string[] {
+  const views = report.component_views;
+  if (!views) return [];
+  const differ =
+    JSON.stringify([views.declared.overall, views.declared.modularity]) !==
+    JSON.stringify([views.directories.overall, views.directories.modularity]);
+  const definitions = [...new Set(Object.values(views.declared.languages).map((language) => language.definition))];
+  if (!differ) {
+    return [`Components: ${definitions.join(", ")}. Directory components give the same rating.`];
+  }
+  return [
+    `Rating with declared functional components (${definitions.join(", ")}): ${viewText(views.declared)}. The score uses this one.`,
+    `Rating with directory components: ${viewText(views.directories)}.`,
+  ];
+}
+
+function areaOrderLines(report: MaintainabilityReport): string[] {
+  return Object.entries(report.structure ?? {}).flatMap(([language, structure]) => {
+    const order = structure?.area_order;
+    if (!order) return [];
+    const top = order.top_sources.slice(0, 3).map((source) => `${source.file} (${source.references})`);
+    return [
+      `References against the declared area order (${language}, ${order.order.join(" < ")}): ${order.references}` +
+        (top.length ? `; most from ${top.join(", ")}` : "") +
+        ". Informative, not rated.",
+    ];
+  });
+}
+
 /** Turns the script's JSON report into a check result. */
 export function mapMaintainabilityReport(report: MaintainabilityReport): CheckResult {
   const overall = report.rating.overall;
@@ -343,6 +399,7 @@ export function mapMaintainabilityReport(report: MaintainabilityReport): CheckRe
       evidence.push(`Not rated (${language}): ${structure.warning}`);
     }
   }
+  evidence.push(...componentViewLines(report), ...areaOrderLines(report));
   evidence.push(...(report.rating.levers ?? []).slice(0, 3).map(leverLine));
   const crossCheck = crossCheckLine(report);
   if (crossCheck) {

@@ -10,7 +10,13 @@ an open-source tool:
 
 A module is one source file in the production scope of the maintainability
 estimate (scripts/maintainability), and its size is the estimate's code-line
-count. Components are directories, found by the estimate's 80% rule. Per
+count. Components are the ones the repository declares, by the estimate's
+shared definition (`components:` in the analysis scope file, else in
+sigrid.components.yaml, else the scope file's component_base_dirs or
+component_depth); without a declaration they are directories, found by the
+estimate's 80% rule, and with one the directory figures are given next to
+them. When tools/sig/area-order.json declares the functional areas bottom to
+top, the file references against that order are counted (informative). Per
 language the report gives the module and edge counts, component independence,
 component entanglement (violation degree and density), the module-coupling risk
 profile (share of code per fan-in band) and the dependency cycles.
@@ -121,11 +127,43 @@ def fan_in_band(fan_in, bounds):
     return FAN_IN_BANDS[-1]
 
 
-def score(loc, edges):
+def components_of(modules, loc, edges, incoming, comp):
+    """Component independence, entanglement and cycles under one component
+    function."""
+    total = sum(loc.values()) or 1
+    comp_loc = collections.Counter()
+    for m in modules:
+        comp_loc[comp(m)] += loc[m]
+    hidden = sum(loc[m] for m in modules if all(comp(s) == comp(m) for s in incoming[m]))
+    lines = collections.Counter()
+    for s, t in edges:
+        if comp(s) != comp(t):
+            lines[(comp(s), comp(t))] += 1
+    connected = {c for pair in lines for c in pair}
+    degree, kinds, _examples = sig.violation_degree(dict(lines))
+    comp_adj = collections.defaultdict(set)
+    for a, b in lines:
+        comp_adj[a].add(b)
+    component_cycles = strongly_connected(sorted(comp_loc), comp_adj)
+    return {
+        "components": len(comp_loc),
+        "componentIndependence": round(hidden / total, 4),
+        "componentEntanglement": {
+            "violationDegree": round(degree, 4),
+            "density": round(len(lines) / max(len(connected), 1), 2),
+            "communicationLines": len(lines),
+            "violations": kinds,
+        },
+    }, component_cycles
+
+
+def score(loc, edges, app=None):
     """The coupling measurements of one language from {module: code lines} and
     a set of (source, target) module pairs. Fan-in counts distinct depending
     modules; a component line between two components weighs the module pairs
-    on it, as in the maintainability estimate."""
+    on it, as in the maintainability estimate. With `app`, the components are
+    the ones the repository declares, by the estimate's shared definition, and
+    the directory components are reported next to them; without, directories."""
     modules = sorted(loc)
     edges = {(s, t) for s, t in edges if s != t and s in loc and t in loc}
     total = sum(loc.values()) or 1
@@ -143,39 +181,18 @@ def score(loc, edges):
         histogram[len(incoming[m])] += loc[m]
     above = [round(sum(loc[m] for m in modules if len(incoming[m]) > b) / total, 4) for b in bounds]
 
-    root, comp = sig.component_of_factory(modules)
-    comp_loc = collections.Counter()
-    for m in modules:
-        comp_loc[comp(m)] += loc[m]
-    hidden = sum(loc[m] for m in modules if all(comp(s) == comp(m) for s in incoming[m]))
-    lines = collections.Counter()
-    for s, t in edges:
-        if comp(s) != comp(t):
-            lines[(comp(s), comp(t))] += 1
-    connected = {c for pair in lines for c in pair}
-    degree, kinds, _examples = sig.violation_degree(dict(lines))
-
+    definition = sig.component_definition(app, modules, declared=app is not None)
+    measured, component_cycles = components_of(modules, loc, edges, incoming, definition["component"])
     module_cycles = strongly_connected(modules, outgoing)
-    comp_adj = collections.defaultdict(set)
-    for a, b in lines:
-        comp_adj[a].add(b)
-    component_cycles = strongly_connected(sorted(comp_loc), comp_adj)
     in_cycles = [m for group in module_cycles for m in group]
 
-    return {
+    out = {
         "modules": len(modules),
         "edges": len(edges),
         "loc": sum(loc.values()),
-        "componentDefinition": f"directories below {root or '.'}/ (a level is descended while one directory holds "
-                               "more than 80% of the modules)",
-        "components": len(comp_loc),
-        "componentIndependence": round(hidden / total, 4),
-        "componentEntanglement": {
-            "violationDegree": round(degree, 4),
-            "density": round(len(lines) / max(len(connected), 1), 2),
-            "communicationLines": len(lines),
-            "violations": kinds,
-        },
+        "componentDefinition": definition["description"],
+        "componentDefinitionKind": definition["kind"],
+        **measured,
         "moduleCoupling": {
             "bounds": list(bounds),
             "riskProfile": {band: round(band_loc[band] / total, 4) for band in FAN_IN_BANDS},
@@ -193,6 +210,19 @@ def score(loc, edges):
             "largestComponentCycle": max((len(g) for g in component_cycles), default=0),
         },
     }
+    if definition["kind"] == "declared":
+        directories = sig.component_definition(app, modules, declared=False)
+        view, cycles = components_of(modules, loc, edges, incoming, directories["component"])
+        out["directoryView"] = {"componentDefinition": directories["description"], **view,
+                                "componentCycles": len(cycles),
+                                "largestComponentCycle": max((len(g) for g in cycles), default=0)}
+        order = sig.read_area_order(app)
+        if order:
+            found = sig.against_area_order(edges, definition["component"], order)
+            out["areaOrder"] = {"order": found["order"], "references": found["references"],
+                                "topSources": found["top_sources"], "areaPairs": found["area_pairs"],
+                                "unknownAreas": found["unknown_areas"]}
+    return out
 
 
 # --------------------------------------------------------------------------
@@ -557,7 +587,7 @@ def measure(app):
         entry = {"measured": True, "tool": tool}
         if note:
             entry["scope"] = note
-        entry.update(score(loc, edges))
+        entry.update(score(loc, edges, app))
         entry.update(extra)
         report["languages"][group] = entry
     return report

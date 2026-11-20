@@ -80,6 +80,15 @@ export default async function CriterionDocPage({ params }: CriterionDocPageProps
         <p className="text-gray-700">{doc.why}</p>
       </section>
 
+      {doc.components && (
+        <section aria-labelledby="components" className={SECTION}>
+          <h2 id="components" className={H2}>
+            Which components
+          </h2>
+          <p className="text-gray-700">{doc.components}</p>
+        </section>
+      )}
+
       <section aria-labelledby="source" className={SECTION}>
         <h2 id="source" className={H2}>
           Where it comes from

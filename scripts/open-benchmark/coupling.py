@@ -6,7 +6,8 @@
   coupling.py <repo> --json OUT [--time-limit SECONDS]
 
 Runs check_coupling.py (a copy of scripts/coupling/check_coupling.py of the
-coupling check, feat/open-track-coupling db1cde2) and adds, per language, the
+coupling check, feat/open-track-coupling db1cde2, with the shared component
+definition of the estimate) and adds, per language, the
 histogram the open-track thresholds are derived from: `fanInHistogram`, the
 code lines of the modules per fan-in (distinct depending modules).
 """
@@ -25,8 +26,8 @@ _spec.loader.exec_module(cc)
 _score = cc.score
 
 
-def score(loc, edges):
-    result = _score(loc, edges)
+def score(loc, edges, app=None):
+    result = _score(loc, edges, app)
     incoming = collections.defaultdict(set)
     for s, t in edges:
         if s != t and s in loc and t in loc:
