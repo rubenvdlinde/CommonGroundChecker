@@ -86,6 +86,16 @@ describe("declared component definition", () => {
     expect(definition(dir).description).toBe('sigrid.yaml component_base_dirs ["lib"]');
   });
 
+  it("uses the directory rule for a language the declared components do not cover", () => {
+    const dir = repo({ "sigrid.components.yaml": FILE_COMPONENTS });
+    const result = python(
+      `(lambda d: [d["kind"], d["description"]])(m.component_definition(${JSON.stringify(dir)}, ["src/a/x.js", "src/b/y.js"]))`
+    ) as string[];
+
+    expect(result[0]).toBe("directories");
+    expect(result[1]).toContain("the sigrid.components.yaml components (3 declared) include none of these files");
+  });
+
   it("uses the directory rule when nothing is declared", () => {
     const result = definition(repo({ "README.md": "" }));
 

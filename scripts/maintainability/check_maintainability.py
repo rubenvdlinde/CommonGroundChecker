@@ -434,15 +434,19 @@ def component_definition(app, modules, declared=True):
     estimate and the coupling measure so both always use the same one:
     {"kind": "declared" or "directories", "description", "root",
     "component"}. The declared definition of declared_components() wins; the
-    directory rule of component_of_factory() is the fallback."""
+    directory rule of component_of_factory() is the fallback, also for a
+    language none of whose modules a declared component includes."""
     found = declared_components(app) if declared else None
+    note = ""
     if found:
         description, comp = scope_component_factory(*found)
-        return {"kind": "declared", "description": description, "root": "", "component": comp}
+        if any(comp(m) != UNASSIGNED for m in modules):
+            return {"kind": "declared", "description": description, "root": "", "component": comp}
+        note = f"; the {description} include none of these files"
     root, comp = component_of_factory(modules)
     return {"kind": "directories", "root": root, "component": comp,
             "description": f"directories below {root or '.'}/ (a level is descended while one directory holds "
-                           "more than 80% of the modules)"}
+                           f"more than 80% of the modules){note}"}
 
 
 AREA_ORDER_FILE = os.path.join("tools", "sig", "area-order.json")
