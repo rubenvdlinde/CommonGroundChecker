@@ -1,3 +1,4 @@
+import { formatDateTime } from "@/lib/dates";
 import Link from "next/link";
 import CategoryRatings from "@/components/CategoryRatings";
 import CriteriaResults from "@/components/CriteriaResults";
@@ -149,7 +150,7 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
 
       {isOlder && (
         <p className="text-sm text-amber-900 bg-amber-50 border border-amber-300 rounded-lg px-4 py-3">
-          This is an older run, from {new Date(selected.checkedAt).toLocaleString("nl-NL")}.{" "}
+          This is an older run, from {formatDateTime(selected.checkedAt)}.{" "}
           <Link href={latestHref} className="font-semibold underline hover:text-cg-blue">
             See the latest run
           </Link>
@@ -166,7 +167,7 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
             {isOlder ? "Older run" : "Latest run"}
           </h3>
           <p className="text-xs text-gray-500">
-            Checked at {new Date(selected.checkedAt).toLocaleString("nl-NL")}
+            Checked at {formatDateTime(selected.checkedAt)}
             {selected.scannedRef ? " · " : null}
             <ScannedRef scannedRef={selected.scannedRef} kind={selected.scannedRefKind} commit={selected.scannedCommit} />
           </p>

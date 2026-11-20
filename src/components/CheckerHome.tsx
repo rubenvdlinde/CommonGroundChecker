@@ -1,5 +1,6 @@
 "use client";
 
+import { formatDateTime } from "@/lib/dates";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import CheckerForm from "@/components/CheckerForm";
@@ -74,7 +75,7 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
   doc.setFont("helvetica", "normal");
   addBlock(`Repository: ${report.owner}/${report.repo}`, { size: 11, gapAfter: 4 });
   addBlock(`URL: ${report.repoUrl}`, { size: 10, gapAfter: 4 });
-  addBlock(`Checked at: ${new Date(report.checkedAt).toLocaleString("nl-NL")}`, {
+  addBlock(`Checked at: ${formatDateTime(report.checkedAt)}`, {
     size: 10,
     gapAfter: 4,
   });
@@ -789,7 +790,7 @@ export default function CheckerHome() {
                   </div>
                   <p className="text-xs text-gray-400">
                     Checked at{" "}
-                    {new Date(report.checkedAt).toLocaleString("nl-NL")} —{" "}
+                    {formatDateTime(report.checkedAt)} —{" "}
                     <ScannedRef
                       scannedRef={report.scannedRef ?? report.repoMeta.defaultBranch}
                       kind={report.scannedRefKind}

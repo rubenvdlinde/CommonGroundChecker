@@ -1,5 +1,6 @@
 "use client";
 
+import { formatDateTime } from "@/lib/dates";
 import { useId, useState } from "react";
 import { putRepositoryFollow } from "@/lib/apiClient";
 import { DEFAULT_BRANCH_REF, LATEST_RELEASE_REF } from "@/lib/scanRef";
@@ -35,7 +36,7 @@ interface FollowControlProps {
 }
 
 export function formatNextCheck(nextCheckAt: string | null): string {
-  return nextCheckAt ? new Date(nextCheckAt).toLocaleString("nl-NL") : "not scheduled";
+  return nextCheckAt ? formatDateTime(nextCheckAt) : "not scheduled";
 }
 
 export default function FollowControl({

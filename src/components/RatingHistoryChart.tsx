@@ -1,3 +1,4 @@
+import { formatDateTime } from "@/lib/dates";
 import { STAR_BOUNDARIES } from "@/lib/componentRating";
 import { MAX_RATING, MIN_RATING, PASSING_RATING } from "@/lib/ratings";
 
@@ -97,7 +98,7 @@ function passText(passed: boolean): string {
 }
 
 function formatDate(checkedAt: string): string {
-  return new Date(checkedAt).toLocaleString("nl-NL");
+  return formatDateTime(checkedAt);
 }
 
 function formatDay(checkedAt: string): string {

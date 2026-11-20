@@ -1,3 +1,4 @@
+import { formatDateTime } from "@/lib/dates";
 import Link from "next/link";
 import EndorsementChip from "@/components/EndorsementChip";
 import RatingBadge from "@/components/RatingBadge";
@@ -57,7 +58,7 @@ export default function RunList({ runs, selectedId, analysisHref }: RunListProps
                 <th scope="row" className="py-2 pr-4 text-left font-normal whitespace-nowrap">
                   {run.detailAvailable === false ? (
                     <>
-                      {new Date(run.checkedAt).toLocaleString("nl-NL")}
+                      {formatDateTime(run.checkedAt)}
                       <span className="ml-2 text-xs text-gray-500">Summary only</span>
                     </>
                   ) : (
@@ -66,7 +67,7 @@ export default function RunList({ runs, selectedId, analysisHref }: RunListProps
                       aria-current={isSelected ? "page" : undefined}
                       className={`${LINK_CLASS} ${isSelected ? "font-semibold text-cg-blue" : ""}`}
                     >
-                      {new Date(run.checkedAt).toLocaleString("nl-NL")}
+                      {formatDateTime(run.checkedAt)}
                     </Link>
                   )}
                   {index === 0 && (

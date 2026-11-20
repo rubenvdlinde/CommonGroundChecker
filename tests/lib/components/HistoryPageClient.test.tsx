@@ -71,7 +71,7 @@ describe("HistoryPageClient search", () => {
   it("gives the search field and button a touch target of at least 44px below 1024px", () => {
     render(<HistoryPageClient sort="date" direction="desc" query="" repositories={[repository]} />);
 
-    for (const target of [screen.getByLabelText("Search repositories"), screen.getByRole("button", { name: "Search" })]) {
+    for (const target of [screen.getByLabelText("Search components"), screen.getByRole("button", { name: "Search" })]) {
       expect(target.className).toContain("min-h-[44px]");
       expect(target.className).toContain("lg:min-h-0");
     }

@@ -1,5 +1,6 @@
 "use client";
 
+import { formatDateTime } from "@/lib/dates";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -486,12 +487,12 @@ export default function HistoryPageClient({
                         )}
                         {latest && (
                           <p>
-                            Last: {new Date(latest.checkedAt).toLocaleString("nl-NL")}
+                            Last: {formatDateTime(latest.checkedAt)}
                           </p>
                         )}
                         {repository.followed && repository.nextCheckAt && (
                           <p>
-                            Next check: {new Date(repository.nextCheckAt).toLocaleString("nl-NL")}
+                            Next check: {formatDateTime(repository.nextCheckAt)}
                           </p>
                         )}
                       </div>
