@@ -148,7 +148,7 @@ vi.mock("@/lib/checkers/config", async (importOriginal) => ({
   getActiveScoringConfig: mocks.getActiveScoringConfig,
 }));
 
-import { runChecks } from "@/lib/checkers/index";
+import { MAX_EVIDENCE_LINES, runChecks } from "@/lib/checkers/index";
 import { CATEGORY_ORDER, CATEGORY_WEIGHTS, CHECKLIST_VERSION, CRITERION_VERSIONS } from "@/lib/criteria";
 import { resolveCategory } from "@/lib/aspects";
 
@@ -698,6 +698,31 @@ describe("runChecks", () => {
       expect(report.results.find((result) => result.id === "artifacthub")?.notApplicable).toBe(true);
     }
   );
+
+  it("caps each result's evidence and says how many lines were left out", async () => {
+    mocks.checkFiveLayer.mockResolvedValue({
+      ...resultFor("fivelayer", "pass"),
+      evidence: Array.from({ length: 200 }, (_, index) => `path-${index}`),
+    });
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: null,
+      config: {
+        criterionConfigByCheckId: criterionConfig(1),
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo");
+    const evidence = report.results.find((result) => result.id === "fivelayer")?.evidence;
+
+    expect(evidence).toHaveLength(MAX_EVIDENCE_LINES + 1);
+    expect(evidence?.[MAX_EVIDENCE_LINES - 1]).toBe(`path-${MAX_EVIDENCE_LINES - 1}`);
+    expect(evidence?.at(-1)).toBe(`... and ${200 - MAX_EVIDENCE_LINES} more`);
+    expect(report.results.find((result) => result.id === "semver")?.evidence).toEqual([]);
+  });
 
   it("applies fixed category weights when aggregating mandatory criteria", async () => {
     const configById = criterionConfig(0, "recommended");
