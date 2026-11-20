@@ -41,6 +41,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends git ca-certificates python3 python3-pip curl \
   && pip3 install --no-cache-dir --break-system-packages lizard==1.24.3 \
   && npm install --silent --no-audit --no-fund --ignore-scripts --prefix /opt/analysis-tools/jscpd-4.0.5 jscpd@4.0.5 \
+  && npm install --silent --no-audit --no-fund --ignore-scripts --prefix /opt/analysis-tools/jscpd-5.4.2 jscpd@5.4.2 \
   && case "$(dpkg --print-architecture)" in \
        amd64) gl_arch=x64 ;; \
        arm64) gl_arch=arm64 ;; \

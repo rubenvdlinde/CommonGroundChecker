@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+"""Stands in for jscpd in tests. FAKE_JSCPD_VERSION sets what --version prints,
+FAKE_JSCPD_HOLD_MB makes it hold that much memory for a second."""
+import json
+import os
+import sys
+import time
+
+args = sys.argv[1:]
+if args == ["--version"]:
+    print(os.environ.get("FAKE_JSCPD_VERSION", "jscpd 5.4.2"))
+    sys.exit(0)
+hold = int(os.environ.get("FAKE_JSCPD_HOLD_MB", "0"))
+if hold:
+    ballast = bytearray(hold * 1024 * 1024)
+    time.sleep(1)
+out = args[args.index("--output") + 1]
+files = [a for a in args if os.path.isfile(a)]
+lines = sum(len(open(f).read().splitlines()) for f in files)
+duplicates = []
+if len(files) >= 2:
+    duplicates.append({
+        "firstFile": {"name": os.path.abspath(files[0]), "start": 1, "end": 6},
+        "secondFile": {"name": os.path.abspath(files[1]), "start": 2, "end": 7},
+        "lines": 6,
+    })
+total = {"sources": len(files), "lines": lines, "duplicatedLines": 6 * len(duplicates), "clones": len(duplicates)}
+with open(os.path.join(out, "jscpd-report.json"), "w") as fh:
+    json.dump({"duplicates": duplicates, "statistics": {"total": total}}, fh)

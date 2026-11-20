@@ -23,6 +23,7 @@ const ids = [
   "testcoderatio",
   "opensourcehealth",
   "size",
+  "duplication",
   "codemetrics",
   "owaspsecurecoding",
   "adrvalidator",
@@ -65,6 +66,7 @@ const mocks = vi.hoisted(() => ({
   checkTestCodeRatio: vi.fn(),
   checkOpenSourceHealth: vi.fn(),
   checkSize: vi.fn(),
+  checkDuplication: vi.fn(),
   checkSourceCode: vi.fn(),
   checkSemver: vi.fn(),
   checkFiveLayer: vi.fn(),
@@ -150,6 +152,7 @@ vi.mock("@/lib/checkers/maintainability", () => ({ checkMaintainability: mocks.c
 vi.mock("@/lib/checkers/testCodeRatio", () => ({ checkTestCodeRatio: mocks.checkTestCodeRatio }));
 vi.mock("@/lib/checkers/openSourceHealth", () => ({ checkOpenSourceHealth: mocks.checkOpenSourceHealth }));
 vi.mock("@/lib/checkers/size", () => ({ checkSize: mocks.checkSize }));
+vi.mock("@/lib/checkers/duplication", () => ({ checkDuplication: mocks.checkDuplication }));
 vi.mock("@/lib/checkers/codeMetrics", () => ({ checkCodeMetrics: mocks.checkCodeMetrics }));
 vi.mock("@/lib/checkers/owaspSecureCoding", () => ({ checkOwaspSecureCoding: mocks.checkOwaspSecureCoding }));
 vi.mock("@/lib/checkers/eupl", () => ({
@@ -291,6 +294,7 @@ describe("runChecks", () => {
     mocks.checkTests.mockReturnValue(resultFor("tests", "pass"));
     mocks.checkComplexity.mockResolvedValue(resultFor("complexity", "pass"));
     mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "warn"), starRating: 3 });
+    mocks.checkDuplication.mockResolvedValue(resultFor("duplication", "info"));
     mocks.checkSize.mockResolvedValue({ ...resultFor("size", "info"), requirementLevel: "informative" });
     mocks.checkOpenSourceHealth.mockResolvedValue({ ...resultFor("opensourcehealth", "pass"), starRating: 4 });
     mocks.checkTestCodeRatio.mockResolvedValue(resultFor("testcoderatio", "pass"));
@@ -488,7 +492,7 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(36);
+    expect(report.results).toHaveLength(37);
     expect(report.results.find((result) => result.id === "licenceconsistency")?.starRating).toBe(5);
     expect(report.results.find((result) => result.id === "spdxheaders")?.starRating).toBe(4);
     expect(report.results.find((result) => result.id === "opensourcehealth")?.starRating).toBe(4);

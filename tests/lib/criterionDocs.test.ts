@@ -16,7 +16,6 @@ const PLANNED_IDS = [
   "opentrack",
   "sonarqube",
   "coupling",
-  "duplication",
 ];
 
 function modelIds(): string[] {

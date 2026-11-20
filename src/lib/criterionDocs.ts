@@ -406,7 +406,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     why: "Duplicated code has to be fixed in every copy.",
     tool: "jscpd",
     howToPass: ["There is nothing to pass: the criterion is informative.", "Move repeated code into shared functions."],
-    planned: { category: "Maintainability", level: "informative" },
   },
   {
     id: "size",

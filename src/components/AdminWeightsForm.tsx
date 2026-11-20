@@ -181,6 +181,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         label: "Size",
         explanation:
           "Counts the lines of production code per language with scc and estimates the effort to rebuild it. This criterion is informative and does not contribute to the score.",
+      },
+      {
+        id: "duplication",
+        label: "Duplication (open track)",
+        explanation:
+          "Runs jscpd 5.4.2 on the production code, one language at a time (clones of at least 6 lines and 30 tokens, comments ignored), and shows the share of duplicated lines per language and overall, with the largest clones. This criterion is informative and does not contribute to the overall score by default.",
         requirementLevel: "informative",
       },
       {
