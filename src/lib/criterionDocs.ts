@@ -15,11 +15,12 @@ export const CRITERIA_DOC_HREF = "/docs/criteria";
 
 /**
  * Where a criterion comes from. The checklist rests on three sources and adds
- * no conditions of its own; "information" marks context that never counts.
+ * no conditions of its own; "information" marks context that never counts, and
+ * "agents" the informative AI readiness criteria.
  */
-export type CriterionSource = "checklist" | "sig" | "alv" | "information";
+export type CriterionSource = "checklist" | "sig" | "alv" | "information" | "agents";
 
-export const SOURCE_ORDER: CriterionSource[] = ["checklist", "sig", "alv", "information"];
+export const SOURCE_ORDER: CriterionSource[] = ["checklist", "sig", "alv", "information", "agents"];
 
 export const SOURCE_DOCS: Record<CriterionSource, { label: string; explanation: string }> = {
   checklist: {
@@ -36,6 +37,11 @@ export const SOURCE_DOCS: Record<CriterionSource, { label: string; explanation: 
     label: "Common Ground standard v1.0",
     explanation:
       "The Common Ground standard v1.0 is the standard VNG puts to its general assembly (ALV) of 11 December 2026. It asks that a component meets the agreed standards and is proven in use by one or more municipalities.",
+  },
+  agents: {
+    label: "AI readiness",
+    explanation:
+      "How easily a coding agent can start work on the repository, based on the conventions teams that work with agents use: AGENTS.md, specifications, decision records, a runnable environment and agent tooling. These criteria have their own rating but never count in the overall rating or the verdict.",
   },
   information: {
     label: "Information only",
@@ -522,6 +528,75 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     why: "A version number that follows the rules tells a municipality whether an update can break their setup.",
     howToPass: ["Tag releases as MAJOR.MINOR.PATCH, with or without a leading v."],
     publiccodeFields: ["software-version"],
+  },
+  {
+    id: "agentinstructions",
+    title: "Agent instructions",
+    source: "agents",
+    what: "An instruction file for coding agents: AGENTS.md, CLAUDE.md, GEMINI.md, .github/copilot-instructions.md, Cursor, Windsurf or Cline rules. The checker reads up to five of them and measures the longest and whether one names a build, test or lint command.",
+    why: "An agent that starts without instructions guesses how to build and test. It then breaks conventions a person would know. One short file prevents that.",
+    howToPass: [
+      "Add an AGENTS.md in the root of the repository.",
+      "Name the commands to install, build, test and lint, such as npm test or composer check.",
+      "Describe the layout, the conventions and the traps, in at least 1,000 characters.",
+    ],
+  },
+  {
+    id: "specifications",
+    title: "Specifications",
+    source: "agents",
+    what: "Specification files in a layout agents know: openspec/specs/<capability>/spec.md with changes under openspec/changes, Spec Kit's specs/<feature>/spec.md, or Kiro's .kiro/specs.",
+    why: "A specification tells an agent what the code must do. Without one, the agent can only copy what the code happens to do now.",
+    howToPass: [
+      "Write one spec per capability in openspec/specs/<capability>/spec.md.",
+      "Propose new work as a change in openspec/changes/<change>/.",
+      "25 specifications rate 5; with changes the rating is 5.5.",
+    ],
+  },
+  {
+    id: "architecturedecisions",
+    title: "Architecture decision records",
+    source: "agents",
+    what: "Numbered architecture decision records, such as 0001-use-postgres.md or adr-001-api.md, in docs/adr, docs/decisions, adr, decisions or openspec/architecture.",
+    why: "A decision record says why the code is built this way. An agent that cannot read it may undo a choice that was made on purpose.",
+    howToPass: [
+      "Record each architecture decision as a numbered file in docs/adr.",
+      "Ten or more records rate 5.5.",
+    ],
+  },
+  {
+    id: "devenvironment",
+    title: "Runnable development environment",
+    source: "agents",
+    what: "A dev container or Docker Compose file, and a command each to test, lint and build in package.json, composer.json, a Makefile, justfile, Taskfile, pyproject.toml, tox.ini or noxfile.py. Maven, Gradle, Go and Cargo give test and build by convention.",
+    why: "An agent checks its own change by running it. It can only do that when the environment starts with one command and the checks have names.",
+    howToPass: [
+      "Add a .devcontainer/devcontainer.json or a docker-compose.yml for development.",
+      "Add test, lint and build scripts to package.json, composer.json or a Makefile.",
+    ],
+  },
+  {
+    id: "machineinterfaces",
+    title: "Machine-readable interfaces",
+    source: "agents",
+    what: "OpenAPI or Swagger documents, an llms.txt and an MCP configuration such as .mcp.json, outside vendored code and test fixtures.",
+    why: "An agent that reads the API from an OpenAPI document does not have to guess it from the code. An llms.txt and an MCP configuration point it at the documentation and tools.",
+    howToPass: [
+      "Publish the OpenAPI document of every API in the repository.",
+      "Add an llms.txt that links the documentation an agent should read.",
+      "Commit the MCP configuration the team uses, such as .mcp.json, without secrets.",
+    ],
+  },
+  {
+    id: "agenttooling",
+    title: "Agent tooling",
+    source: "agents",
+    what: "Skills, prompts and commands for agents (.claude/skills, .claude/commands, .claude/agents, .github/prompts, .cursor/commands, .agents/skills), and local quality gates: pre-commit, Husky, Lefthook, or gate and check scripts under scripts/ or bin/.",
+    why: "Skills turn the team's way of working into steps an agent repeats. A local gate lets the agent find its own mistakes before a person has to.",
+    howToPass: [
+      "Add a pre-commit configuration or a gate script that runs the checks.",
+      "Write the team's recurring tasks as skills or prompts; ten or more give the most points.",
+    ],
   },
 ];
 

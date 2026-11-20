@@ -69,7 +69,7 @@ const INSTRUCTION_FILE =
 export function findInstructionFiles(tree: string[]): string[] {
   const found = tree.filter((path) => INSTRUCTION_FILE.test(path) && !FOREIGN_PATH.test(path));
   const depth = (path: string) => path.split("/").length;
-  return found.sort((a, b) => depth(a) - depth(b) || a.localeCompare(b));
+  return found.sort((a, b) => depth(a) - depth(b) || (a < b ? -1 : a > b ? 1 : 0));
 }
 
 /** A build, test or lint command an agent can run, as instruction files name them. */
