@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:14:19.747Z",
+  "lastCheckedAt": "2026-11-20T11:25:00.194Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:54:35.059Z",
-  "updatedAt": "2026-11-20T09:14:19.747Z",
+  "updatedAt": "2026-11-20T11:25:00.194Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,24 +44,25 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-14-19-747Z",
+  "id": "2026-11-20T11-25-00-194Z",
   "repoId": "github.com/ConductionNL/keepiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:14:19.747Z",
-  "createdAt": "2026-11-20T09:14:19.747Z",
+  "checkedAt": "2026-11-20T11:25:00.194Z",
+  "createdAt": "2026-11-20T11:25:00.194Z",
   "version": "v0.3.12",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
-  "scannedCommit": "5d2ef52cb00ce1cfc1d7ac8ec8705de0ece9a671",
+  "scannedCommit": "c8576889ad9975b03b47bee5915ad614041b5963",
   "score": 100,
-  "rating": 5.1,
+  "rating": 5.4,
   "categoryRatings": {
    "Governance": 5.5,
-   "Security": 4.6,
+   "Security": 5.5,
    "Architecture": 5.5,
-   "Software Quality": 4.4,
-   "Deployment & Operations": 5.5
+   "Software Quality": 4.6,
+   "Deployment & Operations": 5.5,
+   "AI readiness": 5
   },
   "aspectRatings": {
    "licensing": {
@@ -85,19 +86,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-freshness": {
-    "rating": 3.5
+    "rating": null
    },
    "dependency-activity": {
-    "rating": 2.4
+    "rating": null
    },
    "dependency-licences": {
-    "rating": 3
+    "rating": null
    },
    "dependency-management": {
-    "rating": 5.5
+    "rating": null
    },
    "container-images": {
     "rating": null
@@ -127,10 +128,10 @@
     "rating": 4.4
    },
    "testability": {
-    "rating": 4.2
+    "rating": 5
    },
    "modularity": {
-    "rating": 4.6
+    "rating": 5.2
    },
    "reusability": {
     "rating": 3.8
@@ -148,15 +149,30 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 5.5
+   },
+   "specifications-and-decisions": {
+    "rating": 5.5
+   },
+   "runnable-environment": {
+    "rating": 5.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 3.5
    }
   },
   "endorsement": {
-   "passed": true,
-   "reasons": []
+   "passed": false,
+   "reasons": [
+    "publiccode.yml developmentStatus is beta; Suitable needs stable",
+    "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2"
+   ]
   },
   "issueCounts": {
    "errors": 0,
-   "warnings": 0
+   "warnings": 1
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -167,7 +183,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 33,398 lines of code, 4,256 functions, 4,216 files analyzed.",
+    "message": "Code metrics: 79,130 lines of code, 9,284 functions, 9,267 files analyzed.",
     "evidence": [
      ".keepiq-csp.mjs",
      ".keepiq-detail.mjs",
@@ -180,9 +196,9 @@
      "browser-extension/e2e/capture-trust.spec.ts",
      "browser-extension/e2e/card-identity-fill.spec.ts",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 33,398",
-     "Function count: 4,256",
-     "Files analyzed: 4,216"
+     "Total lines of code (NLOC): 79,130",
+     "Function count: 9,284",
+     "Files analyzed: 9,267"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -558,12 +574,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.48 (threshold: 15)",
      "Max CCN: 25.00 (threshold: 30)",
-     "9      1     53      0       9 setUpWithError@27-35@/tmp/cgchecker-repo-eGjGEf/repo/mobile/ios/KeepiqUITests/PasskeyUITests.swift",
-     "7      1     35      0       7 setUpWithError@25-31@/tmp/cgchecker-repo-eGjGEf/repo/mobile/ios/KeepiqUITests/AccessibilityAuditUITests.swift",
-     "8      1     45      0       9 setUpWithError@26-34@/tmp/cgchecker-repo-eGjGEf/repo/mobile/ios/KeepiqUITests/AutofillUITests.swift",
-     "7      1     35      0       7 setUpWithError@19-25@/tmp/cgchecker-repo-eGjGEf/repo/mobile/ios/KeepiqUITests/VaultFlowsUITests.swift",
-     "7      1     35      0       7 setUpWithError@15-21@/tmp/cgchecker-repo-eGjGEf/repo/mobile/ios/KeepiqUITests/PairUnlockUITests.swift",
-     "8      1     40      0       8 setUpWithError@16-23@/tmp/cgchecker-repo-eGjGEf/repo/mobile/ios/KeepiqUITests/OfflineUITests.swift"
+     "2      1     27      1       3 getError@239-241@/tmp/cgchecker-repo-8FxpjL/repo/mobile/android/app/src/main/kotlin/nl/conduction/keepiq/android/passkey/CredentialProviderActivity.kt",
+     "2      1     27      1       3 createErrorIntent@241-243@/tmp/cgchecker-repo-8FxpjL/repo/mobile/android/app/src/main/kotlin/nl/conduction/keepiq/android/passkey/CredentialProviderActivity.kt",
+     "23      5    192      1      27 createError@243-269@/tmp/cgchecker-repo-8FxpjL/repo/mobile/android/app/src/main/kotlin/nl/conduction/keepiq/android/passkey/CredentialProviderActivity.kt",
+     "10      1     71      0      12 aRefusalInsideHttp200IsAnError@73-84@/tmp/cgchecker-repo-8FxpjL/repo/mobile/shared/src/commonTest/kotlin/nl/conduction/keepiq/shared/api/KeepiqApiTest.kt",
+     "14      1    104      0      15 anHttpErrorCarriesStatusAndRefusalCode@84-98@/tmp/cgchecker-repo-8FxpjL/repo/mobile/shared/src/commonTest/kotlin/nl/conduction/keepiq/shared/api/KeepiqApiTest.kt",
+     "9      1     53      0       9 setUpWithError@27-35@/tmp/cgchecker-repo-8FxpjL/repo/mobile/ios/KeepiqUITests/PasskeyUITests.swift"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -575,12 +591,12 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 4.220000000000001,
+    "rating": 4.48,
     "aspectRatings": {
      "analysability": 4.21,
      "modifiability": 4.39,
-     "testability": 4.16,
-     "modularity": 4.61,
+     "testability": 4.96,
+     "modularity": 5.19,
      "reusability": 3.79
     },
     "measurements": [
@@ -1115,12 +1131,11 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "76.3%",
+        "value": "100.0%",
         "thresholds": {
          "4": "≥ 94.5%"
         },
-        "stars": null,
-        "starsText": "below 4 stars"
+        "stars": null
        },
        {
         "label": "Python",
@@ -1149,11 +1164,11 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "0.0163",
+        "value": "0",
         "thresholds": {
          "4": "≤ 0.075"
         },
-        "stars": 5
+        "stars": null
        },
        {
         "label": "Python",
@@ -1174,16 +1189,19 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.21 to 4.23 (4 of 5 stars) over 1311 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.45 to 4.51 (4 of 5 stars) over 1311 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★★☆ 4.2 (javascript 5.2, php 3.4, python 5.5, typescript 5.4, vue 3.9)",
      "Unit size: ★★★★☆ 4.2 (javascript 4.5, php 3.6, python 5.3, typescript 5.1, vue 4.7)",
      "Unit complexity: ★★★★☆ 4.4 (javascript 4.2, php 4.3, python 5.5, typescript 4.6, vue 4.9)",
      "Unit interfacing: ★★★☆☆ 3.4 (javascript 4.8, php 1.5, python 5.3, typescript 5.0, vue 5.5)",
      "Module coupling: ★★★★★ 4.6 (php 4.0, python 5.5, js/ts/vue 5.0)",
-     "Component independence: ★★★★☆ 3.9 (php 1.5, js/ts/vue 5.5)",
-     "Component entanglement: ★★★★★ 5.3 (php 5.1, js/ts/vue 5.5)",
-     "Not rated (python): all 4 modules fall into one component ((root), directory rule), so component independence and entanglement are trivial; neither is rated.",
+     "Component independence: ★★★★★ 5.5 (js/ts/vue 5.5)",
+     "Component entanglement: ★★★★★ 5.5 (js/ts/vue 5.5)",
+     "Not rated (php): all 705 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
+     "Not rated (python): all 4 modules fall into one component (sdk, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
+     "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 4.45 to 4.51, modularity 5.19 (php 1 components, exposed 0.0%, violation degree 0; python 1 components, exposed 0.0%, violation degree 0; js/ts/vue 5 components, exposed 0.0%, violation degree 0). The score uses this one.",
+     "Rating with directory components: 4.21 to 4.23, modularity 4.61 (php 22 components, exposed 23.7%, violation degree 0.0163; python 1 components, exposed 0.0%, violation degree 0; js/ts/vue 5 components, exposed 0.0%, violation degree 0).",
      "Lever: module coupling in php, about 1477 lines to fix for half a star",
      "Lever: duplication in php, about 1811 lines to fix for half a star",
      "Lever: duplication in vue",
@@ -1198,7 +1216,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 4,
-    "rating": 3.5714285714285716,
+    "rating": 3.7142857142857144,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -1385,7 +1403,7 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "90.8%",
+        "value": "99.7%",
         "thresholds": {
          "2": "≥ 27.3%",
          "3": "≥ 63.8%",
@@ -1403,27 +1421,27 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "0.006",
+        "value": "0.000",
         "thresholds": {
          "2": "≤ 0.236",
          "3": "≤ 0.094",
          "4": "≤ 0.029",
          "5": "≤ 0.000"
         },
-        "stars": 4
+        "stars": 5
        }
       ]
      }
     ],
-    "message": "Open-track rating 3.6 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.7 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★☆ 7.4% / 2.4% / 0.1% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★☆ 15.3% / 6.0% / 0.7% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 16.1% / 8.5% / 4.5% of the code above 2 / 3 / 4 parameters",
      "Duplication: ★★★☆☆ 8.2% duplicated lines",
      "Module coupling: ★★★☆☆ 26.6% / 18.1% / 10.9% of the code above 2 / 3 / 5 fan-in",
-     "Component independence: ★★★★☆ 90.8% of the code hidden from other components",
-     "Component entanglement: ★★★★☆ 0.006 violation degree",
+     "Component independence: ★★★★☆ 99.7% of the code hidden from other components",
+     "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1449,263 +1467,15 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "pass",
-    "starRating": 4,
-    "rating": 3.98,
-    "aspectRatings": {
-     "vulnerabilities": 5.5,
-     "freshness": 3.49,
-     "activity": 2.43,
-     "licence": 3,
-     "management": 5.5
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "0",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Moderate",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low",
-        "value": "1",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "freshness",
-      "title": "Freshness",
-      "aspects": [
-       "freshness"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "15.3%",
-        "thresholds": {
-         "2": "any",
-         "3": "≤ 68.4%",
-         "4": "≤ 34.2%",
-         "5": "≤ 17.1%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 2 years",
-        "value": "9.0%",
-        "thresholds": {
-         "2": "≤ 76.4%",
-         "3": "≤ 38.2%",
-         "4": "≤ 19.1%",
-         "5": "≤ 9.6%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 3.5 years",
-        "value": "4.1%",
-        "thresholds": {
-         "2": "≤ 44.4%",
-         "3": "≤ 22.2%",
-         "4": "≤ 11.1%",
-         "5": "≤ 5.5%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 5 years, absolute bound",
-        "value": "10 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "activity",
-      "title": "Activity",
-      "aspects": [
-       "activity"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "38.4%",
-        "thresholds": {
-         "2": "≤ 85.6%",
-         "3": "≤ 42.8%",
-         "4": "≤ 21.4%",
-         "5": "≤ 10.7%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 2 years",
-        "value": "27.9%",
-        "thresholds": {
-         "2": "≤ 52.0%",
-         "3": "≤ 26.0%",
-         "4": "≤ 13.0%",
-         "5": "≤ 6.5%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 4 years",
-        "value": "11.9%",
-        "thresholds": {
-         "2": "≤ 38.4%",
-         "3": "≤ 19.2%",
-         "4": "≤ 9.6%",
-         "5": "≤ 4.8%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 5.5 years, absolute bound",
-        "value": "28 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "1",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 3
-       },
-       {
-        "label": "Low risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "0.0%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 4 of 5 stars over 445 production dependencies (composer, npm). 4 stars or more passes, 3 stars warns.",
+    "status": "warn",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
-     "Freshness: ★★★☆☆ >1.0y 15.3%, >2.0y 9%, >3.5y 4.1%, >5.0y count 10",
-     "Activity: ★★☆☆☆ >1.0y 38.4%, >2.0y 27.9%, >4.0y 11.9%, >5.5y count 28",
-     "Licence use: ★★★☆☆ 0 critical, 0 high, 1 medium, 0 low risk (21 excluded by sigrid.yaml)",
-     "Management: ★★★★★ 0 unmanaged of 445 dependencies"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
@@ -1934,12 +1704,15 @@
     "status": "info",
     "message": "Measured the module structure of PHP, Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP (pdepend 3.0.0): 705 modules, 2,359 edges, 22 components; independence 77.4%, entanglement 0.014 (density 3.14); fan-in profile 96.1% / 1.7% / 0.7% / 1.5% of code at 0-10 / 11-20 / 21-50 / over 50; 28 modules in 9 cycles, largest component cycle 17",
-     "PHP components: directories below lib/ (a level is descended while one directory holds more than 80% of the modules); 705 files under lib/ (composer.json PSR-4)",
+     "PHP (pdepend 3.0.0): 705 modules, 2,359 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 96.1% / 1.7% / 0.7% / 1.5% of code at 0-10 / 11-20 / 21-50 / over 50; 28 modules in 9 cycles, largest component cycle 0",
+     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 705 files under lib/ (composer.json PSR-4)",
+     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 22 components; independence 77.4%, entanglement 0.014 (density 3.14), largest component cycle 17. The figures above use the declared components.",
      "Python (grimp 3.18): 4 modules, 4 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
-     "Python components: directories below sdk/python/src/keepiq_sdk/ (a level is descended while one directory holds more than 80% of the modules); packages keepiq_sdk",
+     "Python components: sigrid.yaml component_base_dirs [\"\"]; packages keepiq_sdk",
+     "Python with directory components (directories below sdk/python/src/keepiq_sdk/ (a level is descended while one directory holds more than 80% of the modules)): 1 components; independence 100.0%, entanglement 0.000 (density 0.00), largest component cycle 0. The figures above use the declared components.",
      "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 594 modules, 1,415 edges, 5 components; independence 99.5%, entanglement 0.000 (density 0.50); fan-in profile 96.1% / 2.1% / 1.8% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 11 modules in 1 cycles, largest component cycle 0",
-     "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
+     "JavaScript, TypeScript and Vue components: sigrid.yaml component_base_dirs [\"\"]",
+     "JavaScript, TypeScript and Vue with directory components (directories below ./ (a level is descended while one directory holds more than 80% of the modules)): 5 components; independence 99.5%, entanglement 0.000 (density 0.50), largest component cycle 0. The figures above use the declared components."
     ],
     "openTrack": {
      "coupling": {
@@ -1952,17 +1725,15 @@
         "modules": 705,
         "edges": 2359,
         "loc": 51789,
-        "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
-        "components": 22,
-        "componentIndependence": 0.7736,
+        "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
+        "componentDefinitionKind": "declared",
+        "components": 1,
+        "componentIndependence": 1,
         "componentEntanglement": {
-         "violationDegree": 0.0143,
-         "density": 3.14,
-         "communicationLines": 69,
-         "violations": {
-          "cyclic": 7,
-          "transitive": 3
-         }
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
         },
         "moduleCoupling": {
          "bounds": [
@@ -2039,6 +1810,22 @@
          "modulesInCycles": 28,
          "locShareInCycles": 0.0826,
          "largestModuleCycle": 5,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "directoryView": {
+         "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+         "components": 22,
+         "componentIndependence": 0.7736,
+         "componentEntanglement": {
+          "violationDegree": 0.0143,
+          "density": 3.14,
+          "communicationLines": 69,
+          "violations": {
+           "cyclic": 7,
+           "transitive": 3
+          }
+         },
          "componentCycles": 1,
          "largestComponentCycle": 17
         },
@@ -2051,7 +1838,8 @@
         "modules": 4,
         "edges": 4,
         "loc": 494,
-        "componentDefinition": "directories below sdk/python/src/keepiq_sdk/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
+        "componentDefinitionKind": "declared",
         "components": 1,
         "componentIndependence": 1,
         "componentEntanglement": {
@@ -2109,6 +1897,19 @@
          "componentCycles": 0,
          "largestComponentCycle": 0
         },
+        "directoryView": {
+         "componentDefinition": "directories below sdk/python/src/keepiq_sdk/ (a level is descended while one directory holds more than 80% of the modules)",
+         "components": 1,
+         "componentIndependence": 1,
+         "componentEntanglement": {
+          "violationDegree": 0,
+          "density": 0,
+          "communicationLines": 0,
+          "violations": {}
+         },
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
         "contracts": null
        },
        "javascript": {
@@ -2117,7 +1918,8 @@
         "modules": 594,
         "edges": 1415,
         "loc": 78985,
-        "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
+        "componentDefinitionKind": "declared",
         "components": 5,
         "componentIndependence": 0.9953,
         "componentEntanglement": {
@@ -2203,6 +2005,19 @@
          "componentCycles": 0,
          "largestComponentCycle": 0
         },
+        "directoryView": {
+         "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+         "components": 5,
+         "componentIndependence": 0.9953,
+         "componentEntanglement": {
+          "violationDegree": 0,
+          "density": 0.5,
+          "communicationLines": 1,
+          "violations": {}
+         },
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
         "unresolvedLocalImports": 312
        }
       }
@@ -2237,12 +2052,12 @@
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "pass",
-    "message": "API specification(s) at https://raw.githubusercontent.com/ConductionNL/keepiq/5d2ef52cb00ce1cfc1d7ac8ec8705de0ece9a671/openapi.json comply with Common Ground API Design Rules.",
+    "message": "API specification(s) at https://raw.githubusercontent.com/ConductionNL/keepiq/c8576889ad9975b03b47bee5915ad614041b5963/openapi.json comply with Common Ground API Design Rules.",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/keepiq/5d2ef52cb00ce1cfc1d7ac8ec8705de0ece9a671/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/keepiq/c8576889ad9975b03b47bee5915ad614041b5963/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "No API Design Rules violations found for https://raw.githubusercontent.com/ConductionNL/keepiq/5d2ef52cb00ce1cfc1d7ac8ec8705de0ece9a671/openapi.json.",
+     "No API Design Rules violations found for https://raw.githubusercontent.com/ConductionNL/keepiq/c8576889ad9975b03b47bee5915ad614041b5963/openapi.json.",
      "Ruleset: https://static.developer.overheid.nl/adr/ruleset.yaml",
      "No API Design Rules violations found by Spectral."
     ],
@@ -2503,7 +2318,7 @@
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
       "value": "0.99",
-      "explanation": "1,267 change requests were closed (merged or not) and 1,284 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "explanation": "1,268 change requests were closed (merged or not) and 1,286 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -2555,11 +2370,11 @@
        "fixDays": "next-release",
        "count": 52,
        "response": {
-        "measured": 3,
-        "median": 0,
-        "worst": 0,
-        "breaches": 38,
-        "waiting": 42
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 1,
+        "waiting": 3
        },
        "fix": {
         "measured": 26,
@@ -2579,8 +2394,8 @@
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 1,
-        "waiting": 1
+        "breaches": 0,
+        "waiting": 0
        },
        "fix": null
       },
@@ -2591,11 +2406,11 @@
        "fixDays": null,
        "count": 19,
        "response": {
-        "measured": 1,
-        "median": 1.1,
-        "worst": 1.1,
-        "breaches": 16,
-        "waiting": 17
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 0,
+        "waiting": 0
        },
        "fix": null
       },
@@ -2606,16 +2421,16 @@
        "fixDays": null,
        "count": 122,
        "response": {
-        "measured": 0,
-        "median": null,
-        "worst": null,
-        "breaches": 102,
-        "waiting": 114
+        "measured": 27,
+        "median": 4.9,
+        "worst": 33,
+        "breaches": 51,
+        "waiting": 57
        },
        "fix": null
       }
      ],
-     "openBreachCount": 54,
+     "openBreachCount": 23,
      "openBreaches": [
       {
        "title": "[BUG] Installing keepiq",
@@ -2625,27 +2440,6 @@
        "due": "2026-10-12T18:14:59.000Z"
       },
       {
-       "title": "Deleting an account leaves its certificate metadata behind",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1148",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-10-16T22:00:00.000Z"
-      },
-      {
-       "title": "Publish the Terraform provider to the Terraform and OpenTofu registries",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1041",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-10-16T22:00:00.000Z"
-      },
-      {
-       "title": "Publish the browser extension in the Chrome, Firefox and Edge stores",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1040",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-10-16T22:00:00.000Z"
-      },
-      {
        "title": "[OpenSpec] standalone-app-shell",
        "url": "https://github.com/ConductionNL/keepiq/issues/1185",
        "category": "unclassified",
@@ -2653,109 +2447,130 @@
        "due": "2026-10-20T07:29:34.000Z"
       },
       {
-       "title": "share-save silently misses some partner shares",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1263",
+       "title": "Mobile: a revoked app password leaves the cached autofill index, codes and passkeys usable",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1351",
        "category": "bug",
-       "kind": "response",
-       "due": "2026-10-21T13:54:15.000Z"
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
       },
       {
-       "title": "Deleting a secret never tells partner organisations the share ended",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1265",
+       "title": "fix(sharing): refuse sync and share-save when a copy's share row has not been judged yet",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1341",
        "category": "bug",
-       "kind": "response",
-       "due": "2026-10-21T13:54:20.000Z"
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
       },
       {
-       "title": "An offline delete checks its base version, then writes, without the version lock",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1267",
+       "title": "fix(sharing): defer a member leave when the quarantine scan has not judged the row yet",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1340",
        "category": "bug",
-       "kind": "response",
-       "due": "2026-10-21T13:54:24.000Z"
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
       },
       {
-       "title": "\"Keep mine\" on an offline conflict can drop a newer secret request fill",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1268",
+       "title": "Admin partner list does not show the value fields a partner stores (valueFields)",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1339",
        "category": "bug",
-       "kind": "response",
-       "due": "2026-10-21T13:54:27.000Z"
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
       },
       {
-       "title": "An application's write to its secret can overwrite a concurrent write",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1269",
+       "title": "A declined-then-resumed partner share serves the values from before the decline",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1338",
        "category": "bug",
-       "kind": "response",
-       "due": "2026-10-21T15:46:54.000Z"
-      },
-      {
-       "title": "Pin string_mask = utf8only for every Keepiq-issued certificate",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1282",
-       "category": "bug",
-       "kind": "response",
-       "due": "2026-10-23T11:01:20.000Z"
-      },
-      {
-       "title": "Clients suspend partner shares for good on refusals that may be temporary",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1283",
-       "category": "bug",
-       "kind": "response",
-       "due": "2026-10-23T11:01:22.000Z"
-      },
-      {
-       "title": "Cloud id canonical forms differ between the browser, Keepiq's PHP and Nextcloud",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1289",
-       "category": "bug",
-       "kind": "response",
-       "due": "2026-10-23T15:08:01.000Z"
-      },
-      {
-       "title": "Recipients get the owner's controls on their copy and can share it onward",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1298",
-       "category": "bug",
-       "kind": "response",
-       "due": "2026-10-27T14:01:48.000Z"
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
       },
       {
        "title": "A partner's read-only copy can be rolled back through version restore",
        "url": "https://github.com/ConductionNL/keepiq/issues/1299",
        "category": "bug",
-       "kind": "response",
-       "due": "2026-10-27T14:01:49.000Z"
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
       },
       {
-       "title": "A value change by plain PUT reaches one row only, and the mobile app saves only that way",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1300",
+       "title": "The server generator can miss a required class and refuses every request under a policy floor above 128",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1308",
        "category": "bug",
-       "kind": "response",
-       "due": "2026-10-27T14:01:51.000Z"
-      },
-      {
-       "title": "[FEATURE] Share creation sends the source version it encrypted from",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1255",
-       "category": "feature-request",
-       "kind": "response",
-       "due": "2026-10-27T18:21:56.000Z"
-      },
-      {
-       "title": "[FEATURE] Batch partner certificate lookup for the owner's own partner shares",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1256",
-       "category": "feature-request",
-       "kind": "response",
-       "due": "2026-10-27T18:21:57.000Z"
-      },
-      {
-       "title": "[FEATURE] Resume a suspended partner share",
-       "url": "https://github.com/ConductionNL/keepiq/issues/1262",
-       "category": "feature-request",
-       "kind": "response",
-       "due": "2026-10-28T11:29:26.000Z"
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
       },
       {
        "title": "Generating from a pattern under the org policy can leave out a required character class",
        "url": "https://github.com/ConductionNL/keepiq/issues/1307",
        "category": "bug",
-       "kind": "response",
-       "due": "2026-10-29T11:58:56.000Z"
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "A value change by plain PUT reaches one row only, and the mobile app saves only that way",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1300",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "Recipients get the owner's controls on their copy and can share it onward",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1298",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "Federated share: a suspended share leaves the last value at the partner",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1292",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "Federated share: a re-issued recipient certificate is trusted silently on the next save",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1291",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "Cloud id canonical forms differ between the browser, Keepiq's PHP and Nextcloud",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1289",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "Clients suspend partner shares for good on refusals that may be temporary",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1283",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "Pin string_mask = utf8only for every Keepiq-issued certificate",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1282",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "\"Keep mine\" on an offline conflict can drop a newer secret request fill",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1268",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "An offline delete checks its base version, then writes, without the version lock",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1267",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
+      },
+      {
+       "title": "An application's write to its secret can overwrite a concurrent write",
+       "url": "https://github.com/ConductionNL/keepiq/issues/1269",
+       "category": "bug",
+       "kind": "fix",
+       "due": "2026-11-16T15:43:12.000Z"
       }
      ],
      "fixesByRelease": 0,
@@ -2764,7 +2579,7 @@
       "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
       "Only the 200 most recently updated issues of each kind were read.",
       "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
-      "16 of 194 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "107 of 194 issues were opened by the maintainers themselves; they have a fix term but no response term.",
       "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
      ]
     },
@@ -2779,12 +2594,157 @@
     "message": "publiccode.yml declares no standards under supports.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "2 instruction files found; the longest has 7,366 characters; names a build, test or lint command.",
+    "evidence": [
+     "browser-extension/CLAUDE.md",
+     "openspec/references/keepiq-extension/docs/CLAUDE.md"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "118 specifications and 144 changes found.",
+    "evidence": [
+     "browser-extension/openspec/specs/folder-management/spec.md",
+     "browser-extension/openspec/specs/item-editing/spec.md",
+     "openspec/specs/admin-api/spec.md",
+     "openspec/specs/admin-integrations/spec.md",
+     "openspec/specs/admin-member-overview/spec.md",
+     "openspec/specs/admin-scoped-roles/spec.md",
+     "openspec/specs/admin-secret-types/spec.md",
+     "openspec/specs/admin-settings/spec.md",
+     "openspec/specs/api-contract/spec.md",
+     "openspec/specs/app-shell/spec.md",
+     "openspec/specs/application-mgmt/spec.md",
+     "openspec/specs/browser-extension-autofill/spec.md",
+     "openspec/specs/bulk-actions/spec.md",
+     "openspec/specs/card-identity-items/spec.md",
+     "openspec/specs/certificate-lifecycle/spec.md",
+     "openspec/specs/ci-integrations/spec.md",
+     "openspec/specs/cli-ssh-agent/spec.md",
+     "openspec/specs/client-libraries/spec.md",
+     "openspec/specs/clients-passkey-origin/spec.md",
+     "openspec/specs/clients-save-prompt/spec.md",
+     "openspec/specs/compliance-reporting/spec.md",
+     "openspec/specs/cxf-import-export/spec.md",
+     "openspec/specs/cxp-transfer/spec.md",
+     "openspec/specs/dashboard/spec.md",
+     "openspec/specs/demo-vault/spec.md",
+     "openspec/specs/distribution/spec.md",
+     "openspec/specs/emergency-access/spec.md",
+     "openspec/specs/encrypted-attachments/spec.md",
+     "openspec/specs/encryption-suites/spec.md",
+     "openspec/specs/ephemeral-send/spec.md",
+     "openspec/specs/expiring-shares/spec.md",
+     "openspec/specs/extension-account-switching/spec.md",
+     "openspec/specs/extension-autofill-extras/spec.md",
+     "openspec/specs/extension-baseline/spec.md",
+     "openspec/specs/extension-biometric-unlock/spec.md",
+     "openspec/specs/extension-clipboard/spec.md",
+     "openspec/specs/extension-fill-and-capture/spec.md",
+     "openspec/specs/extension-generator-policy/spec.md",
+     "openspec/specs/extension-generator/spec.md",
+     "openspec/specs/extension-list-and-settings/spec.md",
+     "openspec/specs/extension-lock/spec.md",
+     "openspec/specs/extension-pairing/spec.md",
+     "openspec/specs/extension-passkey-provider/spec.md",
+     "openspec/specs/extension-pin-unlock/spec.md",
+     "openspec/specs/extension-popup-shell/spec.md",
+     "openspec/specs/extension-release/spec.md",
+     "openspec/specs/extension-save-prompt-details/spec.md",
+     "openspec/specs/extension-send-details/spec.md",
+     "openspec/specs/extension-send/spec.md",
+     "openspec/specs/extension-small-items/spec.md",
+     "... and 68 more"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "10 decision records found.",
+    "evidence": [
+     "browser-extension/openspec/architecture/adr-001-bitwarden-parity.md",
+     "browser-extension/openspec/architecture/adr-002-key-lifetime-and-vault-cache.md",
+     "browser-extension/openspec/architecture/adr-003-keepiq-api-contract.md",
+     "browser-extension/openspec/architecture/adr-004-popup-ui-react.md",
+     "openspec/architecture/adr-001-own-database-tables.md",
+     "openspec/architecture/adr-002-polymorphic-encryption-suite-ownership.md",
+     "openspec/architecture/adr-003-rsa-aes-encryption-architecture.md",
+     "openspec/architecture/adr-004-secrets-in-app-local-encrypted-tables.md",
+     "openspec/architecture/adr-005-admin-suite-force-revocation-and-compromise-signalling.md",
+     "openspec/architecture/adr-006-keepiq-is-independently-usable.md"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "Development environment found; commands to test, lint and build found.",
+    "evidence": [
+     ".github/docker-compose.ci.yml",
+     "docker-compose.yml",
+     "docker/docker-compose.yml",
+     "package.json: build",
+     "package.json: check:l10n-js",
+     "package.json: format"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "pass",
+    "rating": 4.5,
+    "message": "Found: 1 OpenAPI document, llms.txt.",
+    "evidence": [
+     "openapi.json",
+     "docs/static/llms.txt"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "warn",
+    "rating": 2.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 2.",
+    "evidence": [
+     "scripts/check-path-case.js",
+     "scripts/check-schema-l10n.js"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 20.5,
+  "durationSeconds": 57,
   "scanMode": "full",
   "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

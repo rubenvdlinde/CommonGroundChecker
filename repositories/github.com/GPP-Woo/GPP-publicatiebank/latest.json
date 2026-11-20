@@ -32,10 +32,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:20:04.337Z",
+  "lastCheckedAt": "2026-11-20T11:41:11.278Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:01.549Z",
-  "updatedAt": "2026-11-20T09:20:04.337Z",
+  "updatedAt": "2026-11-20T11:41:11.278Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -48,11 +48,11 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-20-04-337Z",
+  "id": "2026-11-20T11-41-11-278Z",
   "repoId": "github.com/GPP-Woo/GPP-publicatiebank",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:20:04.337Z",
-  "createdAt": "2026-11-20T09:20:04.337Z",
+  "checkedAt": "2026-11-20T11:41:11.278Z",
+  "createdAt": "2026-11-20T11:41:11.278Z",
   "version": "v3.0.0",
   "checklistVersion": "2026.2",
   "scannedRef": "3.0.0",
@@ -62,10 +62,11 @@
   "rating": 3.1,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 2.6,
+   "Security": 2.4,
    "Architecture": 3,
    "Software Quality": 2.7,
-   "Deployment & Operations": 4.3
+   "Deployment & Operations": 4.3,
+   "AI readiness": 2.1
   },
   "aspectRatings": {
    "licensing": {
@@ -89,7 +90,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-freshness": {
     "rating": null
@@ -101,7 +102,7 @@
     "rating": null
    },
    "dependency-management": {
-    "rating": 0.5
+    "rating": null
    },
    "container-images": {
     "rating": 0.5
@@ -152,6 +153,18 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 5.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 2
    }
   },
   "endorsement": {
@@ -161,7 +174,9 @@
     "Mandatory criterion fails: API Design Rules",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No publiccode.yml was found, so there is no maintenance contract.",
-    "Maintainability below 4 stars (2.12)"
+    "Maintainability below 4 stars (2.12)",
+    "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+    "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2"
    ]
   },
   "issueCounts": {
@@ -1083,154 +1098,14 @@
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
     "status": "warn",
-    "starRating": 3,
-    "rating": 3,
-    "aspectRatings": {
-     "vulnerabilities": 5.5,
-     "freshness": null,
-     "activity": null,
-     "licence": null,
-     "management": 0.5
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "0",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Moderate",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "100.0%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 1
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 3 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
-     "Freshness: not rated (data unavailable)",
-     "Activity: not rated (data unavailable)",
-     "Licence use: not rated (data unavailable)",
-     "Management: ★☆☆☆☆ 1 unmanaged of 1 dependencies"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
@@ -1442,6 +1317,7 @@
         "edges": 207,
         "loc": 10538,
         "componentDefinition": "directories below src/woo_publications/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 13,
         "componentIndependence": 0.5978,
         "componentEntanglement": {
@@ -1525,6 +1401,7 @@
         "edges": 0,
         "loc": 14,
         "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 1,
         "componentIndependence": 1,
         "componentEntanglement": {
@@ -1995,7 +1872,7 @@
         "measured": 1,
         "median": 174.9,
         "worst": 174.9,
-        "breaches": 39,
+        "breaches": 40,
         "waiting": 42
        },
        "fix": null
@@ -2016,7 +1893,7 @@
        "fix": null
       }
      ],
-     "openBreachCount": 52,
+     "openBreachCount": 53,
      "openBreaches": [
       {
        "title": "Organisatieonderdeel datamodel + API resource",
@@ -2178,12 +2055,87 @@
     "message": "No publiccode.yml found, so no standards are declared.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "Development environment found; commands to test, lint and build found.",
+    "evidence": [
+     "docker-compose.yml",
+     "docker/docker-compose.keycloak.yml",
+     "docker/docker-compose.mock.yml",
+     "package.json: build",
+     "package.json: test",
+     "pyproject.toml: lint"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "warn",
+    "rating": 3.5,
+    "message": "Found: 1 OpenAPI document.",
+    "evidence": [
+     "src/woo_publications/api/openapi.yaml"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 0.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 8.3,
+  "durationSeconds": 11.6,
   "scanMode": "full",
   "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

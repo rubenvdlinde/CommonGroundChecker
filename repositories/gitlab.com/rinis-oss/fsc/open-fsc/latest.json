@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:32:37.326Z",
+  "lastCheckedAt": "2026-11-20T11:44:25.914Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:04:15.013Z",
-  "updatedAt": "2026-11-20T09:32:37.326Z",
+  "updatedAt": "2026-11-20T11:44:25.914Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -42,28 +42,29 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-32-37-326Z",
+  "id": "2026-11-20T11-44-25-914Z",
   "repoId": "gitlab.com/rinis-oss/fsc/open-fsc",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:32:37.326Z",
-  "createdAt": "2026-11-20T09:32:37.326Z",
+  "checkedAt": "2026-11-20T11:44:25.914Z",
+  "createdAt": "2026-11-20T11:44:25.914Z",
   "version": "v2.9.1",
   "checklistVersion": "2026.2",
   "scannedRef": "v2.9.1",
   "scannedRefKind": "release",
   "scannedCommit": "6dde76b4532fae04aed3de5aa42fe38cab505040",
   "score": 60,
-  "rating": 2.9,
+  "rating": 2.8,
   "categoryRatings": {
-   "Governance": 2.5,
-   "Security": 2.2,
+   "Governance": 2.6,
+   "Security": 1.8,
    "Architecture": 3,
-   "Software Quality": 4.1,
-   "Deployment & Operations": 3.3
+   "Software Quality": 4.2,
+   "Deployment & Operations": 3.3,
+   "AI readiness": 2.1
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 3.6
+    "rating": 3.8
    },
    "ownership": {
     "rating": 3
@@ -83,7 +84,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-freshness": {
     "rating": null
@@ -95,7 +96,7 @@
     "rating": null
    },
    "dependency-management": {
-    "rating": 0.5
+    "rating": null
    },
    "container-images": {
     "rating": 0.5
@@ -134,7 +135,7 @@
     "rating": 4.7
    },
    "testing": {
-    "rating": 3
+    "rating": 3.5
    },
    "size": {
     "rating": null
@@ -146,6 +147,18 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 4.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 3
    }
   },
   "endorsement": {
@@ -155,7 +168,9 @@
     "Mandatory criterion fails: Docker support",
     "Mandatory criterion fails: Available Docker image",
     "Mandatory criterion fails: API Design Rules",
-    "No publiccode.yml was found, so there is no maintenance contract."
+    "No publiccode.yml was found, so there is no maintenance contract.",
+    "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+    "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2"
    ]
   },
   "issueCounts": {
@@ -189,11 +204,6 @@
      "Files analyzed: 7,903"
     ],
     "referenceUrl": "https://commonground.nl",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -205,11 +215,6 @@
     "message": "Component is not marked as a register; OpenAPI specification check is not required.",
     "evidence": [],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -223,11 +228,6 @@
      "LICENSE"
     ],
     "referenceUrl": "https://opensource.org/licenses",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -241,11 +241,6 @@
      "EUPL"
     ],
     "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -259,11 +254,6 @@
     "referenceUrl": "https://spdx.org/licenses/",
     "status": "warn",
     "message": "Only one licence declaration found (LICENSE: EUPL-1.2); nothing to compare it with. Declare the licence in the package manifest and publiccode.yml as well.",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "recommended",
     "starRating": 3
    },
@@ -278,11 +268,6 @@
      "README.md: RINIS"
     ],
     "referenceUrl": "https://opensource.guide/legal/",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -292,6 +277,7 @@
     "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
     "referenceUrl": "https://reuse.software/spec/",
     "status": "fail",
+    "starRating": 1,
     "message": "0.0% of 1185 source files carry an SPDX header (1 of 5 stars). 1185 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
     "evidence": [
      "apps-overview/main.go",
@@ -315,13 +301,7 @@
      "auditlog/app/command/create_records.go",
      "auditlog/app/command/delete_records.go"
     ],
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
-    "requirementLevel": "recommended",
-    "starRating": 1
+    "requirementLevel": "recommended"
    },
    {
     "id": "publiccode",
@@ -331,11 +311,6 @@
     "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
     "evidence": [],
     "referenceUrl": "https://standard.publiccode.net/criteria/",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 1
    },
@@ -362,11 +337,6 @@
      "other Dockerfiles found: apps-overview/Dockerfile, auditlog/Dockerfile, auth-opa/Dockerfile, ca-certportal/Dockerfile, controller/Dockerfile, directory-ui/Dockerfile, e2e-tests/image/Dockerfile, inway/Dockerfile, manager/Dockerfile, outway/Dockerfile, sni-proxy/Dockerfile, txlog-api/Dockerfile"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 1
    },
@@ -391,11 +361,6 @@
      ".gitlab-ci.yml"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -407,11 +372,6 @@
     "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
     "evidence": [],
     "referenceUrl": "https://www.cisa.gov/sbom",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -446,11 +406,6 @@
      "helm/charts/open-fsc-apps-overview/README.md"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -464,11 +419,6 @@
      "changelog.md"
     ],
     "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "recommended",
     "starRating": 5
    },
@@ -491,11 +441,6 @@
      "auditlog/tests/component_list_records_test.go"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -521,19 +466,14 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 3.73 (threshold: 15)",
      "Max CCN: 63.00 (threshold: 30)",
-     "3      1     23      0       3 Error@1630-1632@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     31      0       3 Error@1643-1645@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     23      0       3 Error@1655-1657@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     23      0       3 Error@1664-1666@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     31      0       3 Error@1677-1679@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     27      0       3 Error@1690-1692@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go"
+     "5      1     19      1       5 newInternalError@10-14@/tmp/cgchecker-repo-NkYF9g/repo/directory-ui/app/query/common.go",
+     "3      1     18      0       3 Error@16-18@/tmp/cgchecker-repo-NkYF9g/repo/directory-ui/app/query/common.go",
+     "4      1     31      2       4 WriteError@12-15@/tmp/cgchecker-repo-NkYF9g/repo/inway/http/http.go",
+     "4      1     64      3       5 LogAPIErrors@159-163@/tmp/cgchecker-repo-NkYF9g/repo/inway/proxy.go",
+     "3      1     27      2       3 mapError@17-19@/tmp/cgchecker-repo-NkYF9g/repo/controller/adapters/manager/rest/errors.go",
+     "15      5    111      4      19 mapResponse@21-39@/tmp/cgchecker-repo-NkYF9g/repo/controller/adapters/manager/rest/errors.go"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "informative"
    },
    {
@@ -756,11 +696,6 @@
      "Lever: duplication in javascript, about 5 lines to fix for half a star",
      "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 5.1% against 5.1%"
     ],
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "recommended"
    },
    {
@@ -998,11 +933,6 @@
      "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "informative"
    },
    {
@@ -1010,6 +940,7 @@
     "title": "Test code ratio",
     "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
     "status": "fail",
+    "starRating": 2,
     "message": "Test code ratio 56.4% (2 of 5 stars).",
     "evidence": [
      "Test code ratio: 56.4%",
@@ -1018,13 +949,7 @@
      "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
     ],
     "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
-    "requirementLevel": "recommended",
-    "starRating": 1
+    "requirementLevel": "recommended"
    },
    {
     "id": "opensourcehealth",
@@ -1032,160 +957,21 @@
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
     "status": "warn",
-    "starRating": 3,
-    "rating": 3,
-    "aspectRatings": {
-     "vulnerabilities": 5.5,
-     "freshness": null,
-     "activity": null,
-     "licence": null,
-     "management": 0.5
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "0",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Moderate",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "100.0%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 1
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 3 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
-     "Freshness: not rated (data unavailable)",
-     "Activity: not rated (data unavailable)",
-     "Licence use: not rated (data unavailable)",
-     "Management: ★☆☆☆☆ 1 unmanaged of 1 dependencies"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
     "title": "Size",
     "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
     "referenceUrl": "https://github.com/boyter/scc",
+    "requirementLevel": "informative",
     "status": "info",
     "size": {
      "tool": "scc 4.1.0",
@@ -1233,13 +1019,7 @@
      "CSS: 32 lines in 1 file(s)",
      "Rebuild effort, open estimate: 406 function points, 2.9 person-years (proxies: CSS uses the HTML factor)",
      "SIG-style volume, context, not part of the 2026 rating: 1.4 person-years (proxies: HTML, CSS and SQL use the JavaScript factor)"
-    ],
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
-    "requirementLevel": "informative"
+    ]
    },
    {
     "id": "duplication",
@@ -1284,11 +1064,6 @@
       ]
      }
     },
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "informative"
    },
    {
@@ -1313,6 +1088,7 @@
         "edges": 1,
         "loc": 373,
         "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 7,
         "componentIndependence": 0.8954,
         "componentEntanglement": {
@@ -1378,11 +1154,6 @@
       }
      }
     },
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "informative"
    },
    {
@@ -1395,11 +1166,6 @@
      "Unsafe HTML injection: controller/ports/administration/ui/assets/js/index.mjs"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -1476,11 +1242,6 @@
      "CONTRIBUTING.md"
     ],
     "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -1492,11 +1253,6 @@
     "message": "No Code of Conduct file found. Add CODE_OF_CONDUCT.md to clarify community behavior standards.",
     "evidence": [],
     "referenceUrl": "https://opensource.guide/code-of-conduct/",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -1508,11 +1264,6 @@
     "message": "No SECURITY.md file found. Add one to document responsible vulnerability disclosure and supported versions.",
     "evidence": [],
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -1523,24 +1274,19 @@
     "status": "fail",
     "message": "Gitleaks found 95 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 3 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
+     "kubernetes-secret-yaml: helm/deploy/gemeente-riemer/templates/internal-ca-secret.yaml:2",
+     "private-key: helm/deploy/shared/values.yaml:238",
+     "private-key: helm/deploy/shared/values.yaml:355",
      "private-key: helm/deploy/vergunningsoftware-bv/values.yaml:197",
      "private-key: helm/deploy/vergunningsoftware-bv/values.yaml:314",
-     "kubernetes-secret-yaml: helm/deploy/gemeente-riemer/templates/internal-ca-secret.yaml:2",
-     "private-key: helm/deploy/gemeente-stijns/values.yaml:199",
-     "private-key: helm/deploy/gemeente-stijns/values.yaml:316",
-     "generic-api-key: helm/deploy/gemeente-stijns/values.yaml:569",
-     "private-key: helm/deploy/gemeente-riemer/values.yaml:131",
-     "private-key: helm/deploy/gemeente-riemer/values.yaml:249",
      "kubernetes-secret-yaml: helm/deploy/gemeente-stijns/templates/secret-outway-2-server-tls.yaml:2",
      "private-key: helm/deploy/gemeente-stijns/templates/secret-outway-2-server-tls.yaml:9",
+     "private-key: helm/deploy/rvrd/values.yaml:224",
+     "private-key: helm/deploy/rvrd/values.yaml:341",
+     "generic-api-key: helm/deploy/rvrd/values.yaml:563",
      "... and 85 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "recommended",
     "starRating": 1
    },
@@ -1624,15 +1370,10 @@
      "Found path segment \"storage\" in auditlog/adapters/storage/postgres/queries/db.go",
      "Found path segment \"storage\" in auditlog/adapters/storage/postgres/queries/delete_records.sql.go",
      "Found path segment \"storage\" in auditlog/adapters/storage/postgres/queries/list_records.sql.go",
-     "... and 1 more"
+     "... and 1068 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -1646,11 +1387,6 @@
      "helm/charts/open-fsc-apps-overview/Chart.yaml"
     ],
     "referenceUrl": "https://haven.commonground.nl",
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -1713,7 +1449,7 @@
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
       "value": "4 organisations; largest 59%",
-      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (272 commits by people, after the .mailmap) and, the forge does not say which account made a commit, so personal and hidden addresses stay unknown. The largest is an organisation with one author, with 59% of the 87 commits whose organisation is known; 68% of the commits come from 2 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (271 commits by people, after the .mailmap) and, the forge does not say which account made a commit, so personal and hidden addresses stay unknown. The largest is an organisation with one author, with 59% of the 86 commits whose organisation is known; 68% of the commits come from 2 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1756,8 +1492,8 @@
       "id": "release-frequency",
       "name": "Release Frequency",
       "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
-      "value": "34 in 12 months",
-      "explanation": "34 final releases were published in the last 12 months, about one every 11 days, counted from the GitLab releases. The latest final release is from 2026-11-19. Drafts and pre-releases are left out.",
+      "value": "33 in 12 months",
+      "explanation": "33 final releases were published in the last 12 months, about one every 11 days, counted from the GitLab releases. The latest final release is from 2026-11-19. Drafts and pre-releases are left out.",
       "target": {
        "text": "at least 4 releases in 12 months",
        "met": true
@@ -1785,18 +1521,94 @@
     "status": "info",
     "message": "No publiccode.yml found, so no standards are declared.",
     "evidence": [],
-    "reusedFrom": {
-     "analysisId": "2026-11-20T09-24-31-232Z",
-     "checkedAt": "2026-11-20T09:24:31.232Z",
-     "commit": "6dde76b4532fae04aed3de5aa42fe38cab505040"
-    },
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 4.5,
+    "message": "Development environment found; no command found to lint.",
+    "evidence": [
+     "docker-compose.yml",
+     "go.mod: test by convention",
+     "go.mod: build by convention"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "warn",
+    "rating": 3.5,
+    "message": "Found: 8 OpenAPI documents.",
+    "evidence": [
+     "auditlog/ports/rest/api/openapi.yaml",
+     "common/authzen/api/openapi.yaml",
+     "controller/adapters/authz/rest/api/openapi.yaml",
+     "controller/ports/registration/rest/api/openapi.yaml",
+     "manager/adapters/additional-claims/rest/openapi.yaml",
+     "manager/ports/int/rest/api/openapi.yaml",
+     "manager/ports/intunauthenticated/rest/api/openapi.yaml",
+     "txlog-api/ports/rest/api/openapi.yaml"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "warn",
+    "rating": 2.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 1.",
+    "evidence": [
+     "scripts/eol-at-eof-linter.sh"
+    ],
+    "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 28,
-  "scanMode": "partial",
-  "scanModeReason": "the code did not change",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "durationSeconds": 75.2,
+  "scanMode": "full",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:19:26.450Z",
+  "lastCheckedAt": "2026-11-20T11:39:34.532Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:58:53.221Z",
-  "updatedAt": "2026-11-20T09:19:26.450Z",
+  "updatedAt": "2026-11-20T11:39:34.532Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -42,24 +42,25 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-19-26-450Z",
+  "id": "2026-11-20T11-39-34-532Z",
   "repoId": "github.com/generiekzaakafhandelcomponent/gzac-frontend-template",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:19:26.450Z",
-  "createdAt": "2026-11-20T09:19:26.450Z",
+  "checkedAt": "2026-11-20T11:39:34.532Z",
+  "createdAt": "2026-11-20T11:39:34.532Z",
   "version": "v13.55.1",
   "checklistVersion": "2026.2",
   "scannedRef": "13.55.1",
   "scannedRefKind": "tag",
   "scannedCommit": "b7400ba6dd802afe68d440d622aa616059c55d29",
   "score": 49,
-  "rating": 3.2,
+  "rating": 3.3,
   "categoryRatings": {
    "Governance": 1.3,
-   "Security": 3.6,
+   "Security": 3.8,
    "Architecture": 4.3,
    "Software Quality": 3.9,
-   "Deployment & Operations": 3.3
+   "Deployment & Operations": 3.3,
+   "AI readiness": 1.3
   },
   "aspectRatings": {
    "licensing": {
@@ -83,19 +84,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 1
+    "rating": null
    },
    "dependency-freshness": {
-    "rating": 2.9
+    "rating": null
    },
    "dependency-activity": {
-    "rating": 2.2
+    "rating": null
    },
    "dependency-licences": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-management": {
-    "rating": 5.5
+    "rating": null
    },
    "container-images": {
     "rating": null
@@ -146,6 +147,18 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 3.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 0.5
    }
   },
   "endorsement": {
@@ -156,7 +169,9 @@
     "Mandatory criterion fails: Docker support",
     "Mandatory criterion fails: Available Docker image",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
-    "No publiccode.yml was found, so there is no maintenance contract."
+    "No publiccode.yml was found, so there is no maintenance contract.",
+    "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+    "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2"
    ]
   },
   "issueCounts": {
@@ -425,7 +440,7 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 24.79 (threshold: 15)",
      "Max CCN: 4750.00 (threshold: 30)",
-     "1      1     14      1       1 a.getErrorEventDefinition@1-1@/tmp/cgchecker-repo-EV8xZG/repo/src/assets/bpmn/ValtimoBPMNModeler.js",
+     "1      1     14      1       1 a.getErrorEventDefinition@1-1@/tmp/cgchecker-repo-MXG2wF/repo/src/assets/bpmn/ValtimoBPMNModeler.js",
      "!!!! Warnings (cyclomatic_complexity > 15 or length > 1000 or nloc > 1000000 or parameter_count > 100) !!!!",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
@@ -993,272 +1008,14 @@
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
     "status": "warn",
-    "starRating": 3,
-    "rating": 3.41,
-    "aspectRatings": {
-     "vulnerabilities": 1,
-     "freshness": 2.85,
-     "activity": 2.19,
-     "licence": 5.5,
-     "management": 5.5
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "24",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 1
-       },
-       {
-        "label": "Moderate",
-        "value": "12",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 4
-       },
-       {
-        "label": "Low",
-        "value": "2",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "freshness",
-      "title": "Freshness",
-      "aspects": [
-       "freshness"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "47.7%",
-        "thresholds": {
-         "2": "any",
-         "3": "≤ 68.4%",
-         "4": "≤ 34.2%",
-         "5": "≤ 17.1%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 2 years",
-        "value": "28.8%",
-        "thresholds": {
-         "2": "≤ 76.4%",
-         "3": "≤ 38.2%",
-         "4": "≤ 19.1%",
-         "5": "≤ 9.6%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 3.5 years",
-        "value": "18.3%",
-        "thresholds": {
-         "2": "≤ 44.4%",
-         "3": "≤ 22.2%",
-         "4": "≤ 11.1%",
-         "5": "≤ 5.5%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 5 years, absolute bound",
-        "value": "121 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "activity",
-      "title": "Activity",
-      "aspects": [
-       "activity"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "47.4%",
-        "thresholds": {
-         "2": "≤ 85.6%",
-         "3": "≤ 42.8%",
-         "4": "≤ 21.4%",
-         "5": "≤ 10.7%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 2 years",
-        "value": "34.0%",
-        "thresholds": {
-         "2": "≤ 52.0%",
-         "3": "≤ 26.0%",
-         "4": "≤ 13.0%",
-         "5": "≤ 6.5%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 4 years",
-        "value": "20.4%",
-        "thresholds": {
-         "2": "≤ 38.4%",
-         "3": "≤ 19.2%",
-         "4": "≤ 9.6%",
-         "5": "≤ 4.8%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 5.5 years, absolute bound",
-        "value": "146 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "0.0%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 3 of 5 stars over 1030 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★☆☆☆☆ 1 critical, 23 high, 12 moderate",
-     "Freshness: ★★★☆☆ >1.0y 47.7%, >2.0y 28.8%, >3.5y 18.3%, >5.0y count 121",
-     "Activity: ★★☆☆☆ >1.0y 47.4%, >2.0y 34%, >4.0y 20.4%, >5.5y count 146",
-     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
-     "Management: ★★★★★ 0 unmanaged of 1030 dependencies",
-     "Vulnerable: npm:@angular/common@19.2.14 (high)",
-     "Vulnerable: npm:@angular/compiler@19.2.14 (high)",
-     "Vulnerable: npm:@angular/core@19.2.14 (high)",
-     "Vulnerable: npm:@angular/router@19.2.14 (high)",
-     "Vulnerable: npm:@isaacs/brace-expansion@5.0.0 (high)",
-     "Vulnerable: npm:body-parser@1.20.3 (high)",
-     "Vulnerable: npm:brace-expansion@1.1.12 (high)",
-     "Vulnerable: npm:browserslist@4.25.3 (high)",
-     "Vulnerable: npm:compression@1.8.1 (high)",
-     "Vulnerable: npm:devalue@5.6.2 (high)"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
@@ -1354,6 +1111,7 @@
         "edges": 9,
         "loc": 596,
         "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 4,
         "componentIndependence": 0.3339,
         "componentEntanglement": {
@@ -1733,12 +1491,82 @@
     "message": "No publiccode.yml found, so no standards are declared.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "warn",
+    "rating": 3.5,
+    "message": "No dev container or Docker Compose file found; commands to test, lint and build found.",
+    "evidence": [
+     "package.json: build",
+     "package.json: test",
+     "package.json: lint"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No OpenAPI document, llms.txt or MCP configuration found.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 0.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 37.6,
+  "durationSeconds": 96.6,
   "scanMode": "full",
   "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

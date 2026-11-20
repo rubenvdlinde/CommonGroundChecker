@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:13:23.770Z",
+  "lastCheckedAt": "2026-11-20T11:22:17.197Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:53:52.181Z",
-  "updatedAt": "2026-11-20T09:13:23.770Z",
+  "updatedAt": "2026-11-20T11:22:17.197Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,24 +44,25 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-13-23-770Z",
+  "id": "2026-11-20T11-22-17-197Z",
   "repoId": "github.com/ConductionNL/hermiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:13:23.770Z",
-  "createdAt": "2026-11-20T09:13:23.770Z",
+  "checkedAt": "2026-11-20T11:22:17.197Z",
+  "createdAt": "2026-11-20T11:22:17.197Z",
   "version": "v0.2.0",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
-  "scannedCommit": "486d77cc60f59ab3b8bc0362f822394cba3c2017",
+  "scannedCommit": "2aebdf158782f9e46d45f63435783b39f623948c",
   "score": 93,
-  "rating": 4.4,
+  "rating": 4.8,
   "categoryRatings": {
    "Governance": 5.5,
-   "Security": 4,
+   "Security": 5.5,
    "Architecture": 3,
-   "Software Quality": 3.8,
-   "Deployment & Operations": 5.5
+   "Software Quality": 4.4,
+   "Deployment & Operations": 5.5,
+   "AI readiness": 3.6
   },
   "aspectRatings": {
    "licensing": {
@@ -85,25 +86,25 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-freshness": {
-    "rating": 3.5
+    "rating": null
    },
    "dependency-activity": {
-    "rating": 2.2
+    "rating": null
    },
    "dependency-licences": {
-    "rating": 3.8
+    "rating": null
    },
    "dependency-management": {
-    "rating": 5.5
+    "rating": null
    },
    "container-images": {
     "rating": null
    },
    "secrets": {
-    "rating": 0.5
+    "rating": 5.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -127,10 +128,10 @@
     "rating": 4.3
    },
    "testability": {
-    "rating": 2.9
+    "rating": 4.9
    },
    "modularity": {
-    "rating": 3.7
+    "rating": 5.4
    },
    "reusability": {
     "rating": 3.1
@@ -148,12 +149,26 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 4.8
+   },
+   "runnable-environment": {
+    "rating": 5.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 3.5
    }
   },
   "endorsement": {
    "passed": false,
    "reasons": [
-    "Mandatory criterion fails: API Design Rules"
+    "Mandatory criterion fails: API Design Rules",
+    "publiccode.yml developmentStatus is development; Suitable needs stable",
+    "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2"
    ]
   },
   "issueCounts": {
@@ -598,12 +613,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.78 (threshold: 15)",
      "Max CCN: 27.00 (threshold: 30)",
-     "11      3     79      1      13 ApiContractMiddleware::decorateError@231-243@/tmp/cgchecker-repo-K0U8js/repo/lib/Middleware/ApiContractMiddleware.php",
-     "3      1     26      1       3 ToolErrorEnvelope::build@45-47@/tmp/cgchecker-repo-K0U8js/repo/lib/Mcp/ToolErrorEnvelope.php",
-     "6      1     20      0       6 ToolErrorEnvelope::noAgentContext@58-63@/tmp/cgchecker-repo-K0U8js/repo/lib/Mcp/ToolErrorEnvelope.php",
-     "6      1     42      1       6 HermiqToolProvider::unknownToolError@1057-1062@/tmp/cgchecker-repo-K0U8js/repo/lib/Mcp/HermiqToolProvider.php",
-     "3      1     26      1       3 HermiqToolProvider::error@1681-1683@/tmp/cgchecker-repo-K0U8js/repo/lib/Mcp/HermiqToolProvider.php",
-     "12      2    104      1      13 ChatController::failureError@469-481@/tmp/cgchecker-repo-K0U8js/repo/lib/Controller/ChatController.php"
+     "3      3     21      2       3 loadErrorMessage@120-122@/tmp/cgchecker-repo-xIg0M3/repo/src/widgets/evalRunLabels.js",
+     "22      6    113      2      22 sessionStartErrorMessage@19-40@/tmp/cgchecker-repo-xIg0M3/repo/src/utils/sessionStartError.js",
+     "3      3     21      2       3 errorMessage@17-19@/tmp/cgchecker-repo-xIg0M3/repo/src/utils/errorMessage.js",
+     "2      1      5      1       2 onError@98-99@/tmp/cgchecker-repo-xIg0M3/repo/src/components/DictateButton.vue",
+     "12      2    104      1      13 ChatController::failureError@469-481@/tmp/cgchecker-repo-xIg0M3/repo/lib/Controller/ChatController.php",
+     "11      2     93      1      11 AssistantController::converseErrorType@183-193@/tmp/cgchecker-repo-xIg0M3/repo/lib/Controller/AssistantController.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -615,12 +630,12 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 3.505,
+    "rating": 4.195,
     "aspectRatings": {
      "analysability": 3.66,
      "modifiability": 4.32,
-     "testability": 2.87,
-     "modularity": 3.72,
+     "testability": 4.86,
+     "modularity": 5.39,
      "reusability": 3.14
     },
     "measurements": [
@@ -971,21 +986,19 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "83.0%",
+        "value": "100.0%",
         "thresholds": {
          "4": "≥ 94.5%"
         },
-        "stars": null,
-        "starsText": "below 4 stars"
+        "stars": null
        },
        {
         "label": "js/ts/vue",
-        "value": "14.4%",
+        "value": "100.0%",
         "thresholds": {
          "4": "≥ 94.5%"
         },
-        "stars": null,
-        "starsText": "below 4 stars"
+        "stars": 5
        }
       ]
      },
@@ -998,15 +1011,15 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "0.0463",
+        "value": "0",
         "thresholds": {
          "4": "≤ 0.075"
         },
-        "stars": 4
+        "stars": null
        },
        {
         "label": "js/ts/vue",
-        "value": "0.0264",
+        "value": "0",
         "thresholds": {
          "4": "≤ 0.075"
         },
@@ -1015,18 +1028,21 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 3.47 to 3.54 (4 of 5 stars) over 1261 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.12 to 4.27 (4 of 5 stars) over 1261 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★★☆ 3.5 (javascript 5.3, php 3.5, vue 3.2)",
      "Unit size: ★★★★☆ 3.8 (javascript 4.8, php 3.5, vue 4.7)",
      "Unit complexity: ★★★★☆ 4.2 (javascript 4.5, php 4.1, vue 4.8)",
      "Unit interfacing: ★★★☆☆ 2.5 (javascript 4.8, php 1.8, vue 5.4)",
      "Module coupling: ★★★★★ 5.2 (php 5.1, js/ts/vue 5.3)",
-     "Component independence: ★★☆☆☆ 1.5 (php 1.9, js/ts/vue 0.7)",
-     "Component entanglement: ★★★★☆ 4.5 (php 4.3, js/ts/vue 4.8)",
+     "Component independence: ★★★★★ 5.5 (js/ts/vue 5.5)",
+     "Component entanglement: ★★★★★ 5.5 (js/ts/vue 5.5)",
+     "Not rated (php): all 978 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
+     "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 4.12 to 4.27, modularity 5.39 (php 1 components, exposed 0.0%, violation degree 0; js/ts/vue 3 components, exposed 0.0%, violation degree 0). The score uses this one.",
+     "Rating with directory components: 3.47 to 3.54, modularity 3.72 (php 20 components, exposed 17.0%, violation degree 0.0463; js/ts/vue 16 components, exposed 85.6%, violation degree 0.0264).",
      "Lever: unit interfacing in php, about 380 lines to fix for half a star",
-     "Lever: unit complexity in php, about 4086 lines to fix for half a star",
      "Lever: duplication in php, about 1596 lines to fix for half a star",
+     "Lever: duplication in vue, about 2284 lines to fix for half a star",
      "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.9% against 0.9%, php 4.8% against 5.8%, vue not measured (Simian has no support for this language) against 7.7%"
     ],
     "requirementLevel": "recommended"
@@ -1037,8 +1053,8 @@
     "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
-    "starRating": 3,
-    "rating": 3.142857142857143,
+    "starRating": 4,
+    "rating": 3.857142857142857,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -1225,14 +1241,14 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "59.8%",
+        "value": "100.0%",
         "thresholds": {
          "2": "≥ 27.3%",
          "3": "≥ 63.8%",
          "4": "≥ 81.5%",
          "5": "≥ 99.9%"
         },
-        "stars": 2
+        "stars": 5
        }
       ]
      },
@@ -1243,27 +1259,27 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "0.030",
+        "value": "0.000",
         "thresholds": {
          "2": "≤ 0.236",
          "3": "≤ 0.094",
          "4": "≤ 0.029",
          "5": "≤ 0.000"
         },
-        "stars": 3
+        "stars": 5
        }
       ]
      }
     ],
-    "message": "Open-track rating 3.1 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.9 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★☆ 12.9% / 5.2% / 1.7% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★☆ 16.8% / 5.7% / 0.5% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 15.3% / 8.1% / 4.3% of the code above 2 / 3 / 4 parameters",
      "Duplication: ★★★☆☆ 8.3% duplicated lines",
      "Module coupling: ★★★☆☆ 20.2% / 13.6% / 6.7% of the code above 2 / 3 / 5 fan-in",
-     "Component independence: ★★☆☆☆ 59.8% of the code hidden from other components",
-     "Component entanglement: ★★★☆☆ 0.030 violation degree",
+     "Component independence: ★★★★★ 100.0% of the code hidden from other components",
+     "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1289,263 +1305,15 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "pass",
-    "starRating": 4,
-    "rating": 4.11,
-    "aspectRatings": {
-     "vulnerabilities": 5.5,
-     "freshness": 3.49,
-     "activity": 2.24,
-     "licence": 3.83,
-     "management": 5.5
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "0",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Moderate",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low",
-        "value": "2",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "freshness",
-      "title": "Freshness",
-      "aspects": [
-       "freshness"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "15.4%",
-        "thresholds": {
-         "2": "any",
-         "3": "≤ 68.4%",
-         "4": "≤ 34.2%",
-         "5": "≤ 17.1%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 2 years",
-        "value": "9.1%",
-        "thresholds": {
-         "2": "≤ 76.4%",
-         "3": "≤ 38.2%",
-         "4": "≤ 19.1%",
-         "5": "≤ 9.6%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 3.5 years",
-        "value": "5.3%",
-        "thresholds": {
-         "2": "≤ 44.4%",
-         "3": "≤ 22.2%",
-         "4": "≤ 11.1%",
-         "5": "≤ 5.5%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 5 years, absolute bound",
-        "value": "20 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "activity",
-      "title": "Activity",
-      "aspects": [
-       "activity"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "44.2%",
-        "thresholds": {
-         "2": "≤ 85.6%",
-         "3": "≤ 42.8%",
-         "4": "≤ 21.4%",
-         "5": "≤ 10.7%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 2 years",
-        "value": "32.9%",
-        "thresholds": {
-         "2": "≤ 52.0%",
-         "3": "≤ 26.0%",
-         "4": "≤ 13.0%",
-         "5": "≤ 6.5%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 4 years",
-        "value": "17.9%",
-        "thresholds": {
-         "2": "≤ 38.4%",
-         "3": "≤ 19.2%",
-         "4": "≤ 9.6%",
-         "5": "≤ 4.8%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 5.5 years, absolute bound",
-        "value": "82 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low risk",
-        "value": "2",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 4
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "0.0%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 4 of 5 stars over 642 production dependencies (composer, npm). 4 stars or more passes, 3 stars warns.",
+    "status": "warn",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
-     "Freshness: ★★★☆☆ >1.0y 15.4%, >2.0y 9.1%, >3.5y 5.3%, >5.0y count 20",
-     "Activity: ★★☆☆☆ >1.0y 44.2%, >2.0y 32.9%, >4.0y 17.9%, >5.5y count 82",
-     "Licence use: ★★★★☆ 0 critical, 0 high, 0 medium, 2 low risk (18 excluded by sigrid.yaml)",
-     "Management: ★★★★★ 0 unmanaged of 642 dependencies"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
@@ -1735,10 +1503,12 @@
     "status": "info",
     "message": "Measured the module structure of PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP (pdepend 3.0.0): 978 modules, 2,128 edges, 20 components; independence 83.0%, entanglement 0.032 (density 2.21); fan-in profile 97.3% / 2.6% / 0.1% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 33 modules in 7 cycles, largest component cycle 6",
-     "PHP components: directories below lib/ (a level is descended while one directory holds more than 80% of the modules); 978 files under lib/ (composer.json PSR-4)",
-     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 279 modules, 495 edges, 16 components; independence 14.4%, entanglement 0.026 (density 3.08); fan-in profile 98.6% / 1.3% / 0.1% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 4",
-     "JavaScript, TypeScript and Vue components: directories below src/ (a level is descended while one directory holds more than 80% of the modules)"
+     "PHP (pdepend 3.0.0): 978 modules, 2,128 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 97.3% / 2.6% / 0.1% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 33 modules in 7 cycles, largest component cycle 0",
+     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 978 files under lib/ (composer.json PSR-4)",
+     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 20 components; independence 83.0%, entanglement 0.032 (density 2.21), largest component cycle 6. The figures above use the declared components.",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 279 modules, 495 edges, 3 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 98.6% / 1.3% / 0.1% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: sigrid.yaml component_base_dirs [\"\"]",
+     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 16 components; independence 14.4%, entanglement 0.026 (density 3.08), largest component cycle 4. The figures above use the declared components."
     ],
     "openTrack": {
      "coupling": {
@@ -1751,17 +1521,15 @@
         "modules": 978,
         "edges": 2128,
         "loc": 87134,
-        "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
-        "components": 20,
-        "componentIndependence": 0.8302,
+        "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
+        "componentDefinitionKind": "declared",
+        "components": 1,
+        "componentIndependence": 1,
         "componentEntanglement": {
-         "violationDegree": 0.0316,
-         "density": 2.21,
-         "communicationLines": 42,
-         "violations": {
-          "cyclic": 4,
-          "transitive": 3
-         }
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
         },
         "moduleCoupling": {
          "bounds": [
@@ -1829,6 +1597,22 @@
          "modulesInCycles": 33,
          "locShareInCycles": 0.1287,
          "largestModuleCycle": 20,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "directoryView": {
+         "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+         "components": 20,
+         "componentIndependence": 0.8302,
+         "componentEntanglement": {
+          "violationDegree": 0.0316,
+          "density": 2.21,
+          "communicationLines": 42,
+          "violations": {
+           "cyclic": 4,
+           "transitive": 3
+          }
+         },
          "componentCycles": 1,
          "largestComponentCycle": 6
         },
@@ -1840,17 +1624,15 @@
         "modules": 279,
         "edges": 495,
         "loc": 44634,
-        "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
-        "components": 16,
-        "componentIndependence": 0.1443,
+        "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
+        "componentDefinitionKind": "declared",
+        "components": 3,
+        "componentIndependence": 1,
         "componentEntanglement": {
-         "violationDegree": 0.0264,
-         "density": 3.08,
-         "communicationLines": 40,
-         "violations": {
-          "cyclic": 3,
-          "transitive": 3
-         }
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
         },
         "moduleCoupling": {
          "bounds": [
@@ -1911,6 +1693,22 @@
          "modulesInCycles": 0,
          "locShareInCycles": 0,
          "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "directoryView": {
+         "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+         "components": 16,
+         "componentIndependence": 0.1443,
+         "componentEntanglement": {
+          "violationDegree": 0.0264,
+          "density": 3.08,
+          "communicationLines": 40,
+          "violations": {
+           "cyclic": 3,
+           "transitive": 3
+          }
+         },
          "componentCycles": 1,
          "largestComponentCycle": 4
         },
@@ -1950,21 +1748,21 @@
     "status": "fail",
     "message": "API Design Rules violations found across 1 specification(s): 1 error(s), 11 warning(s), 0 info, 0 hint(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./approvals/{approvalId}/answer.post.responses.422.content (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./approvals/{approvalId}/release.post.responses.422.content (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./agents/{id}/run.post.responses.402.content (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./agents/{id}/run.post.responses.423.content (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./settings/speech-voices.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./settings/speech-voices.put.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./department-control/{group}/toggle.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./department-control.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./department-control/{group}/evidence.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./public/{channelToken}/messages.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./public/{channelToken}/messages.options.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)",
-     "ERROR [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./public/{channelToken}/messages.options.responses.204 (https://raw.githubusercontent.com/ConductionNL/hermiq/486d77cc60f59ab3b8bc0362f822394cba3c2017/openapi.json)"
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./approvals/{approvalId}/answer.post.responses.422.content (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./approvals/{approvalId}/release.post.responses.422.content (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./agents/{id}/run.post.responses.402.content (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./agents/{id}/run.post.responses.423.content (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./settings/speech-voices.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./settings/speech-voices.put.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./department-control/{group}/toggle.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./department-control.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./department-control/{group}/evidence.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./public/{channelToken}/messages.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./public/{channelToken}/messages.options.tags.0 (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)",
+     "ERROR [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./public/{channelToken}/messages.options.responses.204 (https://raw.githubusercontent.com/ConductionNL/hermiq/2aebdf158782f9e46d45f63435783b39f623948c/openapi.json)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -2013,24 +1811,12 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "fail",
-    "message": "Gitleaks found 37 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml.",
-    "evidence": [
-     "generic-api-key: tests/Unit/Controller/PublicChatControllerTest.php:53",
-     "generic-api-key: tests/Unit/Controller/PublicChatControllerTest.php:93",
-     "generic-api-key: tests/Unit/Controller/PublicChatControllerTest.php:116",
-     "generic-api-key: tests/Unit/Controller/PublicChatControllerTest.php:122",
-     "generic-api-key: tests/Unit/Controller/PublicChatControllerTest.php:157",
-     "generic-api-key: tests/Unit/Controller/PublicChatControllerTest.php:182",
-     "generic-api-key: tests/Unit/Controller/PublicChatPageControllerTest.php:45",
-     "generic-api-key: tests/Unit/Controller/PublicChatPageControllerTest.php:98",
-     "generic-api-key: tests/Unit/Listener/PublicChannelGuardListenerTest.php:138",
-     "generic-api-key: tests/Unit/Listener/PublicChannelGuardListenerTest.php:156",
-     "... and 27 more"
-    ],
+    "status": "pass",
+    "message": "Gitleaks found no committed secrets in the working tree.",
+    "evidence": [],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "openssfscorecard",
@@ -2234,7 +2020,7 @@
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
       "value": "0.98",
-      "explanation": "1,216 change requests were closed (merged or not) and 1,247 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "explanation": "1,217 change requests were closed (merged or not) and 1,248 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -2289,8 +2075,8 @@
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 8,
-        "waiting": 8
+        "breaches": 0,
+        "waiting": 0
        },
        "fix": {
         "measured": 2,
@@ -2310,8 +2096,8 @@
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 1,
-        "waiting": 1
+        "breaches": 0,
+        "waiting": 0
        },
        "fix": null
       },
@@ -2325,150 +2111,150 @@
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 160,
-        "waiting": 176
+        "breaches": 133,
+        "waiting": 149
        },
        "fix": null
       }
      ],
-     "openBreachCount": 93,
+     "openBreachCount": 62,
      "openBreaches": [
-      {
-       "title": "check:strict is red on development: 3 psalm + 8 phpmd findings, none from recent work",
-       "url": "https://github.com/ConductionNL/hermiq/issues/8",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-07-31T10:30:09.000Z"
-      },
-      {
-       "title": "RAG with enableRag on and no views is still an unbounded scan across every magic table",
-       "url": "https://github.com/ConductionNL/hermiq/issues/9",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-07-31T10:30:25.000Z"
-      },
-      {
-       "title": "A fresh npm ci produces an unbuildable tree: @vueuse/core peer is never declared",
-       "url": "https://github.com/ConductionNL/hermiq/issues/10",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-07-31T10:41:24.000Z"
-      },
-      {
-       "title": "Deployed autoloader ships test stubs → shadows real OpenRegister classes, bricks OR data layer instance-wide",
-       "url": "https://github.com/ConductionNL/hermiq/issues/21",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-07-31T22:00:00.000Z"
-      },
-      {
-       "title": "Agent maxTokens is dead config, and there is no turns limit at all",
-       "url": "https://github.com/ConductionNL/hermiq/issues/31",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-07T11:41:05.000Z"
-      },
-      {
-       "title": "Migrate GraphExecutor onto the OpenRegister flow engine",
-       "url": "https://github.com/ConductionNL/hermiq/issues/35",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-07T12:18:27.000Z"
-      },
-      {
-       "title": "run-on-object resolves agents from oc_openregister_agents TABLE but /api/agents UI lists OR-object agents (different uuids) → UI-picked agent 404s",
-       "url": "https://github.com/ConductionNL/hermiq/issues/42",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-07T22:00:00.000Z"
-      },
-      {
-       "title": "Hydra Triage graph's stop message is stale: the OpenConnector command node IS installed",
-       "url": "https://github.com/ConductionNL/hermiq/issues/83",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-13T20:58:00.000Z"
-      },
-      {
-       "title": "62 Playwright tests in 14 files have never run in CI — playwright-test-path scopes the job to tests/e2e/spec-coverage",
-       "url": "https://github.com/ConductionNL/hermiq/issues/176",
-       "category": "bug",
-       "kind": "response",
-       "due": "2026-08-17T09:00:17.000Z"
-      },
-      {
-       "title": "Suppression & baseline audit: what the green PHPMD number hides",
-       "url": "https://github.com/ConductionNL/hermiq/issues/151",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-18T15:38:07.000Z"
-      },
-      {
-       "title": "4 gate findings merged with #162 — labels, a placeholder @spec anchor, controller exception translation, detail-page discipline",
-       "url": "https://github.com/ConductionNL/hermiq/issues/167",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-21T08:22:02.000Z"
-      },
-      {
-       "title": "register()-time OCA\\OpenRegister probes (3) — guarded behaviour silently never activates, and no gate reports it",
-       "url": "https://github.com/ConductionNL/hermiq/issues/174",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-21T22:00:00.000Z"
-      },
-      {
-       "title": "gate-57: agent sessions are never recorded, and the channel heartbeat is never emitted",
-       "url": "https://github.com/ConductionNL/hermiq/issues/181",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-25T13:33:27.000Z"
-      },
-      {
-       "title": "gate-17: three 'pass-through' methods all have callers, and one carries an _rbac:false policy the detector strips",
-       "url": "https://github.com/ConductionNL/hermiq/issues/182",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-25T13:33:48.000Z"
-      },
-      {
-       "title": "gate-46: the last 25 anchors need requirements that do not exist yet (conversation-title deferral, cross-app flow-engine)",
-       "url": "https://github.com/ConductionNL/hermiq/issues/183",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-25T13:34:12.000Z"
-      },
-      {
-       "title": "Remaining quality debt after the #180 sweep: E2E red, gate-19 (491), gate-25 (10), gate-26 (4)",
-       "url": "https://github.com/ConductionNL/hermiq/issues/184",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-25T13:35:14.000Z"
-      },
-      {
-       "title": "hermiq.workload-step has never executed through the flow engine — unit-tested only, no integration coverage",
-       "url": "https://github.com/ConductionNL/hermiq/issues/185",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-25T17:35:48.000Z"
-      },
-      {
-       "title": "All six @e2e anchors CI actually runs are dangling — agent-object-leaf was never promoted out of openspec/changes/",
-       "url": "https://github.com/ConductionNL/hermiq/issues/192",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-26T00:09:45.000Z"
-      },
-      {
-       "title": "gate-7 residue after #187: 17 #[NoAdminRequired] endpoints, 28 of 29 schemas default-open, and two docblocks that assert scoping the body does not do",
-       "url": "https://github.com/ConductionNL/hermiq/issues/203",
-       "category": "unclassified",
-       "kind": "response",
-       "due": "2026-08-26T22:49:47.000Z"
-      },
       {
        "title": "[OpenSpec] skill-source-identity-schema",
        "url": "https://github.com/ConductionNL/hermiq/issues/259",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] skill-install-idempotency",
+       "url": "https://github.com/ConductionNL/hermiq/issues/257",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] raise-nc-minversion-taskprocessing",
+       "url": "https://github.com/ConductionNL/hermiq/issues/254",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] llm-cli-runner-exapp",
+       "url": "https://github.com/ConductionNL/hermiq/issues/252",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] hydra-console-agent-leaves",
+       "url": "https://github.com/ConductionNL/hermiq/issues/251",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] hermiq-seed-hydra-flows",
+       "url": "https://github.com/ConductionNL/hermiq/issues/247",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] hermiq-mcp-adoption",
+       "url": "https://github.com/ConductionNL/hermiq/issues/244",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] hermiq-domain-mcp-tools",
+       "url": "https://github.com/ConductionNL/hermiq/issues/243",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] cli-runner-text-turn-dispatch",
+       "url": "https://github.com/ConductionNL/hermiq/issues/237",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] cli-runner-credential-declaration",
+       "url": "https://github.com/ConductionNL/hermiq/issues/235",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] analytics-unbounded-audit-scan",
+       "url": "https://github.com/ConductionNL/hermiq/issues/232",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] agent-engine-schemas",
+       "url": "https://github.com/ConductionNL/hermiq/issues/226",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] agent-data-migration",
+       "url": "https://github.com/ConductionNL/hermiq/issues/224",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] nl-locale-completeness",
+       "url": "https://github.com/ConductionNL/hermiq/issues/253",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] beta-surface-alignment",
+       "url": "https://github.com/ConductionNL/hermiq/issues/234",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] session-frontend-rename",
+       "url": "https://github.com/ConductionNL/hermiq/issues/326",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] session-schema-declaration",
+       "url": "https://github.com/ConductionNL/hermiq/issues/327",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] session-data-migration",
+       "url": "https://github.com/ConductionNL/hermiq/issues/325",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] session-api-rename",
+       "url": "https://github.com/ConductionNL/hermiq/issues/324",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-28T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] hermiq-runner-git-capability",
+       "url": "https://github.com/ConductionNL/hermiq/issues/245",
        "category": "unclassified",
        "kind": "response",
        "due": "2026-08-28T22:00:00.000Z"
@@ -2479,6 +2265,7 @@
      "notes": [
       "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
       "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
+      "36 of 185 issues were opened by the maintainers themselves; they have a fix term but no response term.",
       "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
      ]
     },
@@ -2493,12 +2280,155 @@
     "message": "publiccode.yml declares no standards under supports.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "90 specifications and 204 changes found.",
+    "evidence": [
+     "openspec/specs/action-authorization/spec.md",
+     "openspec/specs/admin-ui/spec.md",
+     "openspec/specs/agent-capability-profile/spec.md",
+     "openspec/specs/agent-capability-reach/spec.md",
+     "openspec/specs/agent-context-system/spec.md",
+     "openspec/specs/agent-credentials/spec.md",
+     "openspec/specs/agent-engine-port/spec.md",
+     "openspec/specs/agent-evals/spec.md",
+     "openspec/specs/agent-guardrails/spec.md",
+     "openspec/specs/agent-identity/spec.md",
+     "openspec/specs/agent-lifecycle-governance/spec.md",
+     "openspec/specs/agent-management-ui/spec.md",
+     "openspec/specs/agent-memory/spec.md",
+     "openspec/specs/agent-object-leaf/spec.md",
+     "openspec/specs/agent-schedule/spec.md",
+     "openspec/specs/agent-template-gallery/spec.md",
+     "openspec/specs/agent-template-github-store/spec.md",
+     "openspec/specs/agent-tool-governance/spec.md",
+     "openspec/specs/agent-versioning/spec.md",
+     "openspec/specs/agent-webhook-trigger/spec.md",
+     "openspec/specs/agent-workspace-git-tools/spec.md",
+     "openspec/specs/ai-feature-admin-surface/spec.md",
+     "openspec/specs/ai-feature-governance/spec.md",
+     "openspec/specs/ai-oversight/spec.md",
+     "openspec/specs/algoritmeregister-publication/spec.md",
+     "openspec/specs/anthropic-agent-provider/spec.md",
+     "openspec/specs/api-contract/spec.md",
+     "openspec/specs/app-manifest/spec.md",
+     "openspec/specs/app-runtime-requirements/spec.md",
+     "openspec/specs/beta-alignment/spec.md",
+     "openspec/specs/case-assistant-surface/spec.md",
+     "openspec/specs/compliance-control-packs/spec.md",
+     "openspec/specs/configuration-initialization/spec.md",
+     "openspec/specs/context-documents/spec.md",
+     "openspec/specs/conversational-intake/spec.md",
+     "openspec/specs/course-recommendations/spec.md",
+     "openspec/specs/dashboard-org-widgets/spec.md",
+     "openspec/specs/dashboard-page/spec.md",
+     "openspec/specs/first-time-setup/spec.md",
+     "openspec/specs/flow-agent-listener/spec.md",
+     "openspec/specs/flow-authoring/spec.md",
+     "openspec/specs/flow-canvas/spec.md",
+     "openspec/specs/frontend-data-stores/spec.md",
+     "openspec/specs/governed-cli-mcp-transport/spec.md",
+     "openspec/specs/hermiq-agent-application-slug/spec.md",
+     "openspec/specs/human-approval-gate/spec.md",
+     "openspec/specs/hydra-flow-application-slug/spec.md",
+     "openspec/specs/i18n-completeness/spec.md",
+     "openspec/specs/inapp-settings-section/spec.md",
+     "openspec/specs/knowledge-graph/spec.md",
+     "... and 40 more"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "pass",
+    "rating": 4,
+    "message": "8 decision records found.",
+    "evidence": [
+     "openspec/architecture/adr-001-agent-boundary.md",
+     "openspec/architecture/adr-002-scheduling-via-timedjob.md",
+     "openspec/architecture/adr-003-memory-skills-as-openregister-objects.md",
+     "openspec/architecture/adr-004-governance-via-openregister-audittrail.md",
+     "openspec/architecture/adr-005-delivery-via-nextcloud-talk.md",
+     "openspec/architecture/adr-023-action-authorization.md",
+     "openspec/architecture/adr-024-agent-context-concepts.md",
+     "openspec/architecture/adr-025-run-tokens-in-an-app-table.md"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "Development environment found; commands to test, lint and build found.",
+    "evidence": [
+     "docker-compose.yml",
+     "exapp/code-sandbox/deploy/docker-compose.yml",
+     "exapp/llm-runner/deploy/docker-compose.yml",
+     "exapp/speech-runner/deploy/docker-compose.yml",
+     "package.json: build",
+     "package.json: lint",
+     "package.json: test:l10n"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "pass",
+    "rating": 4.5,
+    "message": "Found: 1 OpenAPI document, llms.txt.",
+    "evidence": [
+     "openapi.json",
+     "docs/static/llms.txt"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "warn",
+    "rating": 2.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 4.",
+    "evidence": [
+     "scripts/check-integration-parity.js",
+     "scripts/check-integration-parity.sh",
+     "scripts/check-schema-l10n.js",
+     "scripts/check-single-dexie.js"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 21,
+  "durationSeconds": 54.4,
   "scanMode": "full",
   "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
