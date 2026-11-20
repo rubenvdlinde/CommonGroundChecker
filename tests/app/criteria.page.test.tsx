@@ -86,10 +86,10 @@ describe("criterion page", () => {
     expect(screen.getByText(/Becomes mandatory on 19 May 2027/)).toBeTruthy();
   });
 
-  it("marks a criterion of an open change", async () => {
+  it("shows a tool criterion as measured in this version", async () => {
     await renderCriterion("secretscanning");
-    expect(screen.getByText(/part of an open change to the checker/)).toBeTruthy();
-    expect(screen.getByText("Not in a released version yet")).toBeTruthy();
+    expect(screen.queryByText(/part of an open change to the checker/)).toBeNull();
+    expect(screen.queryByText("Not in a released version yet")).toBeNull();
     expect(screen.getByRole("link", { name: "Secrets" }).getAttribute("href")).toBe("/docs/security#secrets");
   });
 
