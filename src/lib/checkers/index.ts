@@ -34,6 +34,7 @@ import { checkUsage } from "./usage";
 import { USAGE_CHECK_ID } from "../usage";
 import { checkProjectHealth } from "./projectHealth";
 import { checkStandards } from "./standards";
+import { checkLicenceConsistency } from "./licenceConsistency";
 import {
   getActiveScoringConfig,
   type ActiveScoringConfig,
@@ -285,6 +286,7 @@ export async function runChecksOnContext(
       })
     ),
     measure("standards", () => checkStandards(context, tree, options?.apiSpecificationLocations ?? [])),
+    measure("licenceconsistency", () => checkLicenceConsistency(context, tree)),
   ]);
   const usagePromise = networkChecksPromise.then(([, , , publiccodeAnalysis]) =>
     measure(USAGE_CHECK_ID, () =>
@@ -357,7 +359,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -405,6 +407,7 @@ export async function runChecksOnContext(
     openapi,
     license,
     eupllicense,
+    licenceconsistency,
     copyrightowner,
     publiccode,
     maintenance,
@@ -512,6 +515,7 @@ export async function runChecksOnContext(
     openapi,
     license,
     eupllicense,
+    licenceconsistency,
     copyrightowner,
     publiccode,
     maintenance,
