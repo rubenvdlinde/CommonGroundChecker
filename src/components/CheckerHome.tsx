@@ -179,7 +179,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   artifacthub: "mandatory",
   documentation: "mandatory",
   tests: "mandatory",
-  complexity: "recommended",
+  complexity: "informative",
   maintainability: "recommended",
   testcoderatio: "recommended",
   codemetrics: "informative",

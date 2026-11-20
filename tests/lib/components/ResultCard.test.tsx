@@ -11,6 +11,19 @@ function renderCard(id: string) {
   fireEvent.click(screen.getByRole("button"));
 }
 
+function renderFailingCard(props: Partial<Parameters<typeof ResultCard>[0]> = {}) {
+  return render(
+    <ResultCard
+      id="complexity"
+      title="Cyclomatic complexity (Lizard)"
+      description="Tracks cyclomatic complexity."
+      status="fail"
+      message="Average CCN above the threshold."
+      {...props}
+    />
+  );
+}
+
 describe("ResultCard", () => {
   afterEach(() => cleanup());
 
@@ -34,5 +47,20 @@ describe("ResultCard", () => {
   it("does not link a result that has no criterion page", () => {
     renderCard("unknown");
     expect(screen.queryByRole("link", { name: "How this is checked" })).toBeNull();
+  });
+
+  it("shows a failing informative criterion as information, without a red fail badge", () => {
+    const { container } = renderFailingCard({ requirementLevel: "informative" });
+
+    expect(screen.queryByText("Fail")).toBeNull();
+    expect(screen.getByText("Info")).toBeTruthy();
+    expect(container.querySelector(".bg-red-50, .border-red-300")).toBeNull();
+    expect((container.firstElementChild as HTMLElement).className).toContain("bg-blue-50");
+  });
+
+  it("keeps the fail badge for a recommended or mandatory criterion", () => {
+    renderFailingCard({ requirementLevel: "recommended" });
+
+    expect(screen.getByText("Fail")).toBeTruthy();
   });
 });

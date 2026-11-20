@@ -74,7 +74,7 @@ A component declares a standard and its version the same way, with the official 
 | 19 | **Changelog presence** — changelog or release notes file found in the repository | Recommended | [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) |
 | 20 | **Test suite** — automated tests or test configuration present | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) |
 | 21 | **Code coverage** — coverage report or badge with at least 80% line coverage | Mandatory | [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) |
-| 22 | **Cyclomatic complexity (Lizard)** — average complexity (AvgCCN) is measured and compared against an admin-configurable threshold | Mandatory | [lizard](https://github.com/terryyin/lizard) |
+| 22 | **Cyclomatic complexity (Lizard)** — average complexity (AvgCCN) is measured and compared against an admin-configurable threshold | Informative | [lizard](https://github.com/terryyin/lizard) |
 | 23 | **Code metrics** — repository metrics such as lines of code and function count are collected as informative context | Informative | [commonground.nl](https://www.commonground.nl) |
 | 24 | **Semantic versioning** — releases or tags following MAJOR.MINOR.PATCH | Mandatory | [semver.org](https://semver.org/) |
 | 25 | **Maintainability (ISO 25010)** — unit size, unit complexity, unit interfacing, duplication, module coupling and component structure, each rated from 1 to 5 stars, with an estimated overall maintainability rating | Recommended | [Maintainability model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md) |
@@ -348,7 +348,9 @@ Each check has a configurable **weight** (0–1) set via the Admin page. Weights
 
 For the Lizard complexity criterion, the Admin page also stores a configurable
 **average cyclomatic complexity threshold** (AvgCCN). The check passes when a
-repository’s measured AvgCCN is at or below this threshold.
+repository’s measured AvgCCN is at or below this threshold. The criterion is
+informative: its figures are shown with every analysis but do not count in the
+score, so a single complex function no longer fails a whole repository.
 
 Score formula:
 ```

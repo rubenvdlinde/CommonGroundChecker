@@ -127,8 +127,9 @@ export default function ResultCard({
     return () => window.removeEventListener("hashchange", openWhenTargeted);
   }, [anchorId]);
   const transition = isInTransition({ requirementLevel, mandatoryFrom }) ? mandatoryFrom : undefined;
-  // A mandatory criterion that fails in its transition period shows as a warning.
-  const shownStatus = transition && status === "fail" ? "warn" : status;
+  // A mandatory criterion that fails in its transition period shows as a warning; an informative
+  // criterion does not count, so a failing one is shown as information, not as a failure.
+  const shownStatus = requirementLevel === "informative" ? "info" : transition && status === "fail" ? "warn" : status;
   const { icon: Icon, bg, border, text, label } = STATUS_CONFIG[shownStatus];
   const req = transition
     ? { label: transitionNotice(transition), className: REQUIREMENT_CONFIG.recommended.className }
