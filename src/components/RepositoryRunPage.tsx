@@ -43,7 +43,7 @@ export interface RepositoryMaintained {
   organisationSlugs?: Record<string, string>;
 }
 
-const SECTION_CLASS = "bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4";
+const SECTION_CLASS = "bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6 space-y-4";
 
 /** On the static site a component is followed by being on the component list, not with a control. */
 function StaticFollowSection({ extras }: { extras: RepositoryExtras | null }) {
@@ -85,7 +85,7 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
         </p>
         <Link
           href={result.kind === "missing-repository" ? "/components" : repositoryRunHref(owner, repo)}
-          className="text-cg-lightblue hover:underline text-sm"
+          className="inline-flex min-h-[44px] items-center lg:min-h-0 text-cg-lightblue hover:underline text-sm"
         >
           {result.kind === "missing-repository" ? "← Back to components" : "← See the latest run"}
         </Link>
@@ -110,11 +110,11 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
 
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <h2 className="text-2xl font-bold text-cg-blue">Component rating</h2>
-        <div className="flex items-center gap-3 text-sm">
-          <Link href="/components" className="text-cg-lightblue hover:underline">
+        <div className="flex flex-wrap items-center gap-x-3 text-sm">
+          <Link href="/components" className="inline-flex min-h-[44px] items-center lg:min-h-0 text-cg-lightblue hover:underline">
             Search another component
           </Link>
-          <Link href={IS_STATIC_SITE ? "/add-component" : "/about#check"} className="text-cg-lightblue hover:underline">
+          <Link href={IS_STATIC_SITE ? "/add-component" : "/about#check"} className="inline-flex min-h-[44px] items-center lg:min-h-0 text-cg-lightblue hover:underline">
             {IS_STATIC_SITE ? "Add a component" : "Run new check"}
           </Link>
         </div>
@@ -161,7 +161,7 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
           <p className="text-sm text-gray-500">No analyses stored yet.</p>
         </section>
       ) : (
-        <section aria-labelledby="run-summary-heading" className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-3">
+        <section aria-labelledby="run-summary-heading" className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6 space-y-3">
           <h3 id="run-summary-heading" className="text-lg font-semibold text-gray-800">
             {isOlder ? "Older run" : "Latest run"}
           </h3>

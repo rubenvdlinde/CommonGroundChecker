@@ -24,7 +24,7 @@ function IssueCount({ count, className }: { count: number | null; className: str
 }
 
 const LINK_CLASS =
-  "text-cg-lightblue hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cg-blue";
+  "inline-flex min-h-[44px] items-center lg:min-h-0 text-cg-lightblue hover:underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cg-blue";
 
 /** Every stored run of a repository: date, rating, pass or fail and its errors and warnings, each linking to its run. */
 export default function RunList({ runs, selectedId, analysisHref }: RunListProps) {
@@ -33,7 +33,7 @@ export default function RunList({ runs, selectedId, analysisHref }: RunListProps
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="relative overflow-x-auto" role="region" aria-label="Table of all runs" tabIndex={0}>
       <table className="w-full text-sm">
         <caption className="sr-only">All runs of this repository, newest first</caption>
         <thead>

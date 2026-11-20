@@ -158,6 +158,21 @@ describe("RatingHistoryChart rendering", () => {
     expect(svg?.querySelector("desc")?.textContent).toContain("rating 3.0.");
   });
 
+  it("keeps the axis labels readable on phones, with a wider graph that scrolls in its own region", () => {
+    const { container } = render(<RatingHistoryChart runs={runs} selectedId="c" analysisHref={hrefFor} />);
+
+    const labels = Array.from(container.querySelectorAll("svg text")).filter((text) =>
+      /fill-(gray-500|red-700)/.test(text.getAttribute("class") ?? "")
+    );
+    expect(labels.length).toBeGreaterThan(0);
+    for (const label of labels) {
+      expect(label.getAttribute("class")).toContain("max-sm:text-[20px]");
+    }
+    const region = screen.getByRole("region", { name: "Rating graph" });
+    expect(region.getAttribute("tabindex")).toBe("0");
+    expect(region.querySelector("svg")?.getAttribute("class")).toContain("max-sm:min-w-[400px]");
+  });
+
   it("renders a visually hidden table with date, rating and result per run", () => {
     render(<RatingHistoryChart runs={runs} selectedId="c" analysisHref={hrefFor} />);
 
@@ -165,6 +180,11 @@ describe("RatingHistoryChart rendering", () => {
     expect(table.className).toContain("sr-only");
     expect(table.parentElement?.className).toContain("sr-only");
     expect(table.querySelector("caption")?.className).toContain("whitespace-normal");
+    // A table ignores the 1px width of sr-only; the positioned scroll region clips it instead of the page
+    const region = screen.getByRole("region", { name: "Rating graph" });
+    expect(region.contains(table)).toBe(true);
+    expect(region.className).toContain("relative");
+    expect(region.className).toContain("overflow-x-auto");
     const headers = within(table).getAllByRole("columnheader").map((cell) => cell.textContent);
     expect(headers).toEqual(["Date", "Rating", "Result"]);
     const rows = within(table).getAllByRole("row").slice(1);

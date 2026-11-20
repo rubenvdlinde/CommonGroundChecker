@@ -56,6 +56,19 @@ describe("RunList", () => {
     expect(links[1].getAttribute("href")).toBe("/components/org/repo/old");
   });
 
+  it("scrolls the table in a keyboard reachable region, with 44px date links on phones", () => {
+    render(<RunList runs={runs} selectedId="new" analysisHref={hrefFor} />);
+
+    const region = screen.getByRole("region", { name: "Table of all runs" });
+    expect(region.getAttribute("tabindex")).toBe("0");
+    // Positioned, so the visually hidden text in its cells is clipped by it rather than widening the page
+    expect(region.className).toContain("relative");
+    for (const link of within(region).getAllByRole("link")) {
+      expect(link.className).toContain("min-h-[44px]");
+      expect(link.className).toContain("lg:min-h-0");
+    }
+  });
+
   it("says so when no run is stored", () => {
     render(<RunList runs={[]} selectedId={null} analysisHref={hrefFor} />);
 

@@ -131,10 +131,10 @@ export default function RatingHistoryChart({ runs, selectedId = null, analysisHr
     .join(" ");
 
   return (
-    <div className="space-y-2">
+    <div className="relative overflow-x-auto space-y-2" role="region" aria-label="Rating graph" tabIndex={0}>
       <svg
         viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}
-        className="w-full h-auto"
+        className="w-full h-auto max-sm:min-w-[400px]"
         aria-labelledby="rating-history-title rating-history-desc"
       >
         <title id="rating-history-title">Overall rating over time</title>
@@ -168,7 +168,7 @@ export default function RatingHistoryChart({ runs, selectedId = null, analysisHr
                 y={scaleRating(value)}
                 textAnchor="end"
                 dominantBaseline="middle"
-                className="fill-gray-500 text-[10px]"
+                className="fill-gray-500 text-[10px] max-sm:text-[20px]"
               >
                 {value.toFixed(1)}
               </text>
@@ -187,14 +187,14 @@ export default function RatingHistoryChart({ runs, selectedId = null, analysisHr
             x={PLOT_RIGHT - 4}
             y={scaleRating(PASSING_RATING) - 4}
             textAnchor="end"
-            className="fill-red-700 text-[10px] font-semibold"
+            className="fill-red-700 text-[10px] max-sm:text-[20px] font-semibold"
           >
             Pass {PASSING_RATING.toFixed(1)}
           </text>
-          <text x={PLOT_LEFT} y={CHART_HEIGHT - 8} className="fill-gray-500 text-[10px]">
+          <text x={PLOT_LEFT} y={CHART_HEIGHT - 8} className="fill-gray-500 text-[10px] max-sm:text-[20px]">
             {formatDay(first.checkedAt)}
           </text>
-          <text x={PLOT_RIGHT} y={CHART_HEIGHT - 8} textAnchor="end" className="fill-gray-500 text-[10px]">
+          <text x={PLOT_RIGHT} y={CHART_HEIGHT - 8} textAnchor="end" className="fill-gray-500 text-[10px] max-sm:text-[20px]">
             {formatDay(last.checkedAt)}
           </text>
           {selected && (
