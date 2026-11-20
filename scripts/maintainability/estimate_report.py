@@ -41,6 +41,9 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import check_maintainability as estimate  # noqa: E402
 
+# The checker always rates the components a repository declares, as the coupling measure does.
+estimate.COMPONENTS_FROM_SCOPE = True
+
 SIMIAN_VERSION = "4.2.1"
 SIMIAN_STRICT = ["-threshold=6", "-ignoreCurlyBraces-", "-ignoreIdentifierCase-", "-ignoreStringCase-",
                  "-ignoreCharacterCase-", "-ignoreModifiers-", "-failOnDuplication-"]

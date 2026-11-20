@@ -131,6 +131,15 @@ describe("resolveCriterionDoc", () => {
     ]);
   });
 
+  it("explains the shared component definition on the maintainability and coupling pages only", () => {
+    const withComponents = CRITERION_DOCS.filter((doc) => doc.components).map((doc) => doc.id);
+
+    expect(withComponents).toEqual(["maintainability", "coupling"]);
+    expect(resolve("coupling").components).toBe(resolve("maintainability").components);
+    expect(resolve("coupling").components).toContain("sigrid.components.yaml");
+    expect(resolve("coupling").components).toContain("tools/sig/area-order.json");
+  });
+
   it("orders the measured criteria as the report does, then the planned ones", () => {
     const ids = orderedCriterionDocs().map((doc) => doc.id);
     expect(ids.slice(0, RESULT_ORDER_BY_ID.length)).toEqual(RESULT_ORDER_BY_ID);

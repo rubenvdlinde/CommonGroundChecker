@@ -121,11 +121,12 @@ def fan_in_band(fan_in, bounds):
     return FAN_IN_BANDS[-1]
 
 
-def score(loc, edges):
+def score(loc, edges, app=None):
     """The coupling measurements of one language from {module: code lines} and
     a set of (source, target) module pairs. Fan-in counts distinct depending
     modules; a component line between two components weighs the module pairs
-    on it, as in the maintainability estimate."""
+    on it, as in the maintainability estimate. With `app`, the components are
+    the ones the repository declares, by the estimate's shared definition."""
     modules = sorted(loc)
     edges = {(s, t) for s, t in edges if s != t and s in loc and t in loc}
     total = sum(loc.values()) or 1
@@ -141,7 +142,8 @@ def score(loc, edges):
         band_loc[fan_in_band(len(incoming[m]), bounds)] += loc[m]
     above = [round(sum(loc[m] for m in modules if len(incoming[m]) > b) / total, 4) for b in bounds]
 
-    root, comp = sig.component_of_factory(modules)
+    definition = sig.component_definition(app, modules, declared=app is not None)
+    comp = definition["component"]
     comp_loc = collections.Counter()
     for m in modules:
         comp_loc[comp(m)] += loc[m]
@@ -164,8 +166,7 @@ def score(loc, edges):
         "modules": len(modules),
         "edges": len(edges),
         "loc": sum(loc.values()),
-        "componentDefinition": f"directories below {root or '.'}/ (a level is descended while one directory holds "
-                               "more than 80% of the modules)",
+        "componentDefinition": definition["description"],
         "components": len(comp_loc),
         "componentIndependence": round(hidden / total, 4),
         "componentEntanglement": {
@@ -554,7 +555,7 @@ def measure(app):
         entry = {"measured": True, "tool": tool}
         if note:
             entry["scope"] = note
-        entry.update(score(loc, edges))
+        entry.update(score(loc, edges, app))
         entry.update(extra)
         report["languages"][group] = entry
     return report

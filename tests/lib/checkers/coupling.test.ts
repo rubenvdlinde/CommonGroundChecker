@@ -65,6 +65,48 @@ describe("mapCouplingReport", () => {
     expect(result.evidence).toContain("Python import-linter contracts: 2 kept, 1 broken");
   });
 
+  it("gives the directory view and the references against the area order next to declared components", () => {
+    const python = report.languages.python;
+    if (!python.measured) throw new Error("fixture lost its Python measurement");
+    const evidence =
+      mapCouplingReport({
+        ...report,
+        languages: {
+          python: {
+            ...python,
+            componentDefinition: "sigrid.components.yaml components (10 declared)",
+            componentDefinitionKind: "declared",
+            directoryView: {
+              componentDefinition: "directories below lib/",
+              components: 40,
+              componentIndependence: 0.25,
+              componentEntanglement: { violationDegree: 0.21, density: 4.5, communicationLines: 300, violations: {} },
+              componentCycles: 1,
+              largestComponentCycle: 30,
+            },
+            areaOrder: {
+              order: ["Kernel", "Core", "Search"],
+              references: 1234,
+              topSources: [
+                { file: "lib/A.php", references: 40 },
+                { file: "lib/B.php", references: 20 },
+              ],
+              areaPairs: [],
+              unknownAreas: [],
+            },
+          },
+        },
+      }).evidence ?? [];
+
+    expect(evidence).toContain(
+      "Python with directory components (directories below lib/): 40 components; independence 25.0%, entanglement 0.210 " +
+        "(density 4.50), largest component cycle 30. The figures above use the declared components."
+    );
+    expect(evidence).toContain(
+      "Python references against the declared area order (Kernel < Core < Search): 1,234; most from lib/A.php (40), lib/B.php (20). Informative, not rated."
+    );
+  });
+
   it("says when there is nothing to measure", () => {
     const result = mapCouplingReport({ version: 1, languages: {} });
 
