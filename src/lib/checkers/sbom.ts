@@ -21,6 +21,56 @@ const SBOM_EXACT_FILES = [
   "spdx.yml",
 ];
 
+// File name conventions of the SBOM standards:
+// CycloneDX: https://cyclonedx.org/specification/overview/ (bom.json, bom.xml, *.cdx.json, *.cdx.xml)
+// SPDX: https://spdx.github.io/spdx-spec/v2.3.1/conformance/ (*.spdx, *.spdx.json, *.spdx.yaml, ...)
+const SBOM_EXTENSIONS = [
+  ".cdx.json",
+  ".cdx.xml",
+  ".spdx",
+  ".spdx.json",
+  ".spdx.yaml",
+  ".spdx.yml",
+  ".spdx.xml",
+  ".spdx.rdf",
+];
+
+// Directories whose files describe something other than the component itself.
+const EXCLUDED_DIRECTORY = /(?:^|\/)(?:node_modules|vendor|tests?|__tests__|fixtures?|__fixtures__|testdata)\//;
+
+// Directories conventionally holding SBOMs; files there still need SBOM content.
+const SBOM_DIRECTORY = /(?:^|\/)(?:sbom|cyclonedx)\//;
+
+const MAX_CONTENT_CHECKS = 10;
+
+function hasSbomFileName(lowerPath: string): boolean {
+  const filename = lowerPath.split("/").pop() ?? lowerPath;
+  return (
+    SBOM_EXACT_FILES.includes(filename) ||
+    SBOM_EXTENSIONS.some((extension) => filename.endsWith(extension))
+  );
+}
+
+function isSbomDocument(lowerPath: string, content: string): boolean {
+  if (lowerPath.endsWith(".json")) {
+    try {
+      const parsed = JSON.parse(content) as Record<string, unknown> | null;
+      return (
+        typeof parsed === "object" &&
+        parsed !== null &&
+        (parsed.bomFormat === "CycloneDX" || typeof parsed.spdxVersion === "string")
+      );
+    } catch {
+      return false;
+    }
+  }
+  if (lowerPath.endsWith(".xml")) {
+    return /<bom\b[^>]*xmlns\s*=\s*["']https?:\/\/cyclonedx\.org\/schema\/bom/i.test(content) ||
+      /<spdxVersion>/i.test(content);
+  }
+  return false;
+}
+
 function countXmlTags(content: string, tags: string[]): number {
   return tags.reduce((count, tag) => {
     const match = content.match(new RegExp(`<${tag}\\b`, "gi"));
@@ -96,18 +146,30 @@ export async function checkSbom(
 ): Promise<CheckResult> {
   const lowerTree = tree.map((p) => p.toLowerCase());
 
-  const found = tree.filter((path, index) => {
+  const found = tree.filter((_path, index) => {
     const lower = lowerTree[index];
-    const filename = lower.split("/").pop() ?? lower;
-
-    return (
-      SBOM_EXACT_FILES.includes(filename) ||
-      lower.endsWith(".spdx.json") ||
-      lower.endsWith(".cdx.json") ||
-      lower.includes("/sbom/") ||
-      lower.includes("/cyclonedx/")
-    );
+    return !EXCLUDED_DIRECTORY.test(lower) && hasSbomFileName(lower);
   });
+
+  if (found.length === 0) {
+    const sbomDirectoryCandidates = tree
+      .filter((_path, index) => {
+        const lower = lowerTree[index];
+        return (
+          !EXCLUDED_DIRECTORY.test(lower) &&
+          SBOM_DIRECTORY.test(lower) &&
+          (lower.endsWith(".json") || lower.endsWith(".xml"))
+        );
+      })
+      .slice(0, MAX_CONTENT_CHECKS);
+
+    for (const candidate of sbomDirectoryCandidates) {
+      const candidateContent = await context.provider.getFileContent(context, candidate);
+      if (candidateContent && isSbomDocument(candidate.toLowerCase(), candidateContent)) {
+        found.push(candidate);
+      }
+    }
+  }
 
   if (found.length === 0) {
     return {
