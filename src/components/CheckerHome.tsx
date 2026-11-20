@@ -176,7 +176,7 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   artifacthub: "mandatory",
   documentation: "mandatory",
   tests: "mandatory",
-  complexity: "recommended",
+  complexity: "informative",
   maintainability: "recommended",
   codemetrics: "informative",
   projecthealth: "informative",
@@ -188,6 +188,16 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   security: "recommended",
   semver: "recommended",
   opensourcehealth: "recommended",
+  licenceconsistency: "recommended",
+  spdxheaders: "recommended",
+  opentrack: "informative",
+  testcoderatio: "recommended",
+  size: "informative",
+  duplication: "informative",
+  sonarqube: "informative",
+  coupling: "informative",
+  secretscanning: "recommended",
+  openssfscorecard: "recommended",
 };
 
 const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
@@ -219,6 +229,14 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "Security policy": "security",
   "Semantic Versioning": "semver",
   "Open Source Health": "opensourcehealth",
+  "Licence consistency": "licenceconsistency",
+  "SPDX licence headers": "spdxheaders",
+  "Maintainability, open track": "opentrack",
+  "Test code ratio": "testcoderatio",
+  "Duplication (open track)": "duplication",
+  "Coupling (open track)": "coupling",
+  "No committed secrets": "secretscanning",
+  "OpenSSF Scorecard": "openssfscorecard",
 };
 
 function formatRequirementLabel(level: RequirementLevelLabel): string {
@@ -463,6 +481,54 @@ const CRITERIA_OVERVIEW = [
     desc: "1 to 5 star rating of the dependencies",
     tooltip:
       "Rates the production dependencies from the lockfiles on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management, each from 0.5 to 5.5 (1 to 5 stars). 4 stars or more passes.",
+  },
+  {
+    icon: "🔗",
+    label: "Licence consistency",
+    category: "Governance" as CriteriaCategory,
+    desc: "Every declaration names one licence",
+    tooltip:
+      "Collects the licence declared in the LICENSE file, package.json, composer.json, publiccode.yml, pyproject.toml, Cargo.toml, setup.cfg and the Nextcloud appinfo/info.xml, normalises each to its SPDX identifier and checks that they all name the same licence. Differing only in -only versus -or-later, or finding a single declaration, gives a warning.",
+  },
+  {
+    icon: "🏷️",
+    label: "SPDX licence headers",
+    category: "Governance" as CriteriaCategory,
+    desc: "Source files carry an SPDX header",
+    tooltip:
+      "Clones the repository and counts the share of git-tracked source files whose first 30 lines carry an SPDX-License-Identifier header, or that REUSE.toml, .reuse/dep5 or a .license file covers. Stars: 100% five, 95% four, 80% three, 50% two, else one; these bands are the checker's own, the REUSE specification asks for every file. Four or five stars pass, three warn, fewer fail.",
+  },
+  {
+    icon: "⭐",
+    label: "Maintainability, open track",
+    category: "Software Quality" as CriteriaCategory,
+    desc: "Open thresholds from a public benchmark",
+    tooltip:
+      "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate and not counted.",
+  },
+  {
+    icon: "🔗",
+    label: "Coupling (open track)",
+    category: "Software Quality" as CriteriaCategory,
+    desc: "Module and component structure",
+    tooltip:
+      "Builds the module dependency graph with pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue) and shows module coupling, component independence, entanglement and cycles. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+  },
+  {
+    icon: "🔑",
+    label: "No committed secrets",
+    category: "Security" as CriteriaCategory,
+    desc: "Gitleaks scan of the working tree",
+    tooltip:
+      "Scans the cloned repository with gitleaks for committed secrets such as API keys, tokens and private keys. The project's own .gitleaks.toml allowlist is honoured. Findings show the rule and location only, never the secret.",
+    },
+    {
+    icon: "⭐",
+    label: "OpenSSF Scorecard",
+    category: "Security" as CriteriaCategory,
+    desc: "Scorecard rated 1 to 5 stars",
+    tooltip:
+      "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only. The checker's own bands turn it into stars: 9+ is 5, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
   },
 ];
 
