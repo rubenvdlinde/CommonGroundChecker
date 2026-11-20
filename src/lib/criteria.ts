@@ -55,6 +55,7 @@ export const RESULT_ORDER_BY_ID: string[] = [
   "opensourcehealth",
   "size",
   "duplication",
+  "sonarqube",
   "codemetrics",
   "owaspsecurecoding",
   "contributing",
@@ -95,6 +96,7 @@ export const RESULT_CATEGORY_BY_ID: Record<string, CriteriaCategory> = {
   opensourcehealth: "Security",
   size: "Software Quality",
   duplication: "Software Quality",
+  sonarqube: "Software Quality",
   codemetrics: "Software Quality",
   owaspsecurecoding: "Security",
   contributing: "Governance",
@@ -180,6 +182,7 @@ export const CRITERION_VERSIONS: CriterionVersions = {
   opensourcehealth: { introducedIn: "2026.2" },
   size: { introducedIn: "2026.2" },
   duplication: { introducedIn: "2026.2" },
+  sonarqube: { introducedIn: "2026.2" },
 };
 
 /** The start of a YYYY-MM-DD date in UTC, or null for anything else. */

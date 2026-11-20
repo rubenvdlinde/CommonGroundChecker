@@ -25,6 +25,7 @@ import { checkTestCodeRatio } from "./testCodeRatio";
 import { checkOpenSourceHealth } from "./openSourceHealth";
 import { checkSize } from "./size";
 import { checkDuplication } from "./duplication";
+import { checkSonarQube } from "./sonarqube";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -302,6 +303,8 @@ export async function runChecksOnContext(
       })
     )
   );
+  // Null when no SonarQube is configured, so it is not reused like a measured result.
+  const sonarQubePromise = checkSonarQube(context, tree);
   const duplicationPromise = measure("duplication", async () => checkDuplication(await checkout()));
   const sizePromise = measure("size", async () => checkSize(await checkout()));
   const openSourceHealthPromise = measure("opensourcehealth", async () => checkOpenSourceHealth(await checkout()));
@@ -371,7 +374,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth, size, duplication] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth, size, duplication, sonarqube] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -386,6 +389,7 @@ export async function runChecksOnContext(
     openSourceHealthPromise,
     sizePromise,
     duplicationPromise,
+    sonarQubePromise,
   ]);
   const publiccode = reused.get("publiccode") ?? publiccodeAnalysis.result;
 
@@ -440,6 +444,7 @@ export async function runChecksOnContext(
     coverage,
     complexity,
     maintainability,
+    ...(sonarqube ? [sonarqube] : []),
     testcoderatio,
     opensourcehealth,
     size,
@@ -554,6 +559,7 @@ export async function runChecksOnContext(
     coverage,
     complexity,
     maintainability,
+    ...(sonarqube ? [sonarqube] : []),
     testcoderatio,
     opensourcehealth,
     size,

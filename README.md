@@ -81,6 +81,7 @@ A component declares a standard and its version the same way, with the official 
 | 25 | **Maintainability (ISO 25010)** — unit size, unit complexity, unit interfacing, duplication, module coupling and component structure, each rated from 1 to 5 stars, with an estimated overall maintainability rating | Recommended | [Maintainability model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md) |
 | 26 | **Size** — lines of production code per language, the rebuild effort by backfiring, and SIG-style person-years as context; shown, not rated | Informative | [scc](https://github.com/boyter/scc) |
 | 26 | **Duplication (open track)** — duplicated lines per language and overall as jscpd reports them, with the largest clones; shown for information, no stars until open thresholds are calibrated | Informative | [jscpd](https://github.com/kucherenko/jscpd) |
+| 26 | **External comparison: SonarQube** — the technical debt ratio and the open issues of four SIG-like rules (S138, S3776, S107, S1192) read from a SonarQube that already analyses the component; only shown when one is configured, never stars, never scored | Informative | [SonarQube Web API](https://docs.sonarsource.com/sonarqube-server/latest/extension-guide/web-api/) |
 
 **Stars:** every criterion also shows 1 to 5 stars. Maintainability has its own scale (4 stars or more passes, 3 stars warns). The other criteria map pass, warn and fail to 5, 3 and 1 stars. The component as a whole and each category also get a rating; see [Ratings](#ratings).
 
@@ -94,6 +95,9 @@ The size check lists the production files with `scripts/size/scope.py`, which ap
 **Note:** Only mandatory criteria are included in the overall score. Recommended and informative criteria are shown in the report but do not contribute to the score. Each category is scored as the weighted average of its mandatory criteria (pass = 1, warn or info = 0.5, fail = 0), and the overall score is the weighted average of those category scores, using the default category weights Governance 20%, Architecture 20%, Security 25%, Deployment & Operations 20% and Software Quality 15%.
 
 The levels above are the defaults in `src/lib/checkers/config.ts`; the category weights are in `src/lib/criteria.ts`. When the scoring API answers, its active configuration is used instead, and an administrator can change levels and weights there. The backend's built-in criterion levels are the same as above, but its default category weights (`DEFAULT_CATEGORY_WEIGHTS` in `src/lib/scoring.ts` of CommonGroundCheckerBackend) set Security to 0, so unless the stored configuration sets a Security weight, the Security category does not count towards the score when the backend answers.
+
+**SonarQube comparison:** when `SONARQUBE_URL` and `SONARQUBE_TOKEN` are set on the web container, the checker reads, through the SonarQube Web API, the project of the component: the technical debt ratio (the maintainability remediation effort, or `sqale_index` on servers without it, over `development_cost`, because `sqale_debt_ratio` is rounded to one decimal) and the open issues of S138, S3776, S107 and S1192 with the five files that have the most. It never runs a scan. The project key is `sonar.projectKey` from the repository's `sonar-project.properties` when it has one, otherwise `<owner>_<repo>` (the SonarQube Cloud convention), otherwise the repository name; the first key that exists is used. Without configuration, or without a project for the component, no result is shown. The values are information only. The thresholds of the calibrated quality profile (S138 max 60, S3776 threshold 25, S107 max 6, S1192 defaults) were fitted on six repositories, so the comparison is only meaningful against a project analysed with that profile.
+
 
 ## Getting started
 
@@ -110,6 +114,17 @@ cp .env.local.example .env
 Edit .env and set `URL` to the remote API server, e.g. `http://localhost:3000`
 
 Edit `GITHUB_TOKEN` if available
+
+Environment variables of the web container:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `URL` | none | Base URL of the remote Component Checker Register API |
+| `GITHUB_TOKEN` | none | GitHub token, raises the API rate limit |
+| `GITLAB_TOKEN` | none | GitLab token for GitLab repositories |
+| `MAINTAINABILITY_TIMEOUT_SECONDS` | 600 | Time limit of one maintainability analysis |
+| `SONARQUBE_URL` | none | Base URL of a SonarQube server to compare with, for example `https://sonar.example.org`; the comparison needs both SonarQube variables |
+| `SONARQUBE_TOKEN` | none | SonarQube user token with Browse permission on the projects; sent only as a bearer header, never stored in results or logs |
 
 3. Install Lizard (required for cyclomatic complexity criterion)
 ```

@@ -424,7 +424,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     why: "It lets you compare the estimate with a tool you may already use.",
     tool: "the SonarQube web API, when a server is configured",
     howToPass: ["There is nothing to pass: the criterion is informative."],
-    planned: { category: "Maintainability", level: "informative" },
   },
   {
     id: "codemetrics",

@@ -67,6 +67,7 @@ const mocks = vi.hoisted(() => ({
   checkOpenSourceHealth: vi.fn(),
   checkSize: vi.fn(),
   checkDuplication: vi.fn(),
+  checkSonarQube: vi.fn(),
   checkSourceCode: vi.fn(),
   checkSemver: vi.fn(),
   checkFiveLayer: vi.fn(),
@@ -153,6 +154,7 @@ vi.mock("@/lib/checkers/testCodeRatio", () => ({ checkTestCodeRatio: mocks.check
 vi.mock("@/lib/checkers/openSourceHealth", () => ({ checkOpenSourceHealth: mocks.checkOpenSourceHealth }));
 vi.mock("@/lib/checkers/size", () => ({ checkSize: mocks.checkSize }));
 vi.mock("@/lib/checkers/duplication", () => ({ checkDuplication: mocks.checkDuplication }));
+vi.mock("@/lib/checkers/sonarqube", () => ({ checkSonarQube: mocks.checkSonarQube }));
 vi.mock("@/lib/checkers/codeMetrics", () => ({ checkCodeMetrics: mocks.checkCodeMetrics }));
 vi.mock("@/lib/checkers/owaspSecureCoding", () => ({ checkOwaspSecureCoding: mocks.checkOwaspSecureCoding }));
 vi.mock("@/lib/checkers/eupl", () => ({
@@ -294,6 +296,7 @@ describe("runChecks", () => {
     mocks.checkTests.mockReturnValue(resultFor("tests", "pass"));
     mocks.checkComplexity.mockResolvedValue(resultFor("complexity", "pass"));
     mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "warn"), starRating: 3 });
+    mocks.checkSonarQube.mockResolvedValue(null);
     mocks.checkDuplication.mockResolvedValue(resultFor("duplication", "info"));
     mocks.checkSize.mockResolvedValue({ ...resultFor("size", "info"), requirementLevel: "informative" });
     mocks.checkOpenSourceHealth.mockResolvedValue({ ...resultFor("opensourcehealth", "pass"), starRating: 4 });
@@ -763,6 +766,32 @@ describe("runChecks", () => {
     expect(evidence?.[MAX_EVIDENCE_LINES - 1]).toBe(`path-${MAX_EVIDENCE_LINES - 1}`);
     expect(evidence?.at(-1)).toBe(`... and ${200 - MAX_EVIDENCE_LINES} more`);
     expect(report.results.find((result) => result.id === "semver")?.evidence).toEqual([]);
+  });
+
+  it("adds the SonarQube comparison after maintainability, without stars or weight in the score", async () => {
+    mocks.checkSonarQube.mockResolvedValue(resultFor("sonarqube", "info"));
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-1",
+      config: {
+        criterionConfigByCheckId: { ...criterionConfig(1, "mandatory"), sonarqube: { weight: 0, requirementLevel: "informative" } },
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const withComparison = await runChecks("https://github.com/org/repo", { isRegister: false });
+    mocks.checkSonarQube.mockResolvedValue(null);
+    const without = await runChecks("https://github.com/org/repo", { isRegister: false });
+
+    const ids = withComparison.results.map((result) => result.id);
+    const sonarqube = withComparison.results.find((result) => result.id === "sonarqube");
+    expect(ids.indexOf("sonarqube")).toBe(ids.indexOf("maintainability") + 1);
+    expect(sonarqube?.starRating).toBeUndefined();
+    expect(sonarqube?.requirementLevel).toBe("informative");
+    expect(withComparison.score).toBe(without.score);
+    expect(without.results.some((result) => result.id === "sonarqube")).toBe(false);
   });
 
   it("applies fixed category weights when aggregating mandatory criteria", async () => {

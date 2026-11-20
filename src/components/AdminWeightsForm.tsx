@@ -187,6 +187,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         label: "Duplication (open track)",
         explanation:
           "Runs jscpd 5.4.2 on the production code, one language at a time (clones of at least 6 lines and 30 tokens, comments ignored), and shows the share of duplicated lines per language and overall, with the largest clones. This criterion is informative and does not contribute to the overall score by default.",
+      },
+      {
+        id: "sonarqube",
+        label: "External comparison: SonarQube",
+        explanation:
+          "Only shown when SONARQUBE_URL and SONARQUBE_TOKEN are set and that SonarQube already analyses the component. Reads the technical debt ratio and the open issues of four SIG-like rules through the Web API. Information only: never stars, never part of the score.",
         requirementLevel: "informative",
       },
       {

@@ -14,7 +14,6 @@ import { PROFILE_FIELDS } from "@/lib/publiccodeProfile";
 /** Criteria that live in open changes to the checker, not in this version. */
 const PLANNED_IDS = [
   "opentrack",
-  "sonarqube",
   "coupling",
 ];
 
