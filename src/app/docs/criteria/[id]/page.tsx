@@ -11,6 +11,7 @@ import {
   findCriterionDoc,
   resolveCriterionDoc,
 } from "@/lib/criterionDocs";
+import { findSfpcCriterion, sfpcCriterionUrl } from "@/lib/standardForPublicCode";
 import { TOOLS_DOC_HREF } from "@/lib/toolsDocs";
 
 interface CriterionDocPageProps {
@@ -39,6 +40,7 @@ export default async function CriterionDocPage({ params }: CriterionDocPageProps
   if (!found) notFound();
   const doc = resolveCriterionDoc(found, DEFAULT_CRITERION_CONFIG_BY_CHECK_ID);
   const source = SOURCE_DOCS[doc.source];
+  const sfpc = doc.standardForPublicCode ? findSfpcCriterion(doc.standardForPublicCode) : null;
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10 space-y-6">
@@ -97,6 +99,23 @@ export default async function CriterionDocPage({ params }: CriterionDocPageProps
           <strong>{source.label}.</strong> {source.explanation}
         </p>
         {doc.sourceNote && <p className="text-gray-700">{doc.sourceNote}</p>}
+        {doc.alsoFrom && (
+          <p className="text-gray-700">Also follows from: {doc.alsoFrom.map((id) => SOURCE_DOCS[id].label).join(", ")}.</p>
+        )}
+        <p className="text-gray-700">
+          <strong>Standard for Public Code.</strong>{" "}
+          {sfpc ? (
+            <>
+              Measures a part of the criterion{" "}
+              <a href={sfpcCriterionUrl(sfpc.id)} className={LINK} rel="noopener noreferrer">
+                {sfpc.title}
+              </a>{" "}
+              of the Foundation for Public Code.
+            </>
+          ) : (
+            "No criterion of the Standard for Public Code matches this one."
+          )}
+        </p>
       </section>
 
       <section aria-labelledby="level" className={SECTION}>

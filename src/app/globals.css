@@ -6,7 +6,41 @@
   --cg-blue: #154273;
   --cg-lightblue: #2E6BB4;
   --cg-orange: #E17000;
+
+  /* Sources and measurements diagram on About; one colour per source of the checklist */
+  --src-hugo: var(--cg-lightblue);
+  --src-sig: #a84a22;
+  --src-alv: #26754b;
+  --src-fpc: #7a4fb0;
+  --src-own: #6b7280;
+  --diagram-bg: #f5f7fa;
+  --diagram-panel: #ffffff;
+  --diagram-fg: #1f2937;
+  --diagram-muted: #4b5563;
+  --diagram-line: #d1d5db;
 }
+
+/* The site has no dark theme yet; the diagram follows one as soon as the root carries data-theme="dark". */
+:root[data-theme="dark"] {
+  --src-hugo: #7fb0eb;
+  --src-sig: #e8956b;
+  --src-alv: #6cc89a;
+  --src-fpc: #b996ea;
+  --src-own: #a3aab5;
+  --diagram-bg: #151a20;
+  --diagram-panel: #1e252e;
+  --diagram-fg: #e8ecf0;
+  --diagram-muted: #a9b3be;
+  --diagram-line: #3a4552;
+}
+
+.sources-diagram { background: var(--diagram-bg); }
+.sources-diagram .sd-panel { background: var(--diagram-panel); border: 1px solid var(--diagram-line); }
+.sources-diagram .sd-panel[data-source] { border-left-width: 4px; }
+.sources-diagram .sd-chip { background: var(--diagram-bg); border: 1px solid var(--diagram-line); }
+.sources-diagram .sd-chip.border-dashed { border-style: dashed; }
+.sources-diagram .sd-fg { color: var(--diagram-fg); }
+.sources-diagram .sd-muted { color: var(--diagram-muted); }
 
 body {
   @apply bg-cg-gray text-gray-800 antialiased;

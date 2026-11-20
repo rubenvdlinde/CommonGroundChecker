@@ -1,7 +1,7 @@
 /* @vitest-environment jsdom */
 
 import { afterEach, describe, expect, it } from "vitest";
-import { cleanup, render, screen, within } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 
 import AboutPage from "@/app/about/page";
 import { NARROW_LAYOUT, WIDE_LAYOUT, nameLines, transitionKey } from "@/components/LifecycleDiagram";
@@ -21,6 +21,8 @@ import {
   LIFECYCLE_RELATION,
   ALV_AGENDA_URL,
   ALV_STANDARD_URL,
+  HUGO_REPOSITORY_URL,
+  SIG_QUALITY_MODELS_URL,
   CHECKLIST_OUTCOMES,
   CHECKLIST_SOURCES,
   INFORMATION_ONLY,
@@ -29,6 +31,18 @@ import {
   SETUP_POINTS,
   stateName,
 } from "@/lib/aboutDocs";
+import { STANDARD_FOR_PUBLIC_CODE_URL } from "@/lib/standardForPublicCode";
+import {
+  ABOUT_REFERENCES,
+  ABOUT_SECTIONS,
+  KEPT_ANCHORS,
+  PRINCIPLE,
+  PUBLICCODE_BASIS,
+  PUBLICCODE_USES,
+  WHAT_IT_IS,
+} from "@/lib/aboutStructure";
+import SourcesDiagram from "@/components/SourcesDiagram";
+import { sourcesDiagramData } from "@/lib/sourcesDiagram";
 import { PATH_DOC_HREF, PATH_SECTIONS, RESPONSE_AND_FIX_TIMES, SLA_TERMS } from "@/lib/pathDocs";
 import {
   BASISSET_PAGE_HREF,
@@ -190,8 +204,8 @@ describe("about docs data", () => {
     expect(maintenance.status).toEqual({ kind: "proposed" });
   });
 
-  it("names the three checklist sources and invents nothing about the ALV proposal", () => {
-    expect(CHECKLIST_SOURCES.map((source) => source.id)).toEqual(["component-checker", "sig", "alv"]);
+  it("names the four checklist sources and invents nothing about the ALV proposal", () => {
+    expect(CHECKLIST_SOURCES.map((source) => source.id)).toEqual(["component-checker", "sig", "alv", "fpc"]);
     const source = (id: string) => CHECKLIST_SOURCES.find((candidate) => candidate.id === id)!;
     expect(source("component-checker").title).toMatch(/Hugo ter Doest's proposal for the original Component Checker/);
     expect(source("component-checker").text).toMatch(/what a repository contains/);
@@ -206,6 +220,13 @@ describe("about docs data", () => {
     expect(source("alv").text).toMatch(/The checker is such a validation service/);
     expect(source("alv").links!.map((link) => link.href)).toEqual([ALV_STANDARD_URL, ALV_AGENDA_URL]);
     expect(source("sig").status).toBeUndefined();
+    expect(source("sig").links!.map((link) => link.href)).toEqual([SIG_QUALITY_MODELS_URL]);
+    expect(source("component-checker").links!.map((link) => link.href)).toEqual([`${HUGO_REPOSITORY_URL}#readme`, SETUP_ISSUE_URL]);
+    expect(source("fpc").title).toBe("The Standard for Public Code of the Foundation for Public Code");
+    expect(source("fpc").links!.map((link) => link.href)).toEqual([STANDARD_FOR_PUBLIC_CODE_URL]);
+    for (const title of ["Bundle policy and source code", "Require review of contributions", "Use plain English", "Use a coherent style"]) {
+      expect(source("fpc").text).toContain(`"${title}"`);
+    }
     expect(CHECKLIST_OUTCOMES.map((outcome) => outcome.name)).toEqual(["Suitable for Common Ground", "Maintained"]);
   });
 
@@ -329,27 +350,36 @@ describe("AboutPage", () => {
   it("keeps the existing content and adds the setup, the checklist sources and the lifecycles", () => {
     const { container } = render(<AboutPage />);
 
-    expect(screen.getByRole("heading", { level: 2, name: "About Common Ground" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 3, name: "About Common Ground" })).toBeTruthy();
     expect(screen.getByText("Author: Hugo W.L. ter Doest")).toBeTruthy();
     expect(screen.getByRole("link", { name: "View source on GitHub" })).toBeTruthy();
     expect(Array.from(container.querySelectorAll("section[id]"), (section) => section.id)).toEqual([
+      "what-it-is",
       "measuring-stick",
+      "principle",
+      "criteria-sources",
+      "publiccode-basis",
+      "rating",
+      "levels-and-lifecycle",
+      "maintenance",
+      "comparing",
       "setup",
-      "checklist-sources",
-      "adoption",
-      "common-ground-lifecycle",
-      "component-lifecycle",
-      "lifecycles-relation",
+      "run",
+      "references",
     ]);
+    for (const id of ["adoption", "common-ground-lifecycle", "component-lifecycle", "lifecycles-relation", "checklist-sources"]) {
+      expect(document.getElementById(id), id).toBeTruthy();
+    }
   });
 
   it("gives a short overview of the setup and links the path page", () => {
     render(<AboutPage />);
 
     const plan = document.getElementById("setup")!;
-    expect(screen.getByRole("heading", { level: 2, name: "The setup" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 2, name: "The setup and the way into the standard" })).toBeTruthy();
     for (const point of SETUP_POINTS) {
-      expect(within(plan).getByRole("heading", { level: 3, name: new RegExp(`^${point.title}`) })).toBeTruthy();
+      const block = document.getElementById(`setup-${point.id}`)!;
+      expect(within(block).getByRole("heading", { level: 3, name: new RegExp(`^${point.title}`) })).toBeTruthy();
     }
     expect(within(plan).getByRole("link", { name: "The path to Common Ground" }).getAttribute("href")).toBe(PATH_DOC_HREF);
     expect(within(plan).getAllByRole("link", { name: "The setup behind the checker (issue #54)" })[0].getAttribute("href")).toBe(
@@ -360,7 +390,7 @@ describe("AboutPage", () => {
     );
     expect(within(plan).getByRole("link", { name: "code.overheid.nl" }).getAttribute("href")).toBe("https://code.overheid.nl");
     expect(within(plan).getByRole("heading", { level: 3, name: "A home at code.overheid.nl Proposed" })).toBeTruthy();
-    expect(within(plan).getByRole("heading", { level: 3, name: "Who uses which component In development" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 3, name: "Who uses which component In development" })).toBeTruthy();
   });
 
   it("shows the SLA and the response and fix times on the About page itself", () => {
@@ -377,20 +407,20 @@ describe("AboutPage", () => {
   it("draws where the checklist comes from, with a text alternative", () => {
     render(<AboutPage />);
 
-    const section = document.getElementById("checklist-sources")!;
-    expect(within(section).getByRole("heading", { level: 2, name: "Where the checklist comes from" })).toBeTruthy();
+    const section = document.getElementById("criteria-sources")!;
+    expect(within(section).getByRole("heading", { level: 2, name: "Where the criteria come from" })).toBeTruthy();
     const images = within(section).getAllByRole("img", { name: /Where the checklist comes from/ });
     expect(images.map((image) => image.getAttribute("data-layout"))).toEqual(["wide", "narrow"]);
     for (const image of images) {
-      expect(image.querySelectorAll("[data-node]")).toHaveLength(6);
-      expect(image.querySelectorAll("[data-edge]")).toHaveLength(5);
+      expect(image.querySelectorAll("[data-node]")).toHaveLength(7);
+      expect(image.querySelectorAll("[data-edge]")).toHaveLength(6);
       expect(image.querySelector('[data-node="alv"]')!.textContent).toBe("Common Ground standard v1.0VNG ALV, 11 December 2026Proposed");
     }
-    const sources = within(section).getByRole("list", { name: "The three sources" });
-    expect(within(sources).getAllByRole("listitem")).toHaveLength(3);
+    const sources = within(section).getByRole("list", { name: "The four sources" });
+    expect(within(sources).getAllByRole("listitem")).toHaveLength(4);
     expect(within(sources).getByText("Proposed")).toBeTruthy();
-    expect(within(section).getByText(NO_CONDITIONS_OF_OUR_OWN)).toBeTruthy();
-    const info = within(section).getByRole("list", { name: "Shown for information only" });
+    expect(within(document.getElementById("principle")!).getByText(NO_CONDITIONS_OF_OUR_OWN)).toBeTruthy();
+    const info = within(section).getByRole("list", { name: "Our own additions, shown for information only" });
     expect(within(info).getAllByRole("listitem").map((item) => item.textContent)).toEqual(INFORMATION_ONLY);
   });
 
@@ -448,7 +478,7 @@ describe("AboutPage", () => {
     expect(ADOPTION_STATUS).toEqual({ kind: "proposed", until: "ALV 11 Dec 2026" });
     const section = document.getElementById("adoption")!;
     expect(
-      within(section).getByRole("heading", { level: 2, name: "How a component enters the standard (ALV papers) Proposed (ALV 11 Dec 2026)" })
+      within(section).getByRole("heading", { level: 3, name: "How a component enters the standard (ALV papers) Proposed (ALV 11 Dec 2026)" })
     ).toBeTruthy();
     const images = within(section).getAllByRole("img", { name: /How a component enters the Common Ground standard/ });
     expect(images.map((image) => image.getAttribute("data-layout"))).toEqual(["wide", "narrow"]);
@@ -547,8 +577,8 @@ describe("AboutPage measuring stick", () => {
     render(<AboutPage />);
 
     const section = document.getElementById("measuring-stick")!;
-    expect(within(section).getByRole("heading", { level: 2, name: "A measuring stick for choices" })).toBeTruthy();
-    const headings = within(section).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent);
+    expect(within(section).getByRole("heading", { level: 2, name: "The problem it answers" })).toBeTruthy();
+    const headings = MEASURING_STICK_PARTS.map((part) => document.getElementById(`measuring-stick-${part.id}`)!.querySelector("h3")!.textContent);
     expect(headings).toEqual([
       "The problem: choices without grounds",
       "What the checker adds: grounds for a decision",
@@ -558,13 +588,104 @@ describe("AboutPage measuring stick", () => {
       "Further development: a partial answer",
     ]);
     expect(within(document.getElementById("measuring-stick-mapping")!).queryAllByText("In development")).toHaveLength(0);
-    expect(within(section).getByRole("link", { name: "Compare two components" }).getAttribute("href")).toBe(COMPARE_PAGE_HREF);
-    expect(within(section).getByRole("link", { name: "The functionality map" }).getAttribute("href")).toBe(FUNCTIONALITIES_PAGE_HREF);
-    expect(within(section).getByRole("link", { name: "The basisset, next to what the checker measured" }).getAttribute("href")).toBe(
-      BASISSET_PAGE_HREF,
-    );
+    expect(screen.getByRole("link", { name: "Compare two components" }).getAttribute("href")).toBe(COMPARE_PAGE_HREF);
+    expect(screen.getByRole("link", { name: "The functionality map" }).getAttribute("href")).toBe(FUNCTIONALITIES_PAGE_HREF);
+    for (const link of screen.getAllByRole("link", { name: "The basisset, next to what the checker measured" })) {
+      expect(link.getAttribute("href")).toBe(BASISSET_PAGE_HREF);
+    }
     expect(within(section).getByRole("link", { name: "How a component enters the standard" }).getAttribute("href")).toBe("#adoption");
     expect(document.getElementById("setup-maintenance")).toBeTruthy();
     expect(document.getElementById("setup-levels")).toBeTruthy();
+  });
+});
+
+describe("About page structure", () => {
+  afterEach(() => cleanup());
+
+  it("places every setup point and every measuring stick part exactly once", () => {
+    const placed = (kind: string) => ABOUT_SECTIONS.flatMap((section) => section.blocks).filter((block) => block.kind === kind).map((block) => block.id);
+    expect([...placed("setup")].sort()).toEqual(SETUP_POINTS.map((point) => point.id).sort());
+    expect([...placed("stick")].sort()).toEqual(MEASURING_STICK_PARTS.map((part) => part.id).sort());
+    const pageBlocks = placed("page");
+    expect(new Set(pageBlocks).size).toBe(pageBlocks.length);
+  });
+
+  it("keeps every old anchor, and every anchor the page links to, on the page", () => {
+    render(<AboutPage />);
+    const anchors = [
+      ...KEPT_ANCHORS,
+      ...SETUP_POINTS.map((point) => `setup-${point.id}`),
+      ...MEASURING_STICK_PARTS.map((part) => `measuring-stick-${part.id}`),
+      ...ABOUT_SECTIONS.map((section) => section.id),
+    ];
+    for (const id of anchors) expect(document.getElementById(id), id).toBeTruthy();
+    for (const link of Array.from(document.querySelectorAll('a[href^="#"]'))) {
+      const id = link.getAttribute("href")!.slice(1);
+      expect(document.getElementById(id), link.getAttribute("href")!).toBeTruthy();
+    }
+  });
+
+  it("lists the sections in a table of contents", () => {
+    render(<AboutPage />);
+    const nav = screen.getByRole("navigation", { name: "On this page" });
+    expect(within(nav).getAllByRole("link").map((link) => link.getAttribute("href"))).toEqual(
+      ABOUT_SECTIONS.map((section) => `#${section.id}`),
+    );
+  });
+
+  it("answers whether publiccode.yml is the basis, with the fields each part of the checker reads", () => {
+    render(<AboutPage />);
+    const section = document.getElementById("publiccode-basis")!;
+    expect(within(section).getByText(/Is publiccode\.yml the basis of the setup\? Partly/)).toBeTruthy();
+    expect(within(section).getByText(/The code measurements stand on their own/)).toBeTruthy();
+    const table = within(section).getByRole("table", { name: "Which parts of the checker read which publiccode.yml fields" });
+    expect(within(table).getAllByRole("row")).toHaveLength(PUBLICCODE_USES.length + 1);
+    expect(within(section).getByRole("link", { name: "The publiccode.yml standard" }).getAttribute("href")).toBe("https://yml.publiccode.tools/");
+    expect(within(section).getByRole("link", { name: "The Common Ground profile of publiccode.yml" }).getAttribute("href")).toBe(
+      "/docs/publiccode-profile",
+    );
+  });
+
+  it("states the principle: open tools chosen, lines that Common Ground already draws", () => {
+    render(<AboutPage />);
+    const section = document.getElementById("principle")!;
+    expect(within(section).getByText(/We do not build measurement tools/)).toBeTruthy();
+    expect(within(section).getByText(/makes those lines visible per component/)).toBeTruthy();
+  });
+
+  it("lists each outside reference once", () => {
+    const urls = ABOUT_REFERENCES.map((reference) => reference.url);
+    expect(new Set(urls).size).toBe(urls.length);
+    expect(urls).toContain(STANDARD_FOR_PUBLIC_CODE_URL);
+    expect(urls).toContain(`${HUGO_REPOSITORY_URL}#readme`);
+  });
+
+  it("uses no dashes in the new texts", () => {
+    const texts = [...WHAT_IT_IS, ...PRINCIPLE, ...PUBLICCODE_BASIS, ...PUBLICCODE_USES.map((use) => use.feature), ...ABOUT_SECTIONS.map((section) => section.title)];
+    for (const text of texts) expect(text, text).not.toMatch(/[–—]|--/);
+  });
+});
+
+describe("SourcesDiagram", () => {
+  afterEach(() => cleanup());
+
+  it("shows every measure with its source dots and filters on a selected source", () => {
+    const data = sourcesDiagramData();
+    render(<SourcesDiagram data={data} />);
+    const measures = Array.from(document.querySelectorAll("[data-measure]"));
+    expect(measures).toHaveLength(data.groups.reduce((sum, group) => sum + group.measures.length, 0));
+
+    const fpc = screen.getByRole("button", { name: /^Foundation for Public Code/ });
+    expect(fpc.getAttribute("aria-pressed")).toBe("false");
+    fireEvent.click(fpc);
+    expect(fpc.getAttribute("aria-pressed")).toBe("true");
+    expect(screen.getByText(/Showing the \d+ measures that follow from Foundation for Public Code/)).toBeTruthy();
+    for (const measure of measures as HTMLElement[]) {
+      const hit = measure.dataset.sources!.split(" ").includes("fpc");
+      expect(measure.style.opacity, measure.dataset.measure).toBe(hit ? "1" : "0.3");
+    }
+    fireEvent.click(fpc);
+    expect(fpc.getAttribute("aria-pressed")).toBe("false");
+    for (const measure of measures as HTMLElement[]) expect(measure.style.opacity).toBe("1");
   });
 });

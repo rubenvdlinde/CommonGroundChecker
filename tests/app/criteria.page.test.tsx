@@ -93,6 +93,17 @@ describe("criterion page", () => {
     expect(screen.getByRole("link", { name: "Secrets" }).getAttribute("href")).toBe("/docs/security#secrets");
   });
 
+  it("names the Standard for Public Code criterion it measures a part of, or that none matches", async () => {
+    await renderCriterion("changelog");
+    expect(screen.getByRole("link", { name: "Document codebase maturity" }).getAttribute("href")).toBe(
+      "https://standard.publiccode.net/criteria/document-codebase-maturity.html",
+    );
+    cleanup();
+    await renderCriterion("complexity");
+    expect(screen.getByText("No criterion of the Standard for Public Code matches this one.")).toBeTruthy();
+    expect(screen.getByText("Also follows from: SIG ratings as Common Ground uses them.")).toBeTruthy();
+  });
+
   it("is not found for an unknown criterion", async () => {
     await expect(renderCriterion("nope")).rejects.toThrow("NEXT_NOT_FOUND");
   });

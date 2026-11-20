@@ -28,22 +28,24 @@ export const CHECKLIST_NODE = "checklist";
 export const WIDE_SOURCES_LAYOUT: SourcesLayout = {
   id: "wide",
   width: 1040,
-  height: 300,
+  height: 390,
   fontSize: 15,
   boxes: {
     "component-checker": { x: 10, y: 10, width: 400, height: 76 },
-    sig: { x: 10, y: 112, width: 400, height: 76 },
-    alv: { x: 10, y: 214, width: 400, height: 76 },
-    checklist: { x: 500, y: 112, width: 200, height: 76 },
-    suitable: { x: 800, y: 50, width: 230, height: 76 },
-    maintained: { x: 800, y: 174, width: 230, height: 76 },
+    sig: { x: 10, y: 108, width: 400, height: 76 },
+    alv: { x: 10, y: 206, width: 400, height: 76 },
+    fpc: { x: 10, y: 304, width: 400, height: 76 },
+    checklist: { x: 500, y: 157, width: 200, height: 76 },
+    suitable: { x: 800, y: 95, width: 230, height: 76 },
+    maintained: { x: 800, y: 219, width: 230, height: 76 },
   },
   edges: {
-    "component-checker": "M410 48 H455 V140 H500",
-    sig: "M410 150 H500",
-    alv: "M410 252 H455 V160 H500",
-    suitable: "M700 140 H750 V88 H800",
-    maintained: "M700 160 H750 V212 H800",
+    "component-checker": "M410 48 H455 V175 H500",
+    sig: "M410 146 H455 V188 H500",
+    alv: "M410 244 H455 V202 H500",
+    fpc: "M410 342 H455 V215 H500",
+    suitable: "M700 185 H750 V133 H800",
+    maintained: "M700 205 H750 V257 H800",
   },
 };
 
@@ -51,22 +53,24 @@ export const WIDE_SOURCES_LAYOUT: SourcesLayout = {
 export const NARROW_SOURCES_LAYOUT: SourcesLayout = {
   id: "narrow",
   width: 320,
-  height: 506,
+  height: 602,
   fontSize: 14,
   boxes: {
     "component-checker": { x: 10, y: 10, width: 260, height: 76 },
     sig: { x: 10, y: 106, width: 260, height: 76 },
     alv: { x: 10, y: 202, width: 260, height: 76 },
-    checklist: { x: 60, y: 310, width: 200, height: 60 },
-    suitable: { x: 10, y: 420, width: 145, height: 76 },
-    maintained: { x: 165, y: 420, width: 145, height: 76 },
+    fpc: { x: 10, y: 298, width: 260, height: 76 },
+    checklist: { x: 60, y: 406, width: 200, height: 60 },
+    suitable: { x: 10, y: 516, width: 145, height: 76 },
+    maintained: { x: 165, y: 516, width: 145, height: 76 },
   },
   edges: {
-    "component-checker": "M270 48 H295 V340 H260",
-    sig: "M270 144 H295 V340 H260",
-    alv: "M270 240 H295 V340 H260",
-    suitable: "M110 370 V395 H82 V420",
-    maintained: "M210 370 V395 H237 V420",
+    "component-checker": "M270 48 H295 V436 H260",
+    sig: "M270 144 H295 V436 H260",
+    alv: "M270 240 H295 V436 H260",
+    fpc: "M270 336 H295 V436 H260",
+    suitable: "M110 466 V491 H82 V516",
+    maintained: "M210 466 V491 H237 V516",
   },
 };
 
@@ -105,8 +109,8 @@ export default function ChecklistSourcesDiagram({ layout, className }: { layout:
     >
       <title id={titleId}>Where the checklist comes from</title>
       <desc id={descId}>
-        Three sources feed the checklist: Hugo ter Doest&apos;s proposal, the SIG ratings and the Common Ground
-        standard v1.0, put to the VNG ALV of 11 December 2026. The checklist decides suitable for Common Ground and
+        Four sources feed the checklist: Hugo ter Doest&apos;s proposal, the SIG ratings, the Common Ground
+        standard v1.0, put to the VNG ALV of 11 December 2026, and the Standard for Public Code. The checklist decides suitable for Common Ground and
         Maintained. The list below the diagram gives the same as text.
       </desc>
       <defs>
