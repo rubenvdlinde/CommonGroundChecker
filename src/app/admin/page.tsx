@@ -88,7 +88,7 @@ export default async function AdminPage() {
   const defaultCategoryWeights = defaults.defaultCategoryWeights;
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-6">
 
       <section className="space-y-2">
         <h2 className="text-2xl font-bold text-cg-blue">Admin — Scoring Configuration</h2>

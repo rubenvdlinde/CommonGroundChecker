@@ -12,8 +12,7 @@ import {
 import { PROFILE_FIELDS } from "@/lib/publiccodeProfile";
 
 /** Criteria that live in open changes to the checker, not in this version. */
-const PLANNED_IDS = [
-];
+const PLANNED_IDS: string[] = [];
 
 function modelIds(): string[] {
   return ASPECT_MODEL.flatMap((category) =>
@@ -102,9 +101,9 @@ describe("resolveCriterionDoc", () => {
     }
   });
 
-  it("resolves the category a planned criterion carries to this version's name", () => {
+  it("resolves a tool criterion to this version's category name", () => {
     const doc = resolve("testcoderatio");
-    expect(doc.measured).toBe(false);
+    expect(doc.measured).toBe(true);
     expect(doc.category).toBe(resolveCategory("Maintainability"));
     expect(doc.level).toBe("recommended");
     expect(doc.aspects.map((aspect) => aspect.id)).toEqual(["testing"]);

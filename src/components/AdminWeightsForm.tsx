@@ -464,7 +464,7 @@ export default function AdminWeightsForm({
   }
 
   return (
-    <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-6">
+    <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6 space-y-6">
 
 
       <div className="space-y-4">
@@ -494,7 +494,7 @@ export default function AdminWeightsForm({
                   const next = Number(event.target.value);
                   setCategoryWeights((prev) => ({ ...prev, [category]: next }));
                 }}
-                className="w-full accent-cg-lightblue"
+                className="tap-target w-full accent-cg-lightblue"
               />
             </div>
           ))}
@@ -515,7 +515,7 @@ export default function AdminWeightsForm({
               return (
                 <div key={id} className="space-y-1">
                   <p className="text-xs text-gray-500">{explanation}</p>
-                  <div className="flex items-center justify-between gap-3">
+                  <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
                     <label
                       htmlFor={`weight-${id}`}
                       className="text-sm font-medium text-gray-700"
@@ -532,7 +532,7 @@ export default function AdminWeightsForm({
                           <button
                             type="button"
                             onClick={() => setRequirementLevels((prev) => ({ ...prev, [id]: "mandatory" }))}
-                            className={`px-2.5 py-1 transition-colors ${
+                            className={`tap-target px-2.5 py-1 transition-colors ${
                               currentLevel === "mandatory"
                                 ? "bg-red-600 text-white"
                                 : "bg-white text-gray-500 hover:bg-gray-50"
@@ -543,7 +543,7 @@ export default function AdminWeightsForm({
                           <button
                             type="button"
                             onClick={() => setRequirementLevels((prev) => ({ ...prev, [id]: "recommended" }))}
-                            className={`px-2.5 py-1 border-l border-gray-200 transition-colors ${
+                            className={`tap-target px-2.5 py-1 border-l border-gray-200 transition-colors ${
                               currentLevel === "recommended"
                                 ? "bg-amber-500 text-white"
                                 : "bg-white text-gray-500 hover:bg-gray-50"
@@ -572,7 +572,7 @@ export default function AdminWeightsForm({
                         const next = Number(event.target.value);
                         setWeights((prev) => ({ ...prev, [id]: next }));
                       }}
-                      className="w-full accent-cg-lightblue disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="tap-target w-full accent-cg-lightblue disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   )}
                   {isInformative && (
@@ -604,7 +604,7 @@ export default function AdminWeightsForm({
                           value={spectralRulesetSource}
                           onChange={(event) => setSpectralRulesetSource(event.target.value)}
                           placeholder="https://.../ruleset.yaml or ./rulesets/adr.yaml"
-                          className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                          className="tap-target w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
                         />
                       </div>
                     </div>
@@ -618,7 +618,7 @@ export default function AdminWeightsForm({
                       <p className="text-xs text-gray-500">
                         Configure Lizard thresholds for the cyclomatic complexity criterion.
                       </p>
-                      <div className="flex items-center gap-3">
+                      <div className="flex flex-wrap items-center gap-3">
                         <label htmlFor="complexity-threshold" className="text-sm font-medium text-gray-700">
                           Lizard threshold (AvgCCN)
                         </label>
@@ -634,10 +634,10 @@ export default function AdminWeightsForm({
                             if (!Number.isFinite(next)) return;
                             setComplexityThreshold(Math.max(1, Math.min(100, Math.round(next))));
                           }}
-                          className="w-24 rounded-md border border-gray-300 px-2 py-1 text-sm"
+                          className="tap-target w-24 rounded-md border border-gray-300 px-2 py-1 text-sm"
                         />
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex flex-wrap items-center gap-3">
                         <label htmlFor="complexity-max-ccn-threshold" className="text-sm font-medium text-gray-700">
                           Lizard threshold (Max CCN)
                         </label>
@@ -655,7 +655,7 @@ export default function AdminWeightsForm({
                               Math.max(1, Math.min(200, Math.round(next)))
                             );
                           }}
-                          className="w-24 rounded-md border border-gray-300 px-2 py-1 text-sm"
+                          className="tap-target w-24 rounded-md border border-gray-300 px-2 py-1 text-sm"
                         />
                       </div>
                     </div>
@@ -676,7 +676,7 @@ export default function AdminWeightsForm({
             save();
           }}
           disabled={saving || !hasChanges}
-          className="px-4 py-2 rounded-lg bg-cg-blue text-white font-semibold hover:bg-cg-lightblue disabled:opacity-50 disabled:cursor-not-allowed"
+          className="tap-target px-4 py-2 rounded-lg bg-cg-blue text-white font-semibold hover:bg-cg-lightblue disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {saving ? "Saving…" : "Save configuration"}
         </button>
@@ -684,7 +684,7 @@ export default function AdminWeightsForm({
           type="button"
           onClick={resetToDefaults}
           disabled={saving}
-          className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 disabled:opacity-50"
+          className="tap-target px-4 py-2 rounded-lg border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 disabled:opacity-50"
         >
           Reset to defaults
         </button>

@@ -21,6 +21,17 @@ body {
   animation: spin 0.8s linear infinite;
 }
 
+/* Touch target of at least 44px on phones and touch screens */
+.tap-target {
+  min-height: 44px;
+}
+
+@media (min-width: 1024px) and (pointer: fine) {
+  .tap-target {
+    min-height: 0;
+  }
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }

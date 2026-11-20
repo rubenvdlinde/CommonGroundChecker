@@ -321,7 +321,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
               (dockerSomewhereElse && !dockerUrl.trim()) ||
               (isRegister && apiSpecificationSomewhereElse && !apiSpecificationLocationsInput.trim())
             }
-            className="px-6 py-3 bg-cg-blue text-white font-semibold rounded-lg hover:bg-cg-lightblue transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shrink-0"
+            className="px-6 py-3 bg-cg-blue text-white font-semibold rounded-lg hover:bg-cg-lightblue transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shrink-0"
           >
             {loading ? (
               <>
@@ -350,7 +350,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
         </div>
 
         <div className="space-y-3">
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="tap-target flex items-center gap-2 text-sm text-gray-700">
           <input
             type="checkbox"
             checked={isRegister}
@@ -373,7 +373,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
 
         {isRegister && (
           <>
-            <label className="flex items-center gap-2 text-sm text-gray-700">
+            <label className="tap-target flex items-center gap-2 text-sm text-gray-700">
               <input
                 type="checkbox"
                 checked={apiSpecificationSomewhereElse}
@@ -408,7 +408,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
           </>
         )}
 
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="tap-target flex items-center gap-2 text-sm text-gray-700">
           <input
             type="checkbox"
             checked={helmSomewhereElse}
@@ -441,7 +441,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
           </div>
         )}
 
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="tap-target flex items-center gap-2 text-sm text-gray-700">
           <input
             type="checkbox"
             checked={documentationSomewhereElse}
@@ -477,7 +477,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
           </div>
         )}
 
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="tap-target flex items-center gap-2 text-sm text-gray-700">
           <input
             type="checkbox"
             checked={dockerSomewhereElse}
@@ -513,7 +513,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
 
       <div className="space-y-2">
         <p className="text-xs text-gray-400">Try an example:</p>
-        <div className="flex flex-wrap gap-2 items-center">
+        <div className="flex flex-wrap gap-x-3 gap-y-0 sm:gap-2 items-center">
           {EXAMPLE_REPOS.map((repo) => (
             <button
               key={repo.repoUrl}
@@ -522,7 +522,7 @@ export default function CheckerForm({ onSubmit, loading }: CheckerFormProps) {
                 void handleExampleSelect(repo.repoUrl);
               }}
               disabled={loading}
-              className="text-xs text-cg-lightblue hover:underline disabled:opacity-50"
+              className="tap-target inline-flex items-center text-xs text-cg-lightblue hover:underline disabled:opacity-50"
             >
               {repo.label}
             </button>

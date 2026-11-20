@@ -139,7 +139,7 @@ export default function ResultCard({
     <div id={anchorId} className={`rounded-xl border ${border} ${bg} overflow-hidden scroll-mt-4`}>
       <button
         ref={buttonRef}
-        className="w-full flex items-center gap-3 px-5 py-4 text-left"
+        className="w-full flex items-start sm:items-center gap-3 px-4 sm:px-5 py-4 text-left"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
       >

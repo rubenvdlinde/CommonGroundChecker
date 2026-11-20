@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     "Automatically verify whether a software component complies with the Common Ground principles of Dutch municipalities.",
 };
 
+const NAV_LINK_CLASS =
+  "tap-target inline-flex items-center px-2 sm:py-2 text-white hover:text-cg-lightblue transition-colors";
+
 export default function RootLayout({
   children,
 }: {
@@ -51,7 +54,7 @@ export default function RootLayout({
               href="https://commonground.nl"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-white"
+              className="tap-target inline-flex items-center self-start underline hover:text-white"
             >
               commonground.nl
             </a>
