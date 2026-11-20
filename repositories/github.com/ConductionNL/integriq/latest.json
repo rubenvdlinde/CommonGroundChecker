@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T08:52:51.103Z",
+  "lastCheckedAt": "2026-11-20T09:13:56.963Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:54:13.624Z",
-  "updatedAt": "2026-11-20T08:52:51.103Z",
+  "updatedAt": "2026-11-20T09:13:56.963Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,21 +44,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T08-52-51-103Z",
+  "id": "2026-11-20T09-13-56-963Z",
   "repoId": "github.com/ConductionNL/integriq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T08:52:51.103Z",
-  "createdAt": "2026-11-20T08:52:51.103Z",
+  "checkedAt": "2026-11-20T09:13:56.963Z",
+  "createdAt": "2026-11-20T09:13:56.963Z",
   "version": "v0.4.4",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
   "scannedCommit": "9f79c351017e13a06b9a079bd04e513923f35960",
   "score": 93,
-  "rating": 4.5,
+  "rating": 4.6,
   "categoryRatings": {
    "Governance": 5.4,
-   "Security": 4.5,
+   "Security": 4.9,
    "Architecture": 3,
    "Software Quality": 3.8,
    "Deployment & Operations": 5.5
@@ -103,7 +103,7 @@
     "rating": null
    },
    "secrets": {
-    "rating": 3
+    "rating": 5.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -158,7 +158,7 @@
   },
   "issueCounts": {
    "errors": 1,
-   "warnings": 1
+   "warnings": 0
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -169,7 +169,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 8,428 lines of code, 1,029 functions, 1,029 files analyzed.",
+    "message": "Code metrics: 35,425 lines of code, 5,303 functions, 5,243 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -182,9 +182,9 @@
      "eslint.config.mjs",
      "examples/connector-extension/lib/AppInfo/Application.php",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 8,428",
-     "Function count: 1,029",
-     "Files analyzed: 1,029"
+     "Total lines of code (NLOC): 35,425",
+     "Function count: 5,303",
+     "Files analyzed: 5,243"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -625,18 +625,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 2.76 <= 15 and Max CCN 30.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 2.75 <= 15 and Max CCN 30.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.76 (threshold: 15)",
+     "Average CCN: 2.75 (threshold: 15)",
      "Max CCN: 30.00 (threshold: 30)",
-     "3      1     12      0       3 isErrorType@245-247@/tmp/cgchecker-repo-MH06fl/repo/src/modals/v2/RuleEditorModal.vue",
-     "5      2     22      0       5 flowError@262-266@/tmp/cgchecker-repo-MH06fl/repo/src/modals/v2/RuleEditorModal.vue",
-     "6      1     12      0       6 errorConfig@276-281@/tmp/cgchecker-repo-MH06fl/repo/src/modals/v2/RuleEditorModal.vue",
-     "4      2     23      0       4 errorCodeText@295-298@/tmp/cgchecker-repo-MH06fl/repo/src/modals/v2/RuleEditorModal.vue",
-     "6      4     35      0       6 nameError@213-218@/tmp/cgchecker-repo-MH06fl/repo/src/modals/v2/ConsumerEditorModal.vue",
-     "3      1     11      0       3 onErrorSelectId@74-76@/tmp/cgchecker-repo-MH06fl/repo/src/modals/v2/SynchronizationNodeEditor.vue"
+     "3      1     11      0       3 RosterDeliveryException::getErrorCode@60-62@/tmp/cgchecker-repo-SD8u1O/repo/lib/Sources/Roster/RosterDeliveryException.php",
+     "3      1     11      0       4 DocumentRenderedEvent::getError@105-108@/tmp/cgchecker-repo-SD8u1O/repo/lib/Event/DocumentRenderedEvent.php",
+     "3      1     11      0       3 DigitalPostDeliveredEvent::getLastError@109-111@/tmp/cgchecker-repo-SD8u1O/repo/lib/Event/DigitalPostDeliveredEvent.php",
+     "3      2     12      0       4 ExchangeJobConcludedEvent::getErrorMessage@171-174@/tmp/cgchecker-repo-SD8u1O/repo/lib/Event/ExchangeJobConcludedEvent.php",
+     "3      2     12      0       3 DeliveryConcludedEvent::getError@184-186@/tmp/cgchecker-repo-SD8u1O/repo/lib/Event/DeliveryConcludedEvent.php",
+     "9      3     48      0      10 ApiContractMiddleware::hasForeignErrorFormat@189-198@/tmp/cgchecker-repo-SD8u1O/repo/lib/Middleware/ApiContractMiddleware.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1061,7 +1061,7 @@
      "Lever: duplication in php, about 2167 lines to fix for half a star",
      "Lever: unit complexity in php, about 3085 lines to fix for half a star",
      "Lever: duplication in vue",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.3%, php not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 4.8%, vue not measured (Simian has no support for this language) against 7.0%",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.3% against 0.3%, php 3.5% against 4.8%, vue not measured (Simian has no support for this language) against 7.0%",
      "Skipped 1 file(s) the analyser could not read"
     ],
     "requirementLevel": "recommended"
@@ -1073,7 +1073,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 3,
-    "rating": 3.3333333333333335,
+    "rating": 3.142857142857143,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -1194,17 +1194,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "7.9%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "19.3%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "12.7%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "9.4%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "79.4%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.075",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 3
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.1 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★☆ 15.1% / 5.9% / 0.8% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★☆ 18.4% / 7.7% / 1.9% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★☆☆☆ 18.2% / 10.4% / 6.0% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★☆☆ 7.9% duplicated lines",
+     "Module coupling: ★★★☆☆ 19.3% / 12.7% / 9.4% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★☆☆ 79.4% of the code hidden from other components",
+     "Component entanglement: ★★★☆☆ 0.075 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)",
      "Skipped 1 file(s) the analyser could not read"
     ],
@@ -1496,9 +1590,45 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 2005,
+     "loc": 173020,
+     "languages": [
+      {
+       "language": "PHP",
+       "family": "php",
+       "files": 1784,
+       "loc": 135416
+      },
+      {
+       "language": "Vue",
+       "family": "vue",
+       "files": 141,
+       "loc": 31780
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 76,
+       "loc": 4710
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 4,
+       "loc": 1114
+      }
+     ]
+    },
+    "message": "173,020 lines of production code in 2,005 file(s), counted with scc 4.1.0. Rebuild effort about 15.5 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "PHP: 135,416 lines in 1,784 file(s)",
+     "Vue: 31,780 lines in 141 file(s)",
+     "JavaScript: 4,710 lines in 76 file(s)",
+     "CSS: 1,114 lines in 4 file(s)",
+     "Rebuild effort, open estimate: 3,690 function points, 15.5 person-years (proxies: PHP and Vue use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 18.6 person-years (proxies: PHP, Vue and CSS use the JavaScript factor)"
     ]
    },
    {
@@ -1506,11 +1636,131 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 7.9% overall (javascript 0.3%, php 9.3%, vue 2.6%) over 2001 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.3% (34 of 10449 lines, 2 clone(s) in 76 file(s))",
+     "php: 9.3% (32872 of 354253 lines, 1905 clone(s) in 1784 file(s))",
+     "vue: 2.6% (1930 of 74310 lines, 224 clone(s) in 141 file(s))",
+     "Clone of 93 lines: lib/Flow/ApplyMappingNodeInterface.php:43-135 and lib/Flow/ContractCommitNodeInterface.php:43-136",
+     "Clone of 93 lines: lib/Flow/ApplyMappingNodeInterface.php:43-135 and lib/Flow/ContractMatchNodeInterface.php:43-135",
+     "Clone of 93 lines: lib/Flow/ApplyMappingNodeInterface.php:43-135 and lib/Flow/ContractSweepNodeInterface.php:43-135",
+     "Clone of 93 lines: lib/Flow/ApplyMappingNodeInterface.php:43-135 and lib/Flow/FetchFileNodeInterface.php:43-140",
+     "Clone of 93 lines: lib/Flow/ApplyMappingNodeInterface.php:43-135 and lib/Flow/SourcePaginateNodeInterface.php:43-141"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 7.94,
+      "languages": {
+       "javascript": 0.33,
+       "php": 9.28,
+       "vue": 2.6
+      },
+      "largestClones": [
+       {
+        "language": "php",
+        "file": "lib/Flow/ApplyMappingNodeInterface.php",
+        "startLine": 43,
+        "endLine": 135,
+        "otherFile": "lib/Flow/ContractCommitNodeInterface.php",
+        "otherStartLine": 43,
+        "otherEndLine": 136,
+        "lines": 93
+       },
+       {
+        "language": "php",
+        "file": "lib/Flow/ApplyMappingNodeInterface.php",
+        "startLine": 43,
+        "endLine": 135,
+        "otherFile": "lib/Flow/ContractMatchNodeInterface.php",
+        "otherStartLine": 43,
+        "otherEndLine": 135,
+        "lines": 93
+       },
+       {
+        "language": "php",
+        "file": "lib/Flow/ApplyMappingNodeInterface.php",
+        "startLine": 43,
+        "endLine": 135,
+        "otherFile": "lib/Flow/ContractSweepNodeInterface.php",
+        "otherStartLine": 43,
+        "otherEndLine": 135,
+        "lines": 93
+       },
+       {
+        "language": "php",
+        "file": "lib/Flow/ApplyMappingNodeInterface.php",
+        "startLine": 43,
+        "endLine": 135,
+        "otherFile": "lib/Flow/FetchFileNodeInterface.php",
+        "otherStartLine": 43,
+        "otherEndLine": 140,
+        "lines": 93
+       },
+       {
+        "language": "php",
+        "file": "lib/Flow/ApplyMappingNodeInterface.php",
+        "startLine": 43,
+        "endLine": 135,
+        "otherFile": "lib/Flow/SourcePaginateNodeInterface.php",
+        "otherStartLine": 43,
+        "otherEndLine": 141,
+        "lines": 93
+       },
+       {
+        "language": "php",
+        "file": "lib/Flow/ApplyMappingNodeInterface.php",
+        "startLine": 43,
+        "endLine": 135,
+        "otherFile": "lib/Flow/SynchronizationRunNodeInterface.php",
+        "otherStartLine": 43,
+        "otherEndLine": 144,
+        "lines": 93
+       },
+       {
+        "language": "php",
+        "file": "lib/Db/OptOut.php",
+        "startLine": 1,
+        "endLine": 77,
+        "otherFile": "lib/Db/OptOutLogEntry.php",
+        "otherStartLine": 1,
+        "otherEndLine": 57,
+        "lines": 77
+       },
+       {
+        "language": "php",
+        "file": "lib/Flow/ContractSweepNode.php",
+        "startLine": 1,
+        "endLine": 77,
+        "otherFile": "lib/Flow/FetchFileNode.php",
+        "otherStartLine": 1,
+        "otherEndLine": 90,
+        "lines": 77
+       },
+       {
+        "language": "php",
+        "file": "lib/Repair/MigrateEolSchemaSlugs.php",
+        "startLine": 1,
+        "endLine": 70,
+        "otherFile": "lib/Repair/MigrateSchemaApplicationId.php",
+        "otherStartLine": 1,
+        "otherEndLine": 71,
+        "lines": 70
+       },
+       {
+        "language": "php",
+        "file": "lib/Repair/MigrateEolSchemaSlugs.php",
+        "startLine": 1,
+        "endLine": 70,
+        "otherFile": "lib/Repair/RenameDutchColumns.php",
+        "otherStartLine": 1,
+        "otherEndLine": 77,
+        "lines": 70
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1519,24 +1769,192 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP: not measured: pdepend 3.0.0 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "PHP (pdepend 3.0.0): 1,776 modules, 3,798 edges, 37 components; independence 91.9%, entanglement 0.047 (density 3.62); fan-in profile 97.7% / 1.0% / 1.3% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 38 modules in 10 cycles, largest component cycle 17",
+     "PHP components: directories below lib/ (a level is descended while one directory holds more than 80% of the modules); 1776 files under lib/ (composer.json PSR-4)",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 217 modules, 351 edges, 10 components; independence 32.9%, entanglement 0.176 (density 3.20); fan-in profile 99.9% / 0.1% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 7",
+     "JavaScript, TypeScript and Vue components: directories below src/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "php": {
-        "measured": false,
-        "reason": "pdepend 3.0.0 is not installed",
-        "files": 1784
+        "measured": true,
+        "tool": "pdepend 3.0.0",
+        "scope": "1776 files under lib/ (composer.json PSR-4)",
+        "modules": 1776,
+        "edges": 3798,
+        "loc": 135566,
+        "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 37,
+        "componentIndependence": 0.9189,
+        "componentEntanglement": {
+         "violationDegree": 0.0472,
+         "density": 3.62,
+         "communicationLines": 134,
+         "violations": {
+          "cyclic": 13,
+          "indirect-cyclic": 1,
+          "transitive": 18
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9769,
+          "moderate": 0.0099,
+          "high": 0.013,
+          "veryHigh": 0.0003
+         },
+         "above": [
+          0.0231,
+          0.0133,
+          0.0003
+         ],
+         "fanInHistogram": {
+          "0": 35947,
+          "1": 45947,
+          "2": 22655,
+          "3": 10399,
+          "4": 2571,
+          "5": 2079,
+          "6": 2247,
+          "7": 1478,
+          "8": 7411,
+          "9": 648,
+          "10": 1050,
+          "11": 336,
+          "12": 6,
+          "13": 60,
+          "14": 92,
+          "15": 47,
+          "16": 436,
+          "17": 30,
+          "19": 303,
+          "20": 27,
+          "24": 1756,
+          "43": 6,
+          "53": 13,
+          "59": 6,
+          "105": 16
+         },
+         "highestFanIn": [
+          {
+           "module": "lib/Service/Helper/RegisterSave.php",
+           "fanIn": 105
+          },
+          {
+           "module": "lib/Kernel/AppIdentity.php",
+           "fanIn": 59
+          },
+          {
+           "module": "lib/Service/ActionAuthServiceInterface.php",
+           "fanIn": 53
+          },
+          {
+           "module": "lib/Settings/IntegriqAdmin.php",
+           "fanIn": 43
+          },
+          {
+           "module": "lib/Service/CallService.php",
+           "fanIn": 24
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 10,
+         "modulesInCycles": 38,
+         "locShareInCycles": 0.1395,
+         "largestModuleCycle": 13,
+         "componentCycles": 1,
+         "largestComponentCycle": 17
+        },
+        "batches": 2
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 217
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 217,
+        "edges": 351,
+        "loc": 36490,
+        "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 10,
+        "componentIndependence": 0.329,
+        "componentEntanglement": {
+         "violationDegree": 0.1765,
+         "density": 3.2,
+         "communicationLines": 32,
+         "violations": {
+          "cyclic": 9,
+          "indirect-cyclic": 2
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9988,
+          "moderate": 0.0012,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0.0012,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 159,
+          "1": 29677,
+          "2": 4473,
+          "3": 961,
+          "4": 873,
+          "5": 129,
+          "6": 162,
+          "9": 12,
+          "17": 44
+         },
+         "highestFanIn": [
+          {
+           "module": "src/views/Rule/actionForms/shared.js",
+           "fanIn": 17
+          },
+          {
+           "module": "src/mixins/closableDialog.js",
+           "fanIn": 9
+          },
+          {
+           "module": "src/handlers/modalBus.js",
+           "fanIn": 6
+          },
+          {
+           "module": "src/mixins/adminSetting.js",
+           "fanIn": 6
+          },
+          {
+           "module": "src/modals/v2/intakeRuleApi.js",
+           "fanIn": 6
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 1,
+         "largestComponentCycle": 7
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1634,14 +2052,12 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
-    "evidence": [
-     "gitleaks is not installed on the checker host."
-    ],
+    "status": "pass",
+    "message": "Gitleaks found no committed secrets in the working tree.",
+    "evidence": [],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "openssfscorecard",
@@ -2108,10 +2524,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 19.5,
+  "durationSeconds": 22.8,
   "scanMode": "full",
-  "scanModeReason": "the code changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

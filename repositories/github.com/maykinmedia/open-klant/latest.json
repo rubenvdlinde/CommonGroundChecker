@@ -32,10 +32,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T08:59:55.818Z",
+  "lastCheckedAt": "2026-11-20T09:21:13.026Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:57.462Z",
-  "updatedAt": "2026-11-20T08:59:55.818Z",
+  "updatedAt": "2026-11-20T09:21:13.026Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -48,21 +48,21 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T08-59-55-818Z",
+  "id": "2026-11-20T09-21-13-026Z",
   "repoId": "github.com/maykinmedia/open-klant",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T08:59:55.818Z",
-  "createdAt": "2026-11-20T08:59:55.818Z",
+  "checkedAt": "2026-11-20T09:21:13.026Z",
+  "createdAt": "2026-11-20T09:21:13.026Z",
   "version": "v2.19.2",
   "checklistVersion": "2026.2",
   "scannedRef": "2.19.2",
   "scannedRefKind": "tag",
   "scannedCommit": "ac8b824d1e00c1d2db58d8f8f2015b29a8e20210",
   "score": 80,
-  "rating": 3.4,
+  "rating": 3.3,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 3.5,
+   "Security": 3.2,
    "Architecture": 3,
    "Software Quality": 2.9,
    "Deployment & Operations": 4.3
@@ -107,7 +107,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -475,7 +475,7 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 3.06 (threshold: 15)",
      "Max CCN: 37.00 (threshold: 30)",
-     "24      6    115      2      34 _prevent_protected_error_for_self_contained_identificatoren@296-329@/tmp/cgchecker-repo-y4YVIA/repo/src/openklant/management/commands/delete_klantcontacten_not_related_to_zaken.py",
+     "24      6    115      2      34 _prevent_protected_error_for_self_contained_identificatoren@296-329@/tmp/cgchecker-repo-xwLtlP/repo/src/openklant/management/commands/delete_klantcontacten_not_related_to_zaken.py",
      "!!!! Warnings (cyclomatic_complexity > 15 or length > 1000 or nloc > 1000000 or parameter_count > 100) !!!!",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
@@ -821,7 +821,7 @@
      "Lever: unit complexity in python, about 132 lines to fix for half a star",
      "Lever: unit size in python, about 181 lines to fix for half a star",
      "Lever: unit interfacing in python, about 166 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 9.8%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, python 9.7% against 9.8%"
     ],
     "requirementLevel": "recommended"
    },
@@ -832,7 +832,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 2,
-    "rating": 2,
+    "rating": 2.4285714285714284,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -953,17 +953,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "8.6%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "41.7%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "35.4%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "17.1%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "87.5%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.149",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 2
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 2.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 2.4 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★☆☆☆ 34.0% / 26.1% / 11.9% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★☆☆☆ 34.0% / 27.7% / 14.9% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★☆☆☆ 22.0% / 7.5% / 4.8% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★☆☆ 8.6% duplicated lines",
+     "Module coupling: ★★☆☆☆ 41.7% / 35.4% / 17.1% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★★☆ 87.5% of the code hidden from other components",
+     "Component entanglement: ★★☆☆☆ 0.149 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1252,9 +1346,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 179,
+     "loc": 12742,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 140,
+       "loc": 11296
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 12,
+       "loc": 965
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 19,
+       "loc": 420
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 6,
+       "loc": 55
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 2,
+       "loc": 6
+      }
+     ]
+    },
+    "message": "12,742 lines of production code in 179 file(s), counted with scc 4.1.0. Rebuild effort about 1.3 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 11,296 lines in 140 file(s)",
+     "Sass: 965 lines in 12 file(s)",
+     "HTML: 420 lines in 19 file(s)",
+     "JavaScript: 55 lines in 6 file(s)",
+     "SQL: 6 lines in 2 file(s)",
+     "Rebuild effort, open estimate: 283 function points, 1.3 person-years (proxies: Python uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 1.9 person-years (proxies: CSS, HTML and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1262,11 +1399,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 8.6% overall (javascript 0.0%, python 8.7%) over 146 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.0% (0 of 74 lines, 0 clone(s) in 6 file(s))",
+     "python: 8.7% (1203 of 13873 lines, 108 clone(s) in 140 file(s))",
+     "Clone of 66 lines: src/openklant/management/commands/migrate_to_v2.py:18-83 and src/openklant/management/commands/migrate_to_v2_phonenumbers.py:24-89",
+     "Clone of 53 lines: src/openklant/management/commands/migrate_to_v2.py:131-183 and src/openklant/management/commands/migrate_to_v2_phonenumbers.py:160-212",
+     "Clone of 38 lines: src/openklant/components/klantinteracties/admin/klantcontacten.py:30-67 and src/openklant/components/klantinteracties/admin/partijen.py:241-278",
+     "Clone of 30 lines: src/openklant/components/klantinteracties/api/schema.py:37-66 and src/openklant/components/klantinteracties/api/schema.py:112-140",
+     "Clone of 29 lines: src/openklant/components/klantinteracties/api/filterset/digitaal_adres.py:134-162 and src/openklant/components/klantinteracties/api/filterset/klantcontacten.py:326-354"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 8.63,
+      "languages": {
+       "javascript": 0,
+       "python": 8.67
+      },
+      "largestClones": [
+       {
+        "language": "python",
+        "file": "src/openklant/management/commands/migrate_to_v2.py",
+        "startLine": 18,
+        "endLine": 83,
+        "otherFile": "src/openklant/management/commands/migrate_to_v2_phonenumbers.py",
+        "otherStartLine": 24,
+        "otherEndLine": 89,
+        "lines": 66
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/management/commands/migrate_to_v2.py",
+        "startLine": 131,
+        "endLine": 183,
+        "otherFile": "src/openklant/management/commands/migrate_to_v2_phonenumbers.py",
+        "otherStartLine": 160,
+        "otherEndLine": 212,
+        "lines": 53
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/components/klantinteracties/admin/klantcontacten.py",
+        "startLine": 30,
+        "endLine": 67,
+        "otherFile": "src/openklant/components/klantinteracties/admin/partijen.py",
+        "otherStartLine": 241,
+        "otherEndLine": 278,
+        "lines": 38
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/components/klantinteracties/api/schema.py",
+        "startLine": 37,
+        "endLine": 66,
+        "otherFile": "src/openklant/components/klantinteracties/api/schema.py",
+        "otherStartLine": 112,
+        "otherEndLine": 140,
+        "lines": 30
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/components/klantinteracties/api/filterset/digitaal_adres.py",
+        "startLine": 134,
+        "endLine": 162,
+        "otherFile": "src/openklant/components/klantinteracties/api/filterset/klantcontacten.py",
+        "otherStartLine": 326,
+        "otherEndLine": 354,
+        "lines": 29
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/components/klantinteracties/admin/klantcontacten.py",
+        "startLine": 13,
+        "endLine": 35,
+        "otherFile": "src/openklant/components/klantinteracties/admin/klantcontacten.py",
+        "otherStartLine": 87,
+        "otherEndLine": 109,
+        "lines": 23
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/components/contactgegevens/admin.py",
+        "startLine": 21,
+        "endLine": 42,
+        "otherFile": "src/openklant/components/contactgegevens/admin.py",
+        "otherStartLine": 56,
+        "otherEndLine": 77,
+        "lines": 22
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/components/klantinteracties/admin/klantcontacten.py",
+        "startLine": 35,
+        "endLine": 52,
+        "otherFile": "src/openklant/components/klantinteracties/admin/klantcontacten.py",
+        "otherStartLine": 120,
+        "otherEndLine": 137,
+        "lines": 18
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/components/klantinteracties/admin/klantcontacten.py",
+        "startLine": 52,
+        "endLine": 67,
+        "otherFile": "src/openklant/components/klantinteracties/admin/klantcontacten.py",
+        "otherStartLine": 137,
+        "otherEndLine": 152,
+        "lines": 16
+       },
+       {
+        "language": "python",
+        "file": "src/openklant/components/klantinteracties/admin/klantcontacten.py",
+        "startLine": 138,
+        "endLine": 153,
+        "otherFile": "src/openklant/components/klantinteracties/admin/partijen.py",
+        "otherStartLine": 264,
+        "otherEndLine": 279,
+        "lines": 16
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1275,24 +1530,169 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 140 modules, 261 edges, 11 components; independence 87.4%, entanglement 0.150 (density 1.50); fan-in profile 91.7% / 8.3% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 5 modules in 1 cycles, largest component cycle 3",
+     "Python components: directories below src/openklant/ (a level is descended while one directory holds more than 80% of the modules); packages openklant, referentielijsten_client",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 6 modules, 2 edges, 3 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 140
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages openklant, referentielijsten_client",
+        "modules": 140,
+        "edges": 261,
+        "loc": 11748,
+        "componentDefinition": "directories below src/openklant/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 11,
+        "componentIndependence": 0.8744,
+        "componentEntanglement": {
+         "violationDegree": 0.15,
+         "density": 1.5,
+         "communicationLines": 12,
+         "violations": {
+          "cyclic": 5
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9168,
+          "moderate": 0.0832,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0.0832,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 2053,
+          "1": 3828,
+          "2": 941,
+          "3": 752,
+          "4": 676,
+          "5": 1479,
+          "6": 92,
+          "7": 352,
+          "8": 279,
+          "9": 172,
+          "10": 147,
+          "11": 212,
+          "12": 348,
+          "15": 417
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openklant/components/klantinteracties/models/partijen.py",
+           "fanIn": 15
+          },
+          {
+           "module": "src/openklant/components/klantinteracties/models/klantcontacten.py",
+           "fanIn": 12
+          },
+          {
+           "module": "src/openklant/components/klantinteracties/models/actoren.py",
+           "fanIn": 11
+          },
+          {
+           "module": "src/openklant/components/klantinteracties/models/constants.py",
+           "fanIn": 10
+          },
+          {
+           "module": "src/openklant/components/klantinteracties/models/digitaal_adres.py",
+           "fanIn": 10
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 1,
+         "modulesInCycles": 5,
+         "locShareInCycles": 0.1601,
+         "largestModuleCycle": 5,
+         "componentCycles": 2,
+         "largestComponentCycle": 3
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 6
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 6,
+        "edges": 2,
+        "loc": 55,
+        "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 3,
+        "componentIndependence": 1,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 55,
+          "1": 0
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openklant/js/components/index.js",
+           "fanIn": 1
+          },
+          {
+           "module": "src/openklant/js/views/index.js",
+           "fanIn": 1
+          },
+          {
+           "module": "build.js",
+           "fanIn": 0
+          },
+          {
+           "module": "src/openklant/js/index.js",
+           "fanIn": 0
+          },
+          {
+           "module": "src/openklant/jstests/index.js",
+           "fanIn": 0
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1405,14 +1805,24 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 39 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 85 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "generic-api-key: docker/setup_configuration/data.yaml:5",
+     "generic-api-key: docker/setup_configuration/data.yaml:27",
+     "curl-auth-header: docs/installation/config/admin_configuration.rst:169",
+     "generic-api-key: docker/setup_configuration/data_oidc.yaml:14",
+     "generic-api-key: docker/keycloak/data/test-realm.json:756",
+     "generic-api-key: docker/keycloak/data/test-realm.json:802",
+     "generic-api-key: docs/postman_collections/Klantinteracties.postman_collection.json:41825",
+     "generic-api-key: docs/postman_collections/Klantinteracties.postman_collection.json:41830",
+     "generic-api-key: docs/postman_collections/Klantinteracties.postman_collection.json:41835",
+     "generic-api-key: docs/postman_collections/Klantinteracties.postman_collection.json:41969",
+     "... and 29 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1512,7 +1922,7 @@
     "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "npm Open Klant: not measured: HTTP 405 (2026-11-20)",
-     "Docker Hub maykinmedia/open-klant: 214,310 pulls in total (2026-11-20)",
+     "Docker Hub maykinmedia/open-klant: 214,320 pulls in total (2026-11-20)",
      "GitHub maykinmedia/open-klant: 7 stars, 5 forks, 5 watchers (2026-11-20)",
      "GitHub commits maykinmedia/open-klant: 9 contributors, 7 from the owning organisation, 1 from other organisations, 1 unknown (2026-11-20)"
     ],
@@ -1540,7 +1950,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 214310
+         "value": 214320
         }
        ]
       },
@@ -1825,10 +2235,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 7.6,
+  "durationSeconds": 6.7,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

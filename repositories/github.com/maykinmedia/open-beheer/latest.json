@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T08:59:34.913Z",
+  "lastCheckedAt": "2026-11-20T09:20:50.367Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:38.677Z",
-  "updatedAt": "2026-11-20T08:59:34.913Z",
+  "updatedAt": "2026-11-20T09:20:50.367Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -42,21 +42,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T08-59-34-913Z",
+  "id": "2026-11-20T09-20-50-367Z",
   "repoId": "github.com/maykinmedia/open-beheer",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T08:59:34.913Z",
-  "createdAt": "2026-11-20T08:59:34.913Z",
+  "checkedAt": "2026-11-20T09:20:50.367Z",
+  "createdAt": "2026-11-20T09:20:50.367Z",
   "version": "v0.9.1",
   "checklistVersion": "2026.2",
   "scannedRef": "0.9.1",
   "scannedRefKind": "tag",
   "scannedCommit": "7ce9f34d1b2ec8a6e08f700201e301c2a80fea32",
   "score": 83,
-  "rating": 3.7,
+  "rating": 3.5,
   "categoryRatings": {
    "Governance": 3.2,
-   "Security": 3.5,
+   "Security": 3,
    "Architecture": 4.3,
    "Software Quality": 3.1,
    "Deployment & Operations": 4.3
@@ -101,7 +101,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -459,12 +459,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.24 (threshold: 15)",
      "Max CCN: 21.00 (threshold: 30)",
-     "5      2     20      0       7 useEffect@95-101@/tmp/cgchecker-repo-V5lO45/repo/frontend/src/hooks/useErrors.ts",
-     "5      2     20      0       7 (anonymous)@108-114@/tmp/cgchecker-repo-V5lO45/repo/frontend/src/hooks/useErrors.ts",
-     "5      2     20      0       7 (anonymous)@121-127@/tmp/cgchecker-repo-V5lO45/repo/frontend/src/hooks/useErrors.ts",
-     "7      2     32      0       7 (anonymous)@129-135@/tmp/cgchecker-repo-V5lO45/repo/frontend/src/hooks/useErrors.ts",
-     "8      2     52      0       8 (anonymous)@167-174@/tmp/cgchecker-repo-V5lO45/repo/frontend/src/hooks/useErrors.ts",
-     "4      1     16      0      16 (anonymous)@161-176@/tmp/cgchecker-repo-V5lO45/repo/frontend/src/hooks/useErrors.ts"
+     "10      4     68      3      12 format_related_resource_error@4-15@/tmp/cgchecker-repo-jraIrn/repo/backend/src/openbeheer/zaaktype/utils.py",
+     "28      4    137      2      29 handle_service_errors.wrapper@30-58@/tmp/cgchecker-repo-jraIrn/repo/backend/src/openbeheer/utils/decorators.py",
+     "6      1     30      1      47 handle_service_errors@14-60@/tmp/cgchecker-repo-jraIrn/repo/backend/src/openbeheer/utils/decorators.py",
+     "2      2     33      1       2 field_name_of_error@46-47@/tmp/cgchecker-repo-jraIrn/repo/backend/src/openbeheer/eigenschappen/api/views.py",
+     "5      2     20      0       7 useEffect@95-101@/tmp/cgchecker-repo-jraIrn/repo/frontend/src/hooks/useErrors.ts",
+     "5      2     20      0       7 (anonymous)@108-114@/tmp/cgchecker-repo-jraIrn/repo/frontend/src/hooks/useErrors.ts"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -808,7 +808,7 @@
      "Lever: unit size in typescript, about 457 lines to fix for half a star",
      "Lever: unit size in python, about 417 lines to fix for half a star",
      "Lever: unit complexity in python, about 179 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 24.0%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 35.3%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: python 23.6% against 24.0%, typescript 32.6% against 35.3%"
     ],
     "requirementLevel": "recommended"
    },
@@ -819,7 +819,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 3,
-    "rating": 3.3333333333333335,
+    "rating": 2.857142857142857,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -940,17 +940,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "27.5%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "30.6%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "25.9%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "23.6%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "70.2%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.067",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 3
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 2.9 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★☆☆ 26.6% / 12.5% / 4.1% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★☆ 21.3% / 9.6% / 5.0% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 21.0% / 6.1% / 2.1% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★☆☆☆ 27.5% duplicated lines",
+     "Module coupling: ★★☆☆☆ 30.6% / 25.9% / 23.6% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★☆☆ 70.2% of the code hidden from other components",
+     "Component entanglement: ★★★☆☆ 0.067 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1113,9 +1207,59 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 288,
+     "loc": 23818,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 140,
+       "loc": 11099
+      },
+      {
+       "language": "TypeScript",
+       "family": "typescript",
+       "files": 117,
+       "loc": 6673
+      },
+      {
+       "language": "TypeScript Typings",
+       "family": "typescript",
+       "files": 9,
+       "loc": 5428
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 15,
+       "loc": 546
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 6,
+       "loc": 69
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 1,
+       "loc": 3
+      }
+     ]
+    },
+    "message": "23,818 lines of production code in 288 file(s), counted with scc 4.1.0. Rebuild effort about 2.2 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 11,099 lines in 140 file(s)",
+     "TypeScript: 6,673 lines in 117 file(s)",
+     "TypeScript Typings: 5,428 lines in 9 file(s)",
+     "HTML: 546 lines in 15 file(s)",
+     "CSS: 69 lines in 6 file(s)",
+     "SQL: 3 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 512 function points, 2.2 person-years (proxies: Python and TypeScript use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 3.3 person-years (proxies: HTML, CSS and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1123,11 +1267,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 27.5% overall (python 17.1%, typescript 36.3%) over 266 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "python: 17.1% (2327 of 13589 lines, 127 clone(s) in 140 file(s))",
+     "typescript: 36.3% (5778 of 15913 lines, 326 clone(s) in 126 file(s))",
+     "Clone of 104 lines: frontend/src/types/selectielijst.d.ts:441-544 and frontend/src/types/selectielijst.d.ts:931-1034",
+     "Clone of 97 lines: backend/src/openbeheer/types/objecttypen.py:75-171 and backend/src/openbeheer/types/objecttypen.py:278-374",
+     "Clone of 93 lines: frontend/src/types/selectielijst.d.ts:452-544 and frontend/src/types/selectielijst.d.ts:685-777",
+     "Clone of 91 lines: backend/src/openbeheer/types/ztc.py:2692-2782 and backend/src/openbeheer/types/ztc.py:3372-3462",
+     "Clone of 86 lines: frontend/src/types/selectielijst.d.ts:582-667 and frontend/src/types/selectielijst.d.ts:816-901"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 27.47,
+      "languages": {
+       "python": 17.12,
+       "typescript": 36.31
+      },
+      "largestClones": [
+       {
+        "language": "typescript",
+        "file": "frontend/src/types/selectielijst.d.ts",
+        "startLine": 441,
+        "endLine": 544,
+        "otherFile": "frontend/src/types/selectielijst.d.ts",
+        "otherStartLine": 931,
+        "otherEndLine": 1034,
+        "lines": 104
+       },
+       {
+        "language": "python",
+        "file": "backend/src/openbeheer/types/objecttypen.py",
+        "startLine": 75,
+        "endLine": 171,
+        "otherFile": "backend/src/openbeheer/types/objecttypen.py",
+        "otherStartLine": 278,
+        "otherEndLine": 374,
+        "lines": 97
+       },
+       {
+        "language": "typescript",
+        "file": "frontend/src/types/selectielijst.d.ts",
+        "startLine": 452,
+        "endLine": 544,
+        "otherFile": "frontend/src/types/selectielijst.d.ts",
+        "otherStartLine": 685,
+        "otherEndLine": 777,
+        "lines": 93
+       },
+       {
+        "language": "python",
+        "file": "backend/src/openbeheer/types/ztc.py",
+        "startLine": 2692,
+        "endLine": 2782,
+        "otherFile": "backend/src/openbeheer/types/ztc.py",
+        "otherStartLine": 3372,
+        "otherEndLine": 3462,
+        "lines": 91
+       },
+       {
+        "language": "typescript",
+        "file": "frontend/src/types/selectielijst.d.ts",
+        "startLine": 582,
+        "endLine": 667,
+        "otherFile": "frontend/src/types/selectielijst.d.ts",
+        "otherStartLine": 816,
+        "otherEndLine": 901,
+        "lines": 86
+       },
+       {
+        "language": "typescript",
+        "file": "frontend/src/types/selectielijst.d.ts",
+        "startLine": 582,
+        "endLine": 667,
+        "otherFile": "frontend/src/types/selectielijst.d.ts",
+        "otherStartLine": 1072,
+        "otherEndLine": 1157,
+        "lines": 86
+       },
+       {
+        "language": "typescript",
+        "file": "frontend/src/types/selectielijst.d.ts",
+        "startLine": 470,
+        "endLine": 544,
+        "otherFile": "frontend/src/types/selectielijst.d.ts",
+        "otherStartLine": 593,
+        "otherEndLine": 667,
+        "lines": 75
+       },
+       {
+        "language": "typescript",
+        "file": "frontend/src/fixtures/template.ts",
+        "startLine": 12,
+        "endLine": 80,
+        "otherFile": "frontend/src/fixtures/template.ts",
+        "otherStartLine": 153,
+        "otherEndLine": 221,
+        "lines": 69
+       },
+       {
+        "language": "python",
+        "file": "backend/src/openbeheer/types/ztc.py",
+        "startLine": 82,
+        "endLine": 147,
+        "otherFile": "backend/src/openbeheer/types/ztc.py",
+        "otherStartLine": 226,
+        "otherEndLine": 291,
+        "lines": 66
+       },
+       {
+        "language": "typescript",
+        "file": "frontend/src/types/api.d.ts",
+        "startLine": 1391,
+        "endLine": 1452,
+        "otherFile": "frontend/src/types/api.d.ts",
+        "otherStartLine": 3008,
+        "otherEndLine": 3069,
+        "lines": 62
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1136,24 +1398,169 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 140 modules, 172 edges, 21 components; independence 40.0%, entanglement 0.137 (density 2.89); fan-in profile 58.9% / 5.7% / 35.4% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 9 modules in 3 cycles, largest component cycle 6",
+     "Python components: directories below backend/src/openbeheer/ (a level is descended while one directory holds more than 80% of the modules); packages openbeheer",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 126 modules, 90 edges, 11 components; independence 98.9%, entanglement 0.000 (density 0.50); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below frontend/src/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 140
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages openbeheer",
+        "modules": 140,
+        "edges": 172,
+        "loc": 11463,
+        "componentDefinition": "directories below backend/src/openbeheer/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 21,
+        "componentIndependence": 0.3999,
+        "componentEntanglement": {
+         "violationDegree": 0.1373,
+         "density": 2.89,
+         "communicationLines": 55,
+         "violations": {
+          "cyclic": 10,
+          "transitive": 4
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.5889,
+          "moderate": 0.0569,
+          "high": 0.3543,
+          "veryHigh": 0
+         },
+         "above": [
+          0.4111,
+          0.3543,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 1314,
+          "1": 2620,
+          "2": 320,
+          "3": 1104,
+          "4": 494,
+          "5": 43,
+          "6": 91,
+          "8": 651,
+          "10": 113,
+          "14": 652,
+          "21": 3999,
+          "27": 62
+         },
+         "highestFanIn": [
+          {
+           "module": "backend/src/openbeheer/types/__init__.py",
+           "fanIn": 27
+          },
+          {
+           "module": "backend/src/openbeheer/types/ztc.py",
+           "fanIn": 21
+          },
+          {
+           "module": "backend/src/openbeheer/api/views.py",
+           "fanIn": 14
+          },
+          {
+           "module": "backend/src/openbeheer/clients.py",
+           "fanIn": 10
+          },
+          {
+           "module": "backend/src/openbeheer/types/_open_beheer.py",
+           "fanIn": 8
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 3,
+         "modulesInCycles": 9,
+         "locShareInCycles": 0.2211,
+         "largestModuleCycle": 5,
+         "componentCycles": 1,
+         "largestComponentCycle": 6
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 126
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 126,
+        "edges": 90,
+        "loc": 12101,
+        "componentDefinition": "directories below frontend/src/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 11,
+        "componentIndependence": 0.9888,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0.5,
+         "communicationLines": 1,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 6789,
+          "1": 4517,
+          "2": 795
+         },
+         "highestFanIn": [
+          {
+           "module": "frontend/src/components/VersionSelector/VersionSelector.tsx",
+           "fanIn": 2
+          },
+          {
+           "module": "frontend/src/components/profile/Profile.tsx",
+           "fanIn": 2
+          },
+          {
+           "module": "frontend/src/components/zaaktypefilter/ZaaktypeFilter.tsx",
+           "fanIn": 2
+          },
+          {
+           "module": "frontend/src/pages/informatieobjecttypecreate/informatieobjecttype.action.ts",
+           "fanIn": 2
+          },
+          {
+           "module": "frontend/src/pages/login/Login.tsx",
+           "fanIn": 2
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1236,14 +1643,14 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 1 potential secret in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 3 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "generic-api-key: backend/docker-services/objecttypen/setup_configuration/data.yaml:5"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1355,7 +1762,7 @@
     "evidence": [
      "Docker Hub maykinmedia/open-beheer: 4,974 pulls in total (2026-11-20)",
      "GitHub maykinmedia/open-beheer: 2 stars, 1 forks, 3 watchers (2026-11-20)",
-     "GitHub commits maykinmedia/open-beheer: 3 contributors, 2 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-20)"
+     "GitHub commits maykinmedia/open-beheer: 4 contributors, 3 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-20)"
     ],
     "usage": {
      "sources": [
@@ -1408,11 +1815,11 @@
        "figures": [
         {
          "label": "contributors",
-         "value": 3
+         "value": 4
         },
         {
          "label": "from the owning organisation",
-         "value": 2
+         "value": 3
         },
         {
          "label": "from other organisations",
@@ -1441,7 +1848,7 @@
       "name": "Contributor Absence Factor",
       "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
       "value": "1",
-      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 2 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 3 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
       "target": {
        "text": "at least 2 people",
        "met": false
@@ -1452,7 +1859,7 @@
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
       "value": "1 organisation; largest 100%",
-      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (60 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (2 authors), with 100% of the 8 commits whose organisation is known; 87% of the commits come from 1 of 3 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (63 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (3 authors), with 100% of the 11 commits whose organisation is known; 83% of the commits come from 1 of 4 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": false
@@ -1462,8 +1869,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "0.20",
-      "explanation": "3 change requests were closed (merged or not) and 15 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "0.27",
+      "explanation": "4 change requests were closed (merged or not) and 15 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": false
@@ -1725,10 +2132,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 5.6,
+  "durationSeconds": 9.2,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

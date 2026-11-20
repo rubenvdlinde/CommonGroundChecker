@@ -50,10 +50,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:03:16.666Z",
+  "lastCheckedAt": "2026-11-20T09:23:54.753Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:03:37.938Z",
-  "updatedAt": "2026-11-20T09:03:16.666Z",
+  "updatedAt": "2026-11-20T09:23:54.753Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -64,21 +64,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-03-16-666Z",
+  "id": "2026-11-20T09-23-54-753Z",
   "repoId": "gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:03:16.666Z",
-  "createdAt": "2026-11-20T09:03:16.666Z",
+  "checkedAt": "2026-11-20T09:23:54.753Z",
+  "createdAt": "2026-11-20T09:23:54.753Z",
   "version": "v0.8.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v0.8.0",
   "scannedRefKind": "release",
   "scannedCommit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247",
   "score": 65,
-  "rating": 3.1,
+  "rating": 2.9,
   "categoryRatings": {
    "Governance": 2,
-   "Security": 3.5,
+   "Security": 3,
    "Architecture": 3,
    "Software Quality": 3.5,
    "Deployment & Operations": 3.3
@@ -123,7 +123,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -471,12 +471,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.89 (threshold: 15)",
      "Max CCN: 39.00 (threshold: 30)",
-     "16      5     88      1      17 policyWriteError@56-72@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/storage/policies.go",
-     "3      1     23      0       3 Error@126-128@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/management/decision_point.go",
-     "6      4     58      1       6 stateWithoutError@56-61@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/ui/src/auth/useSession.ts",
-     "2      2     19      0       2 reader.onerror@35-36@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/ui/src/routes/instellingen/index.tsx",
-     "5      1     48      1       5 OtherAddressWarning@5-9@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/ui/src/routes/beslispunten/$id/-components/OtherAddressWarning.tsx",
-     "11      5     59      1      13 lookupErrorMessage@80-92@/tmp/cgchecker-repo-ZGACaE/repo/apps/manager/ui/src/utilities/errorMessages.ts"
+     "3      1     18      1       3 dsnError@47-49@/tmp/cgchecker-repo-YYRU7s/repo/utilities/storage/postgresql/pool/pool.go",
+     "3      1     59      1       3 baseError@51-53@/tmp/cgchecker-repo-YYRU7s/repo/utilities/storage/postgresql/pool/pool.go",
+     "4      1     41      1       4 connectionError@55-58@/tmp/cgchecker-repo-YYRU7s/repo/utilities/storage/postgresql/pool/pool.go",
+     "4      1     40      2       4 error@120-123@/tmp/cgchecker-repo-YYRU7s/repo/eam/bundles/run.go",
+     "3      1     18      1       3 Unauthenticated@11-13@/tmp/cgchecker-repo-YYRU7s/repo/eam/authentication/errors.go",
+     "3      1     23      0       3 Error@16-18@/tmp/cgchecker-repo-YYRU7s/repo/eam/authentication/errors.go"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -778,7 +778,7 @@
      "Lever: unit size in typescript, about 521 lines to fix for half a star",
      "Lever: unit complexity in typescript, about 157 lines to fix for half a star",
      "Lever: duplication in typescript, about 760 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 18.2%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, typescript 17.0% against 18.2%"
     ],
     "requirementLevel": "recommended"
    },
@@ -788,8 +788,8 @@
     "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
-    "starRating": 3,
-    "rating": 3,
+    "starRating": 4,
+    "rating": 3.5714285714285716,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -910,17 +910,111 @@
         "stars": 5
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "23.2%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "5.8%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "3.0%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "2.6%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "100.0%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.000",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 5
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.6 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★☆☆☆ 46.6% / 37.3% / 25.5% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★☆☆ 32.1% / 22.4% / 12.8% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★★☆ 2.5% / 0.5% / 0.0% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★☆☆☆ 23.2% duplicated lines",
+     "Module coupling: ★★★★☆ 5.8% / 3.0% / 2.6% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★★★ 100.0% of the code hidden from other components",
+     "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1083,9 +1177,59 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 220,
+     "loc": 12308,
+     "languages": [
+      {
+       "language": "TypeScript",
+       "family": "typescript",
+       "files": 155,
+       "loc": 11671
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 2,
+       "loc": 302
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 56,
+       "loc": 273
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 2,
+       "loc": 33
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 3,
+       "loc": 23
+      },
+      {
+       "language": "TypeScript Typings",
+       "family": "typescript",
+       "files": 2,
+       "loc": 6
+      }
+     ]
+    },
+    "message": "12,308 lines of production code in 220 file(s), counted with scc 4.1.0. Rebuild effort about 1.2 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "TypeScript: 11,671 lines in 155 file(s)",
+     "CSS: 302 lines in 2 file(s)",
+     "SQL: 273 lines in 56 file(s)",
+     "HTML: 33 lines in 2 file(s)",
+     "JavaScript: 23 lines in 3 file(s)",
+     "TypeScript Typings: 6 lines in 2 file(s)",
+     "Rebuild effort, open estimate: 272 function points, 1.2 person-years (proxies: TypeScript uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 1.5 person-years (proxies: CSS, SQL and HTML use the JavaScript factor)"
     ]
    },
    {
@@ -1093,11 +1237,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 23.2% overall (javascript 0.0%, typescript 23.2%) over 160 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.0% (0 of 29 lines, 0 clone(s) in 3 file(s))",
+     "typescript: 23.2% (3441 of 14819 lines, 280 clone(s) in 157 file(s))",
+     "Clone of 82 lines: apps/manager/ui/src/oas/attributes.ts:1055-1136 and apps/manager/ui/src/oas/policies.ts:693-795",
+     "Clone of 46 lines: apps/manager/ui/src/oas/attributes.ts:1056-1101 and apps/manager/ui/src/oas/authlog.ts:147-192",
+     "Clone of 37 lines: apps/manager/ui/src/oas/attributes.ts:517-553 and apps/manager/ui/src/oas/bundles.ts:166-202",
+     "Clone of 37 lines: apps/manager/ui/src/oas/attributes.ts:517-553 and apps/manager/ui/src/oas/settings.ts:26-62",
+     "Clone of 36 lines: apps/manager/ui/src/oas/attributes.ts:1055-1090 and apps/manager/ui/src/oas/settings.ts:133-177"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 23.17,
+      "languages": {
+       "javascript": 0,
+       "typescript": 23.22
+      },
+      "largestClones": [
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 1055,
+        "endLine": 1136,
+        "otherFile": "apps/manager/ui/src/oas/policies.ts",
+        "otherStartLine": 693,
+        "otherEndLine": 795,
+        "lines": 82
+       },
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 1056,
+        "endLine": 1101,
+        "otherFile": "apps/manager/ui/src/oas/authlog.ts",
+        "otherStartLine": 147,
+        "otherEndLine": 192,
+        "lines": 46
+       },
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 517,
+        "endLine": 553,
+        "otherFile": "apps/manager/ui/src/oas/bundles.ts",
+        "otherStartLine": 166,
+        "otherEndLine": 202,
+        "lines": 37
+       },
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 517,
+        "endLine": 553,
+        "otherFile": "apps/manager/ui/src/oas/settings.ts",
+        "otherStartLine": 26,
+        "otherEndLine": 62,
+        "lines": 37
+       },
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 1055,
+        "endLine": 1090,
+        "otherFile": "apps/manager/ui/src/oas/settings.ts",
+        "otherStartLine": 133,
+        "otherEndLine": 177,
+        "lines": 36
+       },
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 565,
+        "endLine": 599,
+        "otherFile": "apps/manager/ui/src/oas/policies.ts",
+        "otherStartLine": 332,
+        "otherEndLine": 366,
+        "lines": 35
+       },
+       {
+        "language": "typescript",
+        "file": "apps/laadpalen-applicatie/src/pages/AanvraagDetail.tsx",
+        "startLine": 325,
+        "endLine": 358,
+        "otherFile": "apps/laadpalen-applicatie/src/pages/Behandelaar.tsx",
+        "otherStartLine": 42,
+        "otherEndLine": 75,
+        "lines": 34
+       },
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 534,
+        "endLine": 565,
+        "otherFile": "apps/manager/ui/src/oas/policies.ts",
+        "otherStartLine": 287,
+        "otherEndLine": 318,
+        "lines": 32
+       },
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 894,
+        "endLine": 925,
+        "otherFile": "apps/manager/ui/src/oas/policies.ts",
+        "otherStartLine": 566,
+        "otherEndLine": 597,
+        "lines": 32
+       },
+       {
+        "language": "typescript",
+        "file": "apps/manager/ui/src/oas/attributes.ts",
+        "startLine": 895,
+        "endLine": 925,
+        "otherFile": "apps/manager/ui/src/oas/settings.ts",
+        "otherStartLine": 95,
+        "otherEndLine": 121,
+        "lines": 31
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1106,18 +1368,91 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 160 modules, 133 edges, 4 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below apps/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 160
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 160,
+        "edges": 133,
+        "loc": 11663,
+        "componentDefinition": "directories below apps/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 4,
+        "componentIndependence": 1,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 8008,
+          "1": 2797,
+          "2": 178,
+          "3": 334,
+          "4": 31,
+          "5": 15,
+          "6": 42,
+          "7": 156,
+          "8": 24,
+          "10": 78
+         },
+         "highestFanIn": [
+          {
+           "module": "apps/manager/ui/src/routes/beslispunten/$id/-constants/texts.ts",
+           "fanIn": 10
+          },
+          {
+           "module": "apps/manager/ui/src/routes/beslispunten/-constants/texts.ts",
+           "fanIn": 8
+          },
+          {
+           "module": "apps/laadpalen-applicatie/src/lib/api/client.ts",
+           "fanIn": 7
+          },
+          {
+           "module": "apps/manager/ui/src/api/client/base.ts",
+           "fanIn": 7
+          },
+          {
+           "module": "apps/laadpalen-applicatie/src/lib/api/queryKeys.ts",
+           "fanIn": 6
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 228
        }
       }
      }
@@ -1248,14 +1583,24 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 18 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 9 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "generic-api-key: apps/laadpalen-applicatie/.env:3",
+     "generic-api-key: apps/mock-dataspace/dataspaces/rvig/brp/schema.yaml:460",
+     "generic-api-key: apps/mock-dataspace/dataspaces/rvig/brp/schema.yaml:620",
+     "generic-api-key: apps/mock-dataspace/dataspaces/rvig/brp/schema.yaml:1536",
+     "generic-api-key: deploy/kustomize/simulation-release/laadpalen-applicatie.yaml:21",
+     "generic-api-key: demo/rvig/kong/conf.yaml.template:40",
+     "generic-api-key: deploy/kustomize/simulation-pre-release/laadpalen-applicatie.yaml:21",
+     "private-key: pki/gemeente-vlierdam/ca/ca-key.pem:1",
+     "private-key: pki/gemeente-vlierdam/pdp2/key.pem:1",
+     "private-key: pki/gemeente-vlierdam/pdp1/key.pem:1",
+     "... and 8 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1491,10 +1836,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 35,
+  "durationSeconds": 30.5,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

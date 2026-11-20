@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T08:50:43.292Z",
+  "lastCheckedAt": "2026-11-20T09:11:47.072Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:52:38.861Z",
-  "updatedAt": "2026-11-20T08:50:43.292Z",
+  "updatedAt": "2026-11-20T09:11:47.072Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,21 +44,21 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T08-50-43-292Z",
+  "id": "2026-11-20T09-11-47-072Z",
   "repoId": "github.com/ConductionNL/anonymiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T08:50:43.292Z",
-  "createdAt": "2026-11-20T08:50:43.292Z",
+  "checkedAt": "2026-11-20T09:11:47.072Z",
+  "createdAt": "2026-11-20T09:11:47.072Z",
   "version": "v1.3.0",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
   "scannedCommit": "d35829fe4b92746ead5274abb38dcef50365d438",
   "score": 80,
-  "rating": 4,
+  "rating": 4.2,
   "categoryRatings": {
    "Governance": 2.6,
-   "Security": 3.5,
+   "Security": 4,
    "Architecture": 4.3,
    "Software Quality": 4.7,
    "Deployment & Operations": 5.5
@@ -103,7 +103,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 5.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -159,7 +159,7 @@
   },
   "issueCounts": {
    "errors": 1,
-   "warnings": 12
+   "warnings": 11
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -459,10 +459,10 @@
      "Analyzer: lizard",
      "Average CCN: 2.11 (threshold: 15)",
      "Max CCN: 12.00 (threshold: 30)",
-     "9      2     68      1      10 _deanonymization_error@162-171@/tmp/cgchecker-repo-9EjcPx/repo/src/api/document_routes.py",
-     "11      2     28      1      11 DocumentError@35-45@/tmp/cgchecker-repo-9EjcPx/repo/src/ui/src/components/page-states.tsx",
-     "7      1     20      1       7 ErrorMessage@193-199@/tmp/cgchecker-repo-9EjcPx/repo/src/ui/src/components/anonymization-form.tsx",
-     "3      2     24      2       3 errorMessage@25-27@/tmp/cgchecker-repo-9EjcPx/repo/src/ui/src/hooks/use-file-choice.ts",
+     "7      1     20      1       7 ErrorMessage@193-199@/tmp/cgchecker-repo-FLUKF8/repo/src/ui/src/components/anonymization-form.tsx",
+     "11      2     28      1      11 DocumentError@35-45@/tmp/cgchecker-repo-FLUKF8/repo/src/ui/src/components/page-states.tsx",
+     "3      2     24      2       3 errorMessage@25-27@/tmp/cgchecker-repo-FLUKF8/repo/src/ui/src/hooks/use-file-choice.ts",
+     "9      2     68      1      10 _deanonymization_error@162-171@/tmp/cgchecker-repo-FLUKF8/repo/src/api/document_routes.py",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
@@ -806,7 +806,7 @@
      "Lever: component independence in python, about 52 lines to fix for half a star",
      "Lever: component independence in js/ts/vue, about 930 lines to fix for half a star",
      "Lever: unit size in typescript",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.3%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 1.3%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: python 0.3% against 0.3%, typescript 1.3% against 1.3%"
     ],
     "requirementLevel": "recommended"
    },
@@ -816,8 +816,8 @@
     "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
-    "starRating": 5,
-    "rating": 4.666666666666667,
+    "starRating": 4,
+    "rating": 4,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -938,17 +938,111 @@
         "stars": 5
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.8%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "35.5%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "12.1%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "6.8%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "67.2%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.027",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 4
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 4.7 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 4.0 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★★ 0.0% / 0.0% / 0.0% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★★ 0.7% / 0.0% / 0.0% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★★☆ 3.5% / 0.6% / 0.0% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★★★ 0.8% duplicated lines",
+     "Module coupling: ★★☆☆☆ 35.5% / 12.1% / 6.8% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★☆☆ 67.2% of the code hidden from other components",
+     "Component entanglement: ★★★★☆ 0.027 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1111,9 +1205,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 66,
+     "loc": 3430,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 31,
+       "loc": 1868
+      },
+      {
+       "language": "TypeScript",
+       "family": "typescript",
+       "files": 30,
+       "loc": 1379
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 3,
+       "loc": 170
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 1,
+       "loc": 13
+      },
+      {
+       "language": "TypeScript Typings",
+       "family": "typescript",
+       "files": 1,
+       "loc": 0
+      }
+     ]
+    },
+    "message": "3,430 lines of production code in 66 file(s), counted with scc 4.1.0. Rebuild effort about 0.3 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 1,868 lines in 31 file(s)",
+     "TypeScript: 1,379 lines in 30 file(s)",
+     "CSS: 170 lines in 3 file(s)",
+     "HTML: 13 lines in 1 file(s)",
+     "TypeScript Typings: 0 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 74 function points, 0.3 person-years (proxies: Python and TypeScript use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 0.5 person-years (proxies: CSS and HTML use the JavaScript factor)"
     ]
    },
    {
@@ -1121,11 +1258,79 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 0.8% overall (python 0.2%, typescript 1.8%) over 62 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "python: 0.2% (7 of 3076 lines, 1 clone(s) in 31 file(s))",
+     "typescript: 1.8% (28 of 1596 lines, 4 clone(s) in 31 file(s))",
+     "Clone of 7 lines: src/api/documents/pdf_xmp.py:740-746 and src/api/documents/pdf_xmp.py:768-774",
+     "Clone of 7 lines: src/ui/src/components/deanonymize-form.tsx:12-18 and src/ui/src/components/document-upload.tsx:39-45",
+     "Clone of 7 lines: src/ui/src/components/ui/card.tsx:4-10 and src/ui/src/components/ui/card.tsx:19-25",
+     "Clone of 7 lines: src/ui/src/components/ui/card.tsx:4-10 and src/ui/src/components/ui/card.tsx:58-62",
+     "Clone of 7 lines: src/ui/src/components/ui/card.tsx:4-10 and src/ui/src/components/ui/card.tsx:66-72"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 0.75,
+      "languages": {
+       "python": 0.23,
+       "typescript": 1.75
+      },
+      "largestClones": [
+       {
+        "language": "python",
+        "file": "src/api/documents/pdf_xmp.py",
+        "startLine": 740,
+        "endLine": 746,
+        "otherFile": "src/api/documents/pdf_xmp.py",
+        "otherStartLine": 768,
+        "otherEndLine": 774,
+        "lines": 7
+       },
+       {
+        "language": "typescript",
+        "file": "src/ui/src/components/deanonymize-form.tsx",
+        "startLine": 12,
+        "endLine": 18,
+        "otherFile": "src/ui/src/components/document-upload.tsx",
+        "otherStartLine": 39,
+        "otherEndLine": 45,
+        "lines": 7
+       },
+       {
+        "language": "typescript",
+        "file": "src/ui/src/components/ui/card.tsx",
+        "startLine": 4,
+        "endLine": 10,
+        "otherFile": "src/ui/src/components/ui/card.tsx",
+        "otherStartLine": 19,
+        "otherEndLine": 25,
+        "lines": 7
+       },
+       {
+        "language": "typescript",
+        "file": "src/ui/src/components/ui/card.tsx",
+        "startLine": 4,
+        "endLine": 10,
+        "otherFile": "src/ui/src/components/ui/card.tsx",
+        "otherStartLine": 58,
+        "otherEndLine": 62,
+        "lines": 7
+       },
+       {
+        "language": "typescript",
+        "file": "src/ui/src/components/ui/card.tsx",
+        "startLine": 4,
+        "endLine": 10,
+        "otherFile": "src/ui/src/components/ui/card.tsx",
+        "otherStartLine": 66,
+        "otherEndLine": 72,
+        "lines": 7
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1134,24 +1339,168 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 31 modules, 46 edges, 5 components; independence 96.9%, entanglement 0.000 (density 1.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 2 modules in 1 cycles, largest component cycle 0",
+     "Python components: directories below src/api/ (a level is descended while one directory holds more than 80% of the modules); packages src",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 31 modules, 71 edges, 6 components; independence 16.8%, entanglement 0.073 (density 1.20); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below src/ui/src/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 31
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages src",
+        "modules": 31,
+        "edges": 46,
+        "loc": 2338,
+        "componentDefinition": "directories below src/api/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 5,
+        "componentIndependence": 0.9692,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 1,
+         "communicationLines": 3,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 89,
+          "1": 1096,
+          "2": 189,
+          "3": 797,
+          "4": 82,
+          "6": 85
+         },
+         "highestFanIn": [
+          {
+           "module": "src/api/analysis/analyzer.py",
+           "fanIn": 6
+          },
+          {
+           "module": "src/api/documents/database.py",
+           "fanIn": 6
+          },
+          {
+           "module": "src/api/config.py",
+           "fanIn": 4
+          },
+          {
+           "module": "src/api/documents/crud.py",
+           "fanIn": 3
+          },
+          {
+           "module": "src/api/documents/pdf_xmp.py",
+           "fanIn": 3
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 1,
+         "modulesInCycles": 2,
+         "locShareInCycles": 0.0821,
+         "largestModuleCycle": 2,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 31
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 31,
+        "edges": 71,
+        "loc": 1379,
+        "componentDefinition": "directories below src/ui/src/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 6,
+        "componentIndependence": 0.1682,
+        "componentEntanglement": {
+         "violationDegree": 0.0732,
+         "density": 1.2,
+         "communicationLines": 6,
+         "violations": {
+          "transitive": 1
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 39,
+          "1": 907,
+          "2": 79,
+          "3": 71,
+          "4": 64,
+          "5": 50,
+          "6": 49,
+          "7": 71,
+          "9": 49
+         },
+         "highestFanIn": [
+          {
+           "module": "src/ui/src/components/ui/button.tsx",
+           "fanIn": 9
+          },
+          {
+           "module": "src/ui/src/components/ui/card.tsx",
+           "fanIn": 7
+          },
+          {
+           "module": "src/ui/src/components/layout.tsx",
+           "fanIn": 6
+          },
+          {
+           "module": "src/ui/src/lib/utils/cn.ts",
+           "fanIn": 6
+          },
+          {
+           "module": "src/ui/src/components/ui/badge.tsx",
+           "fanIn": 5
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1230,14 +1579,12 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
-    "evidence": [
-     "gitleaks is not installed on the checker host."
-    ],
+    "status": "pass",
+    "message": "Gitleaks found no committed secrets in the working tree.",
+    "evidence": [],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "openssfscorecard",
@@ -1539,10 +1886,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 4.1,
+  "durationSeconds": 3.1,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

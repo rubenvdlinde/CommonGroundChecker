@@ -35,10 +35,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:01:26.149Z",
+  "lastCheckedAt": "2026-11-20T09:22:22.105Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:41.154Z",
-  "updatedAt": "2026-11-20T09:01:26.149Z",
+  "updatedAt": "2026-11-20T09:22:22.105Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -54,11 +54,11 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-01-26-149Z",
+  "id": "2026-11-20T09-22-22-105Z",
   "repoId": "github.com/open-zaak/open-zaak",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:01:26.149Z",
-  "createdAt": "2026-11-20T09:01:26.149Z",
+  "checkedAt": "2026-11-20T09:22:22.105Z",
+  "createdAt": "2026-11-20T09:22:22.105Z",
   "version": "v1.31.2",
   "checklistVersion": "2026.2",
   "scannedRef": "1.31.0",
@@ -68,7 +68,7 @@
   "rating": 3.6,
   "categoryRatings": {
    "Governance": 4.2,
-   "Security": 3.5,
+   "Security": 3.2,
    "Architecture": 3,
    "Software Quality": 3.2,
    "Deployment & Operations": 4.3
@@ -113,7 +113,7 @@
     "rating": 3
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 3
@@ -652,12 +652,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.82 (threshold: 15)",
      "Max CCN: 31.00 (threshold: 30)",
-     "1      1      7      0       1 (anonymous)@17-17@/tmp/cgchecker-repo-u4vVSp/repo/src/openzaak/js/forms/error-list.js",
-     "11      2     63      1      12 ErrorList@9-20@/tmp/cgchecker-repo-u4vVSp/repo/src/openzaak/js/forms/error-list.js",
-     "2      1     10      2       2 _publish_validation_errors@70-71@/tmp/cgchecker-repo-u4vVSp/repo/src/openzaak/components/catalogi/admin/mixins.py",
-     "17      2     77      2      18 _publish_validation_errors@156-173@/tmp/cgchecker-repo-u4vVSp/repo/src/openzaak/components/catalogi/admin/mixins.py",
-     "7      5     70      2      17 format_serializer_errors@27-43@/tmp/cgchecker-repo-u4vVSp/repo/src/openzaak/components/catalogi/admin/utils.py",
-     "5      2     29      2       7 _publish_validation_errors@341-347@/tmp/cgchecker-repo-u4vVSp/repo/src/openzaak/components/catalogi/admin/zaaktypen.py"
+     "1      1      7      0       1 (anonymous)@17-17@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/js/forms/error-list.js",
+     "11      2     63      1      12 ErrorList@9-20@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/js/forms/error-list.js",
+     "2      1     10      2       2 _publish_validation_errors@70-71@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/components/catalogi/admin/mixins.py",
+     "17      2     77      2      18 _publish_validation_errors@156-173@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/components/catalogi/admin/mixins.py",
+     "7      5     70      2      17 format_serializer_errors@27-43@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/components/catalogi/admin/utils.py",
+     "5      2     29      2       7 _publish_validation_errors@341-347@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/components/catalogi/admin/zaaktypen.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1001,7 +1001,7 @@
      "Lever: unit complexity in python, about 603 lines to fix for half a star",
      "Lever: unit interfacing in python, about 622 lines to fix for half a star",
      "Lever: duplication in python, about 629 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 4.2%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 6.4%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 4.2% against 4.2%, python 6.4% against 6.4%"
     ],
     "requirementLevel": "recommended"
    },
@@ -1133,17 +1133,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "5.9%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "36.7%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "26.5%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "14.4%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "83.0%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.056",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 3
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.0 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★☆☆ 36.0% / 22.5% / 8.6% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★☆☆ 32.1% / 20.2% / 11.9% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 21.3% / 9.4% / 5.8% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★☆☆ 5.9% duplicated lines",
+     "Module coupling: ★★☆☆☆ 36.7% / 26.5% / 14.4% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★★☆ 83.0% of the code hidden from other components",
+     "Component entanglement: ★★★☆☆ 0.056 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1434,9 +1528,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 444,
+     "loc": 40490,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 342,
+       "loc": 36565
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 46,
+       "loc": 1532
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 33,
+       "loc": 1415
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 22,
+       "loc": 976
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 1,
+       "loc": 2
+      }
+     ]
+    },
+    "message": "40,490 lines of production code in 444 file(s), counted with scc 4.1.0. Rebuild effort about 3.9 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 36,565 lines in 342 file(s)",
+     "HTML: 1,532 lines in 46 file(s)",
+     "JavaScript: 1,415 lines in 33 file(s)",
+     "Sass: 976 lines in 22 file(s)",
+     "SQL: 2 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 882 function points, 3.9 person-years (proxies: Python uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 6.1 person-years (proxies: HTML, CSS and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1444,11 +1581,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 5.9% overall (javascript 5.4%, python 5.9%) over 375 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 5.4% (96 of 1780 lines, 10 clone(s) in 33 file(s))",
+     "python: 5.9% (2800 of 47260 lines, 248 clone(s) in 342 file(s))",
+     "Clone of 37 lines: src/openzaak/components/zaken/api/viewsets.py:1712-1748 and src/openzaak/components/zaken/api/viewsets.py:1812-1848",
+     "Clone of 34 lines: src/openzaak/management/commands/generate_data.py:721-754 and src/openzaak/management/commands/generate_data.py:796-829",
+     "Clone of 31 lines: src/openzaak/components/zaken/api/serializers/zaken.py:1821-1851 and src/openzaak/components/zaken/api/serializers/zaken.py:2011-2041",
+     "Clone of 28 lines: src/openzaak/components/catalogi/api/serializers/eigenschap.py:49-76 and src/openzaak/components/catalogi/api/serializers/roltype.py:19-46",
+     "Clone of 27 lines: src/openzaak/components/zaken/api/viewsets.py:969-995 and src/openzaak/components/zaken/api/viewsets.py:1722-1748"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 5.91,
+      "languages": {
+       "javascript": 5.39,
+       "python": 5.92
+      },
+      "largestClones": [
+       {
+        "language": "python",
+        "file": "src/openzaak/components/zaken/api/viewsets.py",
+        "startLine": 1712,
+        "endLine": 1748,
+        "otherFile": "src/openzaak/components/zaken/api/viewsets.py",
+        "otherStartLine": 1812,
+        "otherEndLine": 1848,
+        "lines": 37
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/management/commands/generate_data.py",
+        "startLine": 721,
+        "endLine": 754,
+        "otherFile": "src/openzaak/management/commands/generate_data.py",
+        "otherStartLine": 796,
+        "otherEndLine": 829,
+        "lines": 34
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/components/zaken/api/serializers/zaken.py",
+        "startLine": 1821,
+        "endLine": 1851,
+        "otherFile": "src/openzaak/components/zaken/api/serializers/zaken.py",
+        "otherStartLine": 2011,
+        "otherEndLine": 2041,
+        "lines": 31
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/components/catalogi/api/serializers/eigenschap.py",
+        "startLine": 49,
+        "endLine": 76,
+        "otherFile": "src/openzaak/components/catalogi/api/serializers/roltype.py",
+        "otherStartLine": 19,
+        "otherEndLine": 46,
+        "lines": 28
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/components/zaken/api/viewsets.py",
+        "startLine": 969,
+        "endLine": 995,
+        "otherFile": "src/openzaak/components/zaken/api/viewsets.py",
+        "otherStartLine": 1722,
+        "otherEndLine": 1748,
+        "lines": 27
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/components/autorisaties/admin_views.py",
+        "startLine": 87,
+        "endLine": 110,
+        "otherFile": "src/openzaak/components/autorisaties/admin_views.py",
+        "otherStartLine": 117,
+        "otherEndLine": 140,
+        "lines": 24
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/components/zaken/admin/objecten.py",
+        "startLine": 9,
+        "endLine": 32,
+        "otherFile": "src/openzaak/components/zaken/api/serializers/objecten.py",
+        "otherStartLine": 14,
+        "otherEndLine": 37,
+        "lines": 24
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/components/besluiten/api/viewsets.py",
+        "startLine": 280,
+        "endLine": 302,
+        "otherFile": "src/openzaak/components/zaken/api/viewsets.py",
+        "otherStartLine": 971,
+        "otherEndLine": 995,
+        "lines": 23
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/components/zaken/admin/zaken.py",
+        "startLine": 46,
+        "endLine": 68,
+        "otherFile": "src/openzaak/components/zaken/admin/zaken.py",
+        "otherStartLine": 147,
+        "otherEndLine": 169,
+        "lines": 23
+       },
+       {
+        "language": "python",
+        "file": "src/openzaak/components/zaken/models/objecten.py",
+        "startLine": 312,
+        "endLine": 334,
+        "otherFile": "src/openzaak/components/zaken/models/objecten.py",
+        "otherStartLine": 400,
+        "otherEndLine": 422,
+        "lines": 23
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1457,24 +1712,183 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 342 modules, 808 edges, 17 components; independence 82.8%, entanglement 0.058 (density 2.42); fan-in profile 93.7% / 5.4% / 0.9% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 34 modules in 2 cycles, largest component cycle 8",
+     "Python components: directories below src/openzaak/ (a level is descended while one directory holds more than 80% of the modules); packages openzaak",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 33 modules, 55 edges, 7 components; independence 89.0%, entanglement 0.000 (density 0.75); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below src/openzaak/js/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 342
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages openzaak",
+        "modules": 342,
+        "edges": 808,
+        "loc": 38109,
+        "componentDefinition": "directories below src/openzaak/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 17,
+        "componentIndependence": 0.828,
+        "componentEntanglement": {
+         "violationDegree": 0.0577,
+         "density": 2.42,
+         "communicationLines": 29,
+         "violations": {
+          "cyclic": 5,
+          "indirect-cyclic": 3,
+          "transitive": 4
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9371,
+          "moderate": 0.0536,
+          "high": 0.0094,
+          "veryHigh": 0
+         },
+         "above": [
+          0.0629,
+          0.0094,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 4389,
+          "1": 10708,
+          "2": 8664,
+          "3": 3984,
+          "4": 1801,
+          "5": 2939,
+          "6": 555,
+          "7": 601,
+          "8": 385,
+          "9": 1092,
+          "10": 593,
+          "12": 171,
+          "13": 87,
+          "14": 338,
+          "15": 59,
+          "16": 5,
+          "17": 341,
+          "20": 1040,
+          "21": 264,
+          "22": 79,
+          "30": 4,
+          "48": 10
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openzaak/components/catalogi/models/__init__.py",
+           "fanIn": 48
+          },
+          {
+           "module": "src/openzaak/components/zaken/models/__init__.py",
+           "fanIn": 30
+          },
+          {
+           "module": "src/openzaak/utils/mixins.py",
+           "fanIn": 22
+          },
+          {
+           "module": "src/openzaak/utils/permissions.py",
+           "fanIn": 21
+          },
+          {
+           "module": "src/openzaak/components/documenten/models.py",
+           "fanIn": 20
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 2,
+         "modulesInCycles": 34,
+         "locShareInCycles": 0.2345,
+         "largestModuleCycle": 32,
+         "componentCycles": 1,
+         "largestComponentCycle": 8
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 33
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 33,
+        "edges": 55,
+        "loc": 1415,
+        "componentDefinition": "directories below src/openzaak/js/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 7,
+        "componentIndependence": 0.8898,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0.75,
+         "communicationLines": 3,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 50,
+          "1": 1047,
+          "2": 158,
+          "3": 37,
+          "5": 42,
+          "6": 81
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openzaak/js/forms/inputs.js",
+           "fanIn": 6
+          },
+          {
+           "module": "src/openzaak/js/components/admin/applicatie-autorisaties/context.js",
+           "fanIn": 5
+          },
+          {
+           "module": "src/openzaak/js/forms/error-list.js",
+           "fanIn": 5
+          },
+          {
+           "module": "src/openzaak/js/forms/types.js",
+           "fanIn": 5
+          },
+          {
+           "module": "src/openzaak/js/components/admin/external-services/context.js",
+           "fanIn": 3
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1602,14 +2016,23 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 10 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 43 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "private-key: docker/certs/openzaak.key:4",
+     "private-key: docker/certs/mocks.key:4",
+     "generic-api-key: docker/docker-compose.azurite.yml:31",
+     "generic-api-key: docker/setup_configuration/data.yaml:76",
+     "jwt: docs/client-development/authentication.rst:63",
+     "jwt: docs/client-development/authentication.rst:71",
+     "generic-api-key: docker/keycloak/data/test-realm.json:756",
+     "generic-api-key: docker/keycloak/data/test-realm.json:802",
+     "generic-api-key: src/openzaak/conf/ci.py:33",
+     "generic-api-key: src/openzaak/conf/dev.py:46"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1720,7 +2143,7 @@
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
      "publiccode.yml usedBy: 8 organisations named (2026-11-20)",
-     "Docker Hub openzaak/open-zaak: 650,251 pulls in total (2026-11-20)",
+     "Docker Hub openzaak/open-zaak: 650,324 pulls in total (2026-11-20)",
      "GitHub open-zaak/open-zaak: 60 stars, 44 forks, 10 watchers (2026-11-20)",
      "GitHub commits open-zaak/open-zaak: 21 contributors, 14 from the owning organisation, 3 from other organisations, 4 unknown (2026-11-20)"
     ],
@@ -1762,7 +2185,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 650251
+         "value": 650324
         }
        ]
       },
@@ -2138,10 +2561,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 18.2,
+  "durationSeconds": 14.8,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

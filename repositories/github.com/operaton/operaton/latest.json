@@ -32,10 +32,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:02:00.274Z",
+  "lastCheckedAt": "2026-11-20T09:22:49.683Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:02:41.654Z",
-  "updatedAt": "2026-11-20T09:02:00.274Z",
+  "updatedAt": "2026-11-20T09:22:49.683Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -48,11 +48,11 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-02-00-274Z",
+  "id": "2026-11-20T09-22-49-683Z",
   "repoId": "github.com/operaton/operaton",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:02:00.274Z",
-  "createdAt": "2026-11-20T09:02:00.274Z",
+  "checkedAt": "2026-11-20T09:22:49.683Z",
+  "createdAt": "2026-11-20T09:22:49.683Z",
   "version": "v2.2.2",
   "checklistVersion": "2026.2",
   "scannedRef": "v2.2.2",
@@ -104,10 +104,10 @@
     "rating": 0.5
    },
    "container-images": {
-    "rating": 3
+    "rating": 5.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 3
@@ -166,7 +166,7 @@
   },
   "issueCounts": {
    "errors": 3,
-   "warnings": 12
+   "warnings": 11
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -389,16 +389,18 @@
     "title": "Helm chart on Artifact Hub, images scanned",
     "description": "A container component registers its Helm chart on Artifact Hub, which scans the chart's container images with Trivy. The latest version must have no critical vulnerabilities.",
     "referenceUrl": "https://artifacthub.io/packages/helm/operaton/operaton",
-    "status": "warn",
-    "message": "Not measured: Artifact Hub has no security report for operaton/operaton 1.2.2 yet. A new version is scanned within the hour; check that its images are public.",
+    "status": "pass",
+    "message": "Artifact Hub scanned the image of operaton/operaton 1.2.2 with Trivy on 20 November 2026: no critical vulnerabilities. In total: 0 critical, 3 high, 17 medium, 2 low, 0 unknown.",
     "evidence": [
      "Container component: it publishes a container image (operaton/operaton:latest (declared in webapps-neo/frontend/docker-compose.dev-fixtures.yaml))",
      "Artifact Hub package: https://artifacthub.io/packages/helm/operaton/operaton",
-     "Matched because the package's Operaton BPM link (https://github.com/operaton/operaton) points at operaton/operaton"
+     "Matched because the package's Operaton BPM link (https://github.com/operaton/operaton) points at operaton/operaton",
+     "Scanned with Trivy on 20 November 2026",
+     "operaton/operaton:2.2.2-jdk25: 0 critical, 3 high, 17 medium, 2 low, 0 unknown"
     ],
     "requirementLevel": "mandatory",
     "mandatoryFrom": "2027-05-19",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "documentation",
@@ -477,12 +479,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 1.62 (threshold: 15)",
      "Max CCN: 146.00 (threshold: 30)",
-     "9      3     68      0      10 MetaAnnotationMethodMatcher::SuppressWarnings@51-60@/tmp/cgchecker-repo-1TMM4N/repo/engine-spring/src/main/java/org/operaton/bpm/engine/spring/components/aop/util/MetaAnnotationMethodMatcher.java",
-     "35      8    253      0      46 (anonymous)::SuppressWarnings@104-149@/tmp/cgchecker-repo-1TMM4N/repo/engine-spring/src/main/java/org/operaton/bpm/engine/spring/components/aop/ActivitiStateAnnotationBeanPostProcessor.java",
-     "28      5    217      0      33 ProcessScope::SuppressWarnings@89-121@/tmp/cgchecker-repo-1TMM4N/repo/engine-spring/src/main/java/org/operaton/bpm/engine/spring/components/scope/ProcessScope.java",
-     "10      2     75      0      11 SpringTransactionInterceptor::SuppressWarnings@58-68@/tmp/cgchecker-repo-1TMM4N/repo/engine-spring/src/main/java/org/operaton/bpm/engine/spring/SpringTransactionInterceptor.java",
-     "16      4     99      2      17 Task.bpmnError@479-495@/tmp/cgchecker-repo-1TMM4N/repo/webapps/frontend/operaton-bpm-sdk-js/lib/api-client/resources/task.js",
-     "3      1     14      1       3 forwardError@138-140@/tmp/cgchecker-repo-1TMM4N/repo/webapps/frontend/operaton-bpm-sdk-js/lib/api-client/index.js"
+     "11      3     80      0      14 ServiceTracker::SuppressWarnings@46-59@/tmp/cgchecker-repo-a4iEAf/repo/distro/wildfly/subsystem/src/main/java/org/operaton/bpm/container/impl/jboss/util/ServiceTracker.java",
+     "11      4     86      0      16 MscRuntimeContainerDelegate::SuppressWarnings@137-152@/tmp/cgchecker-repo-a4iEAf/repo/distro/wildfly/subsystem/src/main/java/org/operaton/bpm/container/impl/jboss/service/MscRuntimeContainerDelegate.java",
+     "3      1      8      0       3 VariableInstanceDto::getErrorMessage@109-111@/tmp/cgchecker-repo-a4iEAf/repo/clients/java/client/src/it/java/org/operaton/bpm/client/dto/VariableInstanceDto.java",
+     "3      1     13      1       3 VariableInstanceDto::setErrorMessage@113-115@/tmp/cgchecker-repo-a4iEAf/repo/clients/java/client/src/it/java/org/operaton/bpm/client/dto/VariableInstanceDto.java",
+     "6      1     50      0       8 ExternalTaskHandlerIT::adjustProcessToAddErrorMessageVariable@72-79@/tmp/cgchecker-repo-a4iEAf/repo/clients/java/client/src/it/java/org/operaton/bpm/client/task/ExternalTaskHandlerIT.java",
+     "12      1    117      0      18 ExternalTaskHandlerIT::shouldInvokeHandleBpmnError@450-467@/tmp/cgchecker-repo-a4iEAf/repo/clients/java/client/src/it/java/org/operaton/bpm/client/task/ExternalTaskHandlerIT.java"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -824,7 +826,7 @@
      "Lever: unit interfacing in javascript, about 114 lines to fix for half a star",
      "Lever: unit size in javascript, about 1577 lines to fix for half a star",
      "Lever: duplication in javascript, about 1516 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 8.1%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 2.0%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 8.0% against 8.1%, python 2.0% against 2.0%"
     ],
     "requirementLevel": "recommended"
    },
@@ -835,7 +837,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 3,
-    "rating": 2.6666666666666665,
+    "rating": 2.75,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -956,14 +958,32 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "6.9%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 2.7 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 2.8 of 5, the mean of 4 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★☆☆☆ 32.3% / 23.1% / 12.0% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★☆☆ 22.7% / 15.0% / 9.8% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 11.3% / 5.9% / 3.5% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
+     "Duplication: ★★★☆☆ 6.9% duplicated lines",
      "Module coupling: not measured",
      "Component independence: not measured",
      "Component entanglement: not measured",
@@ -1149,9 +1169,66 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 1559,
+     "loc": 114360,
+     "languages": [
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 542,
+       "loc": 42608
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 624,
+       "loc": 29578
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 216,
+       "loc": 15962
+      },
+      {
+       "language": "JSX",
+       "family": "javascript",
+       "files": 40,
+       "loc": 13644
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 114,
+       "loc": 6814
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 15,
+       "loc": 4409
+      },
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 8,
+       "loc": 1345
+      }
+     ]
+    },
+    "message": "114,360 lines of production code in 1,559 file(s), counted with scc 4.1.0. Rebuild effort about 19.9 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "JavaScript: 42,608 lines in 542 file(s)",
+     "SQL: 29,578 lines in 624 file(s)",
+     "HTML: 15,962 lines in 216 file(s)",
+     "JSX: 13,644 lines in 40 file(s)",
+     "Sass: 6,814 lines in 114 file(s)",
+     "CSS: 4,409 lines in 15 file(s)",
+     "Python: 1,345 lines in 8 file(s)",
+     "Rebuild effort, open estimate: 3,434 function points, 19.9 person-years (proxies: CSS uses the HTML factor; Python uses the JavaScript factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 12.4 person-years (proxies: SQL, HTML and CSS use the JavaScript factor)"
     ]
    },
    {
@@ -1159,11 +1236,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 6.9% overall (javascript 7.0%, python 1.9%) over 590 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 7.0% (5604 of 79989 lines, 493 clone(s) in 582 file(s))",
+     "python: 1.9% (33 of 1759 lines, 3 clone(s) in 8 file(s))",
+     "Clone of 56 lines: webapps/frontend/operaton-commons-ui/lib/widgets/bpmn-viewer/cam-widget-bpmn-viewer.js:88-143 and webapps/frontend/operaton-commons-ui/lib/widgets/cmmn-viewer/cam-widget-cmmn-viewer.js:82-137",
+     "Clone of 43 lines: webapps/frontend/ui/cockpit/plugins/decisionList/app/views/decisionInstance/inputTable.js:48-90 and webapps/frontend/ui/cockpit/plugins/decisionList/app/views/decisionInstance/outputTable.js:48-90",
+     "Clone of 37 lines: webapps/frontend/ui/admin/client/scripts/pages/groups.js:37-73 and webapps/frontend/ui/admin/client/scripts/pages/tenants.js:46-82",
+     "Clone of 35 lines: webapps-neo/frontend/src/components/TaskForm.jsx:131-165 and webapps-neo/frontend/src/components/TaskForm.jsx:259-293",
+     "Clone of 35 lines: webapps/frontend/operaton-commons-ui/lib/auth/directives/camIfLoggedIn.js:18-52 and webapps/frontend/operaton-commons-ui/lib/auth/directives/camIfLoggedOut.js:18-56"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 6.9,
+      "languages": {
+       "javascript": 7.01,
+       "python": 1.88
+      },
+      "largestClones": [
+       {
+        "language": "javascript",
+        "file": "webapps/frontend/operaton-commons-ui/lib/widgets/bpmn-viewer/cam-widget-bpmn-viewer.js",
+        "startLine": 88,
+        "endLine": 143,
+        "otherFile": "webapps/frontend/operaton-commons-ui/lib/widgets/cmmn-viewer/cam-widget-cmmn-viewer.js",
+        "otherStartLine": 82,
+        "otherEndLine": 137,
+        "lines": 56
+       },
+       {
+        "language": "javascript",
+        "file": "webapps/frontend/ui/cockpit/plugins/decisionList/app/views/decisionInstance/inputTable.js",
+        "startLine": 48,
+        "endLine": 90,
+        "otherFile": "webapps/frontend/ui/cockpit/plugins/decisionList/app/views/decisionInstance/outputTable.js",
+        "otherStartLine": 48,
+        "otherEndLine": 90,
+        "lines": 43
+       },
+       {
+        "language": "javascript",
+        "file": "webapps/frontend/ui/admin/client/scripts/pages/groups.js",
+        "startLine": 37,
+        "endLine": 73,
+        "otherFile": "webapps/frontend/ui/admin/client/scripts/pages/tenants.js",
+        "otherStartLine": 46,
+        "otherEndLine": 82,
+        "lines": 37
+       },
+       {
+        "language": "javascript",
+        "file": "webapps-neo/frontend/src/components/TaskForm.jsx",
+        "startLine": 131,
+        "endLine": 165,
+        "otherFile": "webapps-neo/frontend/src/components/TaskForm.jsx",
+        "otherStartLine": 259,
+        "otherEndLine": 293,
+        "lines": 35
+       },
+       {
+        "language": "javascript",
+        "file": "webapps/frontend/operaton-commons-ui/lib/auth/directives/camIfLoggedIn.js",
+        "startLine": 18,
+        "endLine": 52,
+        "otherFile": "webapps/frontend/operaton-commons-ui/lib/auth/directives/camIfLoggedOut.js",
+        "otherStartLine": 18,
+        "otherEndLine": 56,
+        "lines": 35
+       },
+       {
+        "language": "javascript",
+        "file": "webapps/frontend/ui/cockpit/client/scripts/pages/processDefinition.js",
+        "startLine": 248,
+        "endLine": 281,
+        "otherFile": "webapps/frontend/ui/cockpit/client/scripts/pages/processInstance.js",
+        "otherStartLine": 110,
+        "otherEndLine": 146,
+        "lines": 34
+       },
+       {
+        "language": "javascript",
+        "file": "webapps-neo/frontend/src/pages/Processes.jsx",
+        "startLine": 1517,
+        "endLine": 1549,
+        "otherFile": "webapps-neo/frontend/src/pages/Processes.jsx",
+        "otherStartLine": 1840,
+        "otherEndLine": 1871,
+        "lines": 33
+       },
+       {
+        "language": "javascript",
+        "file": "webapps/frontend/operaton-commons-ui/lib/widgets/bpmn-viewer/cam-widget-bpmn-viewer.js",
+        "startLine": 272,
+        "endLine": 304,
+        "otherFile": "webapps/frontend/operaton-commons-ui/lib/widgets/cmmn-viewer/cam-widget-cmmn-viewer.js",
+        "otherStartLine": 212,
+        "otherEndLine": 244,
+        "lines": 33
+       },
+       {
+        "language": "javascript",
+        "file": "webapps/frontend/ui/admin/client/scripts/operaton-admin-ui.js",
+        "startLine": 109,
+        "endLine": 141,
+        "otherFile": "webapps/frontend/ui/cockpit/client/scripts/operaton-cockpit-ui.js",
+        "otherStartLine": 129,
+        "otherEndLine": 161,
+        "lines": 33
+       },
+       {
+        "language": "javascript",
+        "file": "webapps/frontend/ui/admin/client/scripts/pages/groups.js",
+        "startLine": 41,
+        "endLine": 73,
+        "otherFile": "webapps/frontend/ui/admin/client/scripts/pages/users.js",
+        "otherStartLine": 52,
+        "otherEndLine": 84,
+        "lines": 33
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1172,10 +1367,11 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of JavaScript, TypeScript and Vue. Not measured: Python. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python: not measured: no Python file sits in a package (a directory with __init__.py)",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 582 modules, 829 edges, 10 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 98.4% / 0.6% / 1.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 2 modules in 1 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below webapps/frontend/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
@@ -1183,13 +1379,91 @@
       "languages": {
        "python": {
         "measured": false,
-        "reason": "grimp 3.18 is not installed",
+        "reason": "no Python file sits in a package (a directory with __init__.py)",
         "files": 8
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 582
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 582,
+        "edges": 829,
+        "loc": 56241,
+        "componentDefinition": "directories below webapps/frontend/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 10,
+        "componentIndependence": 1,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9838,
+          "moderate": 0.0061,
+          "high": 0.0101,
+          "veryHigh": 0
+         },
+         "above": [
+          0.0162,
+          0.0101,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 2981,
+          "1": 47536,
+          "2": 2066,
+          "3": 1104,
+          "4": 608,
+          "5": 230,
+          "6": 378,
+          "7": 290,
+          "8": 79,
+          "9": 59,
+          "13": 109,
+          "20": 235,
+          "22": 53,
+          "23": 108,
+          "30": 97,
+          "34": 308
+         },
+         "highestFanIn": [
+          {
+           "module": "webapps-neo/frontend/src/api/helper.jsx",
+           "fanIn": 34
+          },
+          {
+           "module": "webapps/frontend/operaton-bpm-sdk-js/lib/api-client/abstract-client-resource.js",
+           "fanIn": 30
+          },
+          {
+           "module": "webapps-neo/frontend/src/config.js",
+           "fanIn": 23
+          },
+          {
+           "module": "webapps-neo/frontend/src/api/engine_rest.jsx",
+           "fanIn": 22
+          },
+          {
+           "module": "webapps-neo/frontend/src/state.js",
+           "fanIn": 20
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 1,
+         "modulesInCycles": 2,
+         "locShareInCycles": 0.0053,
+         "largestModuleCycle": 2,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1287,14 +1561,17 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 4 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 3 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "generic-api-key: clients/java/client/src/it/java/org/operaton/bpm/client/variable/pa/PaSerializationIT.java:63",
+     "generic-api-key: clients/java/client/src/it/java/org/operaton/bpm/client/variable/pa/PaExceptionIT.java:55",
+     "pkcs12-file: distro/run/assembly/resources/keystore.p12:0",
+     "curl-auth-user: webapps-neo/frontend/dev-fixtures/README.md:194"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1404,7 +1681,7 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub releases: 20,394 release file downloads, 30 releases with files (2026-11-20)",
+     "GitHub releases: 20,396 release file downloads, 30 releases with files (2026-11-20)",
      "GitHub operaton/operaton: 526 stars, 140 forks, 12 watchers (2026-11-20)",
      "GitHub commits operaton/operaton: 19 contributors, 4 from the owning organisation, 10 from other organisations, 5 unknown (2026-11-20)"
     ],
@@ -1421,7 +1698,7 @@
        "figures": [
         {
          "label": "release file downloads",
-         "value": 20394
+         "value": 20396
         },
         {
          "label": "releases with files",
@@ -1794,10 +2071,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 53.5,
+  "durationSeconds": 38.5,
   "scanMode": "full",
-  "scanModeReason": "the code changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

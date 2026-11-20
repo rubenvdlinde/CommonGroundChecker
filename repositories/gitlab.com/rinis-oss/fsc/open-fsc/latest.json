@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:03:54.446Z",
+  "lastCheckedAt": "2026-11-20T09:24:31.232Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:04:15.013Z",
-  "updatedAt": "2026-11-20T09:03:54.446Z",
+  "updatedAt": "2026-11-20T09:24:31.232Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -42,21 +42,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-03-54-446Z",
+  "id": "2026-11-20T09-24-31-232Z",
   "repoId": "gitlab.com/rinis-oss/fsc/open-fsc",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:03:54.446Z",
-  "createdAt": "2026-11-20T09:03:54.446Z",
+  "checkedAt": "2026-11-20T09:24:31.232Z",
+  "createdAt": "2026-11-20T09:24:31.232Z",
   "version": "v2.9.1",
   "checklistVersion": "2026.2",
   "scannedRef": "v2.9.1",
   "scannedRefKind": "release",
   "scannedCommit": "6dde76b4532fae04aed3de5aa42fe38cab505040",
   "score": 60,
-  "rating": 3,
+  "rating": 2.9,
   "categoryRatings": {
    "Governance": 2.6,
-   "Security": 2.6,
+   "Security": 2.2,
    "Architecture": 3,
    "Software Quality": 4.2,
    "Deployment & Operations": 3.3
@@ -101,7 +101,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 3
@@ -451,12 +451,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 3.73 (threshold: 15)",
      "Max CCN: 63.00 (threshold: 30)",
-     "4      1     31      2       4 WriteError@12-15@/tmp/cgchecker-repo-O2nvJm/repo/outway/http/http.go",
-     "10      2    111      3      13 proxyErrorHandler@60-72@/tmp/cgchecker-repo-O2nvJm/repo/outway/proxies.go",
-     "3      1     15      0       3 Error@19-21@/tmp/cgchecker-repo-O2nvJm/repo/txlog-api/app/errors/errors.go",
-     "3      1     15      0       3 ErrorType@23-25@/tmp/cgchecker-repo-O2nvJm/repo/txlog-api/app/errors/errors.go",
-     "6      1     21      1       6 NewIncorrectInputError@27-32@/tmp/cgchecker-repo-O2nvJm/repo/txlog-api/app/errors/errors.go",
-     "3      1     23      0       3 Error@1630-1632@/tmp/cgchecker-repo-O2nvJm/repo/txlog-api/ports/rest/api/server/rest-server.gen.go"
+     "3      1     23      0       3 Error@1630-1632@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     31      0       3 Error@1643-1645@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     23      0       3 Error@1655-1657@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     23      0       3 Error@1664-1666@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     31      0       3 Error@1677-1679@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     27      0       3 Error@1690-1692@/tmp/cgchecker-repo-HDbjK7/repo/txlog-api/ports/rest/api/server/rest-server.gen.go"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -679,7 +679,7 @@
      "Lever: component independence in js/ts/vue, about 11 lines to fix for half a star",
      "Lever: unit size in javascript, about 19 lines to fix for half a star",
      "Lever: duplication in javascript, about 5 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 5.1%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 5.1% against 5.1%"
     ],
     "requirementLevel": "recommended"
    },
@@ -690,7 +690,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 5,
-    "rating": 4.666666666666667,
+    "rating": 4.571428571428571,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -811,17 +811,111 @@
         "stars": 5
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "3.8%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "89.5%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.000",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 5
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 4.7 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 4.6 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★☆ 12.3% / 0.0% / 0.0% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★★ 5.7% / 0.0% / 0.0% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★★★ 0.0% / 0.0% / 0.0% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★★☆ 3.8% duplicated lines",
+     "Module coupling: ★★★★★ 0.0% / 0.0% / 0.0% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★★☆ 89.5% of the code hidden from other components",
+     "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1004,9 +1098,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 193,
+     "loc": 12753,
+     "languages": [
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 51,
+       "loc": 7160
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 66,
+       "loc": 3335
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 63,
+       "loc": 1853
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 12,
+       "loc": 373
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 1,
+       "loc": 32
+      }
+     ]
+    },
+    "message": "12,753 lines of production code in 193 file(s), counted with scc 4.1.0. Rebuild effort about 2.9 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "HTML: 7,160 lines in 51 file(s)",
+     "Sass: 3,335 lines in 66 file(s)",
+     "SQL: 1,853 lines in 63 file(s)",
+     "JavaScript: 373 lines in 12 file(s)",
+     "CSS: 32 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 406 function points, 2.9 person-years (proxies: CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 1.4 person-years (proxies: HTML, CSS and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1014,11 +1151,44 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 3.8% overall (javascript 3.8%) over 12 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 3.8% (19 of 501 lines, 2 clone(s) in 12 file(s))",
+     "Clone of 10 lines: scripts/semantic-release-helm/index.js:21-30 and scripts/semantic-release-installation-guide-yaml/index.js:20-29",
+     "Clone of 9 lines: controller/ports/administration/ui/assets/js/copy.mjs:14-22 and controller/ports/administration/ui/assets/js/properties-templates.mjs:14-22"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 3.79,
+      "languages": {
+       "javascript": 3.79
+      },
+      "largestClones": [
+       {
+        "language": "javascript",
+        "file": "scripts/semantic-release-helm/index.js",
+        "startLine": 21,
+        "endLine": 30,
+        "otherFile": "scripts/semantic-release-installation-guide-yaml/index.js",
+        "otherStartLine": 20,
+        "otherEndLine": 29,
+        "lines": 10
+       },
+       {
+        "language": "javascript",
+        "file": "controller/ports/administration/ui/assets/js/copy.mjs",
+        "startLine": 14,
+        "endLine": 22,
+        "otherFile": "controller/ports/administration/ui/assets/js/properties-templates.mjs",
+        "otherStartLine": 14,
+        "otherEndLine": 22,
+        "lines": 9
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1027,18 +1197,83 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 12 modules, 1 edges, 7 components; independence 89.5%, entanglement 0.000 (density 0.50); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 12
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 12,
+        "edges": 1,
+        "loc": 373,
+        "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 7,
+        "componentIndependence": 0.8954,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0.5,
+         "communicationLines": 1,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 334,
+          "1": 39
+         },
+         "highestFanIn": [
+          {
+           "module": "scripts/semantic-release-installation-guide-yaml/index.js",
+           "fanIn": 1
+          },
+          {
+           "module": "ca-certportal/ports/web/public/js/app.js",
+           "fanIn": 0
+          },
+          {
+           "module": "commitlint-parser-preset.mjs",
+           "fanIn": 0
+          },
+          {
+           "module": "controller/ports/administration/ui/assets/js/copy.mjs",
+           "fanIn": 0
+          },
+          {
+           "module": "controller/ports/administration/ui/assets/js/index.mjs",
+           "fanIn": 0
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1160,14 +1395,24 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 95 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 3 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "private-key: helm/deploy/vergunningsoftware-bv/values.yaml:197",
+     "private-key: helm/deploy/vergunningsoftware-bv/values.yaml:314",
+     "kubernetes-secret-yaml: helm/deploy/gemeente-riemer/templates/internal-ca-secret.yaml:2",
+     "private-key: helm/deploy/gemeente-stijns/values.yaml:199",
+     "private-key: helm/deploy/gemeente-stijns/values.yaml:316",
+     "generic-api-key: helm/deploy/gemeente-stijns/values.yaml:569",
+     "private-key: helm/deploy/gemeente-riemer/values.yaml:131",
+     "private-key: helm/deploy/gemeente-riemer/values.yaml:249",
+     "kubernetes-secret-yaml: helm/deploy/gemeente-stijns/templates/secret-outway-2-server-tls.yaml:2",
+     "private-key: helm/deploy/gemeente-stijns/templates/secret-outway-2-server-tls.yaml:9",
+     "... and 85 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1327,8 +1572,8 @@
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": "4 organisations; largest 58%",
-      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (273 commits by people, after the .mailmap) and, the forge does not say which account made a commit, so personal and hidden addresses stay unknown. The largest is an organisation with one author, with 58% of the 88 commits whose organisation is known; 68% of the commits come from 2 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "value": "4 organisations; largest 59%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (272 commits by people, after the .mailmap) and, the forge does not say which account made a commit, so personal and hidden addresses stay unknown. The largest is an organisation with one author, with 59% of the 87 commits whose organisation is known; 68% of the commits come from 2 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1403,10 +1648,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 42.4,
+  "durationSeconds": 35.7,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

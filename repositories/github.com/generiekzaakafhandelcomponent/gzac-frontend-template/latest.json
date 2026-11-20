@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T08:57:59.116Z",
+  "lastCheckedAt": "2026-11-20T09:19:26.450Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:58:53.221Z",
-  "updatedAt": "2026-11-20T08:57:59.116Z",
+  "updatedAt": "2026-11-20T09:19:26.450Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -42,11 +42,11 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T08-57-59-116Z",
+  "id": "2026-11-20T09-19-26-450Z",
   "repoId": "github.com/generiekzaakafhandelcomponent/gzac-frontend-template",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T08:57:59.116Z",
-  "createdAt": "2026-11-20T08:57:59.116Z",
+  "checkedAt": "2026-11-20T09:19:26.450Z",
+  "createdAt": "2026-11-20T09:19:26.450Z",
   "version": "v13.55.1",
   "checklistVersion": "2026.2",
   "scannedRef": "13.55.1",
@@ -56,7 +56,7 @@
   "rating": 3.2,
   "categoryRatings": {
    "Governance": 1.3,
-   "Security": 3.3,
+   "Security": 3.6,
    "Architecture": 4.3,
    "Software Quality": 3.9,
    "Deployment & Operations": 3.3
@@ -101,7 +101,7 @@
     "rating": null
    },
    "secrets": {
-    "rating": 3
+    "rating": 5.5
    },
    "secure-coding": {
     "rating": 3
@@ -161,7 +161,7 @@
   },
   "issueCounts": {
    "errors": 5,
-   "warnings": 18
+   "warnings": 17
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -425,7 +425,7 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 24.79 (threshold: 15)",
      "Max CCN: 4750.00 (threshold: 30)",
-     "1      1     14      1       1 a.getErrorEventDefinition@1-1@/tmp/cgchecker-repo-YBFm5s/repo/src/assets/bpmn/ValtimoBPMNModeler.js",
+     "1      1     14      1       1 a.getErrorEventDefinition@1-1@/tmp/cgchecker-repo-EV8xZG/repo/src/assets/bpmn/ValtimoBPMNModeler.js",
      "!!!! Warnings (cyclomatic_complexity > 15 or length > 1000 or nloc > 1000000 or parameter_count > 100) !!!!",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
@@ -730,7 +730,7 @@
      "Lever: component independence in js/ts/vue, about 233 lines to fix for half a star",
      "Lever: unit complexity in javascript, about 2 lines to fix for half a star",
      "Lever: unit interfacing in javascript, about 7 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, typescript 0.0% against 0.0%"
     ],
     "requirementLevel": "recommended"
    },
@@ -741,7 +741,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 4,
-    "rating": 4,
+    "rating": 4.142857142857143,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -862,17 +862,111 @@
         "stars": 4
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "33.4%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.000",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 5
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 4.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 4.1 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★★ 0.0% / 0.0% / 0.0% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★☆ 4.1% / 3.0% / 1.5% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 16.7% / 3.0% / 1.1% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★★★ 0.0% duplicated lines",
+     "Module coupling: ★★★★★ 0.0% / 0.0% / 0.0% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★☆☆☆ 33.4% of the code hidden from other components",
+     "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1173,9 +1267,45 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 17,
+     "loc": 611,
+     "languages": [
+      {
+       "language": "TypeScript",
+       "family": "typescript",
+       "files": 11,
+       "loc": 556
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 2,
+       "loc": 31
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 2,
+       "loc": 24
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 2,
+       "loc": 0
+      }
+     ]
+    },
+    "message": "611 lines of production code in 17 file(s), counted with scc 4.1.0. Rebuild effort about 0.1 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "TypeScript: 556 lines in 11 file(s)",
+     "JavaScript: 31 lines in 2 file(s)",
+     "HTML: 24 lines in 2 file(s)",
+     "Sass: 0 lines in 2 file(s)",
+     "Rebuild effort, open estimate: 13 function points, 0.1 person-years (proxies: TypeScript uses the JavaScript factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 0.1 person-years (proxies: HTML uses the JavaScript factor)"
     ]
    },
    {
@@ -1183,11 +1313,23 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 0.0% overall (javascript 0.0%, typescript 0.0%) over 15 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.0% (0 of 66 lines, 0 clone(s) in 3 file(s))",
+     "typescript: 0.0% (0 of 709 lines, 0 clone(s) in 12 file(s))"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 0,
+      "languages": {
+       "javascript": 0,
+       "typescript": 0
+      },
+      "largestClones": []
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1196,18 +1338,84 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 15 modules, 9 edges, 4 components; independence 33.4%, entanglement 0.000 (density 1.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below src/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 15
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 15,
+        "edges": 9,
+        "loc": 596,
+        "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 4,
+        "componentIndependence": 0.3339,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 1,
+         "communicationLines": 3,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 97,
+          "1": 334,
+          "2": 165
+         },
+         "highestFanIn": [
+          {
+           "module": "src/environments/environment.ts",
+           "fanIn": 2
+          },
+          {
+           "module": "src/app/app-plugins.ts",
+           "fanIn": 1
+          },
+          {
+           "module": "src/app/app-routing.module.ts",
+           "fanIn": 1
+          },
+          {
+           "module": "src/app/app.component.ts",
+           "fanIn": 1
+          },
+          {
+           "module": "src/app/app.module.ts",
+           "fanIn": 1
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1276,14 +1484,12 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
-    "evidence": [
-     "gitleaks is not installed on the checker host."
-    ],
+    "status": "pass",
+    "message": "Gitleaks found no committed secrets in the working tree.",
+    "evidence": [],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "openssfscorecard",
@@ -1529,10 +1735,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 44.5,
+  "durationSeconds": 37.6,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

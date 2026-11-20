@@ -35,10 +35,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:01:20.032Z",
+  "lastCheckedAt": "2026-11-20T09:22:16.831Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:09.221Z",
-  "updatedAt": "2026-11-20T09:01:20.032Z",
+  "updatedAt": "2026-11-20T09:22:16.831Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -51,21 +51,21 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-01-20-032Z",
+  "id": "2026-11-20T09-22-16-831Z",
   "repoId": "github.com/open-zaak/open-notificaties",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:01:20.032Z",
-  "createdAt": "2026-11-20T09:01:20.032Z",
+  "checkedAt": "2026-11-20T09:22:16.831Z",
+  "createdAt": "2026-11-20T09:22:16.831Z",
   "version": "v1.17.0",
   "checklistVersion": "2026.2",
   "scannedRef": "1.17.0",
   "scannedRefKind": "declared-version",
   "scannedCommit": "e119155f5353a982a1948ea839f2c26f8e1f32e4",
   "score": 73,
-  "rating": 3.6,
+  "rating": 3.5,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 4.1,
+   "Security": 3.8,
    "Architecture": 3,
    "Software Quality": 3.5,
    "Deployment & Operations": 4.3
@@ -110,7 +110,7 @@
     "rating": 3
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -632,7 +632,7 @@
      "Analyzer: lizard",
      "Average CCN: 2.32 (threshold: 15)",
      "Max CCN: 13.00 (threshold: 30)",
-     "24      9    145      1      40 get_error_responses@57-96@/tmp/cgchecker-repo-TP0ea0/repo/src/nrc/utils/schema.py",
+     "24      9    145      1      40 get_error_responses@57-96@/tmp/cgchecker-repo-miL2Nd/repo/src/nrc/utils/schema.py",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
@@ -977,7 +977,7 @@
      "Lever: component independence in python, about 204 lines to fix for half a star",
      "Lever: unit size in python, about 101 lines to fix for half a star",
      "Lever: module coupling in python, about 19 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 1.8%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, python 1.8% against 1.8%"
     ],
     "requirementLevel": "recommended"
    },
@@ -988,7 +988,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 3,
-    "rating": 3.3333333333333335,
+    "rating": 3.142857142857143,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -1109,17 +1109,111 @@
         "stars": 4
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "1.7%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "22.4%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "13.2%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "10.2%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "83.0%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.269",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 1
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.1 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★☆☆ 23.3% / 16.2% / 0.0% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★☆ 22.1% / 8.9% / 3.8% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 21.5% / 5.6% / 0.9% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★★☆ 1.7% duplicated lines",
+     "Module coupling: ★★★☆☆ 22.4% / 13.2% / 10.2% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★★☆ 83.0% of the code hidden from other components",
+     "Component entanglement: ★☆☆☆☆ 0.269 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1408,9 +1502,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 120,
+     "loc": 4791,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 70,
+       "loc": 3542
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 28,
+       "loc": 762
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 16,
+       "loc": 430
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 4,
+       "loc": 53
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 2,
+       "loc": 4
+      }
+     ]
+    },
+    "message": "4,791 lines of production code in 120 file(s), counted with scc 4.1.0. Rebuild effort about 0.6 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 3,542 lines in 70 file(s)",
+     "Sass: 762 lines in 28 file(s)",
+     "HTML: 430 lines in 16 file(s)",
+     "JavaScript: 53 lines in 4 file(s)",
+     "SQL: 4 lines in 2 file(s)",
+     "Rebuild effort, open estimate: 112 function points, 0.6 person-years (proxies: Python uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 0.7 person-years (proxies: CSS, HTML and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1418,11 +1555,109 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 1.7% overall (javascript 0.0%, python 1.8%) over 74 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.0% (0 of 74 lines, 0 clone(s) in 4 file(s))",
+     "python: 1.8% (82 of 4673 lines, 8 clone(s) in 70 file(s))",
+     "Clone of 15 lines: src/nrc/datamodel/models.py:225-239 and src/nrc/datamodel/models.py:344-358",
+     "Clone of 12 lines: src/nrc/api/tasks.py:113-124 and src/nrc/api/tasks.py:186-197",
+     "Clone of 11 lines: src/nrc/api/validators.py:26-36 and src/nrc/api/validators.py:60-70",
+     "Clone of 11 lines: src/nrc/datamodel/models.py:189-199 and src/nrc/datamodel/models.py:330-340",
+     "Clone of 9 lines: src/nrc/api/tasks.py:82-90 and src/nrc/api/tasks.py:155-163"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 1.73,
+      "languages": {
+       "javascript": 0,
+       "python": 1.75
+      },
+      "largestClones": [
+       {
+        "language": "python",
+        "file": "src/nrc/datamodel/models.py",
+        "startLine": 225,
+        "endLine": 239,
+        "otherFile": "src/nrc/datamodel/models.py",
+        "otherStartLine": 344,
+        "otherEndLine": 358,
+        "lines": 15
+       },
+       {
+        "language": "python",
+        "file": "src/nrc/api/tasks.py",
+        "startLine": 113,
+        "endLine": 124,
+        "otherFile": "src/nrc/api/tasks.py",
+        "otherStartLine": 186,
+        "otherEndLine": 197,
+        "lines": 12
+       },
+       {
+        "language": "python",
+        "file": "src/nrc/api/validators.py",
+        "startLine": 26,
+        "endLine": 36,
+        "otherFile": "src/nrc/api/validators.py",
+        "otherStartLine": 60,
+        "otherEndLine": 70,
+        "lines": 11
+       },
+       {
+        "language": "python",
+        "file": "src/nrc/datamodel/models.py",
+        "startLine": 189,
+        "endLine": 199,
+        "otherFile": "src/nrc/datamodel/models.py",
+        "otherStartLine": 330,
+        "otherEndLine": 340,
+        "lines": 11
+       },
+       {
+        "language": "python",
+        "file": "src/nrc/api/tasks.py",
+        "startLine": 82,
+        "endLine": 90,
+        "otherFile": "src/nrc/api/tasks.py",
+        "otherStartLine": 155,
+        "otherEndLine": 163,
+        "lines": 9
+       },
+       {
+        "language": "python",
+        "file": "src/nrc/datamodel/admin.py",
+        "startLine": 259,
+        "endLine": 267,
+        "otherFile": "src/nrc/datamodel/admin.py",
+        "otherStartLine": 367,
+        "otherEndLine": 375,
+        "lines": 9
+       },
+       {
+        "language": "python",
+        "file": "src/nrc/api/tasks.py",
+        "startLine": 92,
+        "endLine": 99,
+        "otherFile": "src/nrc/api/tasks.py",
+        "otherStartLine": 165,
+        "otherEndLine": 172,
+        "lines": 8
+       },
+       {
+        "language": "python",
+        "file": "src/nrc/datamodel/admin.py",
+        "startLine": 344,
+        "endLine": 350,
+        "otherFile": "src/nrc/datamodel/admin.py",
+        "otherStartLine": 449,
+        "otherEndLine": 454,
+        "lines": 7
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1431,24 +1666,156 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 70 modules, 58 edges, 10 components; independence 82.8%, entanglement 0.273 (density 1.38); fan-in profile 89.7% / 10.3% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 3",
+     "Python components: directories below src/nrc/ (a level is descended while one directory holds more than 80% of the modules); packages nrc",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 4 modules, 0 edges, 3 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 70
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages nrc",
+        "modules": 70,
+        "edges": 58,
+        "loc": 3648,
+        "componentDefinition": "directories below src/nrc/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 10,
+        "componentIndependence": 0.8276,
+        "componentEntanglement": {
+         "violationDegree": 0.2727,
+         "density": 1.38,
+         "communicationLines": 11,
+         "violations": {
+          "cyclic": 4
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.8967,
+          "moderate": 0.1033,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0.1033,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 1664,
+          "1": 513,
+          "2": 641,
+          "3": 341,
+          "4": 112,
+          "11": 377
+         },
+         "highestFanIn": [
+          {
+           "module": "src/nrc/datamodel/models.py",
+           "fanIn": 11
+          },
+          {
+           "module": "src/nrc/setup_configuration/models.py",
+           "fanIn": 4
+          },
+          {
+           "module": "src/nrc/accounts/models.py",
+           "fanIn": 3
+          },
+          {
+           "module": "src/nrc/api/utils.py",
+           "fanIn": 3
+          },
+          {
+           "module": "src/nrc/celery/app.py",
+           "fanIn": 3
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 2,
+         "largestComponentCycle": 3
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 4
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 4,
+        "edges": 0,
+        "loc": 53,
+        "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 3,
+        "componentIndependence": 1,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 53
+         },
+         "highestFanIn": [
+          {
+           "module": "Gulpfile.js",
+           "fanIn": 0
+          },
+          {
+           "module": "build.js",
+           "fanIn": 0
+          },
+          {
+           "module": "src/nrc/js/index.js",
+           "fanIn": 0
+          },
+          {
+           "module": "vacuum_functions/or.js",
+           "fanIn": 0
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1548,14 +1915,23 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 10 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 38 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "private-key: certs/mocks.key:4",
+     "private-key: certs/openzaak.key:4",
+     "generic-api-key: docker/setup_configuration/data.yaml:17",
+     "generic-api-key: docker/setup_configuration/data.yaml:54",
+     "generic-api-key: docker/setup_configuration/data.yaml:63",
+     "generic-api-key: docker/setup_configuration/data.yaml:77",
+     "generic-api-key: docker/setup_configuration/data.yaml:80",
+     "generic-api-key: docker/setup_configuration/data.yaml:176",
+     "generic-api-key: docker/keycloak/data/test-realm.json:756",
+     "generic-api-key: docker/keycloak/data/test-realm.json:802"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1634,7 +2010,7 @@
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
      "publiccode.yml usedBy: 3 organisations named (2026-11-20)",
-     "Docker Hub openzaak/open-notificaties: 755,752 pulls in total (2026-11-20)",
+     "Docker Hub openzaak/open-notificaties: 755,808 pulls in total (2026-11-20)",
      "GitHub open-zaak/open-notificaties: 2 stars, 10 forks, 0 watchers (2026-11-20)",
      "GitHub commits open-zaak/open-notificaties: 8 contributors, 7 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-20)"
     ],
@@ -1671,7 +2047,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 755752
+         "value": 755808
         }
        ]
       },
@@ -1753,7 +2129,7 @@
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
       "value": "1 organisation; largest 100%",
-      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (267 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (7 authors), with 100% of the 265 commits whose organisation is known; 1% of the commits come from 1 of 8 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (266 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (7 authors), with 100% of the 264 commits whose organisation is known; 1% of the commits come from 1 of 8 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": false
@@ -1937,10 +2313,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 6.5,
+  "durationSeconds": 5.2,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

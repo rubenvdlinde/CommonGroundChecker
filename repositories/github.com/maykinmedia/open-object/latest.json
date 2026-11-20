@@ -34,10 +34,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:00:03.368Z",
+  "lastCheckedAt": "2026-11-20T09:21:19.419Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:06.327Z",
-  "updatedAt": "2026-11-20T09:00:03.368Z",
+  "updatedAt": "2026-11-20T09:21:19.419Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -50,21 +50,21 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-00-03-368Z",
+  "id": "2026-11-20T09-21-19-419Z",
   "repoId": "github.com/maykinmedia/open-object",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:00:03.368Z",
-  "createdAt": "2026-11-20T09:00:03.368Z",
+  "checkedAt": "2026-11-20T09:21:19.419Z",
+  "createdAt": "2026-11-20T09:21:19.419Z",
   "version": "v4.3.0",
   "checklistVersion": "2026.2",
   "scannedRef": "4.3.0",
   "scannedRefKind": "declared-version",
   "scannedCommit": "57c89ac26584155153b53409fa038277411d87ce",
   "score": 84,
-  "rating": 3.6,
+  "rating": 3.5,
   "categoryRatings": {
    "Governance": 3.7,
-   "Security": 3.6,
+   "Security": 3.4,
    "Architecture": 3,
    "Software Quality": 3.5,
    "Deployment & Operations": 4.3
@@ -109,7 +109,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -615,11 +615,11 @@
      "Analyzer: lizard",
      "Average CCN: 2.53 (threshold: 15)",
      "Max CCN: 12.00 (threshold: 30)",
-     "1      1      7      0       1 (anonymous)@9-9@/tmp/cgchecker-repo-GtYQsx/repo/src/objects/js/components/forms/error-list.js",
-     "8      2     56      1       9 ErrorList@4-12@/tmp/cgchecker-repo-GtYQsx/repo/src/objects/js/components/forms/error-list.js",
-     "8      5     56      1       8 _flatten_drf_error@153-160@/tmp/cgchecker-repo-GtYQsx/repo/src/objects/core/import_export.py",
-     "12      2     66      2      17 jsonpath_database_error_handler@9-25@/tmp/cgchecker-repo-GtYQsx/repo/src/objects/utils/views.py",
-     "10       4.5     1.5       31.5         2     /tmp/cgchecker-repo-GtYQsx/repo/src/objects/js/components/forms/error-list.js",
+     "1      1      7      0       1 (anonymous)@9-9@/tmp/cgchecker-repo-wA5YqN/repo/src/objects/js/components/forms/error-list.js",
+     "8      2     56      1       9 ErrorList@4-12@/tmp/cgchecker-repo-wA5YqN/repo/src/objects/js/components/forms/error-list.js",
+     "8      5     56      1       8 _flatten_drf_error@153-160@/tmp/cgchecker-repo-wA5YqN/repo/src/objects/core/import_export.py",
+     "12      2     66      2      17 jsonpath_database_error_handler@9-25@/tmp/cgchecker-repo-wA5YqN/repo/src/objects/utils/views.py",
+     "10       4.5     1.5       31.5         2     /tmp/cgchecker-repo-wA5YqN/repo/src/objects/js/components/forms/error-list.js",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
@@ -964,7 +964,7 @@
      "Lever: unit complexity in python, about 112 lines to fix for half a star",
      "Lever: unit interfacing in python, about 99 lines to fix for half a star",
      "Lever: unit size in python, about 211 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 2.0%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, python 2.2% against 2.0%"
     ],
     "requirementLevel": "recommended"
    },
@@ -975,7 +975,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 3,
-    "rating": 3.3333333333333335,
+    "rating": 3.142857142857143,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -1096,17 +1096,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "1.7%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "22.8%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "11.1%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "7.8%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "71.3%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.184",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 2
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.1 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★☆ 20.6% / 12.8% / 5.0% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★☆☆ 27.1% / 16.0% / 3.8% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 19.4% / 9.3% / 4.6% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★★☆ 1.7% duplicated lines",
+     "Module coupling: ★★★☆☆ 22.8% / 11.1% / 7.8% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★☆☆ 71.3% of the code hidden from other components",
+     "Component entanglement: ★★☆☆☆ 0.184 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1397,9 +1491,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 153,
+     "loc": 7345,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 98,
+       "loc": 5624
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 20,
+       "loc": 623
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 19,
+       "loc": 592
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 15,
+       "loc": 504
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 1,
+       "loc": 2
+      }
+     ]
+    },
+    "message": "7,345 lines of production code in 153 file(s), counted with scc 4.1.0. Rebuild effort about 0.8 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 5,624 lines in 98 file(s)",
+     "Sass: 623 lines in 20 file(s)",
+     "HTML: 592 lines in 19 file(s)",
+     "JavaScript: 504 lines in 15 file(s)",
+     "SQL: 2 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 166 function points, 0.8 person-years (proxies: Python uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 1.1 person-years (proxies: CSS, HTML and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1407,11 +1544,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 1.7% overall (javascript 0.0%, python 1.9%) over 113 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.0% (0 of 611 lines, 0 clone(s) in 15 file(s))",
+     "python: 1.9% (138 of 7325 lines, 14 clone(s) in 98 file(s))",
+     "Clone of 18 lines: src/objects/utils/oas_extensions/geojson.py:108-125 and src/objects/utils/oas_extensions/geojson.py:135-152",
+     "Clone of 17 lines: src/objects/api/serializers.py:189-205 and src/objects/api/serializers.py:225-241",
+     "Clone of 12 lines: src/objects/api/v2/views.py:372-383 and src/objects/api/v2/views.py:385-396",
+     "Clone of 11 lines: src/objects/utils/oas_extensions/geojson.py:108-118 and src/objects/utils/oas_extensions/geojson.py:163-173",
+     "Clone of 11 lines: src/objects/utils/serializers.py:111-121 and src/objects/utils/serializers.py:130-142"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 1.74,
+      "languages": {
+       "javascript": 0,
+       "python": 1.88
+      },
+      "largestClones": [
+       {
+        "language": "python",
+        "file": "src/objects/utils/oas_extensions/geojson.py",
+        "startLine": 108,
+        "endLine": 125,
+        "otherFile": "src/objects/utils/oas_extensions/geojson.py",
+        "otherStartLine": 135,
+        "otherEndLine": 152,
+        "lines": 18
+       },
+       {
+        "language": "python",
+        "file": "src/objects/api/serializers.py",
+        "startLine": 189,
+        "endLine": 205,
+        "otherFile": "src/objects/api/serializers.py",
+        "otherStartLine": 225,
+        "otherEndLine": 241,
+        "lines": 17
+       },
+       {
+        "language": "python",
+        "file": "src/objects/api/v2/views.py",
+        "startLine": 372,
+        "endLine": 383,
+        "otherFile": "src/objects/api/v2/views.py",
+        "otherStartLine": 385,
+        "otherEndLine": 396,
+        "lines": 12
+       },
+       {
+        "language": "python",
+        "file": "src/objects/utils/oas_extensions/geojson.py",
+        "startLine": 108,
+        "endLine": 118,
+        "otherFile": "src/objects/utils/oas_extensions/geojson.py",
+        "otherStartLine": 163,
+        "otherEndLine": 173,
+        "lines": 11
+       },
+       {
+        "language": "python",
+        "file": "src/objects/utils/serializers.py",
+        "startLine": 111,
+        "endLine": 121,
+        "otherFile": "src/objects/utils/serializers.py",
+        "otherStartLine": 130,
+        "otherEndLine": 142,
+        "lines": 11
+       },
+       {
+        "language": "python",
+        "file": "src/objects/api/serializers.py",
+        "startLine": 171,
+        "endLine": 179,
+        "otherFile": "src/objects/api/serializers.py",
+        "otherStartLine": 209,
+        "otherEndLine": 217,
+        "lines": 9
+       },
+       {
+        "language": "python",
+        "file": "src/objects/celery/logging.py",
+        "startLine": 19,
+        "endLine": 27,
+        "otherFile": "src/objects/celery/logging.py",
+        "otherStartLine": 30,
+        "otherEndLine": 38,
+        "lines": 9
+       },
+       {
+        "language": "python",
+        "file": "src/objects/api/serializers.py",
+        "startLine": 281,
+        "endLine": 288,
+        "otherFile": "src/objects/api/serializers.py",
+        "otherStartLine": 318,
+        "otherEndLine": 324,
+        "lines": 8
+       },
+       {
+        "language": "python",
+        "file": "src/objects/api/v2/views.py",
+        "startLine": 212,
+        "endLine": 219,
+        "otherFile": "src/objects/api/v2/views.py",
+        "otherStartLine": 224,
+        "otherEndLine": 231,
+        "lines": 8
+       },
+       {
+        "language": "python",
+        "file": "src/objects/core/models.py",
+        "startLine": 266,
+        "endLine": 272,
+        "otherFile": "src/objects/core/models.py",
+        "otherStartLine": 340,
+        "otherEndLine": 346,
+        "lines": 7
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1420,24 +1675,164 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 98 modules, 108 edges, 12 components; independence 69.0%, entanglement 0.200 (density 2.25); fan-in profile 93.8% / 6.2% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 2 modules in 1 cycles, largest component cycle 5",
+     "Python components: directories below src/objects/ (a level is descended while one directory holds more than 80% of the modules); packages objects",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 15 modules, 13 edges, 7 components; independence 98.4%, entanglement 0.000 (density 0.75); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below src/objects/js/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 98
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages objects",
+        "modules": 98,
+        "edges": 108,
+        "loc": 5834,
+        "componentDefinition": "directories below src/objects/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 12,
+        "componentIndependence": 0.6899,
+        "componentEntanglement": {
+         "violationDegree": 0.2,
+         "density": 2.25,
+         "communicationLines": 18,
+         "violations": {
+          "cyclic": 6
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9383,
+          "moderate": 0.0617,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0.0617,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 1916,
+          "1": 1870,
+          "2": 602,
+          "3": 742,
+          "4": 210,
+          "6": 21,
+          "7": 113,
+          "19": 360
+         },
+         "highestFanIn": [
+          {
+           "module": "src/objects/core/models.py",
+           "fanIn": 19
+          },
+          {
+           "module": "src/objects/token/models.py",
+           "fanIn": 7
+          },
+          {
+           "module": "src/objects/core/constants.py",
+           "fanIn": 6
+          },
+          {
+           "module": "src/objects/api/utils.py",
+           "fanIn": 4
+          },
+          {
+           "module": "src/objects/token/constants.py",
+           "fanIn": 4
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 1,
+         "modulesInCycles": 2,
+         "locShareInCycles": 0.0794,
+         "largestModuleCycle": 2,
+         "componentCycles": 2,
+         "largestComponentCycle": 5
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 15
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 15,
+        "edges": 13,
+        "loc": 504,
+        "componentDefinition": "directories below src/objects/js/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 7,
+        "componentIndependence": 0.9841,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0.75,
+         "communicationLines": 3,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 55,
+          "1": 367,
+          "2": 82
+         },
+         "highestFanIn": [
+          {
+           "module": "src/objects/js/components/forms/error-list.js",
+           "fanIn": 2
+          },
+          {
+           "module": "src/objects/js/components/forms/inputs.js",
+           "fanIn": 2
+          },
+          {
+           "module": "src/objects/js/components/admin/permissions/auth-fields.js",
+           "fanIn": 1
+          },
+          {
+           "module": "src/objects/js/components/admin/permissions/index.js",
+           "fanIn": 1
+          },
+          {
+           "module": "src/objects/js/components/admin/permissions/permission-form.js",
+           "fanIn": 1
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1533,14 +1928,19 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 6 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 76 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "generic-api-key: docker/setup_configuration/objecttypes_data.yaml:5",
+     "generic-api-key: docker/setup_configuration/data.yaml:36",
+     "generic-api-key: docker/setup_configuration/data.yaml:49",
+     "generic-api-key: docker/setup_configuration/data.yaml:73",
+     "generic-api-key: docker/keycloak/data/test-realm.json:756",
+     "generic-api-key: docker/keycloak/data/test-realm.json:802"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1651,7 +2051,7 @@
     "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "npm Open Object: not measured: HTTP 405 (2026-11-20)",
-     "Docker Hub maykinmedia/open-object: 19,607 pulls in total (2026-11-20)",
+     "Docker Hub maykinmedia/open-object: 19,615 pulls in total (2026-11-20)",
      "GitHub maykinmedia/open-object: 8 stars, 16 forks, 5 watchers (2026-11-20)",
      "GitHub commits maykinmedia/open-object: 11 contributors, 8 from the owning organisation, 0 from other organisations, 3 unknown (2026-11-20)"
     ],
@@ -1679,7 +2079,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 19607
+         "value": 19615
         }
        ]
       },
@@ -1903,10 +2303,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 7.3,
+  "durationSeconds": 6,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

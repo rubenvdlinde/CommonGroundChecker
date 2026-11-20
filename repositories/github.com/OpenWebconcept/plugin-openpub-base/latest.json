@@ -31,10 +31,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:01:49.744Z",
+  "lastCheckedAt": "2026-11-20T09:22:40.752Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:47.595Z",
-  "updatedAt": "2026-11-20T09:01:49.744Z",
+  "updatedAt": "2026-11-20T09:22:40.752Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -45,21 +45,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-01-49-744Z",
+  "id": "2026-11-20T09-22-40-752Z",
   "repoId": "github.com/OpenWebconcept/plugin-openpub-base",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:01:49.744Z",
-  "createdAt": "2026-11-20T09:01:49.744Z",
+  "checkedAt": "2026-11-20T09:22:40.752Z",
+  "createdAt": "2026-11-20T09:22:40.752Z",
   "version": "v3.10.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v3.10.0",
   "scannedRefKind": "release",
   "scannedCommit": "57318b7d6e253ac97ec80f0742157af885f1165d",
   "score": 65,
-  "rating": 3.6,
+  "rating": 3.7,
   "categoryRatings": {
    "Governance": 2.2,
-   "Security": 4.2,
+   "Security": 4.6,
    "Architecture": 4.3,
    "Software Quality": 4.1,
    "Deployment & Operations": 3.3
@@ -104,7 +104,7 @@
     "rating": null
    },
    "secrets": {
-    "rating": 3
+    "rating": 5.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -163,7 +163,7 @@
   },
   "issueCounts": {
    "errors": 4,
-   "warnings": 12
+   "warnings": 11
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -669,7 +669,7 @@
      "Lever: component independence in php, about 273 lines to fix for half a star",
      "Lever: unit size in php, about 425 lines to fix for half a star",
      "Lever: duplication in php, about 62 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: php not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 3.6%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: php 3.7% against 3.6%"
     ],
     "requirementLevel": "recommended"
    },
@@ -679,8 +679,8 @@
     "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
-    "starRating": 5,
-    "rating": 4.666666666666667,
+    "starRating": 4,
+    "rating": 3.7142857142857144,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -801,17 +801,111 @@
         "stars": 4
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "4.8%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "23.4%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "16.8%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "10.2%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "77.3%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.043",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 3
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 4.7 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.7 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★★ 3.6% / 2.2% / 0.0% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★★ 8.2% / 1.9% / 0.0% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★★☆ 3.5% / 2.4% / 1.1% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★☆☆ 4.8% duplicated lines",
+     "Module coupling: ★★★☆☆ 23.4% / 16.8% / 10.2% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★☆☆ 77.3% of the code hidden from other components",
+     "Component entanglement: ★★★☆☆ 0.043 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1100,9 +1194,24 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 75,
+     "loc": 3557,
+     "languages": [
+      {
+       "language": "PHP",
+       "family": "php",
+       "files": 75,
+       "loc": 3557
+      }
+     ]
+    },
+    "message": "3,557 lines of production code in 75 file(s), counted with scc 4.1.0. Rebuild effort about 0.3 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "PHP: 3,557 lines in 75 file(s)",
+     "Rebuild effort, open estimate: 76 function points, 0.3 person-years (proxies: PHP uses the JavaScript factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 0.4 person-years (proxies: PHP uses the JavaScript factor)"
     ]
    },
    {
@@ -1110,11 +1219,127 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 4.8% overall (php 4.8%) over 75 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "php: 4.8% (255 of 5287 lines, 23 clone(s) in 75 file(s))",
+     "Clone of 29 lines: src/Base/RestAPI/ItemFields/ConnectedField.php:20-48 and src/Base/RestAPI/ItemFields/ConnectedThemeItemField.php:16-44",
+     "Clone of 21 lines: src/Base/Repositories/AbstractRepository.php:92-112 and src/Base/Repositories/AbstractRepository.php:115-133",
+     "Clone of 16 lines: src/Base/RestAPI/Controllers/ItemController.php:122-137 and src/Base/RestAPI/Controllers/ItemController.php:145-155",
+     "Clone of 13 lines: src/Base/RestAPI/ItemFields/DateModified.php:1-13 and src/Base/RestAPI/ItemFields/DateModifiedGMT.php:1-13",
+     "Clone of 13 lines: src/Base/RestAPI/ItemFields/DateModified.php:1-13 and src/Base/RestAPI/ItemFields/EscapeElementField.php:1-12"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 4.82,
+      "languages": {
+       "php": 4.82
+      },
+      "largestClones": [
+       {
+        "language": "php",
+        "file": "src/Base/RestAPI/ItemFields/ConnectedField.php",
+        "startLine": 20,
+        "endLine": 48,
+        "otherFile": "src/Base/RestAPI/ItemFields/ConnectedThemeItemField.php",
+        "otherStartLine": 16,
+        "otherEndLine": 44,
+        "lines": 29
+       },
+       {
+        "language": "php",
+        "file": "src/Base/Repositories/AbstractRepository.php",
+        "startLine": 92,
+        "endLine": 112,
+        "otherFile": "src/Base/Repositories/AbstractRepository.php",
+        "otherStartLine": 115,
+        "otherEndLine": 133,
+        "lines": 21
+       },
+       {
+        "language": "php",
+        "file": "src/Base/RestAPI/Controllers/ItemController.php",
+        "startLine": 122,
+        "endLine": 137,
+        "otherFile": "src/Base/RestAPI/Controllers/ItemController.php",
+        "otherStartLine": 145,
+        "otherEndLine": 155,
+        "lines": 16
+       },
+       {
+        "language": "php",
+        "file": "src/Base/RestAPI/ItemFields/DateModified.php",
+        "startLine": 1,
+        "endLine": 13,
+        "otherFile": "src/Base/RestAPI/ItemFields/DateModifiedGMT.php",
+        "otherStartLine": 1,
+        "otherEndLine": 13,
+        "lines": 13
+       },
+       {
+        "language": "php",
+        "file": "src/Base/RestAPI/ItemFields/DateModified.php",
+        "startLine": 1,
+        "endLine": 13,
+        "otherFile": "src/Base/RestAPI/ItemFields/EscapeElementField.php",
+        "otherStartLine": 1,
+        "otherEndLine": 12,
+        "lines": 13
+       },
+       {
+        "language": "php",
+        "file": "src/Base/RestAPI/ItemFields/DateModified.php",
+        "startLine": 1,
+        "endLine": 13,
+        "otherFile": "src/Base/RestAPI/ItemFields/PortalURL.php",
+        "otherStartLine": 1,
+        "otherEndLine": 13,
+        "lines": 13
+       },
+       {
+        "language": "php",
+        "file": "config/posttypes.php",
+        "startLine": 26,
+        "endLine": 37,
+        "otherFile": "config/posttypes.php",
+        "otherStartLine": 67,
+        "otherEndLine": 78,
+        "lines": 12
+       },
+       {
+        "language": "php",
+        "file": "src/Base/RestAPI/ItemFields/SeoPress.php",
+        "startLine": 21,
+        "endLine": 31,
+        "otherFile": "src/Base/RestAPI/ItemFields/Yoast.php",
+        "otherStartLine": 22,
+        "otherEndLine": 32,
+        "lines": 11
+       },
+       {
+        "language": "php",
+        "file": "config/posttypes.php",
+        "startLine": 175,
+        "endLine": 184,
+        "otherFile": "config/posttypes.php",
+        "otherStartLine": 198,
+        "otherEndLine": 207,
+        "lines": 10
+       },
+       {
+        "language": "php",
+        "file": "src/Base/RestAPI/Controllers/ItemController.php",
+        "startLine": 93,
+        "endLine": 102,
+        "otherFile": "src/Base/RestAPI/Controllers/ItemController.php",
+        "otherStartLine": 191,
+        "otherEndLine": 200,
+        "lines": 10
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1123,18 +1348,94 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: PHP. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of PHP. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP: not measured: pdepend 3.0.0 is not installed"
+     "PHP (pdepend 3.0.0): 59 modules, 80 edges, 15 components; independence 77.3%, entanglement 0.043 (density 1.47); fan-in profile 98.4% / 1.6% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 4 modules in 2 cycles, largest component cycle 2",
+     "PHP components: directories below src/Base/ (a level is descended while one directory holds more than 80% of the modules); 59 files under src/Base/ (composer.json PSR-4)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "php": {
-        "measured": false,
-        "reason": "pdepend 3.0.0 is not installed",
-        "files": 75
+        "measured": true,
+        "tool": "pdepend 3.0.0",
+        "scope": "59 files under src/Base/ (composer.json PSR-4)",
+        "modules": 59,
+        "edges": 80,
+        "loc": 2799,
+        "componentDefinition": "directories below src/Base/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 15,
+        "componentIndependence": 0.7735,
+        "componentEntanglement": {
+         "violationDegree": 0.0426,
+         "density": 1.47,
+         "communicationLines": 22,
+         "violations": {
+          "cyclic": 1,
+          "transitive": 1
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9843,
+          "moderate": 0.0157,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0.0157,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 968,
+          "1": 833,
+          "2": 344,
+          "3": 184,
+          "4": 119,
+          "5": 65,
+          "6": 242,
+          "11": 13,
+          "18": 31
+         },
+         "highestFanIn": [
+          {
+           "module": "src/Base/Support/CreatesFields.php",
+           "fanIn": 18
+          },
+          {
+           "module": "src/Base/Foundation/ServiceProvider.php",
+           "fanIn": 11
+          },
+          {
+           "module": "src/Base/Models/Item.php",
+           "fanIn": 6
+          },
+          {
+           "module": "src/Base/Repositories/AbstractRepository.php",
+           "fanIn": 6
+          },
+          {
+           "module": "src/Base/Settings/SettingsPageOptions.php",
+           "fanIn": 5
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 2,
+         "modulesInCycles": 4,
+         "locShareInCycles": 0.1108,
+         "largestModuleCycle": 2,
+         "componentCycles": 1,
+         "largestComponentCycle": 2
+        },
+        "batches": 1
        }
       }
      }
@@ -1211,14 +1512,12 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
-    "evidence": [
-     "gitleaks is not installed on the checker host."
-    ],
+    "status": "pass",
+    "message": "Gitleaks found no committed secrets in the working tree.",
+    "evidence": [],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "openssfscorecard",
@@ -1515,10 +1814,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 5.2,
+  "durationSeconds": 4,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

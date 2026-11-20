@@ -32,10 +32,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T08:58:44.015Z",
+  "lastCheckedAt": "2026-11-20T09:20:04.337Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:01.549Z",
-  "updatedAt": "2026-11-20T08:58:44.015Z",
+  "updatedAt": "2026-11-20T09:20:04.337Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -48,21 +48,21 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T08-58-44-015Z",
+  "id": "2026-11-20T09-20-04-337Z",
   "repoId": "github.com/GPP-Woo/GPP-publicatiebank",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T08:58:44.015Z",
-  "createdAt": "2026-11-20T08:58:44.015Z",
+  "checkedAt": "2026-11-20T09:20:04.337Z",
+  "createdAt": "2026-11-20T09:20:04.337Z",
   "version": "v3.0.0",
   "checklistVersion": "2026.2",
   "scannedRef": "3.0.0",
   "scannedRefKind": "tag",
   "scannedCommit": "f1dd246403cb4a889b131d0df668d0b794fd7602",
   "score": 80,
-  "rating": 3.2,
+  "rating": 3.1,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 3,
+   "Security": 2.6,
    "Architecture": 3,
    "Software Quality": 2.7,
    "Deployment & Operations": 4.3
@@ -107,7 +107,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -820,7 +820,7 @@
      "Lever: unit complexity in python, about 175 lines to fix for half a star",
      "Lever: module coupling in python, about 219 lines to fix for half a star",
      "Lever: unit interfacing in python, about 195 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 6.1%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, python 6.1% against 6.1%"
     ],
     "requirementLevel": "recommended"
    },
@@ -830,8 +830,8 @@
     "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
-    "starRating": 3,
-    "rating": 2.6666666666666665,
+    "starRating": 2,
+    "rating": 2.4285714285714284,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -952,17 +952,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "4.7%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "32.3%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "24.8%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "23.6%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "59.8%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.205",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 2
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 2.7 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 2.4 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★☆☆ 34.2% / 19.1% / 3.4% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★☆☆ 30.7% / 17.5% / 8.7% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★☆☆☆ 23.7% / 11.8% / 5.5% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★☆☆ 4.7% duplicated lines",
+     "Module coupling: ★★☆☆☆ 32.3% / 24.8% / 23.6% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★☆☆☆ 59.8% of the code hidden from other components",
+     "Component entanglement: ★★☆☆☆ 0.205 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1145,9 +1239,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 164,
+     "loc": 11089,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 131,
+       "loc": 9951
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 19,
+       "loc": 781
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 10,
+       "loc": 337
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 1,
+       "loc": 14
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 3,
+       "loc": 6
+      }
+     ]
+    },
+    "message": "11,089 lines of production code in 164 file(s), counted with scc 4.1.0. Rebuild effort about 1.1 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 9,951 lines in 131 file(s)",
+     "HTML: 781 lines in 19 file(s)",
+     "Sass: 337 lines in 10 file(s)",
+     "JavaScript: 14 lines in 1 file(s)",
+     "SQL: 6 lines in 3 file(s)",
+     "Rebuild effort, open estimate: 245 function points, 1.1 person-years (proxies: Python uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 1.7 person-years (proxies: HTML, CSS and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1155,11 +1292,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 4.7% overall (javascript 0.0%, python 4.7%) over 132 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.0% (0 of 15 lines, 0 clone(s) in 1 file(s))",
+     "python: 4.7% (612 of 13066 lines, 58 clone(s) in 131 file(s))",
+     "Clone of 18 lines: src/woo_publications/publications/admin.py:253-270 and src/woo_publications/publications/admin.py:295-312",
+     "Clone of 17 lines: src/woo_publications/metadata/models.py:85-101 and src/woo_publications/publications/models.py:336-352",
+     "Clone of 17 lines: src/woo_publications/publications/forms.py:166-182 and src/woo_publications/publications/forms.py:256-272",
+     "Clone of 16 lines: src/woo_publications/publications/admin.py:70-85 and src/woo_publications/publications/admin.py:150-165",
+     "Clone of 16 lines: src/woo_publications/publications/admin.py:277-292 and src/woo_publications/publications/admin.py:348-363"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 4.68,
+      "languages": {
+       "javascript": 0,
+       "python": 4.68
+      },
+      "largestClones": [
+       {
+        "language": "python",
+        "file": "src/woo_publications/publications/admin.py",
+        "startLine": 253,
+        "endLine": 270,
+        "otherFile": "src/woo_publications/publications/admin.py",
+        "otherStartLine": 295,
+        "otherEndLine": 312,
+        "lines": 18
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/metadata/models.py",
+        "startLine": 85,
+        "endLine": 101,
+        "otherFile": "src/woo_publications/publications/models.py",
+        "otherStartLine": 336,
+        "otherEndLine": 352,
+        "lines": 17
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/publications/forms.py",
+        "startLine": 166,
+        "endLine": 182,
+        "otherFile": "src/woo_publications/publications/forms.py",
+        "otherStartLine": 256,
+        "otherEndLine": 272,
+        "lines": 17
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/publications/admin.py",
+        "startLine": 70,
+        "endLine": 85,
+        "otherFile": "src/woo_publications/publications/admin.py",
+        "otherStartLine": 150,
+        "otherEndLine": 165,
+        "lines": 16
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/publications/admin.py",
+        "startLine": 277,
+        "endLine": 292,
+        "otherFile": "src/woo_publications/publications/admin.py",
+        "otherStartLine": 348,
+        "otherEndLine": 363,
+        "lines": 16
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/publications/api/serializers/owner.py",
+        "startLine": 46,
+        "endLine": 61,
+        "otherFile": "src/woo_publications/publications/api/serializers/owner.py",
+        "otherStartLine": 96,
+        "otherEndLine": 111,
+        "lines": 16
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/publications/models.py",
+        "startLine": 293,
+        "endLine": 308,
+        "otherFile": "src/woo_publications/publications/models.py",
+        "otherStartLine": 778,
+        "otherEndLine": 793,
+        "lines": 16
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/publications/admin.py",
+        "startLine": 118,
+        "endLine": 132,
+        "otherFile": "src/woo_publications/publications/admin.py",
+        "otherStartLine": 197,
+        "otherEndLine": 211,
+        "lines": 15
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/conf/ci.py",
+        "startLine": 39,
+        "endLine": 52,
+        "otherFile": "src/woo_publications/conf/dev.py",
+        "otherStartLine": 103,
+        "otherEndLine": 116,
+        "lines": 14
+       },
+       {
+        "language": "python",
+        "file": "src/woo_publications/publications/models.py",
+        "startLine": 632,
+        "endLine": 645,
+        "otherFile": "src/woo_publications/publications/models.py",
+        "otherStartLine": 1199,
+        "otherEndLine": 1212,
+        "lines": 14
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1168,24 +1423,152 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 131 modules, 207 edges, 13 components; independence 59.8%, entanglement 0.205 (density 3.11); fan-in profile 86.1% / 14.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 10 modules in 2 cycles, largest component cycle 9",
+     "Python components: directories below src/woo_publications/ (a level is descended while one directory holds more than 80% of the modules); packages woo_publications",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 1 modules, 0 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 131
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages woo_publications",
+        "modules": 131,
+        "edges": 207,
+        "loc": 10538,
+        "componentDefinition": "directories below src/woo_publications/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 13,
+        "componentIndependence": 0.5978,
+        "componentEntanglement": {
+         "violationDegree": 0.2051,
+         "density": 3.11,
+         "communicationLines": 28,
+         "violations": {
+          "cyclic": 9,
+          "indirect-cyclic": 1
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.8605,
+          "moderate": 0.1395,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0.1395,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 3197,
+          "1": 2741,
+          "2": 1193,
+          "3": 790,
+          "4": 93,
+          "5": 34,
+          "6": 227,
+          "7": 40,
+          "8": 507,
+          "9": 226,
+          "10": 20,
+          "13": 1122,
+          "17": 348
+         },
+         "highestFanIn": [
+          {
+           "module": "src/woo_publications/accounts/models.py",
+           "fanIn": 17
+          },
+          {
+           "module": "src/woo_publications/metadata/models.py",
+           "fanIn": 17
+          },
+          {
+           "module": "src/woo_publications/publications/models.py",
+           "fanIn": 13
+          },
+          {
+           "module": "src/woo_publications/publications/constants.py",
+           "fanIn": 10
+          },
+          {
+           "module": "src/woo_publications/config/models.py",
+           "fanIn": 9
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 2,
+         "modulesInCycles": 10,
+         "locShareInCycles": 0.2423,
+         "largestModuleCycle": 8,
+         "componentCycles": 1,
+         "largestComponentCycle": 9
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 1
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 1,
+        "edges": 0,
+        "loc": 14,
+        "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 1,
+        "componentIndependence": 1,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 14
+         },
+         "highestFanIn": [
+          {
+           "module": "build.mjs",
+           "fanIn": 0
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1310,14 +1693,16 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 3 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 62 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "generic-api-key: docker/keycloak/README.md:38",
+     "generic-api-key: docker/keycloak/import/test-realm.json:756",
+     "generic-api-key: docker/keycloak/import/test-realm.json:802"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1795,10 +2180,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 7.4,
+  "durationSeconds": 8.3,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

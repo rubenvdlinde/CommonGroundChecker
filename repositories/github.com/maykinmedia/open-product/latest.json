@@ -32,10 +32,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:00:22.389Z",
+  "lastCheckedAt": "2026-11-20T09:21:34.656Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:21.657Z",
-  "updatedAt": "2026-11-20T09:00:22.389Z",
+  "updatedAt": "2026-11-20T09:21:34.656Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -48,11 +48,11 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-00-22-389Z",
+  "id": "2026-11-20T09-21-34-656Z",
   "repoId": "github.com/maykinmedia/open-product",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:00:22.389Z",
-  "createdAt": "2026-11-20T09:00:22.389Z",
+  "checkedAt": "2026-11-20T09:21:34.656Z",
+  "createdAt": "2026-11-20T09:21:34.656Z",
   "version": "v1.10.0",
   "checklistVersion": "2026.2",
   "scannedRef": "1.10.0",
@@ -62,7 +62,7 @@
   "rating": 3.6,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 3.3,
+   "Security": 3,
    "Architecture": 4.3,
    "Software Quality": 3.3,
    "Deployment & Operations": 4.3
@@ -107,7 +107,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -816,7 +816,7 @@
      "Lever: unit complexity in python, about 22 lines to fix for half a star",
      "Lever: unit interfacing in python, about 165 lines to fix for half a star",
      "Lever: duplication in python, about 219 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 8.1%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 6.8%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 8.1% against 8.1%, python 6.3% against 6.8%"
     ],
     "requirementLevel": "recommended"
    },
@@ -948,17 +948,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "6.5%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "33.4%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "22.5%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "12.4%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "70.8%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.028",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 4
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.0 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★☆ 16.1% / 7.7% / 4.1% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★☆☆ 25.5% / 18.1% / 6.4% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★☆☆☆ 24.4% / 10.5% / 5.4% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★☆☆ 6.5% duplicated lines",
+     "Module coupling: ★★☆☆☆ 33.4% / 22.5% / 12.4% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★☆☆ 70.8% of the code hidden from other components",
+     "Component entanglement: ★★★★☆ 0.028 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1250,9 +1344,59 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 256,
+     "loc": 12796,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 210,
+       "loc": 11558
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 18,
+       "loc": 619
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 17,
+       "loc": 399
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 8,
+       "loc": 186
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 2,
+       "loc": 30
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 1,
+       "loc": 4
+      }
+     ]
+    },
+    "message": "12,796 lines of production code in 256 file(s), counted with scc 4.1.0. Rebuild effort about 1.3 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 11,558 lines in 210 file(s)",
+     "Sass: 619 lines in 18 file(s)",
+     "HTML: 399 lines in 17 file(s)",
+     "JavaScript: 186 lines in 8 file(s)",
+     "CSS: 30 lines in 2 file(s)",
+     "SQL: 4 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 281 function points, 1.3 person-years (proxies: Python uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 1.9 person-years (proxies: CSS, HTML and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1260,11 +1404,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 6.5% overall (javascript 9.2%, python 6.5%) over 218 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 9.2% (23 of 249 lines, 2 clone(s) in 8 file(s))",
+     "python: 6.5% (934 of 14430 lines, 83 clone(s) in 210 file(s))",
+     "Clone of 35 lines: src/openproduct/producten/serializers/product.py:46-80 and src/openproduct/producttypen/serializers/thema.py:23-57",
+     "Clone of 29 lines: src/openproduct/producttypen/serializers/prijs.py:94-122 and src/openproduct/producttypen/serializers/prijs.py:148-176",
+     "Clone of 28 lines: src/openproduct/producttypen/serializers/actie.py:66-93 and src/openproduct/producttypen/serializers/actie.py:140-167",
+     "Clone of 28 lines: src/openproduct/producttypen/serializers/actie.py:66-93 and src/openproduct/producttypen/serializers/prijs.py:95-122",
+     "Clone of 18 lines: src/openproduct/producten/viewsets/product.py:71-88 and src/openproduct/producttypen/viewsets/actie.py:14-31"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 6.52,
+      "languages": {
+       "javascript": 9.24,
+       "python": 6.47
+      },
+      "largestClones": [
+       {
+        "language": "python",
+        "file": "src/openproduct/producten/serializers/product.py",
+        "startLine": 46,
+        "endLine": 80,
+        "otherFile": "src/openproduct/producttypen/serializers/thema.py",
+        "otherStartLine": 23,
+        "otherEndLine": 57,
+        "lines": 35
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producttypen/serializers/prijs.py",
+        "startLine": 94,
+        "endLine": 122,
+        "otherFile": "src/openproduct/producttypen/serializers/prijs.py",
+        "otherStartLine": 148,
+        "otherEndLine": 176,
+        "lines": 29
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producttypen/serializers/actie.py",
+        "startLine": 66,
+        "endLine": 93,
+        "otherFile": "src/openproduct/producttypen/serializers/actie.py",
+        "otherStartLine": 140,
+        "otherEndLine": 167,
+        "lines": 28
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producttypen/serializers/actie.py",
+        "startLine": 66,
+        "endLine": 93,
+        "otherFile": "src/openproduct/producttypen/serializers/prijs.py",
+        "otherStartLine": 95,
+        "otherEndLine": 122,
+        "lines": 28
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producten/viewsets/product.py",
+        "startLine": 71,
+        "endLine": 88,
+        "otherFile": "src/openproduct/producttypen/viewsets/actie.py",
+        "otherStartLine": 14,
+        "otherEndLine": 31,
+        "lines": 18
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producten/viewsets/product.py",
+        "startLine": 71,
+        "endLine": 88,
+        "otherFile": "src/openproduct/producttypen/viewsets/link.py",
+        "otherStartLine": 14,
+        "otherEndLine": 31,
+        "lines": 18
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producten/viewsets/product.py",
+        "startLine": 71,
+        "endLine": 88,
+        "otherFile": "src/openproduct/producttypen/viewsets/prijs.py",
+        "otherStartLine": 15,
+        "otherEndLine": 32,
+        "lines": 18
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producttypen/viewsets/content.py",
+        "startLine": 124,
+        "endLine": 140,
+        "otherFile": "src/openproduct/producttypen/viewsets/producttype.py",
+        "otherStartLine": 428,
+        "otherEndLine": 443,
+        "lines": 17
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producttypen/viewsets/producttype.py",
+        "startLine": 485,
+        "endLine": 501,
+        "otherFile": "src/openproduct/producttypen/viewsets/thema.py",
+        "otherStartLine": 85,
+        "otherEndLine": 101,
+        "lines": 17
+       },
+       {
+        "language": "python",
+        "file": "src/openproduct/producten/serializers/product.py",
+        "startLine": 68,
+        "endLine": 81,
+        "otherFile": "src/openproduct/producttypen/serializers/thema.py",
+        "otherStartLine": 45,
+        "otherEndLine": 58,
+        "lines": 14
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1273,24 +1535,174 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 210 modules, 484 edges, 13 components; independence 70.4%, entanglement 0.029 (density 2.18); fan-in profile 90.7% / 7.9% / 1.4% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 19 modules in 3 cycles, largest component cycle 8",
+     "Python components: directories below src/openproduct/ (a level is descended while one directory holds more than 80% of the modules); packages openproduct",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 8 modules, 2 edges, 3 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 210
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages openproduct",
+        "modules": 210,
+        "edges": 484,
+        "loc": 11819,
+        "componentDefinition": "directories below src/openproduct/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 13,
+        "componentIndependence": 0.7036,
+        "componentEntanglement": {
+         "violationDegree": 0.0289,
+         "density": 2.18,
+         "communicationLines": 24,
+         "violations": {
+          "cyclic": 4,
+          "indirect-cyclic": 1
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9066,
+          "moderate": 0.079,
+          "high": 0.0144,
+          "veryHigh": 0
+         },
+         "above": [
+          0.0934,
+          0.0144,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 1333,
+          "1": 4242,
+          "2": 2240,
+          "3": 1301,
+          "4": 873,
+          "5": 340,
+          "6": 179,
+          "7": 134,
+          "8": 42,
+          "9": 31,
+          "11": 309,
+          "12": 222,
+          "13": 99,
+          "14": 169,
+          "15": 114,
+          "18": 21,
+          "26": 123,
+          "50": 47
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openproduct/producttypen/models/__init__.py",
+           "fanIn": 50
+          },
+          {
+           "module": "src/openproduct/logging/admin_tools.py",
+           "fanIn": 26
+          },
+          {
+           "module": "src/openproduct/utils/models.py",
+           "fanIn": 18
+          },
+          {
+           "module": "src/openproduct/locaties/models/__init__.py",
+           "fanIn": 15
+          },
+          {
+           "module": "src/openproduct/logging/api_tools.py",
+           "fanIn": 15
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 3,
+         "modulesInCycles": 19,
+         "locShareInCycles": 0.1778,
+         "largestModuleCycle": 15,
+         "componentCycles": 1,
+         "largestComponentCycle": 8
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 8
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 8,
+        "edges": 2,
+        "loc": 186,
+        "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 3,
+        "componentIndependence": 1,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 157,
+          "1": 29
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openproduct/js/components/index.js",
+           "fanIn": 1
+          },
+          {
+           "module": "src/openproduct/js/components/nav/index.js",
+           "fanIn": 1
+          },
+          {
+           "module": "build.js",
+           "fanIn": 0
+          },
+          {
+           "module": "src/openproduct/js/index.js",
+           "fanIn": 0
+          },
+          {
+           "module": "src/openproduct/static/admin/js/admin/facet_inline.js",
+           "fanIn": 0
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1375,14 +1787,18 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 5 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 58 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "curl-auth-header: docs/installation/config/openproduct_config.rst:124",
+     "curl-auth-header: docs/installation/config/openproduct_config.rst:158",
+     "generic-api-key: docker/setup_configuration/data.yaml:17",
+     "generic-api-key: docker/keycloak/data/test-realm.json:756",
+     "generic-api-key: docker/keycloak/data/test-realm.json:802"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1765,10 +2181,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 7.4,
+  "durationSeconds": 6,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

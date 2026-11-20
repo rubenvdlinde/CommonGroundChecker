@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T08:57:13.469Z",
+  "lastCheckedAt": "2026-11-20T09:18:43.243Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:58:29.673Z",
-  "updatedAt": "2026-11-20T08:57:13.469Z",
+  "updatedAt": "2026-11-20T09:18:43.243Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,21 +44,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T08-57-13-469Z",
+  "id": "2026-11-20T09-18-43-243Z",
   "repoId": "github.com/ConductionNL/stackiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T08:57:13.469Z",
-  "createdAt": "2026-11-20T08:57:13.469Z",
+  "checkedAt": "2026-11-20T09:18:43.243Z",
+  "createdAt": "2026-11-20T09:18:43.243Z",
   "version": "v0.2.0",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
   "scannedCommit": "3570bb38f17bcadf19437535dbefc11eef3e4609",
   "score": 100,
-  "rating": 5,
+  "rating": 5.1,
   "categoryRatings": {
    "Governance": 5.5,
-   "Security": 4.5,
+   "Security": 4.8,
    "Architecture": 5.5,
    "Software Quality": 4.1,
    "Deployment & Operations": 5.5
@@ -103,7 +103,7 @@
     "rating": null
    },
    "secrets": {
-    "rating": 3
+    "rating": 5.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -156,7 +156,7 @@
   },
   "issueCounts": {
    "errors": 0,
-   "warnings": 1
+   "warnings": 0
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -167,7 +167,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 24,373 lines of code, 3,890 functions, 3,862 files analyzed.",
+    "message": "Code metrics: 12,665 lines of code, 2,375 functions, 2,340 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -180,9 +180,9 @@
      "docs/src/pages/index.js",
      "eslint.config.mjs",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 24,373",
-     "Function count: 3,890",
-     "Files analyzed: 3,862"
+     "Total lines of code (NLOC): 12,665",
+     "Function count: 2,375",
+     "Files analyzed: 2,340"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -628,12 +628,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.68 (threshold: 15)",
      "Max CCN: 30.00 (threshold: 30)",
-     "2      1      9      1       9 getError@65-73@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/organisatie.js",
-     "3      1      9      0       3 clearError@291-293@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/organisatie.js",
-     "3      2     20      2       3 httpError@39-41@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/organisatieRequests.js",
-     "2      1      9      1       2 getError@43-44@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/catalog.js",
-     "3      1     10      1       3 setError@61-63@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/catalog.js",
-     "3      1      9      0       3 clearError@79-81@/tmp/cgchecker-repo-oF37gn/repo/src/store/modules/catalog.js"
+     "9      3     52      1      10 InitializeSettings::reportInitializationErrors@202-211@/tmp/cgchecker-repo-dh3Wzs/repo/lib/Repair/InitializeSettings.php",
+     "11      3     80      1      13 ApiContractMiddleware::decorateError@227-239@/tmp/cgchecker-repo-dh3Wzs/repo/lib/Middleware/ApiContractMiddleware.php",
+     "6      2     50      1       7 McpWriteTools::okOrError@465-471@/tmp/cgchecker-repo-dh3Wzs/repo/lib/Mcp/McpWriteTools.php",
+     "6      2     50      1       7 McpReadTools::okOrError@389-395@/tmp/cgchecker-repo-dh3Wzs/repo/lib/Mcp/McpReadTools.php",
+     "3      1     26      1       3 McpArgumentValidator::error@49-51@/tmp/cgchecker-repo-dh3Wzs/repo/lib/Mcp/McpArgumentValidator.php",
+     "3      1     11      0       3 CmdbImportException::getErrorCode@103-105@/tmp/cgchecker-repo-dh3Wzs/repo/lib/Exception/CmdbImportException.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1056,7 +1056,7 @@
      "Lever: component independence in php, about 1404 lines to fix for half a star",
      "Lever: duplication in php, about 1678 lines to fix for half a star",
      "Lever: unit complexity in php, about 1843 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.9%, php not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 4.1%, vue not measured (Simian has no support for this language) against 7.2%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.9% against 0.9%, php 3.6% against 4.1%, vue not measured (Simian has no support for this language) against 7.2%"
     ],
     "requirementLevel": "recommended"
    },
@@ -1067,7 +1067,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 3,
-    "rating": 3.3333333333333335,
+    "rating": 3.4285714285714284,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -1188,17 +1188,111 @@
         "stars": 4
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "5.0%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "17.0%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "10.6%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "2.4%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "74.7%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.025",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 4
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.4 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★☆☆ 23.8% / 15.4% / 7.7% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★☆ 18.6% / 10.0% / 4.8% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 10.2% / 4.3% / 1.7% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★☆☆ 5.0% duplicated lines",
+     "Module coupling: ★★★★☆ 17.0% / 10.6% / 2.4% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★☆☆ 74.7% of the code hidden from other components",
+     "Component entanglement: ★★★★☆ 0.025 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1489,9 +1583,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 632,
+     "loc": 103338,
+     "languages": [
+      {
+       "language": "PHP",
+       "family": "php",
+       "files": 402,
+       "loc": 57823
+      },
+      {
+       "language": "Vue",
+       "family": "vue",
+       "files": 121,
+       "loc": 35369
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 103,
+       "loc": 9660
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 5,
+       "loc": 289
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 1,
+       "loc": 197
+      }
+     ]
+    },
+    "message": "103,338 lines of production code in 632 file(s), counted with scc 4.1.0. Rebuild effort about 9.2 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "PHP: 57,823 lines in 402 file(s)",
+     "Vue: 35,369 lines in 121 file(s)",
+     "JavaScript: 9,660 lines in 103 file(s)",
+     "CSS: 289 lines in 5 file(s)",
+     "HTML: 197 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 2,203 function points, 9.2 person-years (proxies: PHP and Vue use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 11.1 person-years (proxies: PHP, Vue, CSS and HTML use the JavaScript factor)"
     ]
    },
    {
@@ -1499,11 +1636,131 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 5.0% overall (javascript 0.8%, php 7.3%, vue 2.1%) over 626 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.8% (149 of 18728 lines, 15 clone(s) in 103 file(s))",
+     "php: 7.3% (9065 of 123345 lines, 631 clone(s) in 402 file(s))",
+     "vue: 2.1% (1645 of 77165 lines, 162 clone(s) in 121 file(s))",
+     "Clone of 351 lines: src/modals/object/ViewObject.vue:137-487 and src/modals/object/ViewObject.vue:688-1152",
+     "Clone of 93 lines: src/views/ComplianceMatrixView.vue:20-112 and src/views/LicensePostureView.vue:15-34",
+     "Clone of 93 lines: src/views/ComplianceMatrixView.vue:20-112 and src/views/LifecycleRoadmapView.vue:15-53",
+     "Clone of 86 lines: src/views/ComplianceMatrixView.vue:27-112 and src/views/organisaties/PortfolioReport.vue:40-53",
+     "Clone of 73 lines: lib/Repair/MigrateSchemaApplicationId.php:1-73 and lib/Repair/RenameCollidingSchemaSlugs.php:1-67"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 4.95,
+      "languages": {
+       "javascript": 0.8,
+       "php": 7.35,
+       "vue": 2.13
+      },
+      "largestClones": [
+       {
+        "language": "vue",
+        "file": "src/modals/object/ViewObject.vue",
+        "startLine": 137,
+        "endLine": 487,
+        "otherFile": "src/modals/object/ViewObject.vue",
+        "otherStartLine": 688,
+        "otherEndLine": 1152,
+        "lines": 351
+       },
+       {
+        "language": "vue",
+        "file": "src/views/ComplianceMatrixView.vue",
+        "startLine": 20,
+        "endLine": 112,
+        "otherFile": "src/views/LicensePostureView.vue",
+        "otherStartLine": 15,
+        "otherEndLine": 34,
+        "lines": 93
+       },
+       {
+        "language": "vue",
+        "file": "src/views/ComplianceMatrixView.vue",
+        "startLine": 20,
+        "endLine": 112,
+        "otherFile": "src/views/LifecycleRoadmapView.vue",
+        "otherStartLine": 15,
+        "otherEndLine": 53,
+        "lines": 93
+       },
+       {
+        "language": "vue",
+        "file": "src/views/ComplianceMatrixView.vue",
+        "startLine": 27,
+        "endLine": 112,
+        "otherFile": "src/views/organisaties/PortfolioReport.vue",
+        "otherStartLine": 40,
+        "otherEndLine": 53,
+        "lines": 86
+       },
+       {
+        "language": "php",
+        "file": "lib/Repair/MigrateSchemaApplicationId.php",
+        "startLine": 1,
+        "endLine": 73,
+        "otherFile": "lib/Repair/RenameCollidingSchemaSlugs.php",
+        "otherStartLine": 1,
+        "otherEndLine": 67,
+        "lines": 73
+       },
+       {
+        "language": "php",
+        "file": "lib/Repair/MigrateSchemaApplicationId.php",
+        "startLine": 1,
+        "endLine": 73,
+        "otherFile": "lib/Repair/RenameDutchCatalogValues.php",
+        "otherStartLine": 1,
+        "otherEndLine": 44,
+        "lines": 73
+       },
+       {
+        "language": "php",
+        "file": "lib/Repair/MigrateSchemaApplicationId.php",
+        "startLine": 1,
+        "endLine": 73,
+        "otherFile": "lib/Repair/RenameDutchSchemaSlugs.php",
+        "otherStartLine": 1,
+        "otherEndLine": 54,
+        "lines": 73
+       },
+       {
+        "language": "vue",
+        "file": "src/views/settings/StackiqSettings.vue",
+        "startLine": 14,
+        "endLine": 66,
+        "otherFile": "src/views/settings/sections/VersionInformation.vue",
+        "otherStartLine": 31,
+        "otherEndLine": 246,
+        "lines": 53
+       },
+       {
+        "language": "php",
+        "file": "lib/Service/AanbodService.php",
+        "startLine": 716,
+        "endLine": 766,
+        "otherFile": "lib/Service/AangebodenGebruikService.php",
+        "otherStartLine": 1114,
+        "otherEndLine": 1161,
+        "lines": 51
+       },
+       {
+        "language": "php",
+        "file": "lib/Repair/MigrateRegisterSlugDecisions.php",
+        "startLine": 34,
+        "endLine": 83,
+        "otherFile": "lib/Repair/RenameDutchSchemaSlugDecisions.php",
+        "otherStartLine": 33,
+        "otherEndLine": 68,
+        "lines": 50
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1512,24 +1769,182 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP: not measured: pdepend 3.0.0 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "PHP (pdepend 3.0.0): 399 modules, 851 edges, 17 components; independence 94.7%, entanglement 0.015 (density 2.07); fan-in profile 99.9% / 0.0% / 0.1% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 7 modules in 3 cycles, largest component cycle 3",
+     "PHP components: directories below lib/ (a level is descended while one directory holds more than 80% of the modules); 399 files under lib/ (composer.json PSR-4)",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 224 modules, 403 edges, 10 components; independence 48.6%, entanglement 0.039 (density 3.70); fan-in profile 99.3% / 0.7% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 7",
+     "JavaScript, TypeScript and Vue components: directories below src/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "php": {
-        "measured": false,
-        "reason": "pdepend 3.0.0 is not installed",
-        "files": 402
+        "measured": true,
+        "tool": "pdepend 3.0.0",
+        "scope": "399 files under lib/ (composer.json PSR-4)",
+        "modules": 399,
+        "edges": 851,
+        "loc": 57698,
+        "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 17,
+        "componentIndependence": 0.9474,
+        "componentEntanglement": {
+         "violationDegree": 0.015,
+         "density": 2.07,
+         "communicationLines": 31,
+         "violations": {
+          "cyclic": 4,
+          "transitive": 1
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9994,
+          "moderate": 0,
+          "high": 0.0005,
+          "veryHigh": 0.0001
+         },
+         "above": [
+          0.0006,
+          0.0006,
+          0.0001
+         ],
+         "fanInHistogram": {
+          "0": 11354,
+          "1": 15651,
+          "2": 15478,
+          "3": 5643,
+          "4": 1568,
+          "5": 6132,
+          "6": 27,
+          "7": 600,
+          "8": 568,
+          "9": 143,
+          "10": 498,
+          "29": 20,
+          "48": 10,
+          "51": 6
+         },
+         "highestFanIn": [
+          {
+           "module": "lib/Kernel/AppIdentity.php",
+           "fanIn": 51
+          },
+          {
+           "module": "lib/Service/Settings/RegisterConfigReaderInterface.php",
+           "fanIn": 48
+          },
+          {
+           "module": "lib/Service/Settings/ObjectTypeLocatorInterface.php",
+           "fanIn": 29
+          },
+          {
+           "module": "lib/Service/Settings/CatalogueLocator.php",
+           "fanIn": 10
+          },
+          {
+           "module": "lib/Exception/CmdbImportException.php",
+           "fanIn": 9
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 3,
+         "modulesInCycles": 7,
+         "locShareInCycles": 0.0139,
+         "largestModuleCycle": 3,
+         "componentCycles": 2,
+         "largestComponentCycle": 3
+        },
+        "batches": 1
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 224
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 224,
+        "edges": 403,
+        "loc": 44409,
+        "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 10,
+        "componentIndependence": 0.4863,
+        "componentEntanglement": {
+         "violationDegree": 0.039,
+         "density": 3.7,
+         "communicationLines": 37,
+         "violations": {
+          "cyclic": 5,
+          "transitive": 4
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9926,
+          "moderate": 0.007,
+          "high": 0,
+          "veryHigh": 0.0004
+         },
+         "above": [
+          0.0074,
+          0.0004,
+          0.0004
+         ],
+         "fanInHistogram": {
+          "0": 2639,
+          "1": 34181,
+          "2": 5410,
+          "3": 972,
+          "4": 581,
+          "5": 44,
+          "6": 244,
+          "7": 9,
+          "13": 211,
+          "17": 100,
+          "64": 18
+         },
+         "highestFanIn": [
+          {
+           "module": "src/store/store.js",
+           "fanIn": 64
+          },
+          {
+           "module": "src/utils/lifecyclePhase.js",
+           "fanIn": 17
+          },
+          {
+           "module": "src/components/AlwaysVisibleSection.vue",
+           "fanIn": 13
+          },
+          {
+           "module": "src/utils/objectTypes.js",
+           "fanIn": 13
+          },
+          {
+           "module": "src/composables/useLiveCollections.js",
+           "fanIn": 7
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 1,
+         "largestComponentCycle": 7
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1619,14 +2034,12 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
-    "evidence": [
-     "gitleaks is not installed on the checker host."
-    ],
+    "status": "pass",
+    "message": "Gitleaks found no committed secrets in the working tree.",
+    "evidence": [],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "openssfscorecard",
@@ -2092,10 +2505,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 15,
+  "durationSeconds": 14.1,
   "scanMode": "full",
-  "scanModeReason": "the code changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

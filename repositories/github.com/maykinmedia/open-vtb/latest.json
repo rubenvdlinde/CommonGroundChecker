@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:00:29.640Z",
+  "lastCheckedAt": "2026-11-20T09:21:40.582Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:31.398Z",
-  "updatedAt": "2026-11-20T09:00:29.640Z",
+  "updatedAt": "2026-11-20T09:21:40.582Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -42,11 +42,11 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-00-29-640Z",
+  "id": "2026-11-20T09-21-40-582Z",
   "repoId": "github.com/maykinmedia/open-vtb",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:00:29.640Z",
-  "createdAt": "2026-11-20T09:00:29.640Z",
+  "checkedAt": "2026-11-20T09:21:40.582Z",
+  "createdAt": "2026-11-20T09:21:40.582Z",
   "version": "v0.2.0",
   "checklistVersion": "2026.2",
   "scannedRef": "0.2.0",
@@ -56,7 +56,7 @@
   "rating": 3.5,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 3.5,
+   "Security": 3.2,
    "Architecture": 3,
    "Software Quality": 4.1,
    "Deployment & Operations": 4.3
@@ -101,7 +101,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -810,7 +810,7 @@
      "Lever: component independence in python, about 217 lines to fix for half a star",
      "Lever: unit interfacing in python, about 25 lines to fix for half a star",
      "Lever: duplication in python, about 83 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 6.3%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, python 6.3% against 6.3%"
     ],
     "requirementLevel": "recommended"
    },
@@ -821,7 +821,7 @@
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
     "starRating": 3,
-    "rating": 3,
+    "rating": 3.2857142857142856,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -942,17 +942,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "4.1%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "38.5%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "34.7%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "17.1%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "86.7%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 4
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.026",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 4
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.0 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.3 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★☆☆ 10.8% / 8.7% / 5.6% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★★★☆ 13.8% / 3.1% / 3.1% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★☆☆☆ 19.3% / 12.7% / 5.6% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★★☆ 4.1% duplicated lines",
+     "Module coupling: ★★☆☆☆ 38.5% / 34.7% / 17.1% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★★☆ 86.7% of the code hidden from other components",
+     "Component entanglement: ★★★★☆ 0.026 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1243,9 +1337,52 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 141,
+     "loc": 6338,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 104,
+       "loc": 5146
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 12,
+       "loc": 611
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 19,
+       "loc": 553
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 5,
+       "loc": 26
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 1,
+       "loc": 2
+      }
+     ]
+    },
+    "message": "6,338 lines of production code in 141 file(s), counted with scc 4.1.0. Rebuild effort about 0.7 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 5,146 lines in 104 file(s)",
+     "Sass: 611 lines in 12 file(s)",
+     "HTML: 553 lines in 19 file(s)",
+     "JavaScript: 26 lines in 5 file(s)",
+     "SQL: 2 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 144 function points, 0.7 person-years (proxies: Python uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 0.9 person-years (proxies: CSS, HTML and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1253,11 +1390,129 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 4.1% overall (javascript 0.0%, python 4.1%) over 109 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 0.0% (0 of 31 lines, 0 clone(s) in 5 file(s))",
+     "python: 4.1% (269 of 6598 lines, 23 clone(s) in 104 file(s))",
+     "Clone of 22 lines: src/openvtb/components/taken/models.py:115-136 and src/openvtb/components/verzoeken/models.py:313-334",
+     "Clone of 20 lines: src/openvtb/components/berichten/api/serializers.py:177-196 and src/openvtb/components/verzoeken/api/serializers.py:138-158",
+     "Clone of 17 lines: src/openvtb/components/berichten/api/serializers.py:40-56 and src/openvtb/components/verzoeken/api/serializers.py:31-47",
+     "Clone of 16 lines: src/openvtb/components/taken/models.py:154-169 and src/openvtb/components/verzoeken/models.py:384-399",
+     "Clone of 14 lines: src/openvtb/components/berichten/models.py:155-168 and src/openvtb/components/taken/models.py:156-169"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 4.06,
+      "languages": {
+       "javascript": 0,
+       "python": 4.08
+      },
+      "largestClones": [
+       {
+        "language": "python",
+        "file": "src/openvtb/components/taken/models.py",
+        "startLine": 115,
+        "endLine": 136,
+        "otherFile": "src/openvtb/components/verzoeken/models.py",
+        "otherStartLine": 313,
+        "otherEndLine": 334,
+        "lines": 22
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/berichten/api/serializers.py",
+        "startLine": 177,
+        "endLine": 196,
+        "otherFile": "src/openvtb/components/verzoeken/api/serializers.py",
+        "otherStartLine": 138,
+        "otherEndLine": 158,
+        "lines": 20
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/berichten/api/serializers.py",
+        "startLine": 40,
+        "endLine": 56,
+        "otherFile": "src/openvtb/components/verzoeken/api/serializers.py",
+        "otherStartLine": 31,
+        "otherEndLine": 47,
+        "lines": 17
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/taken/models.py",
+        "startLine": 154,
+        "endLine": 169,
+        "otherFile": "src/openvtb/components/verzoeken/models.py",
+        "otherStartLine": 384,
+        "otherEndLine": 399,
+        "lines": 16
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/berichten/models.py",
+        "startLine": 155,
+        "endLine": 168,
+        "otherFile": "src/openvtb/components/taken/models.py",
+        "otherStartLine": 156,
+        "otherEndLine": 169,
+        "lines": 14
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/taken/api/urls.py",
+        "startLine": 33,
+        "endLine": 46,
+        "otherFile": "src/openvtb/components/verzoeken/api/urls.py",
+        "otherStartLine": 22,
+        "otherEndLine": 35,
+        "lines": 14
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/berichten/api/urls.py",
+        "startLine": 15,
+        "endLine": 27,
+        "otherFile": "src/openvtb/components/taken/api/urls.py",
+        "otherStartLine": 34,
+        "otherEndLine": 46,
+        "lines": 13
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/berichten/models.py",
+        "startLine": 195,
+        "endLine": 207,
+        "otherFile": "src/openvtb/components/verzoeken/models.py",
+        "otherStartLine": 481,
+        "otherEndLine": 493,
+        "lines": 13
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/berichten/models.py",
+        "startLine": 183,
+        "endLine": 194,
+        "otherFile": "src/openvtb/components/verzoeken/models.py",
+        "otherStartLine": 470,
+        "otherEndLine": 481,
+        "lines": 12
+       },
+       {
+        "language": "python",
+        "file": "src/openvtb/components/taken/schemas.py",
+        "startLine": 83,
+        "endLine": 94,
+        "otherFile": "src/openvtb/components/taken/schemas.py",
+        "otherStartLine": 139,
+        "otherEndLine": 150,
+        "lines": 12
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1266,24 +1521,163 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 104 modules, 132 edges, 8 components; independence 86.6%, entanglement 0.026 (density 1.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 3",
+     "Python components: directories below src/openvtb/ (a level is descended while one directory holds more than 80% of the modules); packages openvtb",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 5 modules, 2 edges, 2 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 104
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages openvtb",
+        "modules": 104,
+        "edges": 132,
+        "loc": 5448,
+        "componentDefinition": "directories below src/openvtb/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 8,
+        "componentIndependence": 0.866,
+        "componentEntanglement": {
+         "violationDegree": 0.0263,
+         "density": 1,
+         "communicationLines": 4,
+         "violations": {
+          "indirect-cyclic": 1
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 1133,
+          "1": 2029,
+          "2": 181,
+          "3": 203,
+          "4": 519,
+          "5": 445,
+          "6": 645,
+          "10": 293
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openvtb/utils/validators.py",
+           "fanIn": 10
+          },
+          {
+           "module": "src/openvtb/components/berichten/models.py",
+           "fanIn": 6
+          },
+          {
+           "module": "src/openvtb/components/taken/constants.py",
+           "fanIn": 6
+          },
+          {
+           "module": "src/openvtb/components/taken/models.py",
+           "fanIn": 6
+          },
+          {
+           "module": "src/openvtb/components/verzoeken/constants.py",
+           "fanIn": 6
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 1,
+         "largestComponentCycle": 3
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 5
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 5,
+        "edges": 2,
+        "loc": 26,
+        "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 2,
+        "componentIndependence": 1,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 26,
+          "1": 0
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openvtb/js/components/index.js",
+           "fanIn": 1
+          },
+          {
+           "module": "src/openvtb/js/views/index.js",
+           "fanIn": 1
+          },
+          {
+           "module": "src/openvtb/js/index.js",
+           "fanIn": 0
+          },
+          {
+           "module": "src/openvtb/jstests/index.js",
+           "fanIn": 0
+          },
+          {
+           "module": "vacuum_functions/or.js",
+           "fanIn": 0
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1418,14 +1812,18 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 5 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 107 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "generic-api-key: docker/setup_configuration/data.yaml:17",
+     "generic-api-key: docker/setup_configuration/data.yaml:47",
+     "generic-api-key: docker/keycloak/data/test-realm.json:864",
+     "generic-api-key: docker/keycloak/data/test-realm.json:1114",
+     "generic-api-key: docker/keycloak/data/test-realm.json:1180"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1513,7 +1911,7 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Docker Hub maykinmedia/open-vtb: 7,343 pulls in total (2026-11-20)",
+     "Docker Hub maykinmedia/open-vtb: 7,344 pulls in total (2026-11-20)",
      "GitHub maykinmedia/open-vtb: 3 stars, 1 forks, 0 watchers (2026-11-20)",
      "GitHub commits maykinmedia/open-vtb: 6 contributors, 5 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-20)"
     ],
@@ -1530,7 +1928,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 7343
+         "value": 7344
         }
        ]
       },
@@ -1842,10 +2240,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 9.7,
+  "durationSeconds": 8.1,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

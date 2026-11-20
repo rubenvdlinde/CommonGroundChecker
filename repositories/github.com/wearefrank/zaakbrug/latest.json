@@ -36,10 +36,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:03:05.716Z",
+  "lastCheckedAt": "2026-11-20T09:23:38.842Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:02:54.638Z",
-  "updatedAt": "2026-11-20T09:03:05.716Z",
+  "updatedAt": "2026-11-20T09:23:38.842Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -50,21 +50,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-03-05-716Z",
+  "id": "2026-11-20T09-23-38-842Z",
   "repoId": "github.com/wearefrank/zaakbrug",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:03:05.716Z",
-  "createdAt": "2026-11-20T09:03:05.716Z",
+  "checkedAt": "2026-11-20T09:23:38.842Z",
+  "createdAt": "2026-11-20T09:23:38.842Z",
   "version": "v1.27.3",
   "checklistVersion": "2026.2",
   "scannedRef": "v1.27.3",
   "scannedRefKind": "release",
   "scannedCommit": "42f2c75e06cbee6c4244d09cc6a73c56282ff9cd",
   "score": 78,
-  "rating": 3.9,
+  "rating": 3.8,
   "categoryRatings": {
    "Governance": 2.9,
-   "Security": 4,
+   "Security": 3.5,
    "Architecture": 3,
    "Software Quality": 4,
    "Deployment & Operations": 5.5
@@ -109,7 +109,7 @@
     "rating": 3
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 5.5
@@ -875,7 +875,7 @@
      "Lever: unit complexity in javascript, about 44 lines to fix for half a star",
      "Lever: unit size in javascript, about 12 lines to fix for half a star",
      "Lever: duplication in javascript, about 6 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 11.1%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 11.1% against 11.1%, typescript 0.0% against 0.0%"
     ],
     "requirementLevel": "recommended"
    },
@@ -885,8 +885,8 @@
     "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
-    "starRating": 3,
-    "rating": 3.3333333333333335,
+    "starRating": 4,
+    "rating": 3.857142857142857,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -1007,17 +1007,111 @@
         "stars": 5
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "12.0%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 2
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "100.0%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.000",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 5
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 3.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 3.9 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★☆ 17.5% / 0.0% / 0.0% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★☆☆☆☆ 53.2% / 53.2% / 10.5% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★★★ 0.0% / 0.0% / 0.0% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★☆☆☆ 12.0% duplicated lines",
+     "Module coupling: ★★★★★ 0.0% / 0.0% / 0.0% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★★★ 100.0% of the code hidden from other components",
+     "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1180,9 +1274,38 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 8,
+     "loc": 255,
+     "languages": [
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 2,
+       "loc": 126
+      },
+      {
+       "language": "TypeScript",
+       "family": "typescript",
+       "files": 3,
+       "loc": 76
+      },
+      {
+       "language": "CSS",
+       "family": "css",
+       "files": 3,
+       "loc": 53
+      }
+     ]
+    },
+    "message": "255 lines of production code in 8 file(s), counted with scc 4.1.0. Rebuild effort about 0.0 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "JavaScript: 126 lines in 2 file(s)",
+     "TypeScript: 76 lines in 3 file(s)",
+     "CSS: 53 lines in 3 file(s)",
+     "Rebuild effort, open estimate: 6 function points, 0.0 person-years (proxies: TypeScript uses the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 0.0 person-years (proxies: CSS uses the JavaScript factor)"
     ]
    },
    {
@@ -1190,11 +1313,46 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 12.0% overall (javascript 19.2%, typescript 0.0%) over 5 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 19.2% (34 of 177 lines, 2 clone(s) in 2 file(s))",
+     "typescript: 0.0% (0 of 107 lines, 0 clone(s) in 3 file(s))",
+     "Clone of 25 lines: src/main/resources/MergeProfileDefaultsWithProfiles-orig.js:25-49 and src/main/resources/MergeProfileDefaultsWithProfiles.js:32-56",
+     "Clone of 9 lines: src/main/resources/MergeProfileDefaultsWithProfiles-orig.js:11-19 and src/main/resources/MergeProfileDefaultsWithProfiles.js:14-22"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 11.97,
+      "languages": {
+       "javascript": 19.21,
+       "typescript": 0
+      },
+      "largestClones": [
+       {
+        "language": "javascript",
+        "file": "src/main/resources/MergeProfileDefaultsWithProfiles-orig.js",
+        "startLine": 25,
+        "endLine": 49,
+        "otherFile": "src/main/resources/MergeProfileDefaultsWithProfiles.js",
+        "otherStartLine": 32,
+        "otherEndLine": 56,
+        "lines": 25
+       },
+       {
+        "language": "javascript",
+        "file": "src/main/resources/MergeProfileDefaultsWithProfiles-orig.js",
+        "startLine": 11,
+        "endLine": 19,
+        "otherFile": "src/main/resources/MergeProfileDefaultsWithProfiles.js",
+        "otherStartLine": 14,
+        "otherEndLine": 22,
+        "lines": 9
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1203,18 +1361,82 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 5 modules, 0 edges, 2 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 5
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 5,
+        "edges": 0,
+        "loc": 202,
+        "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 2,
+        "componentIndependence": 1,
+        "componentEntanglement": {
+         "violationDegree": 0,
+         "density": 0,
+         "communicationLines": 0,
+         "violations": {}
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 1,
+          "moderate": 0,
+          "high": 0,
+          "veryHigh": 0
+         },
+         "above": [
+          0,
+          0,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 202
+         },
+         "highestFanIn": [
+          {
+           "module": "docusaurus/sidebars.ts",
+           "fanIn": 0
+          },
+          {
+           "module": "docusaurus/src/components/HomepageFeatures/index.tsx",
+           "fanIn": 0
+          },
+          {
+           "module": "docusaurus/src/pages/index.tsx",
+           "fanIn": 0
+          },
+          {
+           "module": "src/main/resources/MergeProfileDefaultsWithProfiles-orig.js",
+           "fanIn": 0
+          },
+          {
+           "module": "src/main/resources/MergeProfileDefaultsWithProfiles.js",
+           "fanIn": 0
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 0,
+         "modulesInCycles": 0,
+         "locShareInCycles": 0,
+         "largestModuleCycle": 0,
+         "componentCycles": 0,
+         "largestComponentCycle": 0
+        },
+        "unresolvedLocalImports": 0
        }
       }
      }
@@ -1343,14 +1565,15 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 2 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "jwt: src/main/configurations/Translate/Configuration_Translate_GeefZaakdetails_Lv01.xml:14",
+     "jwt: src/main/configurations/Translate/DeploymentSpecifics.properties:153"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1682,10 +1905,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 7.9,
+  "durationSeconds": 5.9,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

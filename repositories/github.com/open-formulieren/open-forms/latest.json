@@ -34,10 +34,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:00:59.437Z",
+  "lastCheckedAt": "2026-11-20T09:22:01.203Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:04.403Z",
-  "updatedAt": "2026-11-20T09:00:59.437Z",
+  "updatedAt": "2026-11-20T09:22:01.203Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -51,11 +51,11 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-00-59-437Z",
+  "id": "2026-11-20T09-22-01-203Z",
   "repoId": "github.com/open-formulieren/open-forms",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:00:59.437Z",
-  "createdAt": "2026-11-20T09:00:59.437Z",
+  "checkedAt": "2026-11-20T09:22:01.203Z",
+  "createdAt": "2026-11-20T09:22:01.203Z",
   "version": "vtest-oidc-refactor.2",
   "checklistVersion": "2026.2",
   "scannedRef": "4.1.0-alpha.2",
@@ -65,7 +65,7 @@
   "rating": 3.1,
   "categoryRatings": {
    "Governance": 3.7,
-   "Security": 2.8,
+   "Security": 2.5,
    "Architecture": 3,
    "Software Quality": 3.3,
    "Deployment & Operations": 3
@@ -110,7 +110,7 @@
     "rating": 0.5
    },
    "secrets": {
-    "rating": 3
+    "rating": 0.5
    },
    "secure-coding": {
     "rating": 3
@@ -628,12 +628,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.76 (threshold: 15)",
      "Max CCN: 77.00 (threshold: 30)",
-     "2      1     12      1       2 main@4-5@/tmp/cgchecker-repo-x7ZLiy/repo/bin/check_error.py",
-     "18      5    109      1      45 parse_soap_error_text@423-467@/tmp/cgchecker-repo-x7ZLiy/repo/src/stuf/stuf_zds/client.py",
-     "8      2     50      2       8 log_errors@13-20@/tmp/cgchecker-repo-x7ZLiy/repo/src/openforms/submissions/logic/log_utils.py",
-     "5      2     22      2       5 get_appointment_error_information@381-385@/tmp/cgchecker-repo-x7ZLiy/repo/src/openforms/submissions/admin.py",
-     "10      3     56      1      13 error_message@81-93@/tmp/cgchecker-repo-x7ZLiy/repo/src/openforms/submissions/status.py",
-     "6      2     44      2       6 check_syntax_errors@55-60@/tmp/cgchecker-repo-x7ZLiy/repo/src/openforms/template/validators.py"
+     "2      1     12      1       2 main@4-5@/tmp/cgchecker-repo-ISmGhq/repo/bin/check_error.py",
+     "8      2     50      2       8 log_errors@13-20@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/submissions/logic/log_utils.py",
+     "5      2     22      2       5 get_appointment_error_information@381-385@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/submissions/admin.py",
+     "10      3     56      1      13 error_message@81-93@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/submissions/status.py",
+     "11      4     56      3      12 get_error_message_parameters@120-131@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/contrib/auth_oidc/plugin.py",
+     "2      1     12      1       2 get_error_codes@133-134@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/contrib/auth_oidc/plugin.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1059,7 +1059,7 @@
      "Lever: unit complexity in javascript, about 176 lines to fix for half a star",
      "Lever: component independence in js/ts/vue, about 1249 lines to fix for half a star",
      "Lever: duplication in python, about 1494 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 13.6%, python not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 3.8%, typescript not measured (Simian 4.2.1 is not installed at /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar) against 0.0%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 12.6% against 13.6%, python 3.8% against 3.8%, typescript 0.0% against 0.0%"
     ],
     "requirementLevel": "recommended"
    },
@@ -1069,8 +1069,8 @@
     "description": "Rates unit size, unit complexity, unit interfacing, duplication, module coupling, component independence and component entanglement against open thresholds derived from a public benchmark of Common Ground and Developer Overheid repositories. Informative: shown next to the estimate, not counted.",
     "referenceUrl": "https://doi.org/10.1109/ICSM.2010.5609747",
     "status": "info",
-    "starRating": 2,
-    "rating": 2.3333333333333335,
+    "starRating": 3,
+    "rating": 2.5714285714285716,
     "measurements": [
      {
       "id": "open-unit-size",
@@ -1191,17 +1191,111 @@
         "stars": 3
        }
       ]
+     },
+     {
+      "id": "open-duplication",
+      "title": "Duplication",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "7.3%",
+        "thresholds": {
+         "2": "≤ 34.8%",
+         "3": "≤ 8.6%",
+         "4": "≤ 4.2%",
+         "5": "≤ 1.1%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-module-coupling",
+      "title": "Module coupling",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages, fan-in above 2",
+        "value": "24.6%",
+        "thresholds": {
+         "2": "≤ 54.0%",
+         "3": "≤ 29.1%",
+         "4": "≤ 20.0%",
+         "5": "≤ 4.4%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, fan-in above 3",
+        "value": "16.5%",
+        "thresholds": {
+         "2": "≤ 43.9%",
+         "3": "≤ 22.7%",
+         "4": "≤ 13.1%",
+         "5": "≤ 1.9%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "All languages, fan-in above 5",
+        "value": "10.9%",
+        "thresholds": {
+         "2": "≤ 30.4%",
+         "3": "≤ 13.8%",
+         "4": "≤ 6.7%",
+         "5": "≤ 0.0%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-independence",
+      "title": "Component independence",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "75.0%",
+        "thresholds": {
+         "2": "≥ 27.3%",
+         "3": "≥ 63.8%",
+         "4": "≥ 81.5%",
+         "5": "≥ 99.9%"
+        },
+        "stars": 3
+       }
+      ]
+     },
+     {
+      "id": "open-component-entanglement",
+      "title": "Component entanglement",
+      "aspects": [],
+      "rows": [
+       {
+        "label": "All languages",
+        "value": "0.236",
+        "thresholds": {
+         "2": "≤ 0.236",
+         "3": "≤ 0.094",
+         "4": "≤ 0.029",
+         "5": "≤ 0.000"
+        },
+        "stars": 2
+       }
+      ]
      }
     ],
-    "message": "Open-track rating 2.3 of 5, the mean of 3 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
+    "message": "Open-track rating 2.6 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★☆☆☆ 38.8% / 26.7% / 12.4% of the code above 29 / 42 / 71 lines",
      "Unit complexity: ★★☆☆☆ 30.9% / 20.6% / 13.2% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★★☆☆ 14.7% / 6.7% / 2.9% of the code above 2 / 3 / 4 parameters",
-     "Duplication: not measured",
-     "Module coupling: not measured",
-     "Component independence: not measured",
-     "Component entanglement: not measured",
+     "Duplication: ★★★☆☆ 7.3% duplicated lines",
+     "Module coupling: ★★★☆☆ 24.6% / 16.5% / 10.9% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★★☆☆ 75.0% of the code hidden from other components",
+     "Component entanglement: ★★☆☆☆ 0.236 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
     "requirementLevel": "informative"
@@ -1494,9 +1588,66 @@
     "referenceUrl": "https://github.com/boyter/scc",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Not measured: scc 4.1.0 could not run.",
+    "size": {
+     "tool": "scc 4.1.0",
+     "files": 1320,
+     "loc": 87439,
+     "languages": [
+      {
+       "language": "Python",
+       "family": "python",
+       "files": 726,
+       "loc": 47244
+      },
+      {
+       "language": "JavaScript",
+       "family": "javascript",
+       "files": 375,
+       "loc": 33730
+      },
+      {
+       "language": "Sass",
+       "family": "css",
+       "files": 98,
+       "loc": 2851
+      },
+      {
+       "language": "HTML",
+       "family": "html",
+       "files": 96,
+       "loc": 2815
+      },
+      {
+       "language": "TypeScript",
+       "family": "typescript",
+       "files": 18,
+       "loc": 779
+      },
+      {
+       "language": "SQL",
+       "family": "sql",
+       "files": 6,
+       "loc": 20
+      },
+      {
+       "language": "TypeScript Typings",
+       "family": "typescript",
+       "files": 1,
+       "loc": 0
+      }
+     ]
+    },
+    "message": "87,439 lines of production code in 1,320 file(s), counted with scc 4.1.0. Rebuild effort about 8.5 person-years (open estimate).",
     "evidence": [
-     "spawn scc ENOENT"
+     "Python: 47,244 lines in 726 file(s)",
+     "JavaScript: 33,730 lines in 375 file(s)",
+     "Sass: 2,851 lines in 98 file(s)",
+     "HTML: 2,815 lines in 96 file(s)",
+     "TypeScript: 779 lines in 18 file(s)",
+     "SQL: 20 lines in 6 file(s)",
+     "TypeScript Typings: 0 lines in 1 file(s)",
+     "Rebuild effort, open estimate: 1,907 function points, 8.5 person-years (proxies: Python and TypeScript use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 11.7 person-years (proxies: CSS, HTML and SQL use the JavaScript factor)"
     ]
    },
    {
@@ -1504,11 +1655,131 @@
     "title": "Duplication (open track)",
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
-    "status": "warn",
-    "message": "Duplication was not measured. It needs python3 and jscpd 5.4.2.",
+    "status": "info",
+    "message": "jscpd 5.4.2 duplicated lines: 7.3% overall (javascript 13.0%, python 4.0%, typescript 0.0%) over 1120 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "jscpd 5.4.2 is not installed under /opt/analysis-tools/jscpd-5.4.2/node_modules"
+     "javascript: 13.0% (5063 of 38889 lines, 386 clone(s) in 375 file(s))",
+     "python: 4.0% (2644 of 66069 lines, 258 clone(s) in 726 file(s))",
+     "typescript: 0.0% (0 of 998 lines, 0 clone(s) in 19 file(s))",
+     "Clone of 147 lines: src/openforms/js/components/admin/form_design/RegistrationFields.stories.js:364-510 and src/openforms/js/components/admin/form_design/registrations/stufzds/StufZDSOptionsFormFields.stories.js:78-224",
+     "Clone of 87 lines: src/openforms/js/components/admin/form_design/registrations/objectsapi/edit_options/FileEditor.js:127-213 and src/openforms/js/components/admin/form_design/registrations/zgw/VariableConfigurationEditor.js:67-153",
+     "Clone of 66 lines: src/openforms/js/components/admin/form_design/variables/VariablesEditor.stories.js:460-525 and src/openforms/js/components/admin/form_design/variables/VariablesEditor.stories.js:1097-1162",
+     "Clone of 64 lines: src/openforms/js/components/admin/form_design/logic/actions/Action.stories.js:390-453 and src/openforms/js/components/admin/form_design/logic/actions/synchronize_variable/SynchronizeVariablesActionConfig.stories.js:17-80",
+     "Clone of 54 lines: src/openforms/js/components/admin/form_design/registrations/objectsapi/LegacyConfigFields.js:96-149 and src/openforms/js/components/admin/form_design/registrations/objectsapi/V2ConfigFields.js:122-175"
     ],
+    "openTrack": {
+     "duplication": {
+      "tool": "jscpd 5.4.2",
+      "percentage": 7.27,
+      "languages": {
+       "javascript": 13.02,
+       "python": 4,
+       "typescript": 0
+      },
+      "largestClones": [
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/RegistrationFields.stories.js",
+        "startLine": 364,
+        "endLine": 510,
+        "otherFile": "src/openforms/js/components/admin/form_design/registrations/stufzds/StufZDSOptionsFormFields.stories.js",
+        "otherStartLine": 78,
+        "otherEndLine": 224,
+        "lines": 147
+       },
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/registrations/objectsapi/edit_options/FileEditor.js",
+        "startLine": 127,
+        "endLine": 213,
+        "otherFile": "src/openforms/js/components/admin/form_design/registrations/zgw/VariableConfigurationEditor.js",
+        "otherStartLine": 67,
+        "otherEndLine": 153,
+        "lines": 87
+       },
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/variables/VariablesEditor.stories.js",
+        "startLine": 460,
+        "endLine": 525,
+        "otherFile": "src/openforms/js/components/admin/form_design/variables/VariablesEditor.stories.js",
+        "otherStartLine": 1097,
+        "otherEndLine": 1162,
+        "lines": 66
+       },
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/logic/actions/Action.stories.js",
+        "startLine": 390,
+        "endLine": 453,
+        "otherFile": "src/openforms/js/components/admin/form_design/logic/actions/synchronize_variable/SynchronizeVariablesActionConfig.stories.js",
+        "otherStartLine": 17,
+        "otherEndLine": 80,
+        "lines": 64
+       },
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/registrations/objectsapi/LegacyConfigFields.js",
+        "startLine": 96,
+        "endLine": 149,
+        "otherFile": "src/openforms/js/components/admin/form_design/registrations/objectsapi/V2ConfigFields.js",
+        "otherStartLine": 122,
+        "otherEndLine": 175,
+        "lines": 54
+       },
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/authentication/yivi/YiviOptionsForm.js",
+        "startLine": 45,
+        "endLine": 89,
+        "otherFile": "src/openforms/js/components/admin/form_design/authentication/yivi/YiviOptionsFormFields.js",
+        "otherStartLine": 41,
+        "otherEndLine": 85,
+        "lines": 45
+       },
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/variables/VariablesEditor.stories.js",
+        "startLine": 1913,
+        "endLine": 1955,
+        "otherFile": "src/openforms/js/components/admin/form_design/variables/VariablesEditor.stories.js",
+        "otherStartLine": 2043,
+        "otherEndLine": 2085,
+        "lines": 43
+       },
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/FormLogic.stories.js",
+        "startLine": 119,
+        "endLine": 160,
+        "otherFile": "src/openforms/js/components/admin/form_design/variables/ServiceFetchConfigurationPicker.stories.js",
+        "otherStartLine": 36,
+        "otherEndLine": 77,
+        "lines": 42
+       },
+       {
+        "language": "python",
+        "file": "src/openforms/forms/api/serializers/form.py",
+        "startLine": 352,
+        "endLine": 391,
+        "otherFile": "src/openforms/forms/import_export/serializers/form.py",
+        "otherStartLine": 154,
+        "otherEndLine": 193,
+        "lines": 40
+       },
+       {
+        "language": "javascript",
+        "file": "src/openforms/js/components/admin/form_design/FormConfigurationFields.stories.js",
+        "startLine": 98,
+        "endLine": 137,
+        "otherFile": "src/openforms/js/components/admin/form_design/FormConfigurationFields.stories.js",
+        "otherStartLine": 211,
+        "otherEndLine": 251,
+        "lines": 40
+       }
+      ]
+     }
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1517,24 +1788,198 @@
     "description": "Measures module coupling, component independence, component entanglement and dependency cycles from the module dependency graph of pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue).",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "info",
-    "message": "Not measured: Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
+    "message": "Measured the module structure of Python, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "Python: not measured: grimp 3.18 is not installed",
-     "JavaScript, TypeScript and Vue: not measured: dependency-cruiser 17.4.3 is not installed"
+     "Python (grimp 3.18): 726 modules, 1,859 edges, 36 components; independence 62.5%, entanglement 0.282 (density 7.09); fan-in profile 96.1% / 3.0% / 0.6% / 0.2% of code at 0-10 / 11-20 / 21-50 / over 50; 174 modules in 4 cycles, largest component cycle 31",
+     "Python components: directories below src/openforms/ (a level is descended while one directory holds more than 80% of the modules); packages csp_post_processor, geo_visualization, openforms, soap, stuf, suwinet",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 394 modules, 480 edges, 14 components; independence 93.8%, entanglement 0.167 (density 1.11); fan-in profile 99.3% / 0.1% / 0.6% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 4 modules in 2 cycles, largest component cycle 4",
+     "JavaScript, TypeScript and Vue components: directories below src/openforms/js/components/admin/ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
      "coupling": {
       "version": 1,
       "languages": {
        "python": {
-        "measured": false,
-        "reason": "grimp 3.18 is not installed",
-        "files": 726
+        "measured": true,
+        "tool": "grimp 3.18",
+        "scope": "packages csp_post_processor, geo_visualization, openforms, soap, stuf, suwinet",
+        "modules": 726,
+        "edges": 1859,
+        "loc": 51624,
+        "componentDefinition": "directories below src/openforms/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 36,
+        "componentIndependence": 0.6248,
+        "componentEntanglement": {
+         "violationDegree": 0.282,
+         "density": 7.09,
+         "communicationLines": 234,
+         "violations": {
+          "cyclic": 63,
+          "indirect-cyclic": 28,
+          "transitive": 11
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9612,
+          "moderate": 0.03,
+          "high": 0.0064,
+          "veryHigh": 0.0024
+         },
+         "above": [
+          0.0388,
+          0.0087,
+          0.0024
+         ],
+         "fanInHistogram": {
+          "0": 5510,
+          "1": 18332,
+          "2": 8631,
+          "3": 6010,
+          "4": 2060,
+          "5": 2474,
+          "6": 2421,
+          "7": 2228,
+          "8": 911,
+          "9": 914,
+          "10": 131,
+          "11": 419,
+          "12": 70,
+          "13": 215,
+          "14": 28,
+          "15": 397,
+          "16": 151,
+          "18": 224,
+          "19": 47,
+          "24": 62,
+          "27": 2,
+          "28": 59,
+          "35": 154,
+          "41": 51,
+          "52": 13,
+          "76": 53,
+          "97": 23,
+          "110": 34
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openforms/submissions/models/__init__.py",
+           "fanIn": 110
+          },
+          {
+           "module": "src/openforms/forms/models/__init__.py",
+           "fanIn": 97
+          },
+          {
+           "module": "src/openforms/typing.py",
+           "fanIn": 76
+          },
+          {
+           "module": "src/openforms/config/models/__init__.py",
+           "fanIn": 52
+          },
+          {
+           "module": "src/openforms/formio/typing/__init__.py",
+           "fanIn": 41
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 4,
+         "modulesInCycles": 174,
+         "locShareInCycles": 0.4354,
+         "largestModuleCycle": 166,
+         "componentCycles": 1,
+         "largestComponentCycle": 31
+        },
+        "contracts": null
        },
        "javascript": {
-        "measured": false,
-        "reason": "dependency-cruiser 17.4.3 is not installed",
-        "files": 394
+        "measured": true,
+        "tool": "dependency-cruiser 17.4.3",
+        "modules": 394,
+        "edges": 480,
+        "loc": 34510,
+        "componentDefinition": "directories below src/openforms/js/components/admin/ (a level is descended while one directory holds more than 80% of the modules)",
+        "components": 14,
+        "componentIndependence": 0.9382,
+        "componentEntanglement": {
+         "violationDegree": 0.1667,
+         "density": 1.11,
+         "communicationLines": 10,
+         "violations": {
+          "cyclic": 1,
+          "indirect-cyclic": 1
+         }
+        },
+        "moduleCoupling": {
+         "bounds": [
+          10,
+          20,
+          50
+         ],
+         "riskProfile": {
+          "low": 0.9925,
+          "moderate": 0.0013,
+          "high": 0.0062,
+          "veryHigh": 0
+         },
+         "above": [
+          0.0075,
+          0.0062,
+          0
+         ],
+         "fanInHistogram": {
+          "0": 9639,
+          "1": 15624,
+          "2": 7219,
+          "3": 916,
+          "4": 172,
+          "5": 160,
+          "6": 3,
+          "7": 196,
+          "8": 184,
+          "9": 137,
+          "11": 45,
+          "21": 215
+         },
+         "highestFanIn": [
+          {
+           "module": "src/openforms/js/components/admin/form_design/Context.ts",
+           "fanIn": 21
+          },
+          {
+           "module": "src/openforms/js/components/admin/json_editor/types.js",
+           "fanIn": 11
+          },
+          {
+           "module": "src/openforms/js/components/admin/form_design/variables/constants.js",
+           "fanIn": 9
+          },
+          {
+           "module": "src/openforms/js/components/admin/form_design/utils.js",
+           "fanIn": 8
+          },
+          {
+           "module": "src/openforms/js/components/admin/form_design/LanguageTabs.js",
+           "fanIn": 7
+          }
+         ]
+        },
+        "cycles": {
+         "moduleCycles": 2,
+         "modulesInCycles": 4,
+         "locShareInCycles": 0.0024,
+         "largestModuleCycle": 2,
+         "componentCycles": 1,
+         "largestComponentCycle": 4
+        },
+        "unresolvedLocalImports": 1
        }
       }
      }
@@ -1668,14 +2113,24 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "warn",
-    "message": "Secret scanning could not run.",
+    "status": "fail",
+    "message": "Gitleaks found 13 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 650 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "gitleaks is not installed on the checker host."
+     "generic-api-key: docker/keycloak/README.md:40",
+     "private-key: docker/certs/mocks.key:4",
+     "private-key: docker/certs/openforms.key:4",
+     "generic-api-key: docker/setup_configuration/data.yaml:7",
+     "generic-api-key: docker/setup_configuration/data.yaml:57",
+     "generic-api-key: docker/setup_configuration/data.yaml:64",
+     "generic-api-key: docker/setup_configuration/data.yaml:71",
+     "generic-api-key: docker/setup_configuration/data_oidc.yaml:14",
+     "generic-api-key: docker/setup_configuration/data_oidc.yaml:44",
+     "generic-api-key: docker/keycloak/import/test-realm.json:877",
+     "... and 3 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -1864,7 +2319,7 @@
     "title": "Project health (CHAOSS)",
     "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
     "status": "info",
-    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "message": "3 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
     "evidence": [],
     "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
     "metrics": [
@@ -1894,33 +2349,33 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "0.78",
-      "explanation": "161 change requests were closed (merged or not) and 207 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": null,
+      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
       "target": {
        "text": "at least 0.8",
-       "met": false
+       "met": null
       }
      },
      {
       "id": "time-to-first-response",
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
-      "value": "median 2.3 hours",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 10 got a response; 5 had none yet. Bots are left out.",
+      "value": null,
+      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
       "target": {
        "text": "at most 48 hours",
-       "met": true
+       "met": null
       }
      },
      {
       "id": "issue-response-time",
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
-      "value": "median 28.1 hours",
-      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-22 and 2026-11-13. 8 got a response; 7 had none yet. Bots are left out.",
+      "value": null,
+      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
       "target": {
        "text": "at most 120 hours",
-       "met": true
+       "met": null
       }
      },
      {
@@ -2173,10 +2628,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 22.1,
+  "durationSeconds": 16.3,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:83e899b68ec0bde69c338c4fdb31d913",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
