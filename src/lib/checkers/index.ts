@@ -5,7 +5,8 @@ import { checkOpenApi } from "./openapi";
 import { checkLicense } from "./license";
 import { analysePublicCode } from "./publiccode";
 import { checkDocker } from "./docker";
-import { checkDockerImage } from "./dockerImage";
+import { checkDockerImage, findDeclaredImages, isImageDeclarationFile } from "./dockerImage";
+import { confirmImageCandidates, findImageCandidates, imageTextFiles } from "../containerImages";
 import { checkCiConfig } from "./ciConfig";
 import { checkFiveLayer } from "./fiveLayer";
 import { checkHelmChart } from "./helmchart";
@@ -244,7 +245,25 @@ export async function runChecksOnContext(
           }
     );
 
-  const dockerimagePromise = measure("dockerimage", () => checkDockerImage(options?.dockerLocations ?? []));
+  const dockerimagePromise = measure("dockerimage", async () => {
+    const declarationFiles = await Promise.all(
+      tree.filter(isImageDeclarationFile).slice(0, 20).map(async (filePath) => ({
+        path: filePath,
+        content: (await provider.getFileContent(context, filePath)) ?? "",
+      }))
+    );
+    const imageTexts = await Promise.all(
+      imageTextFiles(tree).map(async (filePath) => ({
+        path: filePath,
+        content: (await provider.getFileContent(context, filePath)) ?? "",
+      }))
+    );
+    return checkDockerImage(
+      options?.dockerLocations ?? [],
+      findDeclaredImages(declarationFiles, owner, repo),
+      await confirmImageCandidates(findImageCandidates(imageTexts, owner, repo))
+    );
+  });
   const helmChartPromise = measure("helmchart", () => checkHelmChart(context, tree, options?.helmChartLocations ?? []));
 
   // Kick off network-dependent and slow checks immediately so they run concurrently.
