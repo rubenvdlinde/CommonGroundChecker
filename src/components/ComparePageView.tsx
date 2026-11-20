@@ -405,18 +405,22 @@ function Comparison({ a, b, functionalityNames }: { a: CompareSide; b: CompareSi
           {[a, b].map((side) => (
             <div key={componentKeyText(side.key)} className="min-w-0 space-y-1">
               <h4 className="text-sm font-semibold text-gray-800">{side.name}</h4>
-              {side.providers.length === 0 ? (
-                <p className="text-sm text-gray-500">No provider listed yet.</p>
-              ) : (
-                <ul className="space-y-1 text-sm">
+              <p className="text-sm text-gray-700">
+                Provided by{" "}
+                {side.provider ? (
+                  <Link href={providerHref(side.provider.slug)} className="break-all text-cg-lightblue hover:underline">
+                    {side.provider.name}
+                  </Link>
+                ) : (
+                  "an unknown owner"
+                )}
+              </p>
+              {side.providers.length > 0 && (
+                <ul aria-label={`Also offered for ${side.name}`} className="space-y-1 text-sm text-gray-600">
                   {side.providers.map((provider) => (
-                    <li key={provider.slug}>
-                      <Link href={providerHref(provider.slug)} className="text-cg-lightblue hover:underline">
-                        {provider.name}
-                      </Link>
-                      <span className="text-gray-500">
-                        : {provider.services.map((service) => SERVICE_LABELS[service].toLowerCase()).join(", ")}
-                      </span>
+                    <li key={provider.name}>
+                      {provider.name} also offers{" "}
+                      {provider.services.map((service) => SERVICE_LABELS[service].toLowerCase()).join(", ")}
                     </li>
                   ))}
                 </ul>

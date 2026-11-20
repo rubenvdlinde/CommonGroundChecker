@@ -8,7 +8,7 @@ import { compareSideFrom, type CompareSide } from "@/lib/compareSide";
 import { dataSource } from "@/lib/dataSource";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { listedFunctionalitiesOf, loadListedFunctionalities, loadTaxonomy, type ListedFunctionalities } from "@/lib/functionalities/load";
-import { loadProviders, providersByComponent } from "@/lib/serviceProviders";
+import { listedServicesByComponent, loadRepositoriesConfig } from "@/lib/serviceProviders";
 
 export const metadata: Metadata = {
   title: "Compare | Common Ground Component Checker",
@@ -29,18 +29,18 @@ function optionsOf(repositories: RepoSummary[]): CompareOption[] {
 }
 
 async function sharedData() {
-  const [taxonomy, listed, providers] = await Promise.all([loadTaxonomy(), loadListedFunctionalities(), loadProviders()]);
+  const [taxonomy, listed, providers] = await Promise.all([loadTaxonomy(), loadListedFunctionalities(), loadRepositoriesConfig()]);
   return {
     functionalityNames: Object.fromEntries(taxonomy.functionalities.map((item) => [item.id, item.name])),
     listed,
-    providers: providersByComponent(providers),
+    providers: listedServicesByComponent(providers),
   };
 }
 
 async function serverSide(
   key: ComponentKey,
   listed: Map<string, ListedFunctionalities>,
-  providers: ReturnType<typeof providersByComponent>
+  providers: ReturnType<typeof listedServicesByComponent>
 ): Promise<CompareSide | null> {
   const history = await dataSource().getRepoHistory(key.owner, key.repo, 1);
   if (!history) return null;

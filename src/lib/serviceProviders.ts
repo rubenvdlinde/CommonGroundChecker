@@ -1,55 +1,97 @@
 /**
- * The Providers pages: organisations that offer services for a component,
- * from the `providers` field of config/repositories.yml. Both modes read the
- * file when the site is built; a provider adds itself by pull request.
+ * The Providers pages. A provider is the owner of a component's repository:
+ * the GitHub organisation or user, or the GitLab group, that hosts it. The
+ * pages derive the providers from the component list, so they need no input.
+ * The optional `providers` field of config/repositories.yml names services
+ * an organisation offers for a component; those show as "Also offers".
  */
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import type { RepoSummary } from "@/generated/openapi-client";
+import { isInBasisset, loadBasisset, type Basisset } from "@/lib/basisset";
+import { dataSource } from "@/lib/dataSource";
+import { toHistoryIndexEntry } from "@/lib/historyIndex";
+import type { LifecycleStatus } from "@/lib/lifecycle";
+import { minUsers } from "@/lib/maintained";
+import { ownerOfRepository, type RepositoryOwner } from "@/lib/repositoryOwner";
+import { componentHref } from "@/lib/routes";
 import {
   PROVIDER_SERVICES,
+  normalizeRepositoryUrl,
   parseYaml,
   repositoryPath,
   type ProviderService,
   type RepositoriesConfig,
   type ServiceProvider,
 } from "@/lib/staticSite/config";
-import { componentHref } from "@/lib/routes";
-import type { CompareProvider } from "@/lib/compareSide";
 
 export { SERVICE_LABELS } from "@/lib/staticSite/config";
+export { ownerOfRepository, ownerSlug, type RepositoryOwner } from "@/lib/repositoryOwner";
 
-/** One component a provider serves, with the services it offers for that component. */
-export interface ProvidedComponent {
-  url: string;
-  owner: string;
-  repo: string;
-  href: string;
-  services: ProviderService[];
-  /** YYYY-MM-DD */
-  since: string | null;
-}
-
-export interface ProviderSummary {
-  slug: string;
+/** Services an organisation listed for a component in the component list. */
+export interface ListedServices {
   name: string;
   url: string | null;
-  contact: string | null;
-  /** Every service it offers for any component, in the order of PROVIDER_SERVICES */
   services: ProviderService[];
-  /** The earliest since of its entries */
-  since: string | null;
-  /** Sorted by owner and name */
-  components: ProvidedComponent[];
 }
 
-/** The address of a provider's page: its name in lower case, without accents, words joined by hyphens. */
-export function providerSlug(name: string): string {
-  return name
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+/** One component of a provider, with what the checker knows about it. */
+export interface OwnedComponent {
+  owner: string;
+  repo: string;
+  name: string;
+  repoUrl: string;
+  href: string;
+  /** False for a component on the list that has no successful scan yet, so no page */
+  analysed: boolean;
+  rating: number | null;
+  status: LifecycleStatus | null;
+  /** Null when the basisset does not list it; false when it is listed next to the basisset */
+  basisset: boolean | null;
+  /** Services the owner itself listed for this component */
+  services: ProviderService[];
+}
+
+export interface ProviderSummary extends RepositoryOwner {
+  avatarUrl: string | null;
+  /** Sorted by name */
+  components: OwnedComponent[];
+  bestRating: number | null;
+  /** Every service the owner listed for any of its components, in the order of PROVIDER_SERVICES */
+  services: ProviderService[];
+}
+
+/** What collectProviders needs of one component. */
+export interface ComponentInput {
+  repoUrl: string;
+  /** Owner and name as the data names them, for the component's address; else as the URL does */
+  owner?: string;
+  repo?: string;
+  displayName?: string | null;
+  analysed: boolean;
+  rating?: number | null;
+  status?: LifecycleStatus | null;
+  basisset?: boolean | null;
+}
+
+/** The avatar GitHub serves for every user and organisation; null on other hosts. */
+export function githubAvatarUrl(owner: RepositoryOwner): string | null {
+  return owner.host === "github.com" ? `https://github.com/${owner.name}.png?size=96` : null;
+}
+
+/** The avatar of a public GitLab group, read without a token; null when it has none or cannot be read. */
+export async function gitlabAvatarUrl(owner: RepositoryOwner, fetchFn: typeof fetch = fetch): Promise<string | null> {
+  if (owner.hostLabel !== "GitLab") return null;
+  try {
+    const response = await fetchFn(`https://${owner.host}/api/v4/groups/${encodeURIComponent(owner.name)}`, {
+      signal: AbortSignal.timeout(5_000),
+    });
+    if (!response.ok) return null;
+    const avatar = ((await response.json()) as { avatar_url?: unknown }).avatar_url;
+    return typeof avatar === "string" && /^https:\/\//.test(avatar) ? avatar : null;
+  } catch {
+    return null;
+  }
 }
 
 function orderedServices(services: Iterable<string>): ProviderService[] {
@@ -57,55 +99,117 @@ function orderedServices(services: Iterable<string>): ProviderService[] {
   return PROVIDER_SERVICES.filter((service) => set.has(service));
 }
 
-function earliest(a: string | null, b: string | undefined): string | null {
-  if (!b) return a;
-  return a === null || b < a ? b : a;
+function squash(text: string): string {
+  return text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
-/** Groups the providers of every listed component by provider, sorted by name. */
-export function collectProviders(config: RepositoriesConfig): ProviderSummary[] {
-  const bySlug = new Map<string, ProviderSummary>();
-  for (const entry of config.repositories) {
-    let location;
-    try {
-      location = repositoryPath(entry.url);
-    } catch {
-      continue;
-    }
-    for (const provider of entry.providers ?? []) {
-      const slug = providerSlug(provider.name);
-      if (!slug) continue;
-      const summary = bySlug.get(slug) ?? {
-        slug,
-        name: provider.name.trim(),
-        url: null,
-        contact: null,
-        services: [],
-        since: null,
-        components: [],
-      };
-      summary.url ??= provider.url ?? null;
-      summary.contact ??= provider.contact ?? null;
-      summary.since = earliest(summary.since, provider.since);
-      summary.services = orderedServices([...summary.services, ...provider.services]);
-      summary.components.push({
-        url: entry.url,
-        owner: location.owner,
-        repo: location.repo,
-        href: componentHref(location.owner, location.repo),
-        services: orderedServices(provider.services),
-        since: provider.since ?? null,
-      });
-      bySlug.set(slug, summary);
-    }
+/** Whether a listed provider is the owner itself: the same name, ignoring case and spacing, or the owner's page. */
+export function isOwner(provider: { name: string; url?: string | null }, owner: RepositoryOwner): boolean {
+  const name = squash(provider.name);
+  const ownerNames = [owner.name, owner.name.split("/").pop() ?? ""].map(squash);
+  if (name && ownerNames.includes(name)) return true;
+  if (!provider.url) return false;
+  try {
+    return normalizeRepositoryUrl(provider.url).toLowerCase() === owner.url.toLowerCase();
+  } catch {
+    return false;
   }
-  const byName = (a: string, b: string) => a.localeCompare(b, "en", { sensitivity: "base" });
+}
+
+function repositoryKey(url: string): string | null {
+  try {
+    return normalizeRepositoryUrl(url).toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+/** The services listed in the component list, by lower-case normalised repository URL. */
+export function listedServicesByRepository(config: RepositoriesConfig): Map<string, ListedServices[]> {
+  const result = new Map<string, ListedServices[]>();
+  for (const entry of config.repositories) {
+    const key = repositoryKey(entry.url);
+    if (!key || !entry.providers?.length) continue;
+    result.set(
+      key,
+      entry.providers.map((provider) => ({
+        name: provider.name.trim(),
+        url: provider.url ?? null,
+        services: orderedServices(provider.services),
+      }))
+    );
+  }
+  return result;
+}
+
+const byName = (a: string, b: string) => a.localeCompare(b, "en", { sensitivity: "base" });
+
+/**
+ * One provider per repository owner, from the components the data names and
+ * the ones on the component list it does not name yet. Most components first,
+ * then by name.
+ */
+export function collectProviders(components: ComponentInput[], config: RepositoriesConfig): ProviderSummary[] {
+  const listed = listedServicesByRepository(config);
+  const seen = new Set<string>();
+  const inputs = [
+    ...components,
+    ...config.repositories.map((entry): ComponentInput => ({ repoUrl: entry.url, analysed: false })),
+  ];
+  const bySlug = new Map<string, ProviderSummary>();
+  for (const input of inputs) {
+    const key = repositoryKey(input.repoUrl);
+    const owner = ownerOfRepository(input.repoUrl);
+    if (!key || !owner || !owner.slug || seen.has(key)) continue;
+    seen.add(key);
+    const location = repositoryPath(input.repoUrl);
+    const ownerName = input.owner ?? location.owner;
+    const repo = input.repo ?? location.repo;
+    const services = orderedServices(
+      (listed.get(key) ?? []).filter((provider) => isOwner(provider, owner)).flatMap((provider) => provider.services)
+    );
+    const summary = bySlug.get(owner.slug) ?? {
+      ...owner,
+      avatarUrl: githubAvatarUrl(owner),
+      components: [],
+      bestRating: null,
+      services: [],
+    };
+    const rating = typeof input.rating === "number" ? input.rating : null;
+    summary.components.push({
+      owner: ownerName,
+      repo,
+      name: input.displayName?.trim() || `${ownerName}/${repo}`,
+      repoUrl: input.repoUrl,
+      href: componentHref(ownerName, repo),
+      analysed: input.analysed,
+      rating,
+      status: input.status ?? null,
+      basisset: input.basisset ?? null,
+      services,
+    });
+    if (rating !== null && (summary.bestRating === null || rating > summary.bestRating)) summary.bestRating = rating;
+    summary.services = orderedServices([...summary.services, ...services]);
+    bySlug.set(owner.slug, summary);
+  }
   return [...bySlug.values()]
-    .map((summary) => ({
-      ...summary,
-      components: summary.components.sort((a, b) => byName(`${a.owner}/${a.repo}`, `${b.owner}/${b.repo}`)),
-    }))
-    .sort((a, b) => byName(a.name, b.name));
+    .map((summary) => ({ ...summary, components: summary.components.sort((a, b) => byName(a.name, b.name)) }))
+    .sort((a, b) => b.components.length - a.components.length || byName(a.name, b.name));
+}
+
+/** What a provider page needs of one repository the data source lists. */
+export function componentInputOf(repository: RepoSummary, basisset: Basisset | null, today: string): ComponentInput {
+  const entry = toHistoryIndexEntry(repository, { basisset, minUsers: minUsers(), today });
+  return {
+    repoUrl: repository.repoUrl,
+    owner: repository.owner,
+    repo: repository.name,
+    displayName: repository.displayName,
+    analysed: Boolean(repository.latestAnalysis),
+    rating: entry.rating,
+    status: entry.lifecycle.status,
+    basisset: entry.basisset.entries.length > 0 ? isInBasisset(entry.basisset) : null,
+  };
 }
 
 function asProvider(value: unknown): ServiceProvider | null {
@@ -122,7 +226,7 @@ function asProvider(value: unknown): ServiceProvider | null {
   };
 }
 
-/** The repositories and their providers from the parsed YAML; entries that are not a repository are left out. */
+/** The repositories and their listed services from the parsed YAML; entries that are not a repository are left out. */
 export function readRepositoriesConfig(raw: unknown): RepositoriesConfig {
   const list = raw && typeof raw === "object" ? (raw as { repositories?: unknown }).repositories : undefined;
   if (!Array.isArray(list)) return { repositories: [] };
@@ -147,16 +251,38 @@ export function repositoriesFile(env: Record<string, string | undefined> = proce
   return path.resolve(env.CGC_REPOSITORIES_FILE || "config/repositories.yml");
 }
 
-/** Every provider of the component list; none when the file does not exist. */
-export async function loadProviders(file: string = repositoriesFile()): Promise<ProviderSummary[]> {
-  let text: string;
+/** The component list; empty when the file does not exist. */
+export async function loadRepositoriesConfig(file: string = repositoriesFile()): Promise<RepositoriesConfig> {
   try {
-    text = await readFile(file, "utf-8");
+    return readRepositoriesConfig(parseYaml(await readFile(file, "utf-8")));
   } catch (err) {
-    if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return { repositories: [] };
     throw err;
   }
-  return collectProviders(readRepositoriesConfig(parseYaml(text)));
+}
+
+/** Every provider, read when the page is built or rendered; GitLab avatars are fetched once per load. */
+export async function loadProviders(): Promise<ProviderSummary[]> {
+  const [config, repositories, basisset] = await Promise.all([
+    loadRepositoriesConfig(),
+    dataSource()
+      .listRepositories({ limit: 500 })
+      .catch(() => [] as RepoSummary[]),
+    loadBasisset(),
+  ]);
+  const today = new Date().toISOString().slice(0, 10);
+  const providers = collectProviders(
+    repositories.map((repository) => componentInputOf(repository, basisset, today)),
+    config
+  );
+  await Promise.all(
+    providers
+      .filter((provider) => provider.avatarUrl === null)
+      .map(async (provider) => {
+        provider.avatarUrl = await gitlabAvatarUrl(provider);
+      })
+  );
+  return providers;
 }
 
 /** A link for a provider's contact: a web address as is, an e-mail address as mailto; null for anything else. */
@@ -166,14 +292,20 @@ export function contactHref(contact: string): string | null {
   return null;
 }
 
-/** The providers of each component, by owner/repo, for the compare page. */
-export function providersByComponent(providers: ProviderSummary[]): Record<string, CompareProvider[]> {
-  const result: Record<string, CompareProvider[]> = {};
-  for (const provider of providers) {
-    for (const component of provider.components) {
-      const key = `${component.owner}/${component.repo}`;
-      (result[key] ??= []).push({ name: provider.name, slug: provider.slug, services: component.services });
+/** The services listed for each component, by owner/repo, for the compare page. */
+export function listedServicesByComponent(config: RepositoriesConfig): Record<string, ListedServices[]> {
+  const result: Record<string, ListedServices[]> = {};
+  for (const entry of config.repositories) {
+    if (!entry.providers?.length) continue;
+    let location;
+    try {
+      location = repositoryPath(entry.url);
+    } catch {
+      continue;
     }
+    result[`${location.owner}/${location.repo}`] = listedServicesByRepository({ repositories: [entry] }).get(
+      repositoryKey(entry.url) ?? ""
+    ) ?? [];
   }
   return result;
 }
