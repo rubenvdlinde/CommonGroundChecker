@@ -55,6 +55,29 @@ describe("FollowControl", () => {
     );
   });
 
+  it("gives every control a touch target of at least 44px below 1024px", () => {
+    render(
+      <FollowControl
+        repoId="repo-id"
+        initialFollowed={false}
+        initialCheckIntervalHours={null}
+        initialNextCheckAt={null}
+      />
+    );
+
+    const followLabel = screen.getByText("Follow", { selector: "label" });
+    const targets = [
+      followLabel,
+      screen.getByLabelText("Check interval"),
+      screen.getByLabelText("Admin token"),
+      screen.getByRole("button", { name: "Save" }),
+    ];
+    for (const target of targets) {
+      expect(target.className).toContain("min-h-[44px]");
+      expect(target.className).toContain("lg:min-h-0");
+    }
+  });
+
   it("offers daily, weekly and monthly intervals, defaulting to weekly", () => {
     render(
       <FollowControl

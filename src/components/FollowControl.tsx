@@ -104,8 +104,8 @@ export default function FollowControl({
   }
 
   return (
-    <details className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
-      <summary className="cursor-pointer text-lg font-semibold text-gray-800">
+    <details className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6">
+      <summary className="cursor-pointer min-h-[44px] lg:min-h-0 text-lg font-semibold text-gray-800">
         Follow this repository (admin)
       </summary>
       <p className="mt-2 text-sm text-gray-600">
@@ -122,7 +122,7 @@ export default function FollowControl({
             onChange={(event) => setFollowed(event.target.checked)}
             className="h-4 w-4"
           />
-          <label htmlFor={`${idPrefix}-followed`} className="text-sm text-gray-800">
+          <label htmlFor={`${idPrefix}-followed`} className="flex min-h-[44px] items-center lg:min-h-0 text-sm text-gray-800">
             Follow
           </label>
         </div>
@@ -134,7 +134,7 @@ export default function FollowControl({
             id={`${idPrefix}-interval`}
             value={intervalHours}
             onChange={(event) => setIntervalHours(Number(event.target.value))}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            className="min-h-[44px] lg:min-h-0 max-w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
           >
             {CHECK_INTERVAL_OPTIONS.map((option) => (
               <option key={option.hours} value={option.hours}>
@@ -186,13 +186,13 @@ export default function FollowControl({
             required
             value={adminToken}
             onChange={(event) => setAdminToken(event.target.value)}
-            className="w-full max-w-md rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            className="min-h-[44px] lg:min-h-0 w-full max-w-md rounded-lg border border-gray-300 px-3 py-2 text-sm"
           />
         </div>
         <button
           type="submit"
           disabled={saving}
-          className="rounded-lg bg-cg-blue px-4 py-2 text-sm font-semibold text-white hover:bg-cg-lightblue disabled:opacity-60"
+          className="min-h-[44px] lg:min-h-0 rounded-lg bg-cg-blue px-4 py-2 text-sm font-semibold text-white hover:bg-cg-lightblue disabled:opacity-60"
         >
           {saving ? "Saving…" : "Save"}
         </button>
