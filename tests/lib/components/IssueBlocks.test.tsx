@@ -162,6 +162,17 @@ describe("IssueBlocks", () => {
     expect(screen.queryByText("Title tests")).toBeNull();
   });
 
+  it("gives each entry link a touch target of at least 44px below 1024px", () => {
+    render(<IssueBlocks results={[result("license", "mandatory", "fail"), result("sbom", "recommended", "warn")]} />);
+
+    const links = screen.getAllByRole("link");
+    expect(links.length).toBe(2);
+    for (const link of links) {
+      expect(link.className).toContain("min-h-[44px]");
+      expect(link.className).toContain("lg:min-h-0");
+    }
+  });
+
   it("shows nothing when there are no errors or warnings", () => {
     const { container } = render(<IssueBlocks results={[result("license", "mandatory", "pass")]} />);
 

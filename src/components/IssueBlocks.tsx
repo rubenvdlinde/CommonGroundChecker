@@ -65,7 +65,7 @@ function IssueBlock({ kind, entries, ratingError = null }: IssueBlockProps) {
   return (
     <section
       aria-labelledby={config.headingId}
-      className={`rounded-xl border ${config.border} ${config.bg} p-5`}
+      className={`rounded-xl border ${config.border} ${config.bg} p-4 sm:p-5`}
     >
       <h3 id={config.headingId} className={`flex items-center gap-2 font-semibold ${config.text}`}>
         <Icon className="w-5 h-5 shrink-0" aria-hidden="true" />
@@ -97,7 +97,7 @@ function IssueBlock({ kind, entries, ratingError = null }: IssueBlockProps) {
               <a
                 href={`#${criterionAnchorId(result.id)}`}
                 onClick={(event) => openCriterion(event, result.id)}
-                className="font-semibold text-gray-900 underline hover:text-cg-lightblue"
+                className="inline-flex min-h-[44px] items-center lg:min-h-0 font-semibold text-gray-900 underline hover:text-cg-lightblue"
               >
                 {result.title}
                 <span className="sr-only">: go to the {result.title} result</span>
@@ -107,7 +107,7 @@ function IssueBlock({ kind, entries, ratingError = null }: IssueBlockProps) {
                 <span className="text-xs font-semibold text-yellow-800">{transitionNotice(result.mandatoryFrom)}</span>
               )}
             </div>
-            <p className="mt-1 text-gray-700">{result.message}</p>
+            <p className="mt-1 text-gray-700 break-words">{result.message}</p>
           </li>
         ))}
       </ul>
