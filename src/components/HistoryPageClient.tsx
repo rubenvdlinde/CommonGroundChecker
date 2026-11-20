@@ -18,7 +18,6 @@ import { componentHref, FUNCTIONALITIES_PATH } from "@/lib/routes";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import type { Basisset } from "@/lib/basisset";
 import { buildHistoryIndex, matchesFilter, statusCounts } from "@/lib/historyIndex";
-import { DEFAULT_MIN_USERS } from "@/lib/maintained";
 import { LIFECYCLE_SHORT_LABELS, LIFECYCLE_STATUSES, type LifecycleStatus } from "@/lib/lifecycle";
 
 export type SortKey = "rating" | "date" | "score";
@@ -36,7 +35,6 @@ interface HistoryPageClientProps {
   basissetOnly?: boolean;
   /** The Common Ground basisset, or null when it could not be read */
   basisset?: Basisset | null;
-  minUsers?: number;
   /** Today as YYYY-MM-DD */
   today?: string;
   /** The functionality to show, or null for any */
@@ -144,7 +142,6 @@ export default function HistoryPageClient({
   status = null,
   basissetOnly = false,
   basisset = null,
-  minUsers = DEFAULT_MIN_USERS,
   today = new Date().toISOString().slice(0, 10),
   functionality = null,
   standard = null,
@@ -156,8 +153,8 @@ export default function HistoryPageClient({
   const requestedQuery = useRef(query);
 
   const entries = useMemo(
-    () => buildHistoryIndex(repositories, { basisset, minUsers, today }),
-    [repositories, basisset, minUsers, today]
+    () => buildHistoryIndex(repositories, { basisset, today }),
+    [repositories, basisset, today]
   );
   const counts = useMemo(() => statusCounts(entries, basissetOnly), [entries, basissetOnly]);
   const sortedRepositories = useMemo(

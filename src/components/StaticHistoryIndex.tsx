@@ -33,7 +33,6 @@ interface StaticHistoryIndexProps {
   repositories: RepoSummary[];
   /** The Common Ground basisset as read at build time, or null when it could not be read */
   basisset?: Basisset | null;
-  minUsers?: number;
   /** The build day as YYYY-MM-DD */
   today?: string;
   /** Names of the functionalities the components list, by id */
@@ -48,7 +47,6 @@ interface StaticHistoryIndexProps {
 export default function StaticHistoryIndex({
   repositories,
   basisset = null,
-  minUsers,
   today,
   functionalityNames,
 }: StaticHistoryIndexProps) {
@@ -69,7 +67,6 @@ export default function StaticHistoryIndex({
       standard={filter.standard ?? null}
       functionalityNames={functionalityNames}
       basisset={basisset}
-      minUsers={minUsers}
       today={today}
     />
   );

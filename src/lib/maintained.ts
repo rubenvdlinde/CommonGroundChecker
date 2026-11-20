@@ -1,20 +1,8 @@
 import type { CheckResult, Endorsement } from "./types";
 
-/**
- * The minimum of users declared in publiccode.yml for Maintained: one, as the Common Ground standard asks a
- * component proven in practice by one or more municipalities. `MIN_USERS` overrides it.
- */
-export const DEFAULT_MIN_USERS = 1;
-
 /** "1 organisation" or "2 organisations". */
 export function organisationsLabel(count: number): string {
   return `${count} ${count === 1 ? "organisation" : "organisations"}`;
-}
-
-/** `MIN_USERS` as a whole number of at least 1, else the default. */
-export function minUsers(value: string | undefined = process.env.MIN_USERS): number {
-  const parsed = Number(value?.trim());
-  return value?.trim() && Number.isInteger(parsed) && parsed >= 1 ? parsed : DEFAULT_MIN_USERS;
 }
 
 /** The organisations under `usedBy` in the scanned publiccode.yml; empty when it has none. */
@@ -47,7 +35,7 @@ export function isSlaValid(sla: Pick<MaintainedSla, "until">, today: string): bo
 }
 
 export interface MaintainedLevelResult {
-  /** Maintained: suitable for Common Ground, stable, enough users declared in publiccode.yml and a valid SLA */
+  /** Maintained: suitable for Common Ground and a valid SLA */
   maintained: boolean;
   /** Why the component is not Maintained, in the order of the conditions */
   reasons: string[];
@@ -57,36 +45,20 @@ export interface MaintainedLevelResult {
 
 export interface MaintainedInput {
   endorsement: Endorsement;
-  /** `developmentStatus` of the scanned publiccode.yml; null when it is not declared */
-  developmentStatus: string | null;
-  /** Organisations under `usedBy` in the scanned publiccode.yml; null when the scan did not record them */
-  declaredUserCount: number | null;
   slas: MaintainedSla[];
-  minUsers: number;
   /** Today as YYYY-MM-DD */
   today: string;
 }
 
 /**
  * Maintained is the level above Suitable for Common Ground: the component is
- * suitable, its publiccode.yml declares `developmentStatus: stable` and at
- * least `minUsers` organisations under `usedBy`, and an SLA is valid. Usage
- * counts only here, never in a rating.
+ * suitable, which already asks `developmentStatus: stable` and enough
+ * organisations under `usedBy` in publiccode.yml, and an SLA is valid. Usage
+ * counts only in the verdict, never in a rating.
  */
 export function computeMaintained(input: MaintainedInput): MaintainedLevelResult {
   const reasons: string[] = [];
   if (!input.endorsement.passed) reasons.push("Not yet suitable for Common Ground");
-  if (input.developmentStatus?.toLowerCase() !== "stable") {
-    reasons.push(
-      `development status is ${input.developmentStatus ?? "not declared"}, only a stable component can be Maintained`
-    );
-  }
-
-  if (input.declaredUserCount === null) {
-    reasons.push("Users not counted yet: the latest scan did not record usedBy");
-  } else if (input.declaredUserCount < input.minUsers) {
-    reasons.push(`${input.declaredUserCount} of ${input.minUsers} users declared in publiccode.yml`);
-  }
 
   const byEnd = [...input.slas].sort((a, b) => b.until.localeCompare(a.until));
   const sla = byEnd.find((candidate) => isSlaValid(candidate, input.today)) ?? null;

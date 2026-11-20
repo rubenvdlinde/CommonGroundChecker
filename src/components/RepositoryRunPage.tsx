@@ -133,7 +133,6 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
           <MaintainedSection
             repoId={repository.id}
             endorsement={latest.endorsement ?? { passed: false, reasons: ["Not scanned yet"] }}
-            developmentStatus={latest.developmentStatus}
             initialUsage={maintained.usage}
             minUsers={maintained.minUsers}
             today={maintained.today}

@@ -8,7 +8,6 @@ import { dataSource } from "@/lib/dataSource";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { parseHistoryFilter } from "@/lib/historyIndex";
 import { normalizeSearchQuery } from "@/lib/historySearch";
-import { minUsers } from "@/lib/maintained";
 import { loadListedFunctionalities, loadTaxonomy, withListedFunctionalities } from "@/lib/functionalities/load";
 
 /** The names of the functionalities the components list, by id, for the functionality filter. */
@@ -60,7 +59,7 @@ export default async function HistoryHomePage({ searchParams }: HistoryHomePageP
     const repositories = withListedFunctionalities(listedRepositories, listed);
     const today = new Date().toISOString().slice(0, 10);
     const functionalityNames = await loadFunctionalityNames(listed);
-    const indexProps = { repositories, basisset, minUsers: minUsers(), today, functionalityNames };
+    const indexProps = { repositories, basisset, today, functionalityNames };
     return (
       <Suspense fallback={<HistoryPageClient sort="rating" direction="desc" query="" {...indexProps} />}>
         <StaticHistoryIndex {...indexProps} />
@@ -105,7 +104,6 @@ export default async function HistoryHomePage({ searchParams }: HistoryHomePageP
       standard={filter.standard ?? null}
       functionalityNames={functionalityNames}
       basisset={basisset}
-      minUsers={minUsers()}
       today={new Date().toISOString().slice(0, 10)}
     />
   );

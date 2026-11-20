@@ -12,7 +12,6 @@ import { isInBasisset, loadBasisset, type Basisset } from "@/lib/basisset";
 import { dataSource } from "@/lib/dataSource";
 import { toHistoryIndexEntry } from "@/lib/historyIndex";
 import type { LifecycleStatus } from "@/lib/lifecycle";
-import { minUsers } from "@/lib/maintained";
 import { ownerOfRepository, type RepositoryOwner } from "@/lib/repositoryOwner";
 import { componentHref } from "@/lib/routes";
 import {
@@ -199,7 +198,7 @@ export function collectProviders(components: ComponentInput[], config: Repositor
 
 /** What a provider page needs of one repository the data source lists. */
 export function componentInputOf(repository: RepoSummary, basisset: Basisset | null, today: string): ComponentInput {
-  const entry = toHistoryIndexEntry(repository, { basisset, minUsers: minUsers(), today });
+  const entry = toHistoryIndexEntry(repository, { basisset, today });
   return {
     repoUrl: repository.repoUrl,
     owner: repository.owner,

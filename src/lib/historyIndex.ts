@@ -9,7 +9,7 @@ import {
 } from "./lifecycle";
 import type { MaintainedSla } from "./maintained";
 import { standardsFromEvidence } from "./componentStandards";
-import { isRating } from "./ratings";
+import { isRating, withAdoptionConditions, type AdoptionFacts } from "./ratings";
 import type { Endorsement } from "./types";
 
 /**
@@ -32,7 +32,6 @@ export interface HistoryIndexEntry extends RepoSummary {
 
 export interface HistoryIndexOptions {
   basisset: Basisset | null;
-  minUsers: number;
   /** Today as YYYY-MM-DD */
   today: string;
 }
@@ -75,17 +74,21 @@ function slasOf(value: unknown): MaintainedSla[] {
 export function toHistoryIndexEntry(repository: RepoSummary, options: HistoryIndexOptions): HistoryIndexEntry {
   const summary = repository as RepoSummary & Record<string, unknown>;
   const latest = asObject(repository.latestAnalysis);
-  const endorsement = endorsementOf(latest?.endorsement);
   const version = stringOrNull(latest?.version);
   const declaredUserCount = typeof latest?.declaredUserCount === "number" ? latest.declaredUserCount : null;
+  const developmentStatus = stringOrNull(latest?.developmentStatus) ?? stringOrNull(summary.developmentStatus);
+  const facts: AdoptionFacts =
+    declaredUserCount === null
+      ? developmentStatus === null ? {} : { developmentStatus }
+      : { developmentStatus, declaredUserCount };
+  const stored = endorsementOf(latest?.endorsement);
+  const endorsement = stored ? withAdoptionConditions(stored, facts) : null;
 
   const lifecycle = computeLifecycleStatus({
     hasAnalysis: latest !== null,
     endorsement,
-    developmentStatus: stringOrNull(latest?.developmentStatus) ?? stringOrNull(summary.developmentStatus),
-    declaredUserCount,
+    developmentStatus,
     slas: slasOf(summary.slas),
-    minUsers: options.minUsers,
     today: options.today,
     retiredAt: stringOrNull(summary.retiredAt),
     retiredReason: stringOrNull(summary.retiredReason),

@@ -108,8 +108,8 @@ export const SETUP_POINTS: SetupPoint[] = [
     id: "levels",
     title: pathSection("levels").title,
     paragraphs: [
-      "Suitable for Common Ground means the checker finds that the component meets the technical conditions, including a valid maintenance contract. It is the threshold the Common Ground programme uses to decide whether to adopt a component as supported. It is not a condition for being listed: a component that is not yet suitable is still listed.",
-      "Maintained adds that the software is stable, that at least one organisation is listed as a user under usedBy in publiccode.yml, and that there is a valid SLA with a maintainer, on the VNG model contract. One user follows the Common Ground standard put to the VNG ALV: a component is proven in practice by one or more municipalities.",
+      "Suitable for Common Ground means the checker finds that the component meets the technical conditions, including a valid maintenance contract, developmentStatus stable and at least 2 organisations under usedBy in publiccode.yml. It is the threshold the Common Ground programme uses to decide whether to adopt a component as supported. It is not a condition for being listed: a component that is not yet suitable is still listed.",
+      "Maintained adds a valid SLA with a maintainer, on the VNG model contract.",
     ],
     status: pathSection("levels").status,
     link: pathLink("levels"),
@@ -230,12 +230,12 @@ export const CG_STATES: LifecycleState[] = [
   {
     id: "suitable",
     name: "Suitable for Common Ground",
-    text: "The verdict holds: no mandatory criterion fails, the overall rating is at least 2.5, there is a valid maintenance contract, and the maintainability estimate is at least 4 stars.",
+    text: "The verdict holds: no mandatory criterion fails, the overall rating is at least 2.5, there is a valid maintenance contract, the maintainability estimate is at least 4 stars, developmentStatus is stable and at least 2 organisations are listed under usedBy in publiccode.yml.",
   },
   {
     id: "maintained",
     name: "Maintained",
-    text: "Suitable, developmentStatus stable, at least one user listed under usedBy in publiccode.yml, and a valid SLA with a maintainer, on the VNG model contract. The component is in the support of the programme. A drop below a criterion starts a fix term: the maintainer must fix it in time, and the component stays Maintained during the term.",
+    text: "Suitable, and a valid SLA with a maintainer, on the VNG model contract. The component is in the support of the programme. A drop below a criterion starts a fix term: the maintainer must fix it in time, and the component stays Maintained during the term.",
     note: ["A drop starts a fix term:", "the maintainer must fix", "it in time."],
   },
   {
@@ -252,14 +252,14 @@ export const CG_TRANSITIONS: LifecycleTransition[] = [
   {
     from: "suitable",
     to: "maintained",
-    label: "stable, user, SLA",
-    text: "The software is stable, at least one organisation is listed as a user under usedBy, and there is a valid SLA with a maintainer, on the VNG model contract.",
+    label: "SLA",
+    text: "There is a valid SLA with a maintainer, on the VNG model contract.",
   },
   {
     from: "maintained",
     to: "suitable",
     label: "condition lost",
-    text: "The SLA ended, fewer organisations are listed as users than required, developmentStatus went back from stable to beta, development or concept, or a fix term passed without a fix. The verdict still holds. The component can come back.",
+    text: "The SLA ended, or a fix term passed without a fix. The verdict still holds. The component can come back.",
   },
   {
     from: "maintained",
@@ -288,18 +288,18 @@ export const COMPONENT_STATES: LifecycleState[] = [
 export const LIFECYCLE_RELATION: { statuses: string[]; effect: string }[] = [
   {
     statuses: ["concept", "development", "beta"],
-    effect: "Can be listed, measured and suitable for Common Ground. Cannot be Maintained.",
+    effect: "Can be listed and measured. Cannot be suitable for Common Ground or Maintained.",
   },
   {
     statuses: ["stable"],
-    effect: "Can be in any state of the Common Ground lifecycle. Only a stable component can be Maintained. A stable component can still be only suitable, for example without a valid SLA.",
+    effect: "Can be in any state of the Common Ground lifecycle. Only a stable component can be suitable for Common Ground or Maintained. A stable component can still be only suitable, for example without a valid SLA.",
   },
   { statuses: ["obsolete"], effect: "Leads to retired. The history stays visible." },
 ];
 
 /** What happens to a Maintained component whose developmentStatus leaves stable. */
 export const LEAVING_STABLE: { to: string[]; state: string }[] = [
-  { to: ["beta", "development", "concept"], state: "suitable" },
+  { to: ["beta", "development", "concept"], state: "measured" },
   { to: ["obsolete"], state: "retired" },
 ];
 

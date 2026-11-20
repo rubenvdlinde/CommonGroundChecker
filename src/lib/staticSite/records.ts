@@ -10,6 +10,7 @@
  * no check results, no evidence, no aspect ratings.
  */
 import { countIssues } from "@/lib/issues";
+import { adoptionFactsOf, withAdoptionConditions } from "@/lib/ratings";
 import { computeMaintained, declaredUsersOf, developmentStatusOf } from "@/lib/maintained";
 import type { CheckReport, CheckStatus } from "@/lib/types";
 import { repositoryId, type FollowedRepository, type RepositoryPath, type RetiredInfo, type ServiceProvider, type SlaEntry } from "./config";
@@ -136,6 +137,10 @@ export interface IndexLatestAnalysis extends ScannedRef {
   issueCounts: { errors: number; warnings: number };
   version: string | null;
   checklistVersion: string | null;
+  /** `developmentStatus` of the scanned publiccode.yml, or null */
+  developmentStatus: string | null;
+  /** Organisations under `usedBy` in the scanned publiccode.yml */
+  declaredUserCount: number;
   maintained: boolean;
   /** Evidence of the "Supported standards" result; null when the analysis has none */
   standardsEvidence: string[] | null;
@@ -225,7 +230,6 @@ export interface ScanInput {
   config: FollowedRepository;
   report: CheckReport & Partial<ScannedRef> & { checklistVersion?: string | null };
   slas: SlaEntry[];
-  minUsers: number;
   durationSeconds: number | null;
   /** Scheduled interval of the static site, in hours */
   checkIntervalHours: number;
@@ -239,10 +243,7 @@ export function buildLatestFile(input: ScanInput, previous: LatestFile | null): 
   const declaredUsers = declaredUsersOf(report.results);
   const maintained = computeMaintained({
     endorsement: report.endorsement,
-    developmentStatus: developmentStatusOf(report.results),
-    declaredUserCount: declaredUsers.length,
     slas,
-    minUsers: input.minUsers,
     today: report.checkedAt.slice(0, 10),
   }).maintained;
   return {
@@ -403,8 +404,10 @@ export function buildIndexEntry(source: IndexSource, now: Date): IndexEntry {
           score: analysis.score,
           rating: analysis.rating,
           categoryRatings: analysis.categoryRatings,
-          endorsement: analysis.endorsement,
+          endorsement: withAdoptionConditions(analysis.endorsement, adoptionFactsOf(analysis.results)),
           issueCounts: analysis.issueCounts,
+          developmentStatus: developmentStatusOf(analysis.results),
+          declaredUserCount: analysis.declaredUserCount,
           version: analysis.version,
           checklistVersion: analysis.checklistVersion,
           scannedRef: analysis.scannedRef,

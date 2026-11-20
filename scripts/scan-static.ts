@@ -139,7 +139,6 @@ async function main(argv: string[]): Promise<number> {
   process.chdir(CHECKER_ROOT);
   const { runChecks } = await import("../src/lib/checkers/index");
   const { scoringConfigFromPayload } = await import("../src/lib/checkers/config");
-  const { minUsers } = await import("../src/lib/maintained");
   const { toPreviousAnalysis } = await import("../src/lib/incremental");
   const scoringConfig = args.scoring
     ? scoringConfigFromPayload(JSON.parse(readFileSync(path.resolve(args.scoring), "utf-8")))
@@ -189,7 +188,6 @@ async function main(argv: string[]): Promise<number> {
             config: entry,
             report: report as Parameters<typeof records.buildLatestFile>[0]["report"],
             slas: slas.get(url.toLowerCase()) ?? [],
-            minUsers: minUsers(),
             durationSeconds,
             checkIntervalHours: CHECK_INTERVAL_HOURS,
           },

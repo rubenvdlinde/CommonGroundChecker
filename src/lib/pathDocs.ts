@@ -56,7 +56,7 @@ export const AUDIENCES: { id: string; title: string; text: string }[] = [
   {
     id: "buyer",
     title: "A buyer",
-    text: "You want to know if you can use a component with confidence. Look at the verdict and the level. Suitable means the code is good enough and someone maintains it under a contract. Maintained adds that the software is stable, that at least one organisation uses it in practice and that there is a valid SLA with a maintainer, on the VNG model contract.",
+    text: "You want to know if you can use a component with confidence. Look at the verdict and the level. Suitable means the code is good enough, the software is stable, at least 2 organisations use it and someone maintains it under a contract. Maintained adds a valid SLA with a maintainer, on the VNG model contract.",
   },
   {
     id: "maintainer",
@@ -66,7 +66,7 @@ export const AUDIENCES: { id: string; title: string; text: string }[] = [
   {
     id: "municipality",
     title: "A municipality",
-    text: "You use components and want a say in what counts. List your organisation under usedBy in the publiccode.yml of a component you use, so it counts towards Maintained. Propose changes to the checklist through the issue form. VNG, as regievoerder, organises the input of municipalities before it decides.",
+    text: "You use components and want a say in what counts. List your organisation under usedBy in the publiccode.yml of a component you use, so it counts towards Suitable for Common Ground. Propose changes to the checklist through the issue form. VNG, as regievoerder, organises the input of municipalities before it decides.",
   },
 ];
 
@@ -76,8 +76,9 @@ export const PATH_STEPS: string[] = [
   "The checker measures the version you released, not work in progress.",
   "Fix every mandatory criterion and reach an overall rating of at least 2.5.",
   "Make the component maintainable: at least 4 stars for maintainability in the estimate.",
-  "Name a maintenance contract in publiccode.yml. The component is now suitable for Common Ground.",
-  "Mark the component stable in publiccode.yml. At least one organisation is listed as a user under usedBy, and there is a valid SLA with a maintainer, on the VNG model contract. The component is now Maintained.",
+  "Name a maintenance contract in publiccode.yml.",
+  "Mark the component stable in publiccode.yml and list at least 2 organisations that use it under usedBy. The component is now suitable for Common Ground.",
+  "Agree a valid SLA with a maintainer, on the VNG model contract. The component is now Maintained.",
   "Stay there: the checker measures every night, and a drop below a criterion is fixed within the agreed fix term.",
 ];
 
@@ -144,12 +145,14 @@ export const PATH_SECTIONS: PathSection[] = [
     id: "verdict",
     title: "When a component is suitable",
     status: { kind: "in-review", pr: 56 },
-    paragraphs: ["A component is suitable for Common Ground when all four of these hold:"],
+    paragraphs: ["A component is suitable for Common Ground when all six of these hold:"],
     items: [
       "no mandatory criterion fails;",
       "the overall rating is at least 2.5;",
       "the maintainability estimate is at least 4 stars, the level at which SIG and TÜViT certify;",
-      "publiccode.yml names a valid maintenance contract.",
+      "publiccode.yml names a valid maintenance contract;",
+      "publiccode.yml declares developmentStatus stable;",
+      "publiccode.yml names at least 2 organisations under usedBy.",
     ],
     parts: [
       {
@@ -177,7 +180,7 @@ export const PATH_SECTIONS: PathSection[] = [
       {
         title: "Maintained",
         paragraphs: [
-          "A component is Maintained when it is suitable, its developmentStatus in publiccode.yml is stable, at least one organisation is listed as a user under usedBy in publiccode.yml, and there is a valid SLA with a maintainer, on the VNG model contract. A component that leaves stable leaves Maintained and goes back to Suitable for Common Ground. The SLA rests on the hard criteria and the KPIs below. One user follows the Common Ground standard put to the VNG ALV: a component is proven in practice by one or more municipalities. VNG does not contract the maintainer. Municipalities do, on the VNG model contracts and framework agreements.",
+          "A component is Maintained when it is suitable and there is a valid SLA with a maintainer, on the VNG model contract. Stable and at least 2 users already come with Suitable. A component that leaves stable is no longer suitable, so it leaves Maintained too. The SLA rests on the hard criteria and the KPIs below. VNG does not contract the maintainer. Municipalities do, on the VNG model contracts and framework agreements.",
         ],
       },
     ],

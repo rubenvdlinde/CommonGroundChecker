@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { minUsers, organisationsLabel } from "@/lib/maintained";
+import { organisationsLabel } from "@/lib/maintained";
+import { MIN_USERS_FOR_SUITABLE } from "@/lib/ratings";
 import { CHECKLIST_CHANGE_PROPOSAL_URL, CHECKLIST_VERSION } from "@/lib/criteria";
 import { RATING_DOCS, RATING_SCALE } from "@/lib/ratingDocs";
 import { PATH_DOC_HREF } from "@/lib/pathDocs";
@@ -128,7 +129,9 @@ export default function RatingGuidePage() {
           <li>
             <strong>A component is suitable for Common Ground</strong> when every mandatory item is present, the
             overall rating is at least 2.5, publiccode.yml declares a valid maintenance contract, and the estimated
-            maintainability is at least 4 stars (a rating of 3.5 or more). 2.5 is 3 stars, as the SIG models count 3
+            maintainability is at least 4 stars (a rating of 3.5 or more). publiccode.yml must also declare
+            developmentStatus stable and name at least {organisationsLabel(MIN_USERS_FOR_SUITABLE)} under usedBy.
+            2.5 is 3 stars, as the SIG models count 3
             stars from 2.5. 4 stars is the level at which SIG and TÜViT certify maintainability. The checker does not
             certify: certification is a manual assessment by SIG and TÜViT, and the checker only estimates whether a
             component looks ready for it. Whether adoption into Common Ground needs a SIG certificate is up to VNG as
@@ -141,13 +144,11 @@ export default function RatingGuidePage() {
           </li>
           <li>
             <strong>A component is Maintained</strong>, the level above suitable, when it is suitable for Common
-            Ground, its publiccode.yml declares the development status stable and at least{" "}
-            {organisationsLabel(minUsers())} under usedBy, and there is a valid SLA with a maintainer, on the VNG
-            model contract. VNG does not contract the maintainer: municipalities do, on the VNG model contracts and
+            Ground and there is a valid SLA with a maintainer, on the VNG model contract. Stable and the users come
+            with Suitable. VNG does not contract the maintainer: municipalities do, on the VNG model contracts and
             framework agreements. The usedBy list is self-declared by the maintainers and not verified. An SLA is
-            valid up to and including its end date. The minimum follows the Common Ground standard put to the VNG
-            ALV: a component is proven in practice by one or more municipalities. The checker counts usage only here:
-            it never gives stars and never counts in a rating.
+            valid up to and including its end date. The checker counts usage only in the verdict: it never gives
+            stars and never counts in a rating.
           </li>
         </ul>
         <p className="text-gray-700">

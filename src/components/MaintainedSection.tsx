@@ -12,8 +12,6 @@ import type { Endorsement } from "@/lib/types";
 interface MaintainedSectionProps {
   repoId: string;
   endorsement: Endorsement;
-  /** `developmentStatus` of the latest scanned publiccode.yml, or null */
-  developmentStatus: string | null;
   /** The usage status from the backend, or null when it could not be loaded */
   initialUsage: UsageStatus | null;
   minUsers: number;
@@ -49,7 +47,6 @@ function usageSummary(usage: UsageStatus | null): string {
 export default function MaintainedSection({
   repoId,
   endorsement,
-  developmentStatus,
   initialUsage,
   minUsers,
   today,
@@ -65,10 +62,7 @@ export default function MaintainedSection({
 
   const level = computeMaintained({
     endorsement,
-    developmentStatus,
-    declaredUserCount: usage ? usage.declaredUserCount ?? null : null,
     slas: usage?.slas ?? [],
-    minUsers,
     today,
   });
 
@@ -104,10 +98,10 @@ export default function MaintainedSection({
       <h3 className="text-lg font-semibold text-gray-800">Level</h3>
       <MaintainedLevel level={level} endorsement={endorsement} minUsers={minUsers} />
       <p className="text-xs text-gray-500">
-        The minimum of {organisationsLabel(minUsers)} declared in publiccode.yml follows the Common Ground standard put
-        to the VNG ALV: a component is proven in practice by one or more municipalities. Who decides that a component is Maintained, and what happens when a maintainer misses the SLA,
+        Suitable for Common Ground needs developmentStatus stable and at least {organisationsLabel(minUsers)} declared in
+        publiccode.yml. Who decides that a component is Maintained, and what happens when a maintainer misses the SLA,
         needs a governance decision.
-        Usage counts only here. It never gives stars and never counts in a rating.
+        Usage counts only in the verdict. It never gives stars and never counts in a rating.
       </p>
 
       <div className="space-y-2">

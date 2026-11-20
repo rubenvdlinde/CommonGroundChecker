@@ -4,7 +4,7 @@ import { loadBasisset, matchBasisset } from "@/lib/basisset";
 import { dataSource } from "@/lib/dataSource";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { staticRepositoryParams } from "@/lib/dataSource/staticDataSource";
-import { minUsers } from "@/lib/maintained";
+import { MIN_USERS_FOR_SUITABLE } from "@/lib/ratings";
 import type { ComponentLandscape } from "@/components/FunctionalitiesSection";
 import { publiccodeFeatures } from "@/lib/compareSide";
 import { standardsOfResults } from "@/lib/componentStandards";
@@ -80,7 +80,6 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
     loadLandscape(result.run),
   ]);
   const today = new Date().toISOString().slice(0, 10);
-  const minimumUsers = minUsers();
   const { run } = result;
   const scannedVersion = run.runs[0]?.version ?? run.repoMeta.version ?? null;
 
@@ -89,9 +88,9 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
       owner={owner}
       repo={repo}
       result={result}
-      maintained={{ usage, minUsers: minimumUsers, today, organisationSlugs }}
+      maintained={{ usage, minUsers: MIN_USERS_FOR_SUITABLE, today, organisationSlugs }}
       lifecycle={{
-        result: lifecycleOfRun(run, { usage, minUsers: minimumUsers, today }),
+        result: lifecycleOfRun(run, { usage, today }),
         basisset: matchBasisset(basisset, run.repository.repoUrl, scannedVersion),
         scannedVersion,
         retiredAt: run.repository.retiredAt,

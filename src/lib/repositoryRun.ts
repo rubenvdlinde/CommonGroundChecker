@@ -300,8 +300,7 @@ export async function loadRepositoryRun(
 export function lifecycleOfRun(
   run: RepositoryRun,
   options: {
-    usage: { declaredUserCount?: number | null; slas?: MaintainedSla[] } | null;
-    minUsers: number;
+    usage: { slas?: MaintainedSla[] } | null;
     today: string;
   }
 ): LifecycleResult {
@@ -309,9 +308,7 @@ export function lifecycleOfRun(
     hasAnalysis: run.runs.length > 0,
     endorsement: run.latest.endorsement,
     developmentStatus: run.latest.developmentStatus,
-    declaredUserCount: options.usage?.declaredUserCount ?? null,
     slas: options.usage?.slas ?? [],
-    minUsers: options.minUsers,
     today: options.today,
     retiredAt: run.repository.retiredAt,
     retiredReason: run.repository.retiredReason,

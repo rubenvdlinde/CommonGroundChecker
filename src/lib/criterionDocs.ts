@@ -197,7 +197,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     title: "Usage and ecosystem",
     source: "information",
     sourceNote:
-      "Context for the Maintained level, which asks at least one organisation in usedBy, as the Common Ground standard v1.0 asks a component proven in use by one or more municipalities.",
+      "Context for the verdict: Suitable for Common Ground asks at least 2 organisations in usedBy, so the component is proven in use.",
     what: "Who uses the component and how much, per source: users in publiccode.yml, App Store and package downloads, container pulls and dependent projects.",
     why: "Use by other organisations shows the component works in practice. The figures are not compared across components, because each source counts differently.",
     tool: "publiccode.yml usedBy and the public APIs of npm, Packagist, PyPI, the Nextcloud App Store, GitHub releases and the container registries",

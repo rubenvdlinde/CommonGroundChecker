@@ -1,4 +1,4 @@
-import type { AspectRating, CheckResult, CheckStatus, Endorsement, RequirementLevel } from "./types";
+import type { AspectRating, CheckResult, CheckStatus, Endorsement, PublicCodeData, RequirementLevel } from "./types";
 import { CATEGORY_ORDER, CATEGORY_WEIGHTS, isInTransition, isMandatoryFromDate } from "./criteria";
 import { ASPECT_MODEL, resolveCategory, type AspectDefinition, type CategoryAspects } from "./aspects";
 import { formatStars, minimumRatingFor, ratingToStars } from "./stars";
@@ -11,6 +11,20 @@ export const PASSING_RATING = 2.5;
 export const PASSING_MAINTAINABILITY_STARS = 4;
 /** The maintainability rating where those stars start. */
 export const PASSING_MAINTAINABILITY_RATING = minimumRatingFor(PASSING_MAINTAINABILITY_STARS);
+/** The `developmentStatus` in publiccode.yml a component needs to be suitable for Common Ground. */
+export const SUITABLE_DEVELOPMENT_STATUS = "stable";
+/** The organisations under `usedBy` in publiccode.yml a component needs to be suitable for Common Ground. */
+export const MIN_USERS_FOR_SUITABLE = 2;
+
+/**
+ * What the scanned publiccode.yml declares for Suitable for Common Ground. A
+ * field is undefined when the scan did not record it; `developmentStatus` is
+ * null when the file does not declare it.
+ */
+export interface AdoptionFacts {
+  developmentStatus?: string | null;
+  declaredUserCount?: number | null;
+}
 
 /** Ratings of a criterion that has no scale of its own: the ends and the middle of the scale. */
 const RATING_BY_STATUS: Partial<Record<CheckStatus, number>> = {
@@ -36,7 +50,7 @@ export interface RatingConfig {
 export type RatingInput = Pick<
   CheckResult,
   "id" | "status" | "requirementLevel" | "rating" | "starRating" | "aspectRatings" | "mandatoryFrom" | "notApplicable"
-> & { title?: string; message?: string };
+> & { publiccode?: Partial<Pick<PublicCodeData, "developmentStatus" | "usedBy">> } & { title?: string; message?: string };
 
 /** An analysis as the backend stores it; older analyses have no ratings. */
 export interface StoredAnalysis {
@@ -45,6 +59,9 @@ export interface StoredAnalysis {
   aspectRatings?: unknown;
   endorsement?: unknown;
   results?: unknown;
+  /** Stored next to the results by the backend and the static site */
+  developmentStatus?: unknown;
+  declaredUserCount?: unknown;
 }
 
 export interface Ratings {
@@ -218,15 +235,18 @@ export function computeRatings(
 
 /**
  * A component is suitable for Common Ground when no mandatory criterion fails,
- * its overall rating is at least 2.5, it has a valid maintenance contract, and
- * its estimated maintainability is at least 4 stars (3.5). It is the threshold
- * the Common Ground programme uses to decide whether to adopt a component as
- * supported, not a condition for being listed. The reasons name each failing
- * mandatory criterion, a rating that is too low, in the words of the
- * Maintenance contract criterion why there is no valid contract, and a
- * maintainability below 4 stars or not measured. A scan without the
- * maintenance criterion is not judged on it. A mandatory criterion in its
- * transition period does not count yet: its fail is a warning, not a reason.
+ * its overall rating is at least 2.5, it has a valid maintenance contract, its
+ * estimated maintainability is at least 4 stars (3.5), and its publiccode.yml
+ * declares `developmentStatus: stable` and at least 2 organisations under
+ * `usedBy`. It is the threshold the Common Ground programme uses to decide
+ * whether to adopt a component as supported, not a condition for being
+ * listed. The reasons name each failing mandatory criterion, a rating that is
+ * too low, in the words of the Maintenance contract criterion why there is no
+ * valid contract, a maintainability below 4 stars or not measured, and each
+ * unmet publiccode.yml condition. A scan without the maintenance criterion is
+ * not judged on it, nor is a scan without the publiccode criterion judged on
+ * publiccode.yml. A mandatory criterion in its transition period does not
+ * count yet: its fail is a warning, not a reason.
  */
 export function computeEndorsement(
   results: RatingInput[],
@@ -260,7 +280,85 @@ export function computeEndorsement(
     reasons.push(`Maintainability below ${PASSING_MAINTAINABILITY_STARS} stars (${maintainability.toFixed(2)})`);
   }
 
+  reasons.push(...adoptionReasons(adoptionFactsOf(results)));
   return { passed: reasons.length === 0, reasons };
+}
+
+/** Organisations named under `usedBy`, each counted once, ignoring case and spaces at the ends. */
+function countUsers(usedBy: unknown[]): number {
+  return new Set(
+    usedBy.flatMap((name) => (typeof name === "string" && name.trim() ? [name.trim().toLowerCase()] : []))
+  ).size;
+}
+
+/**
+ * The publiccode.yml facts in check results. A publiccode criterion without
+ * parsed data means there is no valid publiccode.yml: nothing declared. Results
+ * without the publiccode criterion, or stored before a field was recorded,
+ * leave that field undefined.
+ */
+export function adoptionFactsOf(results: unknown): AdoptionFacts {
+  if (!Array.isArray(results)) return {};
+  const items = results.filter((item): item is Record<string, unknown> => isPlainObject(item));
+  const publiccode = items.map((item) => item.publiccode).find(isPlainObject);
+  if (!publiccode) {
+    return items.some((item) => item.id === "publiccode") ? { developmentStatus: null, declaredUserCount: 0 } : {};
+  }
+  const status = publiccode.developmentStatus;
+  return {
+    ...("developmentStatus" in publiccode
+      ? { developmentStatus: typeof status === "string" && status.trim() ? status.trim() : null }
+      : {}),
+    ...(Array.isArray(publiccode.usedBy) ? { declaredUserCount: countUsers(publiccode.usedBy) } : {}),
+  };
+}
+
+/** Why the publiccode.yml facts keep a component from Suitable for Common Ground; a fact not recorded gives no reason. */
+export function adoptionReasons(facts: AdoptionFacts): string[] {
+  const reasons: string[] = [];
+  const status = facts.developmentStatus;
+  if (status !== undefined && status?.toLowerCase() !== SUITABLE_DEVELOPMENT_STATUS) {
+    reasons.push(
+      `publiccode.yml developmentStatus is ${status ?? "not declared"}; Suitable needs ${SUITABLE_DEVELOPMENT_STATUS}`
+    );
+  }
+  const users = facts.declaredUserCount;
+  if (typeof users === "number" && users < MIN_USERS_FOR_SUITABLE) {
+    reasons.push(
+      `publiccode.yml usedBy names ${users} ${users === 1 ? "organisation" : "organisations"}; Suitable needs at least ${MIN_USERS_FOR_SUITABLE}`
+    );
+  }
+  return reasons;
+}
+
+function isAdoptionReason(reason: string): boolean {
+  return reason.startsWith("publiccode.yml developmentStatus is ") || reason.startsWith("publiccode.yml usedBy names ");
+}
+
+/**
+ * A stored verdict judged again on the publiccode.yml conditions, so an
+ * analysis stored before they existed does not show Suitable wrongly. Facts
+ * that were not recorded leave the stored verdict as it is.
+ */
+export function withAdoptionConditions(endorsement: Endorsement, facts: AdoptionFacts): Endorsement {
+  const added = adoptionReasons(facts);
+  const recorded = facts.developmentStatus !== undefined || typeof facts.declaredUserCount === "number";
+  if (!recorded) return endorsement;
+  const kept = endorsement.reasons.filter((reason) => !isAdoptionReason(reason));
+  const otherwisePassed = endorsement.passed || (kept.length === 0 && endorsement.reasons.length > 0);
+  return { passed: otherwisePassed && added.length === 0, reasons: [...kept, ...added] };
+}
+
+/** The publiccode.yml facts of a stored analysis: from its results, else from the fields stored next to them. */
+export function storedAdoptionFacts(analysis: StoredAnalysis): AdoptionFacts {
+  const fromResults = adoptionFactsOf(analysis.results);
+  const status = analysis.developmentStatus;
+  const users = analysis.declaredUserCount;
+  return {
+    ...(typeof status === "string" && status.trim() ? { developmentStatus: status.trim() } : {}),
+    ...(isCount(users) ? { declaredUserCount: users } : {}),
+    ...fromResults,
+  };
 }
 
 /** The measured maintainability estimate: its continuous rating, else its stars; null when it was not rated. */
@@ -301,6 +399,7 @@ function parseStoredResults(raw: unknown): RatingInput[] {
       aspectRatings: parseRatingMap(item.aspectRatings) ?? undefined,
       mandatoryFrom: isMandatoryFromDate(item.mandatoryFrom) ? item.mandatoryFrom : undefined,
       notApplicable: item.notApplicable === true ? true : undefined,
+      publiccode: isPlainObject(item.publiccode) ? (item.publiccode as RatingInput["publiccode"]) : undefined,
     }));
 }
 
@@ -368,10 +467,19 @@ export function ratingsForStoredAnalysis(
       rating: isRating(analysis.rating) ? analysis.rating : null,
       categoryRatings: storedCategoryRatings(analysis.categoryRatings),
       aspectRatings: parseStoredAspectRatings(analysis.aspectRatings) ?? {},
-      endorsement: parseStoredEndorsement(analysis.endorsement) ?? { passed: false, reasons: [] },
+      endorsement: withAdoptionConditions(
+        parseStoredEndorsement(analysis.endorsement) ?? { passed: false, reasons: [] },
+        storedAdoptionFacts(analysis)
+      ),
     };
   }
   const results = parseStoredResults(analysis.results);
   const ratings = computeRatings(results, config);
-  return { ...ratings, endorsement: computeEndorsement(results, ratings.rating, config) };
+  return {
+    ...ratings,
+    endorsement: withAdoptionConditions(
+      computeEndorsement(results, ratings.rating, config),
+      storedAdoptionFacts(analysis)
+    ),
+  };
 }

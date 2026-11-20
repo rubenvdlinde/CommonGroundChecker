@@ -42,10 +42,7 @@ export interface LifecycleInput {
   endorsement: Endorsement | null;
   /** `developmentStatus` of the latest scanned publiccode.yml */
   developmentStatus: string | null;
-  /** Organisations under `usedBy` in the latest scanned publiccode.yml; null when not recorded */
-  declaredUserCount: number | null;
   slas: MaintainedSla[];
-  minUsers: number;
   /** Today as YYYY-MM-DD */
   today: string;
   /** When an admin retired the repository, or null */
@@ -95,8 +92,8 @@ function result(status: LifecycleStatus, fields: Partial<LifecycleResult> = {}):
  * Retired wins: an admin retired it, or the scanned publiccode.yml says
  * `developmentStatus: obsolete`. Without a stored analysis it is Listed.
  * When the verdict does not hold it is Measured, otherwise Suitable for
- * Common Ground. Maintained adds a stable developmentStatus, enough
- * declared users and a valid SLA (see `computeMaintained`). While a drop
+ * Common Ground. Maintained adds a valid SLA (see `computeMaintained`).
+ * While a drop
  * is open and within its fix term, a component that meets those
  * conditions stays Maintained, with a note, even when the drop cost the
  * verdict. Once a fix term has passed it is Suitable, or Measured when the
@@ -117,10 +114,7 @@ export function computeLifecycleStatus(input: LifecycleInput): LifecycleResult {
   }
   const maintained = computeMaintained({
     endorsement: { passed: true, reasons: [] },
-    developmentStatus: input.developmentStatus,
-    declaredUserCount: input.declaredUserCount,
     slas: input.slas,
-    minUsers: input.minUsers,
     today: input.today,
   });
   const inFixTerm = input.drops.open > 0 && input.drops.overdue === 0;

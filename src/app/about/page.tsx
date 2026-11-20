@@ -221,7 +221,8 @@ export default function AboutPage() {
           ))}
         </ul>
         <p className="text-gray-700">
-          The number of organisations listed under usedBy in publiccode.yml counts only towards Maintained.
+          The number of organisations listed under usedBy in publiccode.yml counts only towards the verdict: Suitable
+          for Common Ground needs at least 2.
         </p>
       </section>
 
@@ -345,7 +346,7 @@ export default function AboutPage() {
         </h2>
         <p className="text-gray-700">
           The two lifecycles are separate. The maintainer decides the developmentStatus. The programme decides the
-          status in Common Ground. They meet at one rule: only a stable component can be Maintained. A stable component
+          status in Common Ground. They meet at one rule: only a stable component can be suitable for Common Ground or Maintained. A stable component
           can still be only suitable, for example without a valid SLA. An obsolete component leads to retired.
         </p>
         <div className="overflow-x-auto">
@@ -370,8 +371,8 @@ export default function AboutPage() {
           When a Maintained component leaves stable
         </h3>
         <p className="text-gray-700">
-          A component that leaves stable leaves Maintained. Which state it moves to depends on the new developmentStatus.
-          It goes back to Suitable for Common Ground while the verdict still holds, and to Measured when it does not.
+          A component that leaves stable is no longer suitable for Common Ground, so it leaves Maintained too. Which
+          state it moves to depends on the new developmentStatus.
         </p>
         <div className="overflow-x-auto">
           <table aria-labelledby="leaving-stable-heading" className="w-full text-sm text-left text-gray-700">

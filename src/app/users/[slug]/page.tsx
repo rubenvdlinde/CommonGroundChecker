@@ -7,7 +7,7 @@ import { dataSource } from "@/lib/dataSource";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { staticOrganisationParams } from "@/lib/dataSource/staticDataSource";
 import { computeLifecycleStatus } from "@/lib/lifecycle";
-import { developmentStatusOf, minUsers } from "@/lib/maintained";
+import { developmentStatusOf } from "@/lib/maintained";
 import { componentCountLabel } from "@/lib/organisations";
 import { componentHref, USERS_PATH } from "@/lib/routes";
 import { loadStoredRatings } from "@/lib/storedRatings";
@@ -61,7 +61,6 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
   const { organisation } = detail;
   const components = detail.components.filter((component) => component.latestAnalysis);
   const ratings = await loadStoredRatings(components.map((component) => component.latestAnalysis ?? {}));
-  const minimumUsers = minUsers();
   const today = new Date().toISOString().slice(0, 10);
   const otherSpellings = organisation.spellings.filter((spelling) => spelling !== organisation.name);
 
@@ -87,9 +86,7 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
             hasAnalysis: true,
             endorsement,
             developmentStatus: developmentStatusOf(analysis.results),
-            declaredUserCount: analysis.declaredUserCount ?? null,
             slas: component.slas,
-            minUsers: minimumUsers,
             today,
             retiredAt: component.retiredAt ?? null,
             retiredReason: component.retiredReason ?? null,

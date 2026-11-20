@@ -112,12 +112,12 @@ export const PROFILE_FIELDS: ProfileField[] = [
     id: "used-by",
     keys: "usedBy",
     what: [
-      "The names of the organisations that use the component in production. Name at least one: the Maintained level asks that the component is proven in use by one or more municipalities.",
+      "The names of the organisations that use the component in production. Name at least two: Suitable for Common Ground asks that the component is proven in use by at least 2 organisations.",
       "The publiccode.yml standard marks usedBy as deprecated from 0.8 on and names no replacement key. The proposal behind it moves usage to the catalogue level. The reference parser warns, but still accepts the file. The checker reads it until there is a replacement.",
     ],
     example: "usedBy:\n  - Gemeente Voorbeeld\n  - Gemeente Proefstad",
     usedBy:
-      "The Maintained level needs at least one organisation, together with Suitable for Common Ground, developmentStatus stable and a valid SLA with a maintainer on the VNG model contract. The usage overview and the Users pages list them.",
+      "Suitable for Common Ground needs at least 2 organisations, together with developmentStatus stable. Maintained adds a valid SLA with a maintainer on the VNG model contract. The usage overview and the Users pages list them.",
     requirement: "maintained",
     status: "proposed",
   },
