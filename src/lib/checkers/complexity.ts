@@ -67,11 +67,30 @@ async function detectLizardCommand(): Promise<{ command: string; argsPrefix: str
 /** Dependency, build and generated output; the same directories the OWASP check skips, plus .git. */
 export const EXCLUDED_DIRECTORIES = ["node_modules", ".next", ".git", "dist", "build", "coverage", "vendor", "generated"];
 
+/**
+ * Test code, as Lizard globs: test directories (including end-to-end suites, Android instrumentation
+ * tests, test stubs and `test-*` support folders) and test file names (`*.test.ts`, Go's `*_test.go`,
+ * pytest's `test_*.py`). The same paths the OWASP check treats as test code.
+ */
+export const TEST_CODE_PATTERNS = [
+  ...["test", "tests", "__tests__", "spec", "fixtures", "__fixtures__", "testdata", "e2e", "androidTest"].map(
+    (directory) => `*/${directory}/*`
+  ),
+  "*/test-*/*",
+  "*/tests-*/*",
+  "*/test_*/*",
+  "*.test.*",
+  "*.spec.*",
+  "*_test.*",
+  "*/test_*.py",
+];
+
 export function lizardExcludeArgs(): string[] {
   return [
     ...EXCLUDED_DIRECTORIES.flatMap((directory) => ["-x", `*/${directory}/*`]),
     "-x",
     "*.min.js",
+    ...TEST_CODE_PATTERNS.flatMap((pattern) => ["-x", pattern]),
   ];
 }
 
