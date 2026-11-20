@@ -79,6 +79,16 @@ export const SETUP_POINTS: SetupPoint[] = [
     link: SETUP_LINK,
   },
   {
+    id: "ai-readiness",
+    title: "AI readiness, for information",
+    paragraphs: [
+      "More developers start their work with a coding agent. An agent needs what a new colleague needs: instructions, specifications, recorded decisions and an environment it can run.",
+      "The AI readiness category shows how far a repository offers that. The checker reads the tree and a few root files, such as AGENTS.md, openspec/ and docker-compose.yml.",
+      "The category is informative. It has its own rating, but it never counts in the overall rating, Suitable for Common Ground, Maintained or the drop alerts.",
+    ],
+    link: { href: "/docs/ai-readiness", text: "How AI readiness is rated" },
+  },
+  {
     id: "goal-neutral-rating",
     title: "Goal 3: a neutral and clear rating",
     paragraphs: [
