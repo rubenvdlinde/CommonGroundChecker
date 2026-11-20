@@ -256,7 +256,7 @@ export default function HistoryPageClient({
               value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
               placeholder="Owner, name, description or topic"
-              className="w-72 max-w-full rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-800 focus:border-cg-lightblue focus:outline-none focus:ring-2 focus:ring-cg-lightblue/40"
+              className="min-h-[44px] lg:min-h-0 w-72 max-w-full rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-800 focus:border-cg-lightblue focus:outline-none focus:ring-2 focus:ring-cg-lightblue/40"
             />
           </div>
           <input type="hidden" name="sort" value={sort} />
@@ -267,7 +267,7 @@ export default function HistoryPageClient({
           {standard && <input type="hidden" name="standard" value={standard} />}
           <button
             type="submit"
-            className="rounded-lg border border-cg-lightblue bg-cg-lightblue/10 px-3 py-1.5 text-sm font-semibold text-cg-blue hover:bg-cg-lightblue/20"
+            className="min-h-[44px] lg:min-h-0 rounded-lg border border-cg-lightblue bg-cg-lightblue/10 px-3 py-1.5 text-sm font-semibold text-cg-blue hover:bg-cg-lightblue/20"
           >
             Search
           </button>
