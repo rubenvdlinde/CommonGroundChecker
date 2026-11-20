@@ -1,5 +1,6 @@
 "use client";
 
+import InformativeCategoryTag from "./InformativeCategoryTag";
 import { formatDateTime } from "@/lib/dates";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -933,6 +934,7 @@ export default function CheckerHome() {
                           rating={report.categoryRatings?.[category] ?? null}
                           label={`${category} rating`}
                         />
+                        <InformativeCategoryTag category={category} />
                       </div>
                       <div className="space-y-2">
                         {sortedResults.map((r) => (

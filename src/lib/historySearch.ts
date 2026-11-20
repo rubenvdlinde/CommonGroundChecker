@@ -14,6 +14,8 @@ interface HistoryHrefOptions {
   functionality?: string | null;
   /** Only components that declare or implement this standard */
   standard?: string | null;
+  /** Only components whose AI readiness earns 4 stars or more */
+  ai?: boolean;
 }
 
 /** Trims a search term taken from the URL or the search input. */
@@ -23,7 +25,7 @@ export function normalizeSearchQuery(value: string | string[] | undefined): stri
 }
 
 /** Builds the Components index URL, keeping the sort options, the search term and the filters together. */
-export function buildHistoryHref({ q, sort, direction, status, basisset, functionality, standard }: HistoryHrefOptions): string {
+export function buildHistoryHref({ q, sort, direction, status, basisset, functionality, standard, ai }: HistoryHrefOptions): string {
   const params = new URLSearchParams({ sort, direction });
   const term = normalizeSearchQuery(q);
   if (term) params.set("q", term);
@@ -31,6 +33,7 @@ export function buildHistoryHref({ q, sort, direction, status, basisset, functio
   if (basisset) params.set("basisset", "1");
   if (functionality) params.set("functionality", functionality);
   if (standard) params.set("standard", standard);
+  if (ai) params.set("ai", "1");
   return `${COMPONENTS_PATH}?${params.toString()}`;
 }
 

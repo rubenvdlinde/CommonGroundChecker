@@ -84,6 +84,17 @@ describe("compareCategoryRatings and compareAspectRatings", () => {
     expect(rows.find((row) => row.id === "Architecture")?.winner).toBe("not-comparable");
   });
 
+  it("compares AI readiness in a row marked informative", () => {
+    const rows = compareCategoryRatings(
+      analysis({ categoryRatings: { "AI readiness": 4.2 } }),
+      analysis({ categoryRatings: { "AI readiness": 1.5 } })
+    );
+    expect(rows.find((row) => row.id === "AI readiness")).toMatchObject({
+      title: "AI readiness (informative)",
+      winner: "a",
+    });
+  });
+
   it("compares every aspect of the model", () => {
     const groups = compareAspectRatings(
       analysis({ aspectRatings: { licensing: { rating: 5.5 } } }),

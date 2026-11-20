@@ -127,6 +127,7 @@ describe("History filter", () => {
       basisset: false,
       functionality: "registreren-en-delen-van-zaken",
       standard: "zgw-zaken",
+      aiReady: false,
     });
     expect(parseHistoryFilter(undefined, undefined, "<script>", "zgw zaken")).toMatchObject({
       functionality: null,
@@ -175,6 +176,24 @@ describe("History filter", () => {
     expect(
       names({ status: entries[0].lifecycle.status, basisset: false, functionality: "registreren-en-delen-van-zaken", standard: "zgw-zaken" })
     ).toEqual([entries[0].name]);
+  });
+
+  it("filters on an AI readiness of 4 stars or more, read from the stored category ratings", () => {
+    const entries = buildHistoryIndex(
+      [
+        summary("ready", {}, { categoryRatings: { Governance: 5, "AI readiness": 3.5 } }),
+        summary("almost", {}, { categoryRatings: { "AI readiness": 3.4 } }),
+        summary("unrated", {}, { categoryRatings: { "AI readiness": null } }),
+        summary("old-analysis"),
+      ],
+      options
+    );
+    expect(entries.map((entry) => entry.aiReadiness)).toEqual([3.5, 3.4, null, null]);
+    expect(entries.filter((entry) => matchesFilter(entry, { status: null, basisset: false, aiReady: true })).map((entry) => entry.name)).toEqual([
+      "ready",
+    ]);
+    expect(parseHistoryFilter(undefined, undefined, undefined, undefined, "1").aiReady).toBe(true);
+    expect(buildHistoryHref({ sort: "rating", direction: "desc", ai: true })).toBe("/components?sort=rating&direction=desc&ai=1");
   });
 
   it("puts the filter in the URL next to the search and the sort", () => {

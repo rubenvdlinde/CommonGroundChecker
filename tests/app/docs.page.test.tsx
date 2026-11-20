@@ -31,6 +31,7 @@ const EXPECTED_MODEL: Record<string, string[]> = {
   governance: ["licensing", "ownership", "maintenance", "community-documents", "usage-and-ecosystem", "project-health"],
   "deployment-operations": ["containerisation", "release-management"],
   architecture: ["api", "layering", "standards"],
+  "ai-readiness": ["agent-instructions", "specifications-and-decisions", "runnable-environment", "interfaces-and-tooling"],
 };
 
 async function renderCategory(slug: string) {

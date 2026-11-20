@@ -32,6 +32,7 @@ interface HistoryHomePageProps {
     basisset?: string | string[];
     functionality?: string | string[];
     standard?: string | string[];
+    ai?: string | string[];
   }>;
 }
 
@@ -75,7 +76,8 @@ export default async function HistoryHomePage({ searchParams }: HistoryHomePageP
     firstValue(query.status),
     firstValue(query.basisset),
     firstValue(query.functionality),
-    firstValue(query.standard)
+    firstValue(query.standard),
+    firstValue(query.ai)
   );
 
   let repositories: RepoSummary[] = [];
@@ -102,6 +104,7 @@ export default async function HistoryHomePage({ searchParams }: HistoryHomePageP
       basissetOnly={filter.basisset}
       functionality={filter.functionality ?? null}
       standard={filter.standard ?? null}
+      aiReady={filter.aiReady === true}
       functionalityNames={functionalityNames}
       basisset={basisset}
       today={new Date().toISOString().slice(0, 10)}

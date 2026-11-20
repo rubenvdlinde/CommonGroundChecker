@@ -188,7 +188,7 @@ vi.mock("@/lib/checkers/config", async (importOriginal) => ({
 }));
 
 import { MAX_EVIDENCE_LINES, runChecks } from "@/lib/checkers/index";
-import { CATEGORY_ORDER, CATEGORY_WEIGHTS, CHECKLIST_VERSION, CRITERION_VERSIONS } from "@/lib/criteria";
+import { CATEGORY_ORDER, CATEGORY_WEIGHTS, CHECKLIST_VERSION, CRITERION_VERSIONS, type CountedCategory } from "@/lib/criteria";
 import { resolveCategory } from "@/lib/aspects";
 
 function resultFor(id: string, status: CheckResult["status"]): CheckResult {
@@ -506,7 +506,7 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(39);
+    expect(report.results).toHaveLength(45);
     expect(report.results.find((result) => result.id === "licenceconsistency")?.starRating).toBe(5);
     expect(report.results.find((result) => result.id === "spdxheaders")?.starRating).toBe(4);
     expect(report.results.find((result) => result.id === "opensourcehealth")?.starRating).toBe(4);
@@ -609,8 +609,8 @@ describe("runChecks", () => {
     expect(report.categoryRatings[governance]).toBe(5.5);
     expect(report.categoryRatings[maintainability]).toBe(3.5);
     expect(Object.keys(report.categoryRatings)).toEqual(CATEGORY_ORDER);
-    const governanceWeight = CATEGORY_WEIGHTS[governance];
-    const maintainabilityWeight = CATEGORY_WEIGHTS[maintainability];
+    const governanceWeight = CATEGORY_WEIGHTS[governance as CountedCategory];
+    const maintainabilityWeight = CATEGORY_WEIGHTS[maintainability as CountedCategory];
     expect(report.rating).toBe(
       Math.round(((5.5 * governanceWeight + 3.5 * maintainabilityWeight) / (governanceWeight + maintainabilityWeight)) * 10) / 10
     );

@@ -9,7 +9,8 @@ import {
 } from "./lifecycle";
 import type { MaintainedSla } from "./maintained";
 import { standardsFromEvidence } from "./componentStandards";
-import { isRating, summaryAdoptionFacts, withAdoptionConditions } from "./ratings";
+import { isRating, storedCategoryRatings, summaryAdoptionFacts, withAdoptionConditions } from "./ratings";
+import { minimumRatingFor } from "./stars";
 import type { Endorsement } from "./types";
 
 /**
@@ -28,6 +29,19 @@ export interface HistoryIndexEntry extends RepoSummary {
   functionalities: string[];
   /** Ids of the standards its latest analysis declares or implements; null when it measured none */
   standards: string[] | null;
+  /** The informative AI readiness rating of the latest analysis; null when it was not rated */
+  aiReadiness: number | null;
+}
+
+/** The informative category the AI readiness filter reads. */
+export const AI_READINESS_CATEGORY = "AI readiness";
+/** The AI readiness stars a component needs to show under the "AI ready" filter. */
+export const AI_READY_STARS = 4;
+const AI_READY_RATING = minimumRatingFor(AI_READY_STARS);
+
+/** Whether an AI readiness rating earns at least AI_READY_STARS stars. */
+export function isAiReady(rating: number | null | undefined): boolean {
+  return typeof rating === "number" && rating >= AI_READY_RATING;
 }
 
 export interface HistoryIndexOptions {
@@ -106,6 +120,10 @@ export function toHistoryIndexEntry(repository: RepoSummary, options: HistoryInd
       ? summary.functionalities.filter((id): id is string => typeof id === "string")
       : [],
     standards: standards ? standards.map((standard) => standard.id) : null,
+    aiReadiness: (() => {
+      const value = storedCategoryRatings(latest?.categoryRatings)[AI_READINESS_CATEGORY];
+      return isRating(value) ? value : null;
+    })(),
     lifecycle,
     basisset: matchBasisset(options.basisset, repository.repoUrl, version),
     rating: isRating(latest?.rating) ? (latest.rating as number) : null,
@@ -129,6 +147,8 @@ export interface HistoryFilter {
   functionality?: string | null;
   /** An id of the standards registry */
   standard?: string | null;
+  /** Only components whose AI readiness earns at least AI_READY_STARS stars */
+  aiReady?: boolean;
 }
 
 const FILTER_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -138,12 +158,13 @@ function filterId(value: string | undefined): string | null {
   return id && FILTER_ID.test(id) ? id : null;
 }
 
-/** Reads `?status=`, `?basisset=1`, `?functionality=` and `?standard=`; an unknown status shows every status. */
+/** Reads `?status=`, `?basisset=1`, `?functionality=`, `?standard=` and `?ai=1`; an unknown status shows every status. */
 export function parseHistoryFilter(
   status: string | undefined,
   basisset: string | undefined,
   functionality?: string,
-  standard?: string
+  standard?: string,
+  ai?: string
 ): HistoryFilter {
   const value = status?.trim().toLowerCase();
   return {
@@ -151,18 +172,21 @@ export function parseHistoryFilter(
     basisset: basisset === "1" || basisset === "true",
     functionality: filterId(functionality),
     standard: filterId(standard),
+    aiReady: ai === "1" || ai === "true",
   };
 }
 
 /** Whether an entry shows under the filter. */
 export function matchesFilter(
-  entry: Pick<HistoryIndexEntry, "lifecycle" | "basisset"> & Partial<Pick<HistoryIndexEntry, "functionalities" | "standards">>,
+  entry: Pick<HistoryIndexEntry, "lifecycle" | "basisset"> &
+    Partial<Pick<HistoryIndexEntry, "functionalities" | "standards" | "aiReadiness">>,
   filter: HistoryFilter
 ): boolean {
   if (filter.status && entry.lifecycle?.status !== filter.status) return false;
   if (filter.basisset && !isInBasisset(entry.basisset)) return false;
   if (filter.functionality && !(entry.functionalities ?? []).includes(filter.functionality)) return false;
   if (filter.standard && !(entry.standards ?? []).includes(filter.standard)) return false;
+  if (filter.aiReady && !isAiReady(entry.aiReadiness)) return false;
   return true;
 }
 

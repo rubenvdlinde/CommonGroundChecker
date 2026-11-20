@@ -445,6 +445,40 @@ describe("computeRatings", () => {
   });
 });
 
+describe("the informative AI readiness category", () => {
+  const informative: CriterionConfig = { weight: 0, requirementLevel: "informative" };
+  const aiConfig = config({ agentinstructions: informative, specifications: informative, license: mandatory });
+
+  it("is rated from its informative criteria", () => {
+    const ratings = computeRatings(
+      [
+        result("agentinstructions", "pass", { rating: 5.5 }),
+        result("specifications", "warn", { rating: 3 }),
+        result("architecturedecisions", "fail", { rating: 0.5 }),
+      ],
+      aiConfig
+    );
+
+    expect(ratings.aspectRatings["agent-instructions"]).toEqual({ rating: 5.5 });
+    expect(ratings.aspectRatings["specifications-and-decisions"]).toEqual({ rating: 1.8 });
+    // (5.5 + 1.75) / 2 = 3.625
+    expect(ratings.categoryRatings["AI readiness"]).toBe(3.6);
+    expect(ratings.rating).toBeNull();
+  });
+
+  it("never counts in the overall rating, also with a category weight set", () => {
+    const results = [result("license", "pass"), result("agentinstructions", "fail", { rating: 0.5 })];
+    const ratings = computeRatings(results, config(aiConfig.criterionConfigByCheckId, { "AI readiness": 1, Governance: 1 }));
+
+    expect(ratings.categoryRatings["AI readiness"]).toBe(0.5);
+    expect(ratings.categoryRatings[GOVERNANCE]).toBe(5.5);
+    expect(ratings.rating).toBe(5.5);
+    expect(computeEndorsement(results, ratings.rating, aiConfig).reasons).not.toContain(
+      expect.stringContaining("Agent instructions")
+    );
+  });
+});
+
 describe("the size aspect", () => {
   it("is never rated and does not change the Maintainability rating", () => {
     const results = [

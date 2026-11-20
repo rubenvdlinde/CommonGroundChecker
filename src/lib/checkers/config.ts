@@ -101,6 +101,12 @@ export const DEFAULT_CRITERION_CONFIG_BY_CHECK_ID: Record<string, CriterionConfi
   artifacthub: { weight: 1, requirementLevel: "mandatory" },
   coverage: { weight: 1, requirementLevel: "mandatory" },
   fivelayer: { weight: 1, requirementLevel: "mandatory" },
+  agentinstructions: { weight: 0, requirementLevel: "informative" },
+  specifications: { weight: 0, requirementLevel: "informative" },
+  architecturedecisions: { weight: 0, requirementLevel: "informative" },
+  devenvironment: { weight: 0, requirementLevel: "informative" },
+  machineinterfaces: { weight: 0, requirementLevel: "informative" },
+  agenttooling: { weight: 0, requirementLevel: "informative" },
 };
 
 /**
@@ -146,6 +152,13 @@ export const CRITERION_FRESHNESS_BY_CHECK_ID: Record<string, CheckFreshness> = {
   size: "per-commit",
   standards: "per-commit",
   secretscanning: "per-commit",
+  // AI readiness reads the tree and a few root files of the scanned commit.
+  agentinstructions: "per-commit",
+  specifications: "per-commit",
+  architecturedecisions: "per-commit",
+  devenvironment: "per-commit",
+  machineinterfaces: "per-commit",
+  agenttooling: "per-commit",
   // Known vulnerabilities (OSV), freshness and activity of the locked dependencies.
   opensourcehealth: "per-run",
   openssfscorecard: "per-run",

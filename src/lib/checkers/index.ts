@@ -44,6 +44,7 @@ import { checkLicenceConsistency } from "./licenceConsistency";
 import { checkSpdxHeaders } from "./spdxHeaders";
 import { checkSecretScanning } from "./secretScanning";
 import { checkOpenSsfScorecard } from "./openssfScorecard";
+import { AI_READINESS_CHECK_IDS, checkAiReadiness } from "./aiReadiness";
 import {
   getActiveScoringConfig,
   type ActiveScoringConfig,
@@ -64,6 +65,7 @@ import {
   RESULT_CATEGORY_BY_ID,
   upcomingMandatoryFrom,
   withTransition,
+  type CountedCategory,
   type CriteriaCategory,
 } from "../criteria";
 import { mkdtemp, rm } from "node:fs/promises";
@@ -347,6 +349,10 @@ export async function runChecksOnContext(
   const owaspSecureCodingPromise = measure("owaspsecurecoding", async () =>
     checkOwaspSecureCoding(context, tree, await checkout())
   );
+  // The AI readiness criteria share the files they read, so they are measured or reused together.
+  const aiReadinessPromise: Promise<CheckResult[]> = AI_READINESS_CHECK_IDS.every((id) => reused.has(id))
+    ? Promise.resolve(AI_READINESS_CHECK_IDS.map((id) => reused.get(id)!))
+    : checkAiReadiness(context, tree);
   const adrValidatorPromise = measure("adrvalidator", () =>
     checkAdrValidator(
       owner,
@@ -381,7 +387,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth, size, duplication, sonarqube, coupling, openTrackMeasurement] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth, size, duplication, sonarqube, coupling, openTrackMeasurement, aiReadiness] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -399,6 +405,7 @@ export async function runChecksOnContext(
     sonarQubePromise,
     couplingPromise,
     openTrackPromise,
+    aiReadinessPromise,
   ]);
   const publiccode = reused.get("publiccode") ?? publiccodeAnalysis.result;
 
@@ -474,6 +481,7 @@ export async function runChecksOnContext(
     helmchart,
     projecthealth,
     standards,
+    ...aiReadiness,
   ];
   // The open track is rated again with the measures other checks report, such as duplication.
   const results = openTrackMeasurement ? withOpenTrackExtras(checkedResults, openTrackMeasurement) : checkedResults;
@@ -528,7 +536,7 @@ export async function runChecksOnContext(
         aggregate.totalWeight > 0
           ? aggregate.weightedScoreSum / aggregate.totalWeight
           : 0,
-      categoryWeight: effectiveCategoryWeights[category as CriteriaCategory] ?? 0,
+      categoryWeight: effectiveCategoryWeights[category as CountedCategory] ?? 0,
     })
   );
 
@@ -595,6 +603,7 @@ export async function runChecksOnContext(
     usage,
     projecthealth,
     standards,
+    ...aiReadiness,
   ].map((result) =>
     withTransition(
       {

@@ -1,4 +1,5 @@
 import AspectBar from "@/components/AspectBar";
+import InformativeCategoryTag, { INFORMATIVE_CATEGORY_NOTE } from "./InformativeCategoryTag";
 import MeasurementTable, { StarsText } from "@/components/MeasurementTable";
 import MetricTable from "@/components/MetricTable";
 import RatingBadge from "@/components/RatingBadge";
@@ -13,7 +14,7 @@ import {
   documentCountText,
   type AspectCriterion,
 } from "@/lib/componentRating";
-import { CATEGORY_ORDER, criterionAnchorId, type CriteriaCategory } from "@/lib/criteria";
+import { CATEGORY_ORDER, criterionAnchorId, isInformativeCategory, type CriteriaCategory } from "@/lib/criteria";
 import { aspectDocHref } from "@/lib/ratingDocs";
 import { sizeSummary } from "@/lib/size";
 import { ratingToStars } from "@/lib/stars";
@@ -278,7 +279,9 @@ function CategorySection({
           )}
         </h4>
         <RatingBadge rating={rating} label={`${category} rating`} />
+        <InformativeCategoryTag category={category} />
       </div>
+      {isInformativeCategory(category) && <p className="text-xs text-gray-600">{INFORMATIVE_CATEGORY_NOTE}</p>}
       {category === resolveCategory("Maintainability") && <OpenTrackLine results={results} />}
       {aspects.map((aspect) => {
         const composition = aspect.source.type === "informative" ? aspectComposition(aspect, results) : null;

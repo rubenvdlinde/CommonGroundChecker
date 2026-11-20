@@ -81,6 +81,13 @@ export interface RatingCategoryDoc {
 }
 
 const SOURCES = {
+  agentsMd: { title: "AGENTS.md, a format for instructions to coding agents", url: "https://agents.md/" },
+  openSpec: { title: "OpenSpec: spec-driven development for coding agents", url: "https://github.com/Fission-AI/OpenSpec" },
+  specKit: { title: "GitHub Spec Kit", url: "https://github.com/github/spec-kit" },
+  adr: { title: "Architecture decision records", url: "https://adr.github.io/" },
+  devContainers: { title: "Development Containers specification", url: "https://containers.dev/" },
+  llmsTxt: { title: "The /llms.txt file", url: "https://llmstxt.org/" },
+  mcp: { title: "Model Context Protocol", url: "https://modelcontextprotocol.io/" },
   chaossMetrics: { title: "CHAOSS metrics and metrics models", url: "https://chaoss.community/kb-metrics-and-metrics-models/" },
   chaossAbsenceFactor: {
     title: "CHAOSS: Contributor Absence Factor",
@@ -474,6 +481,85 @@ const DOCUMENT_RATING =
 export const RATING_SCALE = {
   text: "Every rating runs from 0.5 to 5.5, the scale of the quality models the checker follows: technically, their metrics range from 0.5 to 5.5 stars. Each star level is a band one wide. 4.5 to 5.5 is 5 stars, 3.5 to 4.5 is 4 stars, and so on down to 0.5 to 1.5 for 1 star, so a perfect result rates 5.5.",
   source: SOURCES.benchmark,
+};
+
+const AI_READINESS_RATING =
+  "The rating is 0.5 plus the points found, at most 5.5. 4 or more passes, 2 or more is a warning, less fails. The category is informative: it never counts in the overall rating or the verdict.";
+
+/** The AI readiness category: informative, rated but never counted in the overall rating. */
+export const AI_READINESS_DOC: RatingCategoryDoc = {
+  slug: "ai-readiness",
+  title: "AI readiness",
+  summary:
+    "AI readiness shows how easily a coding agent can start work on the repository. Agents need written instructions, specifications, recorded decisions and an environment they can run. The checker reads the tree and a few root files of the scanned commit. The category has its own rating. It is informative: it never counts in the overall rating, Suitable for Common Ground, Maintained or the drop alerts.",
+  aspects: [
+    {
+      id: "agent-instructions",
+      title: "Instructions",
+      meaning:
+        "Whether the repository tells a coding agent how it is built, tested and organised, in AGENTS.md, CLAUDE.md, a Copilot or a Cursor instruction file.",
+      criteria: [{ checkId: "agentinstructions", name: "Agent instructions", tool: "a search of the tree and the contents of root instruction files" }],
+      rating: [
+        "1 point for an instruction file, 1 more from 1,000 characters, 1 more from 4,000 characters, and 2 when it names a build, test or lint command.",
+        AI_READINESS_RATING,
+      ],
+      counted: true,
+      sources: [SOURCES.agentsMd],
+    },
+    {
+      id: "specifications-and-decisions",
+      title: "Specifications and decisions",
+      meaning:
+        "Whether an agent can read what the code must do and why it is built this way: specifications in OpenSpec, Spec Kit or Kiro layout, and numbered architecture decision records.",
+      criteria: [
+        { checkId: "specifications", name: "Specifications", tool: "a count of spec files in openspec/specs, specs/ or .kiro/specs" },
+        { checkId: "architecturedecisions", name: "Architecture decision records", tool: "a count of numbered files in an ADR directory" },
+      ],
+      rating: [
+        "Specifications: 1 rates 2, 5 rate 3, 10 rate 4 and 25 rate 5. Changes under openspec/changes add 0.5.",
+        "Decision records: 1 rates 2, 3 rate 3, 5 rate 4 and 10 rate 5.5.",
+        "The aspect rating is the mean of the two.",
+      ],
+      counted: true,
+      sources: [SOURCES.openSpec, SOURCES.specKit, SOURCES.adr],
+    },
+    {
+      id: "runnable-environment",
+      title: "Runnable environment",
+      meaning:
+        "Whether an agent can start the component and check its own change: a dev container or Docker Compose file, and one command each to test, lint and build.",
+      criteria: [
+        {
+          checkId: "devenvironment",
+          name: "Runnable development environment",
+          tool: "the tree and the scripts in package.json, composer.json, Makefile, justfile, Taskfile, pyproject.toml, tox.ini and noxfile.py",
+        },
+      ],
+      rating: [
+        "2 points for a dev container or Docker Compose file, and 1 point each for a test, a lint and a build command. Maven, Gradle, Go and Cargo projects give test and build by convention.",
+        AI_READINESS_RATING,
+      ],
+      counted: true,
+      sources: [SOURCES.devContainers],
+    },
+    {
+      id: "interfaces-and-tooling",
+      title: "Interfaces and tooling",
+      meaning:
+        "Whether an agent can read the interfaces instead of guessing them, and reuse the team's own steps: OpenAPI documents, llms.txt, an MCP configuration, skills, prompts and local quality gates.",
+      criteria: [
+        { checkId: "machineinterfaces", name: "Machine-readable interfaces", tool: "a search of the tree for OpenAPI documents, llms.txt and MCP configuration" },
+        { checkId: "agenttooling", name: "Agent tooling", tool: "a search of the tree for skills, prompts, commands, pre-commit hooks and gate scripts" },
+      ],
+      rating: [
+        "Interfaces: 3 points for an OpenAPI document, 1 for llms.txt and 1 for an MCP configuration.",
+        "Tooling: 1 to 2 skills, prompts or commands give 1 point, 3 give 2 and 10 give 3; a local quality gate gives 2.",
+        AI_READINESS_RATING,
+      ],
+      counted: true,
+      sources: [SOURCES.openApi, SOURCES.llmsTxt, SOURCES.mcp],
+    },
+  ],
 };
 
 /** The rating model per category, in the order the guide lists them. */
@@ -937,6 +1023,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
       },
     ],
   },
+  AI_READINESS_DOC,
 ];
 
 /** Every source linked from the guide, without duplicates. */

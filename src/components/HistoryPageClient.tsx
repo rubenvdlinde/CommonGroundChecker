@@ -18,7 +18,7 @@ import { isRating } from "@/lib/ratings";
 import { componentHref, FUNCTIONALITIES_PATH } from "@/lib/routes";
 import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import type { Basisset } from "@/lib/basisset";
-import { buildHistoryIndex, matchesFilter, statusCounts } from "@/lib/historyIndex";
+import { AI_READY_STARS, buildHistoryIndex, isAiReady, matchesFilter, statusCounts } from "@/lib/historyIndex";
 import { LIFECYCLE_SHORT_LABELS, LIFECYCLE_STATUSES, type LifecycleStatus } from "@/lib/lifecycle";
 
 export type SortKey = "rating" | "date" | "score";
@@ -44,6 +44,8 @@ interface HistoryPageClientProps {
   standard?: string | null;
   /** Names of the functionalities the components list, by id */
   functionalityNames?: Record<string, string>;
+  /** Only components whose informative AI readiness earns 4 stars or more */
+  aiReady?: boolean;
 }
 
 /** Two components can be compared at a time. */
@@ -108,12 +110,13 @@ const IDLE_CHIP_CLASS = "border-gray-300 text-gray-600 bg-white hover:border-cg-
 export function filterLabel(
   status: LifecycleStatus | null,
   basissetOnly: boolean,
-  names: { functionality?: string | null; standard?: string | null } = {}
+  names: { functionality?: string | null; standard?: string | null; aiReady?: boolean } = {}
 ): string {
   const parts = [status ? `status ${LIFECYCLE_SHORT_LABELS[status]}` : "any status"];
   if (basissetOnly) parts.push("in the basisset");
   if (names.functionality) parts.push(`that list “${names.functionality}”`);
   if (names.standard) parts.push(`${names.functionality ? "and " : ""}that support ${names.standard}`);
+  if (names.aiReady) parts.push(`with AI readiness of ${AI_READY_STARS} stars or more`);
   return parts.join(" ");
 }
 
@@ -154,6 +157,7 @@ export default function HistoryPageClient({
   functionality = null,
   standard = null,
   functionalityNames = {},
+  aiReady = false,
 }: HistoryPageClientProps) {
   const router = useRouter();
   const [selected, setSelected] = useState<string[]>([]);
@@ -168,11 +172,13 @@ export default function HistoryPageClient({
   const sortedRepositories = useMemo(
     () =>
       sortRepositories(
-        entries.filter((entry) => matchesFilter(entry, { status, basisset: basissetOnly, functionality, standard })),
+        entries.filter((entry) =>
+          matchesFilter(entry, { status, basisset: basissetOnly, functionality, standard, aiReady })
+        ),
         sort,
         direction
       ),
-    [entries, status, basissetOnly, functionality, standard, sort, direction]
+    [entries, status, basissetOnly, functionality, standard, aiReady, sort, direction]
   );
   const functionalityOptions = useMemo(
     () => filterOptions(entries.map((entry) => entry.functionalities), functionalityNames, functionality),
@@ -182,7 +188,8 @@ export default function HistoryPageClient({
     () => filterOptions(entries.map((entry) => entry.standards), STANDARD_NAMES, standard),
     [entries, standard]
   );
-  const filtered = status !== null || basissetOnly || functionality !== null || standard !== null;
+  const aiReadyCount = useMemo(() => entries.filter((entry) => isAiReady(entry.aiReadiness)).length, [entries]);
+  const filtered = status !== null || basissetOnly || functionality !== null || standard !== null || aiReady;
   const hrefWith = (options: {
     q?: string;
     sort?: SortKey;
@@ -191,6 +198,7 @@ export default function HistoryPageClient({
     basisset?: boolean;
     functionality?: string | null;
     standard?: string | null;
+    ai?: boolean;
   }) =>
     buildHistoryHref({
       q: options.q ?? query,
@@ -200,10 +208,12 @@ export default function HistoryPageClient({
       basisset: options.basisset ?? basissetOnly,
       functionality: options.functionality === undefined ? functionality : options.functionality,
       standard: options.standard === undefined ? standard : options.standard,
+      ai: options.ai ?? aiReady,
     });
   const filterText = filterLabel(status, basissetOnly, {
     functionality: functionality ? (functionalityNames[functionality] ?? functionality) : null,
     standard: standard ? (STANDARD_NAMES[standard] ?? standard) : null,
+    aiReady,
   });
   const toggleSelected = (key: string) =>
     setSelected((current) =>
@@ -228,18 +238,18 @@ export default function HistoryPageClient({
 
     const timer = setTimeout(() => {
       requestedQuery.current = term;
-      router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly, functionality, standard }), {
+      router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly, functionality, standard, ai: aiReady }), {
         scroll: false,
       });
     }, SEARCH_DEBOUNCE_MS);
     return () => clearTimeout(timer);
-  }, [searchValue, sort, direction, status, basissetOnly, functionality, standard, router]);
+  }, [searchValue, sort, direction, status, basissetOnly, functionality, standard, aiReady, router]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const term = normalizeSearchQuery(searchValue);
     requestedQuery.current = term;
-    router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly, functionality, standard }), {
+    router.replace(buildHistoryHref({ q: term, sort, direction, status, basisset: basissetOnly, functionality, standard, ai: aiReady }), {
         scroll: false,
       });
   }
@@ -279,6 +289,7 @@ export default function HistoryPageClient({
           {basissetOnly && <input type="hidden" name="basisset" value="1" />}
           {functionality && <input type="hidden" name="functionality" value={functionality} />}
           {standard && <input type="hidden" name="standard" value={standard} />}
+          {aiReady && <input type="hidden" name="ai" value="1" />}
           <button
             type="submit"
             className="min-h-[44px] lg:min-h-0 rounded-lg border border-cg-lightblue bg-cg-lightblue/10 px-3 py-1.5 text-sm font-semibold text-cg-blue hover:bg-cg-lightblue/20"
@@ -334,6 +345,23 @@ export default function HistoryPageClient({
             className="inline-flex items-center min-h-[44px] sm:min-h-[32px] text-xs text-cg-lightblue hover:underline"
           >
             About the basisset
+          </Link>
+        </div>
+        <div role="group" aria-label="Filter by AI readiness" className="flex flex-wrap items-center gap-2 pt-1">
+          <span className="text-xs text-gray-500">AI readiness (informative):</span>
+          <Link
+            href={hrefWith({ ai: !aiReady })}
+            aria-current={aiReady ? "true" : undefined}
+            title="AI readiness is informative: it does not count in the rating or the verdict."
+            className={`${FILTER_CHIP_CLASS} ${aiReady ? ACTIVE_CHIP_CLASS : IDLE_CHIP_CLASS}`}
+          >
+            AI ready, {AI_READY_STARS} stars or more ({aiReadyCount})
+          </Link>
+          <Link
+            href="/docs/ai-readiness"
+            className="inline-flex items-center min-h-[44px] sm:min-h-[32px] text-xs text-cg-lightblue hover:underline"
+          >
+            About AI readiness
           </Link>
         </div>
         <div role="group" aria-label="Filter by functionality and standard" className="flex flex-wrap items-end gap-3 pt-1">
