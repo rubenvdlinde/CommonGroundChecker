@@ -1,6 +1,30 @@
-import { describe, expect, it, vi } from "vitest";
+import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import * as github from "@/lib/github";
-import { checkOwaspSecureCoding } from "@/lib/checkers/owaspSecureCoding";
+import { checkOwaspSecureCoding, getFailThreshold, isPascalCaseName, isSecretLookAlike } from "@/lib/checkers/owaspSecureCoding";
+
+const RISKY = "const hash = crypto.createHash('md5');";
+const SAFE = "export const add = (a, b) => a + b;";
+
+async function writeRepo(files: Record<string, string>): Promise<string> {
+  const root = await mkdtemp(path.join(os.tmpdir(), "owasp-test-"));
+  for (const [relativePath, content] of Object.entries(files)) {
+    await mkdir(path.dirname(path.join(root, relativePath)), { recursive: true });
+    await writeFile(path.join(root, relativePath), content);
+  }
+  return root;
+}
+
+function sourceFiles(total: number, risky: number): Record<string, string> {
+  return Object.fromEntries(
+    Array.from({ length: total }, (_, index) => [
+      `src/file${index}.ts`,
+      index < risky ? RISKY : SAFE,
+    ])
+  );
+}
 
 describe("OWASP secure coding checker", () => {
   it("passes when no risky patterns are found", async () => {
@@ -48,5 +72,160 @@ describe("OWASP secure coding checker", () => {
 
     expect(result.status).toBe("warn");
     expect(result.evidence?.[0]).toContain("Dynamic code execution");
+  });
+
+  describe("with a cloned repository", () => {
+    const repoRoots: string[] = [];
+
+    afterEach(async () => {
+      await Promise.all(repoRoots.splice(0).map((root) => rm(root, { recursive: true, force: true })));
+    });
+
+    async function scan(files: Record<string, string>) {
+      const root = await writeRepo(files);
+      repoRoots.push(root);
+      return checkOwaspSecureCoding("owner", "repo", Object.keys(files), root);
+    }
+
+    it("fails a small repository from 4 findings", async () => {
+      expect((await scan(sourceFiles(50, 3))).status).toBe("warn");
+      expect((await scan(sourceFiles(50, 4))).status).toBe("fail");
+    });
+
+    it("scales the fail threshold with the number of scanned files", { timeout: 60000 }, async () => {
+      const warned = await scan(sourceFiles(600, 6));
+      expect(warned.status).toBe("warn");
+      expect(warned.message).toContain("6 findings across 600 scanned source files, failing from 7");
+
+      expect((await scan(sourceFiles(600, 7))).status).toBe("fail");
+    });
+
+    it("leaves test code out of the scan", async () => {
+      const result = await scan({
+        "src/main.ts": SAFE,
+        "tests/unit/auth.ts": "const password = 'correct-horse-battery';",
+        "test/helpers.js": RISKY,
+        "src/__tests__/render.ts": "el.innerHTML = '<b>x</b>';",
+        "spec/api.rb": RISKY,
+        "src/fixtures/user.ts": "const token = 'abcdefghijkl';",
+        "src/login.test.ts": RISKY,
+        "src/login.spec.js": RISKY,
+        "internal/rotate/rotate_test.go": RISKY,
+        "tools/test_cli.py": RISKY,
+        "browser-extension/e2e/seed.ts": RISKY,
+        "browser-extension/test-site/totp.js": RISKY,
+        "android/app/src/androidTest/java/FormActivity.java": RISKY,
+        "src/testdata/case.go": RISKY,
+      });
+
+      expect(result.status).toBe("pass");
+      expect(result.message).toContain("1 scanned source files");
+    });
+
+    it("still scans files whose names only contain test words", async () => {
+      const result = await scan({
+        "src/testing/attestation.ts": RISKY,
+        "src/contest.go": RISKY,
+        "src/latest_test_results.php": RISKY,
+      });
+
+      expect(result.status).toBe("warn");
+      expect(result.message).toContain("3 findings across 3 scanned source files");
+    });
+  });
+
+  it.each([
+    [0, 4],
+    [20, 4],
+    [399, 4],
+    [400, 5],
+    [1000, 11],
+    [14216, 143],
+  ])("fails %i scanned files from %i findings", (scannedFileCount, threshold) => {
+    expect(getFailThreshold(scannedFileCount)).toBe(threshold);
+  });
+
+  it("reports info, not warn, when no file contents could be read", async () => {
+    vi.spyOn(github, "getFileContent").mockResolvedValueOnce("");
+
+    const result = await checkOwaspSecureCoding("owner", "repo", ["src/main.ts"]);
+
+    expect(result.status).toBe("info");
+  });
+
+  it.each([
+    ["the name of a setting", "public const CONFIG_SECRET = 'portal_assertion_secret';"],
+    ["a key prefix", "private const SECRET = 'example-set-secret:sha256:';"],
+    ["a redaction placeholder", "$secret = '[redacted]';"],
+    ["a regular expression", "private const TOKEN = '/@([a-z][a-z0-9._-]{0,63})/u';"],
+    ["a regular expression with an escaped quote", "private const TOKEN = '/(?<![\\p{L}._@\\'-])@(?:\"([^\"]{1,64})\")/u';"],
+    ["a map from format to input type", "const types = { password: 'password' };"],
+    ["a bound Vue attribute", '<TokenDisplay :token="createdToken" />'],
+    ["a template placeholder", "private const REGISTER_TOKEN = '{registerSlug}';"],
+    ["a mustache placeholder", "{ id: 'userId', token: '{{user.id}}' },"],
+    ["a JSON body template", "apiKey: '{\\n\\t\"apiKey\": \"\"\\n}',"],
+    ["a config key name", "public const CONFIG_KEY_PROVIDER_API_KEY = 'weather_provider_api_key';"],
+    ["a CSS custom property", "private const MAIN_BACKGROUND_TOKEN = '--color-main-background';"],
+    ["a marker value", "public const BROKER_MANAGED_SECRET = '__managed_by_credential_broker__';"],
+    ["a camelCase identifier", "confirmPassword: 'restartMismatchDebounce',"],
+    ["a Vue model binding", '<Form v-model:newPassword="newPassword" />'],
+    ["a union of reason codes", "export type InvalidPassword = 'length_too_short' | 'no_kind'"],
+    ["a regular expression body", "private const AMOUNT_TOKEN = '(?:EUR)?\\s?[0-9]{1,3}[.,][0-9]{2}';"],
+    ["a query string around a call", "$url = $base . '?token=' . rawurlencode($this->sign(action: 'cancel'));"],
+    ["a selector around a variable", "el.querySelector('.swatch[data-token=\"' + name + '\"]')"],
+    ["a reason text", "public const REASON_AS_SECRET = 'copy was created as a secret of its own';"],
+    ["an icon component name", "const icons = { api_key: 'CodeTags', user: 'UserIcon' };"],
+    ["a PascalCase token name", "const token = 'UserIconOutline';"],
+    ["a key whose value is on the next line", "const icons = {\n  api_key:\n    'CodeTagsAndMore12',\n};"],
+    ["a key whose value is after a blank line", "$secret =\n\n'f3Kq9ZpL0aWx7Rt2';"],
+  ])("does not flag %s as a hardcoded secret", async (_label, code) => {
+    vi.spyOn(github, "getFileContent").mockResolvedValueOnce(code);
+
+    const result = await checkOwaspSecureCoding("owner", "repo", ["src/main.ts"]);
+
+    expect(result.status).toBe("pass");
+  });
+
+  it.each([
+    ["a random token", "const token = 'f3Kq9ZpL0aWx7Rt2';"],
+    ["a word with digits", "$password = 'password123';"],
+    ["a prefixed random secret", "API_KEY = 'secret_9fQxT2bLm8Zr'"],
+    ["an object credential", 'const config = { apiKey: "AbCdEf123456GhIj" };'],
+    ["a capitalised password", "$password = 'CorrectHorseBattery';"],
+    ["a short passphrase", "$password = 'correct horse battery staple';"],
+    ["a key with a trailing pad", "const token = 'dGhpc2lzYXRva2Vu==';"],
+    ["a PascalCase name with digits", "const token = 'CodeTags2024';"],
+    ["a mixed-case random key", "const apiKey = 'aBcDeFgHiJkLmN';"],
+    ["a long hex key", "api_key = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08'"],
+    ["a long base64 key", "const secret = 'c2VjcmV0LWtleS1mb3ItdGVzdGluZy1vbmx5';"],
+    ["a same-line key with tab spacing", "const token =\t'f3Kq9ZpL0aWx7Rt2';"],
+  ])("flags %s as a hardcoded secret", async (_label, code) => {
+    vi.spyOn(github, "getFileContent").mockResolvedValueOnce(code);
+
+    const result = await checkOwaspSecureCoding("owner", "repo", ["src/main.ts"]);
+
+    expect(result.status).toBe("warn");
+    expect(result.evidence?.[0]).toContain("Possible hardcoded secret");
+  });
+
+  it("tells look-alikes from values that may be secrets", () => {
+    expect(isSecretLookAlike("openregister_case_token")).toBe(true);
+    expect(isSecretLookAlike("<your-api-key>")).toBe(true);
+    expect(isSecretLookAlike("mysecretpassword")).toBe(false);
+    expect(isSecretLookAlike("token_8aF3kQ")).toBe(false);
+    expect(isSecretLookAlike("{{unsubscribe_link}}")).toBe(true);
+    expect(isSecretLookAlike("hunter2hunter")).toBe(false);
+    expect(isSecretLookAlike("Summer-Holiday")).toBe(false);
+  });
+
+  it("tells PascalCase and camelCase names from random values", () => {
+    expect(isPascalCaseName("CodeTags")).toBe(true);
+    expect(isPascalCaseName("UserIcon")).toBe(true);
+    expect(isPascalCaseName("chartBar")).toBe(true);
+    expect(isPascalCaseName("Codetags")).toBe(false);
+    expect(isPascalCaseName("CodeTags2")).toBe(false);
+    expect(isPascalCaseName("Code_Tags")).toBe(false);
+    expect(isPascalCaseName("aBcDeFgHiJkLmN")).toBe(false);
+    expect(isPascalCaseName("ABCDEFGH")).toBe(false);
   });
 });
