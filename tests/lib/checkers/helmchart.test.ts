@@ -1,21 +1,8 @@
-import { describe, expect, it, vi, type Mock } from "vitest";
+import { afterEach, describe, expect, it, vi, type Mock } from "vitest";
 
-vi.mock("@/lib/github", () => ({
+vi.mock("@/lib/github", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/github")>()),
   getRepoTree: vi.fn(),
-  parseGitHubTreeUrl: (url: string) => {
-    try {
-      const u = new URL(url.trim());
-      if (u.hostname !== "github.com") return null;
-      const parts = u.pathname.replace(/^\//, "").split("/");
-      if (parts.length < 5) return null;
-      const [owner, repo, mode, branch, ...rest] = parts;
-      if (mode !== "tree" && mode !== "blob") return null;
-      const path = rest.join("/").replace(/^\/+|\/+$/g, "");
-      return { owner, repo: repo.replace(/\.git$/, ""), branch, path };
-    } catch {
-      return null;
-    }
-  },
 }));
 
 import { getRepoTree } from "@/lib/github";
@@ -66,5 +53,73 @@ describe("checkHelmChart", () => {
     expect(result.evidence).toContain(
       "External Helm chart detected: https://github.com/org/repo/tree/main/charts/my-component"
     );
+  });
+
+  it("reads the tree of the hinted repository, not the scanned one", async () => {
+    (getRepoTree as unknown as Mock).mockReset();
+    (getRepoTree as unknown as Mock).mockImplementation(async (owner: string, repo: string) =>
+      owner === "shared-org" && repo === "helm-charts" ? ["charts/component/Chart.yaml"] : []
+    );
+
+    const result = await checkHelmChart(
+      "org",
+      "repo",
+      ["README.md"],
+      ["https://github.com/shared-org/helm-charts/tree/main/charts/component"]
+    );
+
+    expect(getRepoTree).toHaveBeenCalledWith("shared-org", "helm-charts", "main");
+    expect(getRepoTree).not.toHaveBeenCalledWith("org", "repo", expect.anything());
+    expect(result.status).toBe("pass");
+    expect(result.evidence).toContain(
+      "External Helm chart detected: https://github.com/shared-org/helm-charts/tree/main/charts/component"
+    );
+  });
+
+  it("does not credit a hinted chart that only exists in the scanned repository", async () => {
+    (getRepoTree as unknown as Mock).mockReset();
+    (getRepoTree as unknown as Mock).mockImplementation(async (owner: string) =>
+      owner === "org" ? ["charts/component/Chart.yaml"] : []
+    );
+
+    const result = await checkHelmChart(
+      "org",
+      "repo",
+      ["README.md"],
+      ["https://github.com/shared-org/helm-charts/tree/main/charts/component"]
+    );
+
+    expect(result.status).toBe("fail");
+  });
+
+  describe("GitLab hints", () => {
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it("reads the tree of a hinted GitLab repository", async () => {
+      const fetchMock = vi.fn(async () =>
+        new Response(JSON.stringify([{ path: "charts/component/Chart.yaml" }]), { status: 200 })
+      );
+      vi.stubGlobal("fetch", fetchMock);
+
+      const result = await checkHelmChart(
+        "org",
+        "repo",
+        ["README.md"],
+        ["https://gitlab.com/group/sub/helm-charts/-/tree/main/charts/component"]
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining(
+          `/projects/${encodeURIComponent("group/sub/helm-charts")}/repository/tree?ref=main`
+        ),
+        expect.anything()
+      );
+      expect(result.status).toBe("pass");
+      expect(result.evidence).toContain(
+        "External Helm chart detected: https://gitlab.com/group/sub/helm-charts/-/tree/main/charts/component"
+      );
+    });
   });
 });
