@@ -21,6 +21,73 @@ export function getFailThreshold(scannedFileCount: number): number {
   return tolerated + 1;
 }
 
+interface RiskyPattern {
+  label: string;
+  pattern: RegExp;
+  /** Tells a real hit from a look-alike; a match it rejects is not a finding. */
+  accept?: (match: RegExpExecArray) => boolean;
+}
+
+const SECRET_KEYWORDS = new Set(["apikey", "secret", "password", "passwd", "token"]);
+
+/**
+ * A value that cannot be a credential: a bracketed or angled placeholder such as
+ * `[redacted]`, a delimited regular expression, or the name of a setting or key
+ * that spells out its key word as one of its parts (`portal_assertion_secret`).
+ * A name is made of plain lower-case words, so a random or mixed-case value
+ * (`secret_9fQx...`) and a word glued to its key word (`password123`) still count.
+ * See isNonSecretValue for the other shapes a credential never takes.
+ */
+export function isSecretLookAlike(value: string): boolean {
+  if (/^\[[^\]]*\]$|^<[^>]*>$/.test(value)) return true;
+  if (/^\/.+\/[a-z]*$/i.test(value)) return true;
+  if (isNonSecretValue(value)) return true;
+  const parts = value.replace(/^api[_-]key/, "apikey").split(/[_\-:.]+/).filter(Boolean);
+  return (
+    parts.length > 0 &&
+    parts.every((part) => /^[a-z]{1,24}\d{0,3}$/.test(part)) &&
+    parts.some((part) => SECRET_KEYWORDS.has(part))
+  );
+}
+
+/**
+ * Shapes of a literal that a credential never takes, whatever the name it is assigned to:
+ * - a template or structured literal wrapped in braces (`{registerSlug}`, `{{user.id}}`, a JSON body);
+ * - an identifier of two or more letter-only words in snake, kebab, dotted or lowerCamel case
+ *   (`weather_provider_api_key`, `--color-main-background`, `restartMismatchDebounce`);
+ *   a value with digits, symbols or a leading capital (`CorrectHorse`) still counts;
+ * - a regular expression body (`(?:EUR)?\s?[0-9]{2}`);
+ * - code between two literals, where the match runs from one string's closing quote to the next
+ *   string's opening quote (`'?token=' . rawurlencode($x) . '&a='`);
+ * - prose of six or more words, such as an error message or a reason text.
+ */
+export function isNonSecretValue(value: string): boolean {
+  if (/^\{[\s\S]*\}$/.test(value)) return true;
+  if (isIdentifier(value)) return true;
+  if (/\(\?[:=!<]|\\[dswbDSWB]/.test(value)) return true;
+  if (/\s/.test(value) && (/^\s*[.+]\s/.test(value) || /\s[.+]\s*$/.test(value) || /["'`]/.test(value))) return true;
+  return value.trim().split(/\s+/).length >= 6;
+}
+
+function isIdentifier(value: string): boolean {
+  const trimmed = value.replace(/^[_\-.:=/]+|[_\-.:=/]+$/g, "");
+  if (!/^[a-z]/.test(trimmed)) return false;
+  const parts = trimmed.split(/[_\-.:=/]+/);
+  const words = parts.flatMap((part) => part.split(/(?<=[a-z])(?=[A-Z])/));
+  // A camelCase part of one-letter words (`aBcDeFgH`) is a random mixed-case string, not a name.
+  const camelOk = parts.every((part) => !/[a-z][A-Z]/.test(part) || isPascalCaseName(part));
+  return words.length >= 2 && camelOk && words.every((word) => /^[A-Za-z][a-z]{0,23}$/.test(word));
+}
+
+/**
+ * A PascalCase or camelCase name of two or more letter-only words (`CodeTags`, `UserIcon`, `chartBar`),
+ * such as a component or icon name. Only a password may be such a passphrase (`CorrectHorseBattery`);
+ * a key or token is never made of dictionary words, so the rule skips these names for those keys.
+ */
+export function isPascalCaseName(value: string): boolean {
+  return /^[A-Za-z][a-z]{1,23}(?:[A-Z][a-z]{1,23})+$/.test(value);
+}
+
 const COMMENT_LINE = /^\s*(?:\/\/|\/\*|\*|#(?![[!]))/;
 
 /** Blanks lines that hold only a comment, so prose that names a risky call is not read as code. */
@@ -31,7 +98,19 @@ export function stripCommentLines(content: string): string {
     .join("\n");
 }
 
-const RISKY_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
+function hasFinding(rule: RiskyPattern, content: string): boolean {
+  if (!rule.accept) {
+    return rule.pattern.test(content);
+  }
+  const pattern = new RegExp(rule.pattern.source, rule.pattern.flags.includes("g") ? rule.pattern.flags : `${rule.pattern.flags}g`);
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(content)) !== null) {
+    if (rule.accept(match)) return true;
+  }
+  return false;
+}
+
+const RISKY_PATTERNS: RiskyPattern[] = [
   // Case-sensitive: the JavaScript Function constructor is capitalised, while `function (` is an ordinary closure.
   // A method named eval (`model.eval()`, `$parser->eval()`) is not the eval built-in.
   { label: "Dynamic code execution", pattern: /(?<![\w$.>:])eval\s*\(|(?<![\w$.])Function\s*\(|setTimeout\s*\(\s*["'`]|setInterval\s*\(\s*["'`]/ },
@@ -40,7 +119,13 @@ const RISKY_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
   { label: "Insecure deserialization", pattern: /pickle\.loads\s*\(|yaml\.load\s*\(/i },
   { label: "Weak hash algorithm", pattern: /hashlib\.(md5|sha1)\s*\(|createHash\s*\(\s*["'](?:md5|sha1)["']|MessageDigest\.getInstance\(\s*["'](?:MD5|SHA-1)["']/i },
   { label: "TLS verification disabled", pattern: /verify\s*=\s*False|rejectUnauthorized\s*:\s*false|NODE_TLS_REJECT_UNAUTHORIZED\s*=\s*["']?0|sslverify\s*=\s*false/i },
-  { label: "Possible hardcoded secret", pattern: /(?:api[_-]?key|secret|password|token)\s*[:=]\s*["'][^"'\n]{8,}["']/i },
+  // A bound attribute such as Vue's `:token="createdToken"` holds an expression, not a literal.
+  {
+    label: "Possible hardcoded secret",
+    // Key and value must share a line, so a key at the end of one line never pairs with a string on the next.
+    pattern: /(?<![:@])(api[_-]?key|secret|password|token)[ \t]*[:=][ \t]*(["'])((?:(?!\2)[^\\\n]|\\.){8,})\2/i,
+    accept: (match) => !isSecretLookAlike(match[3]) && !(isPascalCaseName(match[3]) && !/^password$/i.test(match[1])),
+  },
 ];
 
 function getScannableFiles(tree: string[], scanAllFiles: boolean): string[] {
@@ -116,7 +201,7 @@ export async function checkOwaspSecureCoding(
 
     const code = stripCommentLines(item.content);
     for (const rule of RISKY_PATTERNS) {
-      if (rule.pattern.test(code)) {
+      if (hasFinding(rule, code)) {
         findings.push(`${rule.label}: ${item.path}`);
       }
     }
