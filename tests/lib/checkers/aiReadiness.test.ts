@@ -68,6 +68,7 @@ describe("checkAgentInstructions", () => {
       "AGENTS.md",
       "node_modules/x/AGENTS.md",
       "docs/agents-guide.md",
+      "docs/features/agents.md",
     ];
     expect(findInstructionFiles(tree)).toEqual([
       ".cursorrules",

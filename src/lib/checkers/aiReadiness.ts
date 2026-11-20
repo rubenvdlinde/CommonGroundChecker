@@ -62,12 +62,16 @@ function plural(count: number, word: string): string {
   return `${count} ${word}${count === 1 ? "" : "s"}`;
 }
 
-const INSTRUCTION_FILE =
-  /^(?:(?:.*\/)?(?:agents|claude|gemini)\.md|\.github\/copilot-instructions\.md|\.github\/instructions\/[^/]+\.instructions\.md|\.cursor\/rules\/[^/]+|\.cursorrules|\.windsurfrules|\.clinerules(?:\/[^/]+)?)$/i;
+/** AGENTS.md, CLAUDE.md and GEMINI.md in capitals, as agents look for them; a lower-case agents.md is documentation. */
+const NAMED_INSTRUCTION_FILE = /^(?:.*\/)?(?:AGENTS|CLAUDE|GEMINI)\.md$/;
+const TOOL_INSTRUCTION_FILE =
+  /^(?:\.github\/copilot-instructions\.md|\.github\/instructions\/[^/]+\.instructions\.md|\.cursor\/rules\/[^/]+|\.cursorrules|\.windsurfrules|\.clinerules(?:\/[^/]+)?)$/i;
 
 /** Agent instruction files in the tree, root files first. */
 export function findInstructionFiles(tree: string[]): string[] {
-  const found = tree.filter((path) => INSTRUCTION_FILE.test(path) && !FOREIGN_PATH.test(path));
+  const found = tree.filter(
+    (path) => (NAMED_INSTRUCTION_FILE.test(path) || TOOL_INSTRUCTION_FILE.test(path)) && !FOREIGN_PATH.test(path)
+  );
   const depth = (path: string) => path.split("/").length;
   return found.sort((a, b) => depth(a) - depth(b) || (a < b ? -1 : a > b ? 1 : 0));
 }
