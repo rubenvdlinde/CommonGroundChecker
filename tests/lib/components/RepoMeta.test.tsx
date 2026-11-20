@@ -43,6 +43,7 @@ const baseSummary: RepoSummary = {
   developmentStatus: null,
   maintenanceType: null,
   maintainers: [],
+  version: null,
   followed: false,
   checkIntervalHours: 168,
   scanRef: null,

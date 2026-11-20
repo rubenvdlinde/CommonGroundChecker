@@ -460,11 +460,11 @@ function versionSummary(overrides: Partial<RepoSummary>): RepoSummary {
     analysisCount: 1,
     latestAnalysis: { checkedAt: "2026-05-06T00:00:00Z", score: 80, version: null },
     ...overrides,
-  };
+  } as RepoSummary;
 }
 
 function renderVersionCards(repositories: RepoSummary[]) {
-  render(<HistoryPageClient sort="date" direction="desc" repositories={repositories} />);
+  render(<HistoryPageClient sort="date" direction="desc" query="" repositories={repositories} />);
 }
 
 describe("HistoryPageClient version chip", () => {

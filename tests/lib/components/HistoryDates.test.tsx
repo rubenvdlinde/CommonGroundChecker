@@ -62,9 +62,9 @@ describe("component dates", () => {
       updatedAt: checkedAt,
       analysisCount: 1,
       latestAnalysis: { checkedAt, score: 80 },
-    } satisfies RepoSummary;
+    } as unknown as RepoSummary;
 
-    render(<HistoryPageClient sort="date" direction="desc" repositories={[summary]} />);
+    render(<HistoryPageClient sort="date" direction="desc" query="" repositories={[summary]} />);
 
     expect(screen.getByText(`Last: ${shown}`)).toBeTruthy();
   });

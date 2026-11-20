@@ -162,7 +162,7 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         id: "opensourcehealth",
         label: "Open Source Health",
         explanation:
-          "Reads the lockfiles and rates the production dependencies from 1 to 5 stars on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management. The criterion passes at 4 stars or more and warns at 3 stars.",
+          "Reads the lockfiles and rates the production dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management. The criterion passes at 4 stars or more and warns at 3 stars.",
       },
       {
         id: "maintainability",

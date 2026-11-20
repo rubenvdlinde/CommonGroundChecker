@@ -54,7 +54,7 @@ A component declares a standard and its version the same way, with the official 
 | 11 | **OWASP Secure Coding** — heuristic static analysis checks for common insecure patterns | Mandatory | [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices/) |
 | 30 | **No committed secrets** — gitleaks scans the working tree for API keys, tokens and private keys, honouring the project's `.gitleaks.toml`. Findings in test paths (`tests/`, `test/`, `__tests__/`, `spec/`, `fixtures/`, `__fixtures__/`, `testdata/`, `*.test.*`, `*.spec.*`, `*_test.*`, `test_*.py`) are left out and counted in the message, unless the repository has its own `.gitleaks.toml` | Recommended | [gitleaks](https://github.com/gitleaks/gitleaks) |
 | 31 | **OpenSSF Scorecard** — the public OpenSSF Scorecard (0 to 10) rated 1 to 5 stars with this checker's own bands; GitHub repositories only | Recommended | [OpenSSF Scorecard](https://scorecard.dev) |
-| 26 | **Open Source Health** — production dependencies from the lockfiles rated from 1 to 5 stars on known vulnerabilities ([OSV.dev](https://osv.dev)), freshness, activity, licence risk and dependency management | Recommended | [Open Source Health model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md) |
+| 26 | **Open Source Health** — production dependencies from the lockfiles rated from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities ([OSV.dev](https://osv.dev)), freshness, activity, licence risk and dependency management | Recommended | [Open Source Health model](https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md) |
 
 ### Deployment & Operations
 

@@ -125,7 +125,6 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
     `Summary: ${passCount} passed, ${warnCount} warnings, ${failCount} failed, ${infoCount} informational`,
     { size: 10, gapAfter: 12 }
   );
-  opensourcehealth: "recommended",
 
   doc.setFont("helvetica", "bold");
   addBlock("Detailed results", { size: 12, gapAfter: 8 });
@@ -134,7 +133,6 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
   for (const result of report.results) {
     ensurePageSpace(40);
     doc.setFont("helvetica", "bold");
-  openssfscorecard: "recommended",
     addBlock(
       `${result.title} [${result.status.toUpperCase()}] — ${(result.requirementLevel ?? "recommended").toUpperCase()}`,
       { size: 10, gapAfter: 2 }
@@ -155,7 +153,6 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
   }
 
   const checkedDate = new Date(report.checkedAt).toISOString().slice(0, 10);
-  "Open Source Health": "opensourcehealth",
   const fileName = `${sanitizePdfFileName(report.owner)}-${sanitizePdfFileName(report.repo)}-analysis-${checkedDate}.pdf`;
   doc.save(fileName);
 }
@@ -163,14 +160,11 @@ async function exportAnalysisReportAsPdf(report: CheckReport): Promise<void> {
 type RequirementLevelLabel = "mandatory" | "recommended" | "informative";
 
 const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabel> = {
-  "OpenSSF Scorecard": "openssfscorecard",
   sourcecode: "mandatory",
   fivelayer: "mandatory",
   license: "mandatory",
   eupllicense: "recommended",
-  licenceconsistency: "recommended",
   copyrightowner: "mandatory",
-  spdxheaders: "recommended",
   publiccode: "mandatory",
   maintenance: "recommended",
   docker: "mandatory",
@@ -182,9 +176,8 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   artifacthub: "mandatory",
   documentation: "mandatory",
   tests: "mandatory",
-  complexity: "informative",
+  complexity: "recommended",
   maintainability: "recommended",
-  testcoderatio: "recommended",
   codemetrics: "informative",
   projecthealth: "informative",
   changelog: "recommended",
@@ -193,8 +186,8 @@ const DEFAULT_REQUIREMENT_LEVEL_BY_CHECK_ID: Record<string, RequirementLevelLabe
   contributing: "recommended",
   codeofconduct: "recommended",
   security: "recommended",
-  secretscanning: "recommended",
   semver: "recommended",
+  opensourcehealth: "recommended",
 };
 
 const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
@@ -202,9 +195,7 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "5-Layer Architecture": "fivelayer",
   "OSI License": "license",
   "EUPL License": "eupllicense",
-  "Licence consistency": "licenceconsistency",
   "Copyright / IP owner": "copyrightowner",
-  "SPDX licence headers": "spdxheaders",
   "publiccode.yml": "publiccode",
   "Maintenance contract": "maintenance",
   "Docker support": "docker",
@@ -220,15 +211,14 @@ const CHECK_ID_BY_CRITERION_LABEL: Record<string, string> = {
   "Code coverage": "coverage",
   "Cyclomatic complexity": "complexity",
   "Maintainability (ISO 25010)": "maintainability",
-  "Test code ratio": "testcoderatio",
   "Code Metrics": "codemetrics",
   "OWASP Secure Coding": "owaspsecurecoding",
   "Contributing guide": "contributing",
   "Code of Conduct": "codeofconduct",
   "Project health": "projecthealth",
   "Security policy": "security",
-  "No committed secrets": "secretscanning",
   "Semantic Versioning": "semver",
+  "Open Source Health": "opensourcehealth",
 };
 
 function formatRequirementLabel(level: RequirementLevelLabel): string {
@@ -283,28 +273,12 @@ const CRITERIA_OVERVIEW = [
       "Checks explicitly whether the repository uses the European Union Public Licence (EUPL), which is recommended for public-sector software reuse in Europe.",
   },
   {
-    icon: "🔗",
-    label: "Licence consistency",
-    category: "Governance" as CriteriaCategory,
-    desc: "Every declaration names one licence",
-    tooltip:
-      "Collects the licence declared in the LICENSE file, package.json, composer.json, publiccode.yml, pyproject.toml, Cargo.toml, setup.cfg and the Nextcloud appinfo/info.xml, normalises each to its SPDX identifier and checks that they all name the same licence. Differing only in -only versus -or-later, or finding a single declaration, gives a warning.",
-  },
-  {
     icon: "©",
     label: "Copyright / IP owner",
     category: "Governance" as CriteriaCategory,
     desc: "Probable ownership disclosure",
     tooltip:
       "Detects probable copyright holder(s) from COPYRIGHT/NOTICE/LICENSE/README files and package metadata. If no explicit statement is found, it falls back to repository ownership metadata with lower confidence.",
-  },
-  {
-    icon: "🏷️",
-    label: "SPDX licence headers",
-    category: "Governance" as CriteriaCategory,
-    desc: "Source files carry an SPDX header",
-    tooltip:
-      "Clones the repository and counts the share of git-tracked source files whose first 30 lines carry an SPDX-License-Identifier header, or that REUSE.toml, .reuse/dep5 or a .license file covers. Stars: 100% five, 95% four, 80% three, 50% two, else one; these bands are the checker's own, the REUSE specification asks for every file. Four or five stars pass, three warn, fewer fail.",
   },
   {
     icon: "📋",
@@ -340,14 +314,6 @@ const CRITERIA_OVERVIEW = [
   },
   {
     icon: "📦",
-    label: "Open Source Health",
-    category: "Security" as CriteriaCategory,
-    desc: "1 to 5 star rating of the dependencies",
-    tooltip:
-      "Rates the production dependencies from the lockfiles on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management, each from 1 to 5 stars. 4 stars or more passes.",
-  },
-  {
-    icon: "📦",
     label: "Available Docker image",
     category: "Deployment & Operations" as CriteriaCategory,
     desc: "Published image location",
@@ -377,14 +343,6 @@ const CRITERIA_OVERVIEW = [
     desc: "K8s-deployable with best practices",
     tooltip:
       "Haven is the Dutch government standard for Kubernetes deployments. Charts must include resource limits, liveness/readiness probes, a security context, and NetworkPolicy manifests.",
-  },
-  {
-    icon: "⭐",
-    label: "OpenSSF Scorecard",
-    category: "Security" as CriteriaCategory,
-    desc: "Scorecard rated 1 to 5 stars",
-    tooltip:
-      "Reads the repository's OpenSSF Scorecard (0 to 10) from the public Scorecard API, GitHub repositories only. The checker's own bands turn it into stars: 9+ is 5, 7+ is 4, 5+ is 3, 3+ is 2, lower is 1. 4 or 5 stars pass, 3 warns, fewer fail.",
   },
   {
     icon: "🧾",
@@ -433,14 +391,6 @@ const CRITERIA_OVERVIEW = [
     desc: "Coverage above 80%",
     tooltip:
       "Checks whether code coverage is reported and exceeds 80% based on available coverage reports.",
-  },
-  {
-    icon: "⚖️",
-    label: "Test code ratio",
-    category: "Software Quality" as CriteriaCategory,
-    desc: "Test code vs production code, 1 to 5 stars",
-    tooltip:
-      "Counts code lines in test files and in production files of the cloned repository and rates the ratio: 120% or more is 5 stars, 100% is 4, 75% is 3, 25% is 2, lower is 1. A 100% test code ratio corresponds roughly to 80% coverage.",
   },
   {
     icon: "📉",
@@ -499,20 +449,20 @@ const CRITERIA_OVERVIEW = [
       "Checks whether a SECURITY.md file exists, explaining how vulnerabilities should be reported privately and how security handling works.",
   },
   {
-    icon: "🔑",
-    label: "No committed secrets",
-    category: "Security" as CriteriaCategory,
-    desc: "Gitleaks scan of the working tree",
-    tooltip:
-      "Scans the cloned repository with gitleaks for committed secrets such as API keys, tokens and private keys. The project's own .gitleaks.toml allowlist is honoured. Findings show the rule and location only, never the secret.",
-  },
-  {
     icon: "🔢",
     label: "Semantic Versioning",
     category: "Software Quality" as CriteriaCategory,
     desc: "Version follows semver format",
     tooltip:
       "Checks whether the detected repository version follows semantic versioning (MAJOR.MINOR.PATCH), optionally with prerelease/build metadata.",
+  },
+  {
+    icon: "📦",
+    label: "Open Source Health",
+    category: "Security" as CriteriaCategory,
+    desc: "1 to 5 star rating of the dependencies",
+    tooltip:
+      "Rates the production dependencies from the lockfiles on known vulnerabilities (OSV.dev), freshness, activity, licence risk and dependency management, each from 0.5 to 5.5 (1 to 5 stars). 4 stars or more passes.",
   },
 ];
 
