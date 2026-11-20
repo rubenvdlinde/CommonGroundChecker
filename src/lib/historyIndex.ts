@@ -109,7 +109,7 @@ export function toHistoryIndexEntry(repository: RepoSummary, options: HistoryInd
     basisset: matchBasisset(options.basisset, repository.repoUrl, version),
     rating: isRating(latest?.rating) ? (latest.rating as number) : null,
     verdict: endorsement ? endorsement.passed : null,
-    version,
+    version: version ?? stringOrNull(summary.version),
   };
 }
 

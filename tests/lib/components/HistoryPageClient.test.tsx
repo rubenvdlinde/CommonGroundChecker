@@ -162,6 +162,7 @@ function repositoryWith(overrides: Record<string, unknown>): RepoSummary {
     lastCheckedAt: "2026-11-01T10:00:00.000Z",
     nextCheckAt: null,
     analysisCount: 1,
+    version: "1.2.3",
     latestAnalysis: { checkedAt: "2026-11-01T10:00:00.000Z", score: 70 },
     ...overrides,
   } as unknown as RepoSummary;
@@ -238,7 +239,7 @@ describe("HistoryPageClient", () => {
       },
     });
 
-    expect(footerOf(card)).toEqual(["Suitable", "Version: unknown"]);
+    expect(footerOf(card)).toEqual(["Suitable", "Version: 1.2.3"]);
   });
 
   it("shows the warnings after Passed", () => {
@@ -252,7 +253,7 @@ describe("HistoryPageClient", () => {
       },
     });
 
-    expect(footerOf(card)).toEqual(["Suitable", "5 warnings", "Version: unknown"]);
+    expect(footerOf(card)).toEqual(["Suitable", "5 warnings", "Version: 1.2.3"]);
   });
 
   it("shows Failed, the failures, the warnings, Followed and the version, in that order", () => {
@@ -269,7 +270,7 @@ describe("HistoryPageClient", () => {
       },
     });
 
-    expect(footerOf(card)).toEqual(["Not yet suitable", "3 failures", "5 warnings", "Followed", "Version: unknown"]);
+    expect(footerOf(card)).toEqual(["Not yet suitable", "3 failures", "5 warnings", "Followed", "Version: 1.2.3"]);
     const title = within(card).getByText("example/card-repo").parentElement as HTMLElement;
     expect(within(title).queryByText("Followed")).toBeNull();
   });
@@ -285,7 +286,7 @@ describe("HistoryPageClient", () => {
       },
     });
 
-    expect(footerOf(card)).toEqual(["Not yet suitable", "1 failure", "1 warning", "Version: unknown"]);
+    expect(footerOf(card)).toEqual(["Not yet suitable", "1 failure", "1 warning", "Version: 1.2.3"]);
   });
 
   it("counts the endorsement reasons as failures for a run without stored counts", () => {
@@ -298,7 +299,7 @@ describe("HistoryPageClient", () => {
       },
     });
 
-    expect(footerOf(card)).toEqual(["Not yet suitable", "2 failures", "Version: unknown"]);
+    expect(footerOf(card)).toEqual(["Not yet suitable", "2 failures", "Version: 1.2.3"]);
   });
 
   it("shows no chip and no counts for an older run without an endorsement", () => {
@@ -306,7 +307,7 @@ describe("HistoryPageClient", () => {
       latestAnalysis: { checkedAt, score: 50, issueCounts: { errors: 2, warnings: 1 } },
     });
 
-    expect(footerOf(card)).toEqual(["Version: unknown"]);
+    expect(footerOf(card)).toEqual(["Version: 1.2.3"]);
     expect(within(card).queryByText(/suitable|failure|warning/i)).toBeNull();
   });
 
@@ -441,5 +442,53 @@ describe("HistoryPageClient status filter", () => {
   it("gives Listed to a repository without an analysis on the card", () => {
     renderIndex({ status: "listed" });
     expect(screen.getByRole("link", { name: /listed-repo/ }).querySelector("[data-lifecycle-status]")?.textContent).toBe("Listed");
+  });
+});
+
+function versionSummary(overrides: Partial<RepoSummary>): RepoSummary {
+  return {
+    id: "repo-1",
+    owner: "open-zaak",
+    name: "open-zaak",
+    repoUrl: "https://github.com/open-zaak/open-zaak",
+    helmChartLocations: [],
+    dockerLocations: [],
+    apiSpecificationLocations: [],
+    documentationLocations: [],
+    version: null,
+    updatedAt: "2026-05-06T00:00:00Z",
+    analysisCount: 1,
+    latestAnalysis: { checkedAt: "2026-05-06T00:00:00Z", score: 80, version: null },
+    ...overrides,
+  };
+}
+
+function renderVersionCards(repositories: RepoSummary[]) {
+  render(<HistoryPageClient sort="date" direction="desc" repositories={repositories} />);
+}
+
+describe("HistoryPageClient version chip", () => {
+  it("shows the latest analysis's version before the repository's", () => {
+    renderVersionCards([
+      versionSummary({
+        version: "v1.30.0",
+        latestAnalysis: { checkedAt: "2026-05-06T00:00:00Z", score: 80, version: "v1.31.2" },
+      }),
+    ]);
+
+    expect(screen.getByText("Version: v1.31.2")).toBeTruthy();
+    expect(screen.queryByText("Version: v1.30.0")).toBeNull();
+  });
+
+  it("falls back to the repository's version", () => {
+    renderVersionCards([versionSummary({ version: "v2.1.0" })]);
+
+    expect(screen.getByText("Version: v2.1.0")).toBeTruthy();
+  });
+
+  it("shows no version chip when neither version is known", () => {
+    renderVersionCards([versionSummary({})]);
+
+    expect(screen.queryByText(/Version:/)).toBeNull();
   });
 });

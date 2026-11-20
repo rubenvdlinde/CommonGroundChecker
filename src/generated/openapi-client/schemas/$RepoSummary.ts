@@ -85,6 +85,12 @@ export const $RepoSummary = {
             },
             isRequired: true,
         },
+        version: {
+            type: 'string',
+            description: `Version detected on the repository's most recent scan`,
+            isRequired: true,
+            isNullable: true,
+        },
         updatedAt: {
             type: 'string',
             isRequired: true,
