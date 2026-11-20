@@ -12,7 +12,7 @@ vi.mock("next/navigation", () => ({ notFound }));
 
 import RatingGuidePage from "@/app/docs/page";
 import CategoryDocPage, { generateStaticParams } from "@/app/docs/[category]/page";
-import { ALL_SOURCES, RATING_DOCS, aspectDocHref } from "@/lib/ratingDocs";
+import { ALL_SOURCES, RATING_DOCS, RATING_SCALE, aspectDocHref } from "@/lib/ratingDocs";
 import { CHECKLIST_CHANGE_PROPOSAL_URL, CHECKLIST_VERSION } from "@/lib/criteria";
 
 const EXPECTED_MODEL: Record<string, string[]> = {
@@ -82,6 +82,23 @@ describe("rating docs data", () => {
     expect(aspects.filter((a) => a.informative).map((a) => a.id)).toEqual(["usage-and-ecosystem"]);
   });
 
+  it("rates status criteria and complete documents at the ends of the scale", () => {
+    const texts = RATING_DOCS.flatMap((category) => category.aspects.flatMap((aspect) => aspect.rating));
+    expect(texts.some((text) => /a pass rates 5\.5, a warning 3 and a fail 0\.5/.test(text))).toBe(true);
+    expect(texts.some((text) => /all of them rates 5\.5, at least 80% rates 4/.test(text))).toBe(true);
+    expect(texts.filter((text) => /\b(rates? 5 |rates 5,|fail 1\b|gives 5 stars)/.test(text))).toEqual([]);
+  });
+
+  it("explains the interpolated Open Source Health ratings", () => {
+    const security = RATING_DOCS.find((category) => category.slug === "security")!;
+    const rating = (id: string) => security.aspects.find((aspect) => aspect.id === id)!.rating.join(" ");
+    expect(rating("dependency-freshness")).toMatch(/exactly at the 4-star limit rates 3\.5/);
+    expect(rating("dependency-activity")).toMatch(/caps it at 3\.49/);
+    expect(rating("dependency-management")).toMatch(/none rates 5\.5, 6% rates 3\.5/);
+    expect(rating("vulnerabilities")).toMatch(/None at all rates 5\.5/);
+    expect(rating("dependency-licences")).toMatch(/One low-risk licence rates 4\.17/);
+  });
+
   it("builds the anchor link of an aspect", () => {
     expect(aspectDocHref("security", "secrets")).toBe("/docs/security#secrets");
   });
@@ -99,6 +116,19 @@ describe("RatingGuidePage", () => {
     }
     expect(screen.getByRole("heading", { level: 2, name: "How ratings work" })).toBeTruthy();
     expect(screen.getByText(/not a SIG rating and not a certification/)).toBeTruthy();
+  });
+
+  it("explains the 0.5 to 5.5 scale and its star bands with its source", () => {
+    render(<RatingGuidePage />);
+
+    const section = screen.getByRole("heading", { level: 2, name: "How ratings work" }).closest("section")!;
+    expect(within(section).getByText(/rate a pass as 5\.5, a warning as 3 and a fail as 0\.5/)).toBeTruthy();
+    expect(within(section).getByText(/All found is 5\.5/)).toBeTruthy();
+    expect(within(section).getByText(/a share exactly at the 4-star limit rates 3\.5, and a perfect result 5\.5/)).toBeTruthy();
+    expect(within(section).getByText(/4\.5 to 5\.5 is 5 stars, 3\.5 to 4\.5 is 4 stars/)).toBeTruthy();
+    expect(within(section).getByRole("link", { name: RATING_SCALE.source.title }).getAttribute("href")).toBe(
+      "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/getting-started/approach.md"
+    );
   });
 
   it("explains Maintained as the level above suitable, with usage never rated", () => {
@@ -177,6 +207,17 @@ describe("CategoryDocPage", () => {
     const analysability = document.getElementById("analysability")!;
     expect(within(analysability).getByText("Duplication")).toBeTruthy();
     expect(within(analysability).getByText("Unit size")).toBeTruthy();
+  });
+
+  it("scrolls the wide code property table inside a keyboard reachable region", async () => {
+    await renderCategory("maintainability");
+
+    const region = screen.getByRole("region", { name: "Star limits per code property" });
+    expect(region.getAttribute("tabindex")).toBe("0");
+    expect(region.className).toContain("overflow-x-auto");
+    const description = document.getElementById("code-property-limits")!;
+    expect(region.contains(description)).toBe(false);
+    expect(within(region).getByRole("table").getAttribute("aria-describedby")).toBe("code-property-limits");
   });
 
   it("marks layering as not counted", async () => {

@@ -352,6 +352,12 @@ const OPEN_SOURCE_HEALTH_CRITERION: MeasuredCriterion = {
 const OPEN_SOURCE_HEALTH_SCOPE =
   "The Open Source Health check reads the production dependencies from composer.lock, package-lock.json and requirements.txt at the repository root. Development dependencies are left out.";
 
+const OPEN_SOURCE_HEALTH_SHARE_RATING =
+  "Each bound gets a rating from 0.5 to 5.5 on a straight line between its star limits, like the maintainability properties: no dependency above the bound rates 5.5, a share exactly at the 4-star limit rates 3.5, and a share between two limits rates between them. The property's rating is the lowest of its bounds.";
+
+const OPEN_SOURCE_HEALTH_COUNT_RATING =
+  "None at all rates 5.5. Within a star level the rating falls on a straight line with the count, down to the bottom of the level at the most it allows, so more findings never raise it. A level that allows any number rates the middle of its band. The property's rating is the lowest of its classes.";
+
 const OPEN_SOURCE_HEALTH_DERIVED =
   "The guidance publishes only the 4-star limits. The 5, 3 and 2-star limits are derived by the checker: 5 stars halves each share limit, 3 stars doubles it and 2 stars multiplies it by four.";
 
@@ -368,10 +374,16 @@ function healthProperty(id: string, title: string, meaning: string, rating: stri
 }
 
 const STATUS_RATING =
-  "These criteria have no scale of their own, so a pass rates 5, a warning 3 and a fail 1. The aspect rating is the weighted mean of its criteria.";
+  "These criteria have no scale of their own, so a pass rates 5.5, a warning 3 and a fail 0.5, the ends and the middle of the scale. The aspect rating is the weighted mean of its criteria.";
 
 const DOCUMENT_RATING =
-  "This is a document aspect. Its rating is the share of the documents that were found: all of them gives 5 stars, at least 80% gives 4, at least 60% gives 3, at least 40% gives 2, and less gives 1.";
+  "This is a document aspect. Its rating is the share of the documents that were found: all of them rates 5.5, at least 80% rates 4, at least 60% 3, at least 40% 2, and less 1.";
+
+/** The rating scale, explained once on the guide's index. */
+export const RATING_SCALE = {
+  text: "Every rating runs from 0.5 to 5.5, the scale of the quality models the checker follows: technically, their metrics range from 0.5 to 5.5 stars. Each star level is a band one wide. 4.5 to 5.5 is 5 stars, 3.5 to 4.5 is 4 stars, and so on down to 0.5 to 1.5 for 1 star, so a perfect result rates 5.5.",
+  source: SOURCES.benchmark,
+};
 
 /** The rating model per category, in the order the guide lists them. */
 export const RATING_DOCS: RatingCategoryDoc[] = [
@@ -388,6 +400,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         [
           "Each locked version is looked up in the OSV.dev vulnerability database. The worst known severity per dependency counts.",
           "5 stars: no vulnerability of moderate severity or higher. 4 stars: nothing above moderate. 3 stars: at most 2 dependencies with a high or critical vulnerability. 2 stars: at most 5. More gives 1 star. Only the 4-star level is published; the others are derived by the checker.",
+          `${OPEN_SOURCE_HEALTH_COUNT_RATING} One dependency with a high or critical vulnerability rates 3.0, two rate 2.5 and five 1.5; a moderate one rates 4.0.`,
         ],
         [SOURCES.osv, SOURCES.osvApi]
       ),
@@ -398,6 +411,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         [
           "For each dependency the check compares the release date of the version in use with the latest release, using the package registries.",
           "4 stars: at most 34.2% of the dependencies more than 1 year behind, at most 19.1% more than 2 years, at most 11.1% more than 3.5 years, and none more than 5 years. A dependency more than 5 years behind caps the rating at 3 stars.",
+          `${OPEN_SOURCE_HEALTH_SHARE_RATING} A dependency more than 5 years behind caps it at 3.49, the top of 3 stars.`,
           OPEN_SOURCE_HEALTH_DERIVED,
         ]
       ),
@@ -408,6 +422,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         [
           "For each dependency the check takes the date of its latest release from the package registry.",
           "4 stars: at most 21.4% of the dependencies with no release for more than 1 year, at most 13.0% for more than 2 years, at most 9.6% for more than 4 years, and none for more than 5.5 years. A dependency without a release for more than 5.5 years caps the rating at 3 stars.",
+          `${OPEN_SOURCE_HEALTH_SHARE_RATING} A dependency without a release for more than 5.5 years caps it at 3.49, the top of 3 stars.`,
           OPEN_SOURCE_HEALTH_DERIVED,
         ]
       ),
@@ -418,6 +433,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         [
           "The check reads each dependency's licence from the lockfile or the registry and puts it in a risk class. AGPL is critical; non-commercial and share-alike Creative Commons licences are high; GPL, MPL and no-derivatives Creative Commons licences are medium; LGPL, CDDL and EPL are low. When a dependency offers a choice of licences, the lowest risk counts.",
           "5 stars: no risky licence. 4 stars: no critical, high or medium risk and at most 3 low. 3 stars: no critical or high risk. 2 stars: no critical risk. A critical risk gives 1 star.",
+          `${OPEN_SOURCE_HEALTH_COUNT_RATING} One low-risk licence rates 4.17 and three 3.5; a medium risk rates 3.0, a high risk 2.0 and a critical risk 1.0.`,
         ],
         [SOURCES.spdxLicences]
       ),
@@ -428,6 +444,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         [
           "The check counts the third-party libraries committed into the repository, such as vendor or third_party directories and minified files, as a share of all dependencies.",
           "5 stars: none. 4 stars: at most 6%. 3 stars: at most 12%. 2 stars: at most 24%. More gives 1 star. Only the 4-star level is published; the others are derived by the checker.",
+          "The rating runs on a straight line between those limits, like the maintainability properties: none rates 5.5, 6% rates 3.5 and 100% rates 0.5.",
         ]
       ),
       {
@@ -461,7 +478,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         criteria: [{ checkId: "secretscanning", name: "No committed secrets", tool: "gitleaks 8.30.1" }],
         rating: [
           "gitleaks scans the files of the repository, honouring the project's own .gitleaks.toml and .gitleaksignore. Findings are reported by rule and location, never with the secret itself.",
-          "No finding passes, a finding fails. When gitleaks cannot run, the criterion warns. A pass rates 5, a warning 3 and a fail 1.",
+          "No finding passes, a finding fails. When gitleaks cannot run, the criterion warns. A pass rates 5.5, a warning 3 and a fail 0.5.",
         ],
         counted: true,
         sources: [SOURCES.gitleaks, SOURCES.cwe798, SOURCES.owaspSecrets],
@@ -476,7 +493,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         ],
         rating: [
           "The check searches the source files for a fixed list of risky patterns. No finding passes, a few findings warn, and more findings than the threshold fail.",
-          "A pass rates 5, a warning 3 and a fail 1. A heuristic finds likely problems, not proven ones, so a finding is a reason to look, not a verdict.",
+          "A pass rates 5.5, a warning 3 and a fail 0.5. A heuristic finds likely problems, not proven ones, so a finding is a reason to look, not a verdict.",
         ],
         counted: true,
         sources: [SOURCES.owaspSecureCoding, SOURCES.owaspTop10],
@@ -492,7 +509,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
         ],
         rating: [
           "The OpenSSF Scorecard rates practices such as branch protection, code review, pinned dependencies and signed releases on a scale from 0 to 10. The checker maps the score to stars with its own bands: 9 or more is 5 stars, 7 or more is 4, 5 or more is 3, 3 or more is 2, and less is 1.",
-          "The SBOM criterion passes when the repository holds a software bill of materials in SPDX or CycloneDX format, and rates 5 for a pass and 1 for a fail. It checks that the document is there, not what it lists.",
+          "The SBOM criterion passes when the repository holds a software bill of materials in SPDX or CycloneDX format, and rates 5.5 for a pass and 0.5 for a fail. It checks that the document is there, not what it lists.",
           "The aspect rating is the weighted mean of both criteria.",
         ],
         counted: true,
@@ -547,7 +564,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
           { checkId: "testcoderatio", name: "Test code ratio", tool: "a line count of test code against production code in the cloned repository" },
         ],
         rating: [
-          "The test suite criterion passes when test files or test configuration are present. Code coverage passes at 80% line coverage or more. Both rate 5 for a pass, 3 for a warning and 1 for a fail.",
+          "The test suite criterion passes when test files or test configuration are present. Code coverage passes at 80% line coverage or more. Both rate 5.5 for a pass, 3 for a warning and 0.5 for a fail.",
           "The test code ratio is test code lines as a percentage of production code lines. A ratio of 100% corresponds roughly to 80% coverage. 120% or more is 5 stars, 100% is 4, 75% is 3, 25% is 2, and less is 1.",
           "The aspect rating is the weighted mean of the three criteria.",
         ],
@@ -574,7 +591,7 @@ export const RATING_DOCS: RatingCategoryDoc[] = [
           { checkId: "spdxheaders", name: "SPDX licence headers", tool: "a scan of the source files for SPDX-License-Identifier and REUSE files" },
         ],
         rating: [
-          "The licence, EUPL and licence consistency criteria rate 5 for a pass, 3 for a warning and 1 for a fail. Licence consistency warns when only one declaration is found or when declarations differ only in -only or -or-later.",
+          "The licence, EUPL and licence consistency criteria rate 5.5 for a pass, 3 for a warning and 0.5 for a fail. Licence consistency warns when only one declaration is found or when declarations differ only in -only or -or-later.",
           "SPDX licence headers has its own scale: the share of source files with a licence header, or covered by REUSE.toml, .reuse/dep5 or a .license file. 100% is 5 stars, 95% is 4, 80% is 3, 50% is 2, and less is 1.",
           "The aspect rating is the weighted mean of the four criteria.",
         ],

@@ -30,36 +30,39 @@ export async function generateMetadata({ params }: CategoryDocPageProps): Promis
 
 function CodePropertyTable() {
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full text-sm text-left border border-gray-200">
-        <caption className="text-left text-gray-700 pb-2">
-          Star limits per code property. The 4-star limits are published in the maintainability guidance. The 5,
-          3 and 2-star limits are derived by the checker. Anything worse than 2 stars is 1 star.
-        </caption>
-        <thead className="bg-cg-gray">
-          <tr>
-            <th scope="col" className="p-2">Property</th>
-            <th scope="col" className="p-2">What is measured</th>
-            <th scope="col" className="p-2">5 stars (derived)</th>
-            <th scope="col" className="p-2">4 stars (published)</th>
-            <th scope="col" className="p-2">3 stars (derived)</th>
-            <th scope="col" className="p-2">2 stars (derived)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {CODE_PROPERTIES.map((property) => (
-            <tr key={property.id} className="border-t border-gray-200">
-              <th scope="row" className="p-2 font-medium">{property.title}</th>
-              <td className="p-2">{property.measures}</td>
-              <td className="p-2">{property.derived.fiveStars}</td>
-              <td className="p-2">{property.fourStars}</td>
-              <td className="p-2">{property.derived.threeStars ?? "no level"}</td>
-              <td className="p-2">{property.derived.twoStars ?? "no level"}</td>
+    <>
+      <p id="code-property-limits" className="text-sm text-gray-700">
+        Star limits per code property. The 4-star limits are published in the maintainability guidance. The 5,
+        3 and 2-star limits are derived by the checker. Anything worse than 2 stars is 1 star.
+      </p>
+      <div className="overflow-x-auto" role="region" aria-label="Star limits per code property" tabIndex={0}>
+        <table className="min-w-full text-sm text-left border border-gray-200" aria-describedby="code-property-limits">
+          <caption className="sr-only">Star limits per code property</caption>
+          <thead className="bg-cg-gray">
+            <tr>
+              <th scope="col" className="p-2">Property</th>
+              <th scope="col" className="p-2">What is measured</th>
+              <th scope="col" className="p-2">5 stars (derived)</th>
+              <th scope="col" className="p-2">4 stars (published)</th>
+              <th scope="col" className="p-2">3 stars (derived)</th>
+              <th scope="col" className="p-2">2 stars (derived)</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {CODE_PROPERTIES.map((property) => (
+              <tr key={property.id} className="border-t border-gray-200">
+                <th scope="row" className="p-2 font-medium">{property.title}</th>
+                <td className="p-2">{property.measures}</td>
+                <td className="p-2">{property.derived.fiveStars}</td>
+                <td className="p-2">{property.fourStars}</td>
+                <td className="p-2">{property.derived.threeStars ?? "no level"}</td>
+                <td className="p-2">{property.derived.twoStars ?? "no level"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 
@@ -69,7 +72,7 @@ function AspectSection({ aspect }: { aspect: RatingAspectDoc }) {
     <section
       id={aspect.id}
       aria-labelledby={headingId}
-      className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4 scroll-mt-6"
+      className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6 space-y-4 scroll-mt-6"
     >
       <h2 id={headingId} className="text-2xl font-bold text-cg-blue">
         {aspect.title}
@@ -138,10 +141,10 @@ export default async function CategoryDocPage({ params }: CategoryDocPageProps) 
   const hasCodeProperties = category.aspects.some((aspect) => aspect.properties);
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-10 space-y-8">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
       <section className="space-y-3">
         <p className="text-sm">
-          <Link href="/docs" className="text-cg-lightblue hover:underline">
+          <Link href="/docs" className="inline-flex min-h-[44px] items-center lg:min-h-0 text-cg-lightblue hover:underline">
             Back to the rating guide
           </Link>
         </p>
@@ -157,10 +160,10 @@ export default async function CategoryDocPage({ params }: CategoryDocPageProps) 
           </p>
         )}
         <nav aria-label={`Aspects of ${category.title}`}>
-          <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          <ul className="flex flex-wrap gap-x-4 lg:gap-y-1 text-sm">
             {category.aspects.map((aspect) => (
               <li key={aspect.id}>
-                <a href={`#${aspect.id}`} className="text-cg-lightblue hover:underline">
+                <a href={`#${aspect.id}`} className="inline-flex min-h-[44px] items-center lg:min-h-0 text-cg-lightblue hover:underline">
                   {aspect.title}
                 </a>
               </li>
