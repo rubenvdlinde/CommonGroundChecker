@@ -22,6 +22,9 @@ function python(expression: string): unknown {
   );
 }
 
+/** A parsed JSON object whose fields are read without a fixed shape. */
+type Tree = { [key: string]: Tree };
+
 const temporary: string[] = [];
 
 afterEach(() => {
@@ -169,7 +172,7 @@ describe("coupling on the declared components", () => {
       "sigrid.components.yaml": FILE_COMPONENTS,
       "tools/sig/area-order.json": JSON.stringify({ order: ["Kernel", "Core", "Search"] }),
     });
-    const result = python(`c.score(${loc}, ${edges}, ${JSON.stringify(dir)})`) as Record<string, any>;
+    const result = python(`c.score(${loc}, ${edges}, ${JSON.stringify(dir)})`) as Tree;
 
     expect(result.componentDefinition).toBe("sigrid.components.yaml components (3 declared)");
     expect(result.componentDefinitionKind).toBe("declared");
@@ -206,7 +209,7 @@ describe("estimate structure on the declared components", () => {
   const files = `{"lib/Kernel/A.php": "php", "lib/Core/B.php": "php", "lib/Search/C.php": "php"}`;
   const deps = `{"lib/Kernel/A.php": {"lib/Core/B.php"}, "lib/Core/B.php": {"lib/Kernel/A.php"}, "lib/Search/C.php": {"lib/Core/B.php"}}`;
 
-  function structure(dir: string, fromScope: boolean): Record<string, any> {
+  function structure(dir: string, fromScope: boolean): Tree {
     for (const name of ["lib/Kernel/A.php", "lib/Core/B.php", "lib/Search/C.php"]) {
       mkdirSync(path.dirname(path.join(dir, name)), { recursive: true });
       writeFileSync(path.join(dir, name), "<?php\n$a = 1;\n$b = 2;\n");
@@ -214,7 +217,7 @@ describe("estimate structure on the declared components", () => {
     return python(
       `(setattr(m, "COMPONENTS_FROM_SCOPE", ${fromScope ? "True" : "False"}), ` +
         `m.structure(${JSON.stringify(dir)}, ${files}, ${deps}))[1]`
-    ) as Record<string, any>;
+    ) as Tree;
   }
 
   it("rates the declared components and keeps the directory figures beside them", () => {
@@ -251,11 +254,11 @@ describe("estimate structure on the declared components", () => {
         .replace(/\btrue\b/g, "True")
         .replace(/\bfalse\b/g, "False")
         .replace(/\bnull\b/g, "None")})`
-    ) as Record<string, any>;
+    ) as Tree;
 
     expect(views.used).toBe("declared");
     expect(views.declared.languages.php).toMatchObject({ components: 2, violation_degree: 0 });
     expect(views.directories.languages.php.definition).toBe("directory rule");
-    expect(views.directories.component_entanglement).toBeLessThan(views.declared.component_entanglement);
+    expect(Number(views.directories.component_entanglement)).toBeLessThan(Number(views.declared.component_entanglement));
   });
 });
