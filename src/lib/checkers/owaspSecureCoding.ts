@@ -21,9 +21,20 @@ export function getFailThreshold(scannedFileCount: number): number {
   return tolerated + 1;
 }
 
+const COMMENT_LINE = /^\s*(?:\/\/|\/\*|\*|#(?![[!]))/;
+
+/** Blanks lines that hold only a comment, so prose that names a risky call is not read as code. */
+export function stripCommentLines(content: string): string {
+  return content
+    .split("\n")
+    .map((line) => (COMMENT_LINE.test(line) ? "" : line))
+    .join("\n");
+}
+
 const RISKY_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
   // Case-sensitive: the JavaScript Function constructor is capitalised, while `function (` is an ordinary closure.
-  { label: "Dynamic code execution", pattern: /\beval\s*\(|(?<![\w$.])Function\s*\(|setTimeout\s*\(\s*["'`]|setInterval\s*\(\s*["'`]/ },
+  // A method named eval (`model.eval()`, `$parser->eval()`) is not the eval built-in.
+  { label: "Dynamic code execution", pattern: /(?<![\w$.>:])eval\s*\(|(?<![\w$.])Function\s*\(|setTimeout\s*\(\s*["'`]|setInterval\s*\(\s*["'`]/ },
   { label: "Unsafe HTML injection", pattern: /innerHTML\s*=|dangerouslySetInnerHTML/i },
   { label: "Shell command execution", pattern: /subprocess\.(run|call|Popen)\([^\n]*shell\s*=\s*True|os\.system\s*\(|child_process\.(exec|execSync)\s*\(/i },
   { label: "Insecure deserialization", pattern: /pickle\.loads\s*\(|yaml\.load\s*\(/i },
@@ -103,8 +114,9 @@ export async function checkOwaspSecureCoding(
     if (!item.content) continue;
     scannedFileCount += 1;
 
+    const code = stripCommentLines(item.content);
     for (const rule of RISKY_PATTERNS) {
-      if (rule.pattern.test(item.content)) {
+      if (rule.pattern.test(code)) {
         findings.push(`${rule.label}: ${item.path}`);
       }
     }
