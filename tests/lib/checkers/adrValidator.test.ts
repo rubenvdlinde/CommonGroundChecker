@@ -8,7 +8,7 @@ describe("formatSpectralIssue", () => {
       code: "operation-ids",
       message: "Operation IDs must be unique.",
       path: ["paths", "/pets", "get", "operationId"],
-      severity: 1,
+      severity: 0,
       source: "openapi.yaml",
     };
 
@@ -20,7 +20,7 @@ describe("formatSpectralIssue", () => {
   it("formats a Spectral issue without code or source", () => {
     const issue = {
       message: "Unsupported type detected.",
-      severity: 2,
+      severity: 1,
       path: ["components", "schemas", "Pet"],
     };
 
@@ -33,11 +33,22 @@ describe("formatSpectralIssue", () => {
     const issue = {
       code: "info-contact",
       message: "Info object should contain contact information.",
-      severity: 0,
+      severity: 3,
     };
 
     expect(formatSpectralIssue(issue)).toBe(
       "HINT [info-contact] Info object should contain contact information."
+    );
+  });
+
+  it.each([
+    [0, "ERROR"],
+    [1, "WARNING"],
+    [2, "INFO"],
+    [3, "HINT"],
+  ])("labels Spectral severity %i as %s", (severity, label) => {
+    expect(formatSpectralIssue({ code: "rule", message: "Message.", severity })).toBe(
+      `${label} [rule] Message.`
     );
   });
 });

@@ -104,14 +104,16 @@ function parseSpectralJson(output: string): SpectralResultItem[] | null {
   }
 }
 
+// Spectral severities follow DiagnosticSeverity from @stoplight/types:
+// 0 = error, 1 = warning, 2 = information, 3 = hint.
 function formatSeverityLabel(severity?: number): string {
   switch (severity) {
     case 0:
-      return "HINT";
-    case 1:
       return "ERROR";
-    case 2:
+    case 1:
       return "WARNING";
+    case 3:
+      return "HINT";
     default:
       return "INFO";
   }
