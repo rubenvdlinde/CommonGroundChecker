@@ -8,6 +8,7 @@ import {
 } from "./criteria";
 import { RATING_DOCS, aspectDocHref } from "./ratingDocs";
 import { PROFILE_FIELDS, PUBLICCODE_PROFILE_PATH } from "./publiccodeProfile";
+import type { SfpcCriterionId } from "./standardForPublicCode";
 import type { RequirementLevel } from "./types";
 
 /** Path of the criteria index in the rating guide. */
@@ -69,6 +70,10 @@ export interface CriterionDoc {
   id: string;
   title: string;
   source: CriterionSource;
+  /** Other sources the criterion also follows from, next to its main source */
+  alsoFrom?: CriterionSource[];
+  /** The criterion of the Standard for Public Code that this criterion measures a part of */
+  standardForPublicCode?: SfpcCriterionId;
   /** How the criterion follows from its source, when that is not obvious */
   sourceNote?: string;
   /** What the checker looks at */
@@ -96,6 +101,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "sourcecode",
     title: "Actual source code",
     source: "checklist",
+    standardForPublicCode: "code-in-the-open",
     what: "The repository holds source code files, not only documentation, configuration or templates.",
     why: "A municipality can only reuse, audit or fork what is actually published. A repository with only a README promises code it does not contain.",
     tool: "a search of the repository tree for files in a programming language",
@@ -121,6 +127,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "license",
     title: "Open source licence (OSI-approved)",
     source: "checklist",
+    standardForPublicCode: "publish-with-an-open-license",
     what: "The repository has a LICENSE file with a licence the Open Source Initiative approves.",
     why: "Without an open licence, nobody else may legally use, change or share the code.",
     howToPass: [
@@ -133,6 +140,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "eupllicense",
     title: "EUPL licence",
     source: "checklist",
+    standardForPublicCode: "publish-with-an-open-license",
     what: "The licence is the European Union Public Licence (EUPL).",
     why: "The EUPL is written for public sector software and is valid in every EU language and legal system. Dutch government policy prefers it.",
     howToPass: ["Publish the component under EUPL-1.2.", "Another OSI-approved licence gives a warning, not a fail."],
@@ -167,6 +175,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "spdxheaders",
     title: "SPDX licence headers",
     source: "checklist",
+    standardForPublicCode: "publish-with-an-open-license",
     sourceNote: "A closer measurement of the licence criterion, as the REUSE specification and the Standard for Public Code ask.",
     what: "The share of source files that carry an SPDX-License-Identifier header, or are covered by REUSE.toml, .reuse/dep5 or a .license file.",
     why: "Municipalities reuse code per file. The file itself then has to say under which licence that is allowed.",
@@ -180,6 +189,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "publiccode",
     title: "publiccode.yml",
     source: "checklist",
+    standardForPublicCode: "make-the-codebase-findable",
     what: "A publiccode.yml file in the root of the repository, with the fields the standard requires.",
     why: "Catalogues such as developer.overheid.nl read publiccode.yml to list the component. Without it, nobody finds it.",
     howToPass: [
@@ -208,6 +218,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "usage",
     title: "Usage and ecosystem",
     source: "information",
+    alsoFrom: ["alv"],
     sourceNote:
       "Context for the verdict: Suitable for Common Ground asks at least 2 organisations in usedBy, so the component is proven in use.",
     what: "Who uses the component and how much, per source: users in publiccode.yml, App Store and package downloads, container pulls and dependent projects.",
@@ -223,6 +234,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "docker",
     title: "Docker support",
     source: "checklist",
+    standardForPublicCode: "make-the-codebase-reusable-and-portable",
     what: "A Dockerfile and a Compose file in the repository.",
     why: "Common Ground components run as containers on Haven. A Dockerfile lets anyone build the image, and a Compose file lets them start it locally.",
     howToPass: [
@@ -247,6 +259,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "cicd",
     title: "CI/CD configuration",
     source: "checklist",
+    standardForPublicCode: "use-continuous-integration",
     what: "Pipeline configuration for continuous integration or delivery, such as GitHub Actions or GitLab CI.",
     why: "Automated builds and tests on every change keep the main branch working.",
     howToPass: ["Add a workflow that builds and tests the component, for example under .github/workflows."],
@@ -255,6 +268,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "openapi",
     title: "OpenAPI specification",
     source: "checklist",
+    standardForPublicCode: "use-open-standards",
     what: "A machine-readable OpenAPI or Swagger document for the component's API.",
     why: "Common Ground components work together through APIs. A specification lets others build against the API without reading the code.",
     howToPass: [
@@ -266,6 +280,8 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "adrvalidator",
     title: "API Design Rules",
     source: "checklist",
+    alsoFrom: ["alv"],
+    standardForPublicCode: "use-open-standards",
     what: "The OpenAPI documents follow the NL API Design Rules, checked with the official Spectral rule set.",
     why: "APIs that follow the same rules are easier to connect to. The Design Rules are a mandatory standard for Dutch government APIs.",
     howToPass: [
@@ -277,6 +293,8 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "standards",
     title: "Supported standards",
     source: "information",
+    alsoFrom: ["alv"],
+    standardForPublicCode: "use-open-standards",
     sourceNote: "Context for the Common Ground standard v1.0, which lists each component with the versions of its APIs.",
     what: "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository.",
     why: "A municipality needs to know which version of a standard, such as the ZGW APIs, the component speaks.",
@@ -290,6 +308,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "helmchart",
     title: "Helm chart (Kubernetes)",
     source: "checklist",
+    standardForPublicCode: "make-the-codebase-reusable-and-portable",
     what: "A Helm chart for the component, in the repository or in a chart repository it points to.",
     why: "Haven, the Common Ground hosting standard, runs on Kubernetes. A Helm chart is the standard way to install a component there.",
     howToPass: [
@@ -327,6 +346,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "documentation",
     title: "Documentation",
     source: "checklist",
+    standardForPublicCode: "document-the-code",
     what: "A README, a docs folder or a link to a documentation site.",
     why: "Others can only install, use and maintain a component they can read about.",
     howToPass: ["Add a README that explains what the component does and how to install it.", "Add a docs folder or link to the documentation site."],
@@ -335,6 +355,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "changelog",
     title: "Changelog",
     source: "checklist",
+    standardForPublicCode: "document-codebase-maturity",
     what: "A changelog or release notes file.",
     why: "A changelog tells a municipality what changed in an update before they install it.",
     howToPass: ["Add a CHANGELOG.md, for example in the Keep a Changelog format.", "Add an entry for every release."],
@@ -343,6 +364,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "tests",
     title: "Test suite",
     source: "checklist",
+    standardForPublicCode: "use-continuous-integration",
     what: "Automated tests or test configuration in the repository.",
     why: "Tests show that the code does what it should, and that a change does not break it.",
     howToPass: ["Add unit or integration tests and the configuration to run them."],
@@ -351,6 +373,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "coverage",
     title: "Code coverage",
     source: "checklist",
+    standardForPublicCode: "use-continuous-integration",
     what: "The share of the code that the tests run, from a coverage report or a coverage figure in the repository.",
     why: "High coverage makes it likely that a broken change is caught before it is released.",
     howToPass: ["Publish a coverage report or badge from your test run.", "Reach at least 80% coverage."],
@@ -368,6 +391,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "complexity",
     title: "Cyclomatic complexity (Lizard)",
     source: "checklist",
+    alsoFrom: ["sig"],
     what: "The average and maximum cyclomatic complexity of the functions, measured with Lizard.",
     why: "Functions with many paths are hard to understand and to test.",
     tool: "lizard",
@@ -394,6 +418,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "opentrack",
     title: "Maintainability, open track",
     source: "information",
+    alsoFrom: ["sig"],
     sourceNote: "An open counterpart of the SIG estimate, with thresholds derived from a public benchmark.",
     what: "Seven code properties rated against open thresholds, derived from 60 public Common Ground and government repositories with the method of Alves (2010, 2011).",
     why: "Anyone can check and repeat the open track: the benchmark, the measurements and the thresholds are public.",
@@ -404,6 +429,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "coupling",
     title: "Coupling (open track)",
     source: "information",
+    alsoFrom: ["sig"],
     what: "Module coupling, component independence, component entanglement and dependency cycles, from the module dependency graph.",
     why: "Loosely coupled code can be changed in one place without breaking another.",
     tool: "pdepend for PHP, grimp for Python and dependency-cruiser for JavaScript, TypeScript and Vue",
@@ -414,6 +440,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "duplication",
     title: "Duplication (open track)",
     source: "information",
+    alsoFrom: ["sig"],
     what: "Duplicated lines per language, over the production code the maintainability estimate rates.",
     why: "Duplicated code has to be fixed in every copy.",
     tool: "jscpd",
@@ -423,6 +450,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "size",
     title: "Size",
     source: "information",
+    alsoFrom: ["sig"],
     what: "Lines of production code per language, and an estimate of the effort to rebuild it.",
     why: "Size puts the other measurements in context. A small component and a large one are not maintained the same way.",
     tool: "scc",
@@ -441,6 +469,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "codemetrics",
     title: "Code metrics",
     source: "checklist",
+    alsoFrom: ["sig"],
     what: "Lines of code, number of functions and number of files.",
     why: "The figures put the other measurements in context.",
     tool: "lizard",
@@ -487,6 +516,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "openssfscorecard",
     title: "OpenSSF Scorecard",
     source: "checklist",
+    standardForPublicCode: "use-continuous-integration",
     sourceNote: "A measurement for the security criteria: branch protection, safe workflows and signed releases.",
     what: "The repository's OpenSSF Scorecard from 0 to 10, read from the public Scorecard API and rated from 1 to 5 stars.",
     why: "The Scorecard checks how well the project protects itself against supply-chain attacks.",
@@ -499,6 +529,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "contributing",
     title: "Contributing guide",
     source: "checklist",
+    standardForPublicCode: "welcome-contributors",
     what: "A CONTRIBUTING file.",
     why: "It tells other developers how to propose a change, run the checks and open a pull request.",
     howToPass: ["Add a CONTRIBUTING.md to the root or the .github folder."],
@@ -507,6 +538,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "codeofconduct",
     title: "Code of conduct",
     source: "checklist",
+    standardForPublicCode: "welcome-contributors",
     what: "A CODE_OF_CONDUCT file.",
     why: "It sets the expected behaviour and how to report a problem, so contributors feel safe to take part.",
     howToPass: ["Add a CODE_OF_CONDUCT.md, for example the Contributor Covenant."],
@@ -532,6 +564,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "semver",
     title: "Semantic versioning",
     source: "checklist",
+    standardForPublicCode: "document-codebase-maturity",
     what: "The releases and tags follow semantic versioning: MAJOR.MINOR.PATCH.",
     why: "A version number that follows the rules tells a municipality whether an update can break their setup.",
     howToPass: ["Tag releases as MAJOR.MINOR.PATCH, with or without a leading v."],
