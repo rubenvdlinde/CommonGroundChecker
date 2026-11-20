@@ -8,6 +8,7 @@ import {
   openDropsOf,
   type LifecycleInput,
 } from "@/lib/lifecycle";
+import { withAdoptionConditions } from "@/lib/ratings";
 
 const today = "2026-11-19";
 const validSla = { party: "VNG", maintainer: "Maykin Media", startsOn: "2026-01-01", until: "2027-12-31" };
@@ -18,9 +19,7 @@ function input(overrides: Partial<LifecycleInput> = {}): LifecycleInput {
     hasAnalysis: true,
     endorsement: { passed: true, reasons: [] },
     developmentStatus: "stable",
-    declaredUserCount: 1,
     slas: [validSla],
-    minUsers: 1,
     today,
     retiredAt: null,
     retiredReason: null,
@@ -72,20 +71,17 @@ describe("computeLifecycleStatus", () => {
   });
 
   it("goes from Measured to Suitable when the verdict holds, with why it is not Maintained", () => {
-    const result = computeLifecycleStatus(input({ developmentStatus: "beta", slas: [] }));
+    const result = computeLifecycleStatus(input({ slas: [] }));
     expect(result.status).toBe("suitable");
     expect(result.label).toBe("Suitable for Common Ground");
-    expect(result.reasons).toEqual([
-      "development status is beta, only a stable component can be Maintained",
-      "No SLA",
-    ]);
+    expect(result.reasons).toEqual(["No SLA"]);
   });
 
-  it("stays Suitable below MIN_USERS declared users", () => {
-    const result = computeLifecycleStatus(input({ declaredUserCount: 0 }));
-    expect(result.status).toBe("suitable");
-    expect(result.reasons).toEqual(["0 of 1 users declared in publiccode.yml"]);
-    expect(computeLifecycleStatus(input({ declaredUserCount: 1, minUsers: 2 })).status).toBe("suitable");
+  it("stays Measured for a beta component, since Suitable already asks stable", () => {
+    const verdict = withAdoptionConditions({ passed: true, reasons: [] }, { developmentStatus: "beta", declaredUserCount: 2 });
+    const result = computeLifecycleStatus(input({ endorsement: verdict, developmentStatus: "beta" }));
+    expect(result.status).toBe("measured");
+    expect(result.reasons).toEqual(["publiccode.yml developmentStatus is beta; Suitable needs stable"]);
   });
 
   it("stays Suitable with an expired SLA", () => {
@@ -128,8 +124,9 @@ describe("computeLifecycleStatus", () => {
     expect(result.reasons).toEqual(["Overall rating below 2.5"]);
   });
 
-  it("does not keep a Suitable component at Maintained because of an open drop", () => {
-    const result = computeLifecycleStatus(input({ endorsement: lostVerdict, developmentStatus: "beta", drops: openDrop }));
+  it("does not keep a component at Maintained during a fix term when it left stable", () => {
+    const leftStable = withAdoptionConditions(lostVerdict, { developmentStatus: "beta", declaredUserCount: 2 });
+    const result = computeLifecycleStatus(input({ endorsement: leftStable, developmentStatus: "beta", drops: openDrop }));
     expect(result.status).toBe("measured");
   });
 

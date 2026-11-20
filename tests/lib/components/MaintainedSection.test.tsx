@@ -41,7 +41,6 @@ function renderSection(overrides: Partial<Parameters<typeof MaintainedSection>[0
     <MaintainedSection
       repoId="repo-id"
       endorsement={suitable}
-      developmentStatus="stable"
       initialUsage={usage}
       minUsers={2}
       today={today}
@@ -64,7 +63,7 @@ describe("MaintainedSection", () => {
     const levels = within(screen.getByRole("list", { name: "Levels" })).getAllByRole("listitem");
     expect(levels[0].textContent).toContain("Maintained");
     expect(levels[0].textContent).toContain("Not reached");
-    expect(levels[0].textContent).toContain("at least 2 organisations declared in publiccode.yml");
+    expect(levels[levels.length - 1].textContent).toContain("names at least 2 organisations under usedBy");
     expect(levels[levels.length - 1].textContent).toContain("Suitable for Common Ground");
     expect(levels[levels.length - 1].textContent).toContain("Reached");
     expect(levels[levels.length - 1].textContent).toContain(
@@ -73,9 +72,8 @@ describe("MaintainedSection", () => {
     expect(levels[levels.length - 1].textContent).not.toMatch(/advice/i);
     expect(screen.getByRole("heading", { level: 3, name: "Level" })).toBeTruthy();
     const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
-    expect(reasons.textContent).toContain("1 of 2 users declared in publiccode.yml");
-    expect(reasons.textContent).toContain("No SLA");
-    expect(screen.getByText(/The minimum of 2 organisations declared in publiccode.yml follows the Common Ground standard/)).toBeTruthy();
+    expect(reasons.textContent).toBe("No SLA");
+    expect(screen.getByText(/Suitable for Common Ground needs developmentStatus stable and at least 2 organisations/)).toBeTruthy();
     expect(levels[0].textContent).toContain("a valid SLA with a maintainer, on the VNG model contract");
     expect(screen.getByText(/never gives stars/)).toBeTruthy();
   });
@@ -97,7 +95,7 @@ describe("MaintainedSection", () => {
     expect(screen.queryByText(/confirm/i)).toBeNull();
   });
 
-  it("reaches Maintained with enough declared users and a valid SLA", () => {
+  it("reaches Maintained with a valid SLA", () => {
     renderSection({ initialUsage: { ...twoUsers, slas: [sla] } });
 
     expect(maintainedRow().textContent).toContain("Reached");
@@ -105,11 +103,14 @@ describe("MaintainedSection", () => {
     expect(screen.queryByRole("list", { name: "Why it is not yet Maintained" })).toBeNull();
   });
 
-  it("does not reach Maintained for a component that is not stable", () => {
-    renderSection({ developmentStatus: "beta", initialUsage: { ...twoUsers, slas: [sla] } });
+  it("does not reach Maintained when the component is not suitable", () => {
+    renderSection({
+      endorsement: { passed: false, reasons: ["publiccode.yml developmentStatus is beta; Suitable needs stable"] },
+      initialUsage: { ...twoUsers, slas: [sla] },
+    });
 
     const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
-    expect(reasons.textContent).toBe("development status is beta, only a stable component can be Maintained");
+    expect(reasons.textContent).toBe("Not yet suitable for Common Ground");
   });
 
   it("names the end date of an expired SLA", () => {
@@ -192,9 +193,6 @@ describe("MaintainedSection", () => {
     });
 
     expect(screen.getByText(/did not record the users in publiccode.yml/)).toBeTruthy();
-    expect(screen.getByRole("list", { name: "Why it is not yet Maintained" }).textContent).toContain(
-      "Users not counted yet"
-    );
   });
 
   it("says when the usage could not be loaded", () => {

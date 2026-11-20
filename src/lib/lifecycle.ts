@@ -1,4 +1,5 @@
 import { computeMaintained, type MaintainedSla } from "./maintained";
+import { isAdoptionReason } from "./ratings";
 import type { Endorsement } from "./types";
 
 /** The status of a component in the Common Ground programme, from Listed to Retired. */
@@ -124,7 +125,9 @@ export function computeLifecycleStatus(input: LifecycleInput): LifecycleResult {
 
   if (!input.endorsement.passed) {
     // A drop that cost the verdict leaves a Maintained component Maintained while its fix term runs.
-    if (maintained.maintained && inFixTerm) return result("maintained", { note: openDropNote });
+    // Leaving stable or losing users is not a drop.
+    const lostOnPubliccode = input.endorsement.reasons.some(isAdoptionReason);
+    if (maintained.maintained && inFixTerm && !lostOnPubliccode) return result("maintained", { note: openDropNote });
     return result("measured", {
       reasons: input.endorsement.reasons.length > 0 ? input.endorsement.reasons : ["The verdict does not hold"],
     });

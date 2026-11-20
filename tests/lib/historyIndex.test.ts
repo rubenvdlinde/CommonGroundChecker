@@ -18,7 +18,7 @@ const basisset = parseBasisset({
   ],
 }) as Basisset;
 
-const options = { basisset, minUsers: 1, today: "2026-11-19" };
+const options = { basisset, today: "2026-11-19" };
 const validSla = { id: "s1", party: "VNG", maintainer: "Maykin Media", startsOn: "2026-01-01", until: "2027-12-31", link: null };
 
 /** A repository as GET /api/repositories gives it; the static index entry has the same fields. */
@@ -93,6 +93,23 @@ describe("toHistoryIndexEntry", () => {
     const entry = toHistoryIndexEntry(repositories[3], { ...options, basisset: null });
     expect([entry.rating, entry.verdict, entry.version]).toEqual([null, null, null]);
     expect(entry.basisset.available).toBe(false);
+  });
+});
+
+describe("the verdict of an old stored analysis", () => {
+  it("is judged again on the stored developmentStatus and number of users", () => {
+    const beta = toHistoryIndexEntry(summary("beta", {}, { developmentStatus: "beta", declaredUserCount: 2 }), options);
+    expect(beta.verdict).toBe(false);
+    expect(beta.lifecycle.status).toBe("measured");
+    expect(beta.lifecycle.reasons).toEqual(["publiccode.yml developmentStatus is beta; Suitable needs stable"]);
+
+    const oneUser = toHistoryIndexEntry(summary("one", {}, { declaredUserCount: 1 }), options);
+    expect(oneUser.verdict).toBe(false);
+  });
+
+  it("stays as stored when the users were not recorded and no developmentStatus is known", () => {
+    const entry = toHistoryIndexEntry(summary("old", {}, { developmentStatus: null, declaredUserCount: null }), options);
+    expect(entry.verdict).toBe(true);
   });
 });
 

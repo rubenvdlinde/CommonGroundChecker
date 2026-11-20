@@ -614,7 +614,14 @@ describe("runChecks", () => {
     expect(report.rating).toBe(
       Math.round(((5.5 * governanceWeight + 3.5 * maintainabilityWeight) / (governanceWeight + maintainabilityWeight)) * 10) / 10
     );
-    expect(report.endorsement).toEqual({ passed: false, reasons: ["Maintainability below 4 stars (3.40)"] });
+    expect(report.endorsement).toEqual({
+      passed: false,
+      reasons: [
+        "Maintainability below 4 stars (3.40)",
+        "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+        "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2",
+      ],
+    });
     expect(report.results.find((result) => result.id === "license")?.starRating).toBe(5);
   });
 
@@ -636,7 +643,14 @@ describe("runChecks", () => {
 
     const report = await runChecks("https://github.com/org/repo", { isRegister: false });
 
-    expect(report.endorsement).toEqual({ passed: false, reasons: ["Mandatory criterion fails: Open source licence"] });
+    expect(report.endorsement).toEqual({
+      passed: false,
+      reasons: [
+        "Mandatory criterion fails: Open source licence",
+        "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+        "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2",
+      ],
+    });
   });
 
   describe("a mandatory criterion in its transition period", () => {

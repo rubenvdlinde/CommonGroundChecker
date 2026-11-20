@@ -9,7 +9,7 @@ import {
 } from "./lifecycle";
 import type { MaintainedSla } from "./maintained";
 import { standardsFromEvidence } from "./componentStandards";
-import { isRating, withAdoptionConditions, type AdoptionFacts } from "./ratings";
+import { isRating, summaryAdoptionFacts, withAdoptionConditions } from "./ratings";
 import type { Endorsement } from "./types";
 
 /**
@@ -77,12 +77,10 @@ export function toHistoryIndexEntry(repository: RepoSummary, options: HistoryInd
   const version = stringOrNull(latest?.version);
   const declaredUserCount = typeof latest?.declaredUserCount === "number" ? latest.declaredUserCount : null;
   const developmentStatus = stringOrNull(latest?.developmentStatus) ?? stringOrNull(summary.developmentStatus);
-  const facts: AdoptionFacts =
-    declaredUserCount === null
-      ? developmentStatus === null ? {} : { developmentStatus }
-      : { developmentStatus, declaredUserCount };
   const stored = endorsementOf(latest?.endorsement);
-  const endorsement = stored ? withAdoptionConditions(stored, facts) : null;
+  const endorsement = stored
+    ? withAdoptionConditions(stored, summaryAdoptionFacts(developmentStatus, declaredUserCount))
+    : null;
 
   const lifecycle = computeLifecycleStatus({
     hasAnalysis: latest !== null,

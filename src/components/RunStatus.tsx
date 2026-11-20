@@ -1,4 +1,5 @@
 import { CheckCircle, XCircle } from "lucide-react";
+import { summaryAdoptionFacts, withAdoptionConditions } from "@/lib/ratings";
 
 export interface RunStatusSummary {
   passed: boolean;
@@ -16,15 +17,28 @@ function asObject(value: unknown): Record<string, unknown> | null {
   return value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>) : null;
 }
 
+function stringOrNull(value: unknown): string | null {
+  return typeof value === "string" && value.trim() ? value.trim() : null;
+}
+
 /**
  * Whether a stored run passed, with its failure and warning counts. Null for
  * an older run without a stored endorsement. A run with an endorsement but no
- * stored counts takes its failures from the endorsement reasons.
+ * stored counts takes its failures from the endorsement reasons. The verdict
+ * is judged again on the stored developmentStatus and number of users, else
+ * on the repository's developmentStatus.
  */
-export function runStatus(latestAnalysis: unknown): RunStatusSummary | null {
+export function runStatus(latestAnalysis: unknown, repositoryDevelopmentStatus: unknown = null): RunStatusSummary | null {
   const analysis = asObject(latestAnalysis);
-  const endorsement = asObject(analysis?.endorsement);
-  if (!endorsement || typeof endorsement.passed !== "boolean" || !Array.isArray(endorsement.reasons)) return null;
+  const stored = asObject(analysis?.endorsement);
+  if (!stored || typeof stored.passed !== "boolean" || !Array.isArray(stored.reasons)) return null;
+  const endorsement = withAdoptionConditions(
+    { passed: stored.passed, reasons: stored.reasons.filter((reason): reason is string => typeof reason === "string") },
+    summaryAdoptionFacts(
+      stringOrNull(analysis?.developmentStatus) ?? stringOrNull(repositoryDevelopmentStatus),
+      typeof analysis?.declaredUserCount === "number" ? analysis.declaredUserCount : null
+    )
+  );
 
   const counts = asObject(analysis?.issueCounts);
   if (counts && isCount(counts.errors) && isCount(counts.warnings)) {

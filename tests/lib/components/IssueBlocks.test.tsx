@@ -99,7 +99,9 @@ describe("countIssues", () => {
   const results = [
     result("license", "mandatory", "fail", { title: "License" }),
     result("security", "mandatory", "fail", { title: "Security" }),
-    result("publiccode", "mandatory", "warn"),
+    result("publiccode", "mandatory", "warn", {
+      publiccode: { developmentStatus: "stable", usedBy: ["Utrecht", "Tilburg"] } as CheckResult["publiccode"],
+    }),
     result("changelog", "recommended", "fail"),
     result("maintainability", "recommended", "pass", { rating: 4.4 }),
   ];

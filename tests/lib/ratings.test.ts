@@ -5,7 +5,9 @@ import {
   criterionRating,
   documentCountRating,
   formatRating,
+  adoptionFactsOf,
   hasStoredRatings,
+  MIN_USERS_FOR_SUITABLE,
   PASSING_MAINTAINABILITY_RATING,
   PASSING_MAINTAINABILITY_STARS,
   ratingsForStoredAnalysis,
@@ -13,6 +15,7 @@ import {
   storedCategoryRatings,
   type RatingConfig,
   type RatingInput,
+  withAdoptionConditions,
 } from "@/lib/ratings";
 import { ratingToStars } from "@/lib/stars";
 import { ASPECT_MODEL, resolveCategory, type CategoryAspects } from "@/lib/aspects";
@@ -480,7 +483,12 @@ describe("computeEndorsement", () => {
 
     expect(endorsement).toEqual({
       passed: false,
-      reasons: ["Mandatory criterion fails: Open source licence", "Mandatory criterion fails: publiccode.yml"],
+      reasons: [
+        "Mandatory criterion fails: Open source licence",
+        "Mandatory criterion fails: publiccode.yml",
+        "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+        "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2",
+      ],
     });
   });
 
@@ -768,5 +776,122 @@ describe("storedCategoryRatings", () => {
 
   it("gives an empty map for something that is not a rating map", () => {
     expect(storedCategoryRatings(null)).toEqual({});
+  });
+});
+
+describe("Suitable needs a stable publiccode.yml and enough users", () => {
+  const noConfig: RatingConfig = { criterionConfigByCheckId: {} };
+  const maintainable: RatingInput = { id: "maintainability", status: "pass", rating: 4.4 };
+  function verdict(publiccode: RatingInput["publiccode"]) {
+    return computeEndorsement([maintainable, { id: "publiccode", status: "pass", publiccode }], 4, noConfig);
+  }
+
+  it("asks at least 2 organisations", () => {
+    expect(MIN_USERS_FOR_SUITABLE).toBe(2);
+  });
+
+  it("passes a stable component with 2 organisations under usedBy, whatever the case of the status", () => {
+    expect(verdict({ developmentStatus: "stable", usedBy: ["Utrecht", "Tilburg"] })).toEqual({ passed: true, reasons: [] });
+    expect(verdict({ developmentStatus: "Stable", usedBy: ["Utrecht", "Tilburg", "Delft"] }).passed).toBe(true);
+  });
+
+  it.each(["beta", "development", "concept"])("does not pass a %s component", (status) => {
+    expect(verdict({ developmentStatus: status, usedBy: ["Utrecht", "Tilburg"] })).toEqual({
+      passed: false,
+      reasons: [`publiccode.yml developmentStatus is ${status}; Suitable needs stable`],
+    });
+  });
+
+  it.each([
+    [[], "0 organisations"],
+    [["Utrecht"], "1 organisation"],
+    [["Utrecht", " utrecht "], "1 organisation"],
+  ])("does not pass with usedBy %j", (usedBy, named) => {
+    expect(verdict({ developmentStatus: "stable", usedBy })).toEqual({
+      passed: false,
+      reasons: [`publiccode.yml usedBy names ${named}; Suitable needs at least 2`],
+    });
+  });
+
+  it("gives both reasons without a publiccode.yml", () => {
+    expect(computeEndorsement([maintainable, { id: "publiccode", status: "fail" }], 4, noConfig).reasons).toEqual([
+      "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+      "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2",
+    ]);
+  });
+
+  it("does not judge a scan without the publiccode criterion on publiccode.yml", () => {
+    expect(computeEndorsement([maintainable], 4, noConfig)).toEqual({ passed: true, reasons: [] });
+    expect(adoptionFactsOf([maintainable])).toEqual({});
+  });
+});
+
+describe("withAdoptionConditions", () => {
+  it("judges an old stored Suitable verdict again", () => {
+    expect(withAdoptionConditions({ passed: true, reasons: [] }, { developmentStatus: "beta", declaredUserCount: 1 })).toEqual({
+      passed: false,
+      reasons: [
+        "publiccode.yml developmentStatus is beta; Suitable needs stable",
+        "publiccode.yml usedBy names 1 organisation; Suitable needs at least 2",
+      ],
+    });
+  });
+
+  it("keeps the other reasons and does not repeat its own", () => {
+    const stored = {
+      passed: false,
+      reasons: ["Overall rating below 2.5", "publiccode.yml usedBy names 1 organisation; Suitable needs at least 2"],
+    };
+    expect(withAdoptionConditions(stored, { developmentStatus: "stable", declaredUserCount: 1 })).toEqual(stored);
+    expect(withAdoptionConditions(stored, { developmentStatus: "stable", declaredUserCount: 2 })).toEqual({
+      passed: false,
+      reasons: ["Overall rating below 2.5"],
+    });
+  });
+
+  it("passes a verdict that failed only on the conditions once they are met", () => {
+    const stored = { passed: false, reasons: ["publiccode.yml developmentStatus is beta; Suitable needs stable"] };
+    expect(withAdoptionConditions(stored, { developmentStatus: "stable", declaredUserCount: 2 })).toEqual({
+      passed: true,
+      reasons: [],
+    });
+  });
+
+  it("shows the stored verdict when the facts were not recorded", () => {
+    const stored = { passed: true, reasons: [] };
+    expect(withAdoptionConditions(stored, {})).toBe(stored);
+    expect(withAdoptionConditions(stored, { declaredUserCount: null })).toBe(stored);
+  });
+});
+
+describe("ratingsForStoredAnalysis with an old Suitable verdict", () => {
+  const old = {
+    rating: 4.2,
+    categoryRatings: { [GOVERNANCE]: 4.2 },
+    aspectRatings: { licensing: { rating: 4.2 } },
+    endorsement: { passed: true, reasons: [] },
+  };
+
+  it("recomputes it from the stored publiccode result", () => {
+    const analysis = {
+      ...old,
+      results: [{ id: "publiccode", status: "pass", publiccode: { developmentStatus: "stable", usedBy: ["Utrecht"] } }],
+    };
+    expect(ratingsForStoredAnalysis(analysis, config()).endorsement).toEqual({
+      passed: false,
+      reasons: ["publiccode.yml usedBy names 1 organisation; Suitable needs at least 2"],
+    });
+  });
+
+  it("recomputes it from the stored developmentStatus and number of users when the results are not stored", () => {
+    const analysis = { ...old, results: [], developmentStatus: "beta", declaredUserCount: 3 };
+    expect(ratingsForStoredAnalysis(analysis, config()).endorsement).toEqual({
+      passed: false,
+      reasons: ["publiccode.yml developmentStatus is beta; Suitable needs stable"],
+    });
+  });
+
+  it("keeps it when nothing about publiccode.yml was stored", () => {
+    expect(ratingsForStoredAnalysis({ ...old, results: [] }, config()).endorsement).toEqual({ passed: true, reasons: [] });
   });
 });

@@ -94,10 +94,10 @@ describe("about docs data", () => {
 
   it("states the suitable verdict and the Maintained conditions", () => {
     const text = (id: string) => CG_STATES.find((state) => state.id === id)!.text;
-    expect(text("suitable")).toMatch(/no mandatory criterion fails.*at least 2\.5.*valid maintenance contract.*at least 4 stars/);
-    expect(text("maintained")).toMatch(
-      /developmentStatus stable, at least one user listed under usedBy in publiccode\.yml, and a valid SLA with a maintainer, on the VNG model contract/
+    expect(text("suitable")).toMatch(
+      /no mandatory criterion fails.*at least 2\.5.*valid maintenance contract.*at least 4 stars.*developmentStatus is stable and at least 2 organisations are listed under usedBy/
     );
+    expect(text("maintained")).toMatch(/^Suitable, and a valid SLA with a maintainer, on the VNG model contract/);
     expect(text("maintained")).toMatch(/stays Maintained during the term/);
     expect(text("retired")).toMatch(/history stays visible/);
   });
@@ -116,20 +116,22 @@ describe("about docs data", () => {
     expect(LIFECYCLE_RELATION.flatMap((row) => row.statuses)).toEqual(names);
   });
 
-  it("lets only a stable component be Maintained", () => {
+  it("lets only a stable component be suitable or Maintained", () => {
     const transition = (key: string) => CG_TRANSITIONS.find((candidate) => transitionKey(candidate) === key)!;
-    expect(transition("suitable>maintained").text).toMatch(/^The software is stable/);
-    expect(transition("maintained>suitable").text).toMatch(/SLA ended.*fewer organisations.*from stable to beta, development or concept.*fix term passed/);
+    expect(transition("suitable>maintained").text).toMatch(/^There is a valid SLA/);
+    expect(transition("maintained>suitable").text).toMatch(/SLA ended, or a fix term passed/);
     expect(transition("maintained>measured").text).toMatch(/verdict no longer holds/);
     expect(transition("any>retired").text).toMatch(/developmentStatus becomes obsolete/);
     const effect = (status: string) => LIFECYCLE_RELATION.find((row) => row.statuses.includes(status))!.effect;
-    for (const status of ["concept", "development", "beta"]) expect(effect(status), status).toMatch(/Cannot be Maintained/);
-    expect(effect("stable")).toMatch(/Only a stable component can be Maintained/);
+    for (const status of ["concept", "development", "beta"]) {
+      expect(effect(status), status).toMatch(/Cannot be suitable for Common Ground or Maintained/);
+    }
+    expect(effect("stable")).toMatch(/Only a stable component can be suitable for Common Ground or Maintained/);
   });
 
-  it("moves a Maintained component that leaves stable back to suitable, or to retired when obsolete", () => {
+  it("moves a Maintained component that leaves stable to measured, or to retired when obsolete", () => {
     expect(LEAVING_STABLE).toEqual([
-      { to: ["beta", "development", "concept"], state: "suitable" },
+      { to: ["beta", "development", "concept"], state: "measured" },
       { to: ["obsolete"], state: "retired" },
     ]);
     const others = COMPONENT_STATES.map((state) => state.id).filter((id) => id !== "stable");
@@ -430,11 +432,11 @@ describe("AboutPage", () => {
 
     const relation = document.getElementById("lifecycles-relation")!;
     expect(within(relation).getByText(/A stable component can still be only suitable, for example without a valid SLA\. An obsolete component leads to retired\./)).toBeTruthy();
-    expect(within(relation).getByText(/only a stable component can be Maintained/)).toBeTruthy();
+    expect(within(relation).getByText(/only a stable component can be suitable for Common Ground or Maintained/)).toBeTruthy();
     expect(within(relation).queryByText(/open question/)).toBeNull();
     const leaving = within(relation).getByRole("table", { name: "When a Maintained component leaves stable" });
     expect(within(leaving).getAllByRole("row").slice(1).map((row) => row.textContent)).toEqual([
-      "beta, development, conceptSuitable for Common Ground",
+      "beta, development, conceptMeasured",
       "obsoleteRetired",
     ]);
     expect(within(relation).getAllByRole("row")).toHaveLength(LIFECYCLE_RELATION.length + 1 + LEAVING_STABLE.length + 1);

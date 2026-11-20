@@ -67,7 +67,7 @@ describe("tools and models data", () => {
 describe("what the checker reports", () => {
   afterEach(() => cleanup());
 
-  it("explains the three systems and the four conditions of the verdict", () => {
+  it("explains the three systems and the six conditions of the verdict", () => {
     render(<ToolsAndModelsPage />);
 
     const section = document.getElementById("three-systems")!;
@@ -76,7 +76,7 @@ describe("what the checker reports", () => {
     }
     expect(
       within(section).getByText(
-        /no mandatory criterion fails, the overall rating is at least 2\.5, it has a valid maintenance contract, and the maintainability estimate is at least 4 stars \(a rating of 3\.5 or more\)/
+        /no mandatory criterion fails, the overall rating is at least 2\.5, it has a valid maintenance contract, the maintainability estimate is at least 4 stars \(a rating of 3\.5 or more\), publiccode\.yml declares developmentStatus stable, and it names at least 2 organisations under usedBy/
       )
     ).toBeTruthy();
     expect(within(section).getByText(/most components will not reach 4 stars/)).toBeTruthy();

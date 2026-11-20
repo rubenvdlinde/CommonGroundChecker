@@ -40,7 +40,7 @@ describe("UsageHistoryChart", () => {
     render(<UsageHistoryChart analyses={analyses} minUsers={2} />);
 
     expect(screen.getByText("Users declared in publiccode.yml over time")).toBeTruthy();
-    expect(screen.getByText(/Latest: 8. Maintained asks for 2./)).toBeTruthy();
+    expect(screen.getByText(/Latest: 8. Suitable for Common Ground asks for 2./)).toBeTruthy();
     expect(screen.getByText("minimum 2")).toBeTruthy();
     expect(screen.getAllByRole("row")).toHaveLength(3);
   });

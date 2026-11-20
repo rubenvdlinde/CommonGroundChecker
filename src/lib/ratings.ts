@@ -331,7 +331,8 @@ export function adoptionReasons(facts: AdoptionFacts): string[] {
   return reasons;
 }
 
-function isAdoptionReason(reason: string): boolean {
+/** Whether a verdict reason is one of the publiccode.yml conditions. */
+export function isAdoptionReason(reason: string): boolean {
   return reason.startsWith("publiccode.yml developmentStatus is ") || reason.startsWith("publiccode.yml usedBy names ");
 }
 
@@ -347,6 +348,16 @@ export function withAdoptionConditions(endorsement: Endorsement, facts: Adoption
   const kept = endorsement.reasons.filter((reason) => !isAdoptionReason(reason));
   const otherwisePassed = endorsement.passed || (kept.length === 0 && endorsement.reasons.length > 0);
   return { passed: otherwisePassed && added.length === 0, reasons: [...kept, ...added] };
+}
+
+/**
+ * The publiccode.yml facts stored with an analysis summary, which has no
+ * results. A null developmentStatus means "not declared" only next to a
+ * recorded number of users; otherwise it was not recorded.
+ */
+export function summaryAdoptionFacts(developmentStatus: string | null, declaredUserCount: number | null): AdoptionFacts {
+  if (declaredUserCount === null) return developmentStatus === null ? {} : { developmentStatus };
+  return { developmentStatus, declaredUserCount };
 }
 
 /** The publiccode.yml facts of a stored analysis: from its results, else from the fields stored next to them. */

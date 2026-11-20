@@ -242,6 +242,22 @@ describe("HistoryPageClient", () => {
     expect(footerOf(card)).toEqual(["Suitable", "Version: 1.2.3"]);
   });
 
+  it("judges an old Suitable verdict again on the stored developmentStatus and users", () => {
+    const card = renderCard({
+      latestAnalysis: {
+        checkedAt,
+        score: 90,
+        rating: 4.2,
+        endorsement: { passed: true, reasons: [] },
+        issueCounts: { errors: 0, warnings: 0 },
+        developmentStatus: "beta",
+        declaredUserCount: 0,
+      },
+    });
+
+    expect(footerOf(card)[0]).toBe("Not yet suitable");
+  });
+
   it("shows the warnings after Passed", () => {
     const card = renderCard({
       latestAnalysis: {
@@ -380,7 +396,6 @@ describe("HistoryPageClient status filter", () => {
         query="zaak"
         repositories={[maintained, measured, listed]}
         basisset={basisset}
-        minUsers={1}
         today="2026-11-19"
         {...props}
       />
@@ -480,6 +495,24 @@ describe("HistoryPageClient version chip", () => {
 
     expect(screen.getByText("Version: v1.31.2")).toBeTruthy();
     expect(screen.queryByText("Version: v1.30.0")).toBeNull();
+  });
+
+  it("shows the branch and short commit for a branch scan", () => {
+    renderVersionCards([
+      versionSummary({
+        version: "v2.1.0",
+        latestAnalysis: {
+          checkedAt: "2026-05-06T00:00:00Z",
+          score: 80,
+          version: "v2.1.0",
+          scannedRef: "main",
+          scannedRefKind: "branch",
+          scannedCommit: "4577ea7d0c1e",
+        } as RepoSummary["latestAnalysis"],
+      }),
+    ]);
+
+    expect(screen.getByText("Version: main (4577ea7)")).toBeTruthy();
   });
 
   it("falls back to the repository's version", () => {

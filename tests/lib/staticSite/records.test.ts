@@ -20,7 +20,6 @@ function input(overrides: Partial<ScanInput> = {}): ScanInput {
     config: { url: "https://github.com/open-zaak/open-zaak", basisset: true, hints: { helm: ["charts"] } },
     report: report(),
     slas: [sla],
-    minUsers: 1,
     durationSeconds: 12.3,
     checkIntervalHours: 24,
     ...overrides,

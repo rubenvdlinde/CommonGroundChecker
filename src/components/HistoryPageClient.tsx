@@ -1,6 +1,7 @@
 "use client";
 
 import { formatDateTime } from "@/lib/dates";
+import { versionLabel } from "@/lib/scanRef";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -116,12 +117,19 @@ export function filterLabel(
   return parts.join(" ");
 }
 
-type LatestAnalysis = { checkedAt: string; score: number; version?: string | null } | null;
+type LatestAnalysis = {
+  checkedAt: string;
+  score: number;
+  version?: string | null;
+  scannedRef?: string | null;
+  scannedRefKind?: string | null;
+  scannedCommit?: string | null;
+} | null;
 
-/** Version shown on a card: the latest analysis's version, else the repository's. */
+/** Version shown on a card: the scanned branch and commit, else the latest analysis's version, else the repository's. */
 function cardVersion(repository: RepoSummary): string | null {
   const latest = repository.latestAnalysis as LatestAnalysis;
-  return latest?.version || repository.version || null;
+  return versionLabel(latest?.version || repository.version, latest ?? {});
 }
 
 const sortOptions: Array<{ label: string; sort: SortKey; direction: SortDirection }> = [
@@ -434,7 +442,7 @@ export default function HistoryPageClient({
               const latest = repository.latestAnalysis as { checkedAt: string; score: number; rating?: unknown; version?: string | null } | null;
               const fullName = `${repository.owner}/${repository.name}`;
               const displayName = repository.displayName ?? fullName;
-              const status = runStatus(latest);
+              const status = runStatus(latest, repository.developmentStatus);
               const version = cardVersion(repository);
 
               const key = fullName;

@@ -7,6 +7,7 @@ import {
   pickNewestStableSemverTag,
   resolveScanRef,
   ScanRefError,
+  versionLabel,
 } from "@/lib/scanRef";
 import type { RepoContext, RepositoryProvider, RepositoryRelease } from "@/lib/providers/types";
 
@@ -280,5 +281,20 @@ describe("formatScanned", () => {
     expect(formatScanned("main", "default-branch-fallback", null)).toBe(
       "main (default branch, no release found)"
     );
+  });
+});
+
+describe("versionLabel", () => {
+  it("shows a scanned branch with its short commit", () => {
+    const scanned = { scannedRef: "main", scannedRefKind: "branch", scannedCommit: "4577ea7d0c1e" };
+    expect(versionLabel("2.1.0", scanned)).toBe("main (4577ea7)");
+    expect(versionLabel("2.1.0", { ...scanned, scannedRefKind: "default-branch-fallback" })).toBe("main (4577ea7)");
+    expect(versionLabel(null, { ...scanned, scannedCommit: null })).toBe("main");
+  });
+
+  it("keeps the version for a release or a tag", () => {
+    expect(versionLabel("1.31.0", { scannedRef: "1.31.0", scannedRefKind: "release", scannedCommit: "abc1234" })).toBe("1.31.0");
+    expect(versionLabel("v2", { scannedRef: "v2", scannedRefKind: "tag", scannedCommit: "abc1234" })).toBe("v2");
+    expect(versionLabel(null, {})).toBeNull();
   });
 });

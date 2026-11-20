@@ -19,7 +19,6 @@ function repository(url: string, users: string[], checkedAts: string[]) {
         config: { url },
         report: report({ repoUrl: url, owner: path.owner, repo: path.repo, checkedAt, results: [publiccodeResult(users)] }),
         slas: [],
-        minUsers: 1,
         durationSeconds: 1,
         checkIntervalHours: 24,
       },

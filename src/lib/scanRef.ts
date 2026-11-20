@@ -264,3 +264,20 @@ export function formatScanned(
   const label = formatScannedRef(ref, kind);
   return commit ? `${label} @ ${commit.slice(0, 7)}` : label;
 }
+
+const BRANCH_KINDS: ReadonlySet<string> = new Set(["branch", "default-branch", "default-branch-fallback"]);
+
+/**
+ * The version a chip shows: "main (4577ea7)" when a branch was scanned, since a
+ * release version would name other code; otherwise the version.
+ */
+export function versionLabel(
+  version: string | null | undefined,
+  scanned: { scannedRef?: string | null; scannedRefKind?: string | null; scannedCommit?: string | null }
+): string | null {
+  const { scannedRef, scannedRefKind, scannedCommit } = scanned;
+  if (scannedRef && scannedRefKind && BRANCH_KINDS.has(scannedRefKind)) {
+    return scannedCommit ? `${scannedRef} (${scannedCommit.slice(0, 7)})` : scannedRef;
+  }
+  return version || null;
+}

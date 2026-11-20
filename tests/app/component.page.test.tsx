@@ -68,7 +68,17 @@ const older = {
 describe("RepoHistoryPage", () => {
   afterEach(() => {
     cleanup();
-    delete process.env.MIN_USERS;
+  });
+
+  it("shows a branch scan as the branch and its short commit in the Version chip", async () => {
+    getAdminScoring.mockRejectedValue(new Error("offline"));
+    const onBranch = { ...latest, scannedRef: "main", scannedRefKind: "branch", scannedCommit: "4577ea7d0c1e" };
+    getRepoHistory.mockResolvedValue({ repository, analyses: [older, onBranch] });
+
+    render(await RepoHistoryPage({ params: Promise.resolve({ owner: "org", repo: "repo" }) }));
+
+    const summary = screen.getByRole("region", { name: "Latest run" });
+    expect(within(summary).getByText("Version: main (4577ea7)")).toBeTruthy();
   });
 
   it("shows the latest run in full with the repository details, the graph and every run", async () => {
@@ -186,7 +196,6 @@ describe("RepoHistoryPage", () => {
   });
 
   it("shows Maintained above Suitable with the reasons, and the users over time", async () => {
-    process.env.MIN_USERS = "3";
     getAdminScoring.mockRejectedValue(new Error("offline"));
     getRepoHistory.mockResolvedValue({
       repository: { id: "repo-id", owner: "org", name: "repo", metadata: { topics: [], stars: 0, forks: 0 } },
@@ -207,9 +216,10 @@ describe("RepoHistoryPage", () => {
     const levels = screen.getByRole("list", { name: "Levels" });
     expect(levels.textContent?.indexOf("Maintained")).toBeLessThan(levels.textContent?.indexOf("Suitable for Common Ground") ?? 0);
     const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
-    expect(reasons.textContent).toContain("1 of 3 users declared in publiccode.yml");
+    expect(reasons.textContent).toContain("Not yet suitable for Common Ground");
     expect(reasons.textContent).toContain("No SLA");
-    expect(reasons.textContent).toContain("development status is beta, only a stable component can be Maintained");
+    const notSuitable = within(levels).getByRole("list", { name: "Why it is not yet suitable" });
+    expect(notSuitable.textContent).toContain("publiccode.yml developmentStatus is beta; Suitable needs stable");
     expect(screen.getByText("Users declared in publiccode.yml over time")).toBeTruthy();
 
     const status = screen.getByRole("region", { name: "Common Ground status" });

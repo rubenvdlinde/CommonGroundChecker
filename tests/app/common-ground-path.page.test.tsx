@@ -77,12 +77,12 @@ describe("path docs data", () => {
     expect(version.parts?.[0].paragraphs.join(" ")).toMatch(/scannedRef.*scannedCommit/);
   });
 
-  it("asks a stable developmentStatus for Maintained wherever its conditions are listed", () => {
+  it("asks a stable developmentStatus and 2 users for Suitable wherever its conditions are listed", () => {
     const maintained = PATH_SECTIONS.find((section) => section.id === "levels")!.parts!.find((part) => part.title === "Maintained")!;
-    expect(maintained.paragraphs[0]).toMatch(/developmentStatus in publiccode\.yml is stable/);
-    expect(maintained.paragraphs[0]).toMatch(/A component that leaves stable leaves Maintained and goes back to Suitable for Common Ground/);
-    expect(PATH_STEPS.find((step) => step.includes("now Maintained"))).toMatch(/stable in publiccode\.yml/);
-    expect(AUDIENCES.find((audience) => audience.id === "buyer")!.text).toMatch(/Maintained adds that the software is stable/);
+    expect(maintained.paragraphs[0]).toMatch(/Stable and at least 2 users already come with Suitable/);
+    expect(maintained.paragraphs[0]).toMatch(/A component that leaves stable is no longer suitable, so it leaves Maintained too/);
+    expect(PATH_STEPS.find((step) => step.includes("now suitable"))).toMatch(/stable in publiccode\.yml and list at least 2 organisations/);
+    expect(AUDIENCES.find((audience) => audience.id === "buyer")!.text).toMatch(/the software is stable, at least 2 organisations use it/);
   });
 
   it("counts declared users under usedBy and asks no confirmation", () => {
@@ -185,18 +185,19 @@ describe("CommonGroundPathPage", () => {
     expect(screen.getByRole("heading", { level: 2, name: "Who decides that a component is Maintained" })).toBeTruthy();
   });
 
-  it("names the four verdict conditions and the two levels", () => {
+  it("names the six verdict conditions and the two levels", () => {
     render(<CommonGroundPathPage />);
 
     const verdict = document.getElementById("verdict")!;
-    expect(within(verdict).getAllByRole("listitem")).toHaveLength(4);
+    expect(within(verdict).getAllByRole("listitem")).toHaveLength(6);
+    expect(within(verdict).getByText(/publiccode\.yml declares developmentStatus stable/)).toBeTruthy();
+    expect(within(verdict).getByText(/publiccode\.yml names at least 2 organisations under usedBy/)).toBeTruthy();
     expect(within(verdict).getByText(/at least 4 stars, the level at which SIG and TÜViT certify/)).toBeTruthy();
     expect(within(verdict).getByText(/The checker does not certify\..*The ALV papers do not ask for one\./)).toBeTruthy();
     expect(within(verdict).getByText(/maintenance\.type: contract/)).toBeTruthy();
 
     const levels = document.getElementById("levels")!;
-    expect(within(levels).getByText(/at least one organisation is listed as a user under usedBy in publiccode\.yml, and there is a valid SLA with a maintainer, on the VNG model contract/)).toBeTruthy();
-    expect(within(levels).getByText(/proven in practice by one or more municipalities/)).toBeTruthy();
+    expect(within(levels).getByText(/A component is Maintained when it is suitable and there is a valid SLA with a maintainer, on the VNG model contract/)).toBeTruthy();
     expect(levels.textContent).not.toMatch(/is a proposal/);
   });
 

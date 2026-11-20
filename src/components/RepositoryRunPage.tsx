@@ -1,4 +1,5 @@
 import { formatDateTime } from "@/lib/dates";
+import { versionLabel } from "@/lib/scanRef";
 import Link from "next/link";
 import CategoryRatings from "@/components/CategoryRatings";
 import CriteriaResults from "@/components/CriteriaResults";
@@ -182,7 +183,7 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <RatingSummary rating={selected.rating} endorsement={selected.endorsement} score={selected.score} />
             <span className="inline-flex text-xs font-semibold px-2 py-0.5 rounded-full border border-purple-200 text-purple-700 bg-purple-50">
-              Version: {selected.version ?? repoMeta.version ?? "unknown"}
+              Version: {versionLabel(selected.version ?? repoMeta.version, selected) ?? "unknown"}
             </span>
           </div>
         </section>

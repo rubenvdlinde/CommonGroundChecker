@@ -96,7 +96,7 @@ export default function UsageHistoryChart({ analyses, minUsers }: UsageHistoryCh
   const last = points[points.length - 1];
   const description = `Users declared in publiccode.yml in ${points.length} scans from ${formatDay(first.checkedAt)} to ${formatDay(
     last.checkedAt
-  )}. Latest: ${last.declared}. Maintained asks for ${minUsers}.`;
+  )}. Latest: ${last.declared}. Suitable for Common Ground asks for ${minUsers}.`;
   const linePath = points
     .map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)},${point.y.toFixed(1)}`)
     .join(" ");
