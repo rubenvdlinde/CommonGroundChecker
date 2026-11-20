@@ -91,7 +91,7 @@ export const MEASURING_STICK_PARTS: MeasuringStickPart[] = [
       },
       { text: "The maintainer meets the KPIs on response and fix times." },
     ],
-    closing: ["The SLA terms, the response and fix times and the Maintained level are in the setup below."],
+    closing: ["The SLA terms and the response and fix times follow below. The Maintained level is under levels and lifecycle."],
     links: [
       { href: "#setup-maintenance", text: "What an SLA covers, with the response and fix times" },
       { href: "#setup-levels", text: "Suitable for Common Ground and Maintained" },

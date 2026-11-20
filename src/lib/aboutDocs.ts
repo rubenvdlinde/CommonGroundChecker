@@ -7,6 +7,7 @@ import {
   type PathStatus,
   type PathTable,
 } from "./pathDocs";
+import { STANDARD_FOR_PUBLIC_CODE_URL, sfpcNotMeasuredList } from "./standardForPublicCode";
 
 /** The Common Ground standard v1.0, put to the VNG autumn ALV of 11 December 2026. */
 export const ALV_STANDARD_URL = "https://vng.nl/sites/default/files/2026-11/08b-bijlage-2-notitie-common-ground-standaard.pdf";
@@ -16,6 +17,16 @@ export const ALV_AGENDA_URL = "https://vng.nl/artikelen/agenda-en-stukken-najaar
 /** The explanation of the Common Ground proposal to the same ALV. */
 export const ALV_EXPLANATION_URL =
   "https://vng.nl/sites/default/files/2026-11/08b-bijlage-1-toelichting-op-voorstel-common-ground.pdf";
+
+/** Hugo ter Doest's original Component Checker, with his proposal in the README. */
+export const HUGO_REPOSITORY_URL = "https://github.com/Hugo-ter-Doest/CommonGroundChecker";
+
+/** The SIG quality models, as SIG publishes them. */
+export const SIG_QUALITY_MODELS_URL =
+  "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md";
+
+/** The publiccode.yml standard. */
+export const PUBLICCODE_YML_STANDARD_URL = "https://yml.publiccode.tools/";
 
 /** The setup behind the checker, kept in issue #54. */
 export const SETUP_ISSUE_URL = "https://github.com/Hugo-ter-Doest/CommonGroundChecker/issues/54";
@@ -167,19 +178,24 @@ export interface ChecklistSource {
   links?: { href: string; text: string }[];
 }
 
-/** The three sources the checklist rests on. */
+/** The four sources the checklist rests on. */
 export const CHECKLIST_SOURCES: ChecklistSource[] = [
   {
     id: "component-checker",
     title: "Hugo ter Doest's proposal for the original Component Checker",
     text: "It sets what a repository contains: a licence, publiccode.yml, documentation, tests, Docker, Helm, OpenAPI and the other criteria.",
     lines: ["Hugo ter Doest's proposal", "What a repository contains"],
+    links: [
+      { href: `${HUGO_REPOSITORY_URL}#readme`, text: "Hugo ter Doest's Component Checker and its README" },
+      { href: SETUP_ISSUE_URL, text: "The setup behind the checker (issue #54)" },
+    ],
   },
   {
     id: "sig",
     title: "The SIG ratings, as the Common Ground programme currently uses them",
     text: "A component must be ready for certification by SIG and TÜViT. That is why suitable for Common Ground asks at least 4 stars for maintainability, by the estimate. Ready is not certified: certification is a manual assessment by SIG and TÜViT, and the checker only estimates whether a component looks ready for it. Whether adoption into Common Ground needs a SIG certificate is up to VNG as regievoerder. The ALV papers do not ask for one.",
     lines: ["The SIG ratings", "Ready for certification"],
+    links: [{ href: SIG_QUALITY_MODELS_URL, text: "The SIG quality models" }],
   },
   {
     id: "alv",
@@ -191,6 +207,13 @@ export const CHECKLIST_SOURCES: ChecklistSource[] = [
       { href: ALV_STANDARD_URL, text: "The Common Ground standard v1.0 (PDF)" },
       { href: ALV_AGENDA_URL, text: "Agenda and papers of the ALV of 11 December 2026" },
     ],
+  },
+  {
+    id: "fpc",
+    title: "The Standard for Public Code of the Foundation for Public Code",
+    text: `It sets what good public code is: code in the open, an open licence, documentation, open standards, continuous integration and versions. Many criteria of the checklist measure a part of one of its criteria. The checker does not measure ${sfpcNotMeasuredList()}.`,
+    lines: ["Standard for Public Code", "Foundation for Public Code"],
+    links: [{ href: STANDARD_FOR_PUBLIC_CODE_URL, text: "The Standard for Public Code" }],
   },
 ];
 

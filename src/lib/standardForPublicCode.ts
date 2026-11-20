@@ -81,3 +81,9 @@ export function findSfpcCriterion(id: SfpcCriterionId): SfpcCriterion {
   if (!criterion) throw new Error(`no Standard for Public Code criterion ${id}`);
   return criterion;
 }
+
+/** The titles of the criteria the checker does not measure, as a sentence part: "A", "B" and "C". */
+export function sfpcNotMeasuredList(): string {
+  const titles = SFPC_CRITERIA.filter((criterion) => criterion.notMeasured).map((criterion) => `"${criterion.title}"`);
+  return titles.length < 2 ? titles.join("") : `${titles.slice(0, -1).join(", ")} and ${titles[titles.length - 1]}`;
+}
