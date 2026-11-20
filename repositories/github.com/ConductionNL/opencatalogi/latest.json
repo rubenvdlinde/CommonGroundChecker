@@ -19,21 +19,23 @@
     "source": "release",
     "detail": "latest release tag: v2.1.0"
    },
-   "displayName": null,
-   "shortDescription": null,
-   "logoUrl": null,
-   "developmentStatus": null,
-   "maintenanceType": null,
-   "maintainers": []
+   "displayName": "OpenCatalogi",
+   "shortDescription": "Framework voor gefedereerde catalogi in Nextcloud",
+   "logoUrl": "https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/img/app-store.svg",
+   "developmentStatus": "stable",
+   "maintenanceType": "contract",
+   "maintainers": [
+    "Conduction Development Team"
+   ]
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T06:09:35.298Z",
+  "lastCheckedAt": "2026-11-20T06:22:46.021Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:55:15.837Z",
-  "updatedAt": "2026-11-20T06:09:35.298Z",
+  "updatedAt": "2026-11-20T06:22:46.021Z",
   "basisset": false,
-  "scanRef": null,
+  "scanRef": "development",
   "isRegister": false,
   "slaLabels": [],
   "retired": null,
@@ -46,24 +48,24 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T06-09-35-298Z",
+  "id": "2026-11-20T06-22-46-021Z",
   "repoId": "github.com/ConductionNL/opencatalogi",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T06:09:35.298Z",
-  "createdAt": "2026-11-20T06:09:35.298Z",
+  "checkedAt": "2026-11-20T06:22:46.021Z",
+  "createdAt": "2026-11-20T06:22:46.021Z",
   "version": "v2.1.0",
   "checklistVersion": "2026.2",
-  "scannedRef": "v0.7.34",
-  "scannedRefKind": "declared-version",
-  "scannedCommit": "a585b5708fa9329e3fbd4f989c03bc7f52d7e22a",
-  "score": 57,
-  "rating": 2.9,
+  "scannedRef": "development",
+  "scannedRefKind": "branch",
+  "scannedCommit": "9b300d26542f3e8193dd268834eee771d7e680de",
+  "score": 81,
+  "rating": 4.4,
   "categoryRatings": {
-   "Governance": 3.9,
-   "Security": 1.8,
-   "Architecture": 3,
-   "Software Quality": 2.9,
-   "Deployment & Operations": 3.3
+   "Governance": 5.2,
+   "Security": 3,
+   "Architecture": 5.5,
+   "Software Quality": 4.7,
+   "Deployment & Operations": 4.3
   },
   "aspectRatings": {
    "licensing": {
@@ -73,7 +75,7 @@
     "rating": 4.3
    },
    "maintenance": {
-    "rating": 0.5
+    "rating": 5.5
    },
    "community-documents": {
     "rating": 5.5,
@@ -111,38 +113,38 @@
     "rating": 0.5
    },
    "supply-chain": {
-    "rating": 3
+    "rating": 5.5
    },
    "api": {
-    "rating": 3
+    "rating": 5.5
    },
    "layering": {
-    "rating": 3
+    "rating": 5.5
    },
    "standards": {
     "rating": null
    },
    "analysability": {
-    "rating": 2.5
+    "rating": 4.4
    },
    "modifiability": {
-    "rating": 3.2
+    "rating": 4.8
    },
    "testability": {
-    "rating": 1.4
+    "rating": 4.1
    },
    "modularity": {
-    "rating": 2.8
+    "rating": 4.7
    },
    "reusability": {
-    "rating": 3.2
+    "rating": 4.7
    },
    "testing": {
-    "rating": 4.3
+    "rating": 5.5
    },
    "containerisation": {
-    "rating": 1,
-    "found": 0,
+    "rating": 3,
+    "found": 2,
     "expected": 3
    },
    "release-management": {
@@ -152,19 +154,13 @@
   "endorsement": {
    "passed": false,
    "reasons": [
-    "Mandatory criterion fails: Docker support",
     "Mandatory criterion fails: Available Docker image",
-    "Mandatory criterion fails: Cyclomatic complexity (Lizard)",
-    "Mandatory criterion fails: OWASP Secure Coding",
-    "Mandatory criterion fails: API Design Rules",
-    "Mandatory criterion fails: Helm chart (Kubernetes)",
-    "docs/static/oas/publiccode.yaml has no maintenance section, so there is no maintenance contract.",
-    "Maintainability below 4 stars (2.50)"
+    "Mandatory criterion fails: OWASP Secure Coding"
    ]
   },
   "issueCounts": {
-   "errors": 6,
-   "warnings": 6
+   "errors": 2,
+   "warnings": 1
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -175,22 +171,22 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 43,958 lines of code, 3,421 functions, 3,358 files analyzed.",
+    "message": "Code metrics: 161,736 lines of code, 16,493 functions, 16,441 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
-     "composer-setup.php",
+     "docker/demo/provision.sh",
+     "docker/entrypoint-hooks/before-starting/10-image-apps.sh",
      "docker/init-ubuntu.sh",
      "docs/docusaurus.config.js",
      "docs/sidebars.js",
      "docs/src/components/HomepageFeatures/index.js",
      "docs/src/pages/index.js",
-     "eslint.config.js",
-     "fix-phpcs.php",
+     "eslint.config.mjs",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 43,958",
-     "Function count: 3,421",
-     "Files analyzed: 3,358"
+     "Total lines of code (NLOC): 161,736",
+     "Function count: 16,493",
+     "Files analyzed: 16,441"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -254,51 +250,186 @@
     "title": "publiccode.yml Metadata File",
     "description": "A publiccode.yml file must be present in the repository root.",
     "status": "warn",
-    "message": "publiccode.yml found but is missing required fields: publiccodeYmlVersion, name, url, legal.",
+    "message": "publiccode.yml is valid. Recommended fields missing: nl.",
     "evidence": [
-     "docs/static/oas/publiccode.yaml"
+     "publiccode.yml"
     ],
     "referenceUrl": "https://standard.publiccode.net/criteria/",
     "publiccode": {
-     "publiccodeYmlVersion": null,
-     "name": null,
+     "publiccodeYmlVersion": "0.4",
+     "name": "OpenCatalogi",
      "applicationSuite": null,
-     "url": null,
-     "landingURL": null,
+     "url": "https://github.com/ConductionNL/opencatalogi",
+     "landingURL": "https://opencatalogi.conduction.nl/",
      "isBasedOn": [],
-     "softwareVersion": null,
-     "releaseDate": null,
-     "logo": null,
-     "platforms": [],
-     "categories": [],
+     "softwareVersion": "2.1.0",
+     "releaseDate": "2026-09-06",
+     "logo": "https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/img/app-store.svg",
+     "platforms": [
+      "web"
+     ],
+     "categories": [
+      "content-management",
+      "knowledge-management"
+     ],
      "usedBy": [],
      "roadmap": null,
-     "developmentStatus": null,
-     "softwareType": null,
-     "supports": [],
+     "developmentStatus": "stable",
+     "softwareType": "addon",
+     "supports": [
+      "https://commonground.nl/cms/view/54476261/5-lagen-model#service"
+     ],
      "intendedAudience": {
-      "countries": [],
+      "countries": [
+       "nl"
+      ],
       "unsupportedCountries": [],
-      "scope": []
+      "scope": [
+       "government"
+      ]
      },
-     "descriptions": [],
+     "descriptions": [
+      {
+       "language": "nl",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Framework voor gefedereerde catalogi in Nextcloud",
+       "longDescription": "OpenCatalogi biedt een framework waarmee gefedereerde catalogi samenwerken\nin een open data ecosysteem. De app synchroniseert bronnen met meerdere\ncatalogi en ondersteunt automatische publicatie van open data conform de\nDIWOO-standaard.\nConduction onderhoudt dit component in opdracht van Gemeente Rotterdam.\nDe app is te installeren via de Nextcloud App Store:\nhttps://apps.nextcloud.com/apps/opencatalogi",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Gefedereerde catalogi",
+        "Automatische publicatie van open data",
+        "DIWOO-sitemaps voor WOO-documenten",
+        "Integratie met OpenRegister",
+        "Publicaties met metadata en bijlagen",
+        "Federatieve zoekfunctie over organisaties heen",
+        "Gefacetteerd zoeken in publicaties",
+        "Publieke zoek-API voor externe frontends",
+        "Pagina's, menu's en thema's voor de publieke frontend",
+        "Woo-informatiecategorieën voor publicaties"
+       ],
+       "screenshots": [
+        "https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/img/screenshot-dashboard.png",
+        "https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/img/screenshot-catalog.png",
+        "https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/img/screenshot-publications.png"
+       ],
+       "videos": [],
+       "awards": []
+      },
+      {
+       "language": "en",
+       "localisedName": null,
+       "genericName": null,
+       "shortDescription": "Framework for federated catalogs in Nextcloud",
+       "longDescription": "OpenCatalogi provides a framework for federated catalogs to work together\nin an open data ecosystem. The app synchronises sources with multiple\ncatalogs and supports automatic publication of open data following the\nDIWOO metadata standard.\nConduction maintains this component on behalf of the Municipality of Rotterdam.\nThe app can be installed from the Nextcloud App Store:\nhttps://apps.nextcloud.com/apps/opencatalogi",
+       "documentation": null,
+       "apiDocumentation": null,
+       "features": [
+        "Federated catalogs",
+        "Automatic open data publication",
+        "DIWOO sitemaps for WOO documents",
+        "OpenRegister integration",
+        "Publications with metadata and attachments",
+        "Federated search across organisations",
+        "Faceted search over publications",
+        "Public search API for external frontends",
+        "Pages, menus and themes for the public frontend",
+        "Woo information categories for publications"
+       ],
+       "screenshots": [
+        "https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/img/screenshot-dashboard.png",
+        "https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/img/screenshot-catalog.png",
+        "https://raw.githubusercontent.com/ConductionNL/opencatalogi/main/img/screenshot-publications.png"
+       ],
+       "videos": [],
+       "awards": []
+      }
+     ],
      "legal": {
-      "license": null,
-      "mainCopyrightOwner": null,
+      "license": "EUPL-1.2",
+      "mainCopyrightOwner": "Conduction B.V.",
       "repoOwner": null,
       "authorsFile": null
      },
      "maintenance": {
-      "type": null,
-      "contractors": [],
-      "contacts": []
+      "type": "contract",
+      "contractors": [
+       {
+        "name": "Conduction B.V.",
+        "until": "2026-12-31",
+        "email": "info@conduction.nl",
+        "website": "https://conduction.nl"
+       }
+      ],
+      "contacts": [
+       {
+        "name": "Conduction Development Team",
+        "email": "info@conduction.nl",
+        "phone": null,
+        "affiliation": "Conduction B.V."
+       }
+      ]
      },
      "localisation": {
-      "localisationReady": null,
-      "availableLanguages": []
+      "localisationReady": true,
+      "availableLanguages": [
+       "be",
+       "bg",
+       "bs",
+       "ca",
+       "cs",
+       "da",
+       "de",
+       "el",
+       "en",
+       "es",
+       "et",
+       "fi",
+       "fr",
+       "ga",
+       "hr",
+       "hu",
+       "is",
+       "it",
+       "lb",
+       "lt",
+       "lv",
+       "mk",
+       "mt",
+       "nb",
+       "nl",
+       "pl",
+       "pt",
+       "rm",
+       "ro",
+       "ru",
+       "sk",
+       "sl",
+       "sq",
+       "sr",
+       "sv",
+       "tr",
+       "uk"
+      ]
      },
      "dependsOn": {
-      "open": [],
+      "open": [
+       {
+        "name": "Nextcloud",
+        "versionMin": "32",
+        "versionMax": "35",
+        "version": null,
+        "optional": null
+       },
+       {
+        "name": "OpenRegister",
+        "versionMin": "0.1.0",
+        "versionMax": null,
+        "version": null,
+        "optional": null
+       }
+      ],
       "proprietary": [],
       "hardware": []
      },
@@ -313,26 +444,29 @@
     "title": "Maintenance contract",
     "description": "The component has a valid maintenance contract: publiccode.yml names a contractor whose contract has not ended.",
     "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#section-maintenance",
-    "status": "fail",
-    "message": "docs/static/oas/publiccode.yaml has no maintenance section, so there is no maintenance contract.",
+    "status": "pass",
+    "message": "Maintenance contract with Conduction B.V. until 2026-12-31.",
     "evidence": [
-     "docs/static/oas/publiccode.yaml"
+     "Conduction B.V.: valid until 2026-12-31"
     ],
     "requirementLevel": "recommended",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "docker",
     "title": "Docker support",
     "description": "The component must be deployable as a container. A Dockerfile and docker-compose file should be present.",
-    "status": "fail",
-    "message": "Docker-compose file found but no Dockerfile detected. A Dockerfile is required.",
+    "status": "pass",
+    "message": "Dockerfile and docker-compose file(s) found.",
     "evidence": [
-     "docker-compose.yml"
+     "Dockerfile",
+     "docker-compose.yml",
+     "docker/docker-compose.yml",
+     "(Helm chart)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "dockerimage",
@@ -354,9 +488,9 @@
     "evidence": [
      ".github/workflows/branch-protection.yml",
      ".github/workflows/code-quality.yml",
-     ".github/workflows/documentation.yml",
-     ".github/workflows/issue-triage.yml",
-     ".github/workflows/openspec-sync.yml"
+     ".github/workflows/codeql.yml",
+     ".github/workflows/container-image.yml",
+     ".github/workflows/docs-capture.yml"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
     "requirementLevel": "mandatory",
@@ -366,12 +500,14 @@
     "id": "sbom",
     "title": "SBOM (Software Bill of Materials)",
     "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
-    "status": "warn",
-    "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
-    "evidence": [],
+    "status": "pass",
+    "message": "SBOM file(s) found: sbom.cdx.json. It appears to list 821 dependencies in sbom.cdx.json.",
+    "evidence": [
+     "sbom.cdx.json"
+    ],
     "referenceUrl": "https://www.cisa.gov/sbom",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "artifacthub",
@@ -396,11 +532,11 @@
      "README.md",
      "docs/Administrator",
      "docs/Administrator/README.md",
+     "docs/Administrator/algoritmeregister.md",
      "docs/Administrator/catalogi.md",
      "docs/Administrator/configuratie.md",
      "docs/Administrator/directory.md",
-     "docs/Administrator/directory.png",
-     "docs/Administrator/directory_configuratie.png"
+     "docs/Administrator/directory.png"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
     "requirementLevel": "mandatory",
@@ -427,15 +563,15 @@
     "message": "Test files or test configuration detected.",
     "evidence": [
      "jest.config.js",
-     "src/entities/attachment/attachment.spec.ts",
-     "src/entities/catalogi/catalogi.spec.ts",
-     "src/entities/configuration/configuration.spec.ts",
-     "src/entities/glossary/glossary.spec.ts",
-     "src/entities/listing/listing.spec.ts",
-     "src/entities/menu/menu.spec.ts",
-     "src/entities/organization/organization.spec.ts",
-     "src/entities/page/page.spec.ts",
-     "src/entities/publication/publication.spec.ts"
+     "src/components/CatalogStaffAccessFields.spec.js",
+     "src/components/FacetComponent.spec.js",
+     "src/components/PaginationComponent.spec.js",
+     "src/components/PropertiesPanel.spec.js",
+     "src/components/PublicationCard.spec.js",
+     "src/components/PublishedIcon.spec.js",
+     "src/components/SelectionItemsList.spec.js",
+     "src/components/SelectionLists.spec.js",
+     "src/components/StagingBanner.spec.js"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
     "requirementLevel": "mandatory",
@@ -445,49 +581,51 @@
     "id": "coverage",
     "title": "Code coverage",
     "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
-    "status": "warn",
-    "message": "No coverage report file was found. Add coverage output such as coverage/coverage-summary.json, coverage.xml, or lcov.info.",
-    "evidence": [],
+    "status": "pass",
+    "message": "Code coverage is 94.11%, which meets the 80% threshold.",
+    "evidence": [
+     "coverage-summary.json: 94.11%"
+    ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "complexity",
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
-    "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 2.37 (threshold: 15); Max CCN 63.00 (threshold: 30). Threshold exceeded: MaxCCN 63.00 > 30.",
+    "status": "pass",
+    "message": "Lizard analysis executed successfully. Avg CCN 1.80 <= 15 and Max CCN 30.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.37 (threshold: 15)",
-     "Max CCN: 63.00 (threshold: 30)",
-     "28      1    210      0      33 ObjectUpdatedEventListenerTest::testHandleLogsErrorsFromEventService@312-344@/tmp/cgchecker-repo-FBBXf6/repo/tests/Unit/Listener/ObjectUpdatedEventListenerTest.php",
-     "26      1    199      0      30 ObjectCreatedEventListenerTest::testHandleLogsErrorsFromEventService@216-245@/tmp/cgchecker-repo-FBBXf6/repo/tests/Unit/Listener/ObjectCreatedEventListenerTest.php",
-     "9      1     75      0      10 CMSToolTest::testErrorResponseStructure@753-762@/tmp/cgchecker-repo-FBBXf6/repo/tests/Unit/Tool/CMSToolTest.php",
-     "7      1     51      0       8 CMSToolTest::testErrorResponseDefaultCode@764-771@/tmp/cgchecker-repo-FBBXf6/repo/tests/Unit/Tool/CMSToolTest.php",
-     "14      1    121      0      18 HealthControllerTest::testIndexReturnsErrorWhenDatabaseFails@75-92@/tmp/cgchecker-repo-FBBXf6/repo/tests/Unit/Controller/HealthControllerTest.php",
-     "24      1    252      0      31 MetricsControllerTest::testIndexHandlesDatabaseErrors@105-135@/tmp/cgchecker-repo-FBBXf6/repo/tests/Unit/Controller/MetricsControllerTest.php"
+     "Average CCN: 1.80 (threshold: 15)",
+     "Max CCN: 30.00 (threshold: 30)",
+     "4      1     18      1       4 getError@49-52@/tmp/cgchecker-repo-YKuzgf/repo/tests/vitest/objectStoreFetchObject.spec.js",
+     "5      1     43      0       5 (anonymous)@45-49@/tmp/cgchecker-repo-YKuzgf/repo/tests/vitest/formatZodErrors.spec.js",
+     "4      1     22      0       4 (anonymous)@51-54@/tmp/cgchecker-repo-YKuzgf/repo/tests/vitest/formatZodErrors.spec.js",
+     "9      1     59      0       9 (anonymous)@56-64@/tmp/cgchecker-repo-YKuzgf/repo/tests/vitest/formatZodErrors.spec.js",
+     "5      1     29      0      22 (anonymous)@44-65@/tmp/cgchecker-repo-YKuzgf/repo/tests/vitest/formatZodErrors.spec.js",
+     "8      1     27      0       8 (anonymous)@68-75@/tmp/cgchecker-repo-YKuzgf/repo/tests/vitest/formatZodErrors.spec.js"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "maintainability",
     "title": "Maintainability (ISO 25010)",
     "description": "Estimates a 1 to 5 star maintainability rating from unit size, complexity, interfacing, duplication, module coupling and component structure.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
-    "status": "warn",
-    "starRating": 3,
-    "rating": 2.5,
+    "status": "pass",
+    "starRating": 5,
+    "rating": 4.52,
     "aspectRatings": {
-     "analysability": 2.48,
-     "modifiability": 3.2,
-     "testability": 1.39,
-     "modularity": 2.84,
-     "reusability": 3.16
+     "analysability": 4.38,
+     "modifiability": 4.79,
+     "testability": 4.05,
+     "modularity": 4.72,
+     "reusability": 4.71
     },
     "measurements": [
      {
@@ -500,47 +638,47 @@
       "rows": [
        {
         "label": "JavaScript",
-        "value": "12.8%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 2
+        "stars": 5
        },
        {
         "label": "PHP",
-        "value": "12.6%",
+        "value": "3.0%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 2
+        "stars": 5
        },
        {
         "label": "TypeScript",
-        "value": "12.5%",
+        "value": "2.2%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 2
+        "stars": 5
        },
        {
         "label": "Vue",
-        "value": "14.9%",
+        "value": "8.2%",
         "thresholds": {
          "2": "≤ 23.0%",
          "3": "≤ 11.6%",
          "4": "≤ 5.8%",
          "5": "≤ 3.5%"
         },
-        "stars": 2
+        "stars": 3
        }
       ]
      },
@@ -554,106 +692,106 @@
       "rows": [
        {
         "label": "JavaScript, more than 15 lines",
-        "value": "64.9%",
+        "value": "11.0%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
          "4": "≤ 48.0%",
          "5": "≤ 36.0%"
         },
-        "stars": 2
+        "stars": 5
        },
        {
         "label": "JavaScript, more than 30 lines",
-        "value": "41.8%",
+        "value": "1.7%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
          "4": "≤ 24.2%",
          "5": "≤ 17.0%"
         },
-        "stars": 2
+        "stars": 5
        },
        {
         "label": "JavaScript, more than 60 lines",
-        "value": "11.6%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
          "4": "≤ 9.1%",
          "5": "≤ 5.5%"
         },
-        "stars": 3
+        "stars": 5
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "81.5%",
+        "value": "36.0%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
          "4": "≤ 48.0%",
          "5": "≤ 36.0%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "PHP, more than 30 lines",
-        "value": "60.1%",
-        "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
-        },
-        "stars": 1
-       },
-       {
-        "label": "PHP, more than 60 lines",
-        "value": "36.4%",
-        "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
-        },
-        "stars": 1
-       },
-       {
-        "label": "TypeScript, more than 15 lines",
-        "value": "60.0%",
-        "thresholds": {
-         "2": "≤ 84.7%",
-         "3": "≤ 63.0%",
-         "4": "≤ 48.0%",
-         "5": "≤ 36.0%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "TypeScript, more than 30 lines",
-        "value": "27.1%",
-        "thresholds": {
-         "2": "≤ 49.0%",
-         "3": "≤ 34.7%",
-         "4": "≤ 24.2%",
-         "5": "≤ 17.0%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "TypeScript, more than 60 lines",
-        "value": "8.5%",
-        "thresholds": {
-         "2": "≤ 25.3%",
-         "3": "≤ 15.4%",
-         "4": "≤ 9.1%",
-         "5": "≤ 5.5%"
         },
         "stars": 4
        },
        {
+        "label": "PHP, more than 30 lines",
+        "value": "5.8%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "PHP, more than 60 lines",
+        "value": "0.8%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, more than 15 lines",
+        "value": "16.7%",
+        "thresholds": {
+         "2": "≤ 84.7%",
+         "3": "≤ 63.0%",
+         "4": "≤ 48.0%",
+         "5": "≤ 36.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, more than 30 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 49.0%",
+         "3": "≤ 34.7%",
+         "4": "≤ 24.2%",
+         "5": "≤ 17.0%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "TypeScript, more than 60 lines",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 25.3%",
+         "3": "≤ 15.4%",
+         "4": "≤ 9.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
         "label": "Vue, more than 15 lines",
-        "value": "35.0%",
+        "value": "22.2%",
         "thresholds": {
          "2": "≤ 84.7%",
          "3": "≤ 63.0%",
@@ -664,7 +802,7 @@
        },
        {
         "label": "Vue, more than 30 lines",
-        "value": "14.4%",
+        "value": "3.0%",
         "thresholds": {
          "2": "≤ 49.0%",
          "3": "≤ 34.7%",
@@ -675,7 +813,7 @@
        },
        {
         "label": "Vue, more than 60 lines",
-        "value": "4.1%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 25.3%",
          "3": "≤ 15.4%",
@@ -696,135 +834,135 @@
       "rows": [
        {
         "label": "JavaScript, complexity above 5",
-        "value": "52.6%",
+        "value": "5.7%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
          "4": "≤ 20.7%",
          "5": "≤ 15.8%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "JavaScript, complexity above 10",
-        "value": "33.6%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "JavaScript, complexity above 25",
-        "value": "9.3%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
          "4": "≤ 1.1%",
          "5": "≤ 0.5%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "55.5%",
+        "value": "12.9%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
          "4": "≤ 20.7%",
          "5": "≤ 15.8%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "PHP, complexity above 10",
-        "value": "36.0%",
+        "value": "0.5%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "PHP, complexity above 25",
-        "value": "13.8%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
          "4": "≤ 1.1%",
          "5": "≤ 0.5%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "TypeScript, complexity above 5",
-        "value": "29.0%",
+        "value": "6.8%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
          "4": "≤ 20.7%",
          "5": "≤ 15.8%"
         },
-        "stars": 2
+        "stars": 5
        },
        {
         "label": "TypeScript, complexity above 10",
-        "value": "21.7%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "TypeScript, complexity above 25",
-        "value": "3.9%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
          "4": "≤ 1.1%",
          "5": "≤ 0.5%"
         },
-        "stars": 1
+        "stars": 5
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "21.4%",
+        "value": "5.7%",
         "thresholds": {
          "2": "≤ 34.6%",
          "3": "≤ 27.7%",
          "4": "≤ 20.7%",
          "5": "≤ 15.8%"
         },
-        "stars": 3
+        "stars": 5
        },
        {
         "label": "Vue, complexity above 10",
-        "value": "9.6%",
+        "value": "0.9%",
         "thresholds": {
          "2": "≤ 13.2%",
          "3": "≤ 10.6%",
          "4": "≤ 7.5%",
          "5": "≤ 4.4%"
         },
-        "stars": 3
+        "stars": 5
        },
        {
         "label": "Vue, complexity above 25",
-        "value": "0.9%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 2.7%",
          "3": "≤ 1.7%",
          "4": "≤ 1.1%",
          "5": "≤ 0.5%"
         },
-        "stars": 4
+        "stars": 5
        }
       ]
      },
@@ -837,7 +975,7 @@
       "rows": [
        {
         "label": "JavaScript, 3 or more parameters",
-        "value": "8.1%",
+        "value": "2.9%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -848,14 +986,14 @@
        },
        {
         "label": "JavaScript, 5 or more parameters",
-        "value": "4.7%",
+        "value": "0.0%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
          "4": "≤ 3.4%",
          "5": "≤ 2.5%"
         },
-        "stars": 3
+        "stars": 5
        },
        {
         "label": "JavaScript, 7 or more parameters",
@@ -870,40 +1008,40 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "20.0%",
+        "value": "12.5%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
          "4": "≤ 15.4%",
          "5": "≤ 12.5%"
         },
-        "stars": 2
+        "stars": 4
        },
        {
         "label": "PHP, 5 or more parameters",
-        "value": "4.0%",
+        "value": "2.1%",
         "thresholds": {
          "2": "≤ 7.2%",
          "3": "≤ 4.8%",
          "4": "≤ 3.4%",
          "5": "≤ 2.5%"
         },
-        "stars": 3
+        "stars": 5
        },
        {
         "label": "PHP, 7 or more parameters",
-        "value": "1.4%",
+        "value": "0.6%",
         "thresholds": {
          "2": "≤ 2.1%",
          "3": "≤ 1.4%",
          "4": "≤ 0.9%",
          "5": "≤ 0.6%"
         },
-        "stars": 2
+        "stars": 5
        },
        {
         "label": "TypeScript, 3 or more parameters",
-        "value": "2.9%",
+        "value": "2.0%",
         "thresholds": {
          "2": "≤ 26.0%",
          "3": "≤ 18.3%",
@@ -979,7 +1117,7 @@
       "rows": [
        {
         "label": "PHP, fan-in above 10",
-        "value": "0.0%",
+        "value": "0.5%",
         "thresholds": {
          "2": "≤ 13.0%",
          "3": "≤ 10.7%",
@@ -990,7 +1128,7 @@
        },
        {
         "label": "PHP, fan-in above 20",
-        "value": "0.0%",
+        "value": "0.1%",
         "thresholds": {
          "2": "≤ 8.0%",
          "3": "≤ 5.9%",
@@ -1022,7 +1160,7 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "36.1%",
+        "value": "93.3%",
         "thresholds": {
          "4": "≥ 94.5%",
          "5": "≥ 97.3%"
@@ -1041,29 +1179,28 @@
       "rows": [
        {
         "label": "PHP",
-        "value": "0.2162",
+        "value": "0.0019",
         "thresholds": {
          "4": "≤ 0.075",
          "5": "≤ 0.0375"
         },
-        "stars": null,
-        "starsText": "below 4 stars"
+        "stars": 5
        }
       ]
      }
     ],
-    "message": "Estimated maintainability rating 2.38 to 2.62 (3 of 5 stars) over 198 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.51 to 4.53 (5 of 5 stars) over 686 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★☆☆☆ 2.3 (javascript 2.4, php 2.4, typescript 2.4, vue 2.2)",
-     "Unit size: ★★★☆☆ 2.7 (javascript 2.0, php 1.3, typescript 2.7, vue 4.5)",
-     "Unit complexity: ★★☆☆☆ 1.8 (javascript 1.2, php 1.2, typescript 1.4, vue 2.8)",
-     "Unit interfacing: ★★★★☆ 3.6 (javascript 2.5, php 2.3, typescript 5.3, vue 5.5)",
-     "Module coupling: ★★★★★ 5.5 (php 5.5)",
-     "Component independence: ★☆☆☆☆ 1.0 (php 1.0)",
-     "Component entanglement: ★★☆☆☆ 2.1 (php 2.1)",
-     "Lever: unit complexity in vue, about 326 lines to fix for half a star",
-     "Lever: duplication in php, about 971 lines to fix for half a star",
-     "Lever: unit complexity in javascript, about 1248 lines to fix for half a star"
+     "Duplication: ★★★★☆ 4.1 (javascript 5.5, php 4.6, typescript 4.9, vue 3.1)",
+     "Unit size: ★★★★★ 4.7 (javascript 5.2, php 4.5, typescript 5.0, vue 4.9)",
+     "Unit complexity: ★★★★★ 4.8 (javascript 5.1, php 4.7, typescript 5.1, vue 5.1)",
+     "Unit interfacing: ★★★★★ 4.8 (javascript 5.3, php 4.5, typescript 5.3, vue 5.5)",
+     "Module coupling: ★★★★★ 5.4 (php 5.4)",
+     "Component independence: ★★★☆☆ 3.3 (php 3.3)",
+     "Component entanglement: ★★★★★ 5.5 (php 5.5)",
+     "Lever: component independence in php, about 815 lines to fix for half a star",
+     "Lever: duplication in php",
+     "Lever: duplication in vue, about 1377 lines to fix for half a star"
     ],
     "requirementLevel": "recommended"
    },
@@ -1072,34 +1209,303 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "fail",
-    "message": "Multiple risky coding patterns were detected (26 findings across 293 scanned source files). Review them against OWASP secure coding guidance.",
+    "message": "Multiple risky coding patterns were detected (295 findings across 1665 scanned source files). Review them against OWASP secure coding guidance.",
     "evidence": [
-     "Dynamic code execution: fix-phpcs.php",
-     "Dynamic code execution: lib/Controller/PublicationsController.php",
+     "Dynamic code execution: lib/AppInfo/Application.php",
+     "Dynamic code execution: lib/Contract/UsageCounterServiceInterface.php",
+     "Dynamic code execution: lib/Controller/FeedConsumerController.php",
+     "Dynamic code execution: lib/Controller/OoapiController.php",
+     "Dynamic code execution: lib/Listener/CatalogAccessListener.php",
+     "Dynamic code execution: lib/Repair/HandRecordsToSystem.php",
      "Dynamic code execution: lib/Service/BroadcastService.php",
+     "Dynamic code execution: lib/Service/CatalogScopeSlugResolver.php",
      "Dynamic code execution: lib/Service/CatalogiService.php",
+     "Dynamic code execution: lib/Service/Community/MarkupRenderService.php",
      "Dynamic code execution: lib/Service/DirectoryService.php",
+     "Dynamic code execution: lib/Service/FeedConsumerService.php",
+     "Dynamic code execution: lib/Service/Portal/PortalObjectStore.php",
+     "Dynamic code execution: lib/Service/Publication/PublicationRuleService.php",
      "Dynamic code execution: lib/Service/PublicationService.php",
-     "Dynamic code execution: lib/Service/SitemapService.php",
-     "Dynamic code execution: lib/Tool/CMSTool.php",
+     "Dynamic code execution: lib/Service/ServiceRegistrar.php",
+     "Dynamic code execution: lib/Service/Table/PublishedTableService.php",
+     "Dynamic code execution: lib/Service/UsageCounterService.php",
+     "Dynamic code execution: lib/Service/Woo/WooIndexFieldMapper.php",
+     "Dynamic code execution: src/components/review/BatchReviewPanel.vue",
+     "Possible hardcoded secret: src/dialogs/attachment/DeleteAttachmentDialog.spec.js",
      "Dynamic code execution: src/modals/catalog/CatalogModal.vue",
+     "Possible hardcoded secret: src/modals/generic/UploadFilesLogic.spec.js",
+     "Dynamic code execution: src/modals/generic/UploadFilesTags.spec.js",
+     "Dynamic code execution: src/modals/object/ObjectModalInit.spec.js",
+     "Possible hardcoded secret: src/modals/object/ViewObjectSaveLogic.spec.js",
+     "Dynamic code execution: src/services/connectionRegistry.js",
+     "Dynamic code execution: src/services/publicationStatusCounts.js",
      "Dynamic code execution: src/sidebars/dashboard/DashboardSideBar.vue",
+     "Possible hardcoded secret: src/sidebars/directory/DirectorySideBarActions.spec.js",
+     "Dynamic code execution: src/views/settings/publishRights.js",
+     "Dynamic code execution: src/views/settings/recordHandover.js",
+     "Dynamic code execution: tests/Stubs/OpenRegister/Service/Dmn/UnaryTestEvaluator.php",
+     "Dynamic code execution: tests/Support/LegacyObjectArgs.php",
+     "Dynamic code execution: tests/Unit/AppInfo/ApplicationRegisterInvariantTest.php",
+     "Dynamic code execution: tests/Unit/AppInfo/ApplicationTest.php",
+     "Dynamic code execution: tests/Unit/AppInfo/CanonicalSettingsRouteContractTest.php",
+     "Dynamic code execution: tests/Unit/AppInfo/ComponentRegistrarsTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/AttachmentReadingJobTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/CompletenessSweepTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/DocumentReferenceCheckTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/DonlHarvestCheckTest.php",
+     "Dynamic code execution: tests/Unit/BackgroundJob/PublicationLinksRewriteTest.php",
+     "Dynamic code execution: tests/Unit/Command/AttachDocumentsApplyTest.php",
+     "Dynamic code execution: tests/Unit/Command/AttachDocumentsToPublicationsCommandTest.php",
+     "Dynamic code execution: tests/Unit/Command/CatalogCacheCommandTest.php",
+     "Dynamic code execution: tests/Unit/Command/DirectorySyncCommandTest.php",
+     "Dynamic code execution: tests/Unit/Command/MigrateCmsToPortaliqGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Contract/ContractBindingsTest.php",
+     "Dynamic code execution: tests/Unit/Controller/AnswersCacheablyTest.php",
+     "Dynamic code execution: tests/Unit/Controller/AppliedFiltersResponseTest.php",
+     "Dynamic code execution: tests/Unit/Controller/BannerDismissalsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CaseTypeResyncGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CatalogiControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CommentPeriodControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CommentPeriodGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CommunityControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CommunityReadsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ConnectionReportCallersTest.php",
+     "Dynamic code execution: tests/Unit/Controller/CorsAllowedOriginGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DcatCatalogGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DcatDereferenceTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DelegatedAdminSavesTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DepublicationControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DepublicationGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/DirectoryControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/FederationControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/FederationPublicationsBaseUrlTest.php",
+     "Dynamic code execution: tests/Unit/Controller/GlossaryControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/InspectionControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/InstanceModeControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ListingsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/NoticeBoardControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/OoapiControllerFeedKeyTest.php",
+     "Dynamic code execution: tests/Unit/Controller/OoapiControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/OpenRegisterAvailabilityControllerGoldenTest.php",
+     "Possible hardcoded secret: tests/Unit/Controller/PortalCollectionControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicObjectListControllersTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationDisclosureControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationIndexGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationRulesControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationShowGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationSlugLookupGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationStateControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationWithdrawGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PublicationsControllerSlugTest.php",
      "Dynamic code execution: tests/Unit/Controller/PublicationsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/PubliccodeHarvestControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/RegisterPlumbingGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/RobotsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/RobotsIndexGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SchemaOrgCatalogGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ServiceCatalogueControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SettingsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SetupControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SetupEndpointsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/SetupFirstCatalogGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/StatsControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/StatsReadRangeTest.php",
+     "Dynamic code execution: tests/Unit/Controller/ThemesControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/WooCreateBatchTest.php",
+     "Dynamic code execution: tests/Unit/Controller/WooRequestControllerTest.php",
+     "Dynamic code execution: tests/Unit/Controller/WooRequestExtendGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/WooRequestPauseResumeGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Controller/WooRequestReceiveGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Dashboard/DashboardRegistrarTest.php",
      "Dynamic code execution: tests/Unit/Http/XMLResponseTest.php",
+     "Dynamic code execution: tests/Unit/Listener/AutoPublishListenersGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Listener/CatalogAccessListenerTest.php",
+     "Dynamic code execution: tests/Unit/Listener/CatalogCacheEventListenerGoldenTest.php",
      "Dynamic code execution: tests/Unit/Listener/CatalogCacheEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/Listener/CatalogSchemaEventListenerGoldenTest.php",
      "Dynamic code execution: tests/Unit/Listener/CatalogSchemaEventListenerTest.php",
+     "Dynamic code execution: tests/Unit/Listener/CatalogScopePendingGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Listener/PortalAccountRemovedGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Listener/ProvideManifestConfigStateListenerTest.php",
      "Dynamic code execution: tests/Unit/Listener/ToolRegistrationListenerTest.php",
+     "Dynamic code execution: tests/Unit/Mcp/GetPublicationToolGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Mcp/SearchCatalogToolGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Middleware/MiddlewareRegistrarTest.php",
+     "Dynamic code execution: tests/Unit/Observability/OpenCatalogiMetricsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Observability/OpenCatalogiMetricsLookupGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Observability/OpenCatalogiMetricsProviderTest.php",
+     "Dynamic code execution: tests/Unit/Portal/PortalAssertionVerifierGoldenTest.php",
+     "Possible hardcoded secret: tests/Unit/Portal/PortalAssertionVerifierGoldenTest.php",
+     "Possible hardcoded secret: tests/Unit/Portal/PortalAssertionVerifierTest.php",
+     "Dynamic code execution: tests/Unit/Repair/BatchStatusRepairTest.php",
+     "Dynamic code execution: tests/Unit/Repair/CleanupOrphanDirectoryListingsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Repair/CreatePublishersGroupTest.php",
+     "Dynamic code execution: tests/Unit/Repair/HandRecordsToSystemTest.php",
+     "Dynamic code execution: tests/Unit/Repair/HandWooRequestsToDossiqTest.php",
+     "Dynamic code execution: tests/Unit/Repair/InitializeSettingsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Repair/InitializeSettingsTest.php",
+     "Dynamic code execution: tests/Unit/Repair/MoveDocumentsoortOutOfSummaryTest.php",
+     "Dynamic code execution: tests/Unit/Repair/ReadRulesRepairGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Repair/RemoveRetiredCronJobsTest.php",
+     "Dynamic code execution: tests/Unit/Repair/RenameDutchPublicationColumnsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Repair/WOO536RepairReadRulesTest.php",
+     "Dynamic code execution: tests/Unit/Service/AttachmentReading/AttachmentReadingCallersTest.php",
+     "Dynamic code execution: tests/Unit/Service/AutoPublishEventsGoldenTest.php",
      "Dynamic code execution: tests/Unit/Service/BroadcastServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogAccessEnforcementTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogAccessServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogFiltersScopeGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogIndexGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogRewriteGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogScopeBackfillGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogScopeResolutionGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogScopeResolveGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogScopeSlugResolverTest.php",
      "Dynamic code execution: tests/Unit/Service/CatalogiServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Catalogue/GatewayCaseTypeSourceReaderTest.php",
+     "Dynamic code execution: tests/Unit/Service/CatalogueSharedPublicationTest.php",
+     "Dynamic code execution: tests/Unit/Service/Connection/ConnectionReportObserveTest.php",
+     "Dynamic code execution: tests/Unit/Service/Connection/ConnectionReporterTest.php",
+     "Dynamic code execution: tests/Unit/Service/DcatCatalogDocumentTest.php",
+     "Dynamic code execution: tests/Unit/Service/DcatCatalogPagesGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/DcatInstanceDocumentGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/DcatMappingServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DcatServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DirectoryCronTargetsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/DirectoryListingShapeGoldenTest.php",
      "Dynamic code execution: tests/Unit/Service/DirectoryServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DirectorySyncDirectoryTest.php",
+     "Dynamic code execution: tests/Unit/Service/DirectorySyncListingTest.php",
+     "Dynamic code execution: tests/Unit/Service/DirectoryUniqueGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/DiwooValidationGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/DocumentReferenceProbeTest.php",
+     "Dynamic code execution: tests/Unit/Service/DonlRegistrationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/DownloadPublicationFileGoldenTest.php",
      "Dynamic code execution: tests/Unit/Service/DownloadServiceTest.php",
-     "Dynamic code execution: tests/Unit/Service/ElasticSearchServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/EdepotHandoverTest.php",
+     "Dynamic code execution: tests/Unit/Service/EventPublicationGateGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/EventServiceAutoPublishingTest.php",
+     "Dynamic code execution: tests/Unit/Service/EventServiceMissingIdTest.php",
      "Dynamic code execution: tests/Unit/Service/EventServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/FederatedPublicationGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Federation/FederationHostPolicyTest.php",
+     "Dynamic code execution: tests/Unit/Service/FeedConsumerServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/FileFactsTest.php",
      "Dynamic code execution: tests/Unit/Service/FileServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Handover/HandoverStateTest.php",
+     "Dynamic code execution: tests/Unit/Service/OoapiCollectionGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/OoapiServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/OoapiValidationGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/OpenRegisterAvailabilityGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/OpenRegisterLookupMissingConfigTest.php",
+     "Dynamic code execution: tests/Unit/Service/OutboundGateWiringTest.php",
+     "Dynamic code execution: tests/Unit/Service/OutsideReachTest.php",
+     "Dynamic code execution: tests/Unit/Service/Portal/CitizenCollectionGuardsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Portal/SavedSearchMatcherGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Portal/SavedSearchMatcherTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicSearchGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/CommentPeriodOpenGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/CommentPeriodServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/CommentPeriodWithdrawalGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/CommentPeriodWithdrawalServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/DepublicationAndIndexTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/DepublicationGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/EmbeddedTitleWriterTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/Publication/InspectionServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/NationalIndexHandOverGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/NationalIndexServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/ObligationReadServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/ObligationSourceRowsTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/ObligationSummaryGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/PlainLanguageDrafterTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/PlooiDeliveryEdgeCasesTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/PlooiDeliveryServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/PublicationRightsOwnerTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/PublicationRightsTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/PublishedCollectionsServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Publication/TermRollFixture.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationAggregationTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationCatalogFiltersGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationLocalCatalogsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationQueryServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationQuerySplitGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationSearchGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationServiceReferencesTest.php",
      "Dynamic code execution: tests/Unit/Service/PublicationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/PublicationSlugLookupGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/PubliccodeHarvestServiceTest.php",
+     "Possible hardcoded secret: tests/Unit/Service/PubliccodeHarvestServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/RegisterSchemaLinkGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/RegisterSchemaLinkServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/RetentionApplyDefaultsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/RetentionCatalogSlugGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/RetentionEvaluationGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/RetentionLifecycleGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/RetentionQueueSummaryGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/RetentionReportGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/RetentionServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Review/BatchReviewTest.php",
+     "Dynamic code execution: tests/Unit/Service/SchemaOrgCatalogRefsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SchemaOrgFieldsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SchemaOrgNonListResultTest.php",
+     "Dynamic code execution: tests/Unit/Service/SchemaOrgPublicationNodeGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SchemaOrgServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SchemaSlugIndexTest.php",
+     "Dynamic code execution: tests/Unit/Service/ServiceCatalogueServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/ServiceRegistrarGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsEnrichGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsFeedReadRuleTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsLoadGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsObjectTypeConfigurationTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsReadGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsServiceCatalogScopeTest.php",
      "Dynamic code execution: tests/Unit/Service/SettingsServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsWriteGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SettingsWriteValuesTest.php",
+     "Dynamic code execution: tests/Unit/Service/SitemapIndexGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/SitemapRequestGoldenTest.php",
      "Dynamic code execution: tests/Unit/Service/SitemapServiceTest.php",
-     "Dynamic code execution: tests/Unit/Tool/CMSToolTest.php"
+     "Dynamic code execution: tests/Unit/Service/StandardsVersionGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Table/PublishedTableServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/UnpublishedOverviewServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/UsageCountGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/UsageCounterReadGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/UsageCounterServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/Withheld/WithheldForPublicationTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/BatchPublicationWriterEdgesTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/BatchPublicationWriterTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/DocumentRedactorPublishTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/DocumentRedactorTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/DossiqWooForwardTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/StatutoryTermTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WithheldDocumentsRecordTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WithheldGroundsLookupTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WithheldGroundsResolveGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WithheldPublicationExistsTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WithheldStoreReplaceGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WooCategoryRegistryTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WooIndexFieldMapperTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WooRequestIntakeOutcomeGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WooRequestIntakeTest.php",
+     "Dynamic code execution: tests/Unit/Service/Woo/WooRequestStoreTest.php",
+     "Dynamic code execution: tests/Unit/Service/WooReadinessGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Service/WooReadinessServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/WooRegistrationComposeTest.php",
+     "Dynamic code execution: tests/Unit/Service/WooRegistrationServiceTest.php",
+     "Dynamic code execution: tests/Unit/Service/WooServiceTest.php",
+     "Dynamic code execution: tests/Unit/Settings/WooJourneyRegisterTest.php",
+     "Dynamic code execution: tests/Unit/Settings/WooRequestAndCommentPeriodRegisterTest.php",
+     "Dynamic code execution: tests/Unit/Settings/ZuiddrechtExampleSetTest.php",
+     "Dynamic code execution: tests/Unit/Tool/CMSToolActionsGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Tool/CMSToolCreateMenuGoldenTest.php",
+     "Dynamic code execution: tests/Unit/Tool/CMSToolTest.php",
+     "Dynamic code execution: tests/bootstrap-unit.php",
+     "Dynamic code execution: tests/bootstrap.php",
+     "Possible hardcoded secret: tests/e2e/federation-directory.spec.ts",
+     "Dynamic code execution: tests/vitest/catalogMetadata.spec.js",
+     "Dynamic code execution: tests/vitest/harvestRunLabel.spec.js",
+     "Possible hardcoded secret: tests/vitest/objectStoreAttachmentPublication.spec.js",
+     "Possible hardcoded secret: tests/vitest/objectStoreSaveActions.spec.js"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
@@ -1109,23 +1515,19 @@
     "id": "adrvalidator",
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
-    "status": "fail",
-    "message": "API Design Rules violations found across 1 specification(s): 7 issue(s).",
+    "status": "pass",
+    "message": "API specification(s) at https://raw.githubusercontent.com/ConductionNL/opencatalogi/9b300d26542f3e8193dd268834eee771d7e680de/openapi.json comply with Common Ground API Design Rules.",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/opencatalogi/a585b5708fa9329e3fbd4f989c03bc7f52d7e22a/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/opencatalogi/9b300d26542f3e8193dd268834eee771d7e680de/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "HINT [oas3-api-servers] OpenAPI \"servers\" must be present and non-empty array. (https://raw.githubusercontent.com/ConductionNL/opencatalogi/a585b5708fa9329e3fbd4f989c03bc7f52d7e22a/openapi.json)",
-     "HINT [info-contact] Info object must have \"contact\" object. @ info (https://raw.githubusercontent.com/ConductionNL/opencatalogi/a585b5708fa9329e3fbd4f989c03bc7f52d7e22a/openapi.json)",
-     "ERROR [schema-camel-case] Schema name should be CamelCase in #/components/schemas/OCSMeta @ components.schemas.OCSMeta (https://raw.githubusercontent.com/ConductionNL/opencatalogi/a585b5708fa9329e3fbd4f989c03bc7f52d7e22a/openapi.json)",
-     "HINT [paths-open-api-json-resource-exists] There does not exist a resource `/openapi.json` that returns the OpenAPI specification document @ paths (https://raw.githubusercontent.com/ConductionNL/opencatalogi/a585b5708fa9329e3fbd4f989c03bc7f52d7e22a/openapi.json)",
-     "ERROR [operation-description] Operation \"description\" must be present and non-empty string. @ paths./ocs/v2.php/apps/dsonextcloud/api.get (https://raw.githubusercontent.com/ConductionNL/opencatalogi/a585b5708fa9329e3fbd4f989c03bc7f52d7e22a/openapi.json)",
-     "ERROR [operation-tag-defined] Operation tags must be defined in global tags. @ paths./ocs/v2.php/apps/dsonextcloud/api.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/a585b5708fa9329e3fbd4f989c03bc7f52d7e22a/openapi.json)",
-     "HINT [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./ocs/v2.php/apps/dsonextcloud/api.get.responses.200 (https://raw.githubusercontent.com/ConductionNL/opencatalogi/a585b5708fa9329e3fbd4f989c03bc7f52d7e22a/openapi.json)"
+     "No API Design Rules violations found for https://raw.githubusercontent.com/ConductionNL/opencatalogi/9b300d26542f3e8193dd268834eee771d7e680de/openapi.json.",
+     "Ruleset: https://static.developer.overheid.nl/adr/ruleset.yaml",
+     "No API Design Rules violations found by Spectral."
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "contributing",
@@ -1185,46 +1587,28 @@
     "id": "fivelayer",
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
-    "status": "warn",
-    "message": "Detected layer signals: Service layer (back-end microservice); Interaction layer (frontend / portal); Process layer (orchestration / BFF); Integration layer (gateway / NLX); Data layer (data store / register). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. The repository also references Common Ground.",
-    "evidence": [
-     "Found path segment \"service\" in lib/Service/BroadcastService.php",
-     "Found path segment \"service\" in lib/Service/CatalogiService.php",
-     "Found path segment \"service\" in lib/Service/DirectoryService.php",
-     "Found path segment \"service\" in lib/Service/DownloadService.php",
-     "Found path segment \"service\" in lib/Service/EventService.php",
-     "Found path segment \"service\" in lib/Service/FileService.php",
-     "Found path segment \"service\" in lib/Service/PublicationService.php",
-     "Found path segment \"service\" in lib/Service/SettingsService.php",
-     "Found path segment \"service\" in lib/Service/SitemapService.php",
-     "Found path segment \"services\" in src/services/formatZodErrors.js",
-     "Found path segment \"services\" in src/services/getPublicationTypeId.js",
-     "Found path segment \"services\" in src/services/getTheme.js",
-     "Found path segment \"services\" in src/services/getValidISOstring.js",
-     "Found path segment \"services\" in src/services/nextcloudGroups.js",
-     "Found path segment \"services\" in src/services/publicationStatus.js",
-     "Found path segment \"services\" in src/services/schemaHelpers.js",
-     "Found \"service\" in repository metadata and docs",
-     "Found \"frontend\" in repository metadata and docs",
-     "Found \"workflow\" in repository metadata and docs",
-     "Found \"integration\" in repository metadata and docs",
-     "Found \"database\" in repository metadata and docs"
-    ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
-    "confidence": "medium",
+    "status": "pass",
+    "message": "Declared layer: Service layer (back-end microservice).",
+    "evidence": [
+     "Declared \"service\" in publiccode.yml supports"
+    ],
+    "confidence": "high",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "helmchart",
     "title": "Helm chart (Kubernetes)",
     "description": "A Helm chart was detected for the component being checked.",
-    "status": "fail",
-    "message": "No Helm chart (Chart.yaml) was found for this component. Add a Helm chart to the repository.",
-    "evidence": [],
+    "status": "pass",
+    "message": "Helm chart detected for this component.",
+    "evidence": [
+     "charts/opencatalogi/Chart.yaml"
+    ],
     "referenceUrl": "https://haven.commonground.nl",
     "requirementLevel": "mandatory",
-    "starRating": 1
+    "starRating": 5
    },
    {
     "id": "usage",
@@ -1232,12 +1616,13 @@
     "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Usage from 4 sources. Shown for information; never rated or compared.",
+    "message": "Usage from 5 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "Nextcloud App Store opencatalogi: 0 ratings given (2026-11-20)",
      "GitHub releases: 1,719 release file downloads, 500 most recent releases with files (2026-11-20)",
+     "GitHub Container Registry conductionnl/opencatalogi: not measured: GitHub publishes no pull count for container images through its API (2026-11-20)",
      "GitHub ConductionNL/opencatalogi: 0 stars, 4 forks, 0 watchers (2026-11-20)",
-     "GitHub commits ConductionNL/opencatalogi: 18 contributors, 10 from the owning organisation, 3 from other organisations, 5 unknown (2026-11-20)"
+     "GitHub commits ConductionNL/opencatalogi: 10 contributors, 8 from the owning organisation, 0 from other organisations, 2 unknown (2026-11-20)"
     ],
     "usage": {
      "sources": [
@@ -1276,6 +1661,17 @@
        ]
       },
       {
+       "id": "ghcr:conductionnl/opencatalogi",
+       "kind": "containers",
+       "source": "GitHub Container Registry",
+       "subject": "conductionnl/opencatalogi",
+       "url": "https://github.com/orgs/conductionnl/packages/container/package/opencatalogi",
+       "measuredAt": "2026-11-20",
+       "caveat": "Pull counts would include CI pulls.",
+       "figures": [],
+       "notMeasured": "GitHub publishes no pull count for container images through its API"
+      },
+      {
        "id": "repository",
        "kind": "ecosystem",
        "source": "GitHub",
@@ -1309,19 +1705,19 @@
        "figures": [
         {
          "label": "contributors",
-         "value": 18
-        },
-        {
-         "label": "from the owning organisation",
          "value": 10
         },
         {
+         "label": "from the owning organisation",
+         "value": 8
+        },
+        {
          "label": "from other organisations",
-         "value": 3
+         "value": 0
         },
         {
          "label": "unknown",
-         "value": 5
+         "value": 2
         }
        ]
       }
@@ -1637,14 +2033,14 @@
     "description": "The standards and versions the component declares in publiccode.yml under supports, compared with the OpenAPI files in the repository. Informative: it does not count in any rating.",
     "referenceUrl": "https://publiccodeyml.github.io/v0/schema.core.html#key-supports",
     "status": "info",
-    "message": "docs/static/oas/publiccode.yaml declares no standards under supports.",
+    "message": "publiccode.yml declares no standards under supports.",
     "evidence": [],
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 18.3,
+  "durationSeconds": 17.1,
   "scanMode": "full",
-  "scanModeReason": "the checker or its tools changed",
+  "scanModeReason": "the code changed",
   "toolFingerprint": "sha256:98c8607f01f45e0e84bb4d589a36ea30",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
