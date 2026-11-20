@@ -28,7 +28,7 @@ describe("AboutPage and the check form", { timeout: 30_000 }, () => {
 
     expect(screen.getByRole("heading", { level: 2, name: "Check a component" })).toBeTruthy();
     expect(container.querySelector("#check form")).toBeTruthy();
-    expect(screen.getByRole("heading", { level: 2, name: "About Common Ground" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 3, name: "About Common Ground" })).toBeTruthy();
     expect(screen.queryByRole("heading", { name: "Add your component" })).toBeNull();
   });
 
@@ -39,6 +39,6 @@ describe("AboutPage and the check form", { timeout: 30_000 }, () => {
     expect(screen.getByRole("heading", { level: 2, name: "Add your component" })).toBeTruthy();
     expect(screen.queryByRole("heading", { name: "Check a component" })).toBeNull();
     expect(container.querySelector("form")).toBeNull();
-    expect(screen.getByRole("heading", { level: 2, name: "About Common Ground" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 3, name: "About Common Ground" })).toBeTruthy();
   });
 });

@@ -564,7 +564,7 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     id: "semver",
     title: "Semantic versioning",
     source: "checklist",
-    standardForPublicCode: "document-codebase-maturity",
+    standardForPublicCode: "maintain-version-control",
     what: "The releases and tags follow semantic versioning: MAJOR.MINOR.PATCH.",
     why: "A version number that follows the rules tells a municipality whether an update can break their setup.",
     howToPass: ["Tag releases as MAJOR.MINOR.PATCH, with or without a leading v."],
