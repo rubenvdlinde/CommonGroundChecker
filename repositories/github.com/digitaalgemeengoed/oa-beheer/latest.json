@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T10:51:13.285Z",
+  "lastCheckedAt": "2026-11-20T12:07:21.475Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-20T10:51:13.285Z",
-  "updatedAt": "2026-11-20T10:51:13.285Z",
+  "updatedAt": "2026-11-20T12:07:21.475Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -42,11 +42,11 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T10-51-13-285Z",
+  "id": "2026-11-20T12-07-21-475Z",
   "repoId": "github.com/digitaalgemeengoed/oa-beheer",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T10:51:13.285Z",
-  "createdAt": "2026-11-20T10:51:13.285Z",
+  "checkedAt": "2026-11-20T12:07:21.475Z",
+  "createdAt": "2026-11-20T12:07:21.475Z",
   "version": "v0.15.2",
   "checklistVersion": "2026.2",
   "scannedRef": "main",
@@ -59,7 +59,8 @@
    "Security": 4.7,
    "Architecture": 4.3,
    "Software Quality": 3.6,
-   "Deployment & Operations": 2.6
+   "Deployment & Operations": 2.6,
+   "AI readiness": 1.5
   },
   "aspectRatings": {
    "licensing": {
@@ -146,6 +147,18 @@
    },
    "release-management": {
     "rating": 4.3
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 4.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 0.5
    }
   },
   "endorsement": {
@@ -250,9 +263,9 @@
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
     "status": "warn",
     "confidence": "low",
-    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: digitaalgemeengoed (confidence: low).",
+    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: Digitaal-Gemeengoed (confidence: low).",
     "evidence": [
-     "repository owner metadata: digitaalgemeengoed"
+     "repository owner metadata: Digitaal-Gemeengoed"
     ],
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
@@ -1133,6 +1146,7 @@
         "edges": 147,
         "loc": 6330,
         "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 2,
         "componentIndependence": 1,
         "componentEntanglement": {
@@ -1555,12 +1569,82 @@
     "message": "No publiccode.yml found, so no standards are declared.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 4.5,
+    "message": "Development environment found; no command found to lint.",
+    "evidence": [
+     "infra/compose.voorbeeld.yml",
+     "package.json: build",
+     "package.json: test"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No OpenAPI document, llms.txt or MCP configuration found.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 0.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 31,
+  "durationSeconds": 22.8,
   "scanMode": "full",
-  "scanModeReason": "there is no previous analysis",
-  "toolFingerprint": "sha256:bfb3b90766f8208b21a24b4b078c3dfd",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

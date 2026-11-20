@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:20:32.588Z",
+  "lastCheckedAt": "2026-11-20T11:59:13.090Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:26.407Z",
-  "updatedAt": "2026-11-20T09:20:32.588Z",
+  "updatedAt": "2026-11-20T11:59:13.090Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -42,24 +42,25 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-20-32-588Z",
+  "id": "2026-11-20T11-59-13-090Z",
   "repoId": "github.com/Klantinteractie-Servicesysteem/KISS-frontend",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:20:32.588Z",
-  "createdAt": "2026-11-20T09:20:32.588Z",
+  "checkedAt": "2026-11-20T11:59:13.090Z",
+  "createdAt": "2026-11-20T11:59:13.090Z",
   "version": "v3.2.2",
   "checklistVersion": "2026.2",
   "scannedRef": "v3.2.2",
   "scannedRefKind": "release",
   "scannedCommit": "39cd6d9a0c292f549c235ce908a0945408526837",
   "score": 73,
-  "rating": 3.5,
+  "rating": 3.1,
   "categoryRatings": {
    "Governance": 2.6,
-   "Security": 3.4,
+   "Security": 1.8,
    "Architecture": 4.3,
    "Software Quality": 3.1,
-   "Deployment & Operations": 4.3
+   "Deployment & Operations": 4.3,
+   "AI readiness": 1.8
   },
   "aspectRatings": {
    "licensing": {
@@ -83,19 +84,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-freshness": {
-    "rating": 5
+    "rating": null
    },
    "dependency-activity": {
-    "rating": 2.2
+    "rating": null
    },
    "dependency-licences": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-management": {
-    "rating": 5.5
+    "rating": null
    },
    "container-images": {
     "rating": 0.5
@@ -146,6 +147,18 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 5.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 0.5
    }
   },
   "endorsement": {
@@ -154,12 +167,14 @@
     "Mandatory criterion fails: publiccode.yml Metadata File",
     "Mandatory criterion fails: Docker support",
     "No publiccode.yml was found, so there is no maintenance contract.",
-    "Maintainability below 4 stars (2.81)"
+    "Maintainability below 4 stars (2.81)",
+    "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+    "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2"
    ]
   },
   "issueCounts": {
    "errors": 2,
-   "warnings": 14
+   "warnings": 15
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -459,12 +474,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.11 (threshold: 15)",
      "Max CCN: 41.00 (threshold: 30)",
-     "8      1     56      0      13 PabcClientTests::GetApplicationRolesPerEntityTypeAsync_ReturnsNull_WhenPabcReturnsError@75-87@/tmp/cgchecker-repo-jYqGEw/repo/Kiss.Bff.Test/PabcClientTests.cs",
-     "8      1     60      0      13 PabcClientTests::GetKissApplicationRolesAsync_ReturnsEmptySet_WhenPabcReturnsError@125-137@/tmp/cgchecker-repo-jYqGEw/repo/Kiss.Bff.Test/PabcClientTests.cs",
-     "11      2     81      1      11 ZaaksysteemController::LogAndReturnConfigError@238-248@/tmp/cgchecker-repo-jYqGEw/repo/Kiss.Bff/Extern/ZaakGerichtWerken/Zaaksysteem/ZaaksysteemController.cs",
-     "56      1    505      0      96 AfhandelingFormScenarios::TestErrorValidationOfAfhandelingForm@41-136@/tmp/cgchecker-repo-jYqGEw/repo/Kiss.Bff.EndToEndTest/AfhandelingForm/AfhandelingFormScenarios.cs",
-     "3      1     11      1       3 onError@30-32@/tmp/cgchecker-repo-jYqGEw/repo/src/services/use-loader.ts",
-     "10      1     38      1      11 error@89-99@/tmp/cgchecker-repo-jYqGEw/repo/src/services/service-data.ts"
+     "8      1     56      0      13 PabcClientTests::GetApplicationRolesPerEntityTypeAsync_ReturnsNull_WhenPabcReturnsError@75-87@/tmp/cgchecker-repo-rOxWhs/repo/Kiss.Bff.Test/PabcClientTests.cs",
+     "8      1     60      0      13 PabcClientTests::GetKissApplicationRolesAsync_ReturnsEmptySet_WhenPabcReturnsError@125-137@/tmp/cgchecker-repo-rOxWhs/repo/Kiss.Bff.Test/PabcClientTests.cs",
+     "10      1     38      1      11 error@89-99@/tmp/cgchecker-repo-rOxWhs/repo/src/services/service-data.ts",
+     "3      1     11      1       3 onError@30-32@/tmp/cgchecker-repo-rOxWhs/repo/src/services/use-loader.ts",
+     "6      1     19      0       6 showError@26-31@/tmp/cgchecker-repo-rOxWhs/repo/src/views/Beheer/gespreksresultaten/GespreksresultaatBeheer.vue",
+     "6      1     19      0       6 showError@23-28@/tmp/cgchecker-repo-rOxWhs/repo/src/views/Beheer/gespreksresultaten/GespreksresultatenBeheer.vue"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1155,262 +1170,15 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "pass",
-    "starRating": 5,
-    "rating": 4.73,
-    "aspectRatings": {
-     "vulnerabilities": 5.5,
-     "freshness": 4.95,
-     "activity": 2.19,
-     "licence": 5.5,
-     "management": 5.5
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "0",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Moderate",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "freshness",
-      "title": "Freshness",
-      "aspects": [
-       "freshness"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "9.4%",
-        "thresholds": {
-         "2": "any",
-         "3": "≤ 68.4%",
-         "4": "≤ 34.2%",
-         "5": "≤ 17.1%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 2 years",
-        "value": "4.7%",
-        "thresholds": {
-         "2": "≤ 76.4%",
-         "3": "≤ 38.2%",
-         "4": "≤ 19.1%",
-         "5": "≤ 9.6%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 3.5 years",
-        "value": "1.9%",
-        "thresholds": {
-         "2": "≤ 44.4%",
-         "3": "≤ 22.2%",
-         "4": "≤ 11.1%",
-         "5": "≤ 5.5%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 5 years, absolute bound",
-        "value": "0 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "activity",
-      "title": "Activity",
-      "aspects": [
-       "activity"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "39.6%",
-        "thresholds": {
-         "2": "≤ 85.6%",
-         "3": "≤ 42.8%",
-         "4": "≤ 21.4%",
-         "5": "≤ 10.7%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 2 years",
-        "value": "34.0%",
-        "thresholds": {
-         "2": "≤ 52.0%",
-         "3": "≤ 26.0%",
-         "4": "≤ 13.0%",
-         "5": "≤ 6.5%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 4 years",
-        "value": "8.5%",
-        "thresholds": {
-         "2": "≤ 38.4%",
-         "3": "≤ 19.2%",
-         "4": "≤ 9.6%",
-         "5": "≤ 4.8%"
-        },
-        "stars": 4
-       },
-       {
-        "label": "> 5.5 years, absolute bound",
-        "value": "3 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "0.0%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 5 of 5 stars over 212 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "status": "warn",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
-     "Freshness: ★★★★★ >1.0y 9.4%, >2.0y 4.7%, >3.5y 1.9%, >5.0y count 0",
-     "Activity: ★★☆☆☆ >1.0y 39.6%, >2.0y 34%, >4.0y 8.5%, >5.5y count 3",
-     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
-     "Management: ★★★★★ 0 unmanaged of 212 dependencies"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
@@ -1650,6 +1418,7 @@
         "edges": 574,
         "loc": 19394,
         "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 12,
         "componentIndependence": 0.377,
         "componentEntanglement": {
@@ -2000,8 +1769,8 @@
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": "3 organisations; largest 59%",
-      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (264 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is icatt.nl (5 authors), with 59% of the 157 commits whose organisation is known; 41% of the commits come from 8 of 17 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "value": "3 organisations; largest 58%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (264 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is icatt.nl (5 authors), with 58% of the 159 commits whose organisation is known; 40% of the commits come from 8 of 17 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -2011,8 +1780,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "1.02",
-      "explanation": "56 change requests were closed (merged or not) and 55 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "1.04",
+      "explanation": "57 change requests were closed (merged or not) and 55 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -2022,8 +1791,8 @@
       "id": "time-to-first-response",
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
-      "value": "median 3.9 days",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 7 got a response; 8 had none yet. Bots are left out.",
+      "value": "median 4.4 days",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 8 got a response; 7 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": false
@@ -2085,11 +1854,11 @@
        "fixDays": null,
        "count": 23,
        "response": {
-        "measured": 3,
+        "measured": 4,
         "median": 120.8,
         "worst": 156.3,
         "breaches": 19,
-        "waiting": 20
+        "waiting": 19
        },
        "fix": null
       },
@@ -2271,12 +2040,85 @@
     "message": "No publiccode.yml found, so no standards are declared.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "Development environment found; commands to test, lint and build found.",
+    "evidence": [
+     "docker-compose.deploy.yaml",
+     "docker-compose.override.yml",
+     "docker-compose.yml",
+     "package.json: build",
+     "package.json: test:unit",
+     "package.json: typecheck"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No OpenAPI document, llms.txt or MCP configuration found.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 0.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 10.3,
+  "durationSeconds": 42.4,
   "scanMode": "full",
   "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

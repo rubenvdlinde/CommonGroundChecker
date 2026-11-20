@@ -34,10 +34,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:22:01.203Z",
+  "lastCheckedAt": "2026-11-20T12:02:34.868Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:04.403Z",
-  "updatedAt": "2026-11-20T09:22:01.203Z",
+  "updatedAt": "2026-11-20T12:02:34.868Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -51,24 +51,25 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-22-01-203Z",
+  "id": "2026-11-20T12-02-34-868Z",
   "repoId": "github.com/open-formulieren/open-forms",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:22:01.203Z",
-  "createdAt": "2026-11-20T09:22:01.203Z",
+  "checkedAt": "2026-11-20T12:02:34.868Z",
+  "createdAt": "2026-11-20T12:02:34.868Z",
   "version": "vtest-oidc-refactor.2",
   "checklistVersion": "2026.2",
   "scannedRef": "4.1.0-alpha.2",
   "scannedRefKind": "declared-version",
   "scannedCommit": "9d94f66ee973f46aa0f3959c390d678265282285",
   "score": 73,
-  "rating": 3.1,
+  "rating": 2.9,
   "categoryRatings": {
    "Governance": 3.7,
-   "Security": 2.5,
+   "Security": 1.8,
    "Architecture": 3,
    "Software Quality": 3.3,
-   "Deployment & Operations": 3
+   "Deployment & Operations": 3,
+   "AI readiness": 2.4
   },
   "aspectRatings": {
    "licensing": {
@@ -92,19 +93,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 2.5
+    "rating": null
    },
    "dependency-freshness": {
-    "rating": 3.5
+    "rating": null
    },
    "dependency-activity": {
-    "rating": 2.5
+    "rating": null
    },
    "dependency-licences": {
-    "rating": 3
+    "rating": null
    },
    "dependency-management": {
-    "rating": 4.5
+    "rating": null
    },
    "container-images": {
     "rating": 0.5
@@ -155,6 +156,18 @@
    },
    "release-management": {
     "rating": 3
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 5.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 3
    }
   },
   "endorsement": {
@@ -164,7 +177,8 @@
     "Mandatory criterion fails: Semantic Versioning",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No valid maintenance contract: Maykin has no end date (until).",
-    "Maintainability below 4 stars (2.78)"
+    "Maintainability below 4 stars (2.78)",
+    "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2"
    ]
   },
   "issueCounts": {
@@ -628,12 +642,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.76 (threshold: 15)",
      "Max CCN: 77.00 (threshold: 30)",
-     "2      1     12      1       2 main@4-5@/tmp/cgchecker-repo-ISmGhq/repo/bin/check_error.py",
-     "8      2     50      2       8 log_errors@13-20@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/submissions/logic/log_utils.py",
-     "5      2     22      2       5 get_appointment_error_information@381-385@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/submissions/admin.py",
-     "10      3     56      1      13 error_message@81-93@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/submissions/status.py",
-     "11      4     56      3      12 get_error_message_parameters@120-131@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/contrib/auth_oidc/plugin.py",
-     "2      1     12      1       2 get_error_codes@133-134@/tmp/cgchecker-repo-ISmGhq/repo/src/openforms/contrib/auth_oidc/plugin.py"
+     "8      2     50      2       8 log_errors@13-20@/tmp/cgchecker-repo-To8FcY/repo/src/openforms/submissions/logic/log_utils.py",
+     "5      2     22      2       5 get_appointment_error_information@381-385@/tmp/cgchecker-repo-To8FcY/repo/src/openforms/submissions/admin.py",
+     "10      3     56      1      13 error_message@81-93@/tmp/cgchecker-repo-To8FcY/repo/src/openforms/submissions/status.py",
+     "12      3     95      1      14 handle_camunda_error@40-53@/tmp/cgchecker-repo-To8FcY/repo/src/openforms/dmn/contrib/camunda/plugin.py",
+     "11      4     56      3      12 get_error_message_parameters@120-131@/tmp/cgchecker-repo-To8FcY/repo/src/openforms/contrib/auth_oidc/plugin.py",
+     "2      1     12      1       2 get_error_codes@133-134@/tmp/cgchecker-repo-To8FcY/repo/src/openforms/contrib/auth_oidc/plugin.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1322,264 +1336,14 @@
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
     "status": "warn",
-    "starRating": 3,
-    "rating": 3.18,
-    "aspectRatings": {
-     "vulnerabilities": 2.5,
-     "freshness": 3.49,
-     "activity": 2.46,
-     "licence": 3,
-     "management": 4.47
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "2",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 3
-       },
-       {
-        "label": "Moderate",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "freshness",
-      "title": "Freshness",
-      "aspects": [
-       "freshness"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "23.0%",
-        "thresholds": {
-         "2": "any",
-         "3": "≤ 68.4%",
-         "4": "≤ 34.2%",
-         "5": "≤ 17.1%"
-        },
-        "stars": 4
-       },
-       {
-        "label": "> 2 years",
-        "value": "15.0%",
-        "thresholds": {
-         "2": "≤ 76.4%",
-         "3": "≤ 38.2%",
-         "4": "≤ 19.1%",
-         "5": "≤ 9.6%"
-        },
-        "stars": 4
-       },
-       {
-        "label": "> 3.5 years",
-        "value": "8.4%",
-        "thresholds": {
-         "2": "≤ 44.4%",
-         "3": "≤ 22.2%",
-         "4": "≤ 11.1%",
-         "5": "≤ 5.5%"
-        },
-        "stars": 4
-       },
-       {
-        "label": "> 5 years, absolute bound",
-        "value": "29 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "activity",
-      "title": "Activity",
-      "aspects": [
-       "activity"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "36.8%",
-        "thresholds": {
-         "2": "≤ 85.6%",
-         "3": "≤ 42.8%",
-         "4": "≤ 21.4%",
-         "5": "≤ 10.7%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 2 years",
-        "value": "26.9%",
-        "thresholds": {
-         "2": "≤ 52.0%",
-         "3": "≤ 26.0%",
-         "4": "≤ 13.0%",
-         "5": "≤ 6.5%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 4 years",
-        "value": "11.6%",
-        "thresholds": {
-         "2": "≤ 38.4%",
-         "3": "≤ 19.2%",
-         "4": "≤ 9.6%",
-         "5": "≤ 4.8%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 5.5 years, absolute bound",
-        "value": "31 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "1",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 3
-       },
-       {
-        "label": "Low risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "0.2%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 4
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 3 of 5 stars over 516 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★★★☆☆ 0 critical, 2 high, 0 moderate",
-     "Freshness: ★★★☆☆ >1.0y 23%, >2.0y 15%, >3.5y 8.4%, >5.0y count 29",
-     "Activity: ★★☆☆☆ >1.0y 36.8%, >2.0y 26.9%, >4.0y 11.6%, >5.5y count 31",
-     "Licence use: ★★★☆☆ 0 critical, 0 high, 1 medium, 0 low risk",
-     "Management: ★★★★☆ 1 unmanaged of 517 dependencies",
-     "Vulnerable: npm:tinymce@6.8.6 (high)",
-     "Vulnerable: npm:zod@3.25.76 (high)"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
@@ -1807,6 +1571,7 @@
         "edges": 1859,
         "loc": 51624,
         "componentDefinition": "directories below src/openforms/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 36,
         "componentIndependence": 0.6248,
         "componentEntanglement": {
@@ -1906,6 +1671,7 @@
         "edges": 480,
         "loc": 34510,
         "componentDefinition": "directories below src/openforms/js/components/admin/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 14,
         "componentIndependence": 0.9382,
         "componentEntanglement": {
@@ -2116,13 +1882,13 @@
     "status": "fail",
     "message": "Gitleaks found 13 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 650 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "generic-api-key: docker/keycloak/README.md:40",
-     "private-key: docker/certs/mocks.key:4",
      "private-key: docker/certs/openforms.key:4",
+     "private-key: docker/certs/mocks.key:4",
      "generic-api-key: docker/setup_configuration/data.yaml:7",
      "generic-api-key: docker/setup_configuration/data.yaml:57",
      "generic-api-key: docker/setup_configuration/data.yaml:64",
      "generic-api-key: docker/setup_configuration/data.yaml:71",
+     "generic-api-key: docker/keycloak/README.md:40",
      "generic-api-key: docker/setup_configuration/data_oidc.yaml:14",
      "generic-api-key: docker/setup_configuration/data_oidc.yaml:44",
      "generic-api-key: docker/keycloak/import/test-realm.json:877",
@@ -2240,7 +2006,7 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Docker Hub openformulieren/open-forms: 229,271 pulls in total (2026-11-20)",
+     "Docker Hub openformulieren/open-forms: 229,292 pulls in total (2026-11-20)",
      "GitHub open-formulieren/open-forms: 63 stars, 37 forks, 2 watchers (2026-11-20)",
      "GitHub commits open-formulieren/open-forms: 19 contributors, 10 from the owning organisation, 3 from other organisations, 6 unknown (2026-11-20)"
     ],
@@ -2257,7 +2023,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 229271
+         "value": 229292
         }
        ]
       },
@@ -2319,7 +2085,7 @@
     "title": "Project health (CHAOSS)",
     "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
     "status": "info",
-    "message": "3 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
     "evidence": [],
     "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
     "metrics": [
@@ -2339,7 +2105,7 @@
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
       "value": "2 organisations; largest 56%",
-      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (295 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykin.nl (2 authors), with 56% of the 262 commits whose organisation is known; 11% of the commits come from 2 of 8 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (294 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykin.nl (2 authors), with 56% of the 261 commits whose organisation is known; 11% of the commits come from 2 of 8 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -2349,33 +2115,33 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
+      "value": "0.78",
+      "explanation": "162 change requests were closed (merged or not) and 207 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
-       "met": null
+       "met": false
       }
      },
      {
       "id": "time-to-first-response",
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
+      "value": "median 2.3 hours",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 10 got a response; 5 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
-       "met": null
+       "met": true
       }
      },
      {
       "id": "issue-response-time",
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
+      "value": "median 28.1 hours",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-22 and 2026-11-13. 8 got a response; 7 had none yet. Bots are left out.",
       "target": {
        "text": "at most 120 hours",
-       "met": null
+       "met": true
       }
      },
      {
@@ -2456,7 +2222,7 @@
         "measured": 65,
         "median": 3.7,
         "worst": 498.1,
-        "breaches": 62,
+        "breaches": 63,
         "waiting": 46
        },
        "fix": null
@@ -2626,12 +2392,100 @@
     "message": "publiccode.yaml declares no standards under supports.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "Development environment found; commands to test, lint and build found.",
+    "evidence": [
+     "docker-compose.yml",
+     "docker/docker-compose.camunda.yml",
+     "docker/docker-compose.ci.yml",
+     "docker/docker-compose.embedding.yml",
+     "docker/docker-compose.generic-json.yml",
+     "docker/docker-compose.hc-brp-mock.yml",
+     "docker/docker-compose.keycloak.yml",
+     "docker/docker-compose.objects-apis.yml",
+     "docker/docker-compose.observability.yml",
+     "docker/docker-compose.open-klant.yml",
+     "package.json: test",
+     "package.json: build",
+     "package.json: format"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "warn",
+    "rating": 3.5,
+    "message": "Found: 1 OpenAPI document.",
+    "evidence": [
+     "src/openapi.yaml"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "warn",
+    "rating": 2.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 5.",
+    "evidence": [
+     "bin/check_error.py",
+     "bin/check_fail.py",
+     "bin/check_pass.py",
+     "bin/lint_dependencies.py",
+     "bin/rtd_post_checkout.sh"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 16.3,
+  "durationSeconds": 63.6,
   "scanMode": "full",
   "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

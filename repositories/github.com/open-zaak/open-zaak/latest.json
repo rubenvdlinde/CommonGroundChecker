@@ -35,10 +35,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:22:22.105Z",
+  "lastCheckedAt": "2026-11-20T12:03:48.129Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:41.154Z",
-  "updatedAt": "2026-11-20T09:22:22.105Z",
+  "updatedAt": "2026-11-20T12:03:48.129Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -54,24 +54,25 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-22-22-105Z",
+  "id": "2026-11-20T12-03-48-129Z",
   "repoId": "github.com/open-zaak/open-zaak",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:22:22.105Z",
-  "createdAt": "2026-11-20T09:22:22.105Z",
+  "checkedAt": "2026-11-20T12:03:48.129Z",
+  "createdAt": "2026-11-20T12:03:48.129Z",
   "version": "v1.31.2",
   "checklistVersion": "2026.2",
   "scannedRef": "1.31.0",
   "scannedRefKind": "declared-version",
   "scannedCommit": "1e06c19d9a701bbdb9de9260185514c3455b3a5c",
   "score": 78,
-  "rating": 3.6,
+  "rating": 3.4,
   "categoryRatings": {
    "Governance": 4.2,
-   "Security": 3.2,
+   "Security": 2.4,
    "Architecture": 3,
    "Software Quality": 3.2,
-   "Deployment & Operations": 4.3
+   "Deployment & Operations": 4.3,
+   "AI readiness": 2.4
   },
   "aspectRatings": {
    "licensing": {
@@ -95,19 +96,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-freshness": {
-    "rating": 2.9
+    "rating": null
    },
    "dependency-activity": {
-    "rating": 1.4
+    "rating": null
    },
    "dependency-licences": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-management": {
-    "rating": 4.1
+    "rating": null
    },
    "container-images": {
     "rating": 3
@@ -158,6 +159,18 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 5.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 3
    }
   },
   "endorsement": {
@@ -171,7 +184,7 @@
   },
   "issueCounts": {
    "errors": 2,
-   "warnings": 7
+   "warnings": 8
   },
   "declaredUsers": [
    "Gemeente Amsterdam",
@@ -652,12 +665,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.82 (threshold: 15)",
      "Max CCN: 31.00 (threshold: 30)",
-     "1      1      7      0       1 (anonymous)@17-17@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/js/forms/error-list.js",
-     "11      2     63      1      12 ErrorList@9-20@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/js/forms/error-list.js",
-     "2      1     10      2       2 _publish_validation_errors@70-71@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/components/catalogi/admin/mixins.py",
-     "17      2     77      2      18 _publish_validation_errors@156-173@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/components/catalogi/admin/mixins.py",
-     "7      5     70      2      17 format_serializer_errors@27-43@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/components/catalogi/admin/utils.py",
-     "5      2     29      2       7 _publish_validation_errors@341-347@/tmp/cgchecker-repo-YMgOI8/repo/src/openzaak/components/catalogi/admin/zaaktypen.py"
+     "26     10    161      1      43 get_error_responses@107-149@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/utils/schema.py",
+     "9      5     66      3      10 _handle_errors@85-94@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/utils/serializers.py",
+     "9      1     43      2      10 azure_error_handler@51-60@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/utils/views.py",
+     "5      2     29      2       7 _publish_validation_errors@341-347@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/components/catalogi/admin/zaaktypen.py",
+     "7      5     70      2      17 format_serializer_errors@27-43@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/components/catalogi/admin/utils.py",
+     "2      1     10      2       2 _publish_validation_errors@70-71@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/components/catalogi/admin/mixins.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1263,263 +1276,15 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "pass",
-    "starRating": 4,
-    "rating": 3.89,
-    "aspectRatings": {
-     "vulnerabilities": 5.5,
-     "freshness": 2.9,
-     "activity": 1.43,
-     "licence": 5.5,
-     "management": 4.14
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "0",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Moderate",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "freshness",
-      "title": "Freshness",
-      "aspects": [
-       "freshness"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "37.8%",
-        "thresholds": {
-         "2": "any",
-         "3": "≤ 68.4%",
-         "4": "≤ 34.2%",
-         "5": "≤ 17.1%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 2 years",
-        "value": "22.2%",
-        "thresholds": {
-         "2": "≤ 76.4%",
-         "3": "≤ 38.2%",
-         "4": "≤ 19.1%",
-         "5": "≤ 9.6%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 3.5 years",
-        "value": "17.8%",
-        "thresholds": {
-         "2": "≤ 44.4%",
-         "3": "≤ 22.2%",
-         "4": "≤ 11.1%",
-         "5": "≤ 5.5%"
-        },
-        "stars": 3
-       },
-       {
-        "label": "> 5 years, absolute bound",
-        "value": "6 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "activity",
-      "title": "Activity",
-      "aspects": [
-       "activity"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "55.6%",
-        "thresholds": {
-         "2": "≤ 85.6%",
-         "3": "≤ 42.8%",
-         "4": "≤ 21.4%",
-         "5": "≤ 10.7%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 2 years",
-        "value": "55.6%",
-        "thresholds": {
-         "2": "≤ 52.0%",
-         "3": "≤ 26.0%",
-         "4": "≤ 13.0%",
-         "5": "≤ 6.5%"
-        },
-        "stars": 1
-       },
-       {
-        "label": "> 4 years",
-        "value": "40.0%",
-        "thresholds": {
-         "2": "≤ 38.4%",
-         "3": "≤ 19.2%",
-         "4": "≤ 9.6%",
-         "5": "≤ 4.8%"
-        },
-        "stars": 1
-       },
-       {
-        "label": "> 5.5 years, absolute bound",
-        "value": "12 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": null,
-        "starsText": "caps at 3 stars"
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "2.2%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 4
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 4 of 5 stars over 45 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "status": "warn",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
-     "Freshness: ★★★☆☆ >1.0y 37.8%, >2.0y 22.2%, >3.5y 17.8%, >5.0y count 6",
-     "Activity: ★☆☆☆☆ >1.0y 55.6%, >2.0y 55.6%, >4.0y 40%, >5.5y count 12",
-     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
-     "Management: ★★★★☆ 1 unmanaged of 46 dependencies"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
@@ -1731,6 +1496,7 @@
         "edges": 808,
         "loc": 38109,
         "componentDefinition": "directories below src/openzaak/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 17,
         "componentIndependence": 0.828,
         "componentEntanglement": {
@@ -1824,6 +1590,7 @@
         "edges": 55,
         "loc": 1415,
         "componentDefinition": "directories below src/openzaak/js/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 7,
         "componentIndependence": 0.8898,
         "componentEntanglement": {
@@ -2022,13 +1789,13 @@
      "private-key: docker/certs/openzaak.key:4",
      "private-key: docker/certs/mocks.key:4",
      "generic-api-key: docker/docker-compose.azurite.yml:31",
-     "generic-api-key: docker/setup_configuration/data.yaml:76",
      "jwt: docs/client-development/authentication.rst:63",
      "jwt: docs/client-development/authentication.rst:71",
-     "generic-api-key: docker/keycloak/data/test-realm.json:756",
-     "generic-api-key: docker/keycloak/data/test-realm.json:802",
+     "generic-api-key: docker/setup_configuration/data.yaml:76",
      "generic-api-key: src/openzaak/conf/ci.py:33",
-     "generic-api-key: src/openzaak/conf/dev.py:46"
+     "generic-api-key: src/openzaak/conf/dev.py:46",
+     "generic-api-key: docker/keycloak/data/test-realm.json:756",
+     "generic-api-key: docker/keycloak/data/test-realm.json:802"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
@@ -2143,7 +1910,7 @@
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
      "publiccode.yml usedBy: 8 organisations named (2026-11-20)",
-     "Docker Hub openzaak/open-zaak: 650,324 pulls in total (2026-11-20)",
+     "Docker Hub openzaak/open-zaak: 650,705 pulls in total (2026-11-20)",
      "GitHub open-zaak/open-zaak: 60 stars, 44 forks, 10 watchers (2026-11-20)",
      "GitHub commits open-zaak/open-zaak: 21 contributors, 14 from the owning organisation, 3 from other organisations, 4 unknown (2026-11-20)"
     ],
@@ -2185,7 +1952,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 650324
+         "value": 650705
         }
        ]
       },
@@ -2559,12 +2326,97 @@
      "Found in the repository, not declared: Zaken API 1.5.1 in src/openzaak/components/zaken/openapi.yaml (by title)"
     ],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "Development environment found; commands to test, lint and build found.",
+    "evidence": [
+     "docker-compose.yml",
+     "docker/docker-compose.azurite.yml",
+     "docker/docker-compose.keycloak.yml",
+     "docker/docker-compose.minio.yml",
+     "docker/docker-compose.observability.yaml",
+     "package.json: build",
+     "package.json: test",
+     "pyproject.toml: lint"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "warn",
+    "rating": 3.5,
+    "message": "Found: 5 OpenAPI documents.",
+    "evidence": [
+     "src/openzaak/components/autorisaties/openapi.yaml",
+     "src/openzaak/components/besluiten/openapi.yaml",
+     "src/openzaak/components/catalogi/openapi.yaml",
+     "src/openzaak/components/documenten/openapi.yaml",
+     "src/openzaak/components/zaken/openapi.yaml"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "warn",
+    "rating": 2.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 3.",
+    "evidence": [
+     ".pre-commit-config.yaml",
+     "bin/check_changed_files.sh",
+     "bin/check_spdx.py"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 14.8,
+  "durationSeconds": 25.5,
   "scanMode": "full",
   "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

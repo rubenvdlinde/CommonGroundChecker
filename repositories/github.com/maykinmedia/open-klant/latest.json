@@ -32,10 +32,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:21:13.026Z",
+  "lastCheckedAt": "2026-11-20T12:00:58.323Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:57.462Z",
-  "updatedAt": "2026-11-20T09:21:13.026Z",
+  "updatedAt": "2026-11-20T12:00:58.323Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -48,24 +48,25 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T09-21-13-026Z",
+  "id": "2026-11-20T12-00-58-323Z",
   "repoId": "github.com/maykinmedia/open-klant",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:21:13.026Z",
-  "createdAt": "2026-11-20T09:21:13.026Z",
+  "checkedAt": "2026-11-20T12:00:58.323Z",
+  "createdAt": "2026-11-20T12:00:58.323Z",
   "version": "v2.19.2",
   "checklistVersion": "2026.2",
   "scannedRef": "2.19.2",
   "scannedRefKind": "tag",
   "scannedCommit": "ac8b824d1e00c1d2db58d8f8f2015b29a8e20210",
   "score": 80,
-  "rating": 3.3,
+  "rating": 3.1,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 3.2,
+   "Security": 2.4,
    "Architecture": 3,
    "Software Quality": 2.9,
-   "Deployment & Operations": 4.3
+   "Deployment & Operations": 4.3,
+   "AI readiness": 2.4
   },
   "aspectRatings": {
    "licensing": {
@@ -89,19 +90,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-freshness": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-activity": {
-    "rating": 1.6
+    "rating": null
    },
    "dependency-licences": {
-    "rating": 5.5
+    "rating": null
    },
    "dependency-management": {
-    "rating": 1.4
+    "rating": null
    },
    "container-images": {
     "rating": 0.5
@@ -152,6 +153,18 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 0.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 5.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 3
    }
   },
   "endorsement": {
@@ -161,12 +174,14 @@
     "Mandatory criterion fails: API Design Rules",
     "Mandatory criterion fails: Helm chart (Kubernetes)",
     "No publiccode.yml was found, so there is no maintenance contract.",
-    "Maintainability below 4 stars (2.44)"
+    "Maintainability below 4 stars (2.44)",
+    "publiccode.yml developmentStatus is not declared; Suitable needs stable",
+    "publiccode.yml usedBy names 0 organisations; Suitable needs at least 2"
    ]
   },
   "issueCounts": {
    "errors": 3,
-   "warnings": 8
+   "warnings": 9
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -475,7 +490,7 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 3.06 (threshold: 15)",
      "Max CCN: 37.00 (threshold: 30)",
-     "24      6    115      2      34 _prevent_protected_error_for_self_contained_identificatoren@296-329@/tmp/cgchecker-repo-xwLtlP/repo/src/openklant/management/commands/delete_klantcontacten_not_related_to_zaken.py",
+     "24      6    115      2      34 _prevent_protected_error_for_self_contained_identificatoren@296-329@/tmp/cgchecker-repo-RZIg9A/repo/src/openklant/management/commands/delete_klantcontacten_not_related_to_zaken.py",
      "!!!! Warnings (cyclomatic_complexity > 15 or length > 1000 or nloc > 1000000 or parameter_count > 100) !!!!",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
@@ -1083,261 +1098,15 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "pass",
-    "starRating": 4,
-    "rating": 3.89,
-    "aspectRatings": {
-     "vulnerabilities": 5.5,
-     "freshness": 5.5,
-     "activity": 1.58,
-     "licence": 5.5,
-     "management": 1.38
-    },
-    "measurements": [
-     {
-      "id": "vulnerabilities",
-      "title": "Vulnerabilities",
-      "aspects": [
-       "vulnerabilities"
-      ],
-      "rows": [
-       {
-        "label": "Critical or high",
-        "value": "0",
-        "thresholds": {
-         "2": "≤ 5",
-         "3": "≤ 2",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Moderate",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       },
-       {
-        "label": "Unknown severity",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "any",
-         "5": "any"
-        },
-        "stars": null,
-        "starsText": "not rated"
-       }
-      ]
-     },
-     {
-      "id": "freshness",
-      "title": "Freshness",
-      "aspects": [
-       "freshness"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "0.0%",
-        "thresholds": {
-         "2": "any",
-         "3": "≤ 68.4%",
-         "4": "≤ 34.2%",
-         "5": "≤ 17.1%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 2 years",
-        "value": "0.0%",
-        "thresholds": {
-         "2": "≤ 76.4%",
-         "3": "≤ 38.2%",
-         "4": "≤ 19.1%",
-         "5": "≤ 9.6%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 3.5 years",
-        "value": "0.0%",
-        "thresholds": {
-         "2": "≤ 44.4%",
-         "3": "≤ 22.2%",
-         "4": "≤ 11.1%",
-         "5": "≤ 5.5%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 5 years, absolute bound",
-        "value": "0 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "activity",
-      "title": "Activity",
-      "aspects": [
-       "activity"
-      ],
-      "rows": [
-       {
-        "label": "> 1 year",
-        "value": "50.0%",
-        "thresholds": {
-         "2": "≤ 85.6%",
-         "3": "≤ 42.8%",
-         "4": "≤ 21.4%",
-         "5": "≤ 10.7%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 2 years",
-        "value": "50.0%",
-        "thresholds": {
-         "2": "≤ 52.0%",
-         "3": "≤ 26.0%",
-         "4": "≤ 13.0%",
-         "5": "≤ 6.5%"
-        },
-        "stars": 2
-       },
-       {
-        "label": "> 4 years",
-        "value": "0.0%",
-        "thresholds": {
-         "2": "≤ 38.4%",
-         "3": "≤ 19.2%",
-         "4": "≤ 9.6%",
-         "5": "≤ 4.8%"
-        },
-        "stars": 5
-       },
-       {
-        "label": "> 5.5 years, absolute bound",
-        "value": "0 dependencies",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "licence",
-      "title": "Licence use",
-      "aspects": [
-       "licence"
-      ],
-      "rows": [
-       {
-        "label": "Critical risk",
-        "value": "0",
-        "thresholds": {
-         "2": "none",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "High risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "none",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Medium risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "none",
-         "5": "none"
-        },
-        "stars": 5
-       },
-       {
-        "label": "Low risk",
-        "value": "0",
-        "thresholds": {
-         "2": "any",
-         "3": "any",
-         "4": "≤ 3",
-         "5": "none"
-        },
-        "stars": 5
-       }
-      ]
-     },
-     {
-      "id": "management",
-      "title": "Management",
-      "aspects": [
-       "management"
-      ],
-      "rows": [
-       {
-        "label": "Unmanaged third-party code",
-        "value": "33.3%",
-        "thresholds": {
-         "2": "≤ 24.0%",
-         "3": "≤ 12.0%",
-         "4": "≤ 6.0%",
-         "5": "none"
-        },
-        "stars": 1
-       }
-      ]
-     }
-    ],
-    "message": "Open Source Health 4 of 5 stars over 2 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "status": "warn",
+    "message": "Open Source Health analysis could not run. It needs python3.",
     "evidence": [
-     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
-     "Freshness: ★★★★★ >1.0y 0%, >2.0y 0%, >3.5y 0%, >5.0y count 0",
-     "Activity: ★★☆☆☆ >1.0y 50%, >2.0y 50%, >4.0y 0%, >5.5y count 0",
-     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
-     "Management: ★☆☆☆☆ 1 unmanaged of 3 dependencies"
+     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
+     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
     ],
-    "requirementLevel": "recommended"
+    "requirementLevel": "recommended",
+    "starRating": 3
    },
    {
     "id": "size",
@@ -1549,6 +1318,7 @@
         "edges": 261,
         "loc": 11748,
         "componentDefinition": "directories below src/openklant/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 11,
         "componentIndependence": 0.8744,
         "componentEntanglement": {
@@ -1632,6 +1402,7 @@
         "edges": 2,
         "loc": 55,
         "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 3,
         "componentIndependence": 1,
         "componentEntanglement": {
@@ -1808,10 +1579,10 @@
     "status": "fail",
     "message": "Gitleaks found 39 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 85 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
+     "generic-api-key: docker/setup_configuration/data_oidc.yaml:14",
      "generic-api-key: docker/setup_configuration/data.yaml:5",
      "generic-api-key: docker/setup_configuration/data.yaml:27",
      "curl-auth-header: docs/installation/config/admin_configuration.rst:169",
-     "generic-api-key: docker/setup_configuration/data_oidc.yaml:14",
      "generic-api-key: docker/keycloak/data/test-realm.json:756",
      "generic-api-key: docker/keycloak/data/test-realm.json:802",
      "generic-api-key: docs/postman_collections/Klantinteracties.postman_collection.json:41825",
@@ -1922,7 +1693,7 @@
     "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
      "npm Open Klant: not measured: HTTP 405 (2026-11-20)",
-     "Docker Hub maykinmedia/open-klant: 214,320 pulls in total (2026-11-20)",
+     "Docker Hub maykinmedia/open-klant: 214,366 pulls in total (2026-11-20)",
      "GitHub maykinmedia/open-klant: 7 stars, 5 forks, 5 watchers (2026-11-20)",
      "GitHub commits maykinmedia/open-klant: 9 contributors, 7 from the owning organisation, 1 from other organisations, 1 unknown (2026-11-20)"
     ],
@@ -1950,7 +1721,7 @@
        "figures": [
         {
          "label": "pulls in total",
-         "value": 214320
+         "value": 214366
         }
        ]
       },
@@ -2233,12 +2004,94 @@
     "message": "No publiccode.yml found, so no standards are declared.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "Development environment found; commands to test, lint and build found.",
+    "evidence": [
+     "docker-compose.yml",
+     "docker/docker-compose.keycloak.yml",
+     "docker/docker-compose.observability.yml",
+     "docker/docker-compose.referentielijsten.yml",
+     "migration/docker-compose.yml",
+     "package.json: build",
+     "package.json: test",
+     "pyproject.toml: lint"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "warn",
+    "rating": 3.5,
+    "message": "Found: 2 OpenAPI documents.",
+    "evidence": [
+     "src/openklant/components/contactgegevens/openapi.yaml",
+     "src/openklant/components/klantinteracties/openapi.yaml"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "warn",
+    "rating": 2.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 3.",
+    "evidence": [
+     ".pre-commit-config.yaml",
+     "bin/check_changed_files.sh",
+     "bin/upgrade_check_version.sh"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 6.7,
+  "durationSeconds": 10.6,
   "scanMode": "full",
   "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

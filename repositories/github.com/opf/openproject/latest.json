@@ -51,10 +51,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T10:52:51.686Z",
+  "lastCheckedAt": "2026-11-20T12:08:46.804Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-20T10:52:51.686Z",
-  "updatedAt": "2026-11-20T10:52:51.686Z",
+  "updatedAt": "2026-11-20T12:08:46.804Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -65,11 +65,11 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T10-52-51-686Z",
+  "id": "2026-11-20T12-08-46-804Z",
   "repoId": "github.com/opf/openproject",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T10:52:51.686Z",
-  "createdAt": "2026-11-20T10:52:51.686Z",
+  "checkedAt": "2026-11-20T12:08:46.804Z",
+  "createdAt": "2026-11-20T12:08:46.804Z",
   "version": "v17.8.3",
   "checklistVersion": "2026.2",
   "scannedRef": "v17.9.7",
@@ -82,7 +82,8 @@
    "Security": 2.2,
    "Architecture": 4.3,
    "Software Quality": 4.7,
-   "Deployment & Operations": 3.3
+   "Deployment & Operations": 3.3,
+   "AI readiness": 3.1
   },
   "aspectRatings": {
    "licensing": {
@@ -169,6 +170,18 @@
    },
    "release-management": {
     "rating": 5.5
+   },
+   "agent-instructions": {
+    "rating": 5.5
+   },
+   "specifications-and-decisions": {
+    "rating": 0.5
+   },
+   "runnable-environment": {
+    "rating": 3.5
+   },
+   "interfaces-and-tooling": {
+    "rating": 3
    }
   },
   "endorsement": {
@@ -729,12 +742,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 1.64 (threshold: 15)",
      "Max CCN: 34.00 (threshold: 30)",
-     "4      2     29      1       5 include_error?@29-33@/tmp/cgchecker-repo-KBztTe/repo/script/support/github_actions_failures.rb",
-     "3      1      5      0       3 errors@75-77@/tmp/cgchecker-repo-KBztTe/repo/script/support/github_actions_failures.rb",
-     "6      3     27      1       7 create_error@85-91@/tmp/cgchecker-repo-KBztTe/repo/script/support/github_actions_failures.rb",
-     "5      4     27      2       5 with_matching_error@93-97@/tmp/cgchecker-repo-KBztTe/repo/script/support/github_actions_failures.rb",
-     "10      1     35      1      10 find_loading_errors@126-135@/tmp/cgchecker-repo-KBztTe/repo/script/support/github_actions_failures.rb",
-     "7      1     48      1      11 add_custom_value_errors!@363-373@/tmp/cgchecker-repo-KBztTe/repo/lib_static/plugins/acts_as_customizable/lib/acts_as_customizable.rb"
+     "4      2     29      1       5 include_error?@29-33@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
+     "3      1      5      0       3 errors@75-77@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
+     "6      3     27      1       7 create_error@85-91@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
+     "5      4     27      2       5 with_matching_error@93-97@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
+     "10      1     35      1      10 find_loading_errors@126-135@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
+     "7      1     48      1      11 add_custom_value_errors!@363-373@/tmp/cgchecker-repo-RCQscU/repo/lib_static/plugins/acts_as_customizable/lib/acts_as_customizable.rb"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1523,6 +1536,7 @@
         "edges": 436,
         "loc": 86334,
         "componentDefinition": "directories below frontend/src/app/ (a level is descended while one directory holds more than 80% of the modules)",
+        "componentDefinitionKind": "directories",
         "components": 10,
         "componentIndependence": 0.9854,
         "componentEntanglement": {
@@ -1727,12 +1741,12 @@
      "generic-api-key: config/credentials.yml:45",
      "generic-api-key: docker/dev/keycloak/docker-compose.yml:34",
      "generic-api-key: docker/dev/squashtm/docker-compose.yml:13",
-     "generic-api-key: docs/api/apiv3/components/examples/storage-nextcloud-response-for-creation.yml:18",
      "generic-api-key: docker/pullpreview/docker-compose.yml:28",
+     "generic-api-key: docs/api/apiv3/components/examples/storage-nextcloud-response-for-creation.yml:18",
      "generic-api-key: docs/api/apiv3/components/schemas/oauth_client_credentials_write_model.yml:17",
      "generic-api-key: docs/api/apiv3/example/README.md:76",
-     "generic-api-key: docs/contributions-guide/contribution-documentation/documentation-style-guide/README.md:154",
      "generic-api-key: docs/api/apiv3/openapi-spec.yml:83",
+     "generic-api-key: docs/api/apiv3/openapi-spec.yml:96",
      "... and 11 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
@@ -1950,7 +1964,7 @@
     "title": "Project health (CHAOSS)",
     "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
     "status": "info",
-    "message": "4 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "message": "5 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
     "evidence": [],
     "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
     "metrics": [
@@ -1970,7 +1984,7 @@
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
       "value": "5 organisations; largest 83%",
-      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (295 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is openproject.com (19 authors), with 83% of the 244 commits whose organisation is known; 17% of the commits come from 10 of 33 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (295 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is openproject.com (19 authors), with 83% of the 238 commits whose organisation is known; 19% of the commits come from 10 of 33 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1980,11 +1994,11 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for user ID 4021899. If you reach out to ).",
+      "value": "0.89",
+      "explanation": "1,891 change requests were closed (merged or not) and 2,130 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
-       "met": null
+       "met": true
       }
      },
      {
@@ -2043,12 +2057,111 @@
     "message": "publiccode.yml declares no standards under supports.",
     "evidence": [],
     "requirementLevel": "informative"
+   },
+   {
+    "id": "agentinstructions",
+    "title": "Agent instructions",
+    "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
+    "status": "pass",
+    "rating": 5.5,
+    "message": "15 instruction files found; the longest has 5,278 characters; names a build, test or lint command.",
+    "evidence": [
+     "AGENTS.md",
+     "CLAUDE.md",
+     ".github/copilot-instructions.md",
+     "app/AGENTS.md",
+     "app/CLAUDE.md",
+     "config/AGENTS.md",
+     "config/CLAUDE.md",
+     "db/AGENTS.md",
+     "db/CLAUDE.md",
+     "frontend/AGENTS.md",
+     "frontend/CLAUDE.md",
+     "spec/AGENTS.md",
+     "spec/CLAUDE.md",
+     "docker/dev/AGENTS.md",
+     "docker/dev/CLAUDE.md"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "specifications",
+    "title": "Specifications",
+    "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No specifications found. Describe the behaviour in openspec/specs/<capability>/spec.md.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "architecturedecisions",
+    "title": "Architecture decision records",
+    "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
+    "status": "fail",
+    "rating": 0.5,
+    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
+    "evidence": [],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "devenvironment",
+    "title": "Runnable development environment",
+    "description": "A dev container or Docker Compose file, and one command each to test, lint and build, let a coding agent run and check its own changes.",
+    "status": "warn",
+    "rating": 3.5,
+    "message": "Development environment found; no command found to lint, build.",
+    "evidence": [
+     "docker-compose.ci.yml",
+     "docker-compose.override.example.yml",
+     "docker-compose.yml",
+     "docker/dev/gitlab/docker-compose.override.example.yml",
+     "docker/dev/gitlab/docker-compose.yml",
+     "docker/dev/jira-software/docker-compose.yml",
+     "docker/dev/keycloak/docker-compose.yml",
+     "docker/dev/minio/docker-compose.core-override.example.yml",
+     "docker/dev/minio/docker-compose.yml",
+     "docker/dev/nextcloud/docker-compose.yml",
+     "package.json: test"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "machineinterfaces",
+    "title": "Machine-readable interfaces",
+    "description": "An OpenAPI document, an llms.txt and an MCP configuration let a coding agent read the interfaces and tools instead of guessing them.",
+    "status": "warn",
+    "rating": 3.5,
+    "message": "Found: 2 OpenAPI documents.",
+    "evidence": [
+     ".github/workflows/openapi.yaml",
+     "docs/api/apiv3/openapi-spec.yml"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
+   },
+   {
+    "id": "agenttooling",
+    "title": "Agent tooling",
+    "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
+    "status": "warn",
+    "rating": 2.5,
+    "message": "Skills, prompts or commands: 0; local quality gates: 1.",
+    "evidence": [
+     "lefthook.yml"
+    ],
+    "referenceUrl": "https://agents.md/",
+    "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 122.2,
+  "durationSeconds": 94.8,
   "scanMode": "full",
-  "scanModeReason": "there is no previous analysis",
-  "toolFingerprint": "sha256:bfb3b90766f8208b21a24b4b078c3dfd",
+  "scanModeReason": "a full scan was asked for",
+  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
