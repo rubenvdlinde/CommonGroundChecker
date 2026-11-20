@@ -50,10 +50,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T09:23:54.753Z",
+  "lastCheckedAt": "2026-11-20T09:31:59.189Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:03:37.938Z",
-  "updatedAt": "2026-11-20T09:23:54.753Z",
+  "updatedAt": "2026-11-20T09:31:59.189Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -64,11 +64,11 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T09-23-54-753Z",
+  "id": "2026-11-20T09-31-59-189Z",
   "repoId": "gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T09:23:54.753Z",
-  "createdAt": "2026-11-20T09:23:54.753Z",
+  "checkedAt": "2026-11-20T09:31:59.189Z",
+  "createdAt": "2026-11-20T09:31:59.189Z",
   "version": "v0.8.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v0.8.0",
@@ -80,12 +80,12 @@
    "Governance": 2,
    "Security": 3,
    "Architecture": 3,
-   "Software Quality": 3.5,
+   "Software Quality": 3.6,
    "Deployment & Operations": 3.3
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 3.8
+    "rating": 3.6
    },
    "ownership": {
     "rating": 1.8
@@ -156,7 +156,7 @@
     "rating": 3.4
    },
    "testing": {
-    "rating": 4.2
+    "rating": 4.7
    },
    "size": {
     "rating": null
@@ -212,6 +212,11 @@
      "Files analyzed: 5,055"
     ],
     "referenceUrl": "https://commonground.nl",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -223,6 +228,11 @@
     "message": "Component is not marked as a register; OpenAPI specification check is not required.",
     "evidence": [],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -236,6 +246,11 @@
      "LICENSE.md"
     ],
     "referenceUrl": "https://opensource.org/licenses",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -249,6 +264,11 @@
      "EUPL"
     ],
     "referenceUrl": "https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -262,6 +282,11 @@
     "referenceUrl": "https://spdx.org/licenses/",
     "status": "warn",
     "message": "Only one licence declaration found (LICENSE.md: EUPL-1.2); nothing to compare it with. Declare the licence in the package manifest and publiccode.yml as well.",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "recommended",
     "starRating": 3
    },
@@ -274,6 +299,11 @@
     "message": "Could not detect a probable copyright owner from repository metadata or common legal files (confidence: low).",
     "evidence": [],
     "referenceUrl": "https://opensource.guide/legal/",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -283,7 +313,6 @@
     "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
     "referenceUrl": "https://reuse.software/spec/",
     "status": "fail",
-    "starRating": 1,
     "message": "0.0% of 957 source files carry an SPDX header (1 of 5 stars). 957 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
     "evidence": [
      "apps/laadpalen-applicatie/cmd/main.go",
@@ -307,7 +336,13 @@
      "apps/laadpalen-applicatie/src/components/Header.tsx",
      "apps/laadpalen-applicatie/src/components/ui/alert-dialog.tsx"
     ],
-    "requirementLevel": "recommended"
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
+    "requirementLevel": "recommended",
+    "starRating": 1
    },
    {
     "id": "publiccode",
@@ -317,6 +352,11 @@
     "message": "No publiccode.yml file found. This file is mandatory for reuse in the Dutch public sector.",
     "evidence": [],
     "referenceUrl": "https://standard.publiccode.net/criteria/",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 1
    },
@@ -344,6 +384,11 @@
      "other Dockerfiles found: apps/pep-kong/Dockerfile, docker/keycloak/Dockerfile"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476272/haven",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 1
    },
@@ -368,6 +413,11 @@
      ".gitlab-ci.yml"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-github-actions",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -379,6 +429,11 @@
     "message": "No SBOM file found. Consider publishing SPDX or CycloneDX output in the repository.",
     "evidence": [],
     "referenceUrl": "https://www.cisa.gov/sbom",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -413,6 +468,11 @@
      "apps/manager/ui/README.md"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -424,6 +484,11 @@
     "message": "No changelog file was found. Add a CHANGELOG.md, NEWS.md, or equivalent to document release history.",
     "evidence": [],
     "referenceUrl": "https://keepachangelog.com/en/1.0.0/",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "recommended",
     "starRating": 3
    },
@@ -446,6 +511,11 @@
      "apps/manager/ui/src/routes/beslispunten/$id/-lib/summary.test.ts"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -479,6 +549,11 @@
      "3      1     23      0       3 Error@16-18@/tmp/cgchecker-repo-YYRU7s/repo/eam/authentication/errors.go"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "informative"
    },
    {
@@ -780,6 +855,11 @@
      "Lever: duplication in typescript, about 760 lines to fix for half a star",
      "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, typescript 17.0% against 18.2%"
     ],
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "recommended"
    },
    {
@@ -1017,6 +1097,11 @@
      "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1024,7 +1109,6 @@
     "title": "Test code ratio",
     "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
     "status": "pass",
-    "starRating": 4,
     "message": "Test code ratio 111.9% (4 of 5 stars).",
     "evidence": [
      "Test code ratio: 111.9%",
@@ -1033,7 +1117,13 @@
      "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
     ],
     "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
-    "requirementLevel": "recommended"
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
+    "requirementLevel": "recommended",
+    "starRating": 5
    },
    {
     "id": "opensourcehealth",
@@ -1175,7 +1265,6 @@
     "title": "Size",
     "description": "Counts the lines of production code per language and estimates the effort to rebuild it. Informative, not rated.",
     "referenceUrl": "https://github.com/boyter/scc",
-    "requirementLevel": "informative",
     "status": "info",
     "size": {
      "tool": "scc 4.1.0",
@@ -1230,7 +1319,13 @@
      "TypeScript Typings: 6 lines in 2 file(s)",
      "Rebuild effort, open estimate: 272 function points, 1.2 person-years (proxies: TypeScript uses the JavaScript factor; CSS uses the HTML factor)",
      "SIG-style volume, context, not part of the 2026 rating: 1.5 person-years (proxies: CSS, SQL and HTML use the JavaScript factor)"
-    ]
+    ],
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
+    "requirementLevel": "informative"
    },
    {
     "id": "duplication",
@@ -1360,6 +1455,11 @@
       ]
      }
     },
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1457,6 +1557,11 @@
       }
      }
     },
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "informative"
    },
    {
@@ -1478,6 +1583,11 @@
      "apps/laadpalen-applicatie/server/server.go"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -1554,6 +1664,11 @@
      "CONTRIBUTING.md"
     ],
     "referenceUrl": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -1565,6 +1680,11 @@
     "message": "No Code of Conduct file found. Add CODE_OF_CONDUCT.md to clarify community behavior standards.",
     "evidence": [],
     "referenceUrl": "https://opensource.guide/code-of-conduct/",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -1576,6 +1696,11 @@
     "message": "No SECURITY.md file found. Add one to document responsible vulnerability disclosure and supported versions.",
     "evidence": [],
     "referenceUrl": "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -1599,6 +1724,11 @@
      "... and 8 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "recommended",
     "starRating": 1
    },
@@ -1682,10 +1812,15 @@
      "Found path segment \"ui\" in apps/laadpalen-applicatie/src/components/ui/select.tsx",
      "Found path segment \"ui\" in apps/laadpalen-applicatie/src/components/ui/sonner.tsx",
      "Found path segment \"ui\" in apps/laadpalen-applicatie/src/components/ui/textarea.tsx",
-     "... and 477 more"
+     "... and 1 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
     "confidence": "medium",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 3
    },
@@ -1699,6 +1834,11 @@
      "deploy/charts/open-ftv-keycloak/Chart.yaml"
     ],
     "referenceUrl": "https://haven.commonground.nl",
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "mandatory",
     "starRating": 5
    },
@@ -1833,12 +1973,17 @@
     "status": "info",
     "message": "No publiccode.yml found, so no standards are declared.",
     "evidence": [],
+    "reusedFrom": {
+     "analysisId": "2026-11-20T09-23-54-753Z",
+     "checkedAt": "2026-11-20T09:23:54.753Z",
+     "commit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247"
+    },
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 30.5,
-  "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
+  "durationSeconds": 36.9,
+  "scanMode": "partial",
+  "scanModeReason": "the code did not change",
   "toolFingerprint": "sha256:2cfeb6ba202aef71e2228b6d2f5c1482",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
