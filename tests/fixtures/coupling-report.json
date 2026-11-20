@@ -1,0 +1,172 @@
+{
+ "version": 1,
+ "languages": {
+  "python": {
+   "measured": true,
+   "tool": "grimp 3.18",
+   "scope": "packages openzaak",
+   "modules": 342,
+   "edges": 832,
+   "loc": 39857,
+   "componentDefinition": "directories below src/openzaak/ (a level is descended while one directory holds more than 80% of the modules)",
+   "components": 17,
+   "componentIndependence": 0.8115,
+   "componentEntanglement": {
+    "violationDegree": 0.05,
+    "density": 2.42,
+    "communicationLines": 29,
+    "violations": {
+     "cyclic": 5,
+     "indirect-cyclic": 3,
+     "transitive": 3
+    }
+   },
+   "moduleCoupling": {
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "riskProfile": {
+     "low": 0.9249,
+     "moderate": 0.0626,
+     "high": 0.0125,
+     "veryHigh": 0.0
+    },
+    "above": [
+     0.0751,
+     0.0125,
+     0.0
+    ],
+    "fanInHistogram": {
+     "0": 4392,
+     "1": 11062,
+     "2": 8994,
+     "3": 4142,
+     "4": 1936,
+     "5": 2927,
+     "6": 686,
+     "7": 601,
+     "8": 385,
+     "9": 1092,
+     "10": 645,
+     "12": 171,
+     "13": 77,
+     "14": 23,
+     "15": 829,
+     "16": 5,
+     "17": 342,
+     "20": 1048,
+     "21": 264,
+     "27": 222,
+     "30": 4,
+     "49": 10
+    },
+    "highestFanIn": [
+     {
+      "module": "src/openzaak/components/catalogi/models/__init__.py",
+      "fanIn": 49
+     },
+     {
+      "module": "src/openzaak/components/zaken/models/__init__.py",
+      "fanIn": 30
+     },
+     {
+      "module": "src/openzaak/utils/mixins.py",
+      "fanIn": 27
+     },
+     {
+      "module": "src/openzaak/utils/permissions.py",
+      "fanIn": 21
+     },
+     {
+      "module": "src/openzaak/components/documenten/models.py",
+      "fanIn": 20
+     }
+    ]
+   },
+   "cycles": {
+    "moduleCycles": 2,
+    "modulesInCycles": 34,
+    "locShareInCycles": 0.2269,
+    "largestModuleCycle": 32,
+    "componentCycles": 1,
+    "largestComponentCycle": 8
+   },
+   "contracts": null
+  },
+  "javascript": {
+   "measured": true,
+   "tool": "dependency-cruiser 17.4.3",
+   "modules": 33,
+   "edges": 55,
+   "loc": 1415,
+   "componentDefinition": "directories below src/openzaak/js/ (a level is descended while one directory holds more than 80% of the modules)",
+   "components": 7,
+   "componentIndependence": 0.8898,
+   "componentEntanglement": {
+    "violationDegree": 0.0,
+    "density": 0.75,
+    "communicationLines": 3,
+    "violations": {}
+   },
+   "moduleCoupling": {
+    "bounds": [
+     10,
+     20,
+     50
+    ],
+    "riskProfile": {
+     "low": 1.0,
+     "moderate": 0.0,
+     "high": 0.0,
+     "veryHigh": 0.0
+    },
+    "above": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "fanInHistogram": {
+     "0": 50,
+     "1": 1047,
+     "2": 158,
+     "3": 37,
+     "5": 42,
+     "6": 81
+    },
+    "highestFanIn": [
+     {
+      "module": "src/openzaak/js/forms/inputs.js",
+      "fanIn": 6
+     },
+     {
+      "module": "src/openzaak/js/components/admin/applicatie-autorisaties/context.js",
+      "fanIn": 5
+     },
+     {
+      "module": "src/openzaak/js/forms/error-list.js",
+      "fanIn": 5
+     },
+     {
+      "module": "src/openzaak/js/forms/types.js",
+      "fanIn": 5
+     },
+     {
+      "module": "src/openzaak/js/components/admin/external-services/context.js",
+      "fanIn": 3
+     }
+    ]
+   },
+   "cycles": {
+    "moduleCycles": 0,
+    "modulesInCycles": 0,
+    "locShareInCycles": 0.0,
+    "largestModuleCycle": 0,
+    "componentCycles": 0,
+    "largestComponentCycle": 0
+   },
+   "unresolvedLocalImports": 0
+  }
+ }
+}

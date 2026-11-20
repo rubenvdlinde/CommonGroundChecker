@@ -193,6 +193,12 @@ const CRITERION_CATEGORIES: CriterionCategory[] = [
         label: "External comparison: SonarQube",
         explanation:
           "Only shown when SONARQUBE_URL and SONARQUBE_TOKEN are set and that SonarQube already analyses the component. Reads the technical debt ratio and the open issues of four SIG-like rules through the Web API. Information only: never stars, never part of the score.",
+      },
+      {
+        id: "coupling",
+        label: "Coupling (open track)",
+        explanation:
+          "Builds the module dependency graph with pdepend (PHP), grimp (Python) and dependency-cruiser (JavaScript, TypeScript, Vue) and shows module coupling, component independence, component entanglement and dependency cycles per language. This criterion is informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
         requirementLevel: "informative",
       },
       {

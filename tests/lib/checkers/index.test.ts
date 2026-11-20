@@ -24,6 +24,7 @@ const ids = [
   "opensourcehealth",
   "size",
   "duplication",
+  "coupling",
   "codemetrics",
   "owaspsecurecoding",
   "adrvalidator",
@@ -68,6 +69,7 @@ const mocks = vi.hoisted(() => ({
   checkSize: vi.fn(),
   checkDuplication: vi.fn(),
   checkSonarQube: vi.fn(),
+  checkCoupling: vi.fn(),
   checkSourceCode: vi.fn(),
   checkSemver: vi.fn(),
   checkFiveLayer: vi.fn(),
@@ -155,6 +157,7 @@ vi.mock("@/lib/checkers/openSourceHealth", () => ({ checkOpenSourceHealth: mocks
 vi.mock("@/lib/checkers/size", () => ({ checkSize: mocks.checkSize }));
 vi.mock("@/lib/checkers/duplication", () => ({ checkDuplication: mocks.checkDuplication }));
 vi.mock("@/lib/checkers/sonarqube", () => ({ checkSonarQube: mocks.checkSonarQube }));
+vi.mock("@/lib/checkers/coupling", () => ({ checkCoupling: mocks.checkCoupling }));
 vi.mock("@/lib/checkers/codeMetrics", () => ({ checkCodeMetrics: mocks.checkCodeMetrics }));
 vi.mock("@/lib/checkers/owaspSecureCoding", () => ({ checkOwaspSecureCoding: mocks.checkOwaspSecureCoding }));
 vi.mock("@/lib/checkers/eupl", () => ({
@@ -296,6 +299,7 @@ describe("runChecks", () => {
     mocks.checkTests.mockReturnValue(resultFor("tests", "pass"));
     mocks.checkComplexity.mockResolvedValue(resultFor("complexity", "pass"));
     mocks.checkMaintainability.mockResolvedValue({ ...resultFor("maintainability", "warn"), starRating: 3 });
+    mocks.checkCoupling.mockResolvedValue(resultFor("coupling", "info"));
     mocks.checkSonarQube.mockResolvedValue(null);
     mocks.checkDuplication.mockResolvedValue(resultFor("duplication", "info"));
     mocks.checkSize.mockResolvedValue({ ...resultFor("size", "info"), requirementLevel: "informative" });
@@ -495,7 +499,7 @@ describe("runChecks", () => {
     expect(report.scoringConfigId).toBe("cfg-1");
     expect(report.score).toBe(25);
     expect(mocks.checkOpenApi).not.toHaveBeenCalled();
-    expect(report.results).toHaveLength(37);
+    expect(report.results).toHaveLength(38);
     expect(report.results.find((result) => result.id === "licenceconsistency")?.starRating).toBe(5);
     expect(report.results.find((result) => result.id === "spdxheaders")?.starRating).toBe(4);
     expect(report.results.find((result) => result.id === "opensourcehealth")?.starRating).toBe(4);
@@ -792,6 +796,28 @@ describe("runChecks", () => {
     expect(sonarqube?.requirementLevel).toBe("informative");
     expect(withComparison.score).toBe(without.score);
     expect(without.results.some((result) => result.id === "sonarqube")).toBe(false);
+  });
+
+  it("passes the open-track coupling values through without stars", async () => {
+    const coupling = { version: 1, languages: { php: { measured: false as const, reason: "pdepend 3.0.0 is not installed", files: 3 } } };
+    mocks.checkCoupling.mockResolvedValue({ ...resultFor("coupling", "info"), openTrack: { coupling } });
+    mocks.getActiveScoringConfig.mockResolvedValue({
+      id: "cfg-1",
+      config: {
+        criterionConfigByCheckId: criterionConfig(1),
+        statusScoreByStatus: { pass: 1, warn: 0.5, info: 0.5, fail: 0 },
+        complexityThreshold: 12,
+        complexityMaxCcnThreshold: 20,
+        spectralRulesetSource: "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      },
+    });
+
+    const report = await runChecks("https://github.com/org/repo", { isRegister: false });
+    const result = report.results.find((entry) => entry.id === "coupling");
+
+    expect(mocks.checkCoupling).toHaveBeenCalledOnce();
+    expect(result?.openTrack?.coupling).toEqual(coupling);
+    expect(result?.starRating).toBeUndefined();
   });
 
   it("applies fixed category weights when aggregating mandatory criteria", async () => {

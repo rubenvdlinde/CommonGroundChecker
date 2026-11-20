@@ -380,6 +380,69 @@ export interface OpenTrackDuplication {
 
 export interface OpenTrackMeasures {
   duplication?: OpenTrackDuplication;
+  coupling?: CouplingMeasures;
+}
+
+/** Fan-in bands of the module-coupling risk profile: up to 10, 11 to 20, 21 to 50 and over 50 depending modules. */
+export type FanInBand = "low" | "moderate" | "high" | "veryHigh";
+
+/** The coupling measurements of one language, from one tool's module dependency graph. */
+export interface MeasuredCoupling {
+  measured: true;
+  /** Tool and version that produced the graph */
+  tool: string;
+  /** Which files were measured, when that is narrower than the production scope */
+  scope?: string;
+  modules: number;
+  edges: number;
+  loc: number;
+  componentDefinition: string;
+  components: number;
+  /** Share of code in modules no other component depends on, 0 to 1 */
+  componentIndependence: number;
+  componentEntanglement: {
+    violationDegree: number;
+    density: number;
+    communicationLines: number;
+    violations: Record<string, number>;
+  };
+  moduleCoupling: {
+    /** Upper fan-in of the low, moderate and high bands */
+    bounds: number[];
+    /** Share of code per fan-in band, 0 to 1 */
+    riskProfile: Record<FanInBand, number>;
+    /** Share of code above each bound, 0 to 1 */
+    above: number[];
+    /** Code lines per exact fan-in, keyed by the fan-in as a string, in ascending order */
+    fanInHistogram: Record<string, number>;
+    highestFanIn: { module: string; fanIn: number }[];
+  };
+  cycles: {
+    moduleCycles: number;
+    modulesInCycles: number;
+    locShareInCycles: number;
+    largestModuleCycle: number;
+    componentCycles: number;
+    largestComponentCycle: number;
+  };
+  /** PHP: the number of pdepend runs */
+  batches?: number;
+  /** Python: the repository's own import-linter contracts; null when it declares none */
+  contracts?: { kept: number; broken: number } | { error: string } | null;
+  /** JavaScript: relative or aliased imports dependency-cruiser could not resolve */
+  unresolvedLocalImports?: number;
+}
+
+export interface UnmeasuredCoupling {
+  measured: false;
+  reason: string;
+  files: number;
+}
+
+/** The open-track coupling report, per language group (php, python, javascript). */
+export interface CouplingMeasures {
+  version: number;
+  languages: Record<string, MeasuredCoupling | UnmeasuredCoupling>;
 }
 
 export interface CheckReport {

@@ -30,19 +30,25 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
-# Pinned analysis tools for the complexity, maintainability and size checks; installing at runtime is disabled.
+# Pinned analysis tools for the complexity, maintainability, size and coupling checks; installing at runtime is disabled.
 ENV HYDRA_GATE_TOOLS_DIR=/opt/analysis-tools
 ENV HYDRA_GATE_SIG_NO_INSTALL=1
+ARG PDEPEND_SHA256=6b562a6ad2706c018c1673f389e77d683a55744c6b9654a737bacc9d2ddca6df
 
 # gitleaks for the secret scanning check, pinned and verified against the release checksums.
 ARG GITLEAKS_VERSION=8.30.1
 
 RUN mkdir -p /usr/share/man/man1 \
   && apt-get update \
-  && apt-get install -y --no-install-recommends git ca-certificates python3 python3-pip curl openjdk-17-jre-headless \
-  && pip3 install --no-cache-dir --break-system-packages lizard==1.24.3 \
+  && apt-get install -y --no-install-recommends git ca-certificates python3 python3-pip curl openjdk-17-jre-headless php-cli php-xml \
+  && pip3 install --no-cache-dir --break-system-packages lizard==1.24.3 grimp==3.18 import-linter==2.15 \
   && npm install --silent --no-audit --no-fund --ignore-scripts --prefix /opt/analysis-tools/jscpd-4.0.5 jscpd@4.0.5 \
   && npm install --silent --no-audit --no-fund --ignore-scripts --prefix /opt/analysis-tools/jscpd-5.4.2 jscpd@5.4.2 \
+  && npm install --silent --no-audit --no-fund --ignore-scripts --prefix /opt/analysis-tools/dependency-cruiser-17.4.3 \
+    dependency-cruiser@17.4.3 typescript@5.9.3 @vue/compiler-sfc@3.5.44 \
+  && mkdir -p /opt/analysis-tools/pdepend-3.0.0 \
+  && curl -fsSL -o /opt/analysis-tools/pdepend-3.0.0/pdepend.phar https://github.com/pdepend/pdepend/releases/download/3.0.0/pdepend.phar \
+  && echo "${PDEPEND_SHA256}  /opt/analysis-tools/pdepend-3.0.0/pdepend.phar" | sha256sum -c - \
   && case "$(dpkg --print-architecture)" in \
        amd64) gl_arch=x64 ;; \
        arm64) gl_arch=arm64 ;; \
@@ -75,6 +81,8 @@ COPY --from=builder /app/scripts/maintainability ./scripts/maintainability
 COPY --from=builder /app/checker-fingerprint.json ./checker-fingerprint.json
 COPY --from=builder /app/scripts/open-source-health ./scripts/open-source-health
 COPY --from=builder /app/scripts/size ./scripts/size
+COPY --from=builder /app/scripts/coupling ./scripts/coupling
+COPY --from=builder /app/scripts/open-track ./scripts/open-track
 COPY --from=scc /usr/local/bin/scc /usr/local/bin/scc
 
 EXPOSE 3000

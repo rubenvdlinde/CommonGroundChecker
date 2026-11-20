@@ -26,6 +26,7 @@ import { checkOpenSourceHealth } from "./openSourceHealth";
 import { checkSize } from "./size";
 import { checkDuplication } from "./duplication";
 import { checkSonarQube } from "./sonarqube";
+import { checkCoupling } from "./coupling";
 import { checkCodeMetrics } from "./codeMetrics";
 import { checkCoverage } from "./coverage";
 import { checkAdrValidator } from "./adrValidator";
@@ -303,6 +304,7 @@ export async function runChecksOnContext(
       })
     )
   );
+  const couplingPromise = measure("coupling", async () => checkCoupling(await checkout()));
   // Null when no SonarQube is configured, so it is not reused like a measured result.
   const sonarQubePromise = checkSonarQube(context, tree);
   const duplicationPromise = measure("duplication", async () => checkDuplication(await checkout()));
@@ -374,7 +376,7 @@ export async function runChecksOnContext(
 
   // Instant checks done; emit next step while slower checks complete in parallel
   onProgress?.("Analysing API specs, licence & deployment files...", 60);
-  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth, size, duplication, sonarqube] = await Promise.all([
+  const [[openapi, license, copyrightowner, publiccodeAnalysis, maintenance, fivelayer, helmchart, projecthealth, standards, licenceconsistency, openssfscorecard], complexity, maintainability, testcoderatio, codemetrics, owaspsecurecoding, adrvalidator, usage, artifacthub, spdxheaders, secretscanning, opensourcehealth, size, duplication, sonarqube, coupling] = await Promise.all([
     networkChecksPromise,
     complexityPromise,
     maintainabilityPromise,
@@ -390,6 +392,7 @@ export async function runChecksOnContext(
     sizePromise,
     duplicationPromise,
     sonarQubePromise,
+    couplingPromise,
   ]);
   const publiccode = reused.get("publiccode") ?? publiccodeAnalysis.result;
 
@@ -449,6 +452,7 @@ export async function runChecksOnContext(
     opensourcehealth,
     size,
     duplication,
+    coupling,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,
@@ -564,6 +568,7 @@ export async function runChecksOnContext(
     opensourcehealth,
     size,
     duplication,
+    coupling,
     // codemetrics is now merged into sourcecode, so do not include separately
     owaspsecurecoding,
     adrvalidator,

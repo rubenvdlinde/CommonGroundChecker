@@ -396,7 +396,6 @@ export const CRITERION_DOCS: CriterionDoc[] = [
     why: "Loosely coupled code can be changed in one place without breaking another.",
     tool: "pdepend for PHP, grimp for Python and dependency-cruiser for JavaScript, TypeScript and Vue",
     howToPass: ["There is nothing to pass: the criterion is informative.", "Break dependency cycles and reduce imports across components."],
-    planned: { category: "Maintainability", level: "informative" },
   },
   {
     id: "duplication",
