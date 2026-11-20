@@ -574,13 +574,10 @@ const PAGE_BLOCKS: Record<string, () => ReactNode> = {
   run: () => (
     <>
       <p className={TEXT}>{RUN_TEXT}</p>
-      <p className="text-sm space-x-4">
+      <p className="text-sm">
         <Link href="/docs/run-without-a-server" className={LINK}>
           Run the checker without a server
         </Link>
-        <a href="https://github.com/Hugo-ter-Doest/CommonGroundChecker" className={LINK} rel="noopener noreferrer">
-          The source code
-        </a>
       </p>
     </>
   ),
