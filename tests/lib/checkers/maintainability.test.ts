@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import { EventEmitter } from "node:events";
+import { describe, expect, it, vi } from "vitest";
 import {
   SUBCHARACTERISTIC_PROPERTIES,
   checkMaintainability,
@@ -9,6 +10,12 @@ import {
 import { RATING_DOCS } from "@/lib/ratingDocs";
 import fixture from "../../fixtures/maintainability-report.json";
 import openZaakFixture from "../../fixtures/maintainability-report-open-zaak.json";
+
+const spawn = vi.hoisted(() => vi.fn());
+vi.mock("node:child_process", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("node:child_process")>()),
+  spawn,
+}));
 
 const report = fixture as unknown as MaintainabilityReport;
 const openZaak = openZaakFixture as unknown as MaintainabilityReport;
@@ -85,6 +92,27 @@ describe("mapMaintainabilityReport", () => {
 
     expect(result.status).toBe(status);
     expect(result.starRating).toBe(stars);
+  });
+
+  it("shows Simian's duplication cross-check next to the estimate's own figure", () => {
+    const result = mapMaintainabilityReport({
+      ...report,
+      tools: { simian: "4.2.1" },
+      languages: {
+        php: { duplication: { share: 0.018 }, duplication_simian: { share: 0.0126 } },
+        vue: { duplication: { share: 0.0267 }, duplication_simian: { notMeasured: "Simian has no support for this language" } },
+      },
+    });
+
+    expect(result.evidence).toContain(
+      "Duplication cross-check, Simian 4.2.1 strict against the estimate: php 1.3% against 1.8%, vue not measured (Simian has no support for this language) against 2.7%"
+    );
+  });
+
+  it("leaves the cross-check out of a report without one", () => {
+    const result = mapMaintainabilityReport(report);
+
+    expect(result.evidence?.some((line) => line.startsWith("Duplication cross-check"))).toBe(false);
   });
 
   it("warns when there is nothing to rate", () => {
@@ -185,5 +213,20 @@ describe("checkMaintainability", () => {
 
     expect(result.status).toBe("warn");
     expect(result.message).toContain("could not be cloned");
+  });
+
+  it("runs estimate_report.py with the repository as its first argument", async () => {
+    spawn.mockImplementation(() => {
+      const child = Object.assign(new EventEmitter(), { stderr: new EventEmitter(), kill: vi.fn() });
+      setImmediate(() => child.emit("close", 2, null));
+      return child;
+    });
+
+    await checkMaintainability("/tmp/repo");
+
+    const [command, args] = spawn.mock.calls[0];
+    expect(command).toBe("python3");
+    expect(args[0]).toMatch(/estimate_report\.py$/);
+    expect(args.slice(1, 3)).toEqual(["/tmp/repo", "--json"]);
   });
 });

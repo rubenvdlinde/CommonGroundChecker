@@ -7,7 +7,7 @@ import { STAR_LEVELS } from "../types";
 import { formatStars, ratingToStars } from "../stars";
 import { PASSING_MAINTAINABILITY_STARS } from "../ratings";
 
-const SCRIPT_PATH = path.join(process.cwd(), "scripts", "maintainability", "check_maintainability.py");
+const SCRIPT_PATH = path.join(process.cwd(), "scripts", "maintainability", "estimate_report.py");
 const TIMEOUT_MS = (Number(process.env.MAINTAINABILITY_TIMEOUT_SECONDS) || 600) * 1000;
 /** Exit status of the script when no file in a supported language is in scope. */
 const NOTHING_TO_JUDGE = 4;
@@ -71,7 +71,9 @@ interface LanguageMeasurements {
   unit_size?: BoundMeasurement[];
   unit_complexity?: BoundMeasurement[];
   unit_interfacing?: BoundMeasurement[];
-  duplication?: ShareMeasurement;
+  duplication?: ShareMeasurement | null;
+  /** Simian's cross-check of the estimate's duplication, or why it is missing */
+  duplication_simian?: ShareMeasurement | { notMeasured: string };
 }
 
 interface StructureMeasurements {
@@ -99,6 +101,7 @@ interface Lever {
 export interface MaintainabilityReport {
   files: number;
   skipped_files?: string[];
+  tools?: { simian?: string | null };
   rating: {
     overall: { range: [number, number] } | null;
     properties: Record<string, { rating: number | null; languages: Record<string, RatedLanguage> }>;
@@ -306,6 +309,19 @@ export function maintainabilityMeasurements(report: MaintainabilityReport): Meas
   });
 }
 
+/** Simian's figure next to the estimate's own, per language; the estimate's figure is the rating source. */
+function crossCheckLine(report: MaintainabilityReport): string | null {
+  const parts = Object.entries(report.languages ?? {})
+    .filter(([, language]) => language.duplication && language.duplication_simian)
+    .map(([name, language]) => {
+      const simian = language.duplication_simian!;
+      const measured = "notMeasured" in simian ? `not measured (${simian.notMeasured})` : percent(simian.share);
+      return `${name} ${measured} against ${percent(language.duplication!.share)}`;
+    });
+  if (!parts.length) return null;
+  return `Duplication cross-check, Simian ${report.tools?.simian ?? "4.2.1"} strict against the estimate: ${parts.join(", ")}`;
+}
+
 /** Turns the script's JSON report into a check result. */
 export function mapMaintainabilityReport(report: MaintainabilityReport): CheckResult {
   const overall = report.rating.overall;
@@ -328,6 +344,10 @@ export function mapMaintainabilityReport(report: MaintainabilityReport): CheckRe
     }
   }
   evidence.push(...(report.rating.levers ?? []).slice(0, 3).map(leverLine));
+  const crossCheck = crossCheckLine(report);
+  if (crossCheck) {
+    evidence.push(crossCheck);
+  }
   if (report.skipped_files?.length) {
     evidence.push(`Skipped ${report.skipped_files.length} file(s) the analyser could not read`);
   }
@@ -354,7 +374,7 @@ export async function checkMaintainability(localRepoPath?: string): Promise<Chec
   const tempRoot = await mkdtemp(path.join(os.tmpdir(), "cgchecker-maintainability-"));
   try {
     const jsonPath = path.join(tempRoot, "report.json");
-    const run = await runPythonScript(SCRIPT_PATH, ["report", localRepoPath, "--json", jsonPath], TIMEOUT_MS);
+    const run = await runPythonScript(SCRIPT_PATH, [localRepoPath, "--json", jsonPath], TIMEOUT_MS);
     if (run.code === TIMED_OUT) {
       return warn(`Maintainability analysis did not finish within ${TIMEOUT_MS / 1000} seconds.`);
     }
@@ -363,7 +383,7 @@ export async function checkMaintainability(localRepoPath?: string): Promise<Chec
     }
     if (run.code !== 0) {
       return warn(
-        "Maintainability analysis could not run. It needs python3 with lizard 1.24.3 and jscpd 4.0.5.",
+        "Maintainability analysis could not run. It needs python3 with lizard 1.24.3.",
         run.stderr.trim().split(/\r?\n/).slice(-3)
       );
     }

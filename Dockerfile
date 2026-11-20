@@ -37,8 +37,9 @@ ENV HYDRA_GATE_SIG_NO_INSTALL=1
 # gitleaks for the secret scanning check, pinned and verified against the release checksums.
 ARG GITLEAKS_VERSION=8.30.1
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends git ca-certificates python3 python3-pip curl \
+RUN mkdir -p /usr/share/man/man1 \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends git ca-certificates python3 python3-pip curl openjdk-17-jre-headless \
   && pip3 install --no-cache-dir --break-system-packages lizard==1.24.3 \
   && npm install --silent --no-audit --no-fund --ignore-scripts --prefix /opt/analysis-tools/jscpd-4.0.5 jscpd@4.0.5 \
   && npm install --silent --no-audit --no-fund --ignore-scripts --prefix /opt/analysis-tools/jscpd-5.4.2 jscpd@5.4.2 \
@@ -59,6 +60,10 @@ RUN apt-get update \
   && gitleaks version \
   && apt-get purge -y --auto-remove curl \
   && rm -rf /var/lib/apt/lists/*
+# Simian 4.2.1 (Apache-2.0) for the estimate's duplication cross-check.
+ADD --checksum=sha256:b93b79c527476812b975b3dc322a967b6c47eab7c8bae5a9e2c56afdd562b423 \
+  https://github.com/quandarypeak/simian/releases/download/v4.2.1/simian-4.2.1.jar \
+  /opt/analysis-tools/simian-4.2.1/simian-4.2.1.jar
 
 COPY package*.json ./
 COPY --from=deps /app/node_modules ./node_modules
