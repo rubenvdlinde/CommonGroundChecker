@@ -14,7 +14,7 @@
    "defaultBranch": "main",
    "topics": [],
    "license": "European Union Public License 1.2",
-   "version": "v0.11.3",
+   "version": "v0.13.1",
    "versionEvidence": {
     "source": "manifest",
     "detail": "root manifest package.json"
@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:07:48.783Z",
+  "lastCheckedAt": "2026-11-21T09:16:25.992Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-20T10:51:51.730Z",
-  "updatedAt": "2026-11-20T12:07:48.783Z",
+  "updatedAt": "2026-11-21T09:16:25.992Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -42,23 +42,23 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T12-07-48-783Z",
+  "id": "2026-11-21T09-16-25-992Z",
   "repoId": "github.com/digitaalgemeengoed/oa-integratielaag",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:07:48.783Z",
-  "createdAt": "2026-11-20T12:07:48.783Z",
-  "version": "v0.11.3",
+  "checkedAt": "2026-11-21T09:16:25.992Z",
+  "createdAt": "2026-11-21T09:16:25.992Z",
+  "version": "v0.13.1",
   "checklistVersion": "2026.2",
   "scannedRef": "main",
   "scannedRefKind": "default-branch-fallback",
-  "scannedCommit": "10035d92aaedc4b6d4ed7e1d5c24258abfd859da",
+  "scannedCommit": "4974638ad5d10abb2c35ecad06ca9842f1b30584",
   "score": 53,
-  "rating": 3.3,
+  "rating": 3.4,
   "categoryRatings": {
    "Governance": 2.2,
-   "Security": 3.8,
+   "Security": 4.3,
    "Architecture": 4.3,
-   "Software Quality": 3.7,
+   "Software Quality": 3.8,
    "Deployment & Operations": 2.6,
    "AI readiness": 1
   },
@@ -84,7 +84,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -126,13 +126,13 @@
     "rating": 4.3
    },
    "testability": {
-    "rating": 1.8
+    "rating": 1.9
    },
    "modularity": {
     "rating": 4
    },
    "reusability": {
-    "rating": 4.5
+    "rating": 4.6
    },
    "testing": {
     "rating": 3.2
@@ -175,7 +175,7 @@
   },
   "issueCounts": {
    "errors": 4,
-   "warnings": 14
+   "warnings": 13
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -186,7 +186,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 1,517 lines of code, 214 functions, 210 files analyzed.",
+    "message": "Code metrics: 1,553 lines of code, 221 functions, 217 files analyzed.",
     "evidence": [
      "app/api/auth/koppel/route.ts",
      "app/api/auth/login/route.ts",
@@ -199,9 +199,9 @@
      "app/api/collabora/bestanden/[id]/segment/route.ts",
      "app/api/collabora/bestanden/route.ts",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 1,517",
-     "Function count: 214",
-     "Files analyzed: 210"
+     "Total lines of code (NLOC): 1,553",
+     "Function count: 221",
+     "Files analyzed: 217"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -264,9 +264,9 @@
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
     "status": "warn",
     "confidence": "low",
-    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: digitaalgemeengoed (confidence: low).",
+    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: Digitaal-Gemeengoed (confidence: low).",
     "evidence": [
-     "repository owner metadata: digitaalgemeengoed"
+     "repository owner metadata: Digitaal-Gemeengoed"
     ],
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
@@ -279,7 +279,7 @@
     "referenceUrl": "https://reuse.software/spec/",
     "status": "fail",
     "starRating": 1,
-    "message": "0.0% of 38 source files carry an SPDX header (1 of 5 stars). 38 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "message": "0.0% of 41 source files carry an SPDX header (1 of 5 stars). 41 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
     "evidence": [
      "app/api/auth/koppel/route.ts",
      "app/api/auth/login/route.ts",
@@ -291,6 +291,8 @@
      "app/api/collabora/bestanden/[id]/open/route.ts",
      "app/api/collabora/bestanden/[id]/segment/route.ts",
      "app/api/collabora/bestanden/route.ts",
+     "app/api/huisstijl/css/route.ts",
+     "app/api/huisstijl/route.ts",
      "app/api/lees/[...pad]/route.ts",
      "app/api/vastleg/[...pad]/route.ts",
      "app/inloggen/page.tsx",
@@ -298,9 +300,7 @@
      "app/libreoffice/office-assistent.oxt/route.ts",
      "app/page.tsx",
      "app/versies.json/route.ts",
-     "app/wopi/files/[id]/contents/route.ts",
-     "app/wopi/files/[id]/route.ts",
-     "app/word/manifest.xml/route.ts"
+     "app/wopi/files/[id]/contents/route.ts"
     ],
     "requirementLevel": "recommended"
    },
@@ -456,13 +456,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 3.625,
+    "rating": 3.66,
     "aspectRatings": {
-     "analysability": 4.65,
-     "modifiability": 4.27,
-     "testability": 1.82,
+     "analysability": 4.68,
+     "modifiability": 4.3,
+     "testability": 1.86,
      "modularity": 3.97,
-     "reusability": 4.54
+     "reusability": 4.58
     },
     "measurements": [
      {
@@ -483,7 +483,7 @@
        },
        {
         "label": "TypeScript",
-        "value": "2.1%",
+        "value": "2.0%",
         "thresholds": {
          "4": "≤ 5.8%"
         },
@@ -525,15 +525,15 @@
        },
        {
         "label": "TypeScript, more than 15 lines",
-        "value": "36.6%",
+        "value": "35.7%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
-        "stars": 4
+        "stars": 5
        },
        {
         "label": "TypeScript, more than 30 lines",
-        "value": "16.6%",
+        "value": "16.2%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
@@ -541,7 +541,7 @@
        },
        {
         "label": "TypeScript, more than 60 lines",
-        "value": "5.1%",
+        "value": "5.0%",
         "thresholds": {
          "4": "≤ 9.1%"
         },
@@ -583,15 +583,15 @@
        },
        {
         "label": "TypeScript, complexity above 5",
-        "value": "28.2%",
+        "value": "27.6%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
-        "stars": 2
+        "stars": 3
        },
        {
         "label": "TypeScript, complexity above 10",
-        "value": "7.4%",
+        "value": "7.2%",
         "thresholds": {
          "4": "≤ 7.5%"
         },
@@ -640,7 +640,7 @@
        },
        {
         "label": "TypeScript, 3 or more parameters",
-        "value": "10.2%",
+        "value": "10.0%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -708,7 +708,7 @@
       "rows": [
        {
         "label": "js/ts/vue",
-        "value": "46.5%",
+        "value": "46.2%",
         "thresholds": {
          "4": "≥ 94.5%"
         },
@@ -735,19 +735,19 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 3.40 to 3.85 (4 of 5 stars) over 38 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 3.44 to 3.88 (4 of 5 stars) over 41 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★★ 4.9 (javascript 5.5, typescript 4.9)",
+     "Duplication: ★★★★★ 5.0 (javascript 5.5, typescript 4.9)",
      "Unit size: ★★★★☆ 4.4 (javascript 2.3, typescript 4.5)",
-     "Unit complexity: ★★★☆☆ 2.5 (javascript 5.5, typescript 2.4)",
+     "Unit complexity: ★★★☆☆ 2.6 (javascript 5.5, typescript 2.5)",
      "Unit interfacing: ★★★★★ 4.7 (javascript 5.5, typescript 4.7)",
      "Module coupling: ★★★★★ 5.3 (js/ts/vue 5.3)",
      "Component independence: ★☆☆☆☆ 1.1 (js/ts/vue 1.1)",
      "Component entanglement: ★★★★★ 5.5 (js/ts/vue 5.5)",
-     "Lever: component independence in js/ts/vue, about 594 lines to fix for half a star",
-     "Lever: unit complexity in typescript, about 53 lines to fix for half a star",
-     "Lever: unit size in typescript, about 250 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, typescript 1.5% against 2.1%"
+     "Lever: component independence in js/ts/vue, about 613 lines to fix for half a star",
+     "Lever: unit complexity in typescript, about 54 lines to fix for half a star",
+     "Lever: unit size in typescript, about 275 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.0% against 0.0%, typescript 1.5% against 2.0%"
     ],
     "requirementLevel": "recommended"
    },
@@ -767,7 +767,7 @@
       "rows": [
        {
         "label": "All languages, more than 29 lines",
-        "value": "16.0%",
+        "value": "15.6%",
         "thresholds": {
          "2": "≤ 60.2%",
          "3": "≤ 37.0%",
@@ -778,7 +778,7 @@
        },
        {
         "label": "All languages, more than 42 lines",
-        "value": "8.6%",
+        "value": "8.4%",
         "thresholds": {
          "2": "≤ 46.7%",
          "3": "≤ 24.3%",
@@ -789,7 +789,7 @@
        },
        {
         "label": "All languages, more than 71 lines",
-        "value": "4.9%",
+        "value": "4.8%",
         "thresholds": {
          "2": "≤ 33.4%",
          "3": "≤ 11.1%",
@@ -807,7 +807,7 @@
       "rows": [
        {
         "label": "All languages, complexity above 5",
-        "value": "27.1%",
+        "value": "26.5%",
         "thresholds": {
          "2": "≤ 45.1%",
          "3": "≤ 34.4%",
@@ -818,7 +818,7 @@
        },
        {
         "label": "All languages, complexity above 7",
-        "value": "13.8%",
+        "value": "13.5%",
         "thresholds": {
          "2": "≤ 38.1%",
          "3": "≤ 23.9%",
@@ -829,7 +829,7 @@
        },
        {
         "label": "All languages, complexity above 10",
-        "value": "7.1%",
+        "value": "7.0%",
         "thresholds": {
          "2": "≤ 32.2%",
          "3": "≤ 13.1%",
@@ -847,7 +847,7 @@
       "rows": [
        {
         "label": "All languages, 3 or more parameters",
-        "value": "9.8%",
+        "value": "9.6%",
         "thresholds": {
          "2": "≤ 31.4%",
          "3": "≤ 21.6%",
@@ -887,7 +887,7 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "3.7%",
+        "value": "3.6%",
         "thresholds": {
          "2": "≤ 34.8%",
          "3": "≤ 8.6%",
@@ -905,7 +905,7 @@
       "rows": [
        {
         "label": "All languages, fan-in above 2",
-        "value": "40.7%",
+        "value": "40.0%",
         "thresholds": {
          "2": "≤ 54.0%",
          "3": "≤ 29.1%",
@@ -916,7 +916,7 @@
        },
        {
         "label": "All languages, fan-in above 3",
-        "value": "17.3%",
+        "value": "16.9%",
         "thresholds": {
          "2": "≤ 43.9%",
          "3": "≤ 22.7%",
@@ -927,7 +927,7 @@
        },
        {
         "label": "All languages, fan-in above 5",
-        "value": "17.3%",
+        "value": "16.9%",
         "thresholds": {
          "2": "≤ 30.4%",
          "3": "≤ 13.8%",
@@ -945,7 +945,7 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "46.5%",
+        "value": "46.2%",
         "thresholds": {
          "2": "≥ 27.3%",
          "3": "≥ 63.8%",
@@ -977,12 +977,12 @@
     ],
     "message": "Open-track rating 3.4 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
-     "Unit size: ★★★★☆ 16.0% / 8.6% / 4.9% of the code above 29 / 42 / 71 lines",
-     "Unit complexity: ★★★☆☆ 27.1% / 13.8% / 7.1% of the code above 5 / 7 / 10 complexity",
-     "Unit interfacing: ★★★★☆ 9.8% / 2.8% / 0.0% of the code above 2 / 3 / 4 parameters",
-     "Duplication: ★★★★☆ 3.7% duplicated lines",
-     "Module coupling: ★★☆☆☆ 40.7% / 17.3% / 17.3% of the code above 2 / 3 / 5 fan-in",
-     "Component independence: ★★☆☆☆ 46.5% of the code hidden from other components",
+     "Unit size: ★★★★☆ 15.6% / 8.4% / 4.8% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★☆☆ 26.5% / 13.5% / 7.0% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★★☆ 9.6% / 2.8% / 0.0% of the code above 2 / 3 / 4 parameters",
+     "Duplication: ★★★★☆ 3.6% duplicated lines",
+     "Module coupling: ★★☆☆☆ 40.0% / 16.9% / 16.9% of the code above 2 / 3 / 5 fan-in",
+     "Component independence: ★★☆☆☆ 46.2% of the code hidden from other components",
      "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
     ],
@@ -998,7 +998,7 @@
     "evidence": [
      "Test code ratio: 0.0%",
      "Test code: 0 lines in 0 files",
-     "Production code: 1,822 lines in 38 files",
+     "Production code: 1,867 lines in 41 files",
      "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
     ],
     "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
@@ -1009,15 +1009,135 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": null
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 5 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: not rated (data unavailable)"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1028,14 +1148,14 @@
     "status": "info",
     "size": {
      "tool": "scc 4.1.0",
-     "files": 38,
-     "loc": 1922,
+     "files": 41,
+     "loc": 1967,
      "languages": [
       {
        "language": "TypeScript",
        "family": "typescript",
-       "files": 34,
-       "loc": 1301
+       "files": 37,
+       "loc": 1346
       },
       {
        "language": "Qt Translation Source",
@@ -1051,12 +1171,12 @@
       }
      ]
     },
-    "message": "1,922 lines of production code in 38 file(s), counted with scc 4.1.0. Rebuild effort about 0.2 person-years (open estimate).",
+    "message": "1,967 lines of production code in 41 file(s), counted with scc 4.1.0. Rebuild effort about 0.2 person-years (open estimate).",
     "evidence": [
-     "TypeScript: 1,301 lines in 34 file(s)",
+     "TypeScript: 1,346 lines in 37 file(s)",
      "Qt Translation Source: 527 lines in 2 file(s)",
      "JavaScript: 94 lines in 2 file(s)",
-     "Rebuild effort, open estimate: 41 function points, 0.2 person-years (proxies: TypeScript uses the JavaScript factor)",
+     "Rebuild effort, open estimate: 42 function points, 0.2 person-years (proxies: TypeScript uses the JavaScript factor)",
      "SIG-style volume, context, not part of the 2026 rating: 0.2 person-years"
     ]
    },
@@ -1066,10 +1186,10 @@
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
     "status": "info",
-    "message": "jscpd 5.4.2 duplicated lines: 3.7% overall (javascript 0.0%, typescript 3.9%) over 38 file(s). Shown for information; it does not count towards the score.",
+    "message": "jscpd 5.4.2 duplicated lines: 3.6% overall (javascript 0.0%, typescript 3.8%) over 41 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
      "javascript: 0.0% (0 of 112 lines, 0 clone(s) in 2 file(s))",
-     "typescript: 3.9% (84 of 2170 lines, 9 clone(s) in 36 file(s))",
+     "typescript: 3.8% (84 of 2242 lines, 9 clone(s) in 39 file(s))",
      "Clone of 13 lines: app/api/collabora/bestanden/[id]/open/route.ts:4-16 and app/api/collabora/bestanden/[id]/segment/route.ts:5-21",
      "Clone of 11 lines: app/api/collabora/bestanden/[id]/bestand/route.ts:4-14 and app/api/collabora/bestanden/[id]/html/route.ts:5-15",
      "Clone of 11 lines: app/api/collabora/bestanden/[id]/eigenschap/route.ts:18-28 and app/api/collabora/bestanden/[id]/html/route.ts:23-34",
@@ -1079,10 +1199,10 @@
     "openTrack": {
      "duplication": {
       "tool": "jscpd 5.4.2",
-      "percentage": 3.68,
+      "percentage": 3.57,
       "languages": {
        "javascript": 0,
-       "typescript": 3.87
+       "typescript": 3.75
       },
       "largestClones": [
        {
@@ -1188,7 +1308,7 @@
     "status": "info",
     "message": "Measured the module structure of JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 38 modules, 71 edges, 4 components; independence 46.5%, entanglement 0.000 (density 0.50); fan-in profile 98.7% / 1.3% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 41 modules, 73 edges, 4 components; independence 46.2%, entanglement 0.000 (density 0.50); fan-in profile 98.7% / 1.3% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
      "JavaScript, TypeScript and Vue components: directories below ./ (a level is descended while one directory holds more than 80% of the modules)"
     ],
     "openTrack": {
@@ -1198,13 +1318,13 @@
        "javascript": {
         "measured": true,
         "tool": "dependency-cruiser 17.4.3",
-        "modules": 38,
-        "edges": 71,
-        "loc": 1822,
+        "modules": 41,
+        "edges": 73,
+        "loc": 1867,
         "componentDefinition": "directories below ./ (a level is descended while one directory holds more than 80% of the modules)",
         "componentDefinitionKind": "directories",
         "components": 4,
-        "componentIndependence": 0.4649,
+        "componentIndependence": 0.4622,
         "componentEntanglement": {
          "violationDegree": 0,
          "density": 0.5,
@@ -1218,21 +1338,21 @@
           50
          ],
          "riskProfile": {
-          "low": 0.9868,
-          "moderate": 0.0132,
+          "low": 0.9871,
+          "moderate": 0.0129,
           "high": 0,
           "veryHigh": 0
          },
          "above": [
-          0.0132,
+          0.0129,
           0,
           0
          ],
          "fanInHistogram": {
-          "0": 715,
+          "0": 731,
           "1": 136,
-          "2": 229,
-          "3": 426,
+          "2": 254,
+          "3": 430,
           "6": 67,
           "8": 151,
           "10": 74,
@@ -1281,7 +1401,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "warn",
-    "message": "Potential OWASP secure coding issues were detected (1 findings across 38 scanned source files, failing from 4).",
+    "message": "Potential OWASP secure coding issues were detected (1 findings across 41 scanned source files, failing from 4).",
     "evidence": [
      "Unsafe HTML injection: app/zoeken/page.tsx"
     ],
@@ -1361,9 +1481,9 @@
     "title": "Semantic Versioning",
     "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
     "status": "pass",
-    "message": "Version \"v0.11.3\" follows semantic versioning.",
+    "message": "Version \"v0.13.1\" follows semantic versioning.",
     "evidence": [
-     "v0.11.3"
+     "v0.13.1"
     ],
     "referenceUrl": "https://semver.org/",
     "requirementLevel": "mandatory",
@@ -1399,6 +1519,10 @@
      "Found path segment \"api\" in app/api/collabora/bestanden/[id]/segment",
      "Found path segment \"api\" in app/api/collabora/bestanden/[id]/segment/route.ts",
      "Found path segment \"api\" in app/api/collabora/bestanden/route.ts",
+     "Found path segment \"api\" in app/api/huisstijl",
+     "Found path segment \"api\" in app/api/huisstijl/css",
+     "Found path segment \"api\" in app/api/huisstijl/css/route.ts",
+     "Found path segment \"api\" in app/api/huisstijl/route.ts",
      "Found path segment \"api\" in app/api/lees",
      "Found path segment \"api\" in app/api/lees/[...pad]",
      "Found path segment \"api\" in app/api/lees/[...pad]/route.ts",
@@ -1434,8 +1558,8 @@
     "status": "info",
     "message": "Usage from 2 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub digitaalgemeengoed/oa-integratielaag: 0 stars, 0 forks, 0 watchers (2026-11-20)",
-     "GitHub commits digitaalgemeengoed/oa-integratielaag: 1 contributors, 1 from the owning organisation, 0 from other organisations, 0 unknown (2026-11-20)"
+     "GitHub digitaalgemeengoed/oa-integratielaag: 0 stars, 0 forks, 0 watchers (2026-11-21)",
+     "GitHub commits digitaalgemeengoed/oa-integratielaag: 1 contributors, 1 from the owning organisation, 0 from other organisations, 0 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1445,7 +1569,7 @@
        "source": "GitHub",
        "subject": "digitaalgemeengoed/oa-integratielaag",
        "url": "https://github.com/digitaalgemeengoed/oa-integratielaag",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1469,7 +1593,7 @@
        "subject": "digitaalgemeengoed/oa-integratielaag",
        "url": "https://github.com/digitaalgemeengoed/oa-integratielaag/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -1517,7 +1641,7 @@
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
       "value": "1 organisation; largest 100%",
-      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (24 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is an organisation with one author, with 100% of the 24 commits whose organisation is known; 0% of the commits come from 0 of 1 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (28 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is an organisation with one author, with 100% of the 28 commits whose organisation is known; 0% of the commits come from 0 of 1 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": false
@@ -1539,7 +1663,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": null,
-      "explanation": "Not measured: no change requests were opened by people between 2026-08-22 and 2026-11-13.",
+      "explanation": "Not measured: no change requests were opened by people between 2026-08-23 and 2026-11-14.",
       "target": {
        "text": "at most 48 hours",
        "met": null
@@ -1550,7 +1674,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": null,
-      "explanation": "Not measured: no issues were opened by people between 2026-08-22 and 2026-11-13.",
+      "explanation": "Not measured: no issues were opened by people between 2026-08-23 and 2026-11-14.",
       "target": {
        "text": "at most 120 hours",
        "met": null
@@ -1570,8 +1694,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [],
      "openBreachCount": 0,
      "openBreaches": [],
@@ -1665,10 +1789,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 6,
+  "durationSeconds": 6.7,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

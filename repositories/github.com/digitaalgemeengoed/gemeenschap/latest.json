@@ -14,10 +14,10 @@
    "defaultBranch": "main",
    "topics": [],
    "license": "European Union Public License 1.2",
-   "version": "v0.20.1",
+   "version": "v0.21.1",
    "versionEvidence": {
     "source": "release",
-    "detail": "latest release tag: v0.20.1"
+    "detail": "latest release tag: v0.21.1"
    },
    "displayName": null,
    "shortDescription": null,
@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:06:57.123Z",
+  "lastCheckedAt": "2026-11-21T09:15:54.676Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-20T10:50:49.600Z",
-  "updatedAt": "2026-11-20T12:06:57.123Z",
+  "updatedAt": "2026-11-21T09:15:54.676Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -42,21 +42,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T12-06-57-123Z",
+  "id": "2026-11-21T09-15-54-676Z",
   "repoId": "github.com/digitaalgemeengoed/gemeenschap",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:06:57.123Z",
-  "createdAt": "2026-11-20T12:06:57.123Z",
-  "version": "v0.20.1",
+  "checkedAt": "2026-11-21T09:15:54.676Z",
+  "createdAt": "2026-11-21T09:15:54.676Z",
+  "version": "v0.21.1",
   "checklistVersion": "2026.2",
-  "scannedRef": "v0.20.1",
+  "scannedRef": "v0.21.1",
   "scannedRefKind": "release",
-  "scannedCommit": "34d951f471aa8527740ec10ad16642678846c0e4",
+  "scannedCommit": "1a0ca7c7261db7a22a7cf804aad4581698355472",
   "score": 51,
   "rating": 2.9,
   "categoryRatings": {
    "Governance": 2,
-   "Security": 2.2,
+   "Security": 2.5,
    "Architecture": 4.3,
    "Software Quality": 3.6,
    "Deployment & Operations": 2.6,
@@ -84,7 +84,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -96,7 +96,7 @@
     "rating": null
    },
    "dependency-management": {
-    "rating": null
+    "rating": 0.5
    },
    "container-images": {
     "rating": null
@@ -263,9 +263,9 @@
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
     "status": "warn",
     "confidence": "low",
-    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: digitaalgemeengoed (confidence: low).",
+    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: Digitaal-Gemeengoed (confidence: low).",
     "evidence": [
-     "repository owner metadata: digitaalgemeengoed"
+     "repository owner metadata: Digitaal-Gemeengoed"
     ],
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
@@ -447,12 +447,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 6.52 (threshold: 15)",
      "Max CCN: 90.00 (threshold: 30)",
-     "1      1     27      0       1 Error@41-41@/tmp/cgchecker-repo-VAdjPV/repo/beheer/keycloak.go",
-     "3      1     39      0       3 Error@343-345@/tmp/cgchecker-repo-VAdjPV/repo/documenten/internal/webdav/internal/xml/typeinfo.go",
-     "3      1     29      0       3 Error@34-36@/tmp/cgchecker-repo-VAdjPV/repo/documenten/internal/webdav/internal/xml/xml.go",
-     "3      1     28      1       3 syntaxError@455-457@/tmp/cgchecker-repo-VAdjPV/repo/documenten/internal/webdav/internal/xml/xml.go",
-     "1      1     16      0       1 Error@138-138@/tmp/cgchecker-repo-VAdjPV/repo/documenten/internal/webdav/internal/xml/read.go",
-     "4      1     24      0       4 cachedWriteError@1099-1102@/tmp/cgchecker-repo-VAdjPV/repo/documenten/internal/webdav/internal/xml/marshal.go"
+     "3      1     29      0       3 Error@34-36@/tmp/cgchecker-repo-RnLNKr/repo/documenten/internal/webdav/internal/xml/xml.go",
+     "3      1     28      1       3 syntaxError@455-457@/tmp/cgchecker-repo-RnLNKr/repo/documenten/internal/webdav/internal/xml/xml.go",
+     "4      1     24      0       4 cachedWriteError@1099-1102@/tmp/cgchecker-repo-RnLNKr/repo/documenten/internal/webdav/internal/xml/marshal.go",
+     "3      1     22      0       3 Error@1203-1205@/tmp/cgchecker-repo-RnLNKr/repo/documenten/internal/webdav/internal/xml/marshal.go",
+     "3      1     39      0       3 Error@343-345@/tmp/cgchecker-repo-RnLNKr/repo/documenten/internal/webdav/internal/xml/typeinfo.go",
+     "1      1     16      0       1 Error@138-138@/tmp/cgchecker-repo-RnLNKr/repo/documenten/internal/webdav/internal/xml/read.go"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1061,14 +1061,154 @@
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
     "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "starRating": 3,
+    "rating": 3,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": 0.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "100.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 1
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 3 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: ★☆☆☆☆ 1 unmanaged of 1 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1462,9 +1602,9 @@
     "title": "Semantic Versioning",
     "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
     "status": "pass",
-    "message": "Version \"v0.20.1\" follows semantic versioning.",
+    "message": "Version \"v0.21.1\" follows semantic versioning.",
     "evidence": [
-     "v0.20.1"
+     "v0.21.1"
     ],
     "referenceUrl": "https://semver.org/",
     "requirementLevel": "mandatory",
@@ -1505,8 +1645,8 @@
     "status": "info",
     "message": "Usage from 2 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub digitaalgemeengoed/gemeenschap: 0 stars, 0 forks, 0 watchers (2026-11-20)",
-     "GitHub commits digitaalgemeengoed/gemeenschap: 2 contributors, 1 from the owning organisation, 1 from other organisations, 0 unknown (2026-11-20)"
+     "GitHub digitaalgemeengoed/gemeenschap: 0 stars, 0 forks, 0 watchers (2026-11-21)",
+     "GitHub commits digitaalgemeengoed/gemeenschap: 2 contributors, 1 from the owning organisation, 1 from other organisations, 0 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1516,7 +1656,7 @@
        "source": "GitHub",
        "subject": "digitaalgemeengoed/gemeenschap",
        "url": "https://github.com/digitaalgemeengoed/gemeenschap",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1540,7 +1680,7 @@
        "subject": "digitaalgemeengoed/gemeenschap",
        "url": "https://github.com/digitaalgemeengoed/gemeenschap/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -1588,7 +1728,7 @@
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
       "value": "2 organisations; largest 99%",
-      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (81 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is an organisation with one author, with 99% of the 81 commits whose organisation is known; 0% of the commits come from 0 of 2 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (84 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is an organisation with one author, with 99% of the 84 commits whose organisation is known; 0% of the commits come from 0 of 2 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1610,7 +1750,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": null,
-      "explanation": "Not measured: no change requests were opened by people between 2026-08-22 and 2026-11-13.",
+      "explanation": "Not measured: no change requests were opened by people between 2026-08-23 and 2026-11-14.",
       "target": {
        "text": "at most 48 hours",
        "met": null
@@ -1621,7 +1761,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": null,
-      "explanation": "Not measured: no issues were opened by people between 2026-08-22 and 2026-11-13.",
+      "explanation": "Not measured: no issues were opened by people between 2026-08-23 and 2026-11-14.",
       "target": {
        "text": "at most 120 hours",
        "met": null
@@ -1631,8 +1771,8 @@
       "id": "release-frequency",
       "name": "Release Frequency",
       "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
-      "value": "26 in 12 months",
-      "explanation": "26 final releases were published in the last 12 months, about one every 14 days, counted from the GitHub releases. The latest final release is from 2026-11-13. Drafts and pre-releases are left out.",
+      "value": "27 in 12 months",
+      "explanation": "27 final releases were published in the last 12 months, about one every 14 days, counted from the GitHub releases. The latest final release is from 2026-11-20. Drafts and pre-releases are left out.",
       "target": {
        "text": "at least 4 releases in 12 months",
        "met": true
@@ -1641,8 +1781,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [],
      "openBreachCount": 0,
      "openBreaches": [],
@@ -1734,10 +1874,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 10.7,
+  "durationSeconds": 6.5,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

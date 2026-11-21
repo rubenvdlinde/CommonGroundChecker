@@ -32,10 +32,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:04:26.244Z",
+  "lastCheckedAt": "2026-11-21T09:14:07.213Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:02:41.654Z",
-  "updatedAt": "2026-11-20T12:04:26.244Z",
+  "updatedAt": "2026-11-21T09:14:07.213Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -48,21 +48,21 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T12-04-26-244Z",
+  "id": "2026-11-21T09-14-07-213Z",
   "repoId": "github.com/operaton/operaton",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:04:26.244Z",
-  "createdAt": "2026-11-20T12:04:26.244Z",
+  "checkedAt": "2026-11-21T09:14:07.213Z",
+  "createdAt": "2026-11-21T09:14:07.213Z",
   "version": "v2.2.2",
   "checklistVersion": "2026.2",
   "scannedRef": "v2.2.2",
   "scannedRefKind": "release",
   "scannedCommit": "76a6873d1872ee8f41118cee76f341e5f3608c70",
   "score": 71,
-  "rating": 3.6,
+  "rating": 3.5,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 3.6,
+   "Security": 3.4,
    "Architecture": 4.3,
    "Software Quality": 3.7,
    "Deployment & Operations": 3.3,
@@ -90,7 +90,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -102,7 +102,7 @@
     "rating": null
    },
    "dependency-management": {
-    "rating": null
+    "rating": 0.5
    },
    "container-images": {
     "rating": 5.5
@@ -494,12 +494,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 1.62 (threshold: 15)",
      "Max CCN: 146.00 (threshold: 30)",
-     "4      1     26      4       4 CdiEventSupportBpmnParseListener::parseBoundaryErrorEventDefinition@145-148@/tmp/cgchecker-repo-HkI3wj/repo/engine-cdi/src/main/java/org/operaton/bpm/engine/cdi/impl/event/CdiEventSupportBpmnParseListener.java",
-     "12      4     76      0      13 JcaExecutorServiceManagedConnectionFactory::SuppressWarnings@64-76@/tmp/cgchecker-repo-HkI3wj/repo/jakarta-ee/jobexecutor-ra/src/main/java/org/operaton/bpm/container/impl/threading/ra/outbound/JcaExecutorServiceManagedConnectionFactory.java",
-     "7      1     27      1       7 DmnTransformLogger::errorWhileTransformingDecisions@58-64@/tmp/cgchecker-repo-HkI3wj/repo/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/transform/DmnTransformLogger.java",
-     "7      1     27      1       7 DmnTransformLogger::errorWhileTransformingDefinitions@151-157@/tmp/cgchecker-repo-HkI3wj/repo/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/transform/DmnTransformLogger.java",
-     "10      2     52      0      10 DefaultDmnTransform::SuppressWarnings@111-120@/tmp/cgchecker-repo-HkI3wj/repo/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/transform/DefaultDmnTransform.java",
-     "11      2     73      0      11 DefaultDmnTransform::SuppressWarnings@142-152@/tmp/cgchecker-repo-HkI3wj/repo/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/transform/DefaultDmnTransform.java"
+     "11      3     80      0      14 ServiceTracker::SuppressWarnings@46-59@/tmp/cgchecker-repo-jadGiB/repo/distro/wildfly/subsystem/src/main/java/org/operaton/bpm/container/impl/jboss/util/ServiceTracker.java",
+     "11      4     86      0      16 MscRuntimeContainerDelegate::SuppressWarnings@137-152@/tmp/cgchecker-repo-jadGiB/repo/distro/wildfly/subsystem/src/main/java/org/operaton/bpm/container/impl/jboss/service/MscRuntimeContainerDelegate.java",
+     "3      1      8      0       3 VariableInstanceDto::getErrorMessage@109-111@/tmp/cgchecker-repo-jadGiB/repo/clients/java/client/src/it/java/org/operaton/bpm/client/dto/VariableInstanceDto.java",
+     "3      1     13      1       3 VariableInstanceDto::setErrorMessage@113-115@/tmp/cgchecker-repo-jadGiB/repo/clients/java/client/src/it/java/org/operaton/bpm/client/dto/VariableInstanceDto.java",
+     "6      1     50      0       8 ExternalTaskHandlerIT::adjustProcessToAddErrorMessageVariable@72-79@/tmp/cgchecker-repo-jadGiB/repo/clients/java/client/src/it/java/org/operaton/bpm/client/task/ExternalTaskHandlerIT.java",
+     "12      1    117      0      18 ExternalTaskHandlerIT::shouldInvokeHandleBpmnError@450-467@/tmp/cgchecker-repo-jadGiB/repo/clients/java/client/src/it/java/org/operaton/bpm/client/task/ExternalTaskHandlerIT.java"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1028,14 +1028,154 @@
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
     "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "starRating": 3,
+    "rating": 3,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": 0.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "100.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 1
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 3 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: ★☆☆☆☆ 5 unmanaged of 5 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1557,9 +1697,9 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub releases: 20,405 release file downloads, 30 releases with files (2026-11-20)",
-     "GitHub operaton/operaton: 527 stars, 140 forks, 12 watchers (2026-11-20)",
-     "GitHub commits operaton/operaton: 19 contributors, 4 from the owning organisation, 10 from other organisations, 5 unknown (2026-11-20)"
+     "GitHub releases: 20,900 release file downloads, 30 releases with files (2026-11-21)",
+     "GitHub operaton/operaton: 527 stars, 140 forks, 12 watchers (2026-11-21)",
+     "GitHub commits operaton/operaton: 19 contributors, 4 from the owning organisation, 10 from other organisations, 5 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1570,11 +1710,11 @@
        "subject": null,
        "url": "https://github.com/operaton/operaton/releases",
        "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "release file downloads",
-         "value": 20405
+         "value": 20900
         },
         {
          "label": "releases with files",
@@ -1588,7 +1728,7 @@
        "source": "GitHub",
        "subject": "operaton/operaton",
        "url": "https://github.com/operaton/operaton",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1612,7 +1752,7 @@
        "subject": "operaton/operaton",
        "url": "https://github.com/operaton/operaton/graphs/contributors",
        "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (itemis.de) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -1671,7 +1811,7 @@
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
       "value": "1.00",
-      "explanation": "552 change requests were closed (merged or not) and 552 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "explanation": "551 change requests were closed (merged or not) and 550 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -1682,7 +1822,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "median 12.9 hours",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 1 got a response; 14 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-23 and 2026-11-14. 1 got a response; 14 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": true
@@ -1693,7 +1833,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "median 2.6 hours",
-      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-22 and 2026-11-13. 6 got a response; 9 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-23 and 2026-11-14. 6 got a response; 9 had none yet. Bots are left out.",
       "target": {
        "text": "at most 120 hours",
        "met": true
@@ -1713,8 +1853,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "bug",
@@ -1777,7 +1917,7 @@
         "measured": 4,
         "median": 1.7,
         "worst": 24.7,
-        "breaches": 29,
+        "breaches": 31,
         "waiting": 32
        },
        "fix": null
@@ -2032,10 +2172,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 97.9,
+  "durationSeconds": 39.1,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

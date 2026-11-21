@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T11:59:13.090Z",
+  "lastCheckedAt": "2026-11-21T09:11:47.881Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:26.407Z",
-  "updatedAt": "2026-11-20T11:59:13.090Z",
+  "updatedAt": "2026-11-21T09:11:47.881Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -42,21 +42,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T11-59-13-090Z",
+  "id": "2026-11-21T09-11-47-881Z",
   "repoId": "github.com/Klantinteractie-Servicesysteem/KISS-frontend",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T11:59:13.090Z",
-  "createdAt": "2026-11-20T11:59:13.090Z",
+  "checkedAt": "2026-11-21T09:11:47.881Z",
+  "createdAt": "2026-11-21T09:11:47.881Z",
   "version": "v3.2.2",
   "checklistVersion": "2026.2",
   "scannedRef": "v3.2.2",
   "scannedRefKind": "release",
   "scannedCommit": "39cd6d9a0c292f549c235ce908a0945408526837",
   "score": 73,
-  "rating": 3.1,
+  "rating": 3.5,
   "categoryRatings": {
    "Governance": 2.6,
-   "Security": 1.8,
+   "Security": 3.4,
    "Architecture": 4.3,
    "Software Quality": 3.1,
    "Deployment & Operations": 4.3,
@@ -84,19 +84,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 4.9
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 2.2
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
     "rating": 0.5
@@ -174,7 +174,7 @@
   },
   "issueCounts": {
    "errors": 2,
-   "warnings": 15
+   "warnings": 14
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -474,12 +474,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.11 (threshold: 15)",
      "Max CCN: 41.00 (threshold: 30)",
-     "8      1     56      0      13 PabcClientTests::GetApplicationRolesPerEntityTypeAsync_ReturnsNull_WhenPabcReturnsError@75-87@/tmp/cgchecker-repo-rOxWhs/repo/Kiss.Bff.Test/PabcClientTests.cs",
-     "8      1     60      0      13 PabcClientTests::GetKissApplicationRolesAsync_ReturnsEmptySet_WhenPabcReturnsError@125-137@/tmp/cgchecker-repo-rOxWhs/repo/Kiss.Bff.Test/PabcClientTests.cs",
-     "10      1     38      1      11 error@89-99@/tmp/cgchecker-repo-rOxWhs/repo/src/services/service-data.ts",
-     "3      1     11      1       3 onError@30-32@/tmp/cgchecker-repo-rOxWhs/repo/src/services/use-loader.ts",
-     "6      1     19      0       6 showError@26-31@/tmp/cgchecker-repo-rOxWhs/repo/src/views/Beheer/gespreksresultaten/GespreksresultaatBeheer.vue",
-     "6      1     19      0       6 showError@23-28@/tmp/cgchecker-repo-rOxWhs/repo/src/views/Beheer/gespreksresultaten/GespreksresultatenBeheer.vue"
+     "8      1     56      0      13 PabcClientTests::GetApplicationRolesPerEntityTypeAsync_ReturnsNull_WhenPabcReturnsError@75-87@/tmp/cgchecker-repo-cvYkKs/repo/Kiss.Bff.Test/PabcClientTests.cs",
+     "8      1     60      0      13 PabcClientTests::GetKissApplicationRolesAsync_ReturnsEmptySet_WhenPabcReturnsError@125-137@/tmp/cgchecker-repo-cvYkKs/repo/Kiss.Bff.Test/PabcClientTests.cs",
+     "11      2     81      1      11 ZaaksysteemController::LogAndReturnConfigError@238-248@/tmp/cgchecker-repo-cvYkKs/repo/Kiss.Bff/Extern/ZaakGerichtWerken/Zaaksysteem/ZaaksysteemController.cs",
+     "56      1    505      0      96 AfhandelingFormScenarios::TestErrorValidationOfAfhandelingForm@41-136@/tmp/cgchecker-repo-cvYkKs/repo/Kiss.Bff.EndToEndTest/AfhandelingForm/AfhandelingFormScenarios.cs",
+     "3      1     11      1       3 onError@30-32@/tmp/cgchecker-repo-cvYkKs/repo/src/services/use-loader.ts",
+     "10      1     38      1      11 error@89-99@/tmp/cgchecker-repo-cvYkKs/repo/src/services/service-data.ts"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1170,15 +1170,262 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 5,
+    "rating": 4.73,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 4.92,
+     "activity": 2.21,
+     "licence": 5.5,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "9.9%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "5.2%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "1.9%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "0 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "39.2%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 2 years",
+        "value": "33.5%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 4 years",
+        "value": "8.5%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "3 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 5 of 5 stars over 212 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★★★ >1.0y 9.9%, >2.0y 5.2%, >3.5y 1.9%, >5.0y count 0",
+     "Activity: ★★☆☆☆ >1.0y 39.2%, >2.0y 33.5%, >4.0y 8.5%, >5.5y count 3",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★★★★★ 0 unmanaged of 212 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1687,8 +1934,8 @@
     "status": "info",
     "message": "Usage from 2 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub Klantinteractie-Servicesysteem/KISS-frontend: 1 stars, 7 forks, 5 watchers (2026-11-20)",
-     "GitHub commits Klantinteractie-Servicesysteem/KISS-frontend: 20 contributors, 7 from the owning organisation, 4 from other organisations, 9 unknown (2026-11-20)"
+     "GitHub Klantinteractie-Servicesysteem/KISS-frontend: 1 stars, 7 forks, 5 watchers (2026-11-21)",
+     "GitHub commits Klantinteractie-Servicesysteem/KISS-frontend: 20 contributors, 7 from the owning organisation, 4 from other organisations, 9 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1698,7 +1945,7 @@
        "source": "GitHub",
        "subject": "Klantinteractie-Servicesysteem/KISS-frontend",
        "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1722,7 +1969,7 @@
        "subject": "Klantinteractie-Servicesysteem/KISS-frontend",
        "url": "https://github.com/Klantinteractie-Servicesysteem/KISS-frontend/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (icatt.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -1769,8 +2016,8 @@
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": "3 organisations; largest 58%",
-      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (264 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is icatt.nl (5 authors), with 58% of the 159 commits whose organisation is known; 40% of the commits come from 8 of 17 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "value": "3 organisations; largest 56%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (264 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is icatt.nl (5 authors), with 56% of the 160 commits whose organisation is known; 39% of the commits come from 8 of 17 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1781,7 +2028,7 @@
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
       "value": "1.04",
-      "explanation": "57 change requests were closed (merged or not) and 55 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "explanation": "58 change requests were closed (merged or not) and 56 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -1792,7 +2039,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "median 4.4 days",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 8 got a response; 7 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-23 and 2026-11-14. 8 got a response; 7 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": false
@@ -1803,7 +2050,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "median 11.2 days",
-      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-22 and 2026-11-13. 1 got a response; 14 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-23 and 2026-11-14. 1 got a response; 14 had none yet. Bots are left out.",
       "target": {
        "text": "at most 120 hours",
        "met": false
@@ -1823,8 +2070,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "bug",
@@ -1857,7 +2104,7 @@
         "measured": 4,
         "median": 120.8,
         "worst": 156.3,
-        "breaches": 19,
+        "breaches": 22,
         "waiting": 19
        },
        "fix": null
@@ -1872,13 +2119,13 @@
         "measured": 9,
         "median": 70.6,
         "worst": 283.7,
-        "breaches": 133,
+        "breaches": 134,
         "waiting": 127
        },
        "fix": null
       }
      ],
-     "openBreachCount": 131,
+     "openBreachCount": 135,
      "openBreaches": [
       {
        "title": "Security.txt beschikbaar",
@@ -2115,10 +2362,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 42.4,
+  "durationSeconds": 9.9,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

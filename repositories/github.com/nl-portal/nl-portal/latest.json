@@ -40,10 +40,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:02:21.355Z",
+  "lastCheckedAt": "2026-11-21T09:13:05.993Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:45.964Z",
-  "updatedAt": "2026-11-20T12:02:21.355Z",
+  "updatedAt": "2026-11-21T09:13:05.993Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -54,21 +54,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T12-02-21-355Z",
+  "id": "2026-11-21T09-13-05-993Z",
   "repoId": "github.com/nl-portal/nl-portal",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:02:21.355Z",
-  "createdAt": "2026-11-20T12:02:21.355Z",
+  "checkedAt": "2026-11-21T09:13:05.993Z",
+  "createdAt": "2026-11-21T09:13:05.993Z",
   "version": "v3.1.3",
   "checklistVersion": "2026.2",
   "scannedRef": "3.1.3",
   "scannedRefKind": "release",
   "scannedCommit": "9cdf4f1300ad167f75f0ced9e28b56e43f73fd56",
   "score": 68,
-  "rating": 3.3,
+  "rating": 3.4,
   "categoryRatings": {
    "Governance": 2.6,
-   "Security": 3,
+   "Security": 3.6,
    "Architecture": 4.3,
    "Software Quality": 3.5,
    "Deployment & Operations": 3.3,
@@ -96,7 +96,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -188,7 +188,7 @@
   },
   "issueCounts": {
    "errors": 4,
-   "warnings": 14
+   "warnings": 13
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -489,12 +489,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 1.98 (threshold: 15)",
      "Max CCN: 26.00 (threshold: 30)",
-     "11      1     50      2      11 resolveToSingleError@24-34@/tmp/cgchecker-repo-trVUeQ/repo/backend/graphql/src/main/kotlin/nl/nlportal/graphql/GraphQLExceptionHandler.kt",
-     "3      1     10      0       3 onError@62-64@/tmp/cgchecker-repo-trVUeQ/repo/frontend/packages/user-interface/src/hooks/useOgonePayment.tsx",
-     "3      1     10      0       3 onError@81-83@/tmp/cgchecker-repo-trVUeQ/repo/frontend/packages/user-interface/src/hooks/useOgonePayment.tsx",
-     "12      3     80      2      12 errorsBlock@49-60@/tmp/cgchecker-repo-trVUeQ/repo/frontend/packages/user-interface/src/components/formio/FormIoTemplateUtils.ts",
-     "8      3     50      3       8 setErrorClasses@129-136@/tmp/cgchecker-repo-trVUeQ/repo/frontend/packages/user-interface/src/components/formio/FormIoDatePicker.tsx",
-     "7      3     47      1       7 getErrorMessage@161-167@/tmp/cgchecker-repo-trVUeQ/repo/frontend/packages/user-interface/src/components/formio/FormIoDatePicker.tsx"
+     "11      1     50      2      11 resolveToSingleError@24-34@/tmp/cgchecker-repo-zNK0i6/repo/backend/graphql/src/main/kotlin/nl/nlportal/graphql/GraphQLExceptionHandler.kt",
+     "6      3     28      1       7 handleError@50-56@/tmp/cgchecker-repo-zNK0i6/repo/frontend/packages/user-interface/src/components/formio/FormIoUploader.tsx",
+     "8      3     50      3       8 setErrorClasses@129-136@/tmp/cgchecker-repo-zNK0i6/repo/frontend/packages/user-interface/src/components/formio/FormIoDatePicker.tsx",
+     "7      3     47      1       7 getErrorMessage@161-167@/tmp/cgchecker-repo-zNK0i6/repo/frontend/packages/user-interface/src/components/formio/FormIoDatePicker.tsx",
+     "12      3     80      2      12 errorsBlock@49-60@/tmp/cgchecker-repo-zNK0i6/repo/frontend/packages/user-interface/src/components/formio/FormIoTemplateUtils.ts",
+     "3      1     10      0       3 onError@62-64@/tmp/cgchecker-repo-zNK0i6/repo/frontend/packages/user-interface/src/hooks/useOgonePayment.tsx"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1058,15 +1058,135 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": null
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 5 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: not rated (data unavailable)"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1576,8 +1696,8 @@
     "status": "info",
     "message": "Usage from 2 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub nl-portal/nl-portal: 0 stars, 5 forks, 0 watchers (2026-11-20)",
-     "GitHub commits nl-portal/nl-portal: 16 contributors, 5 from the owning organisation, 4 from other organisations, 7 unknown (2026-11-20)"
+     "GitHub nl-portal/nl-portal: 0 stars, 5 forks, 0 watchers (2026-11-21)",
+     "GitHub commits nl-portal/nl-portal: 16 contributors, 5 from the owning organisation, 4 from other organisations, 7 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1587,7 +1707,7 @@
        "source": "GitHub",
        "subject": "nl-portal/nl-portal",
        "url": "https://github.com/nl-portal/nl-portal",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1611,7 +1731,7 @@
        "subject": "nl-portal/nl-portal",
        "url": "https://github.com/nl-portal/nl-portal/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (ritense.com) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -1639,7 +1759,7 @@
     "title": "Project health (CHAOSS)",
     "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
     "status": "info",
-    "message": "5 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "message": "4 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
     "evidence": [],
     "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
     "metrics": [
@@ -1669,11 +1789,11 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "0.94",
-      "explanation": "75 change requests were closed (merged or not) and 80 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": null,
+      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to Git).",
       "target": {
        "text": "at least 0.8",
-       "met": true
+       "met": null
       }
      },
      {
@@ -1681,7 +1801,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "median 44 minutes",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 13 got a response; 2 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-23 and 2026-11-14. 13 got a response; 2 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": true
@@ -1712,8 +1832,8 @@
     ],
     "sla": {
      "notMeasured": "the repository has its issue tracker switched off",
-     "from": "2026-11-20",
-     "to": "2026-11-20",
+     "from": "2026-11-21",
+     "to": "2026-11-21",
      "categories": [],
      "openBreaches": [],
      "openBreachCount": 0,
@@ -1806,10 +1926,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 11.9,
+  "durationSeconds": 7.1,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

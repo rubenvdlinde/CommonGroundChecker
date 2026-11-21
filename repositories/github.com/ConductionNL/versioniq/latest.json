@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T11:39:06.058Z",
+  "lastCheckedAt": "2026-11-21T09:10:28.074Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:58:47.423Z",
-  "updatedAt": "2026-11-20T11:39:06.058Z",
+  "updatedAt": "2026-11-21T09:10:28.074Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,25 +44,25 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T11-39-06-058Z",
+  "id": "2026-11-21T09-10-28-074Z",
   "repoId": "github.com/ConductionNL/versioniq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T11:39:06.058Z",
-  "createdAt": "2026-11-20T11:39:06.058Z",
+  "checkedAt": "2026-11-21T09:10:28.074Z",
+  "createdAt": "2026-11-21T09:10:28.074Z",
   "version": "v1.6.7",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
-  "scannedCommit": "5d71f2e4de55ce049c726aad3012abf783384a45",
+  "scannedCommit": "dd84ffcf240cf1821a3ed662709846119236a582",
   "score": 97,
-  "rating": 5.2,
+  "rating": 5,
   "categoryRatings": {
    "Governance": 5.5,
-   "Security": 5.5,
+   "Security": 4.8,
    "Architecture": 4.3,
    "Software Quality": 5,
    "Deployment & Operations": 5.5,
-   "AI readiness": 2.8
+   "AI readiness": 4.7
   },
   "aspectRatings": {
    "licensing": {
@@ -86,19 +86,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 3.5
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 2.1
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
     "rating": null
@@ -125,7 +125,7 @@
     "rating": 4.9
    },
    "modifiability": {
-    "rating": 4.8
+    "rating": 4.9
    },
    "testability": {
     "rating": 5
@@ -151,16 +151,16 @@
     "rating": 5.5
    },
    "agent-instructions": {
-    "rating": 0.5
+    "rating": 5.5
    },
    "specifications-and-decisions": {
-    "rating": 2.5
+    "rating": 4.3
    },
    "runnable-environment": {
     "rating": 5.5
    },
    "interfaces-and-tooling": {
-    "rating": 2.5
+    "rating": 3.5
    }
   },
   "endorsement": {
@@ -171,7 +171,7 @@
   },
   "issueCounts": {
    "errors": 0,
-   "warnings": 2
+   "warnings": 1
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -182,7 +182,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 85,378 lines of code, 9,886 functions, 9,830 files analyzed.",
+    "message": "Code metrics: 88,134 lines of code, 10,226 functions, 10,168 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "bin/openapi-design-rules.php",
@@ -195,9 +195,9 @@
      "l10n/en.js",
      "l10n/nl.js",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 85,378",
-     "Function count: 9,886",
-     "Files analyzed: 9,830"
+     "Total lines of code (NLOC): 88,134",
+     "Function count: 10,226",
+     "Files analyzed: 10,168"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -278,7 +278,7 @@
     "referenceUrl": "https://reuse.software/spec/",
     "status": "pass",
     "starRating": 5,
-    "message": "100.0% of 1047 source files carry an SPDX header (5 of 5 stars).",
+    "message": "100.0% of 1071 source files carry an SPDX header (5 of 5 stars).",
     "evidence": [],
     "requirementLevel": "recommended"
    },
@@ -520,11 +520,11 @@
      "README.md",
      "docs/Installation",
      "docs/Installation/demo-environment.md",
-     "docs/cli.md",
-     "docs/docusaurus.config.js",
-     "docs/e2e.md",
-     "docs/features.json",
-     "docs/intro.md"
+     "docs/adr",
+     "docs/adr/0001-admin-settings-section-is-the-only-entry-point.md",
+     "docs/adr/0002-separate-installer-for-external-sources.md",
+     "docs/adr/0003-trust-on-first-use-checksums-for-external-releases.md",
+     "docs/adr/0004-personal-access-tokens-are-encrypted-at-rest.md"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
     "requirementLevel": "mandatory",
@@ -583,18 +583,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 2.78 <= 15 and Max CCN 19.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 2.77 <= 15 and Max CCN 19.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.78 (threshold: 15)",
+     "Average CCN: 2.77 (threshold: 15)",
      "Max CCN: 19.00 (threshold: 30)",
-     "3      2     23      2       3 errorMessage@10-12@/tmp/cgchecker-repo-PuebrH/repo/src/utils/errorMessage.ts",
-     "3      1     25      1       3 dismissProviderError@122-124@/tmp/cgchecker-repo-PuebrH/repo/src/components/DiscoverPanel.vue",
-     "5      1     26      1       5 showSearchError@193-197@/tmp/cgchecker-repo-PuebrH/repo/src/components/DiscoverPanel.vue",
-     "8      4     62      0       8 waitingPeriodError@155-162@/tmp/cgchecker-repo-PuebrH/repo/src/components/InstanceSettingsPanel.vue",
-     "6      3     39      0       6 trustFormError@45-50@/tmp/cgchecker-repo-PuebrH/repo/src/components/TrustedSourcesPanel.vue",
-     "9      5     64      0       9 bindFormError@245-253@/tmp/cgchecker-repo-PuebrH/repo/src/components/SourcesPanel.vue"
+     "11      3     80      1      13 ApiContractMiddleware::decorateError@228-240@/tmp/cgchecker-repo-QrgmU1/repo/lib/Middleware/ApiContractMiddleware.php",
+     "10      1     45      1      10 PatExpiryWarningJob::__construct@38-47@/tmp/cgchecker-repo-QrgmU1/repo/lib/BackgroundJob/PatExpiryWarningJob.php",
+     "12      3     67      1      12 PatExpiryWarningJob::run@52-63@/tmp/cgchecker-repo-QrgmU1/repo/lib/BackgroundJob/PatExpiryWarningJob.php",
+     "20      5    111      1      27 PatExpiryWarningJob::processPat@70-96@/tmp/cgchecker-repo-QrgmU1/repo/lib/BackgroundJob/PatExpiryWarningJob.php",
+     "8      1     37      1       8 ServerEolWarningJob::__construct@29-36@/tmp/cgchecker-repo-QrgmU1/repo/lib/BackgroundJob/ServerEolWarningJob.php",
+     "7      2     45      1       7 ServerEolWarningJob::run@41-47@/tmp/cgchecker-repo-QrgmU1/repo/lib/BackgroundJob/ServerEolWarningJob.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -606,13 +606,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 5,
-    "rating": 4.87,
+    "rating": 4.88,
     "aspectRatings": {
      "analysability": 4.91,
-     "modifiability": 4.84,
+     "modifiability": 4.85,
      "testability": 5.03,
      "modularity": 5.3,
-     "reusability": 4.32
+     "reusability": 4.34
     },
     "measurements": [
      {
@@ -691,7 +691,7 @@
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "26.0%",
+        "value": "25.9%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -715,7 +715,7 @@
        },
        {
         "label": "TypeScript, more than 15 lines",
-        "value": "16.8%",
+        "value": "17.4%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -739,7 +739,7 @@
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "34.8%",
+        "value": "34.9%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -821,7 +821,7 @@
        },
        {
         "label": "TypeScript, complexity above 5",
-        "value": "11.9%",
+        "value": "11.6%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -829,7 +829,7 @@
        },
        {
         "label": "TypeScript, complexity above 10",
-        "value": "3.0%",
+        "value": "2.9%",
         "thresholds": {
          "4": "≤ 7.5%"
         },
@@ -845,7 +845,7 @@
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "15.2%",
+        "value": "15.1%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -902,7 +902,7 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "15.2%",
+        "value": "15.0%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -910,7 +910,7 @@
        },
        {
         "label": "PHP, 5 or more parameters",
-        "value": "3.3%",
+        "value": "3.2%",
         "thresholds": {
          "4": "≤ 3.4%"
         },
@@ -926,7 +926,7 @@
        },
        {
         "label": "TypeScript, 3 or more parameters",
-        "value": "10.0%",
+        "value": "11.6%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -950,7 +950,7 @@
        },
        {
         "label": "Vue, 3 or more parameters",
-        "value": "2.7%",
+        "value": "2.6%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -984,7 +984,7 @@
       "rows": [
        {
         "label": "PHP, fan-in above 10",
-        "value": "6.1%",
+        "value": "6.0%",
         "thresholds": {
          "4": "≤ 9.7%"
         },
@@ -992,7 +992,7 @@
        },
        {
         "label": "PHP, fan-in above 20",
-        "value": "1.4%",
+        "value": "1.3%",
         "thresholds": {
          "4": "≤ 5.3%"
         },
@@ -1084,20 +1084,20 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.86 to 4.88 (5 of 5 stars) over 508 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.87 to 4.89 (5 of 5 stars) over 519 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★★★ 5.1 (javascript 5.0, php 5.2, typescript 5.5, vue 4.8)",
      "Unit size: ★★★★★ 4.8 (javascript 5.3, php 4.8, typescript 5.0, vue 4.5)",
-     "Unit complexity: ★★★★★ 4.6 (javascript 5.5, php 4.5, typescript 4.7, vue 4.5)",
-     "Unit interfacing: ★★★★☆ 3.9 (javascript 5.5, php 3.6, typescript 4.7, vue 5.3)",
+     "Unit complexity: ★★★★★ 4.6 (javascript 5.5, php 4.5, typescript 4.8, vue 4.5)",
+     "Unit interfacing: ★★★★☆ 3.9 (javascript 5.5, php 3.6, typescript 4.6, vue 5.3)",
      "Module coupling: ★★★★★ 4.9 (php 4.7, js/ts/vue 5.3)",
      "Component independence: ★★★★★ 5.5 (js/ts/vue 5.5)",
      "Component entanglement: ★★★★★ 5.5 (js/ts/vue 5.5)",
-     "Not rated (php): all 402 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
-     "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 4.86 to 4.88, modularity 5.30 (php 1 components, exposed 0.0%, violation degree 0; js/ts/vue 3 components, exposed 0.0%, violation degree 0). The score uses this one.",
-     "Rating with directory components: 3.84 to 4.03, modularity 3.20 (php 17 components, exposed 33.5%, violation degree 0.0421; js/ts/vue 6 components, exposed 68.6%, violation degree 0.2407).",
-     "Lever: unit interfacing in php, about 435 lines to fix for half a star",
-     "Lever: module coupling in php, about 1677 lines to fix for half a star",
+     "Not rated (php): all 411 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
+     "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 4.87 to 4.89, modularity 5.30 (php 1 components, exposed 0.0%, violation degree 0; js/ts/vue 3 components, exposed 0.0%, violation degree 0). The score uses this one.",
+     "Rating with directory components: 3.85 to 4.04, modularity 3.21 (php 17 components, exposed 33.5%, violation degree 0.0413; js/ts/vue 6 components, exposed 68.7%, violation degree 0.2364).",
+     "Lever: unit interfacing in php, about 442 lines to fix for half a star",
+     "Lever: module coupling in php, about 1708 lines to fix for half a star",
      "Lever: duplication in vue",
      "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 1.7% against 1.7%, php 0.9% against 1.1%, typescript 0.3% against 0.0%, vue not measured (Simian has no support for this language) against 2.6%"
     ],
@@ -1119,7 +1119,7 @@
       "rows": [
        {
         "label": "All languages, more than 29 lines",
-        "value": "2.9%",
+        "value": "2.8%",
         "thresholds": {
          "2": "≤ 60.2%",
          "3": "≤ 37.0%",
@@ -1159,7 +1159,7 @@
       "rows": [
        {
         "label": "All languages, complexity above 5",
-        "value": "14.8%",
+        "value": "14.7%",
         "thresholds": {
          "2": "≤ 45.1%",
          "3": "≤ 34.4%",
@@ -1170,7 +1170,7 @@
        },
        {
         "label": "All languages, complexity above 7",
-        "value": "5.7%",
+        "value": "5.6%",
         "thresholds": {
          "2": "≤ 38.1%",
          "3": "≤ 23.9%",
@@ -1210,7 +1210,7 @@
        },
        {
         "label": "All languages, 4 or more parameters",
-        "value": "6.3%",
+        "value": "6.2%",
         "thresholds": {
          "2": "≤ 19.2%",
          "3": "≤ 10.4%",
@@ -1221,7 +1221,7 @@
        },
        {
         "label": "All languages, 5 or more parameters",
-        "value": "2.7%",
+        "value": "2.6%",
         "thresholds": {
          "2": "≤ 12.3%",
          "3": "≤ 6.6%",
@@ -1257,7 +1257,7 @@
       "rows": [
        {
         "label": "All languages, fan-in above 2",
-        "value": "26.2%",
+        "value": "26.3%",
         "thresholds": {
          "2": "≤ 54.0%",
          "3": "≤ 29.1%",
@@ -1268,7 +1268,7 @@
        },
        {
         "label": "All languages, fan-in above 3",
-        "value": "18.5%",
+        "value": "18.3%",
         "thresholds": {
          "2": "≤ 43.9%",
          "3": "≤ 22.7%",
@@ -1279,7 +1279,7 @@
        },
        {
         "label": "All languages, fan-in above 5",
-        "value": "10.2%",
+        "value": "10.1%",
         "thresholds": {
          "2": "≤ 30.4%",
          "3": "≤ 13.8%",
@@ -1329,11 +1329,11 @@
     ],
     "message": "Open-track rating 4.1 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
-     "Unit size: ★★★★★ 2.9% / 0.6% / 0.0% of the code above 29 / 42 / 71 lines",
-     "Unit complexity: ★★★★☆ 14.8% / 5.7% / 0.8% of the code above 5 / 7 / 10 complexity",
-     "Unit interfacing: ★★★☆☆ 12.9% / 6.3% / 2.7% of the code above 2 / 3 / 4 parameters",
+     "Unit size: ★★★★★ 2.8% / 0.6% / 0.0% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★★☆ 14.7% / 5.6% / 0.8% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★☆☆ 12.9% / 6.2% / 2.6% of the code above 2 / 3 / 4 parameters",
      "Duplication: ★★★★☆ 3.4% duplicated lines",
-     "Module coupling: ★★★☆☆ 26.2% / 18.5% / 10.2% of the code above 2 / 3 / 5 fan-in",
+     "Module coupling: ★★★☆☆ 26.3% / 18.3% / 10.1% of the code above 2 / 3 / 5 fan-in",
      "Component independence: ★★★★★ 100.0% of the code hidden from other components",
      "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
@@ -1346,11 +1346,11 @@
     "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
     "status": "pass",
     "starRating": 5,
-    "message": "Test code ratio 124.6% (5 of 5 stars).",
+    "message": "Test code ratio 127.3% (5 of 5 stars).",
     "evidence": [
-     "Test code ratio: 124.6%",
-     "Test code: 61,238 lines in 512 files",
-     "Production code: 49,142 lines in 531 files",
+     "Test code ratio: 127.3%",
+     "Test code: 63,659 lines in 525 files",
+     "Production code: 50,022 lines in 542 files",
      "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
     ],
     "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
@@ -1361,15 +1361,263 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 4,
+    "rating": 4.42,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 3.49,
+     "activity": 2.12,
+     "licence": 5.5,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "12.5%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "7.5%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "2.1%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "2 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "49.1%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 2 years",
+        "value": "35.9%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 4 years",
+        "value": "14.9%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "21 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 4 of 5 stars over 281 production dependencies (composer, npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★☆☆ >1.0y 12.5%, >2.0y 7.5%, >3.5y 2.1%, >5.0y count 2",
+     "Activity: ★★☆☆☆ >1.0y 49.1%, >2.0y 35.9%, >4.0y 14.9%, >5.5y count 21",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk (15 excluded by sigrid.yaml)",
+     "Management: ★★★★★ 0 unmanaged of 281 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1380,26 +1628,26 @@
     "status": "info",
     "size": {
      "tool": "scc 4.1.0",
-     "files": 511,
-     "loc": 45284,
+     "files": 522,
+     "loc": 46126,
      "languages": [
       {
        "language": "PHP",
        "family": "php",
-       "files": 406,
-       "loc": 29137
+       "files": 415,
+       "loc": 29766
       },
       {
        "language": "Vue",
        "family": "vue",
-       "files": 61,
-       "loc": 13512
+       "files": 63,
+       "loc": 13681
       },
       {
        "language": "TypeScript",
        "family": "typescript",
        "files": 37,
-       "loc": 2217
+       "loc": 2261
       },
       {
        "language": "JavaScript",
@@ -1415,15 +1663,15 @@
       }
      ]
     },
-    "message": "45,284 lines of production code in 511 file(s), counted with scc 4.1.0. Rebuild effort about 4.0 person-years (open estimate).",
+    "message": "46,126 lines of production code in 522 file(s), counted with scc 4.1.0. Rebuild effort about 4.1 person-years (open estimate).",
     "evidence": [
-     "PHP: 29,137 lines in 406 file(s)",
-     "Vue: 13,512 lines in 61 file(s)",
-     "TypeScript: 2,217 lines in 37 file(s)",
+     "PHP: 29,766 lines in 415 file(s)",
+     "Vue: 13,681 lines in 63 file(s)",
+     "TypeScript: 2,261 lines in 37 file(s)",
      "JavaScript: 370 lines in 4 file(s)",
      "CSS: 48 lines in 3 file(s)",
-     "Rebuild effort, open estimate: 964 function points, 4.0 person-years (proxies: PHP, Vue and TypeScript use the JavaScript factor; CSS uses the HTML factor)",
-     "SIG-style volume, context, not part of the 2026 rating: 4.9 person-years (proxies: PHP, Vue and CSS use the JavaScript factor)"
+     "Rebuild effort, open estimate: 982 function points, 4.1 person-years (proxies: PHP, Vue and TypeScript use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 5.0 person-years (proxies: PHP, Vue and CSS use the JavaScript factor)"
     ]
    },
    {
@@ -1432,13 +1680,13 @@
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
     "status": "info",
-    "message": "jscpd 5.4.2 duplicated lines: 3.4% overall (javascript 0.0%, php 4.4%, typescript 0.4%, vue 1.8%) over 508 file(s). Shown for information; it does not count towards the score.",
+    "message": "jscpd 5.4.2 duplicated lines: 3.4% overall (javascript 0.0%, php 4.5%, typescript 0.4%, vue 1.8%) over 519 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
      "javascript: 0.0% (0 of 836 lines, 0 clone(s) in 4 file(s))",
-     "php: 4.4% (2639 of 59650 lines, 196 clone(s) in 406 file(s))",
-     "typescript: 0.4% (17 of 4135 lines, 1 clone(s) in 37 file(s))",
-     "vue: 1.8% (524 of 29920 lines, 67 clone(s) in 61 file(s))",
-     "Clone of 45 lines: lib/Service/InstallerService.php:812-856 and lib/Service/Source/AppStoreSource.php:856-875",
+     "php: 4.5% (2726 of 60968 lines, 202 clone(s) in 415 file(s))",
+     "typescript: 0.4% (17 of 4220 lines, 1 clone(s) in 37 file(s))",
+     "vue: 1.8% (531 of 30321 lines, 68 clone(s) in 63 file(s))",
+     "Clone of 45 lines: lib/Service/InstallerService.php:824-868 and lib/Service/Source/AppStoreSource.php:856-875",
      "Clone of 33 lines: lib/Service/Advisory/AdvisoryExposureTracker.php:13-45 and lib/Service/Pin/SkipList.php:11-31",
      "Clone of 29 lines: lib/Repair/MarkPayloadCacheLazy.php:24-52 and lib/Repair/MigrateAppConfigKeys.php:15-92",
      "Clone of 29 lines: lib/Service/AutoUpdate/AutoUpdateDryRunPlanner.php:1-29 and lib/Service/AutoUpdate/CandidateSelector.php:1-35",
@@ -1447,19 +1695,19 @@
     "openTrack": {
      "duplication": {
       "tool": "jscpd 5.4.2",
-      "percentage": 3.36,
+      "percentage": 3.4,
       "languages": {
        "javascript": 0,
-       "php": 4.42,
-       "typescript": 0.41,
+       "php": 4.47,
+       "typescript": 0.4,
        "vue": 1.75
       },
       "largestClones": [
        {
         "language": "php",
         "file": "lib/Service/InstallerService.php",
-        "startLine": 812,
-        "endLine": 856,
+        "startLine": 824,
+        "endLine": 868,
         "otherFile": "lib/Service/Source/AppStoreSource.php",
         "otherStartLine": 856,
         "otherEndLine": 875,
@@ -1568,12 +1816,12 @@
     "status": "info",
     "message": "Measured the module structure of PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP (pdepend 3.0.0): 402 modules, 1,073 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 93.9% / 4.8% / 1.2% / 0.1% of code at 0-10 / 11-20 / 21-50 / over 50; 48 modules in 6 cycles, largest component cycle 0",
-     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 402 files under lib/ (composer.json PSR-4)",
-     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 17 components; independence 66.8%, entanglement 0.046 (density 2.06), largest component cycle 8. The figures above use the declared components.",
-     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 102 modules, 195 edges, 3 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 99.4% / 0.0% / 0.6% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "PHP (pdepend 3.0.0): 411 modules, 1,100 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 94.0% / 4.7% / 1.2% / 0.1% of code at 0-10 / 11-20 / 21-50 / over 50; 51 modules in 6 cycles, largest component cycle 0",
+     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 411 files under lib/ (composer.json PSR-4)",
+     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 17 components; independence 66.8%, entanglement 0.045 (density 2.06), largest component cycle 8. The figures above use the declared components.",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 104 modules, 199 edges, 3 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 99.4% / 0.0% / 0.6% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
      "JavaScript, TypeScript and Vue components: sigrid.yaml component_base_dirs [\"\"]",
-     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 6 components; independence 31.4%, entanglement 0.224 (density 2.50), largest component cycle 4. The figures above use the declared components."
+     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 6 components; independence 31.3%, entanglement 0.220 (density 2.50), largest component cycle 4. The figures above use the declared components."
     ],
     "openTrack": {
      "coupling": {
@@ -1582,10 +1830,10 @@
        "php": {
         "measured": true,
         "tool": "pdepend 3.0.0",
-        "scope": "402 files under lib/ (composer.json PSR-4)",
-        "modules": 402,
-        "edges": 1073,
-        "loc": 29272,
+        "scope": "411 files under lib/ (composer.json PSR-4)",
+        "modules": 411,
+        "edges": 1100,
+        "loc": 29903,
         "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
         "componentDefinitionKind": "declared",
         "components": 1,
@@ -1603,72 +1851,72 @@
           50
          ],
          "riskProfile": {
-          "low": 0.9388,
-          "moderate": 0.0477,
-          "high": 0.0124,
+          "low": 0.9399,
+          "moderate": 0.0468,
+          "high": 0.0121,
           "veryHigh": 0.0012
          },
          "above": [
-          0.0612,
-          0.0136,
+          0.0601,
+          0.0133,
           0.0012
          ],
          "fanInHistogram": {
-          "0": 6484,
-          "1": 6459,
-          "2": 5449,
-          "3": 2963,
-          "4": 1741,
-          "5": 2005,
-          "6": 480,
-          "7": 348,
-          "8": 1383,
-          "9": 156,
-          "10": 12,
-          "11": 1309,
+          "0": 6536,
+          "1": 6583,
+          "2": 5703,
+          "3": 3125,
+          "4": 1613,
+          "5": 2138,
+          "6": 508,
+          "7": 282,
+          "8": 1449,
+          "9": 138,
+          "10": 30,
+          "11": 1314,
           "12": 86,
-          "22": 187,
-          "26": 23,
-          "28": 152,
-          "76": 35
+          "23": 187,
+          "27": 23,
+          "29": 153,
+          "79": 35
          },
          "highestFanIn": [
           {
            "module": "lib/AppInfo/Application.php",
-           "fanIn": 76
+           "fanIn": 79
           },
           {
            "module": "lib/Service/Audit/AuditLogger.php",
-           "fanIn": 28
+           "fanIn": 29
           },
           {
            "module": "lib/Service/Audit/AuditSubject.php",
-           "fanIn": 26
+           "fanIn": 27
           },
           {
            "module": "lib/Service/Audit/AuditedVersions.php",
-           "fanIn": 26
+           "fanIn": 27
           },
           {
            "module": "lib/Service/Source/SourceBinding.php",
-           "fanIn": 22
+           "fanIn": 23
           }
          ]
         },
         "cycles": {
          "moduleCycles": 6,
-         "modulesInCycles": 48,
-         "locShareInCycles": 0.2385,
-         "largestModuleCycle": 36,
+         "modulesInCycles": 51,
+         "locShareInCycles": 0.2401,
+         "largestModuleCycle": 39,
          "componentCycles": 0,
          "largestComponentCycle": 0
         },
         "directoryView": {
          "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
          "components": 17,
-         "componentIndependence": 0.6683,
+         "componentIndependence": 0.6676,
          "componentEntanglement": {
-          "violationDegree": 0.0456,
+          "violationDegree": 0.0447,
           "density": 2.06,
           "communicationLines": 35,
           "violations": {
@@ -1685,9 +1933,9 @@
        "javascript": {
         "measured": true,
         "tool": "dependency-cruiser 17.4.3",
-        "modules": 102,
-        "edges": 195,
-        "loc": 16042,
+        "modules": 104,
+        "edges": 199,
+        "loc": 16255,
         "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
         "componentDefinitionKind": "declared",
         "components": 3,
@@ -1705,21 +1953,21 @@
           50
          ],
          "riskProfile": {
-          "low": 0.9938,
+          "low": 0.9939,
           "moderate": 0.0002,
-          "high": 0.006,
+          "high": 0.0059,
           "veryHigh": 0
          },
          "above": [
-          0.0062,
-          0.006,
+          0.0061,
+          0.0059,
           0
          ],
          "fanInHistogram": {
           "0": 360,
-          "1": 13399,
-          "2": 1306,
-          "3": 508,
+          "1": 13477,
+          "2": 1371,
+          "3": 578,
           "4": 32,
           "7": 263,
           "8": 75,
@@ -1760,9 +2008,9 @@
         "directoryView": {
          "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
          "components": 6,
-         "componentIndependence": 0.314,
+         "componentIndependence": 0.3129,
          "componentEntanglement": {
-          "violationDegree": 0.2241,
+          "violationDegree": 0.2203,
           "density": 2.5,
           "communicationLines": 10,
           "violations": {
@@ -1784,7 +2032,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "pass",
-    "message": "No obvious OWASP-style risky coding patterns were detected in 531 scanned source files.",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 542 scanned source files.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "bin/openapi-design-rules.php",
@@ -1806,59 +2054,59 @@
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "warn",
-    "message": "API Design Rules warnings found across 2 specification(s): 0 error(s), 304 warning(s), 0 info, 0 hint(s).",
+    "message": "API Design Rules warnings found across 2 specification(s): 0 error(s), 307 warning(s), 0 info, 0 hint(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts/scope.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts/scope.put.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts/scope.put.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow/{appId}.delete.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow/{appId}.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow/{appId}.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.put.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.put.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.put.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.delete.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}/test.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}/test.post.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}/test.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./apps.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./apps.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./advisories.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./advisories.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./updates.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./updates.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./update-channel.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./update-channel.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/binding.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/binding.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/binding.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/binding.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/bind.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/bind.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/bind.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./trusted-sources.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./trusted-sources.post.responses.422.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./trusted-sources.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./trusted-sources.delete.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/5d71f2e4de55ce049c726aad3012abf783384a45/openapi.json)",
-     "... and 260 more"
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts/scope.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts/scope.put.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./release-alerts/scope.put.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow/{appId}.delete.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow/{appId}.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./follow/{appId}.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.put.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.put.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.put.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.delete.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}/test.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}/test.post.responses.404.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./webhooks/{id}/test.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./apps.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./apps.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./advisories.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./advisories.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./updates.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./updates.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./update-channel.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./update-channel.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/binding.get.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/binding.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/binding.delete.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/binding.delete.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/bind.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/bind.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./source/{appId}/bind.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./trusted-sources.post.responses.403.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./trusted-sources.post.responses.422.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./trusted-sources.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./trusted-sources.delete.responses.400.content (https://raw.githubusercontent.com/ConductionNL/versioniq/dd84ffcf240cf1821a3ed662709846119236a582/openapi.json)",
+     "... and 263 more"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -1972,13 +2220,13 @@
     "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Usage from 5 sources, 2 not measured. Shown for information; never rated or compared.",
+    "message": "Usage from 5 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
-     "Nextcloud App Store versioniq: not measured: HTTP 429 (2026-11-20)",
-     "GitHub releases: 851 release file downloads, 115 releases with files (2026-11-20)",
-     "GitHub Container Registry conductionnl/versioniq: not measured: GitHub publishes no pull count for container images through its API (2026-11-20)",
-     "GitHub ConductionNL/versioniq: 0 stars, 1 forks, 0 watchers (2026-11-20)",
-     "GitHub commits ConductionNL/versioniq: 16 contributors, 6 from the owning organisation, 6 from other organisations, 4 unknown (2026-11-20)"
+     "Nextcloud App Store versioniq: 0 ratings given (2026-11-21)",
+     "GitHub releases: 857 release file downloads, 118 releases with files (2026-11-21)",
+     "GitHub Container Registry conductionnl/versioniq: not measured: GitHub publishes no pull count for container images through its API (2026-11-21)",
+     "GitHub ConductionNL/versioniq: 0 stars, 1 forks, 0 watchers (2026-11-21)",
+     "GitHub commits ConductionNL/versioniq: 16 contributors, 6 from the owning organisation, 6 from other organisations, 4 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1989,9 +2237,13 @@
        "subject": "versioniq",
        "url": "https://apps.nextcloud.com/apps/versioniq",
        "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
-       "measuredAt": "2026-11-20",
-       "figures": [],
-       "notMeasured": "HTTP 429"
+       "measuredAt": "2026-11-21",
+       "figures": [
+        {
+         "label": "ratings given",
+         "value": 0
+        }
+       ]
       },
       {
        "id": "github-releases",
@@ -2000,15 +2252,15 @@
        "subject": null,
        "url": "https://github.com/ConductionNL/versioniq/releases",
        "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "release file downloads",
-         "value": 851
+         "value": 857
         },
         {
          "label": "releases with files",
-         "value": 115
+         "value": 118
         }
        ]
       },
@@ -2018,7 +2270,7 @@
        "source": "GitHub Container Registry",
        "subject": "conductionnl/versioniq",
        "url": "https://github.com/orgs/conductionnl/packages/container/package/versioniq",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Pull counts would include CI pulls.",
        "figures": [],
        "notMeasured": "GitHub publishes no pull count for container images through its API"
@@ -2029,7 +2281,7 @@
        "source": "GitHub",
        "subject": "ConductionNL/versioniq",
        "url": "https://github.com/ConductionNL/versioniq",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -2053,7 +2305,7 @@
        "subject": "ConductionNL/versioniq",
        "url": "https://github.com/ConductionNL/versioniq/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -2111,8 +2363,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "1.01",
-      "explanation": "566 change requests were closed (merged or not) and 563 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "1.00",
+      "explanation": "579 change requests were closed (merged or not) and 581 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -2123,7 +2375,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "no response",
-      "explanation": "None of the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13 got a comment or review from anyone but its author.",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-23 and 2026-11-14 got a comment or review from anyone but its author.",
       "target": {
        "text": "at most 48 hours",
        "met": false
@@ -2134,7 +2386,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "no response",
-      "explanation": "None of the 15 latest issues opened by people between 2026-08-22 and 2026-11-13 got a comment from anyone but its author.",
+      "explanation": "None of the 15 latest issues opened by people between 2026-08-23 and 2026-11-14 got a comment from anyone but its author.",
       "target": {
        "text": "at most 120 hours",
        "met": false
@@ -2145,7 +2397,7 @@
       "name": "Release Frequency",
       "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
       "value": "7 in 12 months",
-      "explanation": "7 final releases were published in the last 12 months, about one every 52 days, counted from the GitHub releases. The latest final release is from 2026-11-12. Besides these, 108 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "explanation": "7 final releases were published in the last 12 months, about one every 52 days, counted from the GitHub releases. The latest final release is from 2026-11-12. Besides these, 111 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
       "target": {
        "text": "at least 4 releases in 12 months",
        "met": true
@@ -2154,8 +2406,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "bug",
@@ -2167,8 +2419,8 @@
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 0,
-        "waiting": 0
+        "breaches": 19,
+        "waiting": 19
        },
        "fix": {
         "measured": 18,
@@ -2188,8 +2440,8 @@
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 0,
-        "waiting": 0
+        "breaches": 6,
+        "waiting": 6
        },
        "fix": null
       },
@@ -2198,23 +2450,135 @@
        "label": "Unclassified",
        "respondDays": 10,
        "fixDays": null,
-       "count": 47,
+       "count": 37,
        "response": {
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 21,
+        "breaches": 12,
         "waiting": 37
        },
        "fix": null
       }
      ],
-     "openBreachCount": 2,
+     "openBreachCount": 18,
      "openBreaches": [
+      {
+       "title": "[OpenSpec] [app-versions] version-management",
+       "url": "https://github.com/ConductionNL/versioniq/issues/16",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-12T09:31:30.000Z"
+      },
+      {
+       "title": "spec: Release-installer integration tests",
+       "url": "https://github.com/ConductionNL/versioniq/issues/17",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-12T09:49:47.000Z"
+      },
+      {
+       "title": "spec: WCAG AA audit + remediation",
+       "url": "https://github.com/ConductionNL/versioniq/issues/18",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-12T09:50:07.000Z"
+      },
+      {
+       "title": "spec: CnIndexPage composition (ADR-017)",
+       "url": "https://github.com/ConductionNL/versioniq/issues/19",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-12T09:50:38.000Z"
+      },
+      {
+       "title": "Add public Software Catalogus (softwarecatalog) as a discovery source",
+       "url": "https://github.com/ConductionNL/versioniq/issues/24",
+       "category": "feature-request",
+       "kind": "response",
+       "due": "2026-05-19T22:00:00.000Z"
+      },
+      {
+       "title": "Hydra full-branch review findings — PR #29 backlog",
+       "url": "https://github.com/ConductionNL/versioniq/issues/32",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-05-19T22:00:00.000Z"
+      },
+      {
+       "title": "feat: ExApp (AppAPI) version management — first-mover surface",
+       "url": "https://github.com/ConductionNL/versioniq/issues/84",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-06T19:22:09.000Z"
+      },
+      {
+       "title": "CI: npm ci fails on all PRs — package-lock.json requires npm >= 11 but workflows pin Node 20/npm 10",
+       "url": "https://github.com/ConductionNL/versioniq/issues/98",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-07T00:27:17.000Z"
+      },
+      {
+       "title": "CI: 4 quality legs fail for a missing script, phpcs passes vacuously, and a unit test is red with nothing running it",
+       "url": "https://github.com/ConductionNL/versioniq/issues/118",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-08-14T22:00:00.000Z"
+      },
+      {
+       "title": "chore(deps-dev): Bump vite from 7.3.1 to 8.0.14",
+       "url": "https://github.com/ConductionNL/versioniq/issues/185",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-09-04T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] [app_versions] move-to-admin-settings",
+       "url": "https://github.com/ConductionNL/versioniq/issues/184",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-09-04T22:00:00.000Z"
+      },
+      {
+       "title": "[OpenSpec] [app_versions] surface-external-sources-ui",
+       "url": "https://github.com/ConductionNL/versioniq/issues/183",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-09-04T22:00:00.000Z"
+      },
+      {
+       "title": "InstallerService leaves the instance in maintenance mode when a prior install died, and nothing reports it",
+       "url": "https://github.com/ConductionNL/versioniq/issues/247",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-09-10T17:07:25.000Z"
+      },
+      {
+       "title": "drift e2e fails only on CI — product path verified correct, PinStore::all() suspected",
+       "url": "https://github.com/ConductionNL/versioniq/issues/253",
+       "category": "unclassified",
+       "kind": "response",
+       "due": "2026-09-11T05:47:23.000Z"
+      },
+      {
+       "title": "The version list shows no release date or Nextcloud version range",
+       "url": "https://github.com/ConductionNL/versioniq/issues/480",
+       "category": "bug",
+       "kind": "response",
+       "due": "2026-10-04T22:53:55.000Z"
+      },
       {
        "title": "[OpenSpec] adopt-connection-registry",
        "url": "https://github.com/ConductionNL/versioniq/issues/425",
        "category": "unclassified",
+       "kind": "response",
+       "due": "2026-10-09T22:00:00.000Z"
+      },
+      {
+       "title": "Store the binding creator's token with a source binding, so background jobs need not rely on a token shared with admins",
+       "url": "https://github.com/ConductionNL/versioniq/issues/462",
+       "category": "feature-request",
        "kind": "response",
        "due": "2026-10-09T22:00:00.000Z"
       },
@@ -2231,7 +2595,6 @@
      "notes": [
       "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
       "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
-      "35 of 72 issues were opened by the maintainers themselves; they have a fix term but no response term.",
       "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
      ]
     },
@@ -2251,10 +2614,13 @@
     "id": "agentinstructions",
     "title": "Agent instructions",
     "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
-    "status": "fail",
-    "rating": 0.5,
-    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
-    "evidence": [],
+    "status": "pass",
+    "rating": 5.5,
+    "message": "2 instruction files found; the longest has 5,096 characters; names a build, test or lint command.",
+    "evidence": [
+     "AGENTS.md",
+     "CLAUDE.md"
+    ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
    },
@@ -2264,7 +2630,7 @@
     "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
     "status": "pass",
     "rating": 4.5,
-    "message": "20 specifications and 64 changes found.",
+    "message": "24 specifications and 64 changes found.",
     "evidence": [
      "openspec/specs/admin-api/spec.md",
      "openspec/specs/admin-integrations/spec.md",
@@ -2277,6 +2643,8 @@
      "openspec/specs/cli-commands/spec.md",
      "openspec/specs/external-sources/spec.md",
      "openspec/specs/interface-language/spec.md",
+     "openspec/specs/inventory-export/spec.md",
+     "openspec/specs/lifecycle-signals/spec.md",
      "openspec/specs/migration-safety/spec.md",
      "openspec/specs/pat-management/spec.md",
      "openspec/specs/pending-updates/spec.md",
@@ -2284,8 +2652,10 @@
      "openspec/specs/release-channels/spec.md",
      "openspec/specs/security-advisory-correlation/spec.md",
      "openspec/specs/source-license-headers/spec.md",
+     "openspec/specs/upgrade-readiness/spec.md",
      "openspec/specs/version-management/spec.md",
-     "openspec/specs/version-pinning/spec.md"
+     "openspec/specs/version-pinning/spec.md",
+     "openspec/specs/withdrawn-and-revoked/spec.md"
     ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
@@ -2294,10 +2664,18 @@
     "id": "architecturedecisions",
     "title": "Architecture decision records",
     "description": "Numbered architecture decision records tell a coding agent which choices were made and why, so it does not undo them.",
-    "status": "fail",
-    "rating": 0.5,
-    "message": "No architecture decision records found. Record decisions as numbered files in docs/adr.",
-    "evidence": [],
+    "status": "pass",
+    "rating": 4,
+    "message": "7 decision records found.",
+    "evidence": [
+     "docs/adr/0001-admin-settings-section-is-the-only-entry-point.md",
+     "docs/adr/0002-separate-installer-for-external-sources.md",
+     "docs/adr/0003-trust-on-first-use-checksums-for-external-releases.md",
+     "docs/adr/0004-personal-access-tokens-are-encrypted-at-rest.md",
+     "docs/adr/0005-pins-are-self-enforced-and-monitored.md",
+     "docs/adr/0006-audit-trail-in-its-own-table.md",
+     "docs/adr/0007-slow-lookups-are-background-sweeps.md"
+    ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
    },
@@ -2327,7 +2705,8 @@
     "evidence": [
      ".github/workflows/openapi.yml",
      "openapi.json",
-     "docs/static/llms.txt"
+     "docs/static/llms.txt",
+     "llms.txt"
     ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
@@ -2336,18 +2715,23 @@
     "id": "agenttooling",
     "title": "Agent tooling",
     "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
-    "status": "fail",
-    "rating": 0.5,
-    "message": "Skills, prompts or commands: 0; local quality gates: 0.",
-    "evidence": [],
+    "status": "warn",
+    "rating": 2.5,
+    "message": "Skills, prompts or commands: 4; local quality gates: 0.",
+    "evidence": [
+     ".claude/commands/check.md",
+     ".claude/commands/e2e.md",
+     ".claude/commands/new-change.md",
+     ".claude/commands/test.md"
+    ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 20,
+  "durationSeconds": 9.2,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

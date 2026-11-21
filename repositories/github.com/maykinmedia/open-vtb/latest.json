@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:01:59.578Z",
+  "lastCheckedAt": "2026-11-21T09:12:54.042Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:00:31.398Z",
-  "updatedAt": "2026-11-20T12:01:59.578Z",
+  "updatedAt": "2026-11-21T09:12:54.042Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -42,21 +42,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T12-01-59-578Z",
+  "id": "2026-11-21T09-12-54-042Z",
   "repoId": "github.com/maykinmedia/open-vtb",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:01:59.578Z",
-  "createdAt": "2026-11-20T12:01:59.578Z",
+  "checkedAt": "2026-11-21T09:12:54.042Z",
+  "createdAt": "2026-11-21T09:12:54.042Z",
   "version": "v0.2.0",
   "checklistVersion": "2026.2",
   "scannedRef": "0.2.0",
   "scannedRefKind": "tag",
   "scannedCommit": "83972bfe288e5d2f7f4345e4e891529b4a1d0535",
   "score": 80,
-  "rating": 3.3,
+  "rating": 3.5,
   "categoryRatings": {
    "Governance": 3,
-   "Security": 2.4,
+   "Security": 3.2,
    "Architecture": 3,
    "Software Quality": 4.1,
    "Deployment & Operations": 4.3,
@@ -84,19 +84,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 4
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 3.4
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 2
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 4.3
    },
    "container-images": {
     "rating": 0.5
@@ -174,7 +174,7 @@
   },
   "issueCounts": {
    "errors": 3,
-   "warnings": 8
+   "warnings": 7
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -1087,15 +1087,263 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 4,
+    "rating": 3.82,
+    "aspectRatings": {
+     "vulnerabilities": 4,
+     "freshness": 3.42,
+     "activity": 1.95,
+     "licence": 5.5,
+     "management": 4.25
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "2",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Low",
+        "value": "1",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "17.9%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 2 years",
+        "value": "13.4%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "11.9%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "6 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "56.7%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 2 years",
+        "value": "40.3%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 4 years",
+        "value": "26.9%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "12 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "1.5%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 4
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 4 of 5 stars over 67 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★☆ 0 critical, 0 high, 2 moderate",
+     "Freshness: ★★★☆☆ >1.0y 17.9%, >2.0y 13.4%, >3.5y 11.9%, >5.0y count 6",
+     "Activity: ★★☆☆☆ >1.0y 56.7%, >2.0y 40.3%, >4.0y 26.9%, >5.5y count 12",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★★★★☆ 1 unmanaged of 68 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1680,9 +1928,9 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Docker Hub maykinmedia/open-vtb: 7,354 pulls in total (2026-11-20)",
-     "GitHub maykinmedia/open-vtb: 3 stars, 1 forks, 0 watchers (2026-11-20)",
-     "GitHub commits maykinmedia/open-vtb: 6 contributors, 5 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-20)"
+     "Docker Hub maykinmedia/open-vtb: 7,448 pulls in total (2026-11-21)",
+     "GitHub maykinmedia/open-vtb: 3 stars, 1 forks, 0 watchers (2026-11-21)",
+     "GitHub commits maykinmedia/open-vtb: 7 contributors, 5 from the owning organisation, 1 from other organisations, 1 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1693,11 +1941,11 @@
        "subject": "maykinmedia/open-vtb",
        "url": "https://hub.docker.com/r/maykinmedia/open-vtb",
        "caveat": "Counts every pull since the image was published, including CI pulls and automatic updates.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "pulls in total",
-         "value": 7354
+         "value": 7448
         }
        ]
       },
@@ -1707,7 +1955,7 @@
        "source": "GitHub",
        "subject": "maykinmedia/open-vtb",
        "url": "https://github.com/maykinmedia/open-vtb",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1731,11 +1979,11 @@
        "subject": "maykinmedia/open-vtb",
        "url": "https://github.com/maykinmedia/open-vtb/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
-         "value": 6
+         "value": 7
         },
         {
          "label": "from the owning organisation",
@@ -1743,7 +1991,7 @@
         },
         {
          "label": "from other organisations",
-         "value": 0
+         "value": 1
         },
         {
          "label": "unknown",
@@ -1778,11 +2026,11 @@
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": "1 organisation; largest 100%",
-      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (296 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (5 authors), with 100% of the 275 commits whose organisation is known; 7% of the commits come from 1 of 6 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "value": "2 organisations; largest 100%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (296 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (5 authors), with 100% of the 275 commits whose organisation is known; 7% of the commits come from 1 of 7 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
-       "met": false
+       "met": true
       }
      },
      {
@@ -1801,7 +2049,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "median 8 minutes",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 12 got a response; 3 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-23 and 2026-11-14. 12 got a response; 3 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": true
@@ -1812,7 +2060,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "no response",
-      "explanation": "None of the 15 latest issues opened by people between 2026-08-22 and 2026-11-13 got a comment from anyone but its author.",
+      "explanation": "None of the 15 latest issues opened by people between 2026-08-23 and 2026-11-14 got a comment from anyone but its author.",
       "target": {
        "text": "at most 120 hours",
        "met": false
@@ -1832,8 +2080,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "feature-request",
@@ -2088,10 +2336,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 14.3,
+  "durationSeconds": 8.2,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:00:24.754Z",
+  "lastCheckedAt": "2026-11-21T09:12:14.319Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:59:49.582Z",
-  "updatedAt": "2026-11-20T12:00:24.754Z",
+  "updatedAt": "2026-11-21T09:12:14.319Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -44,21 +44,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T12-00-24-754Z",
+  "id": "2026-11-21T09-12-14-319Z",
   "repoId": "github.com/maykinmedia/open-inwoner",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:00:24.754Z",
-  "createdAt": "2026-11-20T12:00:24.754Z",
+  "checkedAt": "2026-11-21T09:12:14.319Z",
+  "createdAt": "2026-11-21T09:12:14.319Z",
   "version": "v2.5.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v2.5.0",
   "scannedRefKind": "declared-version",
   "scannedCommit": "fd00dfbe8e0ed46d7884d9608ab2aec98d119408",
   "score": 78,
-  "rating": 3.2,
+  "rating": 3.6,
   "categoryRatings": {
    "Governance": 3.3,
-   "Security": 1.8,
+   "Security": 3.4,
    "Architecture": 4.3,
    "Software Quality": 2.7,
    "Deployment & Operations": 4.3,
@@ -86,19 +86,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 3.5
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 3.5
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
     "rating": 0.5
@@ -175,7 +175,7 @@
   },
   "issueCounts": {
    "errors": 1,
-   "warnings": 14
+   "warnings": 13
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -616,12 +616,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.62 (threshold: 15)",
      "Max CCN: 51.00 (threshold: 30)",
-     "2      1     14      2       2 get_error_message@6-7@/tmp/cgchecker-repo-Zs19lV/repo/src/maykin_config_checks/permissions.py",
-     "2      2     23      1       2 has_errors@759-760@/tmp/cgchecker-repo-Zs19lV/repo/src/open_inwoner/openzaak/clients.py",
-     "5      1     35      2       5 log_webhook_auth_error@36-40@/tmp/cgchecker-repo-Zs19lV/repo/src/open_inwoner/openzaak/mixins.py",
-     "5      1     27      1       5 log_webhook_deserialization_error@42-46@/tmp/cgchecker-repo-Zs19lV/repo/src/open_inwoner/openzaak/mixins.py",
-     "5      1     27      1       5 log_webhook_parse_error@64-68@/tmp/cgchecker-repo-Zs19lV/repo/src/open_inwoner/openzaak/mixins.py",
-     "5      1     38      2       5 log_webhook_store_error@70-74@/tmp/cgchecker-repo-Zs19lV/repo/src/open_inwoner/openzaak/mixins.py"
+     "2      1     14      2       2 get_error_message@6-7@/tmp/cgchecker-repo-XaiSri/repo/src/maykin_config_checks/permissions.py",
+     "2      2     23      1       2 has_errors@759-760@/tmp/cgchecker-repo-XaiSri/repo/src/open_inwoner/openzaak/clients.py",
+     "5      1     35      2       5 log_webhook_auth_error@36-40@/tmp/cgchecker-repo-XaiSri/repo/src/open_inwoner/openzaak/mixins.py",
+     "5      1     27      1       5 log_webhook_deserialization_error@42-46@/tmp/cgchecker-repo-XaiSri/repo/src/open_inwoner/openzaak/mixins.py",
+     "5      1     27      1       5 log_webhook_parse_error@64-68@/tmp/cgchecker-repo-XaiSri/repo/src/open_inwoner/openzaak/mixins.py",
+     "5      1     38      2       5 log_webhook_store_error@70-74@/tmp/cgchecker-repo-XaiSri/repo/src/open_inwoner/openzaak/mixins.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1307,15 +1307,263 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 5,
+    "rating": 4.7,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 3.49,
+     "activity": 3.49,
+     "licence": 5.5,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "12.8%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "1.9%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "1.4%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "2 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "8.1%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "5.7%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 4 years",
+        "value": "4.3%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "7 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 5 of 5 stars over 212 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★☆☆ >1.0y 12.8%, >2.0y 1.9%, >3.5y 1.4%, >5.0y count 2",
+     "Activity: ★★★☆☆ >1.0y 8.1%, >2.0y 5.7%, >4.0y 4.3%, >5.5y count 7",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★★★★★ 0 unmanaged of 212 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1917,9 +2165,9 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Docker Hub maykinmedia/open-inwoner: 76,385 pulls in total (2026-11-20)",
-     "GitHub maykinmedia/open-inwoner: 4 stars, 8 forks, 2 watchers (2026-11-20)",
-     "GitHub commits maykinmedia/open-inwoner: 11 contributors, 9 from the owning organisation, 0 from other organisations, 2 unknown (2026-11-20)"
+     "Docker Hub maykinmedia/open-inwoner: 76,465 pulls in total (2026-11-21)",
+     "GitHub maykinmedia/open-inwoner: 4 stars, 8 forks, 2 watchers (2026-11-21)",
+     "GitHub commits maykinmedia/open-inwoner: 11 contributors, 9 from the owning organisation, 0 from other organisations, 2 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1930,11 +2178,11 @@
        "subject": "maykinmedia/open-inwoner",
        "url": "https://hub.docker.com/r/maykinmedia/open-inwoner",
        "caveat": "Counts every pull since the image was published, including CI pulls and automatic updates.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "pulls in total",
-         "value": 76385
+         "value": 76465
         }
        ]
       },
@@ -1944,7 +2192,7 @@
        "source": "GitHub",
        "subject": "maykinmedia/open-inwoner",
        "url": "https://github.com/maykinmedia/open-inwoner",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1968,7 +2216,7 @@
        "subject": "maykinmedia/open-inwoner",
        "url": "https://github.com/maykinmedia/open-inwoner/graphs/contributors",
        "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -2038,7 +2286,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "median 20 minutes",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 13 got a response; 2 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-23 and 2026-11-14. 13 got a response; 2 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": true
@@ -2049,7 +2297,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "median 26.9 hours",
-      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-22 and 2026-11-13. 3 got a response; 12 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-23 and 2026-11-14. 3 got a response; 12 had none yet. Bots are left out.",
       "target": {
        "text": "at most 120 hours",
        "met": true
@@ -2069,8 +2317,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "bug",
@@ -2113,13 +2361,13 @@
        "label": "Unclassified",
        "respondDays": 10,
        "fixDays": null,
-       "count": 203,
+       "count": 208,
        "response": {
         "measured": 15,
         "median": 4.3,
         "worst": 89.9,
         "breaches": 50,
-        "waiting": 52
+        "waiting": 57
        },
        "fix": null
       }
@@ -2272,7 +2520,7 @@
      "notes": [
       "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
       "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
-      "177 of 266 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "177 of 271 issues were opened by the maintainers themselves; they have a fix term but no response term.",
       "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
      ]
     },
@@ -2371,10 +2619,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 33.3,
+  "durationSeconds": 13.8,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

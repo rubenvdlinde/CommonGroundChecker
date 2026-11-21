@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T11:42:33.926Z",
+  "lastCheckedAt": "2026-11-21T09:13:53.487Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:45.329Z",
-  "updatedAt": "2026-11-20T11:42:33.926Z",
+  "updatedAt": "2026-11-21T09:13:53.487Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -42,32 +42,32 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T11-42-33-926Z",
+  "id": "2026-11-21T09-13-53-487Z",
   "repoId": "github.com/open-zaak/vng-selectielijst",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T11:42:33.926Z",
-  "createdAt": "2026-11-20T11:42:33.926Z",
+  "checkedAt": "2026-11-21T09:13:53.487Z",
+  "createdAt": "2026-11-21T09:13:53.487Z",
   "version": "v1.0.6",
   "checklistVersion": "2026.2",
   "scannedRef": "1.0.6",
   "scannedRefKind": "tag",
   "scannedCommit": "e78d4ba9a1e7ed167fa1fa9738077ddb17745e8b",
   "score": 63,
-  "rating": 3.4,
+  "rating": 3.5,
   "categoryRatings": {
-   "Governance": 1.7,
-   "Security": 4.7,
+   "Governance": 2.2,
+   "Security": 4.9,
    "Architecture": 3,
-   "Software Quality": 4,
+   "Software Quality": 4.2,
    "Deployment & Operations": 3.3,
    "AI readiness": 1.9
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 2.5
+    "rating": 3.1
    },
    "ownership": {
-    "rating": 1.8
+    "rating": 3
    },
    "maintenance": {
     "rating": 0.5
@@ -84,7 +84,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -114,7 +114,7 @@
     "rating": 3
    },
    "layering": {
-    "rating": 5.5
+    "rating": 3
    },
    "standards": {
     "rating": null
@@ -135,7 +135,7 @@
     "rating": 3.6
    },
    "testing": {
-    "rating": 3.2
+    "rating": 4
    },
    "size": {
     "rating": null
@@ -175,7 +175,7 @@
   },
   "issueCounts": {
    "errors": 4,
-   "warnings": 13
+   "warnings": 10
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -246,26 +246,32 @@
     "id": "licenceconsistency",
     "title": "Licence consistency",
     "description": "Every place a repository declares its licence (LICENSE file, package manifests, publiccode.yml, Nextcloud appinfo/info.xml) should name the same licence.",
-    "evidence": [],
+    "evidence": [
+     "LICENCE.md: EUPL-1.2",
+     "package.json: EUPL-1.2"
+    ],
     "referenceUrl": "https://spdx.org/licenses/",
-    "status": "warn",
-    "message": "No licence declaration found in the LICENSE file or any manifest; nothing to compare.",
+    "status": "pass",
+    "message": "All 2 licence declarations agree (EUPL-1.2).",
     "requirementLevel": "recommended",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "copyrightowner",
     "title": "Copyright / IP Owner Disclosure",
     "description": "The repository should clearly identify probable copyright holder(s) or IP owner(s) in legal/metadata files.",
-    "status": "warn",
-    "confidence": "low",
-    "message": "No explicit copyright owner statement found in COPYRIGHT/NOTICE/LICENSE/README/manifest files. Fallback based on repository ownership: open-zaak (confidence: low).",
+    "status": "pass",
+    "confidence": "high",
+    "message": "Probable copyright owners detected: Dimpact, Maykin Media, README.rst, VNG Realisatie (confidence: high).",
     "evidence": [
-     "repository owner metadata: open-zaak"
+     "README.rst: Dimpact",
+     "package.json: Maykin Media",
+     "pyproject.toml: README.rst",
+     "README.rst: VNG Realisatie"
     ],
     "referenceUrl": "https://opensource.guide/legal/",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "spdxheaders",
@@ -439,12 +445,14 @@
     "id": "coverage",
     "title": "Code coverage",
     "description": "Code coverage should be reported and exceeded a minimum threshold to ensure test reliability.",
-    "status": "warn",
-    "message": "No coverage report file was found. Add coverage output such as coverage/coverage-summary.json, coverage.xml, or lcov.info.",
-    "evidence": [],
+    "status": "pass",
+    "message": "Code coverage badge reports 90.00%, which meets the 80% threshold.",
+    "evidence": [
+     "README coverage badge: 90.00%"
+    ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests/about-code-coverage-reporting",
     "requirementLevel": "mandatory",
-    "starRating": 3
+    "starRating": 5
    },
    {
     "id": "complexity",
@@ -456,7 +464,7 @@
      "Analyzer: lizard",
      "Average CCN: 2.14 (threshold: 15)",
      "Max CCN: 7.00 (threshold: 30)",
-     "11      3     59      2      18 server_error@13-30@/tmp/cgchecker-repo-Tbzn6H/repo/src/selectielijst/utils/views.py",
+     "11      3     59      2      18 server_error@13-30@/tmp/cgchecker-repo-yT6pAk/repo/src/selectielijst/utils/views.py",
      "Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
@@ -1063,15 +1071,135 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": null
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 5 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: not rated (data unavailable)"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1425,8 +1553,8 @@
     "id": "fivelayer",
     "title": "Common Ground 5-Layer Architecture",
     "description": "The component should clearly belong to one of the five Common Ground architectural layers.",
-    "status": "pass",
-    "message": "Detected layer signals: Service layer (back-end microservice). This repository appears to target a single Common Ground layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer.",
+    "status": "warn",
+    "message": "Detected layer signals: Service layer (back-end microservice); Integration layer (gateway / NLX). This repository appears to span multiple Common Ground layers. Consider splitting responsibilities or clarifying the primary layer. Admin UI or management interface hints were treated as supporting the existing service/data layer rather than a separate Interaction layer.",
     "evidence": [
      "Found path segment \"api\" in src/selectielijst/api/__init__.py",
      "Found path segment \"api\" in src/selectielijst/api/schema.py",
@@ -1435,12 +1563,14 @@
      "Found path segment \"api\" in src/selectielijst/selectielijst/api/__init__.py",
      "Found path segment \"api\" in src/selectielijst/selectielijst/api/filters.py",
      "Found path segment \"api\" in src/selectielijst/selectielijst/api/serializers.py",
-     "Found path segment \"api\" in src/selectielijst/selectielijst/api/viewsets.py"
+     "Found path segment \"api\" in src/selectielijst/selectielijst/api/viewsets.py",
+     "Found \"api\" in repository metadata and docs",
+     "Found \"zaak\" in repository metadata and docs"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476261/5-lagen-model",
-    "confidence": "high",
+    "confidence": "medium",
     "requirementLevel": "mandatory",
-    "starRating": 5
+    "starRating": 3
    },
    {
     "id": "helmchart",
@@ -1459,10 +1589,10 @@
     "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Usage from 2 sources, 1 not measured. Shown for information; never rated or compared.",
+    "message": "Usage from 2 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub open-zaak/vng-selectielijst: 0 stars, 1 forks, 3 watchers (2026-11-20)",
-     "GitHub commits open-zaak/vng-selectielijst: not measured: HTTP 403 (2026-11-20)"
+     "GitHub open-zaak/vng-selectielijst: 0 stars, 1 forks, 3 watchers (2026-11-21)",
+     "GitHub commits open-zaak/vng-selectielijst: 3 contributors, 2 from the owning organisation, 1 from other organisations, 0 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1472,7 +1602,7 @@
        "source": "GitHub",
        "subject": "open-zaak/vng-selectielijst",
        "url": "https://github.com/open-zaak/vng-selectielijst",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1495,10 +1625,26 @@
        "source": "GitHub commits",
        "subject": "open-zaak/vng-selectielijst",
        "url": "https://github.com/open-zaak/vng-selectielijst/graphs/contributors",
-       "caveat": "",
-       "measuredAt": "2026-11-20",
-       "figures": [],
-       "notMeasured": "HTTP 403"
+       "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
+       "measuredAt": "2026-11-21",
+       "figures": [
+        {
+         "label": "contributors",
+         "value": 3
+        },
+        {
+         "label": "from the owning organisation",
+         "value": 2
+        },
+        {
+         "label": "from other organisations",
+         "value": 1
+        },
+        {
+         "label": "unknown",
+         "value": 0
+        }
+       ]
       }
      ]
     }
@@ -1508,7 +1654,7 @@
     "title": "Project health (CHAOSS)",
     "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
     "status": "info",
-    "message": "2 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "message": "6 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
     "evidence": [],
     "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
     "metrics": [
@@ -1516,22 +1662,22 @@
       "id": "contributor-absence-factor",
       "name": "Contributor Absence Factor",
       "referenceUrl": "https://chaoss.community/kb/metric-contributor-absence-factor/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for user ID 4021899. If you reach out to ).",
+      "value": "1",
+      "explanation": "The fewest people who together made half of the commits on the default branch in the last 12 months, of the 100 contributors GitHub reports, among 3 human contributors. At 1 the project depends on a single person. Bots are left out; one person with several accounts or addresses counts more than once.",
       "target": {
        "text": "at least 2 people",
-       "met": null
+       "met": false
       }
      },
      {
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for user ID 4021899. If you reach out to ).",
+      "value": "2 organisations; largest 94%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (35 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is maykinmedia.nl (2 authors), with 94% of the 35 commits whose organisation is known; 0% of the commits come from 0 of 3 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
-       "met": null
+       "met": true
       }
      },
      {
@@ -1549,22 +1695,22 @@
       "id": "time-to-first-response",
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for user ID 4021899. If you reach out to ).",
+      "value": "median 4.0 hours",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 8 latest change requests opened by people between 2026-08-23 and 2026-11-14. 5 got a response; 3 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
-       "met": null
+       "met": true
       }
      },
      {
       "id": "issue-response-time",
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
-      "value": null,
-      "explanation": "Not measured: the GitHub API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for user ID 4021899. If you reach out to ).",
+      "value": "no response",
+      "explanation": "None of the 4 latest issues opened by people between 2026-08-23 and 2026-11-14 got a comment from anyone but its author.",
       "target": {
        "text": "at most 120 hours",
-       "met": null
+       "met": false
       }
      },
      {
@@ -1581,8 +1727,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "unclassified",
@@ -1606,7 +1752,7 @@
      "fixesByClose": 0,
      "notes": [
       "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
-      "Vulnerabilities are not measured: the GitHub security advisories API answered with an error (GitHub API 403: {\n\t\"message\": \"API rate limit exceeded for user ID 4021899. If you reach out to )."
+      "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured."
      ]
     },
     "requirementLevel": "informative"
@@ -1697,10 +1843,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 10.7,
+  "durationSeconds": 4.5,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

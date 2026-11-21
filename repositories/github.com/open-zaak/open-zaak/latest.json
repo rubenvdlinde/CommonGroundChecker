@@ -35,10 +35,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:03:48.129Z",
+  "lastCheckedAt": "2026-11-21T09:13:38.445Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:01:41.154Z",
-  "updatedAt": "2026-11-20T12:03:48.129Z",
+  "updatedAt": "2026-11-21T09:13:38.445Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -54,21 +54,21 @@
   "functionalitiesDraft": true
  },
  "analysis": {
-  "id": "2026-11-20T12-03-48-129Z",
+  "id": "2026-11-21T09-13-38-445Z",
   "repoId": "github.com/open-zaak/open-zaak",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:03:48.129Z",
-  "createdAt": "2026-11-20T12:03:48.129Z",
+  "checkedAt": "2026-11-21T09:13:38.445Z",
+  "createdAt": "2026-11-21T09:13:38.445Z",
   "version": "v1.31.2",
   "checklistVersion": "2026.2",
   "scannedRef": "1.31.0",
   "scannedRefKind": "declared-version",
   "scannedCommit": "1e06c19d9a701bbdb9de9260185514c3455b3a5c",
   "score": 78,
-  "rating": 3.4,
+  "rating": 3.6,
   "categoryRatings": {
    "Governance": 4.2,
-   "Security": 2.4,
+   "Security": 3.2,
    "Architecture": 3,
    "Software Quality": 3.2,
    "Deployment & Operations": 4.3,
@@ -96,19 +96,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 2.9
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 1.4
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 4.1
    },
    "container-images": {
     "rating": 3
@@ -184,7 +184,7 @@
   },
   "issueCounts": {
    "errors": 2,
-   "warnings": 8
+   "warnings": 7
   },
   "declaredUsers": [
    "Gemeente Amsterdam",
@@ -665,12 +665,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.82 (threshold: 15)",
      "Max CCN: 31.00 (threshold: 30)",
-     "26     10    161      1      43 get_error_responses@107-149@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/utils/schema.py",
-     "9      5     66      3      10 _handle_errors@85-94@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/utils/serializers.py",
-     "9      1     43      2      10 azure_error_handler@51-60@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/utils/views.py",
-     "5      2     29      2       7 _publish_validation_errors@341-347@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/components/catalogi/admin/zaaktypen.py",
-     "7      5     70      2      17 format_serializer_errors@27-43@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/components/catalogi/admin/utils.py",
-     "2      1     10      2       2 _publish_validation_errors@70-71@/tmp/cgchecker-repo-ifRCKH/repo/src/openzaak/components/catalogi/admin/mixins.py"
+     "1      1      7      0       1 (anonymous)@17-17@/tmp/cgchecker-repo-UV8Rjj/repo/src/openzaak/js/forms/error-list.js",
+     "11      2     63      1      12 ErrorList@9-20@/tmp/cgchecker-repo-UV8Rjj/repo/src/openzaak/js/forms/error-list.js",
+     "2      1     10      2       2 _publish_validation_errors@70-71@/tmp/cgchecker-repo-UV8Rjj/repo/src/openzaak/components/catalogi/admin/mixins.py",
+     "17      2     77      2      18 _publish_validation_errors@156-173@/tmp/cgchecker-repo-UV8Rjj/repo/src/openzaak/components/catalogi/admin/mixins.py",
+     "7      5     70      2      17 format_serializer_errors@27-43@/tmp/cgchecker-repo-UV8Rjj/repo/src/openzaak/components/catalogi/admin/utils.py",
+     "5      2     29      2       7 _publish_validation_errors@341-347@/tmp/cgchecker-repo-UV8Rjj/repo/src/openzaak/components/catalogi/admin/zaaktypen.py"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1276,15 +1276,263 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 4,
+    "rating": 3.89,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 2.9,
+     "activity": 1.43,
+     "licence": 5.5,
+     "management": 4.14
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "37.8%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 2 years",
+        "value": "22.2%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "17.8%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "6 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "55.6%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 2 years",
+        "value": "55.6%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "> 4 years",
+        "value": "40.0%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "12 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "2.2%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 4
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 4 of 5 stars over 45 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★☆☆ >1.0y 37.8%, >2.0y 22.2%, >3.5y 17.8%, >5.0y count 6",
+     "Activity: ★☆☆☆☆ >1.0y 55.6%, >2.0y 55.6%, >4.0y 40%, >5.5y count 12",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★★★★☆ 1 unmanaged of 46 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1786,16 +2034,16 @@
     "status": "fail",
     "message": "Gitleaks found 10 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 43 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
-     "private-key: docker/certs/openzaak.key:4",
      "private-key: docker/certs/mocks.key:4",
-     "generic-api-key: docker/docker-compose.azurite.yml:31",
+     "private-key: docker/certs/openzaak.key:4",
      "jwt: docs/client-development/authentication.rst:63",
      "jwt: docs/client-development/authentication.rst:71",
+     "generic-api-key: docker/docker-compose.azurite.yml:31",
      "generic-api-key: docker/setup_configuration/data.yaml:76",
-     "generic-api-key: src/openzaak/conf/ci.py:33",
-     "generic-api-key: src/openzaak/conf/dev.py:46",
      "generic-api-key: docker/keycloak/data/test-realm.json:756",
-     "generic-api-key: docker/keycloak/data/test-realm.json:802"
+     "generic-api-key: docker/keycloak/data/test-realm.json:802",
+     "generic-api-key: src/openzaak/conf/ci.py:33",
+     "generic-api-key: src/openzaak/conf/dev.py:46"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
@@ -1909,10 +2157,10 @@
     "status": "info",
     "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "publiccode.yml usedBy: 8 organisations named (2026-11-20)",
-     "Docker Hub openzaak/open-zaak: 650,705 pulls in total (2026-11-20)",
-     "GitHub open-zaak/open-zaak: 60 stars, 44 forks, 10 watchers (2026-11-20)",
-     "GitHub commits open-zaak/open-zaak: 21 contributors, 14 from the owning organisation, 3 from other organisations, 4 unknown (2026-11-20)"
+     "publiccode.yml usedBy: 8 organisations named (2026-11-21)",
+     "Docker Hub openzaak/open-zaak: 651,908 pulls in total (2026-11-21)",
+     "GitHub open-zaak/open-zaak: 60 stars, 44 forks, 10 watchers (2026-11-21)",
+     "GitHub commits open-zaak/open-zaak: 21 contributors, 14 from the owning organisation, 3 from other organisations, 4 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1922,7 +2170,7 @@
        "source": "publiccode.yml usedBy",
        "subject": null,
        "url": null,
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Self-declared by the maintainers and not verified.",
        "figures": [
         {
@@ -1948,11 +2196,11 @@
        "subject": "openzaak/open-zaak",
        "url": "https://hub.docker.com/r/openzaak/open-zaak",
        "caveat": "Counts every pull since the image was published, including CI pulls and automatic updates.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "pulls in total",
-         "value": 650705
+         "value": 651908
         }
        ]
       },
@@ -1962,7 +2210,7 @@
        "source": "GitHub",
        "subject": "open-zaak/open-zaak",
        "url": "https://github.com/open-zaak/open-zaak",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1986,7 +2234,7 @@
        "subject": "open-zaak/open-zaak",
        "url": "https://github.com/open-zaak/open-zaak/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (maykin.nl, maykinmedia.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -2056,7 +2304,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "median 46.0 hours",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 10 got a response; 5 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-23 and 2026-11-14. 10 got a response; 5 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": true
@@ -2067,7 +2315,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "median 4.8 days",
-      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-22 and 2026-11-13. 7 got a response; 8 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment by someone other than the author, over the 15 latest issues opened by people between 2026-08-23 and 2026-11-14. 7 got a response; 8 had none yet. Bots are left out.",
       "target": {
        "text": "at most 120 hours",
        "met": true
@@ -2087,8 +2335,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "bug",
@@ -2413,10 +2661,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 25.5,
+  "durationSeconds": 14.6,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

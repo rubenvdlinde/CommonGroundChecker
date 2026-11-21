@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T11:18:02.683Z",
+  "lastCheckedAt": "2026-11-21T09:02:55.943Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:52:51.442Z",
-  "updatedAt": "2026-11-20T11:18:02.683Z",
+  "updatedAt": "2026-11-21T09:02:55.943Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,29 +44,29 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T11-18-02-683Z",
+  "id": "2026-11-21T09-02-55-943Z",
   "repoId": "github.com/ConductionNL/buildiq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T11:18:02.683Z",
-  "createdAt": "2026-11-20T11:18:02.683Z",
+  "checkedAt": "2026-11-21T09:02:55.943Z",
+  "createdAt": "2026-11-21T09:02:55.943Z",
   "version": "v0.7.0",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
-  "scannedCommit": "1d9cee30c71497623d5786457df1e3c5a33c5b67",
+  "scannedCommit": "c80c11adf8c776b6c4b6eea4ab8edf787e6a1e50",
   "score": 94,
   "rating": 5.1,
   "categoryRatings": {
-   "Governance": 5.5,
-   "Security": 4.7,
+   "Governance": 5.4,
+   "Security": 4.5,
    "Architecture": 5.5,
    "Software Quality": 4.5,
    "Deployment & Operations": 5.5,
-   "AI readiness": 3.4
+   "AI readiness": 4.7
   },
   "aspectRatings": {
    "licensing": {
-    "rating": 5.4
+    "rating": 5.1
    },
    "ownership": {
     "rating": 5.5
@@ -86,19 +86,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 3.5
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 2
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
     "rating": null
@@ -134,7 +134,7 @@
     "rating": 5.5
    },
    "reusability": {
-    "rating": 3.7
+    "rating": 3.6
    },
    "testing": {
     "rating": 5
@@ -151,7 +151,7 @@
     "rating": 5.5
    },
    "agent-instructions": {
-    "rating": 0.5
+    "rating": 4.5
    },
    "specifications-and-decisions": {
     "rating": 4.3
@@ -160,7 +160,7 @@
     "rating": 5.5
    },
    "interfaces-and-tooling": {
-    "rating": 3.5
+    "rating": 4.5
    }
   },
   "endorsement": {
@@ -172,7 +172,7 @@
   },
   "issueCounts": {
    "errors": 0,
-   "warnings": 2
+   "warnings": 1
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -183,7 +183,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 30,524 lines of code, 4,740 functions, 4,722 files analyzed.",
+    "message": "Code metrics: 11,847 lines of code, 2,073 functions, 2,064 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -196,9 +196,9 @@
      "docs/build/assets/js/36f4eb15.8607a88e.js",
      "docs/build/assets/js/536bad4a.53167de3.js",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 30,524",
-     "Function count: 4,740",
-     "Files analyzed: 4,722"
+     "Total lines of code (NLOC): 11,847",
+     "Function count: 2,073",
+     "Files analyzed: 2,064"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -278,9 +278,11 @@
     "description": "Rates the share of git-tracked source files that carry an SPDX-License-Identifier header in their first 30 lines, or are covered by REUSE.toml, .reuse/dep5 or a .license sidecar file. The REUSE specification asks for every file; the star bands (100% five stars, 95% four, 80% three, 50% two) are this checker's own.",
     "referenceUrl": "https://reuse.software/spec/",
     "status": "pass",
-    "starRating": 5,
-    "message": "100.0% of 2010 source files carry an SPDX header (5 of 5 stars).",
-    "evidence": [],
+    "starRating": 4,
+    "message": "99.9% of 2141 source files carry an SPDX header (4 of 5 stars). 1 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "evidence": [
+     "tests/stubs/openregister-object-options.stub.php"
+    ],
     "requirementLevel": "recommended"
    },
    {
@@ -626,18 +628,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 2.83 <= 15 and Max CCN 24.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 2.84 <= 15 and Max CCN 24.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.83 (threshold: 15)",
+     "Average CCN: 2.84 (threshold: 15)",
      "Max CCN: 24.00 (threshold: 30)",
-     "23      8    189      2      23 scanErrors@126-148@/tmp/cgchecker-repo-Anl8xX/repo/src/services/manifestValidation/pageCodes.js",
-     "13      4     91      2      17 scanFieldErrors@157-173@/tmp/cgchecker-repo-Anl8xX/repo/src/services/manifestValidation/pageCodes.js",
-     "18      6    131      2      18 codeWidgetErrors@182-199@/tmp/cgchecker-repo-Anl8xX/repo/src/services/manifestValidation/pageCodes.js",
-     "15      6    114      2      15 codeFieldErrors@208-222@/tmp/cgchecker-repo-Anl8xX/repo/src/services/manifestValidation/pageCodes.js",
-     "14      8    131      3      14 pageErrors@232-245@/tmp/cgchecker-repo-Anl8xX/repo/src/services/manifestValidation/pageCodes.js",
-     "7      3     60      2       7 formScanErrors@254-260@/tmp/cgchecker-repo-Anl8xX/repo/src/services/manifestValidation/pageCodes.js"
+     "11      3     79      1      13 ApiContractMiddleware::decorateError@231-243@/tmp/cgchecker-repo-N7CquR/repo/lib/Middleware/ApiContractMiddleware.php",
+     "6      3     33      1       7 AbstractToolHandler::appendCapError@689-695@/tmp/cgchecker-repo-N7CquR/repo/lib/Mcp/Handler/AbstractToolHandler.php",
+     "3      1     11      0       3 ReleaseOverrideRefusedException::getErrorCode@69-71@/tmp/cgchecker-repo-N7CquR/repo/lib/Exception/ReleaseOverrideRefusedException.php",
+     "3      1     11      0       3 WizardCreationException::getErrorCode@111-113@/tmp/cgchecker-repo-N7CquR/repo/lib/Exception/WizardCreationException.php",
+     "3      1     11      0       3 AppRepoParseException::getErrorCode@71-73@/tmp/cgchecker-repo-N7CquR/repo/lib/Exception/AppRepoParseException.php",
+     "3      1     11      0       3 UnsupportedAutomationCombinationException::getErrorCode@67-69@/tmp/cgchecker-repo-N7CquR/repo/lib/Exception/UnsupportedAutomationCombinationException.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -649,13 +651,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 4.41,
+    "rating": 4.39,
     "aspectRatings": {
      "analysability": 4.12,
-     "modifiability": 4.48,
-     "testability": 4.51,
+     "modifiability": 4.47,
+     "testability": 4.48,
      "modularity": 5.48,
-     "reusability": 3.65
+     "reusability": 3.62
     },
     "measurements": [
      {
@@ -668,7 +670,7 @@
       "rows": [
        {
         "label": "JavaScript",
-        "value": "1.5%",
+        "value": "1.6%",
         "thresholds": {
          "4": "≤ 5.8%"
         },
@@ -676,7 +678,7 @@
        },
        {
         "label": "PHP",
-        "value": "2.9%",
+        "value": "3.0%",
         "thresholds": {
          "4": "≤ 5.8%"
         },
@@ -684,7 +686,7 @@
        },
        {
         "label": "Vue",
-        "value": "4.1%",
+        "value": "4.0%",
         "thresholds": {
          "4": "≤ 5.8%"
         },
@@ -702,7 +704,7 @@
       "rows": [
        {
         "label": "JavaScript, more than 15 lines",
-        "value": "25.6%",
+        "value": "25.4%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -710,7 +712,7 @@
        },
        {
         "label": "JavaScript, more than 30 lines",
-        "value": "3.9%",
+        "value": "3.8%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
@@ -726,7 +728,7 @@
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "59.2%",
+        "value": "58.5%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -734,7 +736,7 @@
        },
        {
         "label": "PHP, more than 30 lines",
-        "value": "19.5%",
+        "value": "19.6%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
@@ -742,7 +744,7 @@
        },
        {
         "label": "PHP, more than 60 lines",
-        "value": "1.1%",
+        "value": "1.2%",
         "thresholds": {
          "4": "≤ 9.1%"
         },
@@ -750,7 +752,7 @@
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "21.4%",
+        "value": "22.0%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -758,7 +760,7 @@
        },
        {
         "label": "Vue, more than 30 lines",
-        "value": "4.8%",
+        "value": "4.9%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
@@ -784,7 +786,7 @@
       "rows": [
        {
         "label": "JavaScript, complexity above 5",
-        "value": "14.3%",
+        "value": "15.4%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -792,7 +794,7 @@
        },
        {
         "label": "JavaScript, complexity above 10",
-        "value": "4.0%",
+        "value": "4.2%",
         "thresholds": {
          "4": "≤ 7.5%"
         },
@@ -808,7 +810,7 @@
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "28.1%",
+        "value": "28.3%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -816,7 +818,7 @@
        },
        {
         "label": "PHP, complexity above 10",
-        "value": "0.6%",
+        "value": "0.5%",
         "thresholds": {
          "4": "≤ 7.5%"
         },
@@ -832,7 +834,7 @@
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "10.8%",
+        "value": "11.3%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -840,7 +842,7 @@
        },
        {
         "label": "Vue, complexity above 10",
-        "value": "1.0%",
+        "value": "1.2%",
         "thresholds": {
          "4": "≤ 7.5%"
         },
@@ -865,7 +867,7 @@
       "rows": [
        {
         "label": "JavaScript, 3 or more parameters",
-        "value": "5.8%",
+        "value": "5.6%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -889,7 +891,7 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "21.7%",
+        "value": "22.1%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -897,7 +899,7 @@
        },
        {
         "label": "PHP, 5 or more parameters",
-        "value": "3.8%",
+        "value": "3.9%",
         "thresholds": {
          "4": "≤ 3.4%"
         },
@@ -913,7 +915,7 @@
        },
        {
         "label": "Vue, 3 or more parameters",
-        "value": "2.3%",
+        "value": "2.4%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -963,7 +965,7 @@
        },
        {
         "label": "PHP, fan-in above 50",
-        "value": "0.2%",
+        "value": "0.1%",
         "thresholds": {
          "4": "≤ 1.8%"
         },
@@ -1047,22 +1049,22 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.37 to 4.45 (4 of 5 stars) over 801 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.35 to 4.43 (4 of 5 stars) over 844 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★★ 4.5 (javascript 5.1, php 4.7, vue 4.2)",
+     "Duplication: ★★★★★ 4.5 (javascript 5.0, php 4.6, vue 4.3)",
      "Unit size: ★★★★☆ 3.8 (javascript 4.8, php 2.8, vue 4.9)",
-     "Unit complexity: ★★★★☆ 3.5 (javascript 4.6, php 2.5, vue 4.8)",
-     "Unit interfacing: ★★★★☆ 3.5 (javascript 5.0, php 2.0, vue 5.3)",
+     "Unit complexity: ★★★☆☆ 3.5 (javascript 4.5, php 2.4, vue 4.8)",
+     "Unit interfacing: ★★★☆☆ 3.5 (javascript 5.0, php 2.0, vue 5.3)",
      "Module coupling: ★★★★★ 5.4 (php 5.4, js/ts/vue 5.5)",
      "Component independence: ★★★★★ 5.5 (js/ts/vue 5.5)",
      "Component entanglement: ★★★★★ 5.5 (js/ts/vue 5.5)",
-     "Not rated (php): all 416 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
-     "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 4.37 to 4.45, modularity 5.48 (php 1 components, exposed 0.0%, violation degree 0; js/ts/vue 4 components, exposed 0.0%, violation degree 0). The score uses this one.",
-     "Rating with directory components: 3.62 to 3.75, modularity 3.88 (php 20 components, exposed 8.1%, violation degree 0.0075; js/ts/vue 14 components, exposed 70.1%, violation degree 0.0531).",
-     "Lever: duplication in vue, about 1811 lines to fix for half a star",
+     "Not rated (php): all 445 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
+     "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 4.35 to 4.43, modularity 5.48 (php 1 components, exposed 0.0%, violation degree 0; js/ts/vue 4 components, exposed 0.0%, violation degree 0). The score uses this one.",
+     "Rating with directory components: 3.57 to 3.71, modularity 3.83 (php 20 components, exposed 10.2%, violation degree 0.0085; js/ts/vue 14 components, exposed 70.7%, violation degree 0.0549).",
+     "Lever: duplication in vue, about 1943 lines to fix for half a star",
      "Lever: duplication in php",
-     "Lever: unit complexity in php, about 2410 lines to fix for half a star",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 1.7% against 1.5%, php 2.5% against 2.9%, vue not measured (Simian has no support for this language) against 4.1%"
+     "Lever: unit complexity in php, about 2557 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 1.8% against 1.6%, php 2.7% against 3.0%, vue not measured (Simian has no support for this language) against 4.0%"
     ],
     "requirementLevel": "recommended"
    },
@@ -1082,7 +1084,7 @@
       "rows": [
        {
         "label": "All languages, more than 29 lines",
-        "value": "14.1%",
+        "value": "14.3%",
         "thresholds": {
          "2": "≤ 60.2%",
          "3": "≤ 37.0%",
@@ -1093,7 +1095,7 @@
        },
        {
         "label": "All languages, more than 42 lines",
-        "value": "3.5%",
+        "value": "3.6%",
         "thresholds": {
          "2": "≤ 46.7%",
          "3": "≤ 24.3%",
@@ -1122,7 +1124,7 @@
       "rows": [
        {
         "label": "All languages, complexity above 5",
-        "value": "20.5%",
+        "value": "21.1%",
         "thresholds": {
          "2": "≤ 45.1%",
          "3": "≤ 34.4%",
@@ -1133,7 +1135,7 @@
        },
        {
         "label": "All languages, complexity above 7",
-        "value": "8.7%",
+        "value": "9.0%",
         "thresholds": {
          "2": "≤ 38.1%",
          "3": "≤ 23.9%",
@@ -1162,18 +1164,18 @@
       "rows": [
        {
         "label": "All languages, 3 or more parameters",
-        "value": "13.1%",
+        "value": "13.5%",
         "thresholds": {
          "2": "≤ 31.4%",
          "3": "≤ 21.6%",
          "4": "≤ 13.2%",
          "5": "≤ 0.7%"
         },
-        "stars": 4
+        "stars": 3
        },
        {
         "label": "All languages, 4 or more parameters",
-        "value": "5.3%",
+        "value": "5.4%",
         "thresholds": {
          "2": "≤ 19.2%",
          "3": "≤ 10.4%",
@@ -1184,7 +1186,7 @@
        },
        {
         "label": "All languages, 5 or more parameters",
-        "value": "2.0%",
+        "value": "2.2%",
         "thresholds": {
          "2": "≤ 12.3%",
          "3": "≤ 6.6%",
@@ -1202,7 +1204,7 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "3.8%",
+        "value": "4.0%",
         "thresholds": {
          "2": "≤ 34.8%",
          "3": "≤ 8.6%",
@@ -1220,7 +1222,7 @@
       "rows": [
        {
         "label": "All languages, fan-in above 2",
-        "value": "12.0%",
+        "value": "12.3%",
         "thresholds": {
          "2": "≤ 54.0%",
          "3": "≤ 29.1%",
@@ -1231,7 +1233,7 @@
        },
        {
         "label": "All languages, fan-in above 3",
-        "value": "5.9%",
+        "value": "6.6%",
         "thresholds": {
          "2": "≤ 43.9%",
          "3": "≤ 22.7%",
@@ -1242,7 +1244,7 @@
        },
        {
         "label": "All languages, fan-in above 5",
-        "value": "2.7%",
+        "value": "2.6%",
         "thresholds": {
          "2": "≤ 30.4%",
          "3": "≤ 13.8%",
@@ -1292,11 +1294,11 @@
     ],
     "message": "Open-track rating 4.1 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
-     "Unit size: ★★★★☆ 14.1% / 3.5% / 0.0% of the code above 29 / 42 / 71 lines",
-     "Unit complexity: ★★★★☆ 20.5% / 8.7% / 1.3% of the code above 5 / 7 / 10 complexity",
-     "Unit interfacing: ★★★☆☆ 13.1% / 5.3% / 2.0% of the code above 2 / 3 / 4 parameters",
-     "Duplication: ★★★★☆ 3.8% duplicated lines",
-     "Module coupling: ★★★★☆ 12.0% / 5.9% / 2.7% of the code above 2 / 3 / 5 fan-in",
+     "Unit size: ★★★★☆ 14.3% / 3.6% / 0.0% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★★☆ 21.1% / 9.0% / 1.3% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★☆☆ 13.5% / 5.4% / 2.2% of the code above 2 / 3 / 4 parameters",
+     "Duplication: ★★★★☆ 4.0% duplicated lines",
+     "Module coupling: ★★★★☆ 12.3% / 6.6% / 2.6% of the code above 2 / 3 / 5 fan-in",
      "Component independence: ★★★★★ 100.0% of the code hidden from other components",
      "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
@@ -1309,11 +1311,11 @@
     "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
     "status": "pass",
     "starRating": 4,
-    "message": "Test code ratio 110.1% (4 of 5 stars).",
+    "message": "Test code ratio 113.3% (4 of 5 stars).",
     "evidence": [
-     "Test code ratio: 110.1%",
-     "Test code: 152,395 lines in 1,162 files",
-     "Production code: 138,450 lines in 842 files",
+     "Test code ratio: 113.3%",
+     "Test code: 164,513 lines in 1,250 files",
+     "Production code: 145,196 lines in 885 files",
      "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
     ],
     "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
@@ -1324,15 +1326,263 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 4,
+    "rating": 4.39,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 3.49,
+     "activity": 1.98,
+     "licence": 5.5,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "2",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "16.2%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 2 years",
+        "value": "9.6%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "5.6%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "17 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "52.0%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 2 years",
+        "value": "39.5%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 4 years",
+        "value": "20.7%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "80 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 4 of 5 stars over 531 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★★☆☆ >1.0y 16.2%, >2.0y 9.6%, >3.5y 5.6%, >5.0y count 17",
+     "Activity: ★★☆☆☆ >1.0y 52%, >2.0y 39.5%, >4.0y 20.7%, >5.5y count 80",
+     "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk (18 excluded by sigrid.yaml)",
+     "Management: ★★★★★ 0 unmanaged of 531 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1343,26 +1593,26 @@
     "status": "info",
     "size": {
      "tool": "scc 4.1.0",
-     "files": 804,
-     "loc": 112200,
+     "files": 847,
+     "loc": 118496,
      "languages": [
       {
        "language": "Vue",
        "family": "vue",
-       "files": 211,
-       "loc": 56977
+       "files": 219,
+       "loc": 59322
       },
       {
        "language": "PHP",
        "family": "php",
-       "files": 428,
-       "loc": 42256
+       "files": 457,
+       "loc": 45722
       },
       {
        "language": "JavaScript",
        "family": "javascript",
-       "files": 162,
-       "loc": 12880
+       "files": 168,
+       "loc": 13365
       },
       {
        "language": "Sass",
@@ -1378,15 +1628,15 @@
       }
      ]
     },
-    "message": "112,200 lines of production code in 804 file(s), counted with scc 4.1.0. Rebuild effort about 10.0 person-years (open estimate).",
+    "message": "118,496 lines of production code in 847 file(s), counted with scc 4.1.0. Rebuild effort about 10.5 person-years (open estimate).",
     "evidence": [
-     "Vue: 56,977 lines in 211 file(s)",
-     "PHP: 42,256 lines in 428 file(s)",
-     "JavaScript: 12,880 lines in 162 file(s)",
+     "Vue: 59,322 lines in 219 file(s)",
+     "PHP: 45,722 lines in 457 file(s)",
+     "JavaScript: 13,365 lines in 168 file(s)",
      "Sass: 65 lines in 1 file(s)",
      "CSS: 22 lines in 2 file(s)",
-     "Rebuild effort, open estimate: 2,388 function points, 10.0 person-years (proxies: Vue and PHP use the JavaScript factor; CSS uses the HTML factor)",
-     "SIG-style volume, context, not part of the 2026 rating: 12.1 person-years (proxies: Vue, PHP and CSS use the JavaScript factor)"
+     "Rebuild effort, open estimate: 2,522 function points, 10.5 person-years (proxies: Vue and PHP use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 12.7 person-years (proxies: Vue, PHP and CSS use the JavaScript factor)"
     ]
    },
    {
@@ -1395,25 +1645,25 @@
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
     "status": "info",
-    "message": "jscpd 5.4.2 duplicated lines: 3.8% overall (javascript 1.1%, php 7.0%, vue 1.8%) over 801 file(s). Shown for information; it does not count towards the score.",
+    "message": "jscpd 5.4.2 duplicated lines: 4.0% overall (javascript 1.1%, php 7.4%, vue 1.8%) over 844 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "javascript: 1.1% (276 of 26392 lines, 18 clone(s) in 162 file(s))",
-     "php: 7.0% (7241 of 103125 lines, 454 clone(s) in 428 file(s))",
-     "vue: 1.8% (2491 of 137560 lines, 300 clone(s) in 211 file(s))",
+     "javascript: 1.1% (291 of 27339 lines, 19 clone(s) in 168 file(s))",
+     "php: 7.4% (8270 of 111153 lines, 516 clone(s) in 457 file(s))",
+     "vue: 1.8% (2566 of 143188 lines, 310 clone(s) in 219 file(s))",
      "Clone of 113 lines: lib/AppInfo/OpenRegisterAutoloader.php:26-138 and lib/Resources/template/lib/AppInfo/OpenRegisterAutoloader.php:26-117",
-     "Clone of 69 lines: lib/Service/FlowChannelProvisioner.php:1-69 and lib/Service/RuleSetVersioningService.php:1-38",
      "Clone of 67 lines: lib/Repair/MigrateSchemaApplicationId.php:1-67 and lib/Repair/RenameAgentSchemaSlug.php:1-63",
      "Clone of 67 lines: lib/Repair/MigrateSchemaApplicationId.php:1-67 and lib/Repair/RenameDutchRuleColumns.php:1-71",
-     "Clone of 58 lines: lib/Controller/ApplicationPublishController.php:473-530 and lib/Controller/VersionPromotionController.php:273-323"
+     "Clone of 58 lines: lib/Controller/ApplicationPublishController.php:473-530 and lib/Controller/VersionPromotionController.php:307-357",
+     "Clone of 53 lines: lib/Listener/ApprovalOutcomeListener.php:1-53 and lib/Listener/AutomationCleanupListener.php:1-44"
     ],
     "openTrack": {
      "duplication": {
       "tool": "jscpd 5.4.2",
-      "percentage": 3.75,
+      "percentage": 3.95,
       "languages": {
-       "javascript": 1.05,
-       "php": 7.02,
-       "vue": 1.81
+       "javascript": 1.06,
+       "php": 7.44,
+       "vue": 1.79
       },
       "largestClones": [
        {
@@ -1425,16 +1675,6 @@
         "otherStartLine": 26,
         "otherEndLine": 117,
         "lines": 113
-       },
-       {
-        "language": "php",
-        "file": "lib/Service/FlowChannelProvisioner.php",
-        "startLine": 1,
-        "endLine": 69,
-        "otherFile": "lib/Service/RuleSetVersioningService.php",
-        "otherStartLine": 1,
-        "otherEndLine": 38,
-        "lines": 69
        },
        {
         "language": "php",
@@ -1462,8 +1702,8 @@
         "startLine": 473,
         "endLine": 530,
         "otherFile": "lib/Controller/VersionPromotionController.php",
-        "otherStartLine": 273,
-        "otherEndLine": 323,
+        "otherStartLine": 307,
+        "otherEndLine": 357,
         "lines": 58
        },
        {
@@ -1515,6 +1755,16 @@
         "otherStartLine": 1,
         "otherEndLine": 30,
         "lines": 53
+       },
+       {
+        "language": "php",
+        "file": "lib/Controller/GeneratedDocumentController.php",
+        "startLine": 1,
+        "endLine": 52,
+        "otherFile": "lib/Controller/PreferencesController.php",
+        "otherStartLine": 1,
+        "otherEndLine": 33,
+        "lines": 52
        }
       ]
      }
@@ -1529,12 +1779,12 @@
     "status": "info",
     "message": "Measured the module structure of PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP (pdepend 3.0.0): 420 modules, 915 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 99.7% / 0.1% / 0.0% / 0.2% of code at 0-10 / 11-20 / 21-50 / over 50; 8 modules in 3 cycles, largest component cycle 0",
-     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 420 files under lib/ (composer.json PSR-4)",
-     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 20 components; independence 91.9%, entanglement 0.006 (density 2.21), largest component cycle 0. The figures above use the declared components.",
-     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 373 modules, 624 edges, 4 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 99.7% / 0.2% / 0.1% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 3 modules in 1 cycles, largest component cycle 0",
+     "PHP (pdepend 3.0.0): 449 modules, 1,011 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 99.6% / 0.3% / 0.0% / 0.1% of code at 0-10 / 11-20 / 21-50 / over 50; 8 modules in 3 cycles, largest component cycle 0",
+     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 449 files under lib/ (composer.json PSR-4)",
+     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 20 components; independence 89.8%, entanglement 0.007 (density 2.47), largest component cycle 0. The figures above use the declared components.",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 387 modules, 652 edges, 4 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 99.7% / 0.3% / 0.1% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 3 modules in 1 cycles, largest component cycle 0",
      "JavaScript, TypeScript and Vue components: sigrid.yaml component_base_dirs [\"\"]",
-     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 14 components; independence 29.9%, entanglement 0.053 (density 3.55), largest component cycle 5. The figures above use the declared components."
+     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 14 components; independence 29.3%, entanglement 0.055 (density 3.55), largest component cycle 5. The figures above use the declared components."
     ],
     "openTrack": {
      "coupling": {
@@ -1543,10 +1793,10 @@
        "php": {
         "measured": true,
         "tool": "pdepend 3.0.0",
-        "scope": "420 files under lib/ (composer.json PSR-4)",
-        "modules": 420,
-        "edges": 915,
-        "loc": 41579,
+        "scope": "449 files under lib/ (composer.json PSR-4)",
+        "modules": 449,
+        "edges": 1011,
+        "loc": 45041,
         "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
         "componentDefinitionKind": "declared",
         "components": 1,
@@ -1564,60 +1814,62 @@
           50
          ],
          "riskProfile": {
-          "low": 0.9968,
-          "moderate": 0.0015,
+          "low": 0.9957,
+          "moderate": 0.0027,
           "high": 0.0001,
-          "veryHigh": 0.0016
+          "veryHigh": 0.0015
          },
          "above": [
-          0.0032,
-          0.0017,
-          0.0016
+          0.0043,
+          0.0016,
+          0.0015
          ],
          "fanInHistogram": {
-          "0": 9070,
-          "1": 16866,
-          "2": 7072,
-          "3": 4909,
-          "4": 899,
-          "5": 565,
-          "6": 672,
-          "7": 326,
+          "0": 9349,
+          "1": 18086,
+          "2": 8200,
+          "3": 4783,
+          "4": 1627,
+          "5": 676,
+          "6": 684,
+          "7": 376,
           "8": 24,
-          "9": 987,
-          "10": 54,
-          "11": 47,
-          "17": 16,
-          "40": 6,
-          "54": 66
+          "9": 1031,
+          "10": 12,
+          "11": 31,
+          "12": 14,
+          "13": 59,
+          "19": 17,
+          "42": 6,
+          "57": 66
          },
          "highestFanIn": [
           {
            "module": "lib/Support/ObjectRecord.php",
-           "fanIn": 54
+           "fanIn": 57
           },
           {
            "module": "lib/Kernel/AppIdentity.php",
-           "fanIn": 40
+           "fanIn": 42
           },
           {
            "module": "lib/Kernel/Contracts/ApplicationVersionServiceInterface.php",
-           "fanIn": 17
-          },
-          {
-           "module": "lib/Kernel/Contracts/ManifestResolverServiceInterface.php",
-           "fanIn": 11
+           "fanIn": 19
           },
           {
            "module": "lib/Kernel/Contracts/PermissionResolverInterface.php",
-           "fanIn": 11
+           "fanIn": 13
+          },
+          {
+           "module": "lib/Service/AppOrganisationGuard.php",
+           "fanIn": 13
           }
          ]
         },
         "cycles": {
          "moduleCycles": 3,
          "modulesInCycles": 8,
-         "locShareInCycles": 0.0281,
+         "locShareInCycles": 0.0262,
          "largestModuleCycle": 4,
          "componentCycles": 0,
          "largestComponentCycle": 0
@@ -1625,13 +1877,13 @@
         "directoryView": {
          "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
          "components": 20,
-         "componentIndependence": 0.919,
+         "componentIndependence": 0.898,
          "componentEntanglement": {
-          "violationDegree": 0.0059,
-          "density": 2.21,
-          "communicationLines": 42,
+          "violationDegree": 0.0071,
+          "density": 2.47,
+          "communicationLines": 47,
           "violations": {
-           "transitive": 3
+           "transitive": 4
           }
          },
          "componentCycles": 0,
@@ -1642,9 +1894,9 @@
        "javascript": {
         "measured": true,
         "tool": "dependency-cruiser 17.4.3",
-        "modules": 373,
-        "edges": 624,
-        "loc": 69464,
+        "modules": 387,
+        "edges": 652,
+        "loc": 72294,
         "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
         "componentDefinitionKind": "declared",
         "components": 4,
@@ -1662,27 +1914,27 @@
           50
          ],
          "riskProfile": {
-          "low": 0.9974,
-          "moderate": 0.0021,
+          "low": 0.9969,
+          "moderate": 0.0026,
           "high": 0.0005,
           "veryHigh": 0
          },
          "above": [
-          0.0026,
+          0.0031,
           0.0005,
           0
          ],
          "fanInHistogram": {
           "0": 2991,
-          "1": 53261,
-          "2": 8412,
-          "3": 1910,
-          "4": 813,
+          "1": 55241,
+          "2": 9037,
+          "3": 1956,
+          "4": 992,
           "5": 1327,
           "6": 65,
-          "7": 99,
-          "8": 365,
-          "10": 39,
+          "7": 10,
+          "8": 454,
+          "13": 39,
           "14": 106,
           "15": 43,
           "21": 33
@@ -1702,7 +1954,7 @@
           },
           {
            "module": "src/services/fleetAppId.js",
-           "fanIn": 10
+           "fanIn": 13
           },
           {
            "module": "src/composables/useRegisterPicker.js",
@@ -1713,7 +1965,7 @@
         "cycles": {
          "moduleCycles": 1,
          "modulesInCycles": 3,
-         "locShareInCycles": 0.023,
+         "locShareInCycles": 0.0221,
          "largestModuleCycle": 3,
          "componentCycles": 0,
          "largestComponentCycle": 0
@@ -1721,9 +1973,9 @@
         "directoryView": {
          "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
          "components": 14,
-         "componentIndependence": 0.2989,
+         "componentIndependence": 0.2934,
          "componentEntanglement": {
-          "violationDegree": 0.0531,
+          "violationDegree": 0.0549,
           "density": 3.55,
           "communicationLines": 39,
           "violations": {
@@ -1746,7 +1998,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "warn",
-    "message": "Potential OWASP secure coding issues were detected (1 findings across 842 scanned source files, failing from 9).",
+    "message": "Potential OWASP secure coding issues were detected (1 findings across 885 scanned source files, failing from 9).",
     "evidence": [
      "Dynamic code execution: lib/Controller/SandboxController.php"
     ],
@@ -1759,12 +2011,12 @@
     "title": "API Design Rules",
     "description": "The component should comply with the Common Ground API Design Rules (ADR).",
     "status": "pass",
-    "message": "API specification(s) at https://raw.githubusercontent.com/ConductionNL/buildiq/1d9cee30c71497623d5786457df1e3c5a33c5b67/openapi.json comply with Common Ground API Design Rules.",
+    "message": "API specification(s) at https://raw.githubusercontent.com/ConductionNL/buildiq/c80c11adf8c776b6c4b6eea4ab8edf787e6a1e50/openapi.json comply with Common Ground API Design Rules.",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/buildiq/1d9cee30c71497623d5786457df1e3c5a33c5b67/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/buildiq/c80c11adf8c776b6c4b6eea4ab8edf787e6a1e50/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "No API Design Rules violations found for https://raw.githubusercontent.com/ConductionNL/buildiq/1d9cee30c71497623d5786457df1e3c5a33c5b67/openapi.json.",
+     "No API Design Rules violations found for https://raw.githubusercontent.com/ConductionNL/buildiq/c80c11adf8c776b6c4b6eea4ab8edf787e6a1e50/openapi.json.",
      "Ruleset: https://static.developer.overheid.nl/adr/ruleset.yaml",
      "No API Design Rules violations found by Spectral."
     ],
@@ -1882,11 +2134,11 @@
     "status": "info",
     "message": "Usage from 5 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
-     "Nextcloud App Store buildiq: 0 ratings given (2026-11-20)",
-     "GitHub releases: 883 release file downloads, 270 releases with files (2026-11-20)",
-     "GitHub Container Registry conductionnl/buildiq: not measured: GitHub publishes no pull count for container images through its API (2026-11-20)",
-     "GitHub ConductionNL/buildiq: 1 stars, 0 forks, 0 watchers (2026-11-20)",
-     "GitHub commits ConductionNL/buildiq: 7 contributors, 6 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-20)"
+     "Nextcloud App Store buildiq: 0 ratings given (2026-11-21)",
+     "GitHub releases: 885 release file downloads, 271 releases with files (2026-11-21)",
+     "GitHub Container Registry conductionnl/buildiq: not measured: GitHub publishes no pull count for container images through its API (2026-11-21)",
+     "GitHub ConductionNL/buildiq: 1 stars, 0 forks, 0 watchers (2026-11-21)",
+     "GitHub commits ConductionNL/buildiq: 7 contributors, 6 from the owning organisation, 0 from other organisations, 1 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1897,7 +2149,7 @@
        "subject": "buildiq",
        "url": "https://apps.nextcloud.com/apps/buildiq",
        "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "ratings given",
@@ -1912,15 +2164,15 @@
        "subject": null,
        "url": "https://github.com/ConductionNL/buildiq/releases",
        "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "release file downloads",
-         "value": 883
+         "value": 885
         },
         {
          "label": "releases with files",
-         "value": 270
+         "value": 271
         }
        ]
       },
@@ -1930,7 +2182,7 @@
        "source": "GitHub Container Registry",
        "subject": "conductionnl/buildiq",
        "url": "https://github.com/orgs/conductionnl/packages/container/package/buildiq",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Pull counts would include CI pulls.",
        "figures": [],
        "notMeasured": "GitHub publishes no pull count for container images through its API"
@@ -1941,7 +2193,7 @@
        "source": "GitHub",
        "subject": "ConductionNL/buildiq",
        "url": "https://github.com/ConductionNL/buildiq",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1965,7 +2217,7 @@
        "subject": "ConductionNL/buildiq",
        "url": "https://github.com/ConductionNL/buildiq/graphs/contributors",
        "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -2024,7 +2276,7 @@
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
       "value": "0.98",
-      "explanation": "1,195 change requests were closed (merged or not) and 1,225 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "explanation": "1,207 change requests were closed (merged or not) and 1,227 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -2035,7 +2287,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "no response",
-      "explanation": "None of the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13 got a comment or review from anyone but its author.",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-23 and 2026-11-14 got a comment or review from anyone but its author.",
       "target": {
        "text": "at most 48 hours",
        "met": false
@@ -2046,7 +2298,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "no response",
-      "explanation": "None of the 8 latest issues opened by people between 2026-08-22 and 2026-11-13 got a comment from anyone but its author.",
+      "explanation": "None of the 8 latest issues opened by people between 2026-08-23 and 2026-11-14 got a comment from anyone but its author.",
       "target": {
        "text": "at most 120 hours",
        "met": false
@@ -2057,7 +2309,7 @@
       "name": "Release Frequency",
       "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
       "value": "3 in 12 months",
-      "explanation": "3 final releases were published in the last 12 months, about one every 122 days, counted from the GitHub releases. The latest final release is from 2026-09-06. Besides these, 267 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "explanation": "3 final releases were published in the last 12 months, about one every 122 days, counted from the GitHub releases. The latest final release is from 2026-09-06. Besides these, 268 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
       "target": {
        "text": "at least 4 releases in 12 months",
        "met": false
@@ -2066,8 +2318,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "bug",
@@ -2079,8 +2331,8 @@
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 0,
-        "waiting": 0
+        "breaches": 31,
+        "waiting": 31
        },
        "fix": {
         "measured": 8,
@@ -2095,158 +2347,158 @@
        "label": "Unclassified",
        "respondDays": 10,
        "fixDays": null,
-       "count": 213,
+       "count": 216,
        "response": {
-        "measured": 1,
-        "median": 25,
-        "worst": 25,
-        "breaches": 150,
-        "waiting": 163
+        "measured": 0,
+        "median": null,
+        "worst": null,
+        "breaches": 198,
+        "waiting": 216
        },
        "fix": null
       }
      ],
-     "openBreachCount": 71,
+     "openBreachCount": 139,
      "openBreaches": [
       {
-       "title": "[OpenSpec] adopt-shared-menu-pipeline",
-       "url": "https://github.com/ConductionNL/buildiq/issues/209",
+       "title": "Guard dataRegisters[]-bound registers created in OpenBuild against version-promotion side effects",
+       "url": "https://github.com/ConductionNL/buildiq/issues/31",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-08-28T22:00:00.000Z"
+       "due": "2026-08-10T08:22:10.000Z"
       },
       {
-       "title": "[OpenSpec] schedules-editor-flow-migration",
-       "url": "https://github.com/ConductionNL/buildiq/issues/363",
+       "title": "Index/dashboard KPI paints 0 during cold load instead of a loading state",
+       "url": "https://github.com/ConductionNL/buildiq/issues/48",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-11T09:40:53.000Z"
       },
       {
-       "title": "[OpenSpec] page-designer-live-preview-pane",
-       "url": "https://github.com/ConductionNL/buildiq/issues/361",
+       "title": "App detail page has no flows/graphs widget — the graphs that orchestrate an application are invisible from it",
+       "url": "https://github.com/ConductionNL/buildiq/issues/58",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-13T20:58:15.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-nl-locale-parity",
-       "url": "https://github.com/ConductionNL/buildiq/issues/358",
+       "title": "@config.<key> never resolves on the virtual-app host — the token collapses to empty and the request 404s",
+       "url": "https://github.com/ConductionNL/buildiq/issues/64",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-14T13:02:01.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-nc-color-variables",
-       "url": "https://github.com/ConductionNL/buildiq/issues/357",
+       "title": "Promote affordance ships to users but opens nothing (dialog never mounted)",
+       "url": "https://github.com/ConductionNL/buildiq/issues/68",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-14T21:48:47.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-mcp-adoption",
-       "url": "https://github.com/ConductionNL/buildiq/issues/356",
+       "title": "Orphaned capability: 4 seeded ApplicationTemplates + from-template endpoint have no UI caller",
+       "url": "https://github.com/ConductionNL/buildiq/issues/69",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-14T21:49:01.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-inline-edit-persistence",
-       "url": "https://github.com/ConductionNL/buildiq/issues/355",
+       "title": "Burn down phpmd.baseline.xml (174 entries, 48 files) now that composer phpmd is a real gate",
+       "url": "https://github.com/ConductionNL/buildiq/issues/98",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-14T22:00:00.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-icon-button-accessible-names",
-       "url": "https://github.com/ConductionNL/buildiq/issues/354",
+       "title": "psalm reports 0 findings because psalm.xml suppresses the correctness checks — 17 findings hidden",
+       "url": "https://github.com/ConductionNL/buildiq/issues/97",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-14T22:00:00.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-first-time-setup",
-       "url": "https://github.com/ConductionNL/buildiq/issues/353",
+       "title": "ExportService::buildScaffoldMap() has no production caller — its call site was never rescued from Codeberg",
+       "url": "https://github.com/ConductionNL/buildiq/issues/118",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-18T08:23:53.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-connector-widget-runtime",
-       "url": "https://github.com/ConductionNL/buildiq/issues/350",
+       "title": "Suppression & baseline audit: what the green PHPMD number hides",
+       "url": "https://github.com/ConductionNL/buildiq/issues/124",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-18T15:38:14.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-admin-settings-abstraction",
-       "url": "https://github.com/ConductionNL/buildiq/issues/348",
+       "title": "SetupController's six @spec anchors point at headings that don't exist — and the correct fix drags 7 uncovered e2e scenarios with it",
+       "url": "https://github.com/ConductionNL/buildiq/issues/128",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-19T13:05:49.000Z"
       },
       {
-       "title": "[OpenSpec] github-shop-catalogue",
-       "url": "https://github.com/ConductionNL/buildiq/issues/345",
+       "title": "Issue Triage has NEVER succeeded — 34 runs, 0 passes, since 2026-07-23 (PROJECT_TOKEN is empty)",
+       "url": "https://github.com/ConductionNL/buildiq/issues/166",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-21T22:00:00.000Z"
       },
       {
-       "title": "[OpenSpec] export-github-broker",
-       "url": "https://github.com/ConductionNL/buildiq/issues/341",
+       "title": "gate-58: 14 networkidle waits are real, but the suggested swap is a no-op — needs per-site element waits and a live instance",
+       "url": "https://github.com/ConductionNL/buildiq/issues/164",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-21T22:00:00.000Z"
       },
       {
-       "title": "[OpenSpec] apply-v2-channels",
-       "url": "https://github.com/ConductionNL/buildiq/issues/337",
+       "title": "gate-61: two listeners run an unbounded findAll() on the object write path (ADR-078) — the fix needs an architecture decision",
+       "url": "https://github.com/ConductionNL/buildiq/issues/162",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-21T22:00:00.000Z"
       },
       {
-       "title": "[OpenSpec] app-delta-override",
-       "url": "https://github.com/ConductionNL/buildiq/issues/335",
+       "title": "newman-seed-command is an && chain and the Newman leg is disabled, so the seed has never been exercised",
+       "url": "https://github.com/ConductionNL/buildiq/issues/151",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-21T22:00:00.000Z"
       },
       {
-       "title": "[OpenSpec] journey-designer",
-       "url": "https://github.com/ConductionNL/buildiq/issues/346",
+       "title": "diff endpoint implements a ref grammar the spec does not define (REQ-OBV-005: slug / current: / history:, controller: draft | UUID)",
+       "url": "https://github.com/ConductionNL/buildiq/issues/170",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-24T14:39:20.000Z"
       },
       {
-       "title": "[OpenSpec] github-app-sync",
-       "url": "https://github.com/ConductionNL/buildiq/issues/344",
+       "title": "Two save-as-template scenarios were counted as e2e-covered by a test whose own comment says it proves neither",
+       "url": "https://github.com/ConductionNL/buildiq/issues/178",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-25T13:18:18.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-prod-build-bundle-hygiene",
-       "url": "https://github.com/ConductionNL/buildiq/issues/359",
+       "title": "Spec drift: scenarios describing surfaces the product does not have — and stale skip reasons that are now writable",
+       "url": "https://github.com/ConductionNL/buildiq/issues/180",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-25T13:38:42.000Z"
       },
       {
-       "title": "[OpenSpec] openbuild-export-csrf-hardening",
-       "url": "https://github.com/ConductionNL/buildiq/issues/351",
+       "title": "page-designer-ui: 7 tests CI never runs, 14 dangling anchors, and 10 scenarios excluded because 'another spec's Playwright tests cover it'",
+       "url": "https://github.com/ConductionNL/buildiq/issues/181",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-25T13:46:39.000Z"
       },
       {
-       "title": "[OpenSpec] beta-surface-alignment",
-       "url": "https://github.com/ConductionNL/buildiq/issues/338",
+       "title": "Two openbuild-runtime scenarios skip for fixture users that globalSetup already provisions",
+       "url": "https://github.com/ConductionNL/buildiq/issues/183",
        "category": "unclassified",
        "kind": "response",
-       "due": "2026-09-04T22:00:00.000Z"
+       "due": "2026-08-25T18:16:59.000Z"
       }
      ],
      "fixesByRelease": 0,
@@ -2254,7 +2506,6 @@
      "notes": [
       "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
       "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
-      "80 of 244 issues were opened by the maintainers themselves; they have a fix term but no response term.",
       "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
      ]
     },
@@ -2274,10 +2525,13 @@
     "id": "agentinstructions",
     "title": "Agent instructions",
     "description": "An AGENTS.md, CLAUDE.md, Copilot or Cursor instruction file tells a coding agent how the repository is built, tested and organised.",
-    "status": "fail",
-    "rating": 0.5,
-    "message": "No agent instruction file found. Add an AGENTS.md that says how to build, test and lint the code.",
-    "evidence": [],
+    "status": "pass",
+    "rating": 4.5,
+    "message": "2 instruction files found; the longest has 3,288 characters; names a build, test or lint command.",
+    "evidence": [
+     "AGENTS.md",
+     "CLAUDE.md"
+    ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
    },
@@ -2287,9 +2541,10 @@
     "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
     "status": "pass",
     "rating": 5.5,
-    "message": "73 specifications and 164 changes found.",
+    "message": "76 specifications and 164 changes found.",
     "evidence": [
      "openspec/specs/agent-export-hermiq-register/spec.md",
+     "openspec/specs/agent-knowledge-base/spec.md",
      "openspec/specs/agent-workspace/spec.md",
      "openspec/specs/ai-copilot/spec.md",
      "openspec/specs/api-contract/spec.md",
@@ -2323,6 +2578,7 @@
      "openspec/specs/deep-link-registration/spec.md",
      "openspec/specs/docudesk-document-templates/spec.md",
      "openspec/specs/exporter-ui/spec.md",
+     "openspec/specs/external-database-sources/spec.md",
      "openspec/specs/external-form-provisioning/spec.md",
      "openspec/specs/first-time-setup/spec.md",
      "openspec/specs/form-editor-logic/spec.md",
@@ -2330,16 +2586,14 @@
      "openspec/specs/frontend-foundation/spec.md",
      "openspec/specs/github-app-repo-format/spec.md",
      "openspec/specs/github-app-sync/spec.md",
+     "openspec/specs/github-shop-catalogue/spec.md",
      "openspec/specs/green-field-migration/spec.md",
      "openspec/specs/journey-designer/spec.md",
      "openspec/specs/layered-app-deltas/spec.md",
      "openspec/specs/lifecycle-create-states/spec.md",
      "openspec/specs/nldesign-theme-selection/spec.md",
      "openspec/specs/notifications/spec.md",
-     "openspec/specs/openbuild-application-register/spec.md",
-     "openspec/specs/openbuild-exporter/spec.md",
-     "openspec/specs/openbuild-page-designer/spec.md",
-     "... and 23 more"
+     "... and 26 more"
     ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
@@ -2386,7 +2640,8 @@
     "message": "Found: 1 OpenAPI document, llms.txt.",
     "evidence": [
      "openapi.json",
-     "docs/static/llms.txt"
+     "docs/static/llms.txt",
+     "llms.txt"
     ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
@@ -2395,10 +2650,14 @@
     "id": "agenttooling",
     "title": "Agent tooling",
     "description": "Skills, prompts and commands for coding agents, and quality gates they can run locally, turn the team's way of working into steps an agent repeats.",
-    "status": "warn",
-    "rating": 2.5,
-    "message": "Skills, prompts or commands: 0; local quality gates: 7.",
+    "status": "pass",
+    "rating": 4.5,
+    "message": "Skills, prompts or commands: 4; local quality gates: 7.",
     "evidence": [
+     ".claude/commands/check.md",
+     ".claude/commands/e2e.md",
+     ".claude/commands/new-change.md",
+     ".claude/commands/test.md",
      "scripts/check-gitignore.js",
      "scripts/check-integration-parity.js",
      "scripts/check-integration-parity.sh",
@@ -2411,10 +2670,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 47.8,
+  "durationSeconds": 21.8,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the code changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

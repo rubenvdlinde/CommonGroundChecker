@@ -36,10 +36,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:06:48.046Z",
+  "lastCheckedAt": "2026-11-21T09:14:57.289Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:02:54.638Z",
-  "updatedAt": "2026-11-20T12:06:48.046Z",
+  "updatedAt": "2026-11-21T09:14:57.289Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -50,21 +50,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T12-06-48-046Z",
+  "id": "2026-11-21T09-14-57-289Z",
   "repoId": "github.com/wearefrank/zaakbrug",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:06:48.046Z",
-  "createdAt": "2026-11-20T12:06:48.046Z",
+  "checkedAt": "2026-11-21T09:14:57.289Z",
+  "createdAt": "2026-11-21T09:14:57.289Z",
   "version": "v1.27.3",
   "checklistVersion": "2026.2",
   "scannedRef": "v1.27.3",
   "scannedRefKind": "release",
   "scannedCommit": "42f2c75e06cbee6c4244d09cc6a73c56282ff9cd",
   "score": 78,
-  "rating": 3.6,
+  "rating": 3.8,
   "categoryRatings": {
    "Governance": 2.9,
-   "Security": 3,
+   "Security": 3.5,
    "Architecture": 3,
    "Software Quality": 4,
    "Deployment & Operations": 5.5,
@@ -92,7 +92,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -179,7 +179,7 @@
   },
   "issueCounts": {
    "errors": 1,
-   "warnings": 13
+   "warnings": 12
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -1151,15 +1151,135 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": null
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 5 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: not rated (data unavailable)"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1540,8 +1660,8 @@
     "status": "info",
     "message": "Usage from 2 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub wearefrank/zaakbrug: 8 stars, 6 forks, 4 watchers (2026-11-20)",
-     "GitHub commits wearefrank/zaakbrug: 11 contributors, 3 from the owning organisation, 3 from other organisations, 5 unknown (2026-11-20)"
+     "GitHub wearefrank/zaakbrug: 8 stars, 6 forks, 4 watchers (2026-11-21)",
+     "GitHub commits wearefrank/zaakbrug: 11 contributors, 3 from the owning organisation, 3 from other organisations, 5 unknown (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1551,7 +1671,7 @@
        "source": "GitHub",
        "subject": "wearefrank/zaakbrug",
        "url": "https://github.com/wearefrank/zaakbrug",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1575,7 +1695,7 @@
        "subject": "wearefrank/zaakbrug",
        "url": "https://github.com/wearefrank/zaakbrug/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (wearefrank.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "figures": [
         {
          "label": "contributors",
@@ -1645,7 +1765,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "median 3.4 days",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 8 latest change requests opened by people between 2026-08-22 and 2026-11-13. 4 got a response; 4 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 8 latest change requests opened by people between 2026-08-23 and 2026-11-14. 4 got a response; 4 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": false
@@ -1656,7 +1776,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "median 23.3 hours",
-      "explanation": "The median time to the first comment by someone other than the author, over the 8 latest issues opened by people between 2026-08-22 and 2026-11-13. 1 got a response; 7 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment by someone other than the author, over the 8 latest issues opened by people between 2026-08-23 and 2026-11-14. 1 got a response; 7 had none yet. Bots are left out.",
       "target": {
        "text": "at most 120 hours",
        "met": true
@@ -1676,8 +1796,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-22",
-     "to": "2026-11-20",
+     "from": "2026-08-23",
+     "to": "2026-11-21",
      "categories": [
       {
        "category": "bug",
@@ -1880,10 +2000,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 11.1,
+  "durationSeconds": 6.4,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

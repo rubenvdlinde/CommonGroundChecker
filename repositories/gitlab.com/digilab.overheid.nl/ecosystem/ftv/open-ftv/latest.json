@@ -50,10 +50,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T11:43:03.074Z",
+  "lastCheckedAt": "2026-11-21T09:15:07.408Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:03:37.938Z",
-  "updatedAt": "2026-11-20T11:43:03.074Z",
+  "updatedAt": "2026-11-21T09:15:07.408Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
@@ -64,21 +64,21 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T11-43-03-074Z",
+  "id": "2026-11-21T09-15-07-408Z",
   "repoId": "gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T11:43:03.074Z",
-  "createdAt": "2026-11-20T11:43:03.074Z",
+  "checkedAt": "2026-11-21T09:15:07.408Z",
+  "createdAt": "2026-11-21T09:15:07.408Z",
   "version": "v0.8.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v0.8.0",
   "scannedRefKind": "release",
   "scannedCommit": "eef675ac2fb1b014dd1f224b2cd0c7fb81541247",
   "score": 65,
-  "rating": 2.8,
+  "rating": 2.9,
   "categoryRatings": {
    "Governance": 2,
-   "Security": 2.4,
+   "Security": 3,
    "Architecture": 3,
    "Software Quality": 3.5,
    "Deployment & Operations": 3.3,
@@ -106,7 +106,7 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
     "rating": null
@@ -198,7 +198,7 @@
   },
   "issueCounts": {
    "errors": 4,
-   "warnings": 14
+   "warnings": 13
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -486,12 +486,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.89 (threshold: 15)",
      "Max CCN: 39.00 (threshold: 30)",
-     "3      1     18      1       3 dsnError@47-49@/tmp/cgchecker-repo-qiaaiq/repo/utilities/storage/postgresql/pool/pool.go",
-     "3      1     59      1       3 baseError@51-53@/tmp/cgchecker-repo-qiaaiq/repo/utilities/storage/postgresql/pool/pool.go",
-     "4      1     41      1       4 connectionError@55-58@/tmp/cgchecker-repo-qiaaiq/repo/utilities/storage/postgresql/pool/pool.go",
-     "16      5     88      1      17 policyWriteError@56-72@/tmp/cgchecker-repo-qiaaiq/repo/apps/manager/storage/policies.go",
-     "3      1     23      0       3 Error@126-128@/tmp/cgchecker-repo-qiaaiq/repo/apps/manager/management/decision_point.go",
-     "4      1     37      0      11 useSyntaxErrorsBeforeSave@190-200@/tmp/cgchecker-repo-qiaaiq/repo/apps/manager/ui/src/services/policies.ts"
+     "3      1     18      1       3 dsnError@47-49@/tmp/cgchecker-repo-GCAXQp/repo/utilities/storage/postgresql/pool/pool.go",
+     "3      1     59      1       3 baseError@51-53@/tmp/cgchecker-repo-GCAXQp/repo/utilities/storage/postgresql/pool/pool.go",
+     "4      1     41      1       4 connectionError@55-58@/tmp/cgchecker-repo-GCAXQp/repo/utilities/storage/postgresql/pool/pool.go",
+     "4      1     40      2       4 error@120-123@/tmp/cgchecker-repo-GCAXQp/repo/eam/bundles/run.go",
+     "3      1     18      1       3 Unauthenticated@11-13@/tmp/cgchecker-repo-GCAXQp/repo/eam/authentication/errors.go",
+     "3      1     23      0       3 Error@16-18@/tmp/cgchecker-repo-GCAXQp/repo/eam/authentication/errors.go"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1055,15 +1055,135 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "pass",
+    "starRating": 5,
+    "rating": 5.5,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": null,
+     "activity": null,
+     "licence": null,
+     "management": null
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "0",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 5 of 5 stars over 0 production dependencies (). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: not rated (data unavailable)",
+     "Activity: not rated (data unavailable)",
+     "Licence use: not rated (data unavailable)",
+     "Management: not rated (data unavailable)"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1486,12 +1606,12 @@
      "generic-api-key: apps/mock-dataspace/dataspaces/rvig/brp/schema.yaml:460",
      "generic-api-key: apps/mock-dataspace/dataspaces/rvig/brp/schema.yaml:620",
      "generic-api-key: apps/mock-dataspace/dataspaces/rvig/brp/schema.yaml:1536",
-     "generic-api-key: demo/rvig/kong/conf.yaml.template:40",
-     "generic-api-key: deploy/kustomize/simulation-release/laadpalen-applicatie.yaml:21",
      "generic-api-key: deploy/kustomize/simulation-pre-release/laadpalen-applicatie.yaml:21",
-     "private-key: pki/gemeente-vlierdam/ca/ca-key.pem:1",
-     "private-key: pki/gemeente-vlierdam/manager/key.pem:1",
+     "generic-api-key: deploy/kustomize/simulation-release/laadpalen-applicatie.yaml:21",
+     "generic-api-key: demo/rvig/kong/conf.yaml.template:40",
+     "generic-api-key: mise-tasks/secrets/README.md:73",
      "private-key: pki/gemeente-vlierdam/pdp1/key.pem:1",
+     "private-key: pki/rdw/pdp1/key.pem:1",
      "... and 8 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
@@ -1606,7 +1726,7 @@
     "status": "info",
     "message": "Usage from 1 source. Shown for information; never rated or compared.",
     "evidence": [
-     "gitlab.com digilab.overheid.nl/ecosystem/ftv/open-ftv: 2 stars, 4 forks (2026-11-20)"
+     "gitlab.com digilab.overheid.nl/ecosystem/ftv/open-ftv: 2 stars, 4 forks (2026-11-21)"
     ],
     "usage": {
      "sources": [
@@ -1616,7 +1736,7 @@
        "source": "gitlab.com",
        "subject": "digilab.overheid.nl/ecosystem/ftv/open-ftv",
        "url": "https://gitlab.com/digilab.overheid.nl/ecosystem/ftv/open-ftv",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-21",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1667,8 +1787,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "1.02",
-      "explanation": "150 change requests were closed (merged or not) and 147 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "1.04",
+      "explanation": "151 change requests were closed (merged or not) and 145 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -1690,7 +1810,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": null,
-      "explanation": "Not measured: no issues were opened by people between 2026-08-22 and 2026-11-13.",
+      "explanation": "Not measured: no issues were opened by people between 2026-08-23 and 2026-11-14.",
       "target": {
        "text": "at most 120 hours",
        "met": null
@@ -1710,8 +1830,8 @@
     ],
     "sla": {
      "notMeasured": "issue response and fix times are read from GitHub only",
-     "from": "2026-11-20",
-     "to": "2026-11-20",
+     "from": "2026-11-21",
+     "to": "2026-11-21",
      "categories": [],
      "openBreaches": [],
      "openBreachCount": 0,
@@ -1831,10 +1951,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 76,
+  "durationSeconds": 24.9,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
