@@ -7,6 +7,11 @@ const getOrganisations = vi.hoisted(() => vi.fn());
 const getOrganisation = vi.hoisted(() => vi.fn());
 const getAdminScoring = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/apiClient", () => ({ getOrganisations, getOrganisation, getAdminScoring }));
+vi.mock("@/lib/maintainedDecisions", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/maintainedDecisions")>()),
+  loadMaintainedDecisions: async () =>
+    new Map([["https://github.com/open-formulieren/open-forms", { since: "2026-06-01", decision: "https://vng.nl/besluiten/1" }]]),
+}));
 
 import OrganisationsPage from "@/app/users/page";
 import OrganisationPage from "@/app/users/[slug]/page";

@@ -376,8 +376,8 @@ function LifecyclesRelation() {
       <p className={TEXT}>
         The two lifecycles are separate. The maintainer decides the developmentStatus. The programme decides the status
         in Common Ground. They meet at one rule: only a stable component can be suitable for Common Ground or
-        Maintained. A stable component can still be only suitable, for example without a valid SLA. An obsolete
-        component leads to retired.
+        Maintained. A stable component can still be only suitable, for example without a VNG decision. An obsolete
+        component is not suitable.
       </p>
       <div className="overflow-x-auto">
         <table className={`w-full text-sm text-left ${TEXT}`}>

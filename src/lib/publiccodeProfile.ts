@@ -117,7 +117,7 @@ export const PROFILE_FIELDS: ProfileField[] = [
     ],
     example: "usedBy:\n  - Gemeente Voorbeeld\n  - Gemeente Proefstad",
     usedBy:
-      "Suitable for Common Ground needs at least 2 organisations, together with developmentStatus stable. Maintained adds a valid SLA with a maintainer on the VNG model contract. The usage overview and the Users pages list them.",
+      "Suitable for Common Ground needs at least 2 organisations, together with developmentStatus stable. Maintained adds a decision by VNG to take the component into management; the SLA follows it. The usage overview and the Users pages list them.",
     requirement: "maintained",
     status: "proposed",
   },

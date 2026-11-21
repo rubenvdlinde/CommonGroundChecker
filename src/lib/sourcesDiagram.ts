@@ -152,7 +152,7 @@ export const DIAGRAM_SOURCES: DiagramSource[] = [
     text: "The Common Ground standard v1.0 (ALV 11 December 2026) and the two wishes: take components into maintenance, and remove duplication.",
     items: [
       "Suitable: stable and at least 2 users under usedBy",
-      "Maintained: an SLA on the VNG model contract",
+      "Maintained: a VNG decision to take it into management",
       "The agreed standards and the API Design Rules",
       "The basisset, and removing duplication through functionalities",
     ],

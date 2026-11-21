@@ -97,7 +97,7 @@ export async function loadLandscapeComponents(
   if (!Array.isArray(list)) return [];
   return list.flatMap((item) => {
     const entry = (item ?? {}) as Record<string, unknown>;
-    if (typeof entry.url !== "string" || entry.retired) return [];
+    if (typeof entry.url !== "string") return [];
     const ids = Array.isArray(entry.functionalities)
       ? entry.functionalities.filter((id): id is string => typeof id === "string")
       : [];

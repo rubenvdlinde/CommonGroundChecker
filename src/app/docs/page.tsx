@@ -144,10 +144,11 @@ export default function RatingGuidePage() {
           </li>
           <li>
             <strong>A component is Maintained</strong>, the level above suitable, when it is suitable for Common
-            Ground and there is a valid SLA with a maintainer, on the VNG model contract. Stable and the users come
+            Ground and VNG decided to take it into management. The SLA with a maintainer, on the VNG model contract,
+            follows that decision. Without a decision a component is at most Suitable. Stable and the users come
             with Suitable. VNG does not contract the maintainer: municipalities do, on the VNG model contracts and
             framework agreements. The usedBy list is self-declared by the maintainers and not verified. An SLA is
-            valid up to and including its end date. The checker counts usage only in the verdict: it never gives
+            valid up to and including its end date. After the decision a missing SLA gets a fix term. The checker counts usage only in the verdict: it never gives
             stars and never counts in a rating.
           </li>
         </ul>

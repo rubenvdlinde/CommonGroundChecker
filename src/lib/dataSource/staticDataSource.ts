@@ -80,7 +80,8 @@ export function toRepoHistory(entry: IndexEntry, latest: LatestFile, history: Hi
       updatedAt: repository.updatedAt,
     },
     analyses,
-    extras: { basisset: entry.basisset, providers: entry.providers ?? [], retired: entry.retired },
+    extras: { basisset: entry.basisset, providers: entry.providers ?? [] },
+    maintainedDecision: entry.maintainedDecision ?? null,
   };
 }
 
@@ -96,9 +97,9 @@ export function toUsageStatus(entry: IndexEntry): UsageStatus {
   };
 }
 
-/** Organisations from the declared users of every followed, not retired repository. */
+/** Organisations from the declared users of every listed repository. */
 export function organisationGroups(index: IndexFile) {
-  const followed = index.repositories.filter((entry) => !entry.retired && entry.latestAnalysis);
+  const followed = index.repositories.filter((entry) => entry.latestAnalysis);
   return aggregateOrganisations(followed.map((entry) => ({ repoId: entry.id, declaredUsers: entry.declaredUsers })));
 }
 

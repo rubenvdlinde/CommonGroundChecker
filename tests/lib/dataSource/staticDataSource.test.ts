@@ -77,7 +77,8 @@ describe("static data source", () => {
     expect(history?.analyses.map((analysis) => analysis.id)).toEqual(["2026-11-19T02-00-00-000Z", "2026-11-18T02-00-00-000Z"]);
     expect(history?.analyses[0].results).toHaveLength(1);
     expect(history?.analyses[1]).toMatchObject({ results: [], detailAvailable: false, statusCounts: { pass: 1 } });
-    expect(history?.extras).toEqual({ basisset: false, providers: [{ name: "Maykin", services: ["support"] }], retired: null });
+    expect(history?.extras).toEqual({ basisset: false, providers: [{ name: "Maykin", services: ["support"] }] });
+    expect(history?.maintainedDecision).toBeNull();
     expect(await source().getRepoHistory("example", "unscanned")).toBeNull();
     expect(await source().getRepoHistory("nobody", "nothing")).toBeNull();
   });

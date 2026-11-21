@@ -8,6 +8,7 @@ import { IS_STATIC_SITE } from "@/lib/dataSource/mode";
 import { staticOrganisationParams } from "@/lib/dataSource/staticDataSource";
 import { computeLifecycleStatus } from "@/lib/lifecycle";
 import { developmentStatusOf } from "@/lib/maintained";
+import { decisionFor, loadMaintainedDecisions } from "@/lib/maintainedDecisions";
 import { componentCountLabel } from "@/lib/organisations";
 import { componentHref, USERS_PATH } from "@/lib/routes";
 import { loadStoredRatings } from "@/lib/storedRatings";
@@ -60,7 +61,10 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
 
   const { organisation } = detail;
   const components = detail.components.filter((component) => component.latestAnalysis);
-  const ratings = await loadStoredRatings(components.map((component) => component.latestAnalysis ?? {}));
+  const [ratings, decisions] = await Promise.all([
+    loadStoredRatings(components.map((component) => component.latestAnalysis ?? {})),
+    loadMaintainedDecisions(),
+  ]);
   const today = new Date().toISOString().slice(0, 10);
   const otherSpellings = organisation.spellings.filter((spelling) => spelling !== organisation.name);
 
@@ -88,8 +92,7 @@ export default async function OrganisationPage({ params }: OrganisationPageProps
             developmentStatus: developmentStatusOf(analysis.results),
             slas: component.slas,
             today,
-            retiredAt: component.retiredAt ?? null,
-            retiredReason: component.retiredReason ?? null,
+            decision: decisionFor(decisions, component.repoUrl),
             drops: {
               open: component.openDropCount ?? 0,
               overdue: component.overdueDropCount ?? 0,

@@ -56,7 +56,7 @@ export const AUDIENCES: { id: string; title: string; text: string }[] = [
   {
     id: "buyer",
     title: "A buyer",
-    text: "You want to know if you can use a component with confidence. Look at the verdict and the level. Suitable means the code is good enough, the software is stable, at least 2 organisations use it and someone maintains it under a contract. Maintained adds a valid SLA with a maintainer, on the VNG model contract.",
+    text: "You want to know if you can use a component with confidence. Look at the verdict and the level. Suitable means the code is good enough, the software is stable, at least 2 organisations use it and someone maintains it under a contract. Maintained adds a decision by VNG to take the component into management; the SLA with a maintainer follows that decision.",
   },
   {
     id: "maintainer",
@@ -78,8 +78,9 @@ export const PATH_STEPS: string[] = [
   "Make the component maintainable: at least 4 stars for maintainability in the estimate.",
   "Name a maintenance contract in publiccode.yml.",
   "Mark the component stable in publiccode.yml and list at least 2 organisations that use it under usedBy. The component is now suitable for Common Ground.",
-  "Agree a valid SLA with a maintainer, on the VNG model contract. The component is now Maintained.",
-  "Stay there: the checker measures every night, and a drop below a criterion is fixed within the agreed fix term.",
+  "VNG decides to take the component into management. The decision is added to the component list. The component is now Maintained.",
+  "Agree an SLA with a maintainer, on the VNG model contract. It follows the decision.",
+  "Stay there: the checker measures every night. A drop below a criterion, or a missing SLA, is fixed within the fix term.",
 ];
 
 /** What an SLA for a Maintained component at least says. A proposal. */
@@ -180,7 +181,9 @@ export const PATH_SECTIONS: PathSection[] = [
       {
         title: "Maintained",
         paragraphs: [
-          "A component is Maintained when it is suitable and there is a valid SLA with a maintainer, on the VNG model contract. Stable and at least 2 users already come with Suitable. A component that leaves stable is no longer suitable, so it leaves Maintained too. The SLA rests on the hard criteria and the KPIs below. VNG does not contract the maintainer. Municipalities do, on the VNG model contracts and framework agreements.",
+          "A component is Maintained when it is suitable and VNG decided to take it into management. The decision is recorded in the component list with its date and a link to the published decision. Stable and at least 2 users already come with Suitable. A component that leaves stable is no longer suitable, so it leaves Maintained too.",
+          "The SLA is not the step to Maintained. It is agreed once the decision is made. From then on the SLA and the hard criteria have fix terms: a missing or expired SLA, or a lost verdict, gets a fix term, and the component stays Maintained during the term. When the term passes it falls back. The decision stays recorded. Without a decision a component is at most Suitable, whatever its SLA.",
+          "The SLA rests on the hard criteria and the KPIs below. VNG does not contract the maintainer. Municipalities do, on the VNG model contracts and framework agreements.",
         ],
       },
     ],

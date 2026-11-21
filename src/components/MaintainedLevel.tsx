@@ -51,8 +51,10 @@ export default function MaintainedLevel({ level, endorsement, minUsers }: Mainta
       <LevelRow
         title="Maintained"
         reached={level.maintained}
-        detail={`Suitable for Common Ground and a valid SLA with a maintainer, on the VNG model contract.${
-          level.sla ? ` SLA: ${level.sla.party} with ${level.sla.maintainer}, until ${level.sla.until}.` : ""
+        detail={`Suitable for Common Ground and a decision by VNG to take the component into management. The SLA with a maintainer, on the VNG model contract, follows the decision.${
+          level.decision ? ` Decided on ${level.decision.since}.` : ""
+        }${level.sla ? ` SLA: ${level.sla.party} with ${level.sla.maintainer}, until ${level.sla.until}.` : ""}${
+          level.note ? ` ${level.note}.` : ""
         }`}
         reasons={level.reasons}
         reasonsLabel="Why it is not yet Maintained"

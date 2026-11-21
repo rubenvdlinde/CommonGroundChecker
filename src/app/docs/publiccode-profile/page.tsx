@@ -132,7 +132,7 @@ export default function PubliccodeProfilePage() {
           <strong>Needed for Suitable</strong> means a mandatory criterion or Suitable for Common Ground depends on
           it. Suitable for Common Ground is the threshold the programme uses to decide whether to adopt a component
           as supported. <strong>Needed for Maintained (proposed)</strong> belongs to the proposed Maintained level,
-          which also needs a valid SLA with a maintainer on the VNG model contract.{" "}
+          which also needs a decision by VNG to take the component into management.{" "}
           <strong>Informative</strong> is shown or compared, but no rating or verdict depends on it. A field marked
           in development or proposed is read by a part of the checker that is not released yet.
         </p>

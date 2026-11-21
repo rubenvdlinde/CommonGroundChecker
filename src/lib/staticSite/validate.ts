@@ -47,7 +47,12 @@ function isDay(value: string): boolean {
  * Findings that need no network. With the parsed config/functionalities.yml,
  * every functionality a component names must be in it; without it they are not checked.
  */
-export function checkConfig(repositories: unknown, slas: unknown, functionalities?: unknown): Finding[] {
+export function checkConfig(
+  repositories: unknown,
+  slas: unknown,
+  functionalities?: unknown,
+  today: string = new Date().toISOString().slice(0, 10)
+): Finding[] {
   const findings: Finding[] = [];
   if (!validateRepositories(repositories)) findings.push(...schemaFindings("config/repositories.yml", validateRepositories.errors));
   if (!validateSlas(slas)) findings.push(...schemaFindings("config/slas.yml", validateSlas.errors));
@@ -76,8 +81,11 @@ export function checkConfig(repositories: unknown, slas: unknown, functionalitie
     } catch {
       findings.push({ level: "error", subject: entry.url, message: "Not a repository URL: expected https://<host>/<owner>/<name>." });
     }
-    for (const day of [entry.retired?.on, ...(entry.providers ?? []).map((provider) => provider.since)]) {
+    for (const day of [entry.maintained?.since, ...(entry.providers ?? []).map((provider) => provider.since)]) {
       if (day && !isDay(day)) findings.push({ level: "error", subject: entry.url, message: `${day} is not a date.` });
+    }
+    if (entry.maintained && entry.maintained.since > today) {
+      findings.push({ level: "error", subject: entry.url, message: "The maintenance decision is dated in the future." });
     }
     for (const id of known ? entry.functionalities ?? [] : []) {
       if (!known?.has(id)) {
@@ -126,7 +134,6 @@ export interface RemoteChecks {
 export async function checkRemote(entries: FollowedRepository[], remote: RemoteChecks): Promise<Finding[]> {
   const findings: Finding[] = [];
   for (const entry of entries) {
-    if (entry.retired) continue;
     if (!(await remote.isPublic(entry.url))) {
       findings.push({ level: "error", subject: entry.url, message: "The repository is not public or cannot be reached." });
       continue;

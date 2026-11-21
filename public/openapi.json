@@ -697,89 +697,6 @@
           }
         }
       }
-    },
-    "/api/repositories/{repoId}/retire": {
-      "put": {
-        "summary": "Retire a repository, or undo it",
-        "description": "Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. A retired repository keeps its history and is not rescanned on schedule until it is un-retired. Disabled with 503 when the backend has no ADMIN_TOKEN configured.",
-        "security": [
-          {
-            "adminToken": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "repoId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RetireInput"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Retirement saved",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RetireState"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request: retired is not a boolean, or the reason is missing or longer than 500 characters",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Missing or invalid admin token",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Repository not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Admin actions are disabled because ADMIN_TOKEN is not configured",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
@@ -1072,21 +989,6 @@
             ],
             "format": "date-time",
             "description": "The earliest fix-by date of the open drops"
-          },
-          "retiredAt": {
-            "type": [
-              "string",
-              null
-            ],
-            "format": "date-time",
-            "description": "When an admin retired the repository; null when it is not retired"
-          },
-          "retiredReason": {
-            "type": [
-              "string",
-              null
-            ],
-            "description": "Why an admin retired the repository"
           },
           "slas": {
             "type": "array",
@@ -1652,21 +1554,6 @@
               "updatedAt": {
                 "type": "string",
                 "format": "date-time"
-              },
-              "retiredAt": {
-                "type": [
-                  "string",
-                  null
-                ],
-                "format": "date-time",
-                "description": "When an admin retired the repository; null when it is not retired"
-              },
-              "retiredReason": {
-                "type": [
-                  "string",
-                  null
-                ],
-                "description": "Why an admin retired the repository"
               }
             },
             "required": [
@@ -2389,21 +2276,6 @@
           "repoUrl": {
             "type": "string"
           },
-          "retiredAt": {
-            "type": [
-              "string",
-              null
-            ],
-            "format": "date-time",
-            "description": "When an admin retired the repository; null when it is not retired"
-          },
-          "retiredReason": {
-            "type": [
-              "string",
-              null
-            ],
-            "description": "Why an admin retired the repository"
-          },
           "openDropCount": {
             "type": "integer"
           },
@@ -2575,58 +2447,6 @@
           "resolvedAt",
           "resolvedAnalysisId",
           "overdue"
-        ]
-      },
-      "RetireInput": {
-        "type": "object",
-        "properties": {
-          "retired": {
-            "type": "boolean"
-          },
-          "reason": {
-            "type": "string",
-            "maxLength": 500,
-            "description": "Required when retired is true"
-          }
-        },
-        "required": [
-          "retired"
-        ]
-      },
-      "RetireState": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "retiredAt": {
-            "type": [
-              "string",
-              null
-            ],
-            "format": "date-time",
-            "description": "When an admin retired the repository; null when it is not retired"
-          },
-          "retiredReason": {
-            "type": [
-              "string",
-              null
-            ],
-            "description": "Why an admin retired the repository"
-          },
-          "nextCheckAt": {
-            "type": [
-              "string",
-              null
-            ],
-            "format": "date-time"
-          }
-        },
-        "required": [
-          "id",
-          "retiredAt",
-          "retiredReason",
-          "nextCheckAt"
         ]
       },
       "ScanMode": {

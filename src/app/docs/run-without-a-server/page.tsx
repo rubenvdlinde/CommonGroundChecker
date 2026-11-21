@@ -107,7 +107,10 @@ data/repositories/<host>/<owner>/<repo>/history.json a short summary per analysi
             <code>basisset</code>: true when the component is in the Common Ground basisset.
           </li>
           <li>
-            <code>retired</code>: the date and the reason; a retired component is no longer scanned.
+            <code>maintained</code>: VNG decided to take the component into management. <code>since</code> is the day
+            of the decision (YYYY-MM-DD), <code>decision</code> the https link to the published decision. Without it a
+            component is at most Suitable. A component that should no longer be followed is removed from the list;
+            its history stays.
           </li>
           <li id="providers" className="scroll-mt-6">
             <code>providers</code>: optional services an organisation offers for the component. Each has a{" "}

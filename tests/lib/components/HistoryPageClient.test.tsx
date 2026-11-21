@@ -372,6 +372,7 @@ describe("HistoryPageClient status filter", () => {
     name: "open-zaak",
     repoUrl: "https://github.com/open-zaak/open-zaak",
     slas: [sla],
+    maintainedDecision: { since: "2026-06-01", decision: "https://vng.nl/besluiten/beheer-open-zaak" },
     latestAnalysis: {
       checkedAt: "2026-11-01T10:00:00.000Z",
       score: 80,
@@ -412,7 +413,6 @@ describe("HistoryPageClient status filter", () => {
       "Measured (1)",
       "Suitable (0)",
       "Maintained (1)",
-      "Retired (0)",
       "In basisset (1)",
       "About the basisset",
     ]);

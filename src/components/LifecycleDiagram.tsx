@@ -1,5 +1,5 @@
 import { pathStatusLabel } from "@/lib/pathDocs";
-import { CG_STATES, CG_TRANSITIONS, stateName, type LifecycleTransition } from "@/lib/aboutDocs";
+import { CG_STATES, CG_TRANSITIONS, type LifecycleTransition } from "@/lib/aboutDocs";
 
 interface Box {
   x: number;
@@ -34,11 +34,11 @@ export function transitionKey(transition: Pick<LifecycleTransition, "from" | "to
   return `${transition.from}>${transition.to}`;
 }
 
-/** Wide screens: the states in a row, the way back below them, retired at the bottom. */
+/** Wide screens: the states in a row, the way back below them. */
 export const WIDE_LAYOUT: DiagramLayout = {
   id: "wide",
   width: 1040,
-  height: 352,
+  height: 232,
   boxWidth: 140,
   nameSize: 14,
   labelSize: 15,
@@ -47,7 +47,6 @@ export const WIDE_LAYOUT: DiagramLayout = {
     measured: { x: 260, y: 50 },
     suitable: { x: 510, y: 50 },
     maintained: { x: 760, y: 50 },
-    retired: { x: 510, y: 278 },
   },
   edges: {
     "listed>measured": { d: "M150 82 H260", label: { x: 205, y: 40, anchor: "middle" } },
@@ -56,7 +55,6 @@ export const WIDE_LAYOUT: DiagramLayout = {
     "suitable>maintained": { d: "M650 70 H760", label: { x: 705, y: 40, anchor: "middle" } },
     "maintained>suitable": { d: "M760 96 H650", label: { x: 705, y: 132, anchor: "middle" } },
     "maintained>measured": { d: "M790 114 V196 H330 V114", label: { x: 560, y: 214, anchor: "middle" } },
-    "any>retired": { d: "M10 258 H1030 M580 258 V278", label: { x: 580, y: 250, anchor: "middle" } },
   },
   note: { x: 806, y: 140 },
 };
@@ -65,7 +63,7 @@ export const WIDE_LAYOUT: DiagramLayout = {
 export const NARROW_LAYOUT: DiagramLayout = {
   id: "narrow",
   width: 320,
-  height: 574,
+  height: 450,
   boxWidth: 140,
   nameSize: 14,
   labelSize: 14,
@@ -74,7 +72,6 @@ export const NARROW_LAYOUT: DiagramLayout = {
     measured: { x: 90, y: 110 },
     suitable: { x: 90, y: 210 },
     maintained: { x: 90, y: 310 },
-    retired: { x: 90, y: 500 },
   },
   edges: {
     "listed>measured": { d: "M160 74 V110", label: { x: 167, y: 96, anchor: "start" } },
@@ -83,7 +80,6 @@ export const NARROW_LAYOUT: DiagramLayout = {
     "suitable>maintained": { d: "M145 274 V310", label: { x: 138, y: 296, anchor: "end" } },
     "maintained>suitable": { d: "M175 310 V274", label: { x: 182, y: 296, anchor: "start" } },
     "maintained>measured": { d: "M230 342 H302 V142 H230", label: { x: 315, y: 242, anchor: "middle", rotate: true } },
-    "any>retired": { d: "M10 470 H310 M160 470 V500", label: { x: 160, y: 462, anchor: "middle" } },
   },
   note: { x: 160, y: 396, anchor: "middle" },
 };
@@ -94,10 +90,6 @@ export function nameLines(name: string): string[] {
   const words = name.split(" ");
   const half = Math.ceil(words.length / 2);
   return [words.slice(0, half).join(" "), words.slice(half).join(" ")];
-}
-
-function edgeLabel(transition: LifecycleTransition): string {
-  return transition.from === "any" ? `${stateName("any")}: ${transition.label}` : transition.label;
 }
 
 export default function LifecycleDiagram({ layout, className }: { layout: DiagramLayout; className?: string }) {
@@ -115,7 +107,7 @@ export default function LifecycleDiagram({ layout, className }: { layout: Diagra
     >
       <title id={titleId}>The Common Ground lifecycle</title>
       <desc id={descId}>
-        Five states from listed to retired, with the transitions between them and a note on Maintained. The list
+        Four states from listed to maintained, with the transitions between them and a note on Maintained. The list
         and the table below the diagram give the same states, transitions and note as text.
       </desc>
       <defs>
@@ -134,7 +126,6 @@ export default function LifecycleDiagram({ layout, className }: { layout: Diagra
               d={edge.d}
               fill="none"
               strokeWidth={1.5}
-              strokeDasharray={transition.from === "any" ? "5 4" : undefined}
               markerEnd={`url(#${arrowId})`}
               className="stroke-gray-500"
             />
@@ -146,7 +137,7 @@ export default function LifecycleDiagram({ layout, className }: { layout: Diagra
               fontSize={layout.labelSize}
               className="fill-gray-700"
             >
-              {edgeLabel(transition)}
+              {transition.label}
             </text>
           </g>
         );

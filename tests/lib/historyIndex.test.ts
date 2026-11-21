@@ -40,16 +40,17 @@ function summary(name: string, fields: Record<string, unknown> = {}, latest: Rec
       ...latest,
     },
     slas: [validSla],
+    maintainedDecision: { since: "2026-06-01", decision: "https://vng.nl/besluiten/beheer" },
     ...fields,
   } as unknown as RepoSummary;
 }
 
 const repositories = [
   summary("open-zaak", { repoUrl: "https://github.com/open-zaak/open-zaak" }),
-  summary("open-forms", { repoUrl: "https://github.com/open-formulieren/open-forms", slas: [] }),
+  summary("open-forms", { repoUrl: "https://github.com/open-formulieren/open-forms", slas: [], maintainedDecision: null }),
   summary("measured", {}, { endorsement: { passed: false, reasons: ["Overall rating below 2.5"] }, rating: 2.1 }),
   summary("listed", {}, null),
-  summary("old", { retiredAt: "2026-11-01T00:00:00Z", retiredReason: "Replaced" }),
+  summary("no-decision", { maintainedDecision: null }),
   summary("dropping", { openDropCount: 1, overdueDropCount: 0, nextFixBy: "2026-11-26T12:00:00Z" }, {
     endorsement: { passed: false, reasons: ["Overall rating below 2.5"] },
   }),
@@ -75,7 +76,7 @@ describe("toHistoryIndexEntry", () => {
       ["open-forms", "suitable"],
       ["measured", "measured"],
       ["listed", "listed"],
-      ["old", "retired"],
+      ["no-decision", "suitable"],
       ["dropping", "maintained"],
     ]);
     expect(toHistoryIndexEntry(repositories[5], options).lifecycle.note).toBe("Open drop, fix by 26-11-2026");
@@ -86,7 +87,8 @@ describe("toHistoryIndexEntry", () => {
       summary("x", { developmentStatus: "obsolete" }, { developmentStatus: undefined }),
       options
     );
-    expect(entry.lifecycle.status).toBe("retired");
+    expect(entry.lifecycle.status).toBe("measured");
+    expect(entry.lifecycle.reasons).toEqual(["publiccode.yml developmentStatus is obsolete; Suitable needs stable"]);
   });
 
   it("has no rating, verdict or version without an analysis, and no basisset match without the list", () => {
@@ -219,12 +221,12 @@ describe("History filter", () => {
     const entries = buildHistoryIndex(repositories, options);
     expect(statusCounts(entries, false)).toEqual({
       all: 6,
-      byStatus: { listed: 1, measured: 1, suitable: 1, maintained: 2, retired: 1 },
+      byStatus: { listed: 1, measured: 1, suitable: 2, maintained: 2 },
       basisset: 1,
     });
     expect(statusCounts(entries, true)).toEqual({
       all: 1,
-      byStatus: { listed: 0, measured: 0, suitable: 0, maintained: 1, retired: 0 },
+      byStatus: { listed: 0, measured: 0, suitable: 0, maintained: 1 },
       basisset: 1,
     });
   });

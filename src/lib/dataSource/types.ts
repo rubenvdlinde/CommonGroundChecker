@@ -5,7 +5,7 @@ import type {
   RepoSummary,
   UsageStatus,
 } from "@/generated/openapi-client";
-import type { ServiceProvider } from "@/lib/staticSite/config";
+import type { MaintainedDecision, ServiceProvider } from "@/lib/staticSite/config";
 import type { StatusCounts } from "@/lib/staticSite/records";
 
 /** Extra fields the static site gives an analysis of RepoHistoryResponse. */
@@ -19,10 +19,17 @@ export interface StaticAnalysisExtras {
 export interface RepositoryExtras {
   basisset: boolean;
   providers: ServiceProvider[];
-  retired: { on: string; reason: string } | null;
 }
 
-export type RepoHistory = RepoHistoryResponse & { extras?: RepositoryExtras };
+/**
+ * The history with what config/repositories.yml adds. `maintainedDecision`
+ * is read from the same file in both modes: from index.json on the static
+ * site, from the file itself on the server.
+ */
+export type RepoHistory = RepoHistoryResponse & {
+  extras?: RepositoryExtras;
+  maintainedDecision?: MaintainedDecision | null;
+};
 
 /** The reads every page makes, implemented by the API client and by the static JSON files. */
 export interface DataSource {

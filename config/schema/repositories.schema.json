@@ -58,13 +58,14 @@
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true
         },
-        "retired": {
+        "maintained": {
+          "description": "VNG decided to take the component into management (beheer): the day of the decision and the https URL where it is published.",
           "type": "object",
           "additionalProperties": false,
-          "required": ["on", "reason"],
+          "required": ["since", "decision"],
           "properties": {
-            "on": { "$ref": "#/definitions/date" },
-            "reason": { "type": "string", "minLength": 1 }
+            "since": { "$ref": "#/definitions/date" },
+            "decision": { "type": "string", "pattern": "^https://\\S+$" }
           }
         },
         "functionalities": {

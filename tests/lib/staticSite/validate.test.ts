@@ -32,6 +32,7 @@ describe("checkConfig", () => {
             register: true,
             hints: { helm: ["charts/open-zaak"], apiSpecs: ["src/openapi.yaml"] },
             slaLabels: ["sla"],
+            maintained: { since: "2026-06-01", decision: "https://vng.nl/besluiten/beheer-open-zaak" },
             providers: [
               { name: "Maykin", services: ["maintenance", "hosting"], url: "https://maykinmedia.nl", contact: "info@maykinmedia.nl", since: "2024-01-01" },
             ],
@@ -39,6 +40,26 @@ describe("checkConfig", () => {
         ],
       })
     ).toEqual([]);
+  });
+
+  it("checks the maintenance decision: a real past date and an https link to the decision", () => {
+    const decided = (maintained: unknown) =>
+      checkConfig({ repositories: [{ url: "https://github.com/a/b", maintained }] }, noSlas, undefined, "2026-11-21").filter(
+        (finding) => finding.level === "error"
+      );
+    expect(decided({ since: "2026-11-21", decision: "https://vng.nl/besluiten/1" })).toEqual([]);
+    expect(decided({ since: "2026-02-30", decision: "https://vng.nl/besluiten/1" })[0].message).toBe("2026-02-30 is not a date.");
+    expect(decided({ since: "21-11-2026", decision: "https://vng.nl/besluiten/1" })[0].message).toMatch(/since/);
+    expect(decided({ since: "2026-11-22", decision: "https://vng.nl/besluiten/1" })[0].message).toBe(
+      "The maintenance decision is dated in the future."
+    );
+    expect(decided({ since: "2026-11-01", decision: "http://vng.nl/besluiten/1" })[0].message).toMatch(/decision/);
+    expect(decided({ since: "2026-11-01" })[0].message).toMatch(/decision/);
+    expect(decided({ since: "2026-11-01", decision: "https://vng.nl/1", sla: true })).not.toEqual([]);
+  });
+
+  it("rejects the retired field, which no longer exists", () => {
+    expect(errors({ repositories: [{ url: "https://github.com/a/b", retired: { on: "2026-01-01", reason: "x" } }] })).not.toEqual([]);
   });
 
   it("rejects unknown fields and a missing url", () => {
@@ -114,7 +135,6 @@ describe("checkRemote", () => {
         { url: "https://github.com/a/private" },
         { url: "https://github.com/a/without" },
         { url: "https://gitea.example/a/b" },
-        { url: "https://github.com/a/private", retired: { on: "2026-01-01", reason: "archived" } },
       ],
       remote
     );
