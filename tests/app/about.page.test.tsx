@@ -75,13 +75,12 @@ function allText(): string[] {
 }
 
 describe("about docs data", () => {
-  it("names the five Common Ground states in order", () => {
+  it("names the four Common Ground states in order, without Retired", () => {
     expect(CG_STATES.map((state) => state.name)).toEqual([
       "Listed",
       "Measured",
       "Suitable for Common Ground",
       "Maintained",
-      "Retired",
     ]);
   });
 
@@ -93,11 +92,10 @@ describe("about docs data", () => {
       "suitable>maintained",
       "maintained>suitable",
       "maintained>measured",
-      "any>retired",
     ]);
     const ids = new Set(CG_STATES.map((state) => state.id));
     for (const transition of CG_TRANSITIONS) {
-      expect(transition.from === "any" || ids.has(transition.from), transition.from).toBe(true);
+      expect(ids.has(transition.from), transition.from).toBe(true);
       expect(ids.has(transition.to), transition.to).toBe(true);
     }
   });
@@ -111,14 +109,14 @@ describe("about docs data", () => {
     expect(text("suitable")).toMatch(
       /no mandatory criterion fails.*at least 2\.5.*valid maintenance contract.*at least 4 stars.*developmentStatus is stable and at least 2 organisations are listed under usedBy/
     );
-    expect(text("maintained")).toMatch(/^Suitable, and a valid SLA with a maintainer, on the VNG model contract/);
+    expect(text("maintained")).toMatch(/^Suitable, and VNG decided to take the component into management/);
+    expect(text("maintained")).toMatch(/SLA .* is agreed after the decision/);
     expect(text("maintained")).toMatch(/stays Maintained during the term/);
-    expect(text("retired")).toMatch(/history stays visible/);
   });
 
   it("keeps a fix term a note on Maintained, not a state", () => {
     expect(CG_STATES.find((state) => state.id === "maintained")!.note!.join(" ")).toBe(
-      "A drop starts a fix term: the maintainer must fix it in time."
+      "A missing SLA or a drop starts a fix term: fix it in time."
     );
     for (const state of CG_STATES) expect(state.name, state.name).not.toMatch(/remedy|out of support/i);
     for (const text of allText()) expect(text, text).not.toMatch(/in remedy|out of support|\bapprov/i);
@@ -132,28 +130,26 @@ describe("about docs data", () => {
 
   it("lets only a stable component be suitable or Maintained", () => {
     const transition = (key: string) => CG_TRANSITIONS.find((candidate) => transitionKey(candidate) === key)!;
-    expect(transition("suitable>maintained").text).toMatch(/^There is a valid SLA/);
-    expect(transition("maintained>suitable").text).toMatch(/SLA ended, or a fix term passed/);
-    expect(transition("maintained>measured").text).toMatch(/verdict no longer holds/);
-    expect(transition("any>retired").text).toMatch(/developmentStatus becomes obsolete/);
+    expect(transition("suitable>maintained").label).toBe("VNG decision");
+    expect(transition("suitable>maintained").text).toMatch(/^VNG decides to take the component into management/);
+    expect(transition("maintained>suitable").label).toBe("fix term passed");
+    expect(transition("maintained>suitable").text).toMatch(/SLA is missing or expired, or a drop is not fixed, and its fix term passed/);
+    expect(transition("maintained>measured").text).toMatch(/maintained by VNG decision, not suitable now/);
     const effect = (status: string) => LIFECYCLE_RELATION.find((row) => row.statuses.includes(status))!.effect;
-    for (const status of ["concept", "development", "beta"]) {
+    for (const status of ["concept", "development", "beta", "obsolete"]) {
       expect(effect(status), status).toMatch(/Cannot be suitable for Common Ground or Maintained/);
     }
     expect(effect("stable")).toMatch(/Only a stable component can be suitable for Common Ground or Maintained/);
   });
 
-  it("moves a Maintained component that leaves stable to measured, or to retired when obsolete", () => {
-    expect(LEAVING_STABLE).toEqual([
-      { to: ["beta", "development", "concept"], state: "measured" },
-      { to: ["obsolete"], state: "retired" },
-    ]);
+  it("moves a Maintained component that leaves stable to measured, also when obsolete", () => {
+    expect(LEAVING_STABLE).toEqual([{ to: ["beta", "development", "concept", "obsolete"], state: "measured" }]);
     const others = COMPONENT_STATES.map((state) => state.id).filter((id) => id !== "stable");
     expect(LEAVING_STABLE.flatMap((row) => row.to).sort()).toEqual(others.sort());
   });
 
-  it("names each state, and any state", () => {
-    expect(stateName("any")).toBe("Any state");
+  it("names each state", () => {
+    expect(() => stateName("any")).toThrow();
     expect(stateName("maintained")).toBe("Maintained");
     expect(() => stateName("in-remedy")).toThrow();
   });
@@ -438,7 +434,7 @@ describe("AboutPage", () => {
       expect(image.querySelectorAll("[data-state]")).toHaveLength(CG_STATES.length);
       expect(image.querySelectorAll("[data-transition]")).toHaveLength(CG_TRANSITIONS.length);
       expect(image.querySelector('[data-state="maintained"]')!.textContent).toBe(
-        "MaintainedA drop starts a fix term:the maintainer must fixit in time."
+        "MaintainedA missing SLA or a dropstarts a fix term:fix it in time."
       );
       expect(image.querySelectorAll("[data-note]")).toHaveLength(3);
     }
@@ -455,7 +451,8 @@ describe("AboutPage", () => {
     const table = within(section).getByRole("table", { name: "The transitions" });
     const rows = within(table).getAllByRole("row").slice(1);
     expect(rows).toHaveLength(CG_TRANSITIONS.length);
-    expect(rows[rows.length - 1].textContent).toBe("Any stateRetireddevelopmentStatus becomes obsolete, or the programme retires the component.");
+    expect(rows.map((row) => row.textContent).join(" ")).not.toMatch(/retire/i);
+    expect(rows[3].textContent).toMatch(/^Suitable for Common GroundMaintainedVNG decides/);
   });
 
   it("shows the component lifecycle and how the two relate, with the stable rule", () => {
@@ -465,13 +462,12 @@ describe("AboutPage", () => {
     expect(within(flow).getAllByRole("listitem")).toHaveLength(COMPONENT_STATES.length);
 
     const relation = document.getElementById("lifecycles-relation")!;
-    expect(within(relation).getByText(/A stable component can still be only suitable, for example without a valid SLA\. An obsolete component leads to retired\./)).toBeTruthy();
+    expect(within(relation).getByText(/A stable component can still be only suitable, for example without a VNG decision\. An obsolete component is not suitable\./)).toBeTruthy();
     expect(within(relation).getByText(/only a stable component can be suitable for Common Ground or Maintained/)).toBeTruthy();
     expect(within(relation).queryByText(/open question/)).toBeNull();
     const leaving = within(relation).getByRole("table", { name: "When a Maintained component leaves stable" });
     expect(within(leaving).getAllByRole("row").slice(1).map((row) => row.textContent)).toEqual([
-      "beta, development, conceptMeasured",
-      "obsoleteRetired",
+      "beta, development, concept, obsoleteMeasured",
     ]);
     expect(within(relation).getAllByRole("row")).toHaveLength(LIFECYCLE_RELATION.length + 1 + LEAVING_STABLE.length + 1);
   });

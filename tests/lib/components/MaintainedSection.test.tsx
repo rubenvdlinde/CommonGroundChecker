@@ -18,6 +18,7 @@ const mocked = {
 
 const suitable = { passed: true, reasons: [] };
 const today = "2026-11-19";
+const decision = { since: "2026-06-01", decision: "https://vng.nl/besluiten/beheer-open-zaak" };
 
 const usage = {
   declaredUsers: ["Gemeente Utrecht"],
@@ -41,6 +42,7 @@ function renderSection(overrides: Partial<Parameters<typeof MaintainedSection>[0
     <MaintainedSection
       repoId="repo-id"
       endorsement={suitable}
+      decision={decision}
       initialUsage={usage}
       minUsers={2}
       today={today}
@@ -58,7 +60,7 @@ describe("MaintainedSection", () => {
   afterEach(() => cleanup());
 
   it("shows Maintained above Suitable, with the reasons Maintained is not reached", () => {
-    renderSection();
+    renderSection({ decision: null, initialUsage: { ...usage, slas: [sla] } });
 
     const levels = within(screen.getByRole("list", { name: "Levels" })).getAllByRole("listitem");
     expect(levels[0].textContent).toContain("Maintained");
@@ -72,9 +74,11 @@ describe("MaintainedSection", () => {
     expect(levels[levels.length - 1].textContent).not.toMatch(/advice/i);
     expect(screen.getByRole("heading", { level: 3, name: "Level" })).toBeTruthy();
     const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
-    expect(reasons.textContent).toBe("No SLA");
+    expect(reasons.textContent).toBe("No VNG decision to take it into management");
     expect(screen.getByText(/Suitable for Common Ground needs developmentStatus stable and at least 2 organisations/)).toBeTruthy();
-    expect(levels[0].textContent).toContain("a valid SLA with a maintainer, on the VNG model contract");
+    expect(levels[0].textContent).toContain("a decision by VNG to take the component into management");
+    expect(levels[0].textContent).toContain("follows the decision");
+    expect(screen.getByRole("link", { name: "config/repositories.yml" })).toBeTruthy();
     expect(screen.getByText(/never gives stars/)).toBeTruthy();
   });
 
@@ -99,6 +103,7 @@ describe("MaintainedSection", () => {
     renderSection({ initialUsage: { ...twoUsers, slas: [sla] } });
 
     expect(maintainedRow().textContent).toContain("Reached");
+    expect(maintainedRow().textContent).toContain("Decided on 2026-06-01.");
     expect(maintainedRow().textContent).toContain("SLA: Gemeente Utrecht with Maykin Media, until 2027-12-31.");
     expect(screen.queryByRole("list", { name: "Why it is not yet Maintained" })).toBeNull();
   });
@@ -113,11 +118,22 @@ describe("MaintainedSection", () => {
     expect(reasons.textContent).toBe("Not yet suitable for Common Ground");
   });
 
-  it("names the end date of an expired SLA", () => {
-    renderSection({ initialUsage: { ...twoUsers, slas: [{ ...sla, until: "2026-06-30" }] } });
+  it("keeps Maintained during the fix term of an expired SLA, and drops it after the term", () => {
+    renderSection({ initialUsage: { ...twoUsers, slas: [{ ...sla, until: "2026-11-10" }] } });
+    expect(maintainedRow().textContent).toContain("Reached");
+    expect(maintainedRow().textContent).toContain("No valid SLA, fix by 11-12-2026.");
 
-    expect(screen.getByRole("list", { name: "Why it is not yet Maintained" }).textContent).toBe("SLA expired on 2026-06-30");
+    cleanup();
+    renderSection({ initialUsage: { ...twoUsers, slas: [{ ...sla, until: "2026-06-30" }] } });
+    expect(screen.getByRole("list", { name: "Why it is not yet Maintained" }).textContent).toBe(
+      "No valid SLA since 01-07-2026; the fix term ended on 31-07-2026"
+    );
     expect(screen.getByRole("list", { name: "SLAs" }).textContent).toContain("expired");
+  });
+
+  it("is not Maintained without a decision, even with a valid SLA", () => {
+    renderSection({ decision: null, initialUsage: { ...twoUsers, slas: [sla] } });
+    expect(maintainedRow().textContent).toContain("Not reached");
   });
 
   it("lists why the component is not suitable under Suitable", () => {

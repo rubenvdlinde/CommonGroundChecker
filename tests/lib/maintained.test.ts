@@ -5,6 +5,8 @@ import {
   developmentStatusOf,
   organisationsLabel,
   isSlaValid,
+  maintainedDecisionOf,
+  slaStateOf,
   type MaintainedInput,
 } from "@/lib/maintained";
 import { computeEndorsement } from "@/lib/ratings";
@@ -12,10 +14,12 @@ import type { CheckResult } from "@/lib/types";
 
 const today = "2026-11-19";
 const validSla = { party: "VNG", maintainer: "Maykin Media", startsOn: "2026-01-01", until: "2027-12-31" };
+const decision = { since: "2026-06-01", decision: "https://vng.nl/besluiten/beheer-open-zaak" };
 
 function input(overrides: Partial<MaintainedInput> = {}): MaintainedInput {
   return {
     endorsement: { passed: true, reasons: [] },
+    decision,
     slas: [validSla],
     today,
     ...overrides,
@@ -63,9 +67,50 @@ describe("isSlaValid", () => {
   });
 });
 
+describe("maintainedDecisionOf", () => {
+  it("reads a complete decision and nothing else", () => {
+    expect(maintainedDecisionOf(decision)).toEqual(decision);
+    expect(maintainedDecisionOf({ since: "2026-06-01" })).toBeNull();
+    expect(maintainedDecisionOf(null)).toBeNull();
+    expect(maintainedDecisionOf("yes")).toBeNull();
+  });
+});
+
+describe("slaStateOf", () => {
+  it("has no fix term while an SLA is valid", () => {
+    expect(slaStateOf(decision, [validSla], today)).toEqual({ sla: validSla, missingSince: null, fixBy: null, overdue: false });
+  });
+
+  it("starts the fix term at the decision when no SLA was agreed, or when the last one ended before it", () => {
+    expect(slaStateOf({ ...decision, since: "2026-11-10" }, [], today)).toMatchObject({
+      missingSince: "2026-11-10",
+      fixBy: "2026-12-10",
+      overdue: false,
+    });
+    expect(slaStateOf({ ...decision, since: "2026-11-10" }, [{ ...validSla, until: "2025-12-31" }], today)).toMatchObject({
+      missingSince: "2026-11-10",
+    });
+  });
+
+  it("starts the fix term the day after the last SLA ended, and is overdue after it", () => {
+    expect(slaStateOf(decision, [{ ...validSla, until: "2026-09-30" }], today)).toMatchObject({
+      missingSince: "2026-10-01",
+      fixBy: "2026-10-31",
+      overdue: true,
+    });
+  });
+});
+
 describe("computeMaintained", () => {
-  it("reaches Maintained for a suitable component with a valid SLA", () => {
-    expect(computeMaintained(input())).toEqual({ maintained: true, reasons: [], sla: validSla });
+  it("reaches Maintained for a suitable component with a VNG decision and a valid SLA", () => {
+    expect(computeMaintained(input())).toEqual({ maintained: true, reasons: [], sla: validSla, decision, note: null });
+  });
+
+  it("is not Maintained without a decision, whatever its SLA", () => {
+    const level = computeMaintained(input({ decision: null }));
+    expect(level.maintained).toBe(false);
+    expect(level.reasons).toEqual(["No VNG decision to take it into management"]);
+    expect(level.sla).toEqual(validSla);
   });
 
   it("is not Maintained when the component is not suitable", () => {
@@ -74,21 +119,25 @@ describe("computeMaintained", () => {
     expect(level.reasons).toEqual(["Not yet suitable for Common Ground"]);
   });
 
-  it("says when there is no SLA", () => {
-    expect(computeMaintained(input({ slas: [] })).reasons).toEqual(["No SLA"]);
+  it("stays Maintained with a note while a missing SLA is within its fix term", () => {
+    const level = computeMaintained(input({ slas: [{ ...validSla, until: "2026-11-10" }] }));
+    expect(level.maintained).toBe(true);
+    expect(level.note).toBe("No valid SLA, fix by 11-12-2026");
+    expect(level.sla).toBeNull();
   });
 
-  it("names the latest end date when every SLA expired", () => {
+  it("is not Maintained once the fix term of a missing SLA passed", () => {
     const level = computeMaintained(
       input({
         slas: [
           { ...validSla, until: "2025-06-30" },
-          { ...validSla, until: "2026-11-18" },
+          { ...validSla, until: "2026-09-30" },
         ],
       })
     );
-    expect(level.reasons).toEqual(["SLA expired on 2026-11-18"]);
-    expect(level.sla).toBeNull();
+    expect(level.maintained).toBe(false);
+    expect(level.reasons).toEqual(["No valid SLA since 01-10-2026; the fix term ended on 31-10-2026"]);
+    expect(level.decision).toEqual(decision);
   });
 
   it("uses a valid SLA next to an expired one", () => {
@@ -109,7 +158,7 @@ describe("computeMaintained", () => {
   });
 
   it("lists every missing condition in order", () => {
-    const level = computeMaintained(input({ endorsement: { passed: false, reasons: [] }, slas: [] }));
-    expect(level.reasons).toEqual(["Not yet suitable for Common Ground", "No SLA"]);
+    const level = computeMaintained(input({ endorsement: { passed: false, reasons: [] }, decision: null, slas: [] }));
+    expect(level.reasons).toEqual(["Not yet suitable for Common Ground", "No VNG decision to take it into management"]);
   });
 });

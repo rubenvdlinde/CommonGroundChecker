@@ -12,12 +12,13 @@ import { repositoryPath } from "@/lib/staticSite/config";
 import { report, result } from "./fixtures";
 
 const path = repositoryPath("https://github.com/open-zaak/open-zaak");
+const decision = { since: "2026-06-01", decision: "https://vng.nl/besluiten/beheer-open-zaak" };
 const sla = { repository: "https://github.com/open-zaak/open-zaak", party: "VNG", maintainer: "Maykin", start: "2026-01-01", until: "2026-12-31" };
 
 function input(overrides: Partial<ScanInput> = {}): ScanInput {
   return {
     path,
-    config: { url: "https://github.com/open-zaak/open-zaak", basisset: true, hints: { helm: ["charts"] } },
+    config: { url: "https://github.com/open-zaak/open-zaak", basisset: true, hints: { helm: ["charts"] }, maintained: decision },
     report: report(),
     slas: [sla],
     durationSeconds: 12.3,
@@ -98,11 +99,23 @@ describe("buildLatestFile", () => {
     expect(buildLatestFile(input(), null).analysis).toMatchObject({ scanMode: null, toolFingerprint: null });
   });
 
-  it("is not Maintained without a valid SLA, and keeps the creation time of the previous file", () => {
+  it("is not Maintained without a VNG decision, and keeps the creation time of the previous file", () => {
     const first = buildLatestFile(input(), null);
-    const later = buildLatestFile(input({ slas: [], report: report({ checkedAt: "2026-11-20T02:00:00.000Z" }) }), first);
+    expect(first.repository.maintainedDecision).toEqual(decision);
+    const later = buildLatestFile(
+      input({ config: { url: "https://github.com/open-zaak/open-zaak" }, report: report({ checkedAt: "2026-11-20T02:00:00.000Z" }) }),
+      first
+    );
     expect(later.analysis.maintained).toBe(false);
+    expect(later.repository.maintainedDecision).toBeNull();
     expect(later.repository.createdAt).toBe("2026-11-19T02:00:00.000Z");
+  });
+
+  it("stays Maintained after the decision while a missing SLA is within its fix term, not after it", () => {
+    const within = buildLatestFile(input({ slas: [{ ...sla, until: "2026-11-01" }] }), null);
+    expect(within.analysis.maintained).toBe(true);
+    const after = buildLatestFile(input({ slas: [] }), null);
+    expect(after.analysis.maintained).toBe(false);
   });
 });
 
@@ -139,7 +152,7 @@ describe("buildIndexEntry and buildIndexFile", () => {
       {
         path,
         dataDir: "repositories/github.com/open-zaak/open-zaak",
-        config: { url: "https://github.com/open-zaak/open-zaak", basisset: true, providers, hints: { helm: ["charts"] } },
+        config: { url: "https://github.com/open-zaak/open-zaak", basisset: true, providers, hints: { helm: ["charts"] }, maintained: decision },
         slas: [sla],
         latest,
         history: {
@@ -163,6 +176,7 @@ describe("buildIndexEntry and buildIndexFile", () => {
       analysisCount: 1,
       basisset: true,
       providers,
+      maintainedDecision: decision,
       declaredUsers: ["Gemeente Utrecht", "Gemeente Den Haag"],
       openDropCount: 1,
       overdueDropCount: 1,
@@ -199,12 +213,12 @@ describe("buildIndexEntry and buildIndexFile", () => {
     expect(withoutStandards.latestAnalysis?.standardsEvidence).toBeNull();
   });
 
-  it("lists a repository without a scan, and a retired one as not followed", () => {
+  it("lists a repository without a scan as followed, without a decision", () => {
     const entry = buildIndexEntry(
       {
         path,
         dataDir: "repositories/github.com/open-zaak/open-zaak",
-        config: { url: "https://github.com/open-zaak/open-zaak", retired: { on: "2026-10-01", reason: "Archived" } },
+        config: { url: "https://github.com/open-zaak/open-zaak" },
         slas: [],
         latest: null,
         history: null,
@@ -212,7 +226,8 @@ describe("buildIndexEntry and buildIndexFile", () => {
       },
       now
     );
-    expect(entry).toMatchObject({ followed: false, latestAnalysis: null, analysisCount: 0, retired: { reason: "Archived" } });
+    expect(entry).toMatchObject({ followed: true, latestAnalysis: null, analysisCount: 0, maintainedDecision: null });
+    expect(entry).not.toHaveProperty("retired");
     expect(entry.lastError).toMatch(/45 minutes/);
   });
 

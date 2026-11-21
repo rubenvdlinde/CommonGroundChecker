@@ -197,7 +197,8 @@ describe("CommonGroundPathPage", () => {
     expect(within(verdict).getByText(/maintenance\.type: contract/)).toBeTruthy();
 
     const levels = document.getElementById("levels")!;
-    expect(within(levels).getByText(/A component is Maintained when it is suitable and there is a valid SLA with a maintainer, on the VNG model contract/)).toBeTruthy();
+    expect(within(levels).getByText(/A component is Maintained when it is suitable and VNG decided to take it into management/)).toBeTruthy();
+    expect(within(levels).getByText(/The SLA is not the step to Maintained\. It is agreed once the decision is made/)).toBeTruthy();
     expect(levels.textContent).not.toMatch(/is a proposal/);
   });
 

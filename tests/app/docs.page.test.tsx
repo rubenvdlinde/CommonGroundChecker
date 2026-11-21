@@ -137,7 +137,8 @@ describe("RatingGuidePage", () => {
     render(<RatingGuidePage />);
 
     const maintained = screen.getByText("A component is Maintained").closest("li");
-    expect(maintained?.textContent).toContain("when it is suitable for Common Ground and there is a valid SLA with a maintainer, on the VNG model contract");
+    expect(maintained?.textContent).toContain("when it is suitable for Common Ground and VNG decided to take it into management");
+    expect(maintained?.textContent).toContain("Without a decision a component is at most Suitable");
     expect(maintained?.textContent).toContain("Stable and the users come with Suitable");
     const suitable = screen.getByText("A component is suitable for Common Ground").closest("li");
     expect(suitable?.textContent).toContain("developmentStatus stable and name at least 2 organisations under usedBy");

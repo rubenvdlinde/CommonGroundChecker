@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   computeLifecycleStatus,
+  DECIDED_NOT_SUITABLE_NOTE,
+  DECIDED_TERM_PASSED_NOTE,
   formatLifecycleDate,
   isLifecycleStatus,
   LIFECYCLE_STATUSES,
@@ -12,6 +14,7 @@ import { withAdoptionConditions } from "@/lib/ratings";
 
 const today = "2026-11-19";
 const validSla = { party: "VNG", maintainer: "Maykin Media", startsOn: "2026-01-01", until: "2027-12-31" };
+const decision = { since: "2026-06-01", decision: "https://vng.nl/besluiten/beheer-open-zaak" };
 
 /** A component that meets every condition for Maintained, with no open drops. */
 function input(overrides: Partial<LifecycleInput> = {}): LifecycleInput {
@@ -21,8 +24,7 @@ function input(overrides: Partial<LifecycleInput> = {}): LifecycleInput {
     developmentStatus: "stable",
     slas: [validSla],
     today,
-    retiredAt: null,
-    retiredReason: null,
+    decision,
     drops: NO_OPEN_DROPS,
     ...overrides,
   };
@@ -33,8 +35,9 @@ const overdueDrop = { open: 1, overdue: 1, nextFixBy: "2026-11-12T23:59:59Z" };
 const lostVerdict = { passed: false, reasons: ["Overall rating below 2.5"] };
 
 describe("lifecycle statuses", () => {
-  it("lists the five statuses in lifecycle order and recognises only those", () => {
-    expect(LIFECYCLE_STATUSES).toEqual(["listed", "measured", "suitable", "maintained", "retired"]);
+  it("lists the four statuses in lifecycle order and recognises only those", () => {
+    expect(LIFECYCLE_STATUSES).toEqual(["listed", "measured", "suitable", "maintained"]);
+    expect(isLifecycleStatus("retired")).toBe(false);
     expect(isLifecycleStatus("maintained")).toBe(true);
     expect(isLifecycleStatus("approved")).toBe(false);
     expect(isLifecycleStatus(undefined)).toBe(false);
@@ -71,10 +74,24 @@ describe("computeLifecycleStatus", () => {
   });
 
   it("goes from Measured to Suitable when the verdict holds, with why it is not Maintained", () => {
-    const result = computeLifecycleStatus(input({ slas: [] }));
+    const result = computeLifecycleStatus(input({ decision: null }));
     expect(result.status).toBe("suitable");
     expect(result.label).toBe("Suitable for Common Ground");
-    expect(result.reasons).toEqual(["No SLA"]);
+    expect(result.reasons).toEqual(["No VNG decision to take it into management"]);
+    expect(result.decision).toBeNull();
+  });
+
+  it("is at most Suitable without a decision, whatever its SLA", () => {
+    for (const slas of [[validSla], [], [{ ...validSla, until: "2026-01-01" }]]) {
+      expect(computeLifecycleStatus(input({ decision: null, slas })).status).toBe("suitable");
+    }
+  });
+
+  it("is not Maintained with a decision when the verdict never held", () => {
+    const result = computeLifecycleStatus(input({ endorsement: lostVerdict }));
+    expect(result.status).toBe("measured");
+    expect(result.note).toBe(DECIDED_NOT_SUITABLE_NOTE);
+    expect(result.decision).toEqual(decision);
   });
 
   it("stays Measured for a beta component, since Suitable already asks stable", () => {
@@ -84,17 +101,32 @@ describe("computeLifecycleStatus", () => {
     expect(result.reasons).toEqual(["publiccode.yml developmentStatus is beta; Suitable needs stable"]);
   });
 
-  it("stays Suitable with an expired SLA", () => {
-    const result = computeLifecycleStatus(input({ slas: [{ ...validSla, until: "2026-11-18" }] }));
-    expect(result.status).toBe("suitable");
-    expect(result.reasons).toEqual(["SLA expired on 2026-11-18"]);
+  it("stays Maintained with a fix term when the SLA after the decision expired", () => {
+    const result = computeLifecycleStatus(input({ slas: [{ ...validSla, until: "2026-11-10" }] }));
+    expect(result.status).toBe("maintained");
+    expect(result.note).toBe("No valid SLA, fix by 11-12-2026");
   });
 
-  it("goes from Suitable to Maintained with stable, a declared user and a valid SLA", () => {
+  it("stays Maintained with a fix term from the decision when no SLA was agreed yet", () => {
+    const result = computeLifecycleStatus(input({ slas: [], decision: { ...decision, since: "2026-11-01" } }));
+    expect(result.status).toBe("maintained");
+    expect(result.note).toBe("No valid SLA, fix by 01-12-2026");
+  });
+
+  it("falls back to Suitable when the fix term of the missing SLA passed, and keeps the decision", () => {
+    const result = computeLifecycleStatus(input({ slas: [] }));
+    expect(result.status).toBe("suitable");
+    expect(result.reasons).toEqual(["No valid SLA since 01-06-2026; the fix term ended on 01-07-2026"]);
+    expect(result.note).toBe(DECIDED_TERM_PASSED_NOTE);
+    expect(result.decision).toEqual(decision);
+  });
+
+  it("goes from Suitable to Maintained with the verdict, a VNG decision and a valid SLA", () => {
     const result = computeLifecycleStatus(input());
     expect(result.status).toBe("maintained");
     expect(result.reasons).toEqual([]);
     expect(result.note).toBeNull();
+    expect(result.decision).toEqual(decision);
   });
 
   it("stays Maintained with a note while a drop is open within its fix term", () => {
@@ -122,6 +154,13 @@ describe("computeLifecycleStatus", () => {
     const result = computeLifecycleStatus(input({ endorsement: lostVerdict, drops: overdueDrop }));
     expect(result.status).toBe("measured");
     expect(result.reasons).toEqual(["Overall rating below 2.5"]);
+    expect(result.note).toBe(DECIDED_NOT_SUITABLE_NOTE);
+    expect(result.decision).toEqual(decision);
+  });
+
+  it("does not keep a lost verdict at Maintained when the SLA term passed too", () => {
+    const result = computeLifecycleStatus(input({ endorsement: lostVerdict, drops: openDrop, slas: [] }));
+    expect(result.status).toBe("measured");
   });
 
   it("does not keep a component at Maintained during a fix term when it left stable", () => {
@@ -130,23 +169,11 @@ describe("computeLifecycleStatus", () => {
     expect(result.status).toBe("measured");
   });
 
-  it("is Retired when the scanned publiccode.yml says obsolete, from any status", () => {
-    for (const overrides of [{}, { endorsement: lostVerdict }, { hasAnalysis: true, slas: [] }]) {
-      const result = computeLifecycleStatus(input({ ...overrides, developmentStatus: " Obsolete " }));
-      expect(result.status).toBe("retired");
-      expect(result.retiredBy).toBe("obsolete");
-      expect(result.retiredReason).toBe("developmentStatus is obsolete in publiccode.yml");
-    }
-  });
-
-  it("is Retired when an admin retired it, with the reason, even without an analysis", () => {
-    const result = computeLifecycleStatus(
-      input({ hasAnalysis: false, endorsement: null, retiredAt: "2026-11-19T10:00:00Z", retiredReason: "Replaced by Open Zaak" })
-    );
-    expect(result.status).toBe("retired");
-    expect(result.retiredBy).toBe("admin");
-    expect(result.retiredReason).toBe("Replaced by Open Zaak");
-    expect(result.reasons).toEqual([]);
+  it("treats an obsolete component as not suitable, with the verdict reason", () => {
+    const verdict = withAdoptionConditions({ passed: true, reasons: [] }, { developmentStatus: "obsolete", declaredUserCount: 2 });
+    const result = computeLifecycleStatus(input({ endorsement: verdict, developmentStatus: "obsolete" }));
+    expect(result.status).toBe("measured");
+    expect(result.reasons).toEqual(["publiccode.yml developmentStatus is obsolete; Suitable needs stable"]);
   });
 });
 

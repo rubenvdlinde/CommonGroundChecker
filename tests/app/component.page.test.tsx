@@ -217,7 +217,7 @@ describe("RepoHistoryPage", () => {
     expect(levels.textContent?.indexOf("Maintained")).toBeLessThan(levels.textContent?.indexOf("Suitable for Common Ground") ?? 0);
     const reasons = screen.getByRole("list", { name: "Why it is not yet Maintained" });
     expect(reasons.textContent).toContain("Not yet suitable for Common Ground");
-    expect(reasons.textContent).toContain("No SLA");
+    expect(reasons.textContent).toContain("No VNG decision to take it into management");
     const notSuitable = within(levels).getByRole("list", { name: "Why it is not yet suitable" });
     expect(notSuitable.textContent).toContain("publiccode.yml developmentStatus is beta; Suitable needs stable");
     expect(screen.getByText("Users declared in publiccode.yml over time")).toBeTruthy();
@@ -226,7 +226,7 @@ describe("RepoHistoryPage", () => {
     expect(status.querySelector("[data-lifecycle-status]")?.textContent).toBe("Measured");
     expect(within(status).getByRole("list", { name: "What is missing for Suitable for Common Ground" })).toBeTruthy();
     expect(within(status).getByText("The Common Ground basisset could not be read just now.")).toBeTruthy();
-    expect(within(status).getByText("Retire this component (admin)")).toBeTruthy();
+    expect(within(status).queryByText(/Retire/)).toBeNull();
   });
 
   it("still renders when the usage cannot be loaded", async () => {
