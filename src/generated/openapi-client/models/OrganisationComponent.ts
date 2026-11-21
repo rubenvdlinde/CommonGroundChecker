@@ -9,14 +9,6 @@ export type OrganisationComponent = {
     owner: string;
     name: string;
     repoUrl: string;
-    /**
-     * When an admin retired the repository; null when it is not retired
-     */
-    retiredAt?: string | null;
-    /**
-     * Why an admin retired the repository
-     */
-    retiredReason?: string | null;
     openDropCount?: number;
     overdueDropCount?: number;
     /**

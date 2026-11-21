@@ -13,7 +13,7 @@ import { countIssues } from "@/lib/issues";
 import { adoptionFactsOf, withAdoptionConditions } from "@/lib/ratings";
 import { computeMaintained, declaredUsersOf, developmentStatusOf } from "@/lib/maintained";
 import type { CheckReport, CheckStatus } from "@/lib/types";
-import { repositoryId, type FollowedRepository, type RepositoryPath, type RetiredInfo, type ServiceProvider, type SlaEntry } from "./config";
+import { repositoryId, type FollowedRepository, type RepositoryPath, type MaintainedDecision, type ServiceProvider, type SlaEntry } from "./config";
 import { isOverdue, snapshotOf, updateDrops, type DropRecord, type FixTerms, type ScannedAnalysis } from "./drops";
 
 export const DATA_SCHEMA_VERSION = 1;
@@ -51,7 +51,8 @@ export interface LatestRepository {
   scanRef: string | null;
   isRegister: boolean;
   slaLabels: string[];
-  retired: RetiredInfo | null;
+  /** VNG's decision to take the component into management; absent in files written before it existed */
+  maintainedDecision?: MaintainedDecision | null;
   providers: ServiceProvider[];
   /** Ids of config/functionalities.yml */
   functionalities: string[];
@@ -178,7 +179,8 @@ export interface IndexEntry {
   scanRef: string | null;
   isRegister: boolean;
   slaLabels: string[];
-  retired: RetiredInfo | null;
+  /** VNG's decision to take the component into management; absent in files written before it existed */
+  maintainedDecision?: MaintainedDecision | null;
   providers: ServiceProvider[];
   /** Ids of config/functionalities.yml */
   functionalities: string[];
@@ -243,6 +245,7 @@ export function buildLatestFile(input: ScanInput, previous: LatestFile | null): 
   const declaredUsers = declaredUsersOf(report.results);
   const maintained = computeMaintained({
     endorsement: report.endorsement,
+    decision: config.maintained ?? null,
     slas,
     today: report.checkedAt.slice(0, 10),
   }).maintained;
@@ -255,7 +258,7 @@ export function buildLatestFile(input: ScanInput, previous: LatestFile | null): 
       owner: path.owner,
       name: path.repo,
       metadata: report.repoMeta,
-      followed: !config.retired,
+      followed: true,
       checkIntervalHours: input.checkIntervalHours,
       lastCheckedAt: report.checkedAt,
       nextCheckAt: null,
@@ -265,7 +268,7 @@ export function buildLatestFile(input: ScanInput, previous: LatestFile | null): 
       scanRef: config.scanRef ?? null,
       isRegister: config.register === true,
       slaLabels: config.slaLabels ?? [],
-      retired: config.retired ?? null,
+      maintainedDecision: config.maintained ?? null,
       providers: config.providers ?? [],
       functionalities: config.functionalities ?? [],
       functionalitiesDraft: config.functionalitiesDraft === true,
@@ -392,7 +395,7 @@ export function buildIndexEntry(source: IndexSource, now: Date): IndexEntry {
     topics: meta?.topics ?? [],
     description: meta?.description ?? null,
     updatedAt: latest?.repository.updatedAt ?? now.toISOString(),
-    followed: !config.retired,
+    followed: true,
     checkIntervalHours: latest?.repository.checkIntervalHours ?? 24,
     lastCheckedAt: analysis?.checkedAt ?? null,
     nextCheckAt: null,
@@ -421,7 +424,7 @@ export function buildIndexEntry(source: IndexSource, now: Date): IndexEntry {
     scanRef: config.scanRef ?? null,
     isRegister: config.register === true,
     slaLabels: config.slaLabels ?? [],
-    retired: config.retired ?? null,
+    maintainedDecision: config.maintained ?? null,
     providers: config.providers ?? [],
     functionalities: config.functionalities ?? [],
     functionalitiesDraft: config.functionalitiesDraft === true,

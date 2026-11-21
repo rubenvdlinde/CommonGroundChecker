@@ -1,6 +1,5 @@
 import BasissetNote from "@/components/BasissetNote";
 import LifecycleChip from "@/components/LifecycleChip";
-import RetireControl from "@/components/RetireControl";
 import type { BasissetMatch } from "@/lib/basisset";
 import { formatLifecycleDate, LIFECYCLE_LABELS, LIFECYCLE_STATUSES, type LifecycleResult } from "@/lib/lifecycle";
 
@@ -8,31 +7,17 @@ export interface RepositoryLifecycle {
   result: LifecycleResult;
   basisset: BasissetMatch;
   scannedVersion: string | null;
-  retiredAt: string | null;
-  /** Shows the admin retire control; off on a static site, which has no backend */
-  adminControls: boolean;
 }
 
-interface LifecycleSectionProps extends RepositoryLifecycle {
-  repoId: string;
-}
-
-/** The status one up from a status, for "What is missing for ..."; none above Maintained or for Retired. */
+/** The status one up from a status, for "What is missing for ..."; none above Maintained. */
 function nextStatusLabel(result: LifecycleResult): string | null {
-  if (result.status === "retired" || result.status === "maintained") return null;
+  if (result.status === "maintained") return null;
   const next = LIFECYCLE_STATUSES[LIFECYCLE_STATUSES.indexOf(result.status) + 1];
   return LIFECYCLE_LABELS[next];
 }
 
 /** The Common Ground status of a component, why it is not at the next status, and what the basisset says about it. */
-export default function LifecycleSection({
-  repoId,
-  result,
-  basisset,
-  scannedVersion,
-  retiredAt,
-  adminControls,
-}: LifecycleSectionProps) {
+export default function LifecycleSection({ result, basisset, scannedVersion }: RepositoryLifecycle) {
   const next = nextStatusLabel(result);
   return (
     <section
@@ -48,12 +33,13 @@ export default function LifecycleSection({
       {result.note && (
         <p className="text-sm text-amber-900 bg-amber-50 border border-amber-300 rounded-lg px-3 py-2">{result.note}</p>
       )}
-      {result.status === "retired" && (
+      {result.decision && (
         <p className="text-sm text-gray-700">
-          {result.retiredBy === "admin"
-            ? `Retired by an admin${retiredAt ? ` on ${formatLifecycleDate(retiredAt)}` : ""}: ${result.retiredReason ?? "no reason given"}.`
-            : "Retired: the scanned publiccode.yml says developmentStatus: obsolete."}{" "}
-          The history stays. It is not rescanned.
+          VNG decided on {formatLifecycleDate(result.decision.since)} to take this component into management.{" "}
+          <a href={result.decision.decision} className="text-cg-lightblue hover:underline">
+            Read the decision
+          </a>
+          .
         </p>
       )}
       {next && result.reasons.length > 0 && (
@@ -67,13 +53,6 @@ export default function LifecycleSection({
         <h4 className="text-sm font-semibold text-gray-800">Common Ground basisset</h4>
         <BasissetNote match={basisset} scannedVersion={scannedVersion} />
       </div>
-      {adminControls && (
-        <RetireControl
-          repoId={repoId}
-          initialRetired={result.retiredBy === "admin"}
-          initialReason={result.retiredBy === "admin" ? result.retiredReason : null}
-        />
-      )}
     </section>
   );
 }

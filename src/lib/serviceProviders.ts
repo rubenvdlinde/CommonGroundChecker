@@ -6,12 +6,12 @@
  * an organisation offers for a component; those show as "Also offers".
  */
 import { readFile } from "node:fs/promises";
-import path from "node:path";
 import type { RepoSummary } from "@/generated/openapi-client";
 import { isInBasisset, loadBasisset, type Basisset } from "@/lib/basisset";
 import { dataSource } from "@/lib/dataSource";
 import { toHistoryIndexEntry } from "@/lib/historyIndex";
 import type { LifecycleStatus } from "@/lib/lifecycle";
+import { repositoriesFile } from "@/lib/maintainedDecisions";
 import { ownerOfRepository, type RepositoryOwner } from "@/lib/repositoryOwner";
 import { componentHref } from "@/lib/routes";
 import {
@@ -245,10 +245,7 @@ export function readRepositoriesConfig(raw: unknown): RepositoriesConfig {
   };
 }
 
-/** config/repositories.yml, or the file CGC_REPOSITORIES_FILE names. */
-export function repositoriesFile(env: Record<string, string | undefined> = process.env): string {
-  return path.resolve(env.CGC_REPOSITORIES_FILE || "config/repositories.yml");
-}
+export { repositoriesFile } from "@/lib/maintainedDecisions";
 
 /** The component list; empty when the file does not exist. */
 export async function loadRepositoriesConfig(file: string = repositoriesFile()): Promise<RepositoriesConfig> {

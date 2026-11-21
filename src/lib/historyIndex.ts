@@ -7,7 +7,7 @@ import {
   type LifecycleResult,
   type LifecycleStatus,
 } from "./lifecycle";
-import type { MaintainedSla } from "./maintained";
+import { maintainedDecisionOf, type MaintainedSla } from "./maintained";
 import { standardsFromEvidence } from "./componentStandards";
 import { isRating, storedCategoryRatings, summaryAdoptionFacts, withAdoptionConditions } from "./ratings";
 import { minimumRatingFor } from "./stars";
@@ -102,8 +102,7 @@ export function toHistoryIndexEntry(repository: RepoSummary, options: HistoryInd
     developmentStatus,
     slas: slasOf(summary.slas),
     today: options.today,
-    retiredAt: stringOrNull(summary.retiredAt),
-    retiredReason: stringOrNull(summary.retiredReason),
+    decision: maintainedDecisionOf(summary.maintainedDecision),
     drops: {
       open: typeof summary.openDropCount === "number" ? summary.openDropCount : 0,
       overdue: typeof summary.overdueDropCount === "number" ? summary.overdueDropCount : 0,

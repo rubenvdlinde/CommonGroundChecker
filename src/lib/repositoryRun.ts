@@ -10,7 +10,7 @@ import { USAGE_CHECK_ID, readUsageData } from "@/lib/usage";
 import { readPublicCodeData } from "@/lib/checkers/publiccode";
 import { isMandatoryFromDate } from "@/lib/criteria";
 import { componentHref } from "@/lib/routes";
-import { developmentStatusOf, type MaintainedSla } from "@/lib/maintained";
+import { developmentStatusOf, type MaintainedDecision, type MaintainedSla } from "@/lib/maintained";
 import { computeLifecycleStatus, openDropsOf, type LifecycleResult } from "@/lib/lifecycle";
 import type { CheckReport, CheckResult, Endorsement, OpenTrackMeasures, StarRating } from "@/lib/types";
 import type { MaintenanceDrop, RepoMeta } from "@/generated/openapi-client";
@@ -65,10 +65,9 @@ export interface RepositoryRun {
     nextCheckAt: string | null;
     /** The branch or tag followed scans use; null for the default branch */
     scanRef: string | null;
-    /** When an admin retired the repository, or null */
-    retiredAt: string | null;
-    retiredReason: string | null;
   };
+  /** VNG's decision to take the component into management, from config/repositories.yml; null without one */
+  maintainedDecision: MaintainedDecision | null;
   repoMeta: CheckReport["repoMeta"];
   /** Every loaded run, newest first */
   runs: RunSummary[];
@@ -79,7 +78,7 @@ export interface RepositoryRun {
   latest: { endorsement: Endorsement | null; developmentStatus: string | null };
   /** Drops the backend recorded, newest first; empty on a backend without drops */
   drops: MaintenanceDrop[];
-  /** What the static site adds: the providers, the basisset flag and the retirement; null on the server */
+  /** What the static site adds: the providers and the basisset flag; null on the server */
   extras: RepositoryExtras | null;
 }
 
@@ -279,9 +278,8 @@ export async function loadRepositoryRun(
         checkIntervalHours: repository.checkIntervalHours ?? null,
         nextCheckAt: repository.nextCheckAt ?? null,
         scanRef: repository.scanRef ?? null,
-        retiredAt: repository.retiredAt ?? extras?.retired?.on ?? null,
-        retiredReason: repository.retiredReason ?? extras?.retired?.reason ?? null,
       },
+      maintainedDecision: response?.maintainedDecision ?? null,
       repoMeta: normalizeRepoMeta(repository.metadata),
       runs,
       selected,
@@ -310,8 +308,7 @@ export function lifecycleOfRun(
     developmentStatus: run.latest.developmentStatus,
     slas: options.usage?.slas ?? [],
     today: options.today,
-    retiredAt: run.repository.retiredAt,
-    retiredReason: run.repository.retiredReason,
+    decision: run.maintainedDecision,
     drops: openDropsOf(run.drops),
   });
 }

@@ -13,10 +13,12 @@ export interface RepositoryHints {
   apiSpecs?: string[];
 }
 
-export interface RetiredInfo {
+/** VNG's decision to take a component into management (beheer). It is added by pull request. */
+export interface MaintainedDecision {
   /** YYYY-MM-DD */
-  on: string;
-  reason: string;
+  since: string;
+  /** https URL of the published decision */
+  decision: string;
 }
 
 export const PROVIDER_SERVICES = ["maintenance", "support", "hosting", "implementation", "training"] as const;
@@ -52,8 +54,8 @@ export interface FollowedRepository {
   hints?: RepositoryHints;
   /** Issue labels that mark an issue as covered by an SLA */
   slaLabels?: string[];
-  /** A retired component is no longer scanned; its last results stay listed. */
-  retired?: RetiredInfo;
+  /** VNG decided to take the component into management; without it a component is at most Suitable */
+  maintained?: MaintainedDecision;
   /** Who offers services on top of the component; contracts and SLAs are in config/slas.yml */
   providers?: ServiceProvider[];
   /** Ids of config/functionalities.yml: what the component does */

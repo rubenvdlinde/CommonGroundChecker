@@ -164,8 +164,8 @@ export const PUBLICCODE_USES: PubliccodeUse[] = [
     fields: "developmentStatus (stable), usedBy (at least 2), maintenance (a valid contract)",
     href: "#setup-levels",
   },
-  { feature: "Maintained", fields: "everything Suitable reads, plus an SLA on the VNG model contract", href: "#setup-levels" },
-  { feature: "Retired in the lifecycle", fields: "developmentStatus: obsolete", href: "#common-ground-lifecycle" },
+  { feature: "Maintained", fields: "everything Suitable reads, plus the VNG decision in the component list", href: "#setup-levels" },
+  { feature: "Not suitable in the lifecycle", fields: "developmentStatus: obsolete", href: "#common-ground-lifecycle" },
   { feature: "The Users pages and the usage criterion", fields: "usedBy", href: criterionDocHref("usage") },
   {
     feature: "Contributors in the usage criterion: telling the owner from outside contributors",

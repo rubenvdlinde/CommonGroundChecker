@@ -7,7 +7,7 @@ The profile uses only keys of the [publiccode.yml standard](https://publiccodeym
 Each field below says what to put there, gives an example, and names the criterion that reads it.
 
 - **Needed for Suitable**: a mandatory criterion or Suitable for Common Ground depends on it. Suitable for Common Ground is the threshold the programme uses to decide whether to adopt a component as supported.
-- **Needed for Maintained (proposed)**: it belongs to the proposed Maintained level, which also needs a valid SLA with a maintainer on the VNG model contract.
+- **Needed for Maintained (proposed)**: it belongs to the proposed Maintained level, which also needs a decision by VNG to take the component into management.
 - **Informative**: it is shown or compared, but no rating or verdict depends on it.
 
 A field marked *in development* or *proposed* is read by a part of the checker that is not released yet.
@@ -155,7 +155,7 @@ usedBy:
   - Gemeente Proefstad
 ```
 
-Read by: Suitable for Common Ground needs at least 2 organisations, together with developmentStatus stable. Maintained adds a valid SLA with a maintainer on the VNG model contract. The usage overview and the Users pages list them.
+Read by: Suitable for Common Ground needs at least 2 organisations, together with developmentStatus stable. Maintained adds a decision by VNG to take the component into management; the SLA follows it. The usage overview and the Users pages list them.
 
 ### supports (Common Ground layer)
 

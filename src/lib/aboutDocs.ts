@@ -130,7 +130,7 @@ export const SETUP_POINTS: SetupPoint[] = [
     title: pathSection("levels").title,
     paragraphs: [
       "Suitable for Common Ground means the checker finds that the component meets the technical conditions, including a valid maintenance contract, developmentStatus stable and at least 2 organisations under usedBy in publiccode.yml. It is the threshold the Common Ground programme uses to decide whether to adopt a component as supported. It is not a condition for being listed: a component that is not yet suitable is still listed.",
-      "Maintained adds a valid SLA with a maintainer, on the VNG model contract.",
+      "Maintained adds a decision by VNG to take the component into management. The SLA with a maintainer, on the VNG model contract, is agreed after that decision. Without a decision a component is at most Suitable, whatever its SLA.",
     ],
     status: pathSection("levels").status,
     link: pathLink("levels"),
@@ -247,7 +247,6 @@ export interface LifecycleState {
 }
 
 export interface LifecycleTransition {
-  /** "any" stands for every other state */
   from: string;
   to: string;
   /** A few words, drawn next to the arrow */
@@ -268,13 +267,8 @@ export const CG_STATES: LifecycleState[] = [
   {
     id: "maintained",
     name: "Maintained",
-    text: "Suitable, and a valid SLA with a maintainer, on the VNG model contract. The component is in the support of the programme. A drop below a criterion starts a fix term: the maintainer must fix it in time, and the component stays Maintained during the term.",
-    note: ["A drop starts a fix term:", "the maintainer must fix", "it in time."],
-  },
-  {
-    id: "retired",
-    name: "Retired",
-    text: "The component is obsolete, or the programme retires it. Its history stays visible, and it is no longer measured every night.",
+    text: "Suitable, and VNG decided to take the component into management. The decision is recorded in the component list. The SLA with a maintainer, on the VNG model contract, is agreed after the decision. From then on a missing SLA or a drop below a criterion starts a fix term: the maintainer must fix it in time, and the component stays Maintained during the term.",
+    note: ["A missing SLA or a drop", "starts a fix term:", "fix it in time."],
   },
 ];
 
@@ -285,26 +279,20 @@ export const CG_TRANSITIONS: LifecycleTransition[] = [
   {
     from: "suitable",
     to: "maintained",
-    label: "SLA",
-    text: "There is a valid SLA with a maintainer, on the VNG model contract.",
+    label: "VNG decision",
+    text: "VNG decides to take the component into management. The decision is added to the component list by pull request. The SLA follows the decision.",
   },
   {
     from: "maintained",
     to: "suitable",
-    label: "condition lost",
-    text: "The SLA ended, or a fix term passed without a fix. The verdict still holds. The component can come back.",
+    label: "fix term passed",
+    text: "The SLA is missing or expired, or a drop is not fixed, and its fix term passed. The verdict still holds. The decision stays recorded, so the component is Maintained again once it is fixed.",
   },
   {
     from: "maintained",
     to: "measured",
     label: "verdict lost too",
-    text: "A condition of Maintained is lost and the verdict no longer holds either.",
-  },
-  {
-    from: "any",
-    to: "retired",
-    label: "obsolete or retired",
-    text: "developmentStatus becomes obsolete, or the programme retires the component.",
+    text: "The verdict was lost and not fixed within its fix term. The decision stays recorded. The status shows: maintained by VNG decision, not suitable now.",
   },
 ];
 
@@ -325,19 +313,20 @@ export const LIFECYCLE_RELATION: { statuses: string[]; effect: string }[] = [
   },
   {
     statuses: ["stable"],
-    effect: "Can be in any state of the Common Ground lifecycle. Only a stable component can be suitable for Common Ground or Maintained. A stable component can still be only suitable, for example without a valid SLA.",
+    effect: "Can be in any state of the Common Ground lifecycle. Only a stable component can be suitable for Common Ground or Maintained. A stable component can still be only suitable, for example without a VNG decision.",
   },
-  { statuses: ["obsolete"], effect: "Leads to retired. The history stays visible." },
+  {
+    statuses: ["obsolete"],
+    effect: "Can be listed and measured. Cannot be suitable for Common Ground or Maintained. A component that should no longer be followed is removed from the component list; its history stays.",
+  },
 ];
 
 /** What happens to a Maintained component whose developmentStatus leaves stable. */
 export const LEAVING_STABLE: { to: string[]; state: string }[] = [
-  { to: ["beta", "development", "concept"], state: "measured" },
-  { to: ["obsolete"], state: "retired" },
+  { to: ["beta", "development", "concept", "obsolete"], state: "measured" },
 ];
 
 export function stateName(id: string): string {
-  if (id === "any") return "Any state";
   const state = CG_STATES.find((candidate) => candidate.id === id);
   if (!state) throw new Error(`no lifecycle state ${id}`);
   return state.name;

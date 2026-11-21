@@ -151,7 +151,7 @@ async function main(argv: string[]): Promise<number> {
   const toScan = args.indexOnly
     ? []
     : config.repositories.filter(
-        (entry) => !entry.retired && (only.size === 0 || only.has(normalizeRepositoryUrl(entry.url).toLowerCase()))
+        (entry) => only.size === 0 || only.has(normalizeRepositoryUrl(entry.url).toLowerCase())
       );
 
   let failed = 0;

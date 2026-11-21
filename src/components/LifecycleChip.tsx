@@ -5,7 +5,6 @@ const CHIP_CLASSES: Record<LifecycleStatus, string> = {
   measured: "border-amber-300 text-amber-900 bg-amber-50",
   suitable: "border-green-300 text-green-800 bg-green-50",
   maintained: "border-cg-blue text-white bg-cg-blue",
-  retired: "border-gray-500 text-gray-800 bg-gray-200",
 };
 
 /** The Common Ground status of a component as a chip. */

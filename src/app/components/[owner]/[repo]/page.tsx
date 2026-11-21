@@ -93,8 +93,6 @@ export default async function RepoHistoryPage({ params }: HistoryPageProps) {
         result: lifecycleOfRun(run, { usage, today }),
         basisset: matchBasisset(basisset, run.repository.repoUrl, scannedVersion),
         scannedVersion,
-        retiredAt: run.repository.retiredAt,
-        adminControls: !IS_STATIC_SITE,
       }}
       landscape={landscape}
     />

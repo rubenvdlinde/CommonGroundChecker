@@ -13,8 +13,6 @@ import type { RepoAnalysisOutput } from '../models/RepoAnalysisOutput';
 import type { RepoHistoryResponse } from '../models/RepoHistoryResponse';
 import type { RepoMetadata } from '../models/RepoMetadata';
 import type { RepoSummary } from '../models/RepoSummary';
-import type { RetireInput } from '../models/RetireInput';
-import type { RetireState } from '../models/RetireState';
 import type { ScoringConfigResponse } from '../models/ScoringConfigResponse';
 import type { SlaInput } from '../models/SlaInput';
 import type { UsageStatus } from '../models/UsageStatus';
@@ -328,34 +326,6 @@ export class DefaultService {
             url: '/api/admin/scoring',
             body: requestBody,
             mediaType: 'application/json',
-        });
-    }
-    /**
-     * Retire a repository, or undo it
-     * Admin only. Requires `Authorization: Bearer <ADMIN_TOKEN>`. A retired repository keeps its history and is not rescanned on schedule until it is un-retired. Disabled with 503 when the backend has no ADMIN_TOKEN configured.
-     * @param repoId
-     * @param requestBody
-     * @returns RetireState Retirement saved
-     * @throws ApiError
-     */
-    public putApiRepositoriesRetire(
-        repoId: string,
-        requestBody: RetireInput,
-    ): CancelablePromise<RetireState> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/repositories/{repoId}/retire',
-            path: {
-                'repoId': repoId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: `Invalid request: retired is not a boolean, or the reason is missing or longer than 500 characters`,
-                401: `Missing or invalid admin token`,
-                404: `Repository not found`,
-                503: `Admin actions are disabled because ADMIN_TOKEN is not configured`,
-            },
         });
     }
 }

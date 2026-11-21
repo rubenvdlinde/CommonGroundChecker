@@ -5,13 +5,15 @@ import { useId, useState } from "react";
 import MaintainedLevel from "@/components/MaintainedLevel";
 import { deleteSla, postSla, type UsageStatus } from "@/lib/apiClient";
 import { STATIC_SITE_LINKS } from "@/lib/dataSource/mode";
-import { computeMaintained, organisationsLabel } from "@/lib/maintained";
+import { computeMaintained, organisationsLabel, type MaintainedDecision } from "@/lib/maintained";
 import { organisationHref, organisationKey } from "@/lib/organisations";
 import type { Endorsement } from "@/lib/types";
 
 interface MaintainedSectionProps {
   repoId: string;
   endorsement: Endorsement;
+  /** VNG's decision to take the component into management, from config/repositories.yml; null without one */
+  decision: MaintainedDecision | null;
   /** The usage status from the backend, or null when it could not be loaded */
   initialUsage: UsageStatus | null;
   minUsers: number;
@@ -47,6 +49,7 @@ function usageSummary(usage: UsageStatus | null): string {
 export default function MaintainedSection({
   repoId,
   endorsement,
+  decision,
   initialUsage,
   minUsers,
   today,
@@ -62,6 +65,7 @@ export default function MaintainedSection({
 
   const level = computeMaintained({
     endorsement,
+    decision,
     slas: usage?.slas ?? [],
     today,
   });
@@ -99,8 +103,12 @@ export default function MaintainedSection({
       <MaintainedLevel level={level} endorsement={endorsement} minUsers={minUsers} />
       <p className="text-xs text-gray-500">
         Suitable for Common Ground needs developmentStatus stable and at least {organisationsLabel(minUsers)} declared in
-        publiccode.yml. Who decides that a component is Maintained, and what happens when a maintainer misses the SLA,
-        needs a governance decision.
+        publiccode.yml. Maintained needs a decision by VNG to take the component into management. That decision is
+        recorded in{" "}
+        <a href={STATIC_SITE_LINKS.componentList} className="text-cg-lightblue hover:underline">
+          config/repositories.yml
+        </a>{" "}
+        by pull request. The SLA is agreed after the decision. A missing SLA or a lost verdict then gets a fix term.
         Usage counts only in the verdict. It never gives stars and never counts in a rating.
       </p>
 

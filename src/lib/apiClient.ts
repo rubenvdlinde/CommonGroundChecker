@@ -13,8 +13,6 @@ import type {
   RepoHistoryResponse,
   RepoMetadata,
   RepoSummary,
-  RetireInput,
-  RetireState,
   ScoringConfigResponse,
   SlaInput,
   UsageStatus,
@@ -44,8 +42,6 @@ export type {
   RepoAnalysisInput,
   RepoAnalysisOutput,
   RepoHistoryResponse,
-  RetireInput,
-  RetireState,
   ScoringConfigResponse,
   SlaInput,
   UsageStatus,
@@ -171,12 +167,6 @@ export async function putRepositoryFollow(
   logApiRequest("local", "PUT", `/api/repositories/${encodeURIComponent(repoId)}/follow`, settings);
   const client = new ApiClient({ BASE: "", TOKEN: adminToken });
   return client.default.putApiRepositoriesFollow(repoId, settings);
-}
-
-/** Retires a repository, or undoes it, through the local proxy. Admin only. */
-export async function putRepositoryRetire(repoId: string, input: RetireInput, adminToken: string): Promise<RetireState> {
-  logApiRequest("local", "PUT", `/api/repositories/${encodeURIComponent(repoId)}/retire`, input);
-  return adminClient(adminToken).putApiRepositoriesRetire(repoId, input);
 }
 
 export async function getRepositoryUsage(repoId: string): Promise<UsageStatus> {

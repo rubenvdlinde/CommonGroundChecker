@@ -1,19 +1,18 @@
-import { computeMaintained, type MaintainedSla } from "./maintained";
+import { slaMissingText, slaStateOf, type MaintainedDecision, type MaintainedSla } from "./maintained";
 import { isAdoptionReason } from "./ratings";
 import type { Endorsement } from "./types";
 
-/** The status of a component in the Common Ground programme, from Listed to Retired. */
-export type LifecycleStatus = "listed" | "measured" | "suitable" | "maintained" | "retired";
+/** The status of a component in the Common Ground programme, from Listed to Maintained. */
+export type LifecycleStatus = "listed" | "measured" | "suitable" | "maintained";
 
-/** The statuses in the order of the lifecycle; Retired last. */
-export const LIFECYCLE_STATUSES: LifecycleStatus[] = ["listed", "measured", "suitable", "maintained", "retired"];
+/** The statuses in the order of the lifecycle. */
+export const LIFECYCLE_STATUSES: LifecycleStatus[] = ["listed", "measured", "suitable", "maintained"];
 
 export const LIFECYCLE_LABELS: Record<LifecycleStatus, string> = {
   listed: "Listed",
   measured: "Measured",
   suitable: "Suitable for Common Ground",
   maintained: "Maintained",
-  retired: "Retired",
 };
 
 /** Short labels, for a chip or a filter. */
@@ -46,22 +45,20 @@ export interface LifecycleInput {
   slas: MaintainedSla[];
   /** Today as YYYY-MM-DD */
   today: string;
-  /** When an admin retired the repository, or null */
-  retiredAt: string | null;
-  retiredReason: string | null;
+  /** VNG's decision to take the component into management, from config/repositories.yml; null without one */
+  decision: MaintainedDecision | null;
   drops: OpenDrops;
 }
 
 export interface LifecycleResult {
   status: LifecycleStatus;
   label: string;
-  /** Why the component is not at the next status up; empty at Maintained and Retired */
+  /** Why the component is not at the next status up; empty at Maintained */
   reasons: string[];
   /** A note that does not change the status, such as an open drop on a Maintained component */
   note: string | null;
-  /** Why a component is Retired: the scanned developmentStatus, or an admin */
-  retiredBy: "obsolete" | "admin" | null;
-  retiredReason: string | null;
+  /** The recorded VNG decision; it stays recorded when the component falls back */
+  decision: MaintainedDecision | null;
 }
 
 /** "19-11-2026" for an ISO date or date-time, in Dutch time. */
@@ -81,66 +78,64 @@ function result(status: LifecycleStatus, fields: Partial<LifecycleResult> = {}):
     label: LIFECYCLE_LABELS[status],
     reasons: [],
     note: null,
-    retiredBy: null,
-    retiredReason: null,
+    decision: null,
     ...fields,
   };
 }
 
+/** The note on a component that VNG decided to maintain but that fell back. */
+export const DECIDED_NOT_SUITABLE_NOTE = "Maintained by VNG decision, not suitable now";
+export const DECIDED_TERM_PASSED_NOTE = "Maintained by VNG decision, a fix term has passed";
+
 /**
  * The one Common Ground status of a repository.
  *
- * Retired wins: an admin retired it, or the scanned publiccode.yml says
- * `developmentStatus: obsolete`. Without a stored analysis it is Listed.
- * When the verdict does not hold it is Measured, otherwise Suitable for
- * Common Ground. Maintained adds a valid SLA (see `computeMaintained`).
- * While a drop
- * is open and within its fix term, a component that meets those
- * conditions stays Maintained, with a note, even when the drop cost the
- * verdict. Once a fix term has passed it is Suitable, or Measured when the
- * verdict is lost too.
+ * Without a stored analysis it is Listed. When the verdict does not hold it
+ * is Measured, otherwise Suitable for Common Ground. Maintained adds VNG's
+ * decision to take the component into management; without that decision a
+ * component is at most Suitable, whatever its SLA. After the decision the
+ * SLA and the drops have fix terms. While a drop is open within its term,
+ * or the SLA is missing within its term, the component stays Maintained
+ * with a note, also when the drop cost the verdict. Once a term has passed
+ * it falls back: to Measured when the verdict is lost, otherwise to
+ * Suitable. The decision stays recorded.
  */
 export function computeLifecycleStatus(input: LifecycleInput): LifecycleResult {
-  if (input.retiredAt) {
-    return result("retired", { retiredBy: "admin", retiredReason: input.retiredReason });
-  }
-  if (input.developmentStatus?.trim().toLowerCase() === "obsolete") {
-    return result("retired", {
-      retiredBy: "obsolete",
-      retiredReason: "developmentStatus is obsolete in publiccode.yml",
-    });
-  }
   if (!input.hasAnalysis || !input.endorsement) {
     return result("listed", { reasons: ["Not measured yet"] });
   }
-  const maintained = computeMaintained({
-    endorsement: { passed: true, reasons: [] },
-    slas: input.slas,
-    today: input.today,
-  });
+  const decision = input.decision;
+  const sla = decision ? slaStateOf(decision, input.slas, input.today) : null;
   const inFixTerm = input.drops.open > 0 && input.drops.overdue === 0;
   const openDropNote = inFixTerm && input.drops.nextFixBy
     ? `Open drop, fix by ${formatLifecycleDate(input.drops.nextFixBy)}`
     : null;
+  const slaNote = sla && !sla.overdue ? slaMissingText(sla) : null;
 
   if (!input.endorsement.passed) {
     // A drop that cost the verdict leaves a Maintained component Maintained while its fix term runs.
     // Leaving stable or losing users is not a drop.
     const lostOnPubliccode = input.endorsement.reasons.some(isAdoptionReason);
-    if (maintained.maintained && inFixTerm && !lostOnPubliccode) return result("maintained", { note: openDropNote });
+    if (decision && inFixTerm && !lostOnPubliccode && !sla?.overdue) {
+      return result("maintained", { note: [openDropNote, slaNote].filter(Boolean).join("; ") || null, decision });
+    }
     return result("measured", {
       reasons: input.endorsement.reasons.length > 0 ? input.endorsement.reasons : ["The verdict does not hold"],
+      note: decision ? DECIDED_NOT_SUITABLE_NOTE : null,
+      decision,
     });
   }
-  if (!maintained.maintained) return result("suitable", { reasons: maintained.reasons });
+  if (!decision || !sla) return result("suitable", { reasons: ["No VNG decision to take it into management"] });
 
+  const passed: string[] = [];
   if (input.drops.overdue > 0) {
     const count = input.drops.overdue;
-    return result("suitable", {
-      reasons: [`${count} ${count === 1 ? "drop is" : "drops are"} past the fix term`],
-    });
+    passed.push(`${count} ${count === 1 ? "drop is" : "drops are"} past the fix term`);
   }
-  return result("maintained", { note: openDropNote });
+  if (sla.overdue) passed.push(slaMissingText(sla) as string);
+  if (passed.length > 0) return result("suitable", { reasons: passed, note: DECIDED_TERM_PASSED_NOTE, decision });
+
+  return result("maintained", { note: [openDropNote, slaNote].filter(Boolean).join("; ") || null, decision });
 }
 
 /** The open drops in a list of drops, as the repository page has them. */

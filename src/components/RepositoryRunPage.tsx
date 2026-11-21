@@ -53,20 +53,15 @@ function StaticFollowSection({ extras }: { extras: RepositoryExtras | null }) {
   return (
     <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-2">
       <h3 className="text-lg font-semibold text-gray-800">Follow</h3>
-      {extras?.retired ? (
-        <p className="text-sm text-gray-700">
-          Retired on {extras.retired.on}: {extras.retired.reason}. It is no longer scanned; these are its last results.
-        </p>
-      ) : (
-        <p className="text-sm text-gray-700">
-          On the{" "}
-          <a href={STATIC_SITE_LINKS.componentList} className="text-cg-lightblue hover:underline">
-            component list
-          </a>
-          , so it is scanned every night.
-          {extras?.basisset ? " It is part of the Common Ground basisset." : ""}
-        </p>
-      )}
+      <p className="text-sm text-gray-700">
+        On the{" "}
+        <a href={STATIC_SITE_LINKS.componentList} className="text-cg-lightblue hover:underline">
+          component list
+        </a>
+        , so it is scanned every night. A component that is no longer followed is removed from the list; its
+        history stays.
+        {extras?.basisset ? " It is part of the Common Ground basisset." : ""}
+      </p>
     </section>
   );
 }
@@ -127,13 +122,14 @@ export default function RepositoryRunPage({ owner, repo, result, maintained, lif
 
       <ProvidedBy repoUrl={repository.repoUrl} />
 
-      {lifecycle && <LifecycleSection repoId={repository.id} {...lifecycle} />}
+      {lifecycle && <LifecycleSection {...lifecycle} />}
 
       {maintained && (
         <>
           <MaintainedSection
             repoId={repository.id}
             endorsement={latest.endorsement ?? { passed: false, reasons: ["Not scanned yet"] }}
+            decision={result.run.maintainedDecision}
             initialUsage={maintained.usage}
             minUsers={maintained.minUsers}
             today={maintained.today}
