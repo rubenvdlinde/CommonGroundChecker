@@ -257,7 +257,7 @@ describe("ChecklistSourcesDiagram layouts", () => {
     it(`places every box and arrow inside the ${layout.id} layout`, () => {
       const ids = sourcesNodes().map((node) => node.id);
       expect(Object.keys(layout.boxes).sort()).toEqual([...ids].sort());
-      expect(Object.keys(layout.edges).sort()).toEqual(ids.filter((id) => id !== CHECKLIST_NODE).sort());
+      expect(Object.keys(layout.edges).sort()).toEqual([...ids.filter((id) => id !== CHECKLIST_NODE), "join"].sort());
       for (const box of Object.values(layout.boxes)) {
         expect(box.x).toBeGreaterThanOrEqual(0);
         expect(box.x + box.width).toBeLessThanOrEqual(layout.width);
@@ -413,7 +413,11 @@ describe("AboutPage", () => {
     expect(images.map((image) => image.getAttribute("data-layout"))).toEqual(["wide", "narrow"]);
     for (const image of images) {
       expect(image.querySelectorAll("[data-node]")).toHaveLength(7);
-      expect(image.querySelectorAll("[data-edge]")).toHaveLength(6);
+      expect(image.querySelectorAll("[data-edge]")).toHaveLength(7);
+      expect(image.querySelectorAll("[data-edge][marker-end]")).toHaveLength(3);
+      expect(image.querySelector('[data-edge="maintained"]')?.getAttribute("d")).toBe(
+        image.getAttribute("data-layout") === "wide" ? "M915 171 V219" : "M160 582 V610"
+      );
       expect(image.querySelector('[data-node="alv"]')!.textContent).toBe("Common Ground standard v1.0VNG ALV, 11 December 2026Proposed");
     }
     const sources = within(section).getByRole("list", { name: "The four sources" });

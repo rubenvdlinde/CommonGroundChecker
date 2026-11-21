@@ -16,7 +16,7 @@ export interface SourcesLayout {
   fontSize: number;
   /** Keyed by source id, "checklist" and outcome id */
   boxes: Record<string, Box>;
-  /** SVG path data per box that has an arrow; sources point at the checklist, the checklist at each outcome */
+  /** SVG path data per line: each source joins one line into the checklist, the checklist points at Suitable and Suitable at Maintained */
   edges: Record<string, string>;
 }
 
@@ -40,20 +40,21 @@ export const WIDE_SOURCES_LAYOUT: SourcesLayout = {
     maintained: { x: 800, y: 219, width: 230, height: 76 },
   },
   edges: {
-    "component-checker": "M410 48 H455 V175 H500",
-    sig: "M410 146 H455 V188 H500",
-    alv: "M410 244 H455 V202 H500",
-    fpc: "M410 342 H455 V215 H500",
-    suitable: "M700 185 H750 V133 H800",
-    maintained: "M700 205 H750 V257 H800",
+    "component-checker": "M410 48 H455",
+    sig: "M410 146 H455",
+    alv: "M410 244 H455",
+    fpc: "M410 342 H455",
+    join: "M455 48 V342 M455 195 H500",
+    suitable: "M700 195 H750 V133 H800",
+    maintained: "M915 171 V219",
   },
 };
 
-/** Narrow screens: the sources in a column, joined on the right, the levels side by side below. */
+/** Narrow screens: the sources in a column, joined on the right, the levels stacked below. */
 export const NARROW_SOURCES_LAYOUT: SourcesLayout = {
   id: "narrow",
   width: 320,
-  height: 602,
+  height: 696,
   fontSize: 14,
   boxes: {
     "component-checker": { x: 10, y: 10, width: 260, height: 76 },
@@ -61,16 +62,17 @@ export const NARROW_SOURCES_LAYOUT: SourcesLayout = {
     alv: { x: 10, y: 202, width: 260, height: 76 },
     fpc: { x: 10, y: 298, width: 260, height: 76 },
     checklist: { x: 60, y: 406, width: 200, height: 60 },
-    suitable: { x: 10, y: 516, width: 145, height: 76 },
-    maintained: { x: 165, y: 516, width: 145, height: 76 },
+    suitable: { x: 60, y: 506, width: 200, height: 76 },
+    maintained: { x: 60, y: 610, width: 200, height: 76 },
   },
   edges: {
-    "component-checker": "M270 48 H295 V436 H260",
-    sig: "M270 144 H295 V436 H260",
-    alv: "M270 240 H295 V436 H260",
-    fpc: "M270 336 H295 V436 H260",
-    suitable: "M110 466 V491 H82 V516",
-    maintained: "M210 466 V491 H237 V516",
+    "component-checker": "M270 48 H295",
+    sig: "M270 144 H295",
+    alv: "M270 240 H295",
+    fpc: "M270 336 H295",
+    join: "M295 48 V436 H260",
+    suitable: "M160 466 V506",
+    maintained: "M160 582 V610",
   },
 };
 
@@ -110,8 +112,8 @@ export default function ChecklistSourcesDiagram({ layout, className }: { layout:
       <title id={titleId}>Where the checklist comes from</title>
       <desc id={descId}>
         Four sources feed the checklist: Hugo ter Doest&apos;s proposal, the SIG ratings, the Common Ground
-        standard v1.0, put to the VNG ALV of 11 December 2026, and the Standard for Public Code. The checklist decides suitable for Common Ground and
-        Maintained. The list below the diagram gives the same as text.
+        standard v1.0, put to the VNG ALV of 11 December 2026, and the Standard for Public Code. The checklist decides suitable for Common Ground,
+        and Maintained follows from suitable. The list below the diagram gives the same as text.
       </desc>
       <defs>
         <marker id={arrowId} viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -126,7 +128,7 @@ export default function ChecklistSourcesDiagram({ layout, className }: { layout:
           d={d}
           fill="none"
           strokeWidth={1.5}
-          markerEnd={`url(#${arrowId})`}
+          markerEnd={layout.boxes[id] && !CHECKLIST_OUTCOMES.some((outcome) => outcome.id === id) ? undefined : `url(#${arrowId})`}
           className="stroke-gray-500"
         />
       ))}
