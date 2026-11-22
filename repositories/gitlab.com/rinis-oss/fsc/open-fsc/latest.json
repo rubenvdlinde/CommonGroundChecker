@@ -28,25 +28,25 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-21T09:15:34.708Z",
+  "lastCheckedAt": "2026-11-22T09:23:15.232Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T14:04:15.013Z",
-  "updatedAt": "2026-11-21T09:15:34.708Z",
+  "updatedAt": "2026-11-22T09:23:15.232Z",
   "basisset": true,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
-  "retired": null,
+  "maintainedDecision": null,
   "providers": [],
   "functionalities": [],
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-21T09-15-34-708Z",
+  "id": "2026-11-22T09-23-15-232Z",
   "repoId": "gitlab.com/rinis-oss/fsc/open-fsc",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-21T09:15:34.708Z",
-  "createdAt": "2026-11-21T09:15:34.708Z",
+  "checkedAt": "2026-11-22T09:23:15.232Z",
+  "createdAt": "2026-11-22T09:23:15.232Z",
   "version": "v2.9.1",
   "checklistVersion": "2026.2",
   "scannedRef": "v2.9.1",
@@ -466,12 +466,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 3.73 (threshold: 15)",
      "Max CCN: 63.00 (threshold: 30)",
-     "3      1     23      0       3 Error@1630-1632@/tmp/cgchecker-repo-kD7Ptu/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     31      0       3 Error@1643-1645@/tmp/cgchecker-repo-kD7Ptu/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     23      0       3 Error@1655-1657@/tmp/cgchecker-repo-kD7Ptu/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     23      0       3 Error@1664-1666@/tmp/cgchecker-repo-kD7Ptu/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     31      0       3 Error@1677-1679@/tmp/cgchecker-repo-kD7Ptu/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
-     "3      1     27      0       3 Error@1690-1692@/tmp/cgchecker-repo-kD7Ptu/repo/txlog-api/ports/rest/api/server/rest-server.gen.go"
+     "3      1     23      0       3 Error@1630-1632@/tmp/cgchecker-repo-C3cy8i/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     31      0       3 Error@1643-1645@/tmp/cgchecker-repo-C3cy8i/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     23      0       3 Error@1655-1657@/tmp/cgchecker-repo-C3cy8i/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     23      0       3 Error@1664-1666@/tmp/cgchecker-repo-C3cy8i/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     31      0       3 Error@1677-1679@/tmp/cgchecker-repo-C3cy8i/repo/txlog-api/ports/rest/api/server/rest-server.gen.go",
+     "3      1     27      0       3 Error@1690-1692@/tmp/cgchecker-repo-C3cy8i/repo/txlog-api/ports/rest/api/server/rest-server.gen.go"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1415,15 +1415,15 @@
     "message": "Gitleaks found 95 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 3 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
      "kubernetes-secret-yaml: helm/deploy/gemeente-riemer/templates/internal-ca-secret.yaml:2",
-     "private-key: helm/deploy/gemeente-riemer/values.yaml:131",
-     "private-key: helm/deploy/gemeente-riemer/values.yaml:249",
      "kubernetes-secret-yaml: helm/deploy/gemeente-stijns/templates/secret-outway-2-server-tls.yaml:2",
      "private-key: helm/deploy/gemeente-stijns/templates/secret-outway-2-server-tls.yaml:9",
+     "private-key: helm/deploy/gemeente-riemer/values.yaml:131",
+     "private-key: helm/deploy/gemeente-riemer/values.yaml:249",
+     "private-key: helm/deploy/rvrd/values.yaml:224",
+     "private-key: helm/deploy/rvrd/values.yaml:341",
+     "generic-api-key: helm/deploy/rvrd/values.yaml:563",
      "private-key: helm/deploy/vergunningsoftware-bv/values.yaml:197",
      "private-key: helm/deploy/vergunningsoftware-bv/values.yaml:314",
-     "jwt: manager/ports/ext/rest/api/core.yaml:496",
-     "jwt: manager/ports/ext/rest/api/core.yaml:598",
-     "jwt: manager/ports/int/rest/api/openapi.yaml:2172",
      "... and 85 more"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
@@ -1538,7 +1538,7 @@
     "status": "info",
     "message": "Usage from 1 source. Shown for information; never rated or compared.",
     "evidence": [
-     "gitlab.com rinis-oss/fsc/open-fsc: 7 stars, 8 forks (2026-11-21)"
+     "gitlab.com rinis-oss/fsc/open-fsc: 7 stars, 8 forks (2026-11-22)"
     ],
     "usage": {
      "sources": [
@@ -1548,7 +1548,7 @@
        "source": "gitlab.com",
        "subject": "rinis-oss/fsc/open-fsc",
        "url": "https://gitlab.com/rinis-oss/fsc/open-fsc",
-       "measuredAt": "2026-11-21",
+       "measuredAt": "2026-11-22",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1599,8 +1599,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "1.03",
-      "explanation": "118 change requests were closed (merged or not) and 115 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "1.02",
+      "explanation": "118 change requests were closed (merged or not) and 116 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -1642,8 +1642,8 @@
     ],
     "sla": {
      "notMeasured": "issue response and fix times are read from GitHub only",
-     "from": "2026-11-21",
-     "to": "2026-11-21",
+     "from": "2026-11-22",
+     "to": "2026-11-22",
      "categories": [],
      "openBreaches": [],
      "openBreachCount": 0,
@@ -1745,10 +1745,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 26,
+  "durationSeconds": 19.8,
   "scanMode": "full",
   "scanModeReason": "the checker or its tools changed",
-  "toolFingerprint": "sha256:e97ee71cc41978e3db6763b5d06b954c",
+  "toolFingerprint": "sha256:67cf230a1d6577bc4f393f811e90b671",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
