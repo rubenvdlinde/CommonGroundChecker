@@ -9,8 +9,8 @@
   "metadata": {
    "description": "OpenProject is the leading open source project management software for product, project and portfolio management. A powerful Jira alternative with agile planning, issue tracking, roadmaps, Gantt charts, time tracking, collaboration features, and more. Available on premises or in the cloud. ⭐ Star us on GitHub",
    "language": "Ruby",
-   "stars": 17569,
-   "forks": 3797,
+   "stars": 17650,
+   "forks": 3815,
    "defaultBranch": "dev",
    "topics": [
     "agile-development",
@@ -51,25 +51,25 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:08:46.804Z",
+  "lastCheckedAt": "2026-11-23T10:19:34.952Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-20T10:52:51.686Z",
-  "updatedAt": "2026-11-20T12:08:46.804Z",
+  "updatedAt": "2026-11-23T10:19:34.952Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
-  "retired": null,
+  "maintainedDecision": null,
   "providers": [],
   "functionalities": [],
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T12-08-46-804Z",
+  "id": "2026-11-23T10-19-34-952Z",
   "repoId": "github.com/opf/openproject",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:08:46.804Z",
-  "createdAt": "2026-11-20T12:08:46.804Z",
+  "checkedAt": "2026-11-23T10:19:34.952Z",
+  "createdAt": "2026-11-23T10:19:34.952Z",
   "version": "v17.8.3",
   "checklistVersion": "2026.2",
   "scannedRef": "v17.9.7",
@@ -107,19 +107,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 5.5
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 2
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 1
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 1
    },
    "dependency-management": {
-    "rating": null
+    "rating": 1.2
    },
    "container-images": {
     "rating": null
@@ -221,7 +221,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 195,228 lines of code, 32,979 functions, 13,283 files analyzed.",
+    "message": "Code metrics: 403,630 lines of code, 67,971 functions, 40,837 files analyzed.",
     "evidence": [
      ".erb_linters/erblint-github.rb",
      ".redocly/plugins/custom-rules.js",
@@ -234,9 +234,9 @@
      "app/components/admin/backups/request_backup_component.rb",
      "app/components/admin/backups/reset_token_dialog_component.rb",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 195,228",
-     "Function count: 32,979",
-     "Files analyzed: 13,283"
+     "Total lines of code (NLOC): 403,630",
+     "Function count: 67,971",
+     "Files analyzed: 40,837"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -742,12 +742,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 1.64 (threshold: 15)",
      "Max CCN: 34.00 (threshold: 30)",
-     "4      2     29      1       5 include_error?@29-33@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
-     "3      1      5      0       3 errors@75-77@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
-     "6      3     27      1       7 create_error@85-91@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
-     "5      4     27      2       5 with_matching_error@93-97@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
-     "10      1     35      1      10 find_loading_errors@126-135@/tmp/cgchecker-repo-RCQscU/repo/script/support/github_actions_failures.rb",
-     "7      1     48      1      11 add_custom_value_errors!@363-373@/tmp/cgchecker-repo-RCQscU/repo/lib_static/plugins/acts_as_customizable/lib/acts_as_customizable.rb"
+     "6      1     23      2       7 initialize@35-41@/tmp/cgchecker-repo-QibMuc/repo/modules/meeting/app/components/base_errors_component.rb",
+     "3      1     16      0       3 render?@43-45@/tmp/cgchecker-repo-QibMuc/repo/modules/meeting/app/components/base_errors_component.rb",
+     "5      1     27      0       5 call@47-51@/tmp/cgchecker-repo-QibMuc/repo/modules/meeting/app/components/base_errors_component.rb",
+     "4      1     33      0       4 joined_messages@53-56@/tmp/cgchecker-repo-QibMuc/repo/modules/meeting/app/components/base_errors_component.rb",
+     "5      2     23      1       5 render_base_error_in_flash_message_via_turbo_stream@300-304@/tmp/cgchecker-repo-QibMuc/repo/modules/meeting/app/controllers/concerns/meetings/agenda_component_streams.rb",
+     "6      2     25      1       6 set_type_for_error_message@50-55@/tmp/cgchecker-repo-QibMuc/repo/modules/grids/app/services/grids/update_service.rb"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1312,15 +1312,263 @@
     "title": "Open Source Health",
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
-    "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "status": "fail",
+    "starRating": 2,
+    "rating": 2.14,
+    "aspectRatings": {
+     "vulnerabilities": 5.5,
+     "freshness": 2,
+     "activity": 1.04,
+     "licence": 1,
+     "management": 1.16
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "0",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Moderate",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "33.3%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 2 years",
+        "value": "33.3%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "33.3%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "1 dependency",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "66.7%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 2 years",
+        "value": "66.7%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "> 4 years",
+        "value": "66.7%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 1
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "1 dependency",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "2",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 1
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "50.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 1
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 2 of 5 stars over 3 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
+     "Freshness: ★★☆☆☆ >1.0y 33.3%, >2.0y 33.3%, >3.5y 33.3%, >5.0y count 1",
+     "Activity: ★☆☆☆☆ >1.0y 66.7%, >2.0y 66.7%, >4.0y 66.7%, >5.5y count 1",
+     "Licence use: ★☆☆☆☆ 2 critical, 0 high, 0 medium, 0 low risk",
+     "Management: ★☆☆☆☆ 3 unmanaged of 6 dependencies"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1869,9 +2117,9 @@
     "status": "info",
     "message": "Usage from 3 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "publiccode.yml usedBy: 14 organisations named (2026-11-20)",
-     "GitHub opf/openproject: 17,569 stars, 3,797 forks, 256 watchers (2026-11-20)",
-     "GitHub commits opf/openproject: 45 contributors, 25 from the owning organisation, 8 from other organisations, 12 unknown (2026-11-20)"
+     "publiccode.yml usedBy: 14 organisations named (2026-11-23)",
+     "GitHub opf/openproject: 17,650 stars, 3,815 forks, 256 watchers (2026-11-23)",
+     "GitHub commits opf/openproject: 45 contributors, 25 from the owning organisation, 8 from other organisations, 12 unknown (2026-11-23)"
     ],
     "usage": {
      "sources": [
@@ -1881,7 +2129,7 @@
        "source": "publiccode.yml usedBy",
        "subject": null,
        "url": null,
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-23",
        "caveat": "Self-declared by the maintainers and not verified.",
        "figures": [
         {
@@ -1912,16 +2160,16 @@
        "source": "GitHub",
        "subject": "opf/openproject",
        "url": "https://github.com/opf/openproject",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-23",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
          "label": "stars",
-         "value": 17569
+         "value": 17650
         },
         {
          "label": "forks",
-         "value": 3797
+         "value": 3815
         },
         {
          "label": "watchers",
@@ -1936,7 +2184,7 @@
        "subject": "opf/openproject",
        "url": "https://github.com/opf/openproject/graphs/contributors",
        "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (openproject.com) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-23",
        "figures": [
         {
          "label": "contributors",
@@ -1983,8 +2231,8 @@
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": "5 organisations; largest 83%",
-      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (295 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is openproject.com (19 authors), with 83% of the 238 commits whose organisation is known; 19% of the commits come from 10 of 33 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "value": "5 organisations; largest 80%",
+      "explanation": "Organisations are told apart by the email domain of the latest 300 commits of the last 12 months (290 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is openproject.com (17 authors), with 80% of the 215 commits whose organisation is known; 26% of the commits come from 10 of 31 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1995,7 +2243,7 @@
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
       "value": "0.89",
-      "explanation": "1,891 change requests were closed (merged or not) and 2,130 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "explanation": "1,900 change requests were closed (merged or not) and 2,123 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -2005,8 +2253,8 @@
       "id": "time-to-first-response",
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
-      "value": "median 45.0 hours",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 10 got a response; 5 had none yet. Bots are left out.",
+      "value": "median 17.6 hours",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-25 and 2026-11-16. 9 got a response; 6 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": true
@@ -2037,8 +2285,8 @@
     ],
     "sla": {
      "notMeasured": "the repository has its issue tracker switched off",
-     "from": "2026-11-20",
-     "to": "2026-11-20",
+     "from": "2026-11-23",
+     "to": "2026-11-23",
      "categories": [],
      "openBreaches": [],
      "openBreachCount": 0,
@@ -2158,10 +2406,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 94.8,
+  "durationSeconds": 43.5,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:67cf230a1d6577bc4f393f811e90b671",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []

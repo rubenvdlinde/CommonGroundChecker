@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-22T09:14:17.897Z",
+  "lastCheckedAt": "2026-11-23T10:08:51.781Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:54:54.974Z",
-  "updatedAt": "2026-11-22T09:14:17.897Z",
+  "updatedAt": "2026-11-23T10:08:51.781Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,23 +44,23 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-22T09-14-17-897Z",
+  "id": "2026-11-23T10-08-51-781Z",
   "repoId": "github.com/ConductionNL/launchpad",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-22T09:14:17.897Z",
-  "createdAt": "2026-11-22T09:14:17.897Z",
+  "checkedAt": "2026-11-23T10:08:51.781Z",
+  "createdAt": "2026-11-23T10:08:51.781Z",
   "version": "v1.1.0",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
-  "scannedCommit": "87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6",
-  "score": 93,
-  "rating": 4.7,
+  "scannedCommit": "d481c6acd9128ce618db41b2133b8ae4d6f87220",
+  "score": 87,
+  "rating": 4.4,
   "categoryRatings": {
    "Governance": 5.5,
-   "Security": 4.8,
+   "Security": 3.9,
    "Architecture": 3,
-   "Software Quality": 4.6,
+   "Software Quality": 4.5,
    "Deployment & Operations": 5.5,
    "AI readiness": 4.9
   },
@@ -104,10 +104,10 @@
     "rating": null
    },
    "secrets": {
-    "rating": 5.5
+    "rating": 0.5
    },
    "secure-coding": {
-    "rating": 5.5
+    "rating": 3
    },
    "supply-chain": {
     "rating": 5.5
@@ -125,13 +125,13 @@
     "rating": 4.3
    },
    "modifiability": {
-    "rating": 4.6
+    "rating": 4.5
    },
    "testability": {
     "rating": 4.5
    },
    "modularity": {
-    "rating": 4.8
+    "rating": 4.4
    },
    "reusability": {
     "rating": 3.8
@@ -173,7 +173,7 @@
   },
   "issueCounts": {
    "errors": 1,
-   "warnings": 0
+   "warnings": 2
   },
   "declaredUsers": [],
   "declaredUserCount": 0,
@@ -184,7 +184,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 9,764 lines of code, 1,056 functions, 1,050 files analyzed.",
+    "message": "Code metrics: 9,703 lines of code, 1,053 functions, 1,048 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -197,9 +197,9 @@
      "l10n/bg.js",
      "l10n/bs.js",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 9,764",
-     "Function count: 1,056",
-     "Files analyzed: 1,050"
+     "Total lines of code (NLOC): 9,703",
+     "Function count: 1,053",
+     "Files analyzed: 1,048"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -280,7 +280,7 @@
     "referenceUrl": "https://reuse.software/spec/",
     "status": "pass",
     "starRating": 5,
-    "message": "100.0% of 2349 source files carry an SPDX header (5 of 5 stars).",
+    "message": "100.0% of 2438 source files carry an SPDX header (5 of 5 stars).",
     "evidence": [],
     "requirementLevel": "recommended"
    },
@@ -569,10 +569,10 @@
      "docs/GOVERNMENT-FEATURES.md",
      "docs/Installation",
      "docs/Installation/demo-environment.md",
+     "docs/accessibility",
+     "docs/accessibility/axe-results.json",
      "docs/adr-audit.md",
-     "docs/adr",
-     "docs/adr/README.md",
-     "docs/architecture.md"
+     "docs/adr"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
     "requirementLevel": "mandatory",
@@ -605,9 +605,9 @@
      "src/__tests__/DashboardSwitcherSidebar.test.js",
      "src/__tests__/Views.test.js",
      "src/__tests__/adminEntryLibraryCatalogue.spec.js",
+     "src/__tests__/axe-core-check.spec.js",
      "src/__tests__/flowPageOptions.spec.js",
-     "src/__tests__/flowPages.spec.js",
-     "src/__tests__/internalActions.test.js"
+     "src/__tests__/flowPages.spec.js"
     ],
     "referenceUrl": "https://docs.github.com/en/actions/automating-builds-and-tests",
     "requirementLevel": "mandatory",
@@ -631,18 +631,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 2.59 <= 15 and Max CCN 19.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 2.57 <= 15 and Max CCN 19.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.59 (threshold: 15)",
+     "Average CCN: 2.57 (threshold: 15)",
      "Max CCN: 19.00 (threshold: 30)",
-     "11      3     79      1      13 ApiContractMiddleware::decorateError@231-243@/tmp/cgchecker-repo-zcLyRq/repo/lib/Middleware/ApiContractMiddleware.php",
-     "3      1     26      1       3 McpArgumentValidator::error@53-55@/tmp/cgchecker-repo-zcLyRq/repo/lib/Mcp/McpArgumentValidator.php",
-     "3      1     11      0       3 ResourceException::getErrorCode@62-64@/tmp/cgchecker-repo-zcLyRq/repo/lib/Exception/ResourceException.php",
-     "3      1     21      0       3 McpToolRefusedException::getErrorCode@54-56@/tmp/cgchecker-repo-zcLyRq/repo/lib/Exception/McpToolRefusedException.php",
-     "3      1     11      0       3 MissingInitialStateException::getErrorCode@73-75@/tmp/cgchecker-repo-zcLyRq/repo/lib/Exception/MissingInitialStateException.php",
-     "10      1     46      1      10 ResourceController::errorResponse@330-339@/tmp/cgchecker-repo-zcLyRq/repo/lib/Controller/ResourceController.php"
+     "11      3     79      1      13 ApiContractMiddleware::decorateError@231-243@/tmp/cgchecker-repo-ayWz1B/repo/lib/Middleware/ApiContractMiddleware.php",
+     "3      1     26      1       3 McpArgumentValidator::error@53-55@/tmp/cgchecker-repo-ayWz1B/repo/lib/Mcp/McpArgumentValidator.php",
+     "3      1     11      0       3 ResourceException::getErrorCode@62-64@/tmp/cgchecker-repo-ayWz1B/repo/lib/Exception/ResourceException.php",
+     "3      1     21      0       3 McpToolRefusedException::getErrorCode@54-56@/tmp/cgchecker-repo-ayWz1B/repo/lib/Exception/McpToolRefusedException.php",
+     "3      1     11      0       3 MissingInitialStateException::getErrorCode@73-75@/tmp/cgchecker-repo-ayWz1B/repo/lib/Exception/MissingInitialStateException.php",
+     "10      1     46      1      10 ResourceController::errorResponse@330-339@/tmp/cgchecker-repo-ayWz1B/repo/lib/Controller/ResourceController.php"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -654,13 +654,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 4.385,
+    "rating": 4.29,
     "aspectRatings": {
-     "analysability": 4.3,
-     "modifiability": 4.63,
-     "testability": 4.49,
-     "modularity": 4.76,
-     "reusability": 3.8
+     "analysability": 4.31,
+     "modifiability": 4.51,
+     "testability": 4.48,
+     "modularity": 4.38,
+     "reusability": 3.79
     },
     "measurements": [
      {
@@ -697,11 +697,11 @@
        },
        {
         "label": "Vue",
-        "value": "3.5%",
+        "value": "3.4%",
         "thresholds": {
          "4": "≤ 5.8%"
         },
-        "stars": 4
+        "stars": 5
        }
       ]
      },
@@ -715,7 +715,7 @@
       "rows": [
        {
         "label": "JavaScript, more than 15 lines",
-        "value": "24.3%",
+        "value": "25.4%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -723,7 +723,7 @@
        },
        {
         "label": "JavaScript, more than 30 lines",
-        "value": "2.7%",
+        "value": "2.9%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
@@ -739,7 +739,7 @@
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "46.6%",
+        "value": "46.7%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -747,7 +747,7 @@
        },
        {
         "label": "PHP, more than 30 lines",
-        "value": "9.4%",
+        "value": "9.2%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
@@ -787,7 +787,7 @@
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "30.5%",
+        "value": "26.9%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -795,7 +795,7 @@
        },
        {
         "label": "Vue, more than 30 lines",
-        "value": "8.1%",
+        "value": "6.4%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
@@ -803,7 +803,7 @@
        },
        {
         "label": "Vue, more than 60 lines",
-        "value": "1.5%",
+        "value": "0.7%",
         "thresholds": {
          "4": "≤ 9.1%"
         },
@@ -821,7 +821,7 @@
       "rows": [
        {
         "label": "JavaScript, complexity above 5",
-        "value": "17.6%",
+        "value": "18.5%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -829,7 +829,7 @@
        },
        {
         "label": "JavaScript, complexity above 10",
-        "value": "1.6%",
+        "value": "1.8%",
         "thresholds": {
          "4": "≤ 7.5%"
         },
@@ -845,7 +845,7 @@
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "15.2%",
+        "value": "15.4%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -893,7 +893,7 @@
        },
        {
         "label": "Vue, complexity above 5",
-        "value": "15.4%",
+        "value": "13.1%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -901,7 +901,7 @@
        },
        {
         "label": "Vue, complexity above 10",
-        "value": "1.8%",
+        "value": "1.0%",
         "thresholds": {
          "4": "≤ 7.5%"
         },
@@ -926,7 +926,7 @@
       "rows": [
        {
         "label": "JavaScript, 3 or more parameters",
-        "value": "7.3%",
+        "value": "7.1%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -950,7 +950,7 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "17.1%",
+        "value": "17.0%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -958,7 +958,7 @@
        },
        {
         "label": "PHP, 5 or more parameters",
-        "value": "2.2%",
+        "value": "2.1%",
         "thresholds": {
          "4": "≤ 3.4%"
         },
@@ -998,7 +998,7 @@
        },
        {
         "label": "Vue, 3 or more parameters",
-        "value": "0.9%",
+        "value": "1.2%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -1032,7 +1032,7 @@
       "rows": [
        {
         "label": "PHP, fan-in above 10",
-        "value": "4.5%",
+        "value": "4.4%",
         "thresholds": {
          "4": "≤ 9.7%"
         },
@@ -1072,11 +1072,11 @@
        },
        {
         "label": "js/ts/vue, fan-in above 50",
-        "value": "0.1%",
+        "value": "1.4%",
         "thresholds": {
          "4": "≤ 1.8%"
         },
-        "stars": 5
+        "stars": 4
        }
       ]
      },
@@ -1132,21 +1132,21 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 4.37 to 4.40 (4 of 5 stars) over 938 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 4.28 to 4.30 (4 of 5 stars) over 977 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★★★ 4.7 (javascript 5.3, php 4.7, typescript 5.5, vue 4.5)",
-     "Unit size: ★★★★☆ 4.0 (javascript 4.8, php 3.6, vue 4.7)",
-     "Unit complexity: ★★★★☆ 4.5 (javascript 4.1, php 4.5, vue 4.5)",
-     "Unit interfacing: ★★★★☆ 3.6 (javascript 4.9, php 2.9, vue 5.4)",
-     "Module coupling: ★★★★★ 4.8 (php 4.5, js/ts/vue 5.1)",
-     "Not rated (php): all 661 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
-     "Not rated (js/ts/vue): all 271 modules fall into one component (src, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
-     "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 4.37 to 4.40, modularity 4.76 (php 1 components, exposed 0.0%, violation degree 0; js/ts/vue 1 components, exposed 0.0%, violation degree 0). The score uses this one.",
-     "Rating with directory components: 3.63 to 3.75, modularity 3.23 (php 21 components, exposed 45.4%, violation degree 0.0424; js/ts/vue 11 components, exposed 58.8%, violation degree 0.1032).",
-     "Lever: module coupling in php, about 2232 lines to fix for half a star",
-     "Lever: unit interfacing in php, about 1002 lines to fix for half a star",
-     "Lever: duplication in vue",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.7% against 0.8%, php 2.2% against 2.9%, typescript 0.0% against 0.0%, vue not measured (Simian has no support for this language) against 3.5%"
+     "Unit size: ★★★★☆ 4.0 (javascript 4.8, php 3.6, vue 4.8)",
+     "Unit complexity: ★★★★☆ 4.5 (javascript 4.0, php 4.5, vue 4.7)",
+     "Unit interfacing: ★★★★☆ 3.6 (javascript 4.9, php 3.0, vue 5.4)",
+     "Module coupling: ★★★★☆ 4.4 (php 4.5, js/ts/vue 4.2)",
+     "Not rated (php): all 682 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
+     "Not rated (js/ts/vue): all 289 modules fall into one component (src, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
+     "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 4.28 to 4.30, modularity 4.38 (php 1 components, exposed 0.0%, violation degree 0; js/ts/vue 1 components, exposed 0.0%, violation degree 0). The score uses this one.",
+     "Rating with directory components: 3.56 to 3.69, modularity 3.06 (php 22 components, exposed 45.1%, violation degree 0.0441; js/ts/vue 11 components, exposed 63.6%, violation degree 0.1196).",
+     "Lever: module coupling in js/ts/vue, about 563 lines to fix for half a star",
+     "Lever: module coupling in php, about 2252 lines to fix for half a star",
+     "Lever: unit interfacing in php, about 1016 lines to fix for half a star",
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.7% against 0.8%, php 2.2% against 2.9%, typescript 0.0% against 0.0%, vue not measured (Simian has no support for this language) against 3.4%"
     ],
     "requirementLevel": "recommended"
    },
@@ -1166,7 +1166,7 @@
       "rows": [
        {
         "label": "All languages, more than 29 lines",
-        "value": "9.1%",
+        "value": "8.7%",
         "thresholds": {
          "2": "≤ 60.2%",
          "3": "≤ 37.0%",
@@ -1177,7 +1177,7 @@
        },
        {
         "label": "All languages, more than 42 lines",
-        "value": "2.2%",
+        "value": "1.9%",
         "thresholds": {
          "2": "≤ 46.7%",
          "3": "≤ 24.3%",
@@ -1188,7 +1188,7 @@
        },
        {
         "label": "All languages, more than 71 lines",
-        "value": "0.4%",
+        "value": "0.2%",
         "thresholds": {
          "2": "≤ 33.4%",
          "3": "≤ 11.1%",
@@ -1206,7 +1206,7 @@
       "rows": [
        {
         "label": "All languages, complexity above 5",
-        "value": "15.5%",
+        "value": "15.4%",
         "thresholds": {
          "2": "≤ 45.1%",
          "3": "≤ 34.4%",
@@ -1217,7 +1217,7 @@
        },
        {
         "label": "All languages, complexity above 7",
-        "value": "6.5%",
+        "value": "6.2%",
         "thresholds": {
          "2": "≤ 38.1%",
          "3": "≤ 23.9%",
@@ -1228,7 +1228,7 @@
        },
        {
         "label": "All languages, complexity above 10",
-        "value": "0.9%",
+        "value": "0.8%",
         "thresholds": {
          "2": "≤ 32.2%",
          "3": "≤ 13.1%",
@@ -1246,7 +1246,7 @@
       "rows": [
        {
         "label": "All languages, 3 or more parameters",
-        "value": "12.8%",
+        "value": "13.0%",
         "thresholds": {
          "2": "≤ 31.4%",
          "3": "≤ 21.6%",
@@ -1286,7 +1286,7 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "6.8%",
+        "value": "6.7%",
         "thresholds": {
          "2": "≤ 34.8%",
          "3": "≤ 8.6%",
@@ -1315,18 +1315,18 @@
        },
        {
         "label": "All languages, fan-in above 3",
-        "value": "12.9%",
+        "value": "13.5%",
         "thresholds": {
          "2": "≤ 43.9%",
          "3": "≤ 22.7%",
          "4": "≤ 13.1%",
          "5": "≤ 1.9%"
         },
-        "stars": 4
+        "stars": 3
        },
        {
         "label": "All languages, fan-in above 5",
-        "value": "8.9%",
+        "value": "9.0%",
         "thresholds": {
          "2": "≤ 30.4%",
          "3": "≤ 13.8%",
@@ -1376,11 +1376,11 @@
     ],
     "message": "Open-track rating 3.9 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
-     "Unit size: ★★★★☆ 9.1% / 2.2% / 0.4% of the code above 29 / 42 / 71 lines",
-     "Unit complexity: ★★★★☆ 15.5% / 6.5% / 0.9% of the code above 5 / 7 / 10 complexity",
-     "Unit interfacing: ★★★☆☆ 12.8% / 5.1% / 1.5% of the code above 2 / 3 / 4 parameters",
-     "Duplication: ★★★☆☆ 6.8% duplicated lines",
-     "Module coupling: ★★★☆☆ 20.3% / 12.9% / 8.9% of the code above 2 / 3 / 5 fan-in",
+     "Unit size: ★★★★☆ 8.7% / 1.9% / 0.2% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★★★★☆ 15.4% / 6.2% / 0.8% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★☆☆ 13.0% / 5.1% / 1.5% of the code above 2 / 3 / 4 parameters",
+     "Duplication: ★★★☆☆ 6.7% duplicated lines",
+     "Module coupling: ★★★☆☆ 20.3% / 13.5% / 9.0% of the code above 2 / 3 / 5 fan-in",
      "Component independence: ★★★★★ 100.0% of the code hidden from other components",
      "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)"
@@ -1396,8 +1396,8 @@
     "message": "Test code ratio 123.9% (5 of 5 stars).",
     "evidence": [
      "Test code ratio: 123.9%",
-     "Test code: 209,727 lines in 1,272 files",
-     "Production code: 169,246 lines in 1,069 files",
+     "Test code: 214,056 lines in 1,322 files",
+     "Production code: 172,775 lines in 1,108 files",
      "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
     ],
     "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
@@ -1675,32 +1675,32 @@
     "status": "info",
     "size": {
      "tool": "scc 4.1.0",
-     "files": 945,
-     "loc": 104730,
+     "files": 984,
+     "loc": 107960,
      "languages": [
       {
        "language": "PHP",
        "family": "php",
-       "files": 667,
-       "loc": 57870
+       "files": 688,
+       "loc": 59695
       },
       {
        "language": "Vue",
        "family": "vue",
-       "files": 162,
-       "loc": 37961
+       "files": 173,
+       "loc": 38798
       },
       {
        "language": "JavaScript",
        "family": "javascript",
-       "files": 108,
-       "loc": 8434
+       "files": 115,
+       "loc": 8998
       },
       {
        "language": "CSS",
        "family": "css",
        "files": 7,
-       "loc": 439
+       "loc": 443
       },
       {
        "language": "TypeScript",
@@ -1710,15 +1710,15 @@
       }
      ]
     },
-    "message": "104,730 lines of production code in 945 file(s), counted with scc 4.1.0. Rebuild effort about 9.3 person-years (open estimate).",
+    "message": "107,960 lines of production code in 984 file(s), counted with scc 4.1.0. Rebuild effort about 9.6 person-years (open estimate).",
     "evidence": [
-     "PHP: 57,870 lines in 667 file(s)",
-     "Vue: 37,961 lines in 162 file(s)",
-     "JavaScript: 8,434 lines in 108 file(s)",
-     "CSS: 439 lines in 7 file(s)",
+     "PHP: 59,695 lines in 688 file(s)",
+     "Vue: 38,798 lines in 173 file(s)",
+     "JavaScript: 8,998 lines in 115 file(s)",
+     "CSS: 443 lines in 7 file(s)",
      "TypeScript: 26 lines in 1 file(s)",
-     "Rebuild effort, open estimate: 2,232 function points, 9.3 person-years (proxies: PHP, Vue and TypeScript use the JavaScript factor; CSS uses the HTML factor)",
-     "SIG-style volume, context, not part of the 2026 rating: 11.3 person-years (proxies: PHP, Vue and CSS use the JavaScript factor)"
+     "Rebuild effort, open estimate: 2,301 function points, 9.6 person-years (proxies: PHP, Vue and TypeScript use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 11.6 person-years (proxies: PHP, Vue and CSS use the JavaScript factor)"
     ]
    },
    {
@@ -1727,27 +1727,27 @@
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
     "status": "info",
-    "message": "jscpd 5.4.2 duplicated lines: 6.8% overall (javascript 0.6%, php 11.1%, typescript 0.0%, vue 1.2%) over 938 file(s). Shown for information; it does not count towards the score.",
+    "message": "jscpd 5.4.2 duplicated lines: 6.7% overall (javascript 0.6%, php 11.0%, typescript 0.0%, vue 1.2%) over 977 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "javascript: 0.6% (111 of 18757 lines, 10 clone(s) in 108 file(s))",
-     "php: 11.1% (15556 of 140391 lines, 905 clone(s) in 667 file(s))",
+     "javascript: 0.6% (111 of 19801 lines, 10 clone(s) in 115 file(s))",
+     "php: 11.0% (15903 of 144500 lines, 925 clone(s) in 688 file(s))",
      "typescript: 0.0% (0 of 46 lines, 0 clone(s) in 1 file(s))",
-     "vue: 1.2% (1037 of 88307 lines, 114 clone(s) in 162 file(s))",
+     "vue: 1.2% (1068 of 90501 lines, 119 clone(s) in 173 file(s))",
      "Clone of 72 lines: lib/Db/Announcement.php:1-72 and lib/Db/AnnouncementFollow.php:1-44",
      "Clone of 59 lines: src/components/admin/RoleLayoutDefaultsSection.vue:28-86 and src/components/admin/RolePermissionsSection.vue:32-84",
      "Clone of 56 lines: lib/Controller/AdminController.php:37-92 and lib/Controller/ResourceServeController.php:60-66",
-     "Clone of 47 lines: lib/Service/HealthPingService.php:1-47 and lib/Service/LiveTileService.php:1-53",
-     "Clone of 47 lines: lib/Service/HealthPingService.php:1-47 and lib/Service/ShippedTemplateUpdateService.php:1-48"
+     "Clone of 47 lines: src/components/Widgets/Renderers/ChartHost.vue:259-305 and src/components/Widgets/Renderers/StatsBlockHost.vue:136-182",
+     "Clone of 45 lines: lib/Db/Acknowledgement.php:1-45 and lib/Db/DashboardLock.php:1-46"
     ],
     "openTrack": {
      "duplication": {
       "tool": "jscpd 5.4.2",
-      "percentage": 6.75,
+      "percentage": 6.7,
       "languages": {
-       "javascript": 0.59,
-       "php": 11.08,
+       "javascript": 0.56,
+       "php": 11.01,
        "typescript": 0,
-       "vue": 1.17
+       "vue": 1.18
       },
       "largestClones": [
        {
@@ -1781,50 +1781,10 @@
         "lines": 56
        },
        {
-        "language": "php",
-        "file": "lib/Service/HealthPingService.php",
-        "startLine": 1,
-        "endLine": 47,
-        "otherFile": "lib/Service/LiveTileService.php",
-        "otherStartLine": 1,
-        "otherEndLine": 53,
-        "lines": 47
-       },
-       {
-        "language": "php",
-        "file": "lib/Service/HealthPingService.php",
-        "startLine": 1,
-        "endLine": 47,
-        "otherFile": "lib/Service/ShippedTemplateUpdateService.php",
-        "otherStartLine": 1,
-        "otherEndLine": 48,
-        "lines": 47
-       },
-       {
-        "language": "php",
-        "file": "lib/Service/HealthPingService.php",
-        "startLine": 1,
-        "endLine": 47,
-        "otherFile": "lib/Service/TemplateService.php",
-        "otherStartLine": 1,
-        "otherEndLine": 23,
-        "lines": 47
-       },
-       {
-        "language": "php",
-        "file": "lib/Service/HealthPingService.php",
-        "startLine": 1,
-        "endLine": 47,
-        "otherFile": "lib/Service/WeatherService.php",
-        "otherStartLine": 1,
-        "otherEndLine": 37,
-        "lines": 47
-       },
-       {
         "language": "vue",
         "file": "src/components/Widgets/Renderers/ChartHost.vue",
-        "startLine": 192,
-        "endLine": 238,
+        "startLine": 259,
+        "endLine": 305,
         "otherFile": "src/components/Widgets/Renderers/StatsBlockHost.vue",
         "otherStartLine": 136,
         "otherEndLine": 182,
@@ -1849,6 +1809,46 @@
         "otherStartLine": 1,
         "otherEndLine": 42,
         "lines": 45
+       },
+       {
+        "language": "php",
+        "file": "lib/Repair/BroadenDefaultWidgetRule.php",
+        "startLine": 1,
+        "endLine": 44,
+        "otherFile": "lib/Repair/BroadenShippedGroupWidgetRules.php",
+        "otherStartLine": 1,
+        "otherEndLine": 48,
+        "lines": 44
+       },
+       {
+        "language": "php",
+        "file": "lib/Db/RoleLayoutDefault.php",
+        "startLine": 79,
+        "endLine": 121,
+        "otherFile": "lib/Db/WidgetPlacement.php",
+        "otherStartLine": 109,
+        "otherEndLine": 151,
+        "lines": 43
+       },
+       {
+        "language": "php",
+        "file": "lib/Service/CalendarWidgetService.php",
+        "startLine": 579,
+        "endLine": 620,
+        "otherFile": "lib/Service/NewsWidgetService.php",
+        "otherStartLine": 941,
+        "otherEndLine": 977,
+        "lines": 42
+       },
+       {
+        "language": "php",
+        "file": "lib/Controller/HealthController.php",
+        "startLine": 1,
+        "endLine": 41,
+        "otherFile": "lib/Controller/MetricsController.php",
+        "otherStartLine": 1,
+        "otherEndLine": 56,
+        "lines": 41
        }
       ]
      }
@@ -1863,12 +1863,12 @@
     "status": "info",
     "message": "Measured the module structure of PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP (pdepend 3.0.0): 661 modules, 1,591 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 95.6% / 1.8% / 1.9% / 0.7% of code at 0-10 / 11-20 / 21-50 / over 50; 61 modules in 2 cycles, largest component cycle 0",
-     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 661 files under lib/ (composer.json PSR-4)",
-     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 21 components; independence 54.6%, entanglement 0.042 (density 3.40), largest component cycle 14. The figures above use the declared components.",
-     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 271 modules, 576 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 98.6% / 0.0% / 1.3% / 0.1% of code at 0-10 / 11-20 / 21-50 / over 50; 3 modules in 1 cycles, largest component cycle 0",
+     "PHP (pdepend 3.0.0): 682 modules, 1,645 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 95.7% / 1.2% / 2.4% / 0.7% of code at 0-10 / 11-20 / 21-50 / over 50; 68 modules in 2 cycles, largest component cycle 0",
+     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 682 files under lib/ (composer.json PSR-4)",
+     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 22 components; independence 55.0%, entanglement 0.043 (density 3.48), largest component cycle 15. The figures above use the declared components.",
+     "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 289 modules, 614 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 98.6% / 0.0% / 0.0% / 1.4% of code at 0-10 / 11-20 / 21-50 / over 50; 3 modules in 1 cycles, largest component cycle 0",
      "JavaScript, TypeScript and Vue components: sigrid.yaml component_base_dirs [\"\"]",
-     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 11 components; independence 41.2%, entanglement 0.103 (density 3.45), largest component cycle 4. The figures above use the declared components."
+     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 11 components; independence 36.4%, entanglement 0.120 (density 3.64), largest component cycle 4. The figures above use the declared components."
     ],
     "openTrack": {
      "coupling": {
@@ -1877,10 +1877,10 @@
        "php": {
         "measured": true,
         "tool": "pdepend 3.0.0",
-        "scope": "661 files under lib/ (composer.json PSR-4)",
-        "modules": 661,
-        "edges": 1591,
-        "loc": 57742,
+        "scope": "682 files under lib/ (composer.json PSR-4)",
+        "modules": 682,
+        "edges": 1645,
+        "loc": 59567,
         "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
         "componentDefinitionKind": "declared",
         "components": 1,
@@ -1898,50 +1898,49 @@
           50
          ],
          "riskProfile": {
-          "low": 0.9559,
-          "moderate": 0.0178,
-          "high": 0.0192,
-          "veryHigh": 0.0071
+          "low": 0.957,
+          "moderate": 0.0118,
+          "high": 0.0243,
+          "veryHigh": 0.007
          },
          "above": [
-          0.0441,
-          0.0263,
-          0.0071
+          0.043,
+          0.0312,
+          0.007
          ],
          "fanInHistogram": {
-          "0": 14141,
-          "1": 18180,
-          "2": 9097,
-          "3": 5557,
-          "4": 2249,
-          "5": 1074,
-          "6": 888,
-          "7": 585,
-          "8": 1035,
-          "9": 71,
-          "10": 2320,
-          "11": 503,
+          "0": 14281,
+          "1": 18971,
+          "2": 9731,
+          "3": 4835,
+          "4": 3137,
+          "5": 845,
+          "6": 1187,
+          "7": 413,
+          "8": 1096,
+          "9": 182,
+          "10": 2325,
+          "11": 500,
           "14": 90,
           "15": 59,
           "18": 54,
-          "20": 319,
-          "21": 346,
-          "25": 47,
-          "27": 174,
+          "21": 665,
+          "26": 47,
+          "28": 174,
           "31": 17,
-          "39": 190,
+          "41": 208,
           "49": 336,
-          "54": 186,
-          "112": 224
+          "56": 186,
+          "118": 228
          },
          "highestFanIn": [
           {
            "module": "lib/AppInfo/Application.php",
-           "fanIn": 112
+           "fanIn": 118
           },
           {
            "module": "lib/Db/Dashboard.php",
-           "fanIn": 54
+           "fanIn": 56
           },
           {
            "module": "lib/Db/DashboardMapper.php",
@@ -1949,7 +1948,7 @@
           },
           {
            "module": "lib/Db/WidgetPlacementMapper.php",
-           "fanIn": 39
+           "fanIn": 41
           },
           {
            "module": "lib/Exception/ResourceException.php",
@@ -1959,37 +1958,37 @@
         },
         "cycles": {
          "moduleCycles": 2,
-         "modulesInCycles": 61,
-         "locShareInCycles": 0.2109,
-         "largestModuleCycle": 59,
+         "modulesInCycles": 68,
+         "locShareInCycles": 0.2272,
+         "largestModuleCycle": 66,
          "componentCycles": 0,
          "largestComponentCycle": 0
         },
         "directoryView": {
          "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
-         "components": 21,
-         "componentIndependence": 0.5465,
+         "components": 22,
+         "componentIndependence": 0.5496,
          "componentEntanglement": {
-          "violationDegree": 0.0417,
-          "density": 3.4,
-          "communicationLines": 68,
+          "violationDegree": 0.0435,
+          "density": 3.48,
+          "communicationLines": 73,
           "violations": {
-           "cyclic": 10,
-           "indirect-cyclic": 4,
+           "cyclic": 11,
+           "indirect-cyclic": 5,
            "transitive": 7
           }
          },
          "componentCycles": 1,
-         "largestComponentCycle": 14
+         "largestComponentCycle": 15
         },
         "batches": 1
        },
        "javascript": {
         "measured": true,
         "tool": "dependency-cruiser 17.4.3",
-        "modules": 271,
-        "edges": 576,
-        "loc": 46149,
+        "modules": 289,
+        "edges": 614,
+        "loc": 47550,
         "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
         "componentDefinitionKind": "declared",
         "components": 1,
@@ -2007,47 +2006,48 @@
           50
          ],
          "riskProfile": {
-          "low": 0.986,
+          "low": 0.9863,
           "moderate": 0,
-          "high": 0.0128,
-          "veryHigh": 0.0012
+          "high": 0,
+          "veryHigh": 0.0137
          },
          "above": [
-          0.014,
-          0.014,
-          0.0012
+          0.0137,
+          0.0137,
+          0.0137
          ],
          "fanInHistogram": {
-          "0": 3202,
-          "1": 35698,
-          "2": 2463,
-          "3": 2108,
-          "4": 408,
-          "5": 505,
-          "6": 1120,
-          "50": 589,
-          "57": 21,
-          "95": 35
+          "0": 2604,
+          "1": 36755,
+          "2": 3046,
+          "3": 2402,
+          "4": 409,
+          "5": 435,
+          "6": 347,
+          "8": 901,
+          "52": 595,
+          "59": 21,
+          "102": 35
          },
          "highestFanIn": [
           {
            "module": "src/constants/propDefinitions.js",
-           "fanIn": 95
+           "fanIn": 102
           },
           {
            "module": "src/utils/logger.js",
-           "fanIn": 57
+           "fanIn": 59
           },
           {
            "module": "src/services/api.js",
-           "fanIn": 50
-          },
-          {
-           "module": "src/services/iconCatalogue.js",
-           "fanIn": 6
+           "fanIn": 52
           },
           {
            "module": "src/stores/dashboard.js",
+           "fanIn": 8
+          },
+          {
+           "module": "src/services/iconCatalogue.js",
            "fanIn": 6
           }
          ]
@@ -2055,7 +2055,7 @@
         "cycles": {
          "moduleCycles": 1,
          "modulesInCycles": 3,
-         "locShareInCycles": 0.0139,
+         "locShareInCycles": 0.0155,
          "largestModuleCycle": 3,
          "componentCycles": 0,
          "largestComponentCycle": 0
@@ -2063,14 +2063,14 @@
         "directoryView": {
          "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
          "components": 11,
-         "componentIndependence": 0.4117,
+         "componentIndependence": 0.3644,
          "componentEntanglement": {
-          "violationDegree": 0.1032,
-          "density": 3.45,
-          "communicationLines": 38,
+          "violationDegree": 0.1196,
+          "density": 3.64,
+          "communicationLines": 40,
           "violations": {
-           "cyclic": 4,
-           "transitive": 3
+           "cyclic": 5,
+           "transitive": 4
           }
          },
          "componentCycles": 2,
@@ -2087,23 +2087,14 @@
     "id": "owaspsecurecoding",
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
-    "status": "pass",
-    "message": "No obvious OWASP-style risky coding patterns were detected in 1069 scanned source files.",
+    "status": "warn",
+    "message": "Potential OWASP secure coding issues were detected (1 findings across 1108 scanned source files, failing from 12).",
     "evidence": [
-     ".php-cs-fixer.dist.php",
-     "appinfo/routes.php",
-     "docs/docusaurus.config.js",
-     "docs/sidebars.js",
-     "docs/src/pages/index.js",
-     "eslint.config.mjs",
-     "l10n/be.js",
-     "l10n/bg.js",
-     "l10n/bs.js",
-     "l10n/ca.js"
+     "Possible hardcoded secret: lib/Service/DemoSeedService.php"
     ],
     "referenceUrl": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
     "requirementLevel": "mandatory",
-    "starRating": 5
+    "starRating": 3
    },
    {
     "id": "adrvalidator",
@@ -2112,41 +2103,41 @@
     "status": "fail",
     "message": "API Design Rules violations found across 1 specification(s): 27 error(s), 5 warning(s), 0 info, 0 hint(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "ERROR [openapi3] Use OpenAPI Specification for documentation @ openapi (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/footer-settings.put.requestBody.content.application/json.schema.properties.footerHtml (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/footer-settings.put.requestBody.content.application/json.schema.properties.footerConfig (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/org-navigation.put.requestBody.content.application/json.schema.properties.tree (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/search-shortcuts.put.requestBody.content.application/json.schema.properties.shortcuts (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.linkCreateFileExts (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.forcedShareGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.linkCreateFileExtensions (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.sharingAllowedGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.tileAllowedSchemes (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.ssoLaunchTemplates (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.announcementEditorGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.officeNetworks (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.pinnedCommunities (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/templates.post.requestBody.content.application/json.schema.properties.targetGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/templates/{id}.put.requestBody.content.application/json.schema.properties.targetGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./dashboard/{dashboardId}/tiles/import.post.requestBody.content.application/json.schema.properties.folders (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./dashboard/{dashboardId}/tiles/import.post.requestBody.content.application/json.schema.properties.bookmarks (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./dashboards/group/{groupId}/{uuid}.put.requestBody.content.application/json.schema.properties.placements (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./kiosk/playlists.post.requestBody.content.application/json.schema.properties.entries (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./kiosk/playlists/{id}.put.requestBody.content.application/json.schema.properties.entries (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./profile-fields/definitions.put.requestBody.content.application/json.schema.properties.fields (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./profile-fields/me.put.requestBody.content.application/json.schema.properties.values (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./rules/{ruleId}.put.requestBody.content.application/json.schema.properties.ruleConfig (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "WARNING [operation-success-response] Operation must have at least one \"2xx\" or \"3xx\" response. @ paths./tiles.post.responses (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "WARNING [operation-success-response] Operation must have at least one \"2xx\" or \"3xx\" response. @ paths./tiles/{id}.put.responses (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "WARNING [operation-success-response] Operation must have at least one \"2xx\" or \"3xx\" response. @ paths./tiles/{id}.delete.responses (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./visibility/preview.post.requestBody.content.application/json.schema.properties.rules (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./visibility/preview.post.requestBody.content.application/json.schema.properties.context (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./widgets/{placementId}.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./widgets/{placementId}/rules.post.requestBody.content.application/json.schema.properties.ruleConfig (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)",
-     "WARNING [oas3-unused-component] Potentially unused component has been detected. @ components.responses.Problem410 (https://raw.githubusercontent.com/ConductionNL/launchpad/87b153fc665b6f09f1840dbc1fdc0ce31bf4b2c6/openapi.json)"
+     "ERROR [openapi3] Use OpenAPI Specification for documentation @ openapi (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/footer-settings.put.requestBody.content.application/json.schema.properties.footerHtml (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/footer-settings.put.requestBody.content.application/json.schema.properties.footerConfig (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/org-navigation.put.requestBody.content.application/json.schema.properties.tree (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/search-shortcuts.put.requestBody.content.application/json.schema.properties.shortcuts (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.linkCreateFileExts (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.forcedShareGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.linkCreateFileExtensions (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.sharingAllowedGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.tileAllowedSchemes (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.ssoLaunchTemplates (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.announcementEditorGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.officeNetworks (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/settings.put.requestBody.content.application/json.schema.properties.pinnedCommunities (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/templates.post.requestBody.content.application/json.schema.properties.targetGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./admin/templates/{id}.put.requestBody.content.application/json.schema.properties.targetGroups (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./dashboard/{dashboardId}/tiles/import.post.requestBody.content.application/json.schema.properties.folders (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./dashboard/{dashboardId}/tiles/import.post.requestBody.content.application/json.schema.properties.bookmarks (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./dashboards/group/{groupId}/{uuid}.put.requestBody.content.application/json.schema.properties.placements (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./kiosk/playlists.post.requestBody.content.application/json.schema.properties.entries (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./kiosk/playlists/{id}.put.requestBody.content.application/json.schema.properties.entries (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./profile-fields/definitions.put.requestBody.content.application/json.schema.properties.fields (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./profile-fields/me.put.requestBody.content.application/json.schema.properties.values (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./rules/{ruleId}.put.requestBody.content.application/json.schema.properties.ruleConfig (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "WARNING [operation-success-response] Operation must have at least one \"2xx\" or \"3xx\" response. @ paths./tiles.post.responses (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "WARNING [operation-success-response] Operation must have at least one \"2xx\" or \"3xx\" response. @ paths./tiles/{id}.put.responses (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "WARNING [operation-success-response] Operation must have at least one \"2xx\" or \"3xx\" response. @ paths./tiles/{id}.delete.responses (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./visibility/preview.post.requestBody.content.application/json.schema.properties.rules (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./visibility/preview.post.requestBody.content.application/json.schema.properties.context (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./widgets/{placementId}.put.responses.400.content (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "ERROR [array-items] Schemas with \"type: array\", require a sibling \"items\" field @ paths./widgets/{placementId}/rules.post.requestBody.content.application/json.schema.properties.ruleConfig (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)",
+     "WARNING [oas3-unused-component] Potentially unused component has been detected. @ components.responses.Problem410 (https://raw.githubusercontent.com/ConductionNL/launchpad/d481c6acd9128ce618db41b2133b8ae4d6f87220/openapi.json)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -2195,12 +2186,17 @@
     "id": "secretscanning",
     "title": "No committed secrets",
     "description": "The repository's working tree is scanned with gitleaks for committed secrets such as API keys, tokens and private keys. Findings in test paths such as tests/ and fixtures/ are left out, unless the project has its own .gitleaks.toml. A project's own .gitleaks.toml and .gitleaksignore are honoured.",
-    "status": "pass",
-    "message": "Gitleaks found no committed secrets in the working tree.",
-    "evidence": [],
+    "status": "fail",
+    "message": "Gitleaks found 4 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml.",
+    "evidence": [
+     "generic-api-key: openspec/changes/archive/2026-11-22-embedded-analytics/specs/embedded-analytics/spec.md:660",
+     "generic-api-key: openspec/changes/archive/2026-11-22-embedded-analytics/specs/embedded-analytics/spec.md:687",
+     "generic-api-key: openspec/specs/embedded-analytics/spec.md:661",
+     "generic-api-key: openspec/specs/embedded-analytics/spec.md:688"
+    ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
-    "starRating": 5
+    "starRating": 1
    },
    {
     "id": "openssfscorecard",
@@ -2262,11 +2258,11 @@
     "status": "info",
     "message": "Usage from 5 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
-     "Nextcloud App Store launchpad: 0 ratings given (2026-11-22)",
-     "GitHub releases: 1,468 release file downloads, 286 releases with files (2026-11-22)",
-     "GitHub Container Registry conductionnl/launchpad: not measured: GitHub publishes no pull count for container images through its API (2026-11-22)",
-     "GitHub ConductionNL/launchpad: 0 stars, 0 forks, 0 watchers (2026-11-22)",
-     "GitHub commits ConductionNL/launchpad: 21 contributors, 17 from the owning organisation, 0 from other organisations, 4 unknown (2026-11-22)"
+     "Nextcloud App Store launchpad: 0 ratings given (2026-11-23)",
+     "GitHub releases: 1,528 release file downloads, 309 releases with files (2026-11-23)",
+     "GitHub Container Registry conductionnl/launchpad: not measured: GitHub publishes no pull count for container images through its API (2026-11-23)",
+     "GitHub ConductionNL/launchpad: 0 stars, 0 forks, 0 watchers (2026-11-23)",
+     "GitHub commits ConductionNL/launchpad: 21 contributors, 17 from the owning organisation, 0 from other organisations, 4 unknown (2026-11-23)"
     ],
     "usage": {
      "sources": [
@@ -2277,7 +2273,7 @@
        "subject": "launchpad",
        "url": "https://apps.nextcloud.com/apps/launchpad",
        "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
-       "measuredAt": "2026-11-22",
+       "measuredAt": "2026-11-23",
        "figures": [
         {
          "label": "ratings given",
@@ -2292,15 +2288,15 @@
        "subject": null,
        "url": "https://github.com/ConductionNL/launchpad/releases",
        "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
-       "measuredAt": "2026-11-22",
+       "measuredAt": "2026-11-23",
        "figures": [
         {
          "label": "release file downloads",
-         "value": 1468
+         "value": 1528
         },
         {
          "label": "releases with files",
-         "value": 286
+         "value": 309
         }
        ]
       },
@@ -2310,7 +2306,7 @@
        "source": "GitHub Container Registry",
        "subject": "conductionnl/launchpad",
        "url": "https://github.com/orgs/conductionnl/packages/container/package/launchpad",
-       "measuredAt": "2026-11-22",
+       "measuredAt": "2026-11-23",
        "caveat": "Pull counts would include CI pulls.",
        "figures": [],
        "notMeasured": "GitHub publishes no pull count for container images through its API"
@@ -2321,7 +2317,7 @@
        "source": "GitHub",
        "subject": "ConductionNL/launchpad",
        "url": "https://github.com/ConductionNL/launchpad",
-       "measuredAt": "2026-11-22",
+       "measuredAt": "2026-11-23",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -2345,7 +2341,7 @@
        "subject": "ConductionNL/launchpad",
        "url": "https://github.com/ConductionNL/launchpad/graphs/contributors",
        "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-22",
+       "measuredAt": "2026-11-23",
        "figures": [
         {
          "label": "contributors",
@@ -2404,7 +2400,7 @@
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
       "value": "0.97",
-      "explanation": "1,042 change requests were closed (merged or not) and 1,072 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "explanation": "1,110 change requests were closed (merged or not) and 1,145 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -2415,7 +2411,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "no response",
-      "explanation": "None of the 15 latest change requests opened by people between 2026-08-24 and 2026-11-15 got a comment or review from anyone but its author.",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-25 and 2026-11-16 got a comment or review from anyone but its author.",
       "target": {
        "text": "at most 48 hours",
        "met": false
@@ -2426,7 +2422,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "no response",
-      "explanation": "None of the 5 latest issues opened by people between 2026-08-24 and 2026-11-15 got a comment from anyone but its author.",
+      "explanation": "None of the 5 latest issues opened by people between 2026-08-25 and 2026-11-16 got a comment from anyone but its author.",
       "target": {
        "text": "at most 120 hours",
        "met": false
@@ -2437,7 +2433,7 @@
       "name": "Release Frequency",
       "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
       "value": "8 in 12 months",
-      "explanation": "8 final releases were published in the last 12 months, about one every 46 days, counted from the GitHub releases. The latest final release is from 2026-09-06. Besides these, 278 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "explanation": "8 final releases were published in the last 12 months, about one every 46 days, counted from the GitHub releases. The latest final release is from 2026-09-06. Besides these, 301 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
       "target": {
        "text": "at least 4 releases in 12 months",
        "met": true
@@ -2446,21 +2442,21 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-24",
-     "to": "2026-11-22",
+     "from": "2026-08-25",
+     "to": "2026-11-23",
      "categories": [
       {
        "category": "unclassified",
        "label": "Unclassified",
        "respondDays": 10,
        "fixDays": null,
-       "count": 155,
+       "count": 160,
        "response": {
         "measured": 0,
         "median": null,
         "worst": null,
         "breaches": 110,
-        "waiting": 155
+        "waiting": 160
        },
        "fix": null
       }
@@ -2648,7 +2644,7 @@
     "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
     "status": "pass",
     "rating": 5.5,
-    "message": "97 specifications and 207 changes found.",
+    "message": "102 specifications and 214 changes found.",
     "evidence": [
      "openspec/specs/action-authorization/spec.md",
      "openspec/specs/activity-feed-integration/spec.md",
@@ -2662,6 +2658,7 @@
      "openspec/specs/attention-feed/spec.md",
      "openspec/specs/background-job-feed-refresh/spec.md",
      "openspec/specs/beta-alignment/spec.md",
+     "openspec/specs/calculated-fields/spec.md",
      "openspec/specs/calendar-widget/spec.md",
      "openspec/specs/cli-commands/spec.md",
      "openspec/specs/clock-weather-widgets/spec.md",
@@ -2687,6 +2684,7 @@
      "openspec/specs/dashboard-sharing/spec.md",
      "openspec/specs/dashboard-store/spec.md",
      "openspec/specs/dashboard-switcher/spec.md",
+     "openspec/specs/dashboard-talk-leaf/spec.md",
      "openspec/specs/dashboard-versioning/spec.md",
      "openspec/specs/dashboard-view-analytics/spec.md",
      "openspec/specs/dashboards-and-who-may-see-them/spec.md",
@@ -2695,12 +2693,10 @@
      "openspec/specs/demo-data-showcases/spec.md",
      "openspec/specs/divider-widget/spec.md",
      "openspec/specs/effective-default-marker/spec.md",
+     "openspec/specs/embedded-analytics/spec.md",
      "openspec/specs/files-widget/spec.md",
      "openspec/specs/first-time-setup/spec.md",
-     "openspec/specs/footer-customization/spec.md",
-     "openspec/specs/grid-layout/spec.md",
-     "openspec/specs/groupfolder-storage-backend/spec.md",
-     "... and 47 more"
+     "... and 52 more"
     ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
@@ -2730,7 +2726,7 @@
     "evidence": [
      "docker/docker-compose.yml",
      "package.json: build",
-     "package.json: check:schema-l10n",
+     "package.json: check:a11y",
      "package.json: lint"
     ],
     "referenceUrl": "https://agents.md/",
@@ -2777,7 +2773,7 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 13.3,
+  "durationSeconds": 14.6,
   "scanMode": "full",
   "scanModeReason": "the code changed",
   "toolFingerprint": "sha256:67cf230a1d6577bc4f393f811e90b671",

@@ -28,35 +28,35 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-20T12:10:42.035Z",
+  "lastCheckedAt": "2026-11-23T10:20:32.803Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-20T10:55:15.061Z",
-  "updatedAt": "2026-11-20T12:10:42.035Z",
+  "updatedAt": "2026-11-23T10:20:32.803Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
   "slaLabels": [],
-  "retired": null,
+  "maintainedDecision": null,
   "providers": [],
   "functionalities": [],
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-20T12-10-42-035Z",
+  "id": "2026-11-23T10-20-32-803Z",
   "repoId": "github.com/nextcloud/integration_openproject",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-20T12:10:42.035Z",
-  "createdAt": "2026-11-20T12:10:42.035Z",
+  "checkedAt": "2026-11-23T10:20:32.803Z",
+  "createdAt": "2026-11-23T10:20:32.803Z",
   "version": "v3.3.0",
   "checklistVersion": "2026.2",
   "scannedRef": "v3.3.0",
   "scannedRefKind": "release",
   "scannedCommit": "7d7ab6acd93f6ede5989115f21b3b101aabfe483",
   "score": 61,
-  "rating": 3.2,
+  "rating": 3.1,
   "categoryRatings": {
    "Governance": 2.6,
-   "Security": 3,
+   "Security": 2.8,
    "Architecture": 4.3,
    "Software Quality": 2.9,
    "Deployment & Operations": 3.3,
@@ -84,19 +84,19 @@
     "rating": null
    },
    "vulnerabilities": {
-    "rating": null
+    "rating": 1
    },
    "dependency-freshness": {
-    "rating": null
+    "rating": 3.5
    },
    "dependency-activity": {
-    "rating": null
+    "rating": 2.2
    },
    "dependency-licences": {
-    "rating": null
+    "rating": 1
    },
    "dependency-management": {
-    "rating": null
+    "rating": 5.5
    },
    "container-images": {
     "rating": null
@@ -449,12 +449,12 @@
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
      "Average CCN: 2.99 (threshold: 15)",
      "Max CCN: 48.00 (threshold: 30)",
-     "3      1     12      0       3 isError@40-42@/tmp/cgchecker-repo-i4UFrj/repo/src/views/WorkPackageReferenceWidget.vue",
-     "13      1    106      0      14 sanitizedRequiredCustomTypeValidationErrorMessage@148-161@/tmp/cgchecker-repo-i4UFrj/repo/src/views/CreateWorkPackageModal.vue",
-     "3      1     12      0       3 setToDefaultError@246-248@/tmp/cgchecker-repo-i4UFrj/repo/src/views/CreateWorkPackageModal.vue",
-     "8      4     41      1       8 checkForErrorCode@93-100@/tmp/cgchecker-repo-i4UFrj/repo/src/views/ProjectsTab.vue",
-     "3      1     10      0       3 getError@75-77@/tmp/cgchecker-repo-i4UFrj/repo/src/views/LinkMultipleFilesModal.vue",
-     "3      3     18      0       3 OIDCMethodHasError@70-72@/tmp/cgchecker-repo-i4UFrj/repo/src/views/Dashboard.vue"
+     "3      1     27      1       3 OpenprojectAvatarErrorException::__construct@20-22@/tmp/cgchecker-repo-G6wry2/repo/lib/Exception/OpenprojectAvatarErrorException.php",
+     "3      1     27      1       3 OpenprojectErrorException::__construct@20-22@/tmp/cgchecker-repo-G6wry2/repo/lib/Exception/OpenprojectErrorException.php",
+     "3      2     21      0       3 showOidcAppError@129-131@/tmp/cgchecker-repo-G6wry2/repo/src/components/admin/FormSSOSettings.vue",
+     "3      2     14      0       3 showUserOidcAppError@78-80@/tmp/cgchecker-repo-G6wry2/repo/src/components/admin/FormAuthMethod.vue",
+     "3      1     14      0       3 disableErrorLabel@102-104@/tmp/cgchecker-repo-G6wry2/repo/src/components/admin/FormAuthMethod.vue",
+     "4      1     14      0       4 resetErrors@103-106@/tmp/cgchecker-repo-G6wry2/repo/src/components/admin/FormOpenProjectHost.vue"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -1143,14 +1143,268 @@
     "description": "Rates the third-party dependencies from 0.5 to 5.5 (1 to 5 stars) on known vulnerabilities, freshness, activity, licence risk and dependency management.",
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/quality-model-documents/open-source-health.md",
     "status": "warn",
-    "message": "Open Source Health analysis could not run. It needs python3.",
-    "evidence": [
-     "    with open(self.cache_path, \"w\", encoding=\"utf-8\") as handle:",
-     "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-     "PermissionError: [Errno 13] Permission denied: '/opt/analysis-tools/open-source-health-cache.json'"
+    "starRating": 3,
+    "rating": 2.63,
+    "aspectRatings": {
+     "vulnerabilities": 1,
+     "freshness": 3.49,
+     "activity": 2.15,
+     "licence": 1,
+     "management": 5.5
+    },
+    "measurements": [
+     {
+      "id": "vulnerabilities",
+      "title": "Vulnerabilities",
+      "aspects": [
+       "vulnerabilities"
+      ],
+      "rows": [
+       {
+        "label": "Critical or high",
+        "value": "6",
+        "thresholds": {
+         "2": "≤ 5",
+         "3": "≤ 2",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 1
+       },
+       {
+        "label": "Moderate",
+        "value": "5",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "none"
+        },
+        "stars": 4
+       },
+       {
+        "label": "Low",
+        "value": "1",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       },
+       {
+        "label": "Unknown severity",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "any",
+         "5": "any"
+        },
+        "stars": null,
+        "starsText": "not rated"
+       }
+      ]
+     },
+     {
+      "id": "freshness",
+      "title": "Freshness",
+      "aspects": [
+       "freshness"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "19.9%",
+        "thresholds": {
+         "2": "any",
+         "3": "≤ 68.4%",
+         "4": "≤ 34.2%",
+         "5": "≤ 17.1%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 2 years",
+        "value": "11.8%",
+        "thresholds": {
+         "2": "≤ 76.4%",
+         "3": "≤ 38.2%",
+         "4": "≤ 19.1%",
+         "5": "≤ 9.6%"
+        },
+        "stars": 4
+       },
+       {
+        "label": "> 3.5 years",
+        "value": "3.4%",
+        "thresholds": {
+         "2": "≤ 44.4%",
+         "3": "≤ 22.2%",
+         "4": "≤ 11.1%",
+         "5": "≤ 5.5%"
+        },
+        "stars": 5
+       },
+       {
+        "label": "> 5 years, absolute bound",
+        "value": "3 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "activity",
+      "title": "Activity",
+      "aspects": [
+       "activity"
+      ],
+      "rows": [
+       {
+        "label": "> 1 year",
+        "value": "48.5%",
+        "thresholds": {
+         "2": "≤ 85.6%",
+         "3": "≤ 42.8%",
+         "4": "≤ 21.4%",
+         "5": "≤ 10.7%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 2 years",
+        "value": "35.0%",
+        "thresholds": {
+         "2": "≤ 52.0%",
+         "3": "≤ 26.0%",
+         "4": "≤ 13.0%",
+         "5": "≤ 6.5%"
+        },
+        "stars": 2
+       },
+       {
+        "label": "> 4 years",
+        "value": "14.5%",
+        "thresholds": {
+         "2": "≤ 38.4%",
+         "3": "≤ 19.2%",
+         "4": "≤ 9.6%",
+         "5": "≤ 4.8%"
+        },
+        "stars": 3
+       },
+       {
+        "label": "> 5.5 years, absolute bound",
+        "value": "20 dependencies",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": null,
+        "starsText": "caps at 3 stars"
+       }
+      ]
+     },
+     {
+      "id": "licence",
+      "title": "Licence use",
+      "aspects": [
+       "licence"
+      ],
+      "rows": [
+       {
+        "label": "Critical risk",
+        "value": "4",
+        "thresholds": {
+         "2": "none",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 1
+       },
+       {
+        "label": "High risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "none",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 5
+       },
+       {
+        "label": "Medium risk",
+        "value": "14",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "none",
+         "5": "none"
+        },
+        "stars": 3
+       },
+       {
+        "label": "Low risk",
+        "value": "0",
+        "thresholds": {
+         "2": "any",
+         "3": "any",
+         "4": "≤ 3",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     },
+     {
+      "id": "management",
+      "title": "Management",
+      "aspects": [
+       "management"
+      ],
+      "rows": [
+       {
+        "label": "Unmanaged third-party code",
+        "value": "0.0%",
+        "thresholds": {
+         "2": "≤ 24.0%",
+         "3": "≤ 12.0%",
+         "4": "≤ 6.0%",
+         "5": "none"
+        },
+        "stars": 5
+       }
+      ]
+     }
     ],
-    "requirementLevel": "recommended",
-    "starRating": 3
+    "message": "Open Source Health 3 of 5 stars over 297 production dependencies (npm). 4 stars or more passes, 3 stars warns.",
+    "evidence": [
+     "Vulnerabilities: ★☆☆☆☆ 0 critical, 6 high, 5 moderate",
+     "Freshness: ★★★☆☆ >1.0y 19.9%, >2.0y 11.8%, >3.5y 3.4%, >5.0y count 3",
+     "Activity: ★★☆☆☆ >1.0y 48.5%, >2.0y 35%, >4.0y 14.5%, >5.5y count 20",
+     "Licence use: ★☆☆☆☆ 4 critical, 0 high, 14 medium, 0 low risk",
+     "Management: ★★★★★ 0 unmanaged of 297 dependencies",
+     "Vulnerable: npm:@vue/server-renderer@3.5.40 (high)",
+     "Vulnerable: npm:axios@1.18.1 (high)",
+     "Vulnerable: npm:brace-expansion@2.1.2 (high)",
+     "Vulnerable: npm:follow-redirects@1.16.0 (high)",
+     "Vulnerable: npm:nanoid@3.3.16 (high)",
+     "Vulnerable: npm:source-map-js@1.2.1 (high)"
+    ],
+    "requirementLevel": "recommended"
    },
    {
     "id": "size",
@@ -1584,13 +1838,13 @@
     "status": "fail",
     "message": "Gitleaks found 7 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml. 4 findings in test paths (tests, fixtures and test files) were left out; add a .gitleaks.toml to the repository to decide this yourself.",
     "evidence": [
+     "curl-auth-user: docs/direct_upload.md:11",
      "curl-auth-user: docs/get_file_information.md:15",
      "curl-auth-user: docs/get_file_information.md:53",
-     "curl-auth-user: docs/direct_upload.md:11",
-     "generic-api-key: dev/compose.yaml:195",
      "generic-api-key: dev/keycloak/keycloak.sh:13",
      "curl-auth-user: lib/Controller/FilesController.php:109",
-     "curl-auth-user: lib/Controller/FilesController.php:123"
+     "curl-auth-user: lib/Controller/FilesController.php:123",
+     "generic-api-key: dev/compose.yaml:195"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
@@ -1661,12 +1915,12 @@
     "description": "Who uses the component and how much, per source. Informative: not rated and not compared across components.",
     "requirementLevel": "informative",
     "status": "info",
-    "message": "Usage from 4 sources, 1 not measured. Shown for information; never rated or compared.",
+    "message": "Usage from 4 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "Nextcloud App Store integration_openproject: not measured: HTTP 429 (2026-11-20)",
-     "GitHub releases: 170,888 release file downloads, 99 releases with files (2026-11-20)",
-     "GitHub nextcloud/integration_openproject: 77 stars, 23 forks, 6 watchers (2026-11-20)",
-     "GitHub commits nextcloud/integration_openproject: 10 contributors; organisation unknown for most (6 of 10) (2026-11-20)"
+     "Nextcloud App Store integration_openproject: 0 ratings given (2026-11-23)",
+     "GitHub releases: 171,223 release file downloads, 99 releases with files (2026-11-23)",
+     "GitHub nextcloud/integration_openproject: 77 stars, 23 forks, 6 watchers (2026-11-23)",
+     "GitHub commits nextcloud/integration_openproject: 10 contributors; organisation unknown for most (7 of 10) (2026-11-23)"
     ],
     "usage": {
      "sources": [
@@ -1677,9 +1931,13 @@
        "subject": "integration_openproject",
        "url": "https://apps.nextcloud.com/apps/integration_openproject",
        "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
-       "measuredAt": "2026-11-20",
-       "figures": [],
-       "notMeasured": "HTTP 429"
+       "measuredAt": "2026-11-23",
+       "figures": [
+        {
+         "label": "ratings given",
+         "value": 0
+        }
+       ]
       },
       {
        "id": "github-releases",
@@ -1688,11 +1946,11 @@
        "subject": null,
        "url": "https://github.com/nextcloud/integration_openproject/releases",
        "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-23",
        "figures": [
         {
          "label": "release file downloads",
-         "value": 170888
+         "value": 171223
         },
         {
          "label": "releases with files",
@@ -1706,7 +1964,7 @@
        "source": "GitHub",
        "subject": "nextcloud/integration_openproject",
        "url": "https://github.com/nextcloud/integration_openproject",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-23",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1730,7 +1988,7 @@
        "subject": "nextcloud/integration_openproject",
        "url": "https://github.com/nextcloud/integration_openproject/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-20",
+       "measuredAt": "2026-11-23",
        "figures": [
         {
          "label": "contributors",
@@ -1738,10 +1996,10 @@
         },
         {
          "label": "with organisation unknown",
-         "value": 6
+         "value": 7
         }
        ],
-       "summary": "10 contributors; organisation unknown for most (6 of 10)"
+       "summary": "10 contributors; organisation unknown for most (7 of 10)"
       }
      ]
     }
@@ -1781,8 +2039,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "1.07",
-      "explanation": "45 change requests were closed (merged or not) and 42 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "0.97",
+      "explanation": "39 change requests were closed (merged or not) and 40 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -1793,7 +2051,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "median 3.3 hours",
-      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-22 and 2026-11-13. 14 got a response; 1 had none yet. Bots are left out.",
+      "explanation": "The median time to the first comment or review by someone other than the author, over the 15 latest change requests opened by people between 2026-08-25 and 2026-11-16. 14 got a response; 1 had none yet. Bots are left out.",
       "target": {
        "text": "at most 48 hours",
        "met": true
@@ -1824,8 +2082,8 @@
     ],
     "sla": {
      "notMeasured": "the repository has its issue tracker switched off",
-     "from": "2026-11-20",
-     "to": "2026-11-20",
+     "from": "2026-11-23",
+     "to": "2026-11-23",
      "categories": [],
      "openBreaches": [],
      "openBreachCount": 0,
@@ -1917,10 +2175,10 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 29.7,
+  "durationSeconds": 8.1,
   "scanMode": "full",
-  "scanModeReason": "a full scan was asked for",
-  "toolFingerprint": "sha256:78f98d16c39a9f1abaa2314fee1c12d4",
+  "scanModeReason": "the checker or its tools changed",
+  "toolFingerprint": "sha256:67cf230a1d6577bc4f393f811e90b671",
   "inputsFingerprint": "sha256:4527668f6c5587526bb262bd100f8c2e"
  },
  "slas": []
