@@ -14,10 +14,10 @@
    "defaultBranch": "main",
    "topics": [],
    "license": "European Union Public License 1.2",
-   "version": "v0.22.1",
+   "version": "v0.23.0",
    "versionEvidence": {
     "source": "release",
-    "detail": "latest release tag: v0.22.1"
+    "detail": "latest release tag: v0.23.0"
    },
    "displayName": null,
    "shortDescription": null,
@@ -28,10 +28,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-25T10:59:01.951Z",
+  "lastCheckedAt": "2026-11-26T10:35:25.686Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-20T10:50:49.600Z",
-  "updatedAt": "2026-11-25T10:59:01.951Z",
+  "updatedAt": "2026-11-26T10:35:25.686Z",
   "basisset": false,
   "scanRef": null,
   "isRegister": false,
@@ -42,16 +42,16 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-25T10-59-01-951Z",
+  "id": "2026-11-26T10-35-25-686Z",
   "repoId": "github.com/digitaalgemeengoed/gemeenschap",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-25T10:59:01.951Z",
-  "createdAt": "2026-11-25T10:59:01.951Z",
-  "version": "v0.22.1",
+  "checkedAt": "2026-11-26T10:35:25.686Z",
+  "createdAt": "2026-11-26T10:35:25.686Z",
+  "version": "v0.23.0",
   "checklistVersion": "2026.2",
-  "scannedRef": "v0.22.1",
+  "scannedRef": "v0.23.0",
   "scannedRefKind": "release",
-  "scannedCommit": "323347f3fc195e97c78ec437d3d30b5d406de2a1",
+  "scannedCommit": "7a0b6dcc6cd40f80981dea3fcf3224aeb751aa9d",
   "score": 51,
   "rating": 2.9,
   "categoryRatings": {
@@ -123,7 +123,7 @@
     "rating": 3.5
    },
    "modifiability": {
-    "rating": 4
+    "rating": 3.9
    },
    "testability": {
     "rating": 3.3
@@ -186,22 +186,22 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 30,897 lines of code, 1,558 functions, 1,462 files analyzed.",
+    "message": "Code metrics: 31,265 lines of code, 1,579 functions, 1,480 files analyzed.",
     "evidence": [
      "beheer/keycloak.go",
      "beheer/leden.go",
      "beheer/logboek.go",
      "beheer/main.go",
      "beheer/oidc.go",
+     "beheer/organisatie.go",
      "beheer/organisaties.go",
      "beheer/platform.go",
      "beheer/rechten.go",
      "beheer/rechten_test.go",
-     "beheer/sessie.go",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 30,897",
-     "Function count: 1,558",
-     "Files analyzed: 1,462"
+     "Total lines of code (NLOC): 31,265",
+     "Function count: 1,579",
+     "Files analyzed: 1,480"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -278,13 +278,14 @@
     "referenceUrl": "https://reuse.software/spec/",
     "status": "fail",
     "starRating": 1,
-    "message": "0.0% of 68 source files carry an SPDX header (1 of 5 stars). 68 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "message": "0.0% of 72 source files carry an SPDX header (1 of 5 stars). 72 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
     "evidence": [
      "beheer/keycloak.go",
      "beheer/leden.go",
      "beheer/logboek.go",
      "beheer/main.go",
      "beheer/oidc.go",
+     "beheer/organisatie.go",
      "beheer/organisaties.go",
      "beheer/platform.go",
      "beheer/rechten.go",
@@ -298,8 +299,7 @@
      "documenten/davhttp.go",
      "documenten/davregister.go",
      "documenten/delen.go",
-     "documenten/groepen.go",
-     "documenten/inloggen.go"
+     "documenten/groepen.go"
     ],
     "requirementLevel": "recommended"
    },
@@ -398,8 +398,8 @@
      "docs/ontwerp/documentendienst.md",
      "docs/ontwerp/gemeenschapsplatform.md",
      "docs/ontwerp/meerdere-organisaties.md",
-     "documenten/vendor/github.com/lib/pq/README.md",
-     "inhoud/README.md"
+     "docs/ontwerp/netwerkvoorwaarden.md",
+     "documenten/vendor/github.com/lib/pq/README.md"
     ],
     "referenceUrl": "https://www.irealisatie.nl/kennis/common-ground",
     "requirementLevel": "mandatory",
@@ -446,18 +446,18 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "fail",
-    "message": "Lizard analysis ran. Avg CCN 6.51 (threshold: 15); Max CCN 90.00 (threshold: 30). Threshold exceeded: MaxCCN 90.00 > 30.",
+    "message": "Lizard analysis ran. Avg CCN 6.57 (threshold: 15); Max CCN 90.00 (threshold: 30). Threshold exceeded: MaxCCN 90.00 > 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 6.51 (threshold: 15)",
+     "Average CCN: 6.57 (threshold: 15)",
      "Max CCN: 90.00 (threshold: 30)",
-     "3      1     29      0       3 Error@34-36@/tmp/cgchecker-repo-hQG6MP/repo/documenten/internal/webdav/internal/xml/xml.go",
-     "3      1     28      1       3 syntaxError@455-457@/tmp/cgchecker-repo-hQG6MP/repo/documenten/internal/webdav/internal/xml/xml.go",
-     "4      1     24      0       4 cachedWriteError@1099-1102@/tmp/cgchecker-repo-hQG6MP/repo/documenten/internal/webdav/internal/xml/marshal.go",
-     "3      1     22      0       3 Error@1203-1205@/tmp/cgchecker-repo-hQG6MP/repo/documenten/internal/webdav/internal/xml/marshal.go",
-     "3      1     39      0       3 Error@343-345@/tmp/cgchecker-repo-hQG6MP/repo/documenten/internal/webdav/internal/xml/typeinfo.go",
-     "1      1     16      0       1 Error@138-138@/tmp/cgchecker-repo-hQG6MP/repo/documenten/internal/webdav/internal/xml/read.go"
+     "3      1     29      0       3 Error@34-36@/tmp/cgchecker-repo-LAEUmv/repo/documenten/internal/webdav/internal/xml/xml.go",
+     "3      1     28      1       3 syntaxError@455-457@/tmp/cgchecker-repo-LAEUmv/repo/documenten/internal/webdav/internal/xml/xml.go",
+     "4      1     24      0       4 cachedWriteError@1099-1102@/tmp/cgchecker-repo-LAEUmv/repo/documenten/internal/webdav/internal/xml/marshal.go",
+     "3      1     22      0       3 Error@1203-1205@/tmp/cgchecker-repo-LAEUmv/repo/documenten/internal/webdav/internal/xml/marshal.go",
+     "3      1     39      0       3 Error@343-345@/tmp/cgchecker-repo-LAEUmv/repo/documenten/internal/webdav/internal/xml/typeinfo.go",
+     "1      1     16      0       1 Error@138-138@/tmp/cgchecker-repo-LAEUmv/repo/documenten/internal/webdav/internal/xml/read.go"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -469,13 +469,13 @@
     "referenceUrl": "https://github.com/Software-Improvement-Group/sigridci/blob/main/docs/reference/sig-quality-models.md",
     "status": "pass",
     "starRating": 4,
-    "rating": 3.7800000000000002,
+    "rating": 3.76,
     "aspectRatings": {
-     "analysability": 3.48,
-     "modifiability": 3.95,
+     "analysability": 3.46,
+     "modifiability": 3.94,
      "testability": 3.25,
      "modularity": 5.5,
-     "reusability": 3.1
+     "reusability": 3.07
     },
     "measurements": [
      {
@@ -496,7 +496,7 @@
        },
        {
         "label": "PHP",
-        "value": "0.4%",
+        "value": "0.5%",
         "thresholds": {
          "4": "≤ 5.8%"
         },
@@ -546,7 +546,7 @@
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "80.0%",
+        "value": "79.5%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -554,7 +554,7 @@
        },
        {
         "label": "PHP, more than 30 lines",
-        "value": "55.6%",
+        "value": "55.0%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
@@ -562,7 +562,7 @@
        },
        {
         "label": "PHP, more than 60 lines",
-        "value": "20.8%",
+        "value": "20.5%",
         "thresholds": {
          "4": "≤ 9.1%"
         },
@@ -570,19 +570,19 @@
        },
        {
         "label": "Python, more than 15 lines",
-        "value": "44.2%",
+        "value": "53.8%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
-        "stars": 4
+        "stars": 3
        },
        {
         "label": "Python, more than 30 lines",
-        "value": "18.1%",
+        "value": "31.8%",
         "thresholds": {
          "4": "≤ 24.2%"
         },
-        "stars": 4
+        "stars": 3
        },
        {
         "label": "Python, more than 60 lines",
@@ -628,7 +628,7 @@
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "71.0%",
+        "value": "71.5%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -644,7 +644,7 @@
        },
        {
         "label": "PHP, complexity above 25",
-        "value": "13.0%",
+        "value": "14.2%",
         "thresholds": {
          "4": "≤ 1.1%"
         },
@@ -652,7 +652,7 @@
        },
        {
         "label": "Python, complexity above 5",
-        "value": "54.4%",
+        "value": "67.0%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -660,7 +660,7 @@
        },
        {
         "label": "Python, complexity above 10",
-        "value": "23.9%",
+        "value": "35.7%",
         "thresholds": {
          "4": "≤ 7.5%"
         },
@@ -668,7 +668,7 @@
        },
        {
         "label": "Python, complexity above 25",
-        "value": "18.1%",
+        "value": "22.7%",
         "thresholds": {
          "4": "≤ 1.1%"
         },
@@ -709,7 +709,7 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "10.2%",
+        "value": "10.1%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -717,7 +717,7 @@
        },
        {
         "label": "PHP, 5 or more parameters",
-        "value": "1.4%",
+        "value": "1.3%",
         "thresholds": {
          "4": "≤ 3.4%"
         },
@@ -733,15 +733,15 @@
        },
        {
         "label": "Python, 3 or more parameters",
-        "value": "34.8%",
+        "value": "23.5%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
-        "stars": 1
+        "stars": 2
        },
        {
         "label": "Python, 5 or more parameters",
-        "value": "23.2%",
+        "value": "15.7%",
         "thresholds": {
          "4": "≤ 3.4%"
         },
@@ -867,19 +867,19 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 3.70 to 3.86 (4 of 5 stars) over 14 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 3.68 to 3.84 (4 of 5 stars) over 16 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
-     "Duplication: ★★★★★ 5.3 (javascript 4.9, php 5.4, python 5.5)",
-     "Unit size: ★★☆☆☆ 1.6 (javascript 2.7, php 1.4, python 3.8)",
-     "Unit complexity: ★☆☆☆☆ 1.0 (javascript 1.5, php 0.9, python 1.2)",
-     "Unit interfacing: ★★★★★ 4.6 (javascript 5.2, php 4.7, python 1.3)",
+     "Duplication: ★★★★★ 5.3 (javascript 4.9, php 5.3, python 5.5)",
+     "Unit size: ★★☆☆☆ 1.6 (javascript 2.7, php 1.4, python 2.8)",
+     "Unit complexity: ★☆☆☆☆ 1.0 (javascript 1.5, php 0.9, python 1.0)",
+     "Unit interfacing: ★★★★★ 4.5 (javascript 5.2, php 4.7, python 1.4)",
      "Module coupling: ★★★★★ 5.5 (python 5.5, js/ts/vue 5.5)",
      "Component independence: ★★★★★ 5.5 (python 5.5, js/ts/vue 5.5)",
      "Component entanglement: ★★★★★ 5.5 (python 5.5, js/ts/vue 5.5)",
-     "Lever: unit size in php, about 728 lines to fix for half a star",
-     "Lever: unit interfacing in php, about 405 lines to fix for half a star",
+     "Lever: unit size in php, about 722 lines to fix for half a star",
+     "Lever: unit interfacing in php, about 418 lines to fix for half a star",
      "Lever: unit complexity in javascript",
-     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 2.2% against 2.2%, php 0.3% against 0.4%, python 0.0% against 0.0%"
+     "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 2.2% against 2.2%, php 0.4% against 0.5%, python 0.0% against 0.0%"
     ],
     "requirementLevel": "recommended"
    },
@@ -899,7 +899,7 @@
       "rows": [
        {
         "label": "All languages, more than 29 lines",
-        "value": "50.9%",
+        "value": "50.6%",
         "thresholds": {
          "2": "≤ 60.2%",
          "3": "≤ 37.0%",
@@ -910,7 +910,7 @@
        },
        {
         "label": "All languages, more than 42 lines",
-        "value": "37.6%",
+        "value": "37.2%",
         "thresholds": {
          "2": "≤ 46.7%",
          "3": "≤ 24.3%",
@@ -921,7 +921,7 @@
        },
        {
         "label": "All languages, more than 71 lines",
-        "value": "17.1%",
+        "value": "16.7%",
         "thresholds": {
          "2": "≤ 33.4%",
          "3": "≤ 11.1%",
@@ -939,7 +939,7 @@
       "rows": [
        {
         "label": "All languages, complexity above 5",
-        "value": "66.0%",
+        "value": "67.0%",
         "thresholds": {
          "2": "≤ 45.1%",
          "3": "≤ 34.4%",
@@ -950,7 +950,7 @@
        },
        {
         "label": "All languages, complexity above 7",
-        "value": "52.5%",
+        "value": "53.7%",
         "thresholds": {
          "2": "≤ 38.1%",
          "3": "≤ 23.9%",
@@ -961,7 +961,7 @@
        },
        {
         "label": "All languages, complexity above 10",
-        "value": "39.9%",
+        "value": "40.3%",
         "thresholds": {
          "2": "≤ 32.2%",
          "3": "≤ 13.1%",
@@ -979,7 +979,7 @@
       "rows": [
        {
         "label": "All languages, 3 or more parameters",
-        "value": "10.6%",
+        "value": "10.3%",
         "thresholds": {
          "2": "≤ 31.4%",
          "3": "≤ 21.6%",
@@ -990,7 +990,7 @@
        },
        {
         "label": "All languages, 4 or more parameters",
-        "value": "5.3%",
+        "value": "5.2%",
         "thresholds": {
          "2": "≤ 19.2%",
          "3": "≤ 10.4%",
@@ -1019,7 +1019,7 @@
       "rows": [
        {
         "label": "All languages",
-        "value": "0.6%",
+        "value": "0.9%",
         "thresholds": {
          "2": "≤ 34.8%",
          "3": "≤ 8.6%",
@@ -1033,10 +1033,10 @@
     ],
     "message": "Open-track rating 2.8 of 5, the mean of 4 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
-     "Unit size: ★★☆☆☆ 50.9% / 37.6% / 17.1% of the code above 29 / 42 / 71 lines",
-     "Unit complexity: ★☆☆☆☆ 66.0% / 52.5% / 39.9% of the code above 5 / 7 / 10 complexity",
-     "Unit interfacing: ★★★☆☆ 10.6% / 5.3% / 2.1% of the code above 2 / 3 / 4 parameters",
-     "Duplication: ★★★★★ 0.6% duplicated lines",
+     "Unit size: ★★☆☆☆ 50.6% / 37.2% / 16.7% of the code above 29 / 42 / 71 lines",
+     "Unit complexity: ★☆☆☆☆ 67.0% / 53.7% / 40.3% of the code above 5 / 7 / 10 complexity",
+     "Unit interfacing: ★★★☆☆ 10.3% / 5.2% / 2.1% of the code above 2 / 3 / 4 parameters",
+     "Duplication: ★★★★★ 0.9% duplicated lines",
      "Module coupling: not measured",
      "Component independence: not measured",
      "Component entanglement: not measured",
@@ -1054,7 +1054,7 @@
     "evidence": [
      "Test code ratio: 0.8%",
      "Test code: 174 lines in 3 files",
-     "Production code: 22,035 lines in 59 files",
+     "Production code: 22,363 lines in 63 files",
      "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
     ],
     "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
@@ -1224,20 +1224,20 @@
     "status": "info",
     "size": {
      "tool": "scc 4.1.0",
-     "files": 36,
-     "loc": 9370,
+     "files": 38,
+     "loc": 9630,
      "languages": [
       {
        "language": "PHP",
        "family": "php",
-       "files": 9,
-       "loc": 6046
+       "files": 10,
+       "loc": 6144
       },
       {
        "language": "CSS",
        "family": "css",
        "files": 5,
-       "loc": 1343
+       "loc": 1345
       },
       {
        "language": "HTML",
@@ -1246,28 +1246,28 @@
        "loc": 904
       },
       {
+       "language": "Python",
+       "family": "python",
+       "files": 3,
+       "loc": 692
+      },
+      {
        "language": "JavaScript",
        "family": "javascript",
        "files": 3,
        "loc": 545
-      },
-      {
-       "language": "Python",
-       "family": "python",
-       "files": 2,
-       "loc": 532
       }
      ]
     },
-    "message": "9,370 lines of production code in 36 file(s), counted with scc 4.1.0. Rebuild effort about 1.1 person-years (open estimate).",
+    "message": "9,630 lines of production code in 38 file(s), counted with scc 4.1.0. Rebuild effort about 1.2 person-years (open estimate).",
     "evidence": [
-     "PHP: 6,046 lines in 9 file(s)",
-     "CSS: 1,343 lines in 5 file(s)",
+     "PHP: 6,144 lines in 10 file(s)",
+     "CSS: 1,345 lines in 5 file(s)",
      "HTML: 904 lines in 17 file(s)",
+     "Python: 692 lines in 3 file(s)",
      "JavaScript: 545 lines in 3 file(s)",
-     "Python: 532 lines in 2 file(s)",
-     "Rebuild effort, open estimate: 218 function points, 1.1 person-years (proxies: PHP and Python use the JavaScript factor; CSS uses the HTML factor)",
-     "SIG-style volume, context, not part of the 2026 rating: 1.0 person-years (proxies: PHP, CSS and HTML use the JavaScript factor)"
+     "Rebuild effort, open estimate: 223 function points, 1.2 person-years (proxies: PHP and Python use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 1.1 person-years (proxies: PHP, CSS and HTML use the JavaScript factor)"
     ]
    },
    {
@@ -1276,32 +1276,42 @@
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
     "status": "info",
-    "message": "jscpd 5.4.2 duplicated lines: 0.6% overall (javascript 4.0%, php 0.4%, python 0.0%) over 14 file(s). Shown for information; it does not count towards the score.",
+    "message": "jscpd 5.4.2 duplicated lines: 0.9% overall (javascript 4.0%, php 0.7%, python 0.0%) over 16 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
      "javascript: 4.0% (25 of 627 lines, 3 clone(s) in 3 file(s))",
-     "php: 0.4% (27 of 7116 lines, 3 clone(s) in 9 file(s))",
-     "python: 0.0% (0 of 722 lines, 0 clone(s) in 2 file(s))",
-     "Clone of 10 lines: wordpress/dg-crowdfunding.php:60-69 and wordpress/dg-uitnodigen.php:53-62",
+     "php: 0.7% (52 of 7250 lines, 4 clone(s) in 10 file(s))",
+     "python: 0.0% (0 of 922 lines, 0 clone(s) in 3 file(s))",
+     "Clone of 25 lines: wordpress/dg-crowdfunding.php:1-25 and wordpress/dg-projectvoorstel.php:1-26",
+     "Clone of 10 lines: wordpress/dg-crowdfunding.php:65-74 and wordpress/dg-uitnodigen.php:53-62",
      "Clone of 10 lines: wordpress/thema/digitaalgemeengoed/agenda.js:17-26 and wordpress/thema/digitaalgemeengoed/berichten.js:80-88",
-     "Clone of 9 lines: wordpress/dg-agenda.php:378-386 and wordpress/dg-gemeenschap.php:57-63",
-     "Clone of 8 lines: documenten/statisch/app.js:112-119 and wordpress/thema/digitaalgemeengoed/agenda.js:23-30",
-     "Clone of 8 lines: wordpress/dg-berichten.php:492-499 and wordpress/dg-berichten.php:509-516"
+     "Clone of 9 lines: wordpress/dg-agenda.php:383-391 and wordpress/dg-gemeenschap.php:57-63",
+     "Clone of 8 lines: documenten/statisch/app.js:112-119 and wordpress/thema/digitaalgemeengoed/agenda.js:23-30"
     ],
     "openTrack": {
      "duplication": {
       "tool": "jscpd 5.4.2",
-      "percentage": 0.61,
+      "percentage": 0.88,
       "languages": {
        "javascript": 3.99,
-       "php": 0.38,
+       "php": 0.72,
        "python": 0
       },
       "largestClones": [
        {
         "language": "php",
         "file": "wordpress/dg-crowdfunding.php",
-        "startLine": 60,
-        "endLine": 69,
+        "startLine": 1,
+        "endLine": 25,
+        "otherFile": "wordpress/dg-projectvoorstel.php",
+        "otherStartLine": 1,
+        "otherEndLine": 26,
+        "lines": 25
+       },
+       {
+        "language": "php",
+        "file": "wordpress/dg-crowdfunding.php",
+        "startLine": 65,
+        "endLine": 74,
         "otherFile": "wordpress/dg-uitnodigen.php",
         "otherStartLine": 53,
         "otherEndLine": 62,
@@ -1320,8 +1330,8 @@
        {
         "language": "php",
         "file": "wordpress/dg-agenda.php",
-        "startLine": 378,
-        "endLine": 386,
+        "startLine": 383,
+        "endLine": 391,
         "otherFile": "wordpress/dg-gemeenschap.php",
         "otherStartLine": 57,
         "otherEndLine": 63,
@@ -1340,11 +1350,11 @@
        {
         "language": "php",
         "file": "wordpress/dg-berichten.php",
-        "startLine": 492,
-        "endLine": 499,
+        "startLine": 497,
+        "endLine": 504,
         "otherFile": "wordpress/dg-berichten.php",
-        "otherStartLine": 509,
-        "otherEndLine": 516,
+        "otherStartLine": 514,
+        "otherEndLine": 521,
         "lines": 8
        },
        {
@@ -1370,7 +1380,7 @@
     "status": "info",
     "message": "Measured the module structure of PHP, JavaScript, TypeScript and Vue. Not measured: Python. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP (pdepend 3.0.0): 9 modules, 0 edges, 2 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
+     "PHP (pdepend 3.0.0): 10 modules, 0 edges, 2 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
      "PHP components: directories below wordpress/ (a level is descended while one directory holds more than 80% of the modules)",
      "Python: not measured: no Python file sits in a package (a directory with __init__.py)",
      "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 3 modules, 0 edges, 2 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 100.0% / 0.0% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
@@ -1383,9 +1393,9 @@
        "php": {
         "measured": true,
         "tool": "pdepend 3.0.0",
-        "modules": 9,
+        "modules": 10,
         "edges": 0,
-        "loc": 6001,
+        "loc": 6099,
         "componentDefinition": "directories below wordpress/ (a level is descended while one directory holds more than 80% of the modules)",
         "componentDefinitionKind": "directories",
         "components": 2,
@@ -1414,7 +1424,7 @@
           0
          ],
          "fanInHistogram": {
-          "0": 6001
+          "0": 6099
          },
          "highestFanIn": [
           {
@@ -1452,7 +1462,7 @@
        "python": {
         "measured": false,
         "reason": "no Python file sits in a package (a directory with __init__.py)",
-        "files": 2
+        "files": 3
        },
        "javascript": {
         "measured": true,
@@ -1525,7 +1535,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "warn",
-    "message": "Potential OWASP secure coding issues were detected (2 findings across 59 scanned source files, failing from 4).",
+    "message": "Potential OWASP secure coding issues were detected (2 findings across 63 scanned source files, failing from 4).",
     "evidence": [
      "Unsafe HTML injection: redmine/dg_kop/lib/dg_kop_hooks.rb",
      "Unsafe HTML injection: wordpress/thema/digitaalgemeengoed/berichten.js"
@@ -1585,7 +1595,7 @@
     "status": "fail",
     "message": "Gitleaks found 1 potential secret in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml.",
     "evidence": [
-     "generic-api-key: compose.yml:112"
+     "generic-api-key: compose.yml:146"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
     "requirementLevel": "recommended",
@@ -1608,9 +1618,9 @@
     "title": "Semantic Versioning",
     "description": "The repository should publish versions that follow semantic versioning (MAJOR.MINOR.PATCH).",
     "status": "pass",
-    "message": "Version \"v0.22.1\" follows semantic versioning.",
+    "message": "Version \"v0.23.0\" follows semantic versioning.",
     "evidence": [
-     "v0.22.1"
+     "v0.23.0"
     ],
     "referenceUrl": "https://semver.org/",
     "requirementLevel": "mandatory",
@@ -1651,8 +1661,8 @@
     "status": "info",
     "message": "Usage from 2 sources. Shown for information; never rated or compared.",
     "evidence": [
-     "GitHub digitaalgemeengoed/gemeenschap: 0 stars, 0 forks, 0 watchers (2026-11-25)",
-     "GitHub commits digitaalgemeengoed/gemeenschap: 3 contributors, 1 from the owning organisation, 2 from other organisations, 0 unknown (2026-11-25)"
+     "GitHub digitaalgemeengoed/gemeenschap: 0 stars, 0 forks, 0 watchers (2026-11-26)",
+     "GitHub commits digitaalgemeengoed/gemeenschap: 3 contributors, 1 from the owning organisation, 2 from other organisations, 0 unknown (2026-11-26)"
     ],
     "usage": {
      "sources": [
@@ -1662,7 +1672,7 @@
        "source": "GitHub",
        "subject": "digitaalgemeengoed/gemeenschap",
        "url": "https://github.com/digitaalgemeengoed/gemeenschap",
-       "measuredAt": "2026-11-25",
+       "measuredAt": "2026-11-26",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -1686,7 +1696,7 @@
        "subject": "digitaalgemeengoed/gemeenschap",
        "url": "https://github.com/digitaalgemeengoed/gemeenschap/graphs/contributors",
        "caveat": "Authors of the commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-25",
+       "measuredAt": "2026-11-26",
        "figures": [
         {
          "label": "contributors",
@@ -1714,7 +1724,7 @@
     "title": "Project health (CHAOSS)",
     "description": "How active and widely carried the project is: the bus factor, the spread over organisations, how change requests and issues are handled, and how often it releases. Informative: shown, not rated.",
     "status": "info",
-    "message": "3 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
+    "message": "4 of 6 CHAOSS metrics measured. They are shown for information and do not count in any rating.",
     "evidence": [],
     "referenceUrl": "https://chaoss.community/kb-metrics-and-metrics-models/",
     "metrics": [
@@ -1733,8 +1743,8 @@
       "id": "organizational-diversity",
       "name": "Organizational Diversity",
       "referenceUrl": "https://chaoss.community/kb/metric-organizational-diversity/",
-      "value": "3 organisations; largest 93%",
-      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (89 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is an organisation with one author, with 93% of the 89 commits whose organisation is known; 0% of the commits come from 0 of 3 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
+      "value": "3 organisations; largest 91%",
+      "explanation": "Organisations are told apart by the email domain of the commits of the last 12 months (91 commits by people, after the .mailmap) and, for a personal or hidden address, by the company on the author's public profile. The largest is an organisation with one author, with 91% of the 91 commits whose organisation is known; 0% of the commits come from 0 of 3 authors whose organisation stays unknown. Only these counts are kept, no names, addresses or companies; an organisation is named only when several authors share it.",
       "target": {
        "text": "at least 2 organisations",
        "met": true
@@ -1744,11 +1754,11 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": null,
-      "explanation": "Not measured: no change requests were opened in the last 90 days.",
+      "value": "0.50",
+      "explanation": "1 change requests were closed (merged or not) and 2 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
-       "met": null
+       "met": false
       }
      },
      {
@@ -1756,7 +1766,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": null,
-      "explanation": "Not measured: no change requests were opened by people between 2026-08-27 and 2026-11-18.",
+      "explanation": "Not measured: no change requests were opened by people between 2026-08-28 and 2026-11-19.",
       "target": {
        "text": "at most 48 hours",
        "met": null
@@ -1767,7 +1777,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": null,
-      "explanation": "Not measured: no issues were opened by people between 2026-08-27 and 2026-11-18.",
+      "explanation": "Not measured: no issues were opened by people between 2026-08-28 and 2026-11-19.",
       "target": {
        "text": "at most 120 hours",
        "met": null
@@ -1777,8 +1787,8 @@
       "id": "release-frequency",
       "name": "Release Frequency",
       "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
-      "value": "29 in 12 months",
-      "explanation": "29 final releases were published in the last 12 months, about one every 13 days, counted from the GitHub releases. The latest final release is from 2026-11-25. Drafts and pre-releases are left out.",
+      "value": "30 in 12 months",
+      "explanation": "30 final releases were published in the last 12 months, about one every 12 days, counted from the GitHub releases. The latest final release is from 2026-11-25. Drafts and pre-releases are left out.",
       "target": {
        "text": "at least 4 releases in 12 months",
        "met": true
@@ -1787,8 +1797,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-27",
-     "to": "2026-11-25",
+     "from": "2026-08-28",
+     "to": "2026-11-26",
      "categories": [],
      "openBreachCount": 0,
      "openBreaches": [],
@@ -1880,7 +1890,7 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 9.8,
+  "durationSeconds": 8.9,
   "scanMode": "full",
   "scanModeReason": "the code changed",
   "toolFingerprint": "sha256:67cf230a1d6577bc4f393f811e90b671",
