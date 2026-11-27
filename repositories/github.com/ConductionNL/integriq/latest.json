@@ -30,10 +30,10 @@
   },
   "followed": true,
   "checkIntervalHours": 24,
-  "lastCheckedAt": "2026-11-26T10:21:39.101Z",
+  "lastCheckedAt": "2026-11-27T10:26:45.333Z",
   "nextCheckAt": null,
   "createdAt": "2026-11-19T13:54:13.624Z",
-  "updatedAt": "2026-11-26T10:21:39.101Z",
+  "updatedAt": "2026-11-27T10:26:45.333Z",
   "basisset": false,
   "scanRef": "development",
   "isRegister": false,
@@ -44,16 +44,16 @@
   "functionalitiesDraft": false
  },
  "analysis": {
-  "id": "2026-11-26T10-21-39-101Z",
+  "id": "2026-11-27T10-26-45-333Z",
   "repoId": "github.com/ConductionNL/integriq",
   "scoringConfigId": null,
-  "checkedAt": "2026-11-26T10:21:39.101Z",
-  "createdAt": "2026-11-26T10:21:39.101Z",
+  "checkedAt": "2026-11-27T10:26:45.333Z",
+  "createdAt": "2026-11-27T10:26:45.333Z",
   "version": "v0.4.4",
   "checklistVersion": "2026.2",
   "scannedRef": "development",
   "scannedRefKind": "branch",
-  "scannedCommit": "df577db1420a305e1f5f5fb37ec79c059999df51",
+  "scannedCommit": "4a1b9654c95989094497cc62e56aef3a96053bd8",
   "score": 93,
   "rating": 4.5,
   "categoryRatings": {
@@ -183,7 +183,7 @@
     "title": "Actual Source Code",
     "description": "The repository must contain actual source code files, not just documentation, configuration, or configuration templates.",
     "status": "pass",
-    "message": "Code metrics: 8,754 lines of code, 1,094 functions, 1,094 files analyzed.",
+    "message": "Code metrics: 1,233 lines of code, 201 functions, 201 files analyzed.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -196,9 +196,9 @@
      "eslint.config.mjs",
      "examples/connector-extension/lib/AppInfo/Application.php",
      "Analyzer: lizard",
-     "Total lines of code (NLOC): 8,754",
-     "Function count: 1,094",
-     "Files analyzed: 1,094"
+     "Total lines of code (NLOC): 1,233",
+     "Function count: 201",
+     "Files analyzed: 201"
     ],
     "referenceUrl": "https://commonground.nl",
     "requirementLevel": "mandatory",
@@ -279,7 +279,7 @@
     "referenceUrl": "https://reuse.software/spec/",
     "status": "pass",
     "starRating": 4,
-    "message": "99.9% of 4446 source files carry an SPDX header (4 of 5 stars). 1 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
+    "message": "99.9% of 4462 source files carry an SPDX header (4 of 5 stars). 1 file(s) have no SPDX-License-Identifier and are not covered by REUSE metadata.",
     "evidence": [
      "lib/Service/ObjectRightsService.php"
     ],
@@ -546,7 +546,7 @@
     "title": "SBOM (Software Bill of Materials)",
     "description": "The component should publish an SBOM (e.g. SPDX or CycloneDX) to improve software supply-chain transparency.",
     "status": "pass",
-    "message": "SBOM file(s) found: sbom.cdx.json. It appears to list 696 dependencies in sbom.cdx.json.",
+    "message": "SBOM file(s) found: sbom.cdx.json. It appears to list 695 dependencies in sbom.cdx.json.",
     "evidence": [
      "sbom.cdx.json"
     ],
@@ -639,18 +639,17 @@
     "title": "Cyclomatic complexity (Lizard)",
     "description": "The repository should be analyzed with Lizard to track cyclomatic complexity across supported languages.",
     "status": "pass",
-    "message": "Lizard analysis executed successfully. Avg CCN 2.73 <= 15 and Max CCN 30.00 <= 30.",
+    "message": "Lizard analysis executed successfully. Avg CCN 2.27 <= 15 and Max CCN 10.00 <= 30.",
     "evidence": [
      "Analyzer: lizard",
      "Lizard returned non-zero exit code 1, but summary metrics were parsed.",
-     "Average CCN: 2.73 (threshold: 15)",
-     "Max CCN: 30.00 (threshold: 30)",
-     "3      1     12      0       3 isErrorType@245-247@/tmp/cgchecker-repo-vc54cu/repo/src/modals/v2/RuleEditorModal.vue",
-     "5      2     22      0       5 flowError@262-266@/tmp/cgchecker-repo-vc54cu/repo/src/modals/v2/RuleEditorModal.vue",
-     "6      1     12      0       6 errorConfig@276-281@/tmp/cgchecker-repo-vc54cu/repo/src/modals/v2/RuleEditorModal.vue",
-     "4      2     23      0       4 errorCodeText@295-298@/tmp/cgchecker-repo-vc54cu/repo/src/modals/v2/RuleEditorModal.vue",
-     "6      4     35      0       6 nameError@214-219@/tmp/cgchecker-repo-vc54cu/repo/src/modals/v2/ConsumerEditorModal.vue",
-     "3      1     15      0       3 feedScopesError@390-392@/tmp/cgchecker-repo-vc54cu/repo/src/modals/v2/ConsumerEditorModal.vue"
+     "Average CCN: 2.27 (threshold: 15)",
+     "Max CCN: 10.00 (threshold: 30)",
+     "12      5     88      0      22 validationErrorRows@165-186@/tmp/cgchecker-repo-3a49SM/repo/src/components/mapping/MappingResultPanel.vue",
+     "4      4     29      1       4 formatValidationError@587-590@/tmp/cgchecker-repo-3a49SM/repo/src/components/mapping/MappingResultPanel.vue",
+     "Error: Fail to parse file '/tmp/cgchecker-repo-3a49SM/repo/src/components/LtiPlatformDetails.vue'",
+     "warning_count = printer(result, options, schema, AllResult)",
+     "IndexError: list index out of range"
     ],
     "referenceUrl": "https://github.com/terryyin/lizard",
     "requirementLevel": "informative"
@@ -666,7 +665,7 @@
     "aspectRatings": {
      "analysability": 3.77,
      "modifiability": 4.31,
-     "testability": 3.82,
+     "testability": 3.81,
      "modularity": 5.17,
      "reusability": 2.77
     },
@@ -715,7 +714,7 @@
       "rows": [
        {
         "label": "JavaScript, more than 15 lines",
-        "value": "17.6%",
+        "value": "17.5%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -739,7 +738,7 @@
        },
        {
         "label": "PHP, more than 15 lines",
-        "value": "48.8%",
+        "value": "48.9%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -755,7 +754,7 @@
        },
        {
         "label": "PHP, more than 60 lines",
-        "value": "1.4%",
+        "value": "1.3%",
         "thresholds": {
          "4": "≤ 9.1%"
         },
@@ -763,7 +762,7 @@
        },
        {
         "label": "Vue, more than 15 lines",
-        "value": "20.6%",
+        "value": "20.8%",
         "thresholds": {
          "4": "≤ 48.0%"
         },
@@ -821,7 +820,7 @@
        },
        {
         "label": "PHP, complexity above 5",
-        "value": "19.8%",
+        "value": "19.9%",
         "thresholds": {
          "4": "≤ 20.7%"
         },
@@ -902,7 +901,7 @@
        },
        {
         "label": "PHP, 3 or more parameters",
-        "value": "20.8%",
+        "value": "20.9%",
         "thresholds": {
          "4": "≤ 15.4%"
         },
@@ -910,7 +909,7 @@
        },
        {
         "label": "PHP, 5 or more parameters",
-        "value": "6.5%",
+        "value": "6.4%",
         "thresholds": {
          "4": "≤ 3.4%"
         },
@@ -960,7 +959,7 @@
       "rows": [
        {
         "label": "PHP, fan-in above 10",
-        "value": "3.0%",
+        "value": "2.9%",
         "thresholds": {
          "4": "≤ 9.7%"
         },
@@ -1060,20 +1059,20 @@
       ]
      }
     ],
-    "message": "Estimated maintainability rating 3.81 to 3.97 (4 of 5 stars) over 2169 file(s). 4 stars or more passes, 3 stars warns.",
+    "message": "Estimated maintainability rating 3.81 to 3.97 (4 of 5 stars) over 2174 file(s). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Duplication: ★★★★☆ 3.9 (javascript 5.4, php 4.0, vue 3.3)",
      "Unit size: ★★★★☆ 3.6 (javascript 5.0, php 3.4, vue 4.9)",
      "Unit complexity: ★★★★☆ 3.8 (javascript 4.8, php 3.7, vue 5.1)",
      "Unit interfacing: ★★☆☆☆ 1.9 (javascript 5.2, php 1.5, vue 5.5)",
      "Module coupling: ★★★★★ 5.2 (php 5.1, js/ts/vue 5.5)",
-     "Not rated (php): all 1921 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
+     "Not rated (php): all 1926 modules fall into one component (lib, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
      "Not rated (js/ts/vue): all 240 modules fall into one component (src, sigrid.yaml component_base_dirs [\"\"]), so component independence and entanglement are trivial; neither is rated.",
      "Rating with declared functional components (sigrid.yaml component_base_dirs [\"\"]): 3.81 to 3.97, modularity 5.17 (php 1 components, exposed 0.0%, violation degree 0; js/ts/vue 1 components, exposed 0.0%, violation degree 0). The score uses this one.",
-     "Rating with directory components: 3.47 to 3.56, modularity 3.83 (php 37 components, exposed 9.3%, violation degree 0.0414; js/ts/vue 10 components, exposed 66.0%, violation degree 0.1961).",
-     "Lever: unit complexity in php, about 3346 lines to fix for half a star",
-     "Lever: unit interfacing in php, about 1205 lines to fix for half a star",
-     "Lever: duplication in php, about 2504 lines to fix for half a star",
+     "Rating with directory components: 3.47 to 3.56, modularity 3.83 (php 37 components, exposed 9.3%, violation degree 0.0414; js/ts/vue 10 components, exposed 66.1%, violation degree 0.1961).",
+     "Lever: unit complexity in php, about 3361 lines to fix for half a star",
+     "Lever: unit interfacing in php, about 1197 lines to fix for half a star",
+     "Lever: duplication in php, about 2524 lines to fix for half a star",
      "Duplication cross-check, Simian 4.2.1 strict against the estimate: javascript 0.3% against 0.3%, php 3.4% against 4.6%, vue not measured (Simian has no support for this language) against 6.8%",
      "Skipped 1 file(s) the analyser could not read"
     ],
@@ -1146,7 +1145,7 @@
        },
        {
         "label": "All languages, complexity above 7",
-        "value": "7.4%",
+        "value": "7.5%",
         "thresholds": {
          "2": "≤ 38.1%",
          "3": "≤ 23.9%",
@@ -1233,7 +1232,7 @@
       "rows": [
        {
         "label": "All languages, fan-in above 2",
-        "value": "19.1%",
+        "value": "19.0%",
         "thresholds": {
          "2": "≤ 54.0%",
          "3": "≤ 29.1%",
@@ -1244,7 +1243,7 @@
        },
        {
         "label": "All languages, fan-in above 3",
-        "value": "12.6%",
+        "value": "12.5%",
         "thresholds": {
          "2": "≤ 43.9%",
          "3": "≤ 22.7%",
@@ -1306,10 +1305,10 @@
     "message": "Open-track rating 3.7 of 5, the mean of 7 rated properties. Open thresholds from a public benchmark, not a SIG rating; shown for information and not counted.",
     "evidence": [
      "Unit size: ★★★★☆ 14.3% / 5.5% / 0.7% of the code above 29 / 42 / 71 lines",
-     "Unit complexity: ★★★★☆ 18.5% / 7.4% / 1.8% of the code above 5 / 7 / 10 complexity",
+     "Unit complexity: ★★★★☆ 18.5% / 7.5% / 1.8% of the code above 5 / 7 / 10 complexity",
      "Unit interfacing: ★★☆☆☆ 18.7% / 10.5% / 5.7% of the code above 2 / 3 / 4 parameters",
      "Duplication: ★★★☆☆ 7.8% duplicated lines",
-     "Module coupling: ★★★☆☆ 19.1% / 12.6% / 9.1% of the code above 2 / 3 / 5 fan-in",
+     "Module coupling: ★★★☆☆ 19.0% / 12.5% / 9.1% of the code above 2 / 3 / 5 fan-in",
      "Component independence: ★★★★★ 100.0% of the code hidden from other components",
      "Component entanglement: ★★★★★ 0.000 violation degree",
      "Thresholds 2026-11-18.2, derived from 60 benchmark repositories (scripts/open-benchmark/benchmark.json)",
@@ -1323,11 +1322,11 @@
     "description": "Lines of test code relative to lines of production code, rated from 1 to 5 stars. A 100% test code ratio corresponds roughly to 80% coverage, so the 95/80/60/20% coverage bands become 120/100/75/25% test code.",
     "status": "pass",
     "starRating": 5,
-    "message": "Test code ratio 121.3% (5 of 5 stars).",
+    "message": "Test code ratio 121.7% (5 of 5 stars).",
     "evidence": [
-     "Test code ratio: 121.3%",
-     "Test code: 263,184 lines in 2,172 files",
-     "Production code: 216,906 lines in 2,267 files",
+     "Test code ratio: 121.7%",
+     "Test code: 265,154 lines in 2,183 files",
+     "Production code: 217,858 lines in 2,272 files",
      "Bands: >=120% = 5 stars, >=100% = 4 stars, >=75% = 3 stars, >=25% = 2 stars, below 25% = 1 star (100% test code is roughly 80% coverage)"
     ],
     "referenceUrl": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
@@ -1413,7 +1412,7 @@
       "rows": [
        {
         "label": "> 1 year",
-        "value": "16.4%",
+        "value": "16.5%",
         "thresholds": {
          "2": "any",
          "3": "≤ 68.4%",
@@ -1467,7 +1466,7 @@
       "rows": [
        {
         "label": "> 1 year",
-        "value": "38.9%",
+        "value": "38.8%",
         "thresholds": {
          "2": "≤ 85.6%",
          "3": "≤ 42.8%",
@@ -1478,7 +1477,7 @@
        },
        {
         "label": "> 2 years",
-        "value": "28.6%",
+        "value": "28.7%",
         "thresholds": {
          "2": "≤ 52.0%",
          "3": "≤ 26.0%",
@@ -1489,7 +1488,7 @@
        },
        {
         "label": "> 4 years",
-        "value": "11.6%",
+        "value": "11.4%",
         "thresholds": {
          "2": "≤ 38.4%",
          "3": "≤ 19.2%",
@@ -1500,7 +1499,7 @@
        },
        {
         "label": "> 5.5 years, absolute bound",
-        "value": "29 dependencies",
+        "value": "28 dependencies",
         "thresholds": {
          "2": "any",
          "3": "any",
@@ -1586,13 +1585,13 @@
       ]
      }
     ],
-    "message": "Open Source Health 4 of 5 stars over 465 production dependencies (composer, npm). 4 stars or more passes, 3 stars warns.",
+    "message": "Open Source Health 4 of 5 stars over 464 production dependencies (composer, npm). 4 stars or more passes, 3 stars warns.",
     "evidence": [
      "Vulnerabilities: ★★★★★ 0 critical, 0 high, 0 moderate",
-     "Freshness: ★★★☆☆ >1.0y 16.4%, >2.0y 8.9%, >3.5y 4.1%, >5.0y count 11",
-     "Activity: ★★☆☆☆ >1.0y 38.9%, >2.0y 28.6%, >4.0y 11.6%, >5.5y count 29",
+     "Freshness: ★★★☆☆ >1.0y 16.5%, >2.0y 8.9%, >3.5y 4.1%, >5.0y count 11",
+     "Activity: ★★☆☆☆ >1.0y 38.8%, >2.0y 28.7%, >4.0y 11.4%, >5.5y count 28",
      "Licence use: ★★★★★ 0 critical, 0 high, 0 medium, 0 low risk (18 excluded by sigrid.yaml)",
-     "Management: ★★★★★ 0 unmanaged of 465 dependencies"
+     "Management: ★★★★★ 0 unmanaged of 464 dependencies"
     ],
     "requirementLevel": "recommended"
    },
@@ -1605,26 +1604,26 @@
     "status": "info",
     "size": {
      "tool": "scc 4.1.0",
-     "files": 2173,
-     "loc": 187447,
+     "files": 2178,
+     "loc": 188395,
      "languages": [
       {
        "language": "PHP",
        "family": "php",
-       "files": 1929,
-       "loc": 146512
+       "files": 1934,
+       "loc": 147058
       },
       {
        "language": "Vue",
        "family": "vue",
        "files": 153,
-       "loc": 34350
+       "loc": 34510
       },
       {
        "language": "JavaScript",
        "family": "javascript",
        "files": 87,
-       "loc": 5464
+       "loc": 5706
       },
       {
        "language": "CSS",
@@ -1634,14 +1633,14 @@
       }
      ]
     },
-    "message": "187,447 lines of production code in 2,173 file(s), counted with scc 4.1.0. Rebuild effort about 16.8 person-years (open estimate).",
+    "message": "188,395 lines of production code in 2,178 file(s), counted with scc 4.1.0. Rebuild effort about 16.8 person-years (open estimate).",
     "evidence": [
-     "PHP: 146,512 lines in 1,929 file(s)",
-     "Vue: 34,350 lines in 153 file(s)",
-     "JavaScript: 5,464 lines in 87 file(s)",
+     "PHP: 147,058 lines in 1,934 file(s)",
+     "Vue: 34,510 lines in 153 file(s)",
+     "JavaScript: 5,706 lines in 87 file(s)",
      "CSS: 1,121 lines in 4 file(s)",
-     "Rebuild effort, open estimate: 3,997 function points, 16.8 person-years (proxies: PHP and Vue use the JavaScript factor; CSS uses the HTML factor)",
-     "SIG-style volume, context, not part of the 2026 rating: 20.1 person-years (proxies: PHP, Vue and CSS use the JavaScript factor)"
+     "Rebuild effort, open estimate: 4,018 function points, 16.8 person-years (proxies: PHP and Vue use the JavaScript factor; CSS uses the HTML factor)",
+     "SIG-style volume, context, not part of the 2026 rating: 20.2 person-years (proxies: PHP, Vue and CSS use the JavaScript factor)"
     ]
    },
    {
@@ -1650,11 +1649,11 @@
     "description": "Duplicated lines per language as jscpd reports them, over the production code the maintainability estimate rates. Informative: the raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "referenceUrl": "https://github.com/kucherenko/jscpd",
     "status": "info",
-    "message": "jscpd 5.4.2 duplicated lines: 7.8% overall (javascript 0.4%, php 9.2%, vue 2.5%) over 2169 file(s). Shown for information; it does not count towards the score.",
+    "message": "jscpd 5.4.2 duplicated lines: 7.8% overall (javascript 0.4%, php 9.2%, vue 2.5%) over 2174 file(s). Shown for information; it does not count towards the score.",
     "evidence": [
-     "javascript: 0.4% (52 of 12000 lines, 3 clone(s) in 87 file(s))",
-     "php: 9.2% (35166 of 382126 lines, 2048 clone(s) in 1929 file(s))",
-     "vue: 2.5% (2056 of 80492 lines, 238 clone(s) in 153 file(s))",
+     "javascript: 0.4% (52 of 12242 lines, 3 clone(s) in 87 file(s))",
+     "php: 9.2% (35152 of 383386 lines, 2049 clone(s) in 1934 file(s))",
+     "vue: 2.5% (2056 of 80825 lines, 238 clone(s) in 153 file(s))",
      "Clone of 93 lines: lib/Flow/ApplyMappingNodeInterface.php:43-135 and lib/Flow/ContractCommitNodeInterface.php:43-136",
      "Clone of 93 lines: lib/Flow/ApplyMappingNodeInterface.php:43-135 and lib/Flow/ContractMatchNodeInterface.php:43-135",
      "Clone of 93 lines: lib/Flow/ApplyMappingNodeInterface.php:43-135 and lib/Flow/ContractSweepNodeInterface.php:43-135",
@@ -1664,11 +1663,11 @@
     "openTrack": {
      "duplication": {
       "tool": "jscpd 5.4.2",
-      "percentage": 7.85,
+      "percentage": 7.82,
       "languages": {
-       "javascript": 0.43,
-       "php": 9.2,
-       "vue": 2.55
+       "javascript": 0.42,
+       "php": 9.17,
+       "vue": 2.54
       },
       "largestClones": [
        {
@@ -1784,12 +1783,12 @@
     "status": "info",
     "message": "Measured the module structure of PHP, JavaScript, TypeScript and Vue. The raw figures are shown here and rated by \"Maintainability, open track\" when that rating is available.",
     "evidence": [
-     "PHP (pdepend 3.0.0): 1,921 modules, 4,107 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 97.6% / 1.1% / 1.2% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 61 modules in 20 cycles, largest component cycle 0",
-     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 1921 files under lib/ (composer.json PSR-4)",
-     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 37 components; independence 90.7%, entanglement 0.045 (density 3.65), largest component cycle 17. The figures above use the declared components.",
+     "PHP (pdepend 3.0.0): 1,926 modules, 4,117 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 97.6% / 1.1% / 1.2% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 61 modules in 20 cycles, largest component cycle 0",
+     "PHP components: sigrid.yaml component_base_dirs [\"\"]; 1926 files under lib/ (composer.json PSR-4)",
+     "PHP with directory components (directories below lib/ (a level is descended while one directory holds more than 80% of the modules)): 37 components; independence 90.8%, entanglement 0.045 (density 3.65), largest component cycle 17. The figures above use the declared components.",
      "JavaScript, TypeScript and Vue (dependency-cruiser 17.4.3): 240 modules, 385 edges, 1 components; independence 100.0%, entanglement 0.000 (density 0.00); fan-in profile 99.9% / 0.1% / 0.0% / 0.0% of code at 0-10 / 11-20 / 21-50 / over 50; 0 modules in 0 cycles, largest component cycle 0",
      "JavaScript, TypeScript and Vue components: sigrid.yaml component_base_dirs [\"\"]",
-     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 10 components; independence 34.0%, entanglement 0.196 (density 3.40), largest component cycle 7. The figures above use the declared components."
+     "JavaScript, TypeScript and Vue with directory components (directories below src/ (a level is descended while one directory holds more than 80% of the modules)): 10 components; independence 33.9%, entanglement 0.196 (density 3.40), largest component cycle 7. The figures above use the declared components."
     ],
     "openTrack": {
      "coupling": {
@@ -1798,10 +1797,10 @@
        "php": {
         "measured": true,
         "tool": "pdepend 3.0.0",
-        "scope": "1921 files under lib/ (composer.json PSR-4)",
-        "modules": 1921,
-        "edges": 4107,
-        "loc": 146664,
+        "scope": "1926 files under lib/ (composer.json PSR-4)",
+        "modules": 1926,
+        "edges": 4117,
+        "loc": 147210,
         "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
         "componentDefinitionKind": "declared",
         "components": 1,
@@ -1819,34 +1818,34 @@
           50
          ],
          "riskProfile": {
-          "low": 0.9763,
-          "moderate": 0.0114,
+          "low": 0.9764,
+          "moderate": 0.0113,
           "high": 0.0121,
           "veryHigh": 0.0002
          },
          "above": [
-          0.0237,
-          0.0124,
+          0.0236,
+          0.0123,
           0.0002
          ],
          "fanInHistogram": {
-          "0": 37081,
-          "1": 51681,
-          "2": 24567,
+          "0": 37104,
+          "1": 52076,
+          "2": 24625,
           "3": 11135,
-          "4": 3294,
+          "4": 3183,
           "5": 2235,
-          "6": 2370,
+          "6": 2481,
           "7": 1020,
-          "8": 8345,
-          "9": 597,
-          "10": 859,
+          "8": 8415,
+          "9": 575,
+          "10": 881,
           "11": 531,
           "12": 6,
           "13": 60,
           "14": 228,
-          "15": 46,
-          "16": 324,
+          "15": 41,
+          "16": 329,
           "17": 142,
           "19": 303,
           "20": 27,
@@ -1883,7 +1882,7 @@
         "cycles": {
          "moduleCycles": 20,
          "modulesInCycles": 61,
-         "locShareInCycles": 0.1472,
+         "locShareInCycles": 0.1473,
          "largestModuleCycle": 13,
          "componentCycles": 0,
          "largestComponentCycle": 0
@@ -1891,7 +1890,7 @@
         "directoryView": {
          "componentDefinition": "directories below lib/ (a level is descended while one directory holds more than 80% of the modules)",
          "components": 37,
-         "componentIndependence": 0.9072,
+         "componentIndependence": 0.9075,
          "componentEntanglement": {
           "violationDegree": 0.0451,
           "density": 3.65,
@@ -1912,7 +1911,7 @@
         "tool": "dependency-cruiser 17.4.3",
         "modules": 240,
         "edges": 385,
-        "loc": 39814,
+        "loc": 40216,
         "componentDefinition": "sigrid.yaml component_base_dirs [\"\"]",
         "componentDefinitionKind": "declared",
         "components": 1,
@@ -1942,8 +1941,8 @@
          ],
          "fanInHistogram": {
           "0": 167,
-          "1": 32360,
-          "2": 5079,
+          "1": 32520,
+          "2": 5321,
           "3": 987,
           "4": 873,
           "5": 126,
@@ -1985,7 +1984,7 @@
         "directoryView": {
          "componentDefinition": "directories below src/ (a level is descended while one directory holds more than 80% of the modules)",
          "components": 10,
-         "componentIndependence": 0.3404,
+         "componentIndependence": 0.3385,
          "componentEntanglement": {
           "violationDegree": 0.1961,
           "density": 3.4,
@@ -2010,7 +2009,7 @@
     "title": "OWASP Secure Coding",
     "description": "Performs a heuristic static scan for common risky coding patterns aligned with OWASP secure coding concerns.",
     "status": "pass",
-    "message": "No obvious OWASP-style risky coding patterns were detected in 2268 scanned source files.",
+    "message": "No obvious OWASP-style risky coding patterns were detected in 2273 scanned source files.",
     "evidence": [
      ".php-cs-fixer.dist.php",
      "appinfo/routes.php",
@@ -2034,39 +2033,39 @@
     "status": "fail",
     "message": "API Design Rules violations found across 1 specification(s): 1 error(s), 29 warning(s), 0 info, 0 hint(s).",
     "evidence": [
-     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json",
+     "API specification was auto-discovered by the checker: https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json",
      "Discovery source: auto-discovered",
      "Spectral ruleset source: https://static.developer.overheid.nl/adr/ruleset.yaml",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./catalogi/woo-starter-set.post.responses.404.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./catalogi/woo-starter-set.post.responses.409.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./consumers/{id}/credentials.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./consumers/{id}/credentials.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./consumers/{id}/credentials/{credentialId}.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./gateway/authorize.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./gateway/authorize.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./gateway/authorize.get.responses.429.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./gateway/authorize.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./gateway/authorize.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./gateway/authorize.post.responses.429.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/products.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications/{consumerId}/subscriptions.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "ERROR [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./portal/applications/{consumerId}/subscriptions.post.responses.202 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications/{consumerId}/keys.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications/{consumerId}/keys.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications/{consumerId}/keys/{credentialId}.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./admin/developer-portal.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./admin/developer-portal.put.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./sources/{id}/host-key.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.get.responses.400.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.get.responses.502.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./sources/{id}/host-key.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.post.responses.409.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.post.responses.502.content (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./sources/{id}/database/schema.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)",
-     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./sources/{id}/database/statements/{name}/test.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/df577db1420a305e1f5f5fb37ec79c059999df51/openapi.json)"
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./catalogi/woo-starter-set.post.responses.404.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./catalogi/woo-starter-set.post.responses.409.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./consumers/{id}/credentials.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./consumers/{id}/credentials.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./consumers/{id}/credentials/{credentialId}.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./gateway/authorize.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./gateway/authorize.get.responses.401.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./gateway/authorize.get.responses.429.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./gateway/authorize.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./gateway/authorize.post.responses.401.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./gateway/authorize.post.responses.429.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/products.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications/{consumerId}/subscriptions.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "ERROR [missing-header] /core/version-header: Return the full version number in a response header: https://logius-standaarden.github.io/API-Design-Rules/#/core/version-header @ paths./portal/applications/{consumerId}/subscriptions.post.responses.202 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications/{consumerId}/keys.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications/{consumerId}/keys.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./portal/applications/{consumerId}/keys/{credentialId}.delete.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./admin/developer-portal.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./admin/developer-portal.put.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./sources/{id}/host-key.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.get.responses.400.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.get.responses.502.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./sources/{id}/host-key.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.post.responses.400.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.post.responses.409.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [use-problem-schema] The content type of an error response should be application/problem+json or application/problem+xml to match RFC 9457. @ paths./sources/{id}/host-key.post.responses.502.content (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./sources/{id}/database/schema.get.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)",
+     "WARNING [operation-tag-defined] Operation tags must be defined in global tags. @ paths./sources/{id}/database/statements/{name}/test.post.tags.0 (https://raw.githubusercontent.com/ConductionNL/integriq/4a1b9654c95989094497cc62e56aef3a96053bd8/openapi.json)"
     ],
     "referenceUrl": "https://commonground.nl/cms/view/54476259/api-designrules",
     "requirementLevel": "mandatory",
@@ -2118,8 +2117,8 @@
     "status": "fail",
     "message": "Gitleaks found 3 potential secrets in the working tree. Rotate any real credential and remove it from the repository, or allowlist false positives in .gitleaks.toml.",
     "evidence": [
-     "generic-api-key: tests/Unit/Auth/Idp/YiviEnvelopeTest.php:80",
      "generic-api-key: tests/Unit/Auth/Idp/YiviStartTest.php:74",
+     "generic-api-key: tests/Unit/Auth/Idp/YiviEnvelopeTest.php:80",
      "generic-api-key: tests/Unit/Service/BrokeredCallServiceTest.php:169"
     ],
     "referenceUrl": "https://github.com/gitleaks/gitleaks",
@@ -2186,11 +2185,11 @@
     "status": "info",
     "message": "Usage from 5 sources, 1 not measured. Shown for information; never rated or compared.",
     "evidence": [
-     "Nextcloud App Store integriq: 0 ratings given (2026-11-26)",
-     "GitHub releases: 1,770 release file downloads, 500 most recent releases with files (2026-11-26)",
-     "GitHub Container Registry conductionnl/integriq: not measured: GitHub publishes no pull count for container images through its API (2026-11-26)",
-     "GitHub ConductionNL/integriq: 9 stars, 6 forks, 3 watchers (2026-11-26)",
-     "GitHub commits ConductionNL/integriq: 9 contributors, 9 from the owning organisation, 0 from other organisations, 0 unknown (2026-11-26)"
+     "Nextcloud App Store integriq: 0 ratings given (2026-11-27)",
+     "GitHub releases: 1,766 release file downloads, 500 most recent releases with files (2026-11-27)",
+     "GitHub Container Registry conductionnl/integriq: not measured: GitHub publishes no pull count for container images through its API (2026-11-27)",
+     "GitHub ConductionNL/integriq: 9 stars, 6 forks, 3 watchers (2026-11-27)",
+     "GitHub commits ConductionNL/integriq: 9 contributors, 9 from the owning organisation, 0 from other organisations, 0 unknown (2026-11-27)"
     ],
     "usage": {
      "sources": [
@@ -2201,7 +2200,7 @@
        "subject": "integriq",
        "url": "https://apps.nextcloud.com/apps/integriq",
        "caveat": "The App Store publishes no download count; installs from it download the GitHub release files, counted under GitHub releases.",
-       "measuredAt": "2026-11-26",
+       "measuredAt": "2026-11-27",
        "figures": [
         {
          "label": "ratings given",
@@ -2216,11 +2215,11 @@
        "subject": null,
        "url": "https://github.com/ConductionNL/integriq/releases",
        "caveat": "Counts every download of a release file, including App Store installs and updates, CI jobs and mirrors.",
-       "measuredAt": "2026-11-26",
+       "measuredAt": "2026-11-27",
        "figures": [
         {
          "label": "release file downloads",
-         "value": 1770
+         "value": 1766
         },
         {
          "label": "most recent releases with files",
@@ -2234,7 +2233,7 @@
        "source": "GitHub Container Registry",
        "subject": "conductionnl/integriq",
        "url": "https://github.com/orgs/conductionnl/packages/container/package/integriq",
-       "measuredAt": "2026-11-26",
+       "measuredAt": "2026-11-27",
        "caveat": "Pull counts would include CI pulls.",
        "figures": [],
        "notMeasured": "GitHub publishes no pull count for container images through its API"
@@ -2245,7 +2244,7 @@
        "source": "GitHub",
        "subject": "ConductionNL/integriq",
        "url": "https://github.com/ConductionNL/integriq",
-       "measuredAt": "2026-11-26",
+       "measuredAt": "2026-11-27",
        "caveat": "Stars and watchers measure attention, not use; forks include personal copies.",
        "figures": [
         {
@@ -2269,7 +2268,7 @@
        "subject": "ConductionNL/integriq",
        "url": "https://github.com/ConductionNL/integriq/graphs/contributors",
        "caveat": "Authors of the latest 1000 commits of the last 12 months, told apart by address after the repository's .mailmap. Their organisation is the domain of their address, or for a personal, hidden or noreply address the company on their public profile. The owning organisation (conduction.nl) is the most common organisation domain, the domains and names in publiccode.yml and the owner account; one person with two addresses counts twice. Bots are left out.",
-       "measuredAt": "2026-11-26",
+       "measuredAt": "2026-11-27",
        "figures": [
         {
          "label": "contributors",
@@ -2327,8 +2326,8 @@
       "id": "change-request-closure-ratio",
       "name": "Change Request Closure Ratio",
       "referenceUrl": "https://chaoss.community/kb/metric-change-request-closure-ratio/",
-      "value": "0.98",
-      "explanation": "2,050 change requests were closed (merged or not) and 2,095 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
+      "value": "0.99",
+      "explanation": "2,065 change requests were closed (merged or not) and 2,092 opened in the last 90 days, bots included. Below 1 the open backlog grows; above 1 it shrinks.",
       "target": {
        "text": "at least 0.8",
        "met": true
@@ -2339,7 +2338,7 @@
       "name": "Time to First Response",
       "referenceUrl": "https://chaoss.community/kb/metric-time-to-first-response/",
       "value": "no response",
-      "explanation": "None of the 15 latest change requests opened by people between 2026-08-28 and 2026-11-19 got a comment or review from anyone but its author.",
+      "explanation": "None of the 15 latest change requests opened by people between 2026-08-29 and 2026-11-20 got a comment or review from anyone but its author.",
       "target": {
        "text": "at most 48 hours",
        "met": false
@@ -2350,7 +2349,7 @@
       "name": "Issue Response Time",
       "referenceUrl": "https://chaoss.community/kb/metric-issue-response-time/",
       "value": "no response",
-      "explanation": "None of the 15 latest issues opened by people between 2026-08-28 and 2026-11-19 got a comment from anyone but its author.",
+      "explanation": "None of the 15 latest issues opened by people between 2026-08-29 and 2026-11-20 got a comment from anyone but its author.",
       "target": {
        "text": "at most 120 hours",
        "met": false
@@ -2361,7 +2360,7 @@
       "name": "Release Frequency",
       "referenceUrl": "https://chaoss.community/kb/metric-release-frequency/",
       "value": "25 in 12 months",
-      "explanation": "25 final releases were published in the last 12 months, about one every 15 days, counted from the GitHub releases. The latest final release is from 2026-09-12. Besides these, 706 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
+      "explanation": "25 final releases were published in the last 12 months, about one every 15 days, counted from the GitHub releases. The latest final release is from 2026-09-12. Besides these, 713 pre-releases were published; they are not counted. Drafts and pre-releases are left out.",
       "target": {
        "text": "at least 4 releases in 12 months",
        "met": true
@@ -2370,8 +2369,8 @@
     ],
     "sla": {
      "notMeasured": null,
-     "from": "2026-08-28",
-     "to": "2026-11-26",
+     "from": "2026-08-29",
+     "to": "2026-11-27",
      "categories": [
       {
        "category": "bug",
@@ -2414,18 +2413,18 @@
        "label": "Unclassified",
        "respondDays": 10,
        "fixDays": null,
-       "count": 279,
+       "count": 291,
        "response": {
         "measured": 0,
         "median": null,
         "worst": null,
-        "breaches": 201,
-        "waiting": 267
+        "breaches": 213,
+        "waiting": 279
        },
        "fix": null
       }
      ],
-     "openBreachCount": 173,
+     "openBreachCount": 174,
      "openBreaches": [
       {
        "title": "Scholiq education-data adapters: BRON/ROD (DUO), OSO (PO→VO), leerplicht-Digikoppeling, SURFconext attributes, generic HR sync",
@@ -2574,7 +2573,7 @@
       "Measured over the open issues and the issues closed in the last 90 days, in working days (Monday to Friday, Europe/Amsterdam, without Dutch public holidays).",
       "Only the 200 most recently updated issues of each kind were read.",
       "Vulnerabilities are read from the published GitHub security advisories, from draft to publication. Their response time, unpublished advisories and Dependabot alerts need admin rights and are not measured.",
-      "17 of 339 issues were opened by the maintainers themselves; they have a fix term but no response term.",
+      "17 of 351 issues were opened by the maintainers themselves; they have a fix term but no response term.",
       "No issue carries a blocking label (such as blocker or critical), so every bug counts as an other bug."
      ]
     },
@@ -2610,7 +2609,7 @@
     "description": "Specifications in a known layout (OpenSpec, Spec Kit or Kiro) tell a coding agent what the code must do and which changes are under way.",
     "status": "pass",
     "rating": 5.5,
-    "message": "145 specifications and 308 changes found.",
+    "message": "147 specifications and 308 changes found.",
     "evidence": [
      "openspec/specs/action-authorization/spec.md",
      "openspec/specs/adapter-configuration/spec.md",
@@ -2662,7 +2661,7 @@
      "openspec/specs/flow-token-helper/spec.md",
      "openspec/specs/flow-workflowengine-operations/spec.md",
      "openspec/specs/fsc-connectivity/spec.md",
-     "... and 95 more"
+     "... and 97 more"
     ],
     "referenceUrl": "https://agents.md/",
     "requirementLevel": "informative"
@@ -2751,7 +2750,7 @@
     "requirementLevel": "informative"
    }
   ],
-  "durationSeconds": 34.1,
+  "durationSeconds": 24.5,
   "scanMode": "full",
   "scanModeReason": "the code changed",
   "toolFingerprint": "sha256:67cf230a1d6577bc4f393f811e90b671",
